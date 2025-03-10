@@ -1,108 +1,80 @@
 [
   {
-    "title": "Advances in Attention Mechanisms for Artificial Intelligence: Enhancing Deep Learning Efficiency",
-    "focus": "Exploring the role of attention mechanisms in improving the efficiency of deep learning techniques in AI",
+    "title": "Advances in Large Language Models for Criteria Selection: A Focus on Answer-Only Setting",
+    "focus": "Exploration of the potential of large language models in refining criteria selection with a specific focus on answer-only settings.",
     "themes": [
-      "Artificial Intelligence",
-      "Attention Mechanisms",
-      "Deep Learning Techniques",
-      "Efficiency Optimization"
+      "Large Language Models",
+      "Criteria selection",
+      "Answer-Only Setting"
     ],
     "methods": [
-      "Positional Encoding",
-      "Deep Learning",
-      "Reinforcement Learning",
-      "Knowledge Distillation",
-      "Normalization",
-      "Dropout",
-      "Multiverse Analysis",
-      "High-Performance Computing",
-      "Convolutional Neural Networks",
-      "Information Retrieval"
+      "Network centrality",
+      "Correlation coefficient",
+      "Scientific methodology",
+      "Matrix",
+      "stochastic process"
     ]
   },
   {
-    "title": "Advances in Narrative Visualization for Sociotechnical Systems: An Integrated Systems Engineering Approach",
-    "focus": "Investigating the application of narrative visualization in understanding and improving sociotechnical systems",
+    "title": "Advances in Artificial Intelligence for Chain-of-Thought Reasoning: The Role of Evaluation in Answer-Only Settings",
+    "focus": "Understanding the impact of evaluation processes in chain-of-thought reasoning within AI, specifically in answer-only settings.",
     "themes": [
-      "Narrative Visualization",
-      "Sociotechnical System",
-      "Integrated Systems Engineering"
+      "Artificial intelligence",
+      "Chain-of-Thought Reasoning",
+      "Evaluation"
     ],
     "methods": [
-      "Review of Literature",
-      "Dimensionality Reduction",
-      "Data-Driven Visual Storytelling",
-      "Dynamic Slideshow Generation",
-      "DOI",
-      "Reflective Practice",
-      "Spatial Analysis",
-      "Survey Design",
-      "Multiverse Analysis",
-      "Model Evaluation"
+      "Inductive coding",
+      "Scientific methodology",
+      "Data processing techniques",
+      "Assessment"
     ]
   },
   {
-    "title": "Advances in Semantic Information Theory for Model Documentation: Improving Data Management",
-    "focus": "Studying how semantic information theory can enhance model documentation practices and data management",
+    "title": "Advances in Few-Shot Learning for Data Analysis: The Emergence of Truthful Frameworks",
+    "focus": "Investigating the application of few-shot learning in data analysis and the emergence of truthful frameworks.",
     "themes": [
-      "Semantic Information Theory",
-      "Model Documentation",
-      "Data Management"
+      "Few-shot learning",
+      "Data Analysis",
+      "Truthful Framework"
     ],
     "methods": [
-      "Positional Encoding",
-      "Sparse Signal Recovery",
-      "Galois Fields",
-      "Sparse Regression",
-      "Normalization",
-      "Symbolic Computation",
-      "Semantic Data Processing",
-      "Scaled Exponential Linear Unit",
-      "Aggregate Function",
-      "Information Integration Model"
+      "Mittag-Leffler function analysis",
+      "Integral Transforms",
+      "Power series expansion",
+      "Caputo fractional derivative"
     ]
   },
   {
-    "title": "Advances in Deep Learning Techniques for Artificial Intelligence: Leveraging Annotated Data",
-    "focus": "Exploring the use of annotated data in improving the performance of deep learning techniques in AI",
+    "title": "Advances in Large Language Models for Evaluation: The Intersection of Answer-Only Setting and Classification",
+    "focus": "Analyzing the use of large language models in evaluation, with an emphasis on the intersection of answer-only setting and classification.",
     "themes": [
-      "Deep Learning Techniques",
-      "Artificial Intelligence",
-      "Annotation"
+      "Large Language Models",
+      "Evaluation",
+      "Answer-Only Setting",
+      "Classification"
     ],
     "methods": [
-      "Integrated Systems Engineering",
-      "Deep Learning",
-      "Neural Network Layers",
-      "Sparse Regression",
-      "Reinforcement Learning",
-      "Knowledge Distillation",
-      "Normalization",
-      "Dropout",
-      "Introspective Virtual Trial",
-      "Convolutional Neural Networks"
+      "Network centrality",
+      "Scientific methodology",
+      "Precision",
+      "Matrix",
+      "Age-based decay"
     ]
   },
   {
-    "title": "Advances in Semantic Information Theory for Artificial Intelligence: Unraveling the Impact of Attention Mechanisms",
-    "focus": "Investigating the contribution of attention mechanisms in the interplay between semantic information theory and AI",
+    "title": "Advances in Artificial Intelligence for Answer-Only Setting: A Deep Dive into Few-Shot Learning",
+    "focus": "Exploring the potential of AI in answer-only settings with a deep dive into the role of few-shot learning.",
     "themes": [
-      "Semantic Information Theory",
-      "Artificial Intelligence",
-      "Attention Mechanisms"
+      "Artificial intelligence",
+      "Answer-Only Setting",
+      "Few-shot learning"
     ],
     "methods": [
-      "Guidelines",
-      "Dimensionality Reduction",
-      "Human-AI Collaboration Framework",
-      "Knowledge Distillation",
-      "Dynamic Slideshow Generation",
-      "Normalization",
-      "Multi-Head Self-Attention",
-      "Symbolic Computation",
-      "Data Provenance",
-      "Fairness in Algorithms"
+      "Inductive coding",
+      "Scientific methodology",
+      "Analysis",
+      "Policy community interviews"
     ]
   }
 ]

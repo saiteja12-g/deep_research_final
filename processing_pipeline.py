@@ -1,7 +1,8 @@
 import json
 import base64
 import logging
-from typing import Set, List, Dict, Optional
+import re
+from typing import Set, List, Dict, Optional, Tuple
 from tenacity import retry, stop_after_attempt, wait_exponential
 from unstructured.partition.pdf import partition_pdf
 from langchain_openai import ChatOpenAI
@@ -75,7 +76,7 @@ def validate_pdf(file_path: str):
         reader = PdfReader(pdf_file)
         page_count = len(reader.pages)
 
-    if page_count > 20:
+    if page_count > 80:
         logger.warning(f"Deleting PDF file with {page_count} pages: {file_path}")
         os.remove(file_path)
         # Remove corresponding JSON file if it exists
@@ -127,6 +128,66 @@ def extract_text_tables_images(file_path: str) -> tuple:
     except Exception as e:
         logger.error(f"PDF processing failed: {str(e)}")
         raise
+
+def identify_document_structure(texts: List) -> Dict[str, List]:
+    """Identify document sections from text chunks"""
+    section_patterns = {
+        "abstract": r"(?:^|\s)abstract(?:$|\s)",
+        "introduction": r"(?:^|\s)(?:introduction|background|overview)(?:$|\s)",
+        "methodology": r"(?:^|\s)(?:methodology|method|approach|experiment|implementation)(?:$|\s)",
+        "results": r"(?:^|\s)(?:results|evaluation|performance|findings)(?:$|\s)",
+        "discussion": r"(?:^|\s)(?:discussion|analysis|implications)(?:$|\s)",
+        "conclusion": r"(?:^|\s)(?:conclusion|future work|summary)(?:$|\s)"
+    }
+    
+    structured_document = {}
+    
+    for section, pattern in section_patterns.items():
+        structured_document[section] = []
+    
+    # Categorize chunks into sections
+    for i, chunk in enumerate(texts):
+        chunk_text = str(chunk)
+        chunk_data = {
+            "text": chunk_text,
+            "index": i,
+        }
+        
+        # Try to identify chunk's section
+        section_found = False
+        for section, pattern in section_patterns.items():
+            # Check if the chunk title or first paragraph matches a section pattern
+            lines = chunk_text.split('\n')
+            title = lines[0] if lines else ""
+            first_para = '\n'.join(lines[:3]) if len(lines) > 1 else ""
+            
+            if re.search(pattern, title.lower()) or re.search(pattern, first_para.lower()):
+                structured_document[section].append(chunk_data)
+                section_found = True
+                break
+        
+        # If no section was matched, place in "other"
+        if not section_found:
+            if "other" not in structured_document:
+                structured_document["other"] = []
+            structured_document["other"].append(chunk_data)
+    
+    return structured_document
+
+def extract_citations_from_text(text: str) -> List[str]:
+    """Extract citation references from text"""
+    # Pattern for [Author, Year] or [Number] style citations
+    patterns = [
+        r'\[([^,\]]+(?:, \d{4}|, et al\., \d{4}))\]',  # [Author, 2021] or [Author, et al., 2021]
+        r'\[(\d+(?:,\s*\d+)*)\]',  # [1] or [1, 2, 3]
+    ]
+    
+    all_citations = []
+    for pattern in patterns:
+        citations = re.findall(pattern, text)
+        all_citations.extend(citations)
+        
+    return all_citations
 
 # --------------------- METADATA EXTRACTION ---------------------
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
@@ -224,194 +285,239 @@ def extract_metadata(texts: List) -> PaperMetadata:
     logger.info("Metadata extraction complete")
     return metadata
 
-# --------------------- CONTENT SUMMARIZATION ---------------------
-@retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
-def summarize_text_chunk(chunk: str) -> str:
-    """Technical text summarization with error handling"""
-    prompt_text = """Summarize this research paper section focusing on technical content:
-    {element}
+# --------------------- IMAGE PROCESSING ---------------------
+def process_images(images: List[str], output_dir: str, max_images: int = 10) -> List[Dict]:
+    """
+    Process images with error handling and generate descriptions
+    Uses LLM to determine image importance directly
+    """
+    logger.info(f"Starting image processing (limiting to {max_images} images)...")
+    os.makedirs(output_dir, exist_ok=True)
     
-    Include:
-    - Key formulas/equations
-    - Novel architectural details
-    - Benchmark results (include metrics)
-    - Comparison with prior work
-    - Technical limitations mentioned"""
-
-    prompt = ChatPromptTemplate.from_template(prompt_text)
-    model = ChatOpenAI(temperature=0.3, model="gpt-4o")
-    chain = prompt | model | StrOutputParser()
-    return chain.invoke({"element": chunk})
-
-def summarize_text(texts: List) -> List[str]:
-    """Batch process text summarization"""
-    logger.info("Starting text summarization...")
-    return [summarize_text_chunk(str(t)) for t in texts]
-
-def summarize_table(table: str) -> str:
-    """Technical table analysis"""
-    prompt_text = """Analyze this technical table:
-    {element}
+    # Sort images by size initially (to start with likely more important diagrams)
+    image_sizes = []
+    for idx, img_data in enumerate(images):
+        try:
+            img_size = len(base64.b64decode(img_data))
+            image_sizes.append((idx, img_size))
+        except:
+            # Skip invalid images
+            continue
     
-    1. Identify table type:
-       - Results comparison
-       - Model architecture
-       - Benchmark metrics
-       - Hyperparameters
-    2. Summarize key numerical findings
-    3. Note any statistical significance markers"""
+    # Take top 2*max_images candidates by size for further analysis
+    sorted_images = sorted(image_sizes, key=lambda x: x[1], reverse=True)[:max_images*2]
+    candidate_indices = [idx for idx, _ in sorted_images]
     
-    prompt = ChatPromptTemplate.from_template(prompt_text)
-    model = ChatOpenAI(temperature=0.2, model="gpt-4o")
-    chain = prompt | model | StrOutputParser()
-    return chain.invoke({"element": table})
-
-def summarize_tables(tables: List) -> List[str]:
-    """Process tables with parallel execution"""
-    logger.info("Starting table summarization...")
-    tables_html = [t.metadata.text_as_html for t in tables]
-    return [summarize_table(t) for t in tables_html]
-
-def summarize_image(image_data: str, output_dir: str) -> tuple:
-    """Technical image analysis with local storage"""
-    try:
-        # Save image
-        os.makedirs(output_dir, exist_ok=True)
-        filename = f"{uuid.uuid4()}.jpg"
-        filepath = os.path.join(output_dir, filename)
-        
-        with open(filepath, "wb") as f:
-            f.write(base64.b64decode(image_data))
-
-        # Generate description
-        prompt_text = """Analyze this technical figure:
-        - Architecture diagrams: components and connections
-        - Graphs: axes, trends, key data points
-        - Mathematical visualizations: symbols and relationships
-        - Flowcharts: decision points and processes"""
-        
-        messages = [
-            ("user", [
-                {"type": "text", "text": prompt_text},
-                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{image_data}"}}
-            ])
-        ]
-
-        prompt = ChatPromptTemplate.from_messages(messages)
-        chain = prompt | ChatOpenAI(model="gpt-4o") | StrOutputParser()
-        description = chain.invoke({})
-
-        return description, filepath
-
-    except Exception as e:
-        logger.error(f"Image processing failed: {str(e)}")
-        return "", ""
-
-def summarize_images(images: List[str]) -> tuple:
-    """Process images with error handling"""
-    logger.info("Starting image processing...")
-    output_dir = os.path.join(OUTPUT_DIR, "images")
-    results = [summarize_image(img, output_dir) for img in images]
-    descriptions, paths = zip(*results) if results else ([], [])
-    return descriptions, paths
-
-def extract_basic_info(pdf_path):
-    import fitz  # PyMuPDF
+    logger.info(f"Analyzing {len(candidate_indices)} candidate images from {len(images)} total")
     
-    """Extracts metadata like title, authors, DOI, and journal from a PDF."""
-    doc = fitz.open(pdf_path)
-    metadata = doc.metadata
-    title = metadata.get("title", "Unknown Title")
-    authors = metadata.get("author", "Unknown Author").split(", ") if metadata.get("author") else ["Unknown Author"]
-    publication_year = metadata.get("modDate", "Unknown Year")[2:6] if metadata.get("modDate") else "Unknown Year"
-    source = pdf_path  # Placeholder for now, can be replaced with a proper URL later
+    results = []
+    for i, idx in enumerate(candidate_indices):
+        try:
+            img_data = images[idx]
+            
+            # Save image
+            filename = f"{uuid.uuid4()}.jpg"
+            filepath = os.path.join(output_dir, filename)
+            
+            with open(filepath, "wb") as f:
+                f.write(base64.b64decode(img_data))
+            
+            logger.info(f"Processing image {i+1}/{len(candidate_indices)}...")
+            
+            # Generate description and importance score together
+            prompt_text = """Analyze this technical figure from a research paper:
 
-    return {
-        "title": title,
-        "authors": authors,
-        "publication_year": publication_year,
-        "source": source
-    }
+1. Provide a concise yet comprehensive description of what this figure shows, focusing on:
+   - Architecture diagrams and components
+   - Graphs, charts, and data visualizations
+   - Mathematical formulas or concepts illustrated
+   - Algorithm flowcharts or processes
+   - Results or findings being presented
+
+2. On a scale of 1-10, rate the IMPORTANCE of this figure to understanding the research, where:
+   - 10: Critical figure showing main results, core architecture, or central innovation
+   - 7-9: Important visualization of methodology, key results, or significant components
+   - 4-6: Supplementary information, examples, or secondary findings
+   - 1-3: Minor illustration, decorative element, or peripheral information
+
+Format your response as:
+IMPORTANCE: [number 1-10]
+DESCRIPTION: [your detailed description]"""
+            
+            messages = [
+                ("user", [
+                    {"type": "text", "text": prompt_text},
+                    {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{img_data}"}}
+                ])
+            ]
+            
+            prompt = ChatPromptTemplate.from_messages(messages)
+            chain = prompt | ChatOpenAI(model="gpt-4o") | StrOutputParser()
+            response = chain.invoke({})
+            
+            # Parse importance score and description
+            importance_score = 5  # Default mid-range score
+            description = response
+            
+            importance_match = re.search(r'IMPORTANCE:\s*(\d+)', response)
+            if importance_match:
+                importance_score = int(importance_match.group(1))
+                
+            description_match = re.search(r'DESCRIPTION:\s*(.*)', response, re.DOTALL)
+            if description_match:
+                description = description_match.group(1).strip()
+            
+            results.append({
+                "path": filepath,
+                "description": description,
+                "importance": importance_score
+            })
+            
+        except Exception as e:
+            logger.error(f"Image processing failed: {str(e)}")
+    
+    # Sort results by importance score (descending)
+    results = sorted(results, key=lambda x: x.get("importance", 0), reverse=True)
+    
+    logger.info(f"Selected top {min(max_images, len(results))} images by importance score")
+    return results[:max_images]  # Ensure we return at most max_images
+
 # --------------------- DATA STORAGE ---------------------
+def prepare_raw_chunks(texts: List) -> List[Dict]:
+    """Prepare raw text chunks for storage with section identification"""
+    # Identify document structure
+    structure = identify_document_structure(texts)
+    
+    raw_chunks = []
+    for section_name, chunks in structure.items():
+        for idx, chunk in enumerate(chunks):
+            chunk_text = chunk["text"]
+            citations = extract_citations_from_text(chunk_text)
+            
+            raw_chunks.append({
+                "text": chunk_text,
+                "section": section_name,
+                "section_idx": idx,
+                "citations": citations
+            })
+    
+    return raw_chunks
+
 def store_extracted_data(
-    text_summaries: List[str],
-    table_summaries: List[str],
-    image_summaries: tuple,
+    texts: List,
+    figures: List[Dict],
     metadata: PaperMetadata,
-    basic_info, output_path
+    output_path: str
 ) -> str:
     """Store processed data with enhanced structure"""
     try:
+        # Prepare raw chunks with structure
+        raw_chunks = prepare_raw_chunks(texts)
+        
         # Prepare content structure
         content = {
-            "technical_summary": {
-                "sections": {
-                    "introduction": text_summaries[0] if len(text_summaries) > 0 else "",
-                    "methodology": text_summaries[1] if len(text_summaries) > 1 else "",
-                    "results": text_summaries[2] if len(text_summaries) > 2 else ""
-                },
-                "tables": [{"summary": t} for t in table_summaries],
-                "figures": [
-                    {"description": d, "path": p}
-                    for d, p in zip(image_summaries[0], image_summaries[1])
-                ] if image_summaries else []
-            },
+            "raw_chunks": raw_chunks,
+            "figures": figures,
             "metadata": metadata.model_dump(),
-            "basic_info": basic_info
         }
-
+        
+        # Load existing content if file exists
+        try:
+            with open(output_path, "r", encoding="utf-8") as f:
+                existing_content = json.load(f)
+                for key, val in content.items():
+                    if key not in existing_content:
+                        existing_content[key] = val
+        except (FileNotFoundError, json.JSONDecodeError):
+            # File doesn't exist or is invalid
+            existing_content = content
+        
         # Save to file
-        # output_path = os.path.join(output_path, "technical_analysis.json")
-        with open(output_path, "r", encoding="utf-8") as f:
-            existing_content = json.load(f)
-            for key, val in content.items():
-                if key not in existing_content:
-                    existing_content[key] = val
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(existing_content, f, indent=4, ensure_ascii=False)
-
+        
         logger.info(f"Data successfully saved to {output_path}")
         return output_path
-
+    
     except Exception as e:
         logger.error(f"Data storage failed: {str(e)}")
         raise
 
+def extract_basic_info(pdf_path: str) -> Dict:
+    """Extracts metadata like title, authors, DOI, and journal from a PDF."""
+    try:
+        import fitz  # PyMuPDF
+        
+        doc = fitz.open(pdf_path)
+        metadata = doc.metadata
+        title = metadata.get("title", "Unknown Title")
+        authors = metadata.get("author", "Unknown Author").split(", ") if metadata.get("author") else ["Unknown Author"]
+        publication_year = metadata.get("modDate", "Unknown Year")[2:6] if metadata.get("modDate") else "Unknown Year"
+        source = pdf_path  # Placeholder for now, can be replaced with a proper URL later
+        
+        # If title is empty or "untitled", try to extract from first page
+        if not title or title.lower() == "untitled":
+            first_page = doc[0]
+            text = first_page.get_text()
+            lines = text.split('\n')
+            # Assume the first non-empty line might be the title
+            for line in lines:
+                if line.strip() and len(line) > 5:  # Basic check to avoid headers/page numbers
+                    title = line.strip()
+                    break
+        
+        return {
+            "title": title,
+            "authors": authors,
+            "published_year": publication_year,
+            "source": source,
+            "references": []  # Will be populated later
+        }
+    except Exception as e:
+        logger.error(f"Error extracting basic info: {str(e)}")
+        return {
+            "title": "Unknown Title",
+            "authors": ["Unknown Author"],
+            "published_year": "Unknown Year",
+            "source": pdf_path,
+            "references": []
+        }
+
 # --------------------- MAIN PIPELINE ---------------------
 def process_research_paper(file_path: str, output_json_path: str) -> dict:
-    """End-to-end processing pipeline"""
+    """End-to-end processing pipeline focusing on raw chunk storage"""
     try:
         logger.info(f"Starting processing: {file_path}")
         
-        # Extraction
+        # Extract basic info first
+        # basic_info = extract_basic_info(file_path)
+        
+        # Extract content
         texts, tables, images = extract_text_tables_images(file_path)
         
-        # Summarization
-        text_summaries = summarize_text(texts)
-        table_summaries = summarize_tables(tables)
-        image_summaries = summarize_images(images)
+        # Process images
+        output_dir = os.path.join(OUTPUT_DIR, "images")
+        figures = process_images(images, output_dir)
         
-        # Metadata
+        # Extract metadata
         metadata = extract_metadata(texts)
-        basic_info = ""
-        # Storage
+        
+        # Store with raw chunks instead of summaries
         output_path = store_extracted_data(
-            text_summaries,
-            table_summaries,
-            image_summaries,
-            metadata, basic_info, output_json_path
+            texts,
+            figures,
+            metadata,
+            output_json_path
         )
-
+        
         return {
             "status": "success",
             "output_path": output_path,
-            # "stats": {
-            #     "text_sections": len(text_summaries),
-            #     "tables": len(table_summaries),
-            #     "figures": len(image_summaries[0]) if image_summaries else 0
-            # }
+            "metadata": metadata.model_dump(),
+            "raw_chunks_count": len(texts),
+            "figures_count": len(figures)
         }
-
+    
     except Exception as e:
         logger.error(f"Processing failed: {str(e)}")
         return {"status": "error", "message": str(e)}

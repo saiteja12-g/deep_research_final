@@ -1,7 +1,7 @@
 import os
 import json
 import hashlib
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Set, Tuple
 from neo4j import GraphDatabase
 import chromadb
 from chromadb.utils import embedding_functions
@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 import gc
 from chromadb.config import Settings
 import openai  # Updated import
+import re
 
 # Load environment variables for API keys
 load_dotenv()
@@ -75,9 +76,10 @@ class ResearchKnowledgeBase:
         paper_id = paper_data["basic_info"]["paper_id"]
         
         try:
-            print(f"Storing text for paper {paper_id} in Chroma DB...")
-            self._store_in_chroma(paper_id, paper_data)
-            print("Text storage successful")
+            print(f"Storing text chunks for paper {paper_id} in Chroma DB...")
+            chunk_ids = self._store_in_chroma(paper_id, paper_data)
+            paper_data["content_chunks"] = chunk_ids
+            print(f"Text storage successful: {len(chunk_ids)} chunks stored")
         except Exception as e:
             import traceback
             print(f"Error storing text in Chroma: {str(e)}")
@@ -104,72 +106,88 @@ class ResearchKnowledgeBase:
         
         print(f"Finished processing paper {paper_id}")
         print("======================================================")
-
-
-    def _store_in_chroma(self, paper_id: str, data: Dict):
-        content = "\n".join([
-            data["technical_summary"]["sections"]["introduction"],
-            data["technical_summary"]["sections"]["methodology"],
-            data["technical_summary"]["sections"]["results"]
-        ])
         
-        # Chunk text for BGE model (max 512 tokens)
-        text_chunks = self._chunk_text(
-            text=content,
-            max_tokens=500,  # Leave room for special tokens
-            )
-        documents = []
-        metadatas = []
-        ids = []
-        # Store each chunk with metadata
-        for idx, chunk in enumerate(text_chunks):
-            documents.append(chunk)
-            metadatas.append({
-                "paper_id": paper_id,
-                "year": data["basic_info"]["published_year"],
-                "themes": ",".join(data["metadata"]["key_themes"]),
-                "methods": ",".join(data["metadata"]["methodology"]),
-                "chunk": idx
-            })
-            ids.append(f"{paper_id}_text_{idx}")
-        self.vector_db.add(documents=documents, metadatas=metadatas, ids=ids)
+        return paper_data  # Return updated paper data with chunk IDs
 
 
-    def _store_images(self, paper_data: Dict):
-        paper_id = paper_data["basic_info"]["paper_id"]
-        cnt_img = 0
-        for img in paper_data["technical_summary"]["figures"]:
-            path = Path(img["path"])
-            img_id = path.stem
-            description = img["description"]
+    def _store_in_chroma(self, paper_id: str, data: Dict) -> List[Dict]:
+        """Store raw text chunks in ChromaDB and return chunk information"""
+        # Get raw chunks from paper data
+        raw_chunks = data.get("raw_chunks", [])
+        
+        if not raw_chunks:
+            print(f"No raw chunks found for paper {paper_id}")
+            return []
+            
+        print(f"Processing {len(raw_chunks)} chunks for ChromaDB storage")
+        stored_chunks = []
+        
+        # Process in smaller batches
+        BATCH_SIZE = 5
+        for batch_start in range(0, len(raw_chunks), BATCH_SIZE):
+            batch_end = min(batch_start + BATCH_SIZE, len(raw_chunks))
+            print(f"Processing batch {batch_start//BATCH_SIZE + 1}: chunks {batch_start+1}-{batch_end}")
+            
             documents = []
             metadatas = []
             ids = []
-            if cnt_img > 10:
-                break
-            # Simplify - just limit by character count if needed
-            if len(description) > 500:  # Arbitrary limit to prevent very long descriptions
-                description = description[:500] + "..."
-            documents.append(description)
-            metadatas.append({
-                "paper_id": paper_id,
-                "path": img['path'],
-                "themes": ",".join(paper_data["metadata"]["key_themes"]),
-                "methods": ",".join(paper_data["metadata"]["methodology"])
-            })
-            ids.append(img_id)
-            # self.image_db.add(
-            #     documents=[description],
-            #     metadatas=[{
-            #         "paper_id": paper_id,
-            #         "path": img["path"],
-            #         "themes": ",".join(paper_data["metadata"]["key_themes"]),
-            #         "methods": ",".join(paper_data["metadata"]["methodology"])
-            #     }],
-            #     ids=[img_id]
-            # )
-            cnt_img += 1
-            self.image_db.add(documents=documents, metadatas=metadatas, ids=ids)
+            
+            # Process batch
+            for idx in range(batch_start, batch_end):
+                chunk = raw_chunks[idx]
+                chunk_id = f"{paper_id}_chunk_{idx}"
+                chunk_text = chunk["text"]
+                
+                # Extract citations from text if they exist
+                citations = self._extract_citations(chunk_text)
+                
+                documents.append(chunk_text)
+                metadata = {
+                    "paper_id": paper_id,
+                    "year": data["basic_info"]["published_year"],
+                    "themes": ",".join(data["metadata"]["key_themes"]) if "metadata" in data and "key_themes" in data["metadata"] else "",
+                    "methods": ",".join(data["metadata"]["methodology"]) if "metadata" in data and "methodology" in data["metadata"] else "",
+                    "chunk_idx": idx,
+                    "section": chunk.get("section", "unknown"),
+                    "citations": ",".join(citations)
+                }
+                metadatas.append(metadata)
+                ids.append(chunk_id)
+                
+                # Store chunk info to return
+                stored_chunks.append({
+                    "chunk_id": chunk_id,
+                    "section": chunk.get("section", "unknown"),
+                    "citations": citations
+                })
+            
+            # Add this batch to ChromaDB
+            try:
+                print(f"Adding batch of {len(documents)} chunks to ChromaDB")
+                self.vector_db.add(documents=documents, metadatas=metadatas, ids=ids)
+                print(f"Successfully added batch {batch_start//BATCH_SIZE + 1}")
+            except Exception as e:
+                print(f"ChromaDB add operation failed for batch: {str(e)}")
+                import traceback
+                traceback.print_exc()
+        
+        return stored_chunks
+
+
+    def _extract_citations(self, text: str) -> List[str]:
+        """Extract citation references from text"""
+        # Pattern for [Author, Year] or [Number] style citations
+        patterns = [
+            r'\[([^,\]]+(?:, \d{4}|, et al\., \d{4}))\]',  # [Author, 2021] or [Author, et al., 2021]
+            r'\[(\d+(?:,\s*\d+)*)\]',  # [1] or [1, 2, 3]
+        ]
+        
+        all_citations = []
+        for pattern in patterns:
+            citations = re.findall(pattern, text)
+            all_citations.extend(citations)
+            
+        return all_citations
 
     def _chunk_text(self, text: str, max_tokens: int = 500) -> List[str]:
         """Proper text chunking using BGE's tokenizer with pre-splitting for long texts"""
@@ -234,50 +252,130 @@ class ResearchKnowledgeBase:
                 
         return final_chunks
 
+    def _store_images(self, paper_data: Dict):
+        paper_id = paper_data["basic_info"]["paper_id"]
+        cnt_img = 0
+        for img in paper_data.get("figures", []):
+            path = Path(img["path"])
+            img_id = path.stem
+            description = img["description"]
+            documents = []
+            metadatas = []
+            ids = []
+            if cnt_img > 10:
+                break
+            # Simplify - just limit by character count if needed
+            if len(description) > 500:  # Arbitrary limit to prevent very long descriptions
+                description = description[:500] + "..."
+            documents.append(description)
+            metadatas.append({
+                "paper_id": paper_id,
+                "path": img['path'],
+                "themes": ",".join(paper_data["metadata"]["key_themes"]) if "metadata" in paper_data and "key_themes" in paper_data["metadata"] else "",
+                "methods": ",".join(paper_data["metadata"]["methodology"]) if "metadata" in paper_data and "methodology" in paper_data["metadata"] else ""
+            })
+            ids.append(img_id)
+            cnt_img += 1
+            self.image_db.add(documents=documents, metadatas=metadatas, ids=ids)
+
     def _store_in_neo4j(self, paper_id: str, data: Dict):
         with self.graph_db.session() as session:
+            # Create paper node
             session.execute_write(
                 self._create_paper_node,
                 paper_id,
                 data["basic_info"]
             )
-            for theme in data["metadata"]["key_themes"]:
-                session.execute_write(
-                    self._create_theme_relationship,
-                    paper_id,
-                    theme
-                )
-            for method in data["metadata"]["methodology"]:
-                session.execute_write(
-                    self._create_methodology_relationship,
-                    paper_id,
-                    method
-                )
             
-            for strength in data["metadata"]["strengths"]:
-                session.execute_write(
-                    self._create_strength_relationship,
-                    paper_id,
-                    strength
-                )
-            for limitations in data["metadata"]["limitations"]:
-                session.execute_write(
-                    self._create_methodology_relationship,
-                    paper_id,
-                    limitations
-                )
-            for domain in data["metadata"]["domain"]:
-                session.execute_write(
-                    self._create_domain_relationship,
-                    paper_id,
-                    domain
-                )
-            for reference in data["basic_info"]["references"]:
-                session.execute_write(
-                    self._create_reference_relationship,
-                    paper_id,
-                    reference
-                )
+            # Create metadata relationships if they exist
+            if "metadata" in data:
+                if "key_themes" in data["metadata"]:
+                    for theme in data["metadata"]["key_themes"]:
+                        session.execute_write(
+                            self._create_theme_relationship,
+                            paper_id,
+                            theme
+                        )
+                
+                if "methodology" in data["metadata"]:
+                    for method in data["metadata"]["methodology"]:
+                        session.execute_write(
+                            self._create_methodology_relationship,
+                            paper_id,
+                            method
+                        )
+                
+                if "strengths" in data["metadata"]:
+                    for strength in data["metadata"]["strengths"]:
+                        session.execute_write(
+                            self._create_strength_relationship,
+                            paper_id,
+                            strength
+                        )
+                
+                if "limitations" in data["metadata"]:
+                    for limitation in data["metadata"]["limitations"]:
+                        session.execute_write(
+                            self._create_limitation_relationship,
+                            paper_id,
+                            limitation
+                        )
+                
+                if "domain" in data["metadata"]:
+                    for domain in data["metadata"]["domain"]:
+                        session.execute_write(
+                            self._create_domain_relationship,
+                            paper_id,
+                            domain
+                        )
+            
+            # Create reference relationships
+            if "basic_info" in data and "references" in data["basic_info"]:
+                for reference in data["basic_info"]["references"]:
+                    session.execute_write(
+                        self._create_reference_relationship,
+                        paper_id,
+                        reference
+                    )
+            
+            # Store content chunks
+            if "content_chunks" in data:
+                for chunk in data["content_chunks"]:
+                    chunk_id = chunk["chunk_id"]
+                    section = chunk.get("section", "unknown")
+                    
+                    # Create chunk node and relationship to paper
+                    session.execute_write(
+                        self._create_chunk_node,
+                        paper_id,
+                        chunk_id,
+                        section
+                    )
+                    
+                    # Create citation relationships from chunks
+                    if "citations" in chunk and chunk["citations"]:
+                        for citation in chunk["citations"]:
+                            # Try to match citation to a paper ID
+                            cited_paper_id = self._resolve_citation(citation, data["basic_info"].get("references", []))
+                            if cited_paper_id:
+                                session.execute_write(
+                                    self._create_chunk_citation_relationship,
+                                    chunk_id,
+                                    cited_paper_id
+                                )
+
+    def _resolve_citation(self, citation: str, references: List[str]) -> Optional[str]:
+        """Try to match a citation string to a paper ID from the references list"""
+        # If citation is just a number, try to use it as an index
+        if citation.isdigit():
+            idx = int(citation) - 1  # Convert to 0-indexed
+            if 0 <= idx < len(references):
+                return references[idx]
+        
+        # Otherwise try fuzzy matching (not implemented here)
+        # This would require more complex logic to match citation text to paper IDs
+        
+        return None
 
     @staticmethod
     def _create_paper_node(tx, paper_id: str, basic_info: Dict):
@@ -288,9 +386,34 @@ class ResearchKnowledgeBase:
                 p.year = $year
         """, {
             "paper_id": paper_id,
-            "title": basic_info["title"],
-            "authors": basic_info["authors"],
-            "year": basic_info["published_year"],
+            "title": basic_info.get("title", "Unknown Title"),
+            "authors": basic_info.get("authors", ["Unknown"]),
+            "year": basic_info.get("published_year", "Unknown Year"),
+        })
+
+    @staticmethod
+    def _create_chunk_node(tx, paper_id: str, chunk_id: str, section: str):
+        tx.run("""
+            MATCH (p:Paper {id: $paper_id})
+            MERGE (c:Chunk {id: $chunk_id})
+            SET c.section = $section
+            MERGE (p)-[:CONTAINS]->(c)
+        """, {
+            "paper_id": paper_id,
+            "chunk_id": chunk_id,
+            "section": section
+        })
+
+    @staticmethod
+    def _create_chunk_citation_relationship(tx, chunk_id: str, cited_paper_id: str):
+        tx.run("""
+            MATCH (c:Chunk {id: $chunk_id})
+            MERGE (cited:Paper {id: $cited_paper_id})
+            MERGE (c)-[r:CITES]->(cited)
+            SET r.strength = coalesce(r.strength, 0) + 1
+        """, {
+            "chunk_id": chunk_id,
+            "cited_paper_id": cited_paper_id
         })
 
     @staticmethod
@@ -373,19 +496,19 @@ class ResearchKnowledgeBase:
             """, {"path": image["path"], "method": method})
 
     def hybrid_search(self, query: str, top_k: int = 5, include_images: bool = True) -> Dict:
-        """Enhanced hybrid search leveraging Chroma collections and Neo4j relationships"""
-        # Text search with chunk aggregation
-        text_results = self.vector_db.query(
+        """Enhanced hybrid search leveraging chunk-based storage and Neo4j relationships"""
+        # Text search on chunks
+        chunk_results = self.vector_db.query(
             query_texts=[query],
             n_results=top_k*3,  # Get extra chunks for aggregation
             include=["metadatas", "documents", "distances"]
         )
         
-        # Aggregate text chunks by paper
+        # Aggregate chunks by paper
         paper_chunks = {}
-        for doc, meta, dist in zip(text_results["documents"][0],
-                                text_results["metadatas"][0],
-                                text_results["distances"][0]):
+        for doc, meta, dist in zip(chunk_results["documents"][0],
+                                chunk_results["metadatas"][0],
+                                chunk_results["distances"][0]):
             paper_id = meta["paper_id"]
             if paper_id not in paper_chunks:
                 paper_chunks[paper_id] = {
@@ -396,30 +519,34 @@ class ResearchKnowledgeBase:
                     "domains": set(),
                     "strengths": set(),
                     "limitations": set(),
-                    "references": set()
+                    "citations": set()
                 }
             
             paper_chunks[paper_id]["chunks"].append({
                 "text": doc,
                 "distance": dist,
-                "chunk_idx": meta["chunk"]
+                "chunk_id": meta.get("chunk_id", ""),
+                "chunk_idx": meta.get("chunk_idx", 0),
+                "section": meta.get("section", "unknown")
             })
+            
             paper_chunks[paper_id]["min_distance"] = min(
                 paper_chunks[paper_id]["min_distance"], 
                 dist
             )
-            if "themes" in meta:
+            
+            if "themes" in meta and meta["themes"]:
                 paper_chunks[paper_id]["themes"].update(meta["themes"].split(','))
-            if "methods" in meta:
+            if "methods" in meta and meta["methods"]:
                 paper_chunks[paper_id]["methods"].update(meta["methods"].split(','))
-            if "domain" in meta:
+            if "domain" in meta and meta["domain"]:
                 paper_chunks[paper_id]["domains"].update(meta["domain"].split(','))
-            if "strengths" in meta:
+            if "strengths" in meta and meta["strengths"]:
                 paper_chunks[paper_id]["strengths"].update(meta["strengths"].split(','))
-            if "limitations" in meta:
+            if "limitations" in meta and meta["limitations"]:
                 paper_chunks[paper_id]["limitations"].update(meta["limitations"].split(','))
-            if "references" in meta:
-                paper_chunks[paper_id]["basic_info"]["references"].update(meta["references"].split(','))
+            if "citations" in meta and meta["citations"]:
+                paper_chunks[paper_id]["citations"].update(meta["citations"].split(','))
         
         # Sort papers by minimum chunk distance and take top_k
         sorted_papers = sorted(
@@ -443,17 +570,25 @@ class ResearchKnowledgeBase:
                     data["chunks"], 
                     key=lambda x: x["distance"]
                 )
-                combined_text = "\n\n".join([c["text"] for c in sorted_chunks[:3]])  # Top 3 chunks
+                
+                # Get raw text for top chunks
+                top_chunks = []
+                for chunk in sorted_chunks[:3]:  # Take top 3 chunks
+                    top_chunks.append({
+                        "text": chunk["text"],
+                        "section": chunk["section"],
+                        "distance": chunk["distance"]
+                    })
                 
                 papers.append({
                     "id": paper_id,
-                    "content": combined_text,
+                    "chunks": top_chunks,
                     "themes": list(data["themes"]),
                     "methods": list(data["methods"]),
                     "domains": list(data["domains"]),
                     "strengths": list(data["strengths"]),
                     "limitations": list(data["limitations"]),
-                    "references": list(data["references"]),
+                    "citations": list(data["citations"]),
                     "graph_data": graph_data,
                     "chunk_count": len(data["chunks"]),
                     "min_distance": data["min_distance"]
@@ -481,16 +616,16 @@ class ResearchKnowledgeBase:
                                 image_results["metadatas"][0],
                                 image_results["distances"][0]):
                     if (meta["paper_id"] in paper_chunks or
-                        any(t in found_themes for t in meta["themes"].split(',')) or
-                        any(m in found_methods for m in meta["methods"].split(',')) or
-                        any(d in found_domains for d in meta.get("domain", "").split(','))):
+                        any(t in found_themes for t in meta["themes"].split(',') if meta.get("themes")) or
+                        any(m in found_methods for m in meta["methods"].split(',') if meta.get("methods")) or
+                        any(d in found_domains for d in meta.get("domain", "").split(',') if meta.get("domain"))):
                         
                         images.append({
                             "path": meta["path"],
                             "paper_id": meta["paper_id"],
                             "description": doc,
-                            "themes": meta["themes"].split(','),
-                            "methods": meta["methods"].split(','),
+                            "themes": meta["themes"].split(',') if meta.get("themes") else [],
+                            "methods": meta["methods"].split(',') if meta.get("methods") else [],
                             "domains": meta.get("domain", "").split(',') if meta.get("domain") else [],
                             "distance": dist
                         })
@@ -506,25 +641,34 @@ class ResearchKnowledgeBase:
 
     @staticmethod
     def _get_enriched_paper_details(tx, paper_id: str):
-        """Get extended paper relationships from Neo4j including all metadata."""
+        """Get extended paper relationships from Neo4j including all metadata and chunks."""
         result = tx.run("""
             MATCH (p:Paper{id: $paper_id})
-            OPTIONAL MATCH (p)-[:CITES]->(cited:Paper)
-
-            OPTIONAL MATCH (p)-[:DISCUSSES_THEME]->(:Theme)<-[:DISCUSSES_THEME]-(theme_related:Paper)
+            OPTIONAL MATCH (p)-[:CONTAINS]->(c:Chunk)
+            OPTIONAL MATCH (c)-[:CITES]->(cited:Paper)
+            
+            OPTIONAL MATCH (p)-[:DISCUSSES_THEME]->(t:Theme)
+            OPTIONAL MATCH (t)<-[:DISCUSSES_THEME]-(theme_related:Paper)
             WHERE theme_related <> p
 
-            OPTIONAL MATCH (p)-[:USES_METHOD]->(:Methodology)<-[:USES_METHOD]-(method_related:Paper)
+            OPTIONAL MATCH (p)-[:USES_METHOD]->(m:Methodology)
+            OPTIONAL MATCH (m)<-[:USES_METHOD]-(method_related:Paper)
             WHERE method_related <> p
 
-            OPTIONAL MATCH (p)-[:BELONGS_TO_DOMAIN]->(:Domain)<-[:BELONGS_TO_DOMAIN]-(domain_related:Paper)
+            OPTIONAL MATCH (p)-[:BELONGS_TO_DOMAIN]->(d:Domain)
+            OPTIONAL MATCH (d)<-[:BELONGS_TO_DOMAIN]-(domain_related:Paper)
             WHERE domain_related <> p
 
             RETURN 
                 p.id AS paper_id,
                 p.title AS title,
                 p.authors AS authors,
-                COLLECT(DISTINCT cited.id) AS citations,
+                COLLECT(DISTINCT c.id) AS chunk_ids,
+                COLLECT(DISTINCT c.section) AS chunk_sections,
+                COLLECT(DISTINCT cited.id) AS chunk_citations,
+                COLLECT(DISTINCT t.name) AS themes,
+                COLLECT(DISTINCT m.name) AS methods,
+                COLLECT(DISTINCT d.name) AS domains,
                 COLLECT(DISTINCT theme_related.id) AS theme_related_papers,
                 COLLECT(DISTINCT method_related.id) AS method_related_papers,
                 COLLECT(DISTINCT domain_related.id) AS domain_related_papers
@@ -535,10 +679,169 @@ class ResearchKnowledgeBase:
             return {"paper_id": paper_id, "found": False}
         return dict(record)
 
+    def get_chunks_by_id(self, chunk_ids: List[str]) -> List[Dict]:
+        """Retrieve full chunk data by IDs"""
+        if not chunk_ids:
+            return []
+            
+        results = []
+        for chunk_id in chunk_ids:
+            try:
+                # Fetch chunk from ChromaDB
+                chunk_data = self.vector_db.get(
+                    ids=[chunk_id],
+                    include=["metadatas", "documents"]
+                )
+                
+                if chunk_data and chunk_data["documents"]:
+                    results.append({
+                        "chunk_id": chunk_id,
+                        "text": chunk_data["documents"][0],
+                        "metadata": chunk_data["metadatas"][0] if chunk_data["metadatas"] else {}
+                    })
+            except Exception as e:
+                print(f"Error retrieving chunk {chunk_id}: {str(e)}")
+                
+        return results
+
+    def get_paper_chunks(self, paper_id: str) -> List[Dict]:
+        """Get all chunks for a specific paper"""
+        # Query ChromaDB for chunks with matching paper_id
+        results = self.vector_db.get(
+            where={"paper_id": paper_id},
+            include=["metadatas", "documents", "embeddings"]
+        )
+        
+        chunks = []
+        if results and results["documents"]:
+            for doc, meta, embedding in zip(results["documents"], results["metadatas"], results["embeddings"]):
+                chunks.append({
+                    "chunk_id": meta.get("chunk_id", ""),
+                    "text": doc,
+                    "section": meta.get("section", "unknown"),
+                    "citations": meta.get("citations", "").split(",") if meta.get("citations") else [],
+                    "embedding": embedding
+                })
+                
+        return chunks
+
     def is_db_populated(self) -> bool:
         paper_count = self.vector_db.count()
         image_count = self.image_db.count()
         return paper_count > 0 and image_count > 0
+
+    def generate_review_paper(self, query: str, top_k: int = 10) -> Dict:
+        """Generate content for a review paper based on the provided query"""
+        # First, perform a hybrid search to find relevant papers and chunks
+        search_results = self.hybrid_search(query, top_k=top_k)
+        
+        # Extract key papers and their most relevant chunks
+        relevant_papers = search_results["papers"]
+        
+        # Organize information for the review
+        review_data = {
+            "query": query,
+            "papers": [],
+            "themes": self._aggregate_themes(relevant_papers),
+            "methods": self._aggregate_methods(relevant_papers),
+            "domains": self._aggregate_domains(relevant_papers),
+            "figures": search_results["images"]
+        }
+        
+        # Process each paper to include its chunks
+        for paper in relevant_papers:
+            paper_data = {
+                "id": paper["id"],
+                "title": paper.get("graph_data", {}).get("title", "Unknown Title"),
+                "authors": paper.get("graph_data", {}).get("authors", ["Unknown"]),
+                "year": paper.get("graph_data", {}).get("year", "Unknown Year"),
+                "chunks": paper["chunks"],
+                "citations": paper["citations"],
+                "themes": paper["themes"],
+                "methods": paper["methods"]
+            }
+            review_data["papers"].append(paper_data)
+        
+        # Use citation graph to suggest structure
+        review_data["citation_network"] = self._analyze_citation_network(relevant_papers)
+        
+        return review_data
+    
+    def _aggregate_themes(self, papers: List[Dict]) -> List[Dict]:
+        """Aggregate and rank themes from the most relevant papers"""
+        theme_counts = {}
+        for paper in papers:
+            for theme in paper["themes"]:
+                if theme in theme_counts:
+                    theme_counts[theme] += 1
+                else:
+                    theme_counts[theme] = 1
+        
+        # Sort by frequency and return
+        sorted_themes = sorted(theme_counts.items(), key=lambda x: x[1], reverse=True)
+        return [{"name": theme, "count": count} for theme, count in sorted_themes]
+    
+    def _aggregate_methods(self, papers: List[Dict]) -> List[Dict]:
+        """Aggregate and rank methods from the most relevant papers"""
+        method_counts = {}
+        for paper in papers:
+            for method in paper["methods"]:
+                if method in method_counts:
+                    method_counts[method] += 1
+                else:
+                    method_counts[method] = 1
+        
+        # Sort by frequency and return
+        sorted_methods = sorted(method_counts.items(), key=lambda x: x[1], reverse=True)
+        return [{"name": method, "count": count} for method, count in sorted_methods]
+    
+    def _aggregate_domains(self, papers: List[Dict]) -> List[Dict]:
+        """Aggregate and rank domains from the most relevant papers"""
+        domain_counts = {}
+        for paper in papers:
+            for domain in paper.get("domains", []):
+                if domain in domain_counts:
+                    domain_counts[domain] += 1
+                else:
+                    domain_counts[domain] = 1
+        
+        # Sort by frequency and return
+        sorted_domains = sorted(domain_counts.items(), key=lambda x: x[1], reverse=True)
+        return [{"name": domain, "count": count} for domain, count in sorted_domains]
+    
+    def _analyze_citation_network(self, papers: List[Dict]) -> Dict:
+        """Analyze the citation network among relevant papers to suggest structure"""
+        # Identify foundational papers (heavily cited)
+        paper_ids = [p["id"] for p in papers]
+        citation_counts = {}
+        for paper in papers:
+            for citation in paper["citations"]:
+                if citation in paper_ids:  # Only count citations to other papers in our set
+                    if citation in citation_counts:
+                        citation_counts[citation] += 1
+                    else:
+                        citation_counts[citation] = 1
+        
+        # Group papers by theme and method
+        theme_groups = {}
+        method_groups = {}
+        
+        for paper in papers:
+            for theme in paper["themes"]:
+                if theme not in theme_groups:
+                    theme_groups[theme] = []
+                theme_groups[theme].append(paper["id"])
+            
+            for method in paper["methods"]:
+                if method not in method_groups:
+                    method_groups[method] = []
+                method_groups[method].append(paper["id"])
+        
+        return {
+            "most_cited": sorted(citation_counts.items(), key=lambda x: x[1], reverse=True)[:5],
+            "theme_groups": theme_groups,
+            "method_groups": method_groups
+        }
 
 def ingest_json_directory(kb: ResearchKnowledgeBase, json_dir: str = "papers_summary"):
     json_files = list(Path(json_dir).glob("*.json"))
@@ -551,7 +854,12 @@ def ingest_json_directory(kb: ResearchKnowledgeBase, json_dir: str = "papers_sum
             with open(json_path, "r", encoding="utf-8") as f:
                 paper_data = json.load(f)
             
-            kb.ingest_paper(paper_data)
+            updated_data = kb.ingest_paper(paper_data)
+            
+            # Save the updated data with chunk IDs back to the file
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(updated_data, f, indent=4, ensure_ascii=False)
+                
             successful += 1
             print(f"Successfully processed {json_path.name}")
             
@@ -587,8 +895,7 @@ def get_review_topics(kb: ResearchKnowledgeBase, num_topics=5) -> List[Dict]:
             print(f"Clustering failed: {str(e)}")
             return []
             
-        # Rest of the function is unchanged
-        # ...existing code...
+        # Process clusters
         method_clusters = {}
         for i in range(kmeans.n_clusters):
             methods = []
@@ -597,6 +904,8 @@ def get_review_topics(kb: ResearchKnowledgeBase, num_topics=5) -> List[Dict]:
                     methods.extend(meta["methods"].split(','))
             unique_methods = list(set(methods))
             method_clusters[f"cluster_{i}"] = unique_methods
+            
+        # Query Neo4j for emerging themes and interdisciplinary connections
         with kb.graph_db.session() as session:
             emerging_themes = session.execute_read(
                 lambda tx: tx.run("""
@@ -685,9 +994,9 @@ if __name__ == "__main__":
     
     print("Generating review topics...")
     # topics = get_review_topics(kb)
-    # # print(json.dumps(topics, indent=2))
+    # print(json.dumps(topics, indent=2))
     # with open("review_topics.json", "w", encoding="utf-8") as f:
     #     json.dump(topics, f, indent=2)
-    search_result = kb.hybrid_search("Advances in Attention Mechanisms for Artificial Intelligence: Enhancing Deep Learning Efficiency", include_images = True)
+    search_result = kb.hybrid_search("Advances in Large Language Models for Criteria Selection: A Focus on Answer-Only Setting", include_images = True)
     with open("search_result.json", "w", encoding="utf-8") as f:
         json.dump(search_result, f, indent=2)

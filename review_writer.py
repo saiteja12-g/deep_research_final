@@ -1,139 +1,185 @@
-from crewai import Agent, Task, Crew
-from textwrap import dedent
+from crewai import Agent, Task, Crew, Process
 from dotenv import load_dotenv
-import json
+import os
+from knowledge_base import ResearchKnowledgeBase
 
-load_dotenv()
-# Initialize agents with specialized roles
-class ReviewPaperCrew:
-    def __init__(self, papers):
-        self.llm = "gpt-4"  # Use appropriate LLM
-        self.papers = papers
+# Initialize knowledge base
+kb = ResearchKnowledgeBase()
+
+# Define agents
+research_manager = Agent(
+    role="Research Manager",
+    goal="Understand the user's research needs and find the most relevant papers",
+    backstory="Expert at analyzing research queries and identifying key themes",
+    verbose=True,
+    allow_delegation=False,
+    tools=[kb.hybrid_search]
+)
+
+research_architect = Agent(
+    role="Research Architect",
+    goal="Create a comprehensive outline for scientific review papers",
+    backstory="Experienced academic who understands scientific paper structure",
+    verbose=True,
+    allow_delegation=False
+)
+
+section_researcher = Agent(
+    role="Section Content Specialist",
+    goal="Create comprehensive, well-cited content for each section",
+    backstory="PhD researcher with expertise in synthesizing information from multiple sources",
+    verbose=True,
+    allow_delegation=True,
+    tools=[kb.hybrid_search]
+)
+
+visualization_specialist = Agent(
+    role="Visualization and Figure Specialist",
+    goal="Select and describe appropriate figures to support the text",
+    backstory="Data visualization expert with experience in scientific publications",
+    verbose=True,
+    tools=[kb.get_images]
+)
+
+citation_manager = Agent(
+    role="Citation and Bibliography Manager",
+    goal="Ensure proper citation and reference formatting",
+    backstory="Academic librarian with expertise in citation styles and reference management",
+    verbose=True
+)
+
+latex_specialist = Agent(
+    role="LaTeX Document Specialist",
+    goal="Create a professionally formatted LaTeX document",
+    backstory="Technical writer with extensive experience in LaTeX and scientific publishing",
+    verbose=True
+)
+
+# Define tasks
+initial_research_task = Task(
+    description="""
+    Analyze the user query and perform an initial search to identify relevant papers, key themes, and potential areas to explore.
+    Output should include: 
+    1. List of most relevant papers
+    2. Key themes identified
+    3. Suggested scope for the review
+    """,
+    agent=research_manager,
+    expected_output="Detailed analysis of search results and suggested scope",
+)
+
+create_outline_task = Task(
+    description="""
+    Based on the initial research, create a comprehensive outline for a scientific review paper.
+    The outline should include:
+    1. Abstract
+    2. Introduction
+    3. Background/Related Work
+    4. Main content sections (based on key themes)
+    5. Discussion
+    6. Conclusion
+    7. References
+    Justify your selection of sections and explain how they connect to the research query.
+    """,
+    agent=research_architect,
+    expected_output="Detailed outline with sections and subsections"
+)
+
+# We'll create section-specific tasks after the outline is approved
+def create_section_tasks(outline):
+    tasks = []
+    sections = parse_outline(outline)  # A function to extract sections from the outline
     
-    def _format_paper_references(self):
-        """Helper to format paper references dynamically"""
-        return "\n".join(
-            f"- {paper['id']}: {paper['content'][:100]}..."
-            for paper in self.papers['papers']
-        )
-
-    def run(self):
-        # Define agents
-        outline_generator = Agent(
-            role='Senior Research Architect',
-            goal='Create comprehensive paper outline',
-            backstory=dedent("""\
-                Expert in structuring academic papers with deep understanding of 
-                attention mechanism literature and IEEE paper standards"""),
-            allow_delegation=False,
-            verbose=True,
-            llm=self.llm
-        )
-
-        section_writer = Agent(
-            role='Lead Technical Writer',
-            goal='Draft detailed paper sections',
-            backstory=dedent("""\
-                Experienced academic writer specializing in deep learning architectures
-                with 10+ years in top AI journals"""),
-            verbose=True,
-            llm=self.llm
-        )
-
-        literature_agent = Agent(
-            role='Literature Review Specialist',
-            goal='Ensure proper citation integration',
-            backstory=dedent("""\
-                PhD holder in Computer Science with expertise in bibliometric analysis
-                and citation management"""),
-            verbose=True,
-            llm=self.llm
-        )
-
-        editor_in_chief = Agent(
-            role='Chief Editor',
-            goal='Enforce academic standards',
-            backstory=dedent("""\
-                Former editor of NeurIPS with strict quality control standards
-                and attention to technical detail"""),
-            verbose=True,
-            llm=self.llm
-        )
-
-        # Define tasks
-        outline_task = Task(
-            description=dedent(f"""\
-                Create detailed outline for review paper titled:
-                'Advances in Attention Mechanisms for Artificial Intelligence: 
-                Enhancing Deep Learning Efficiency'
-                
-                Incorporate these key papers: {[paper['id'] for paper in self.papers['papers']]}
-                """),
-            agent=outline_generator,
-            expected_output="Markdown formatted outline with section hierarchy"
-        )
-
-        writing_task = Task(
-            description=dedent(f"""\
-                Draft full paper sections based on the approved outline.
-                Include technical details from papers:
-                {self._format_paper_references()}
-                Maintain academic tone with inline citations using paper IDs"""),
-            agent=section_writer,
-            expected_output="Full draft in LaTeX format with citations",
-            context=[outline_task]
-        )
-
-        
-        citation_task = Task(
-            description=dedent("""\
-                Validate all citations and add reference section.
-                Ensure proper citation format: (Author et al., Year) [ID].
-                Cross-check references with provided papers list"""),
-            agent=literature_agent,
-            expected_output="Verified paper with complete references",
-            context=[writing_task]
-        )
-
-        editing_task = Task(
-            description=dedent("""\
-                Perform final edit for:
-                - Technical accuracy
-                - Academic style compliance
-                - Citation consistency
-                - Figure/table integration from image analysis"""),
-            agent=editor_in_chief,
-            expected_output="Camera-ready paper in IEEE double-column format",
-            context=[citation_task]
-        )
-
-        # Create and run crew
-        crew = Crew(
-            agents=[outline_generator, section_writer, literature_agent, editor_in_chief],
-            tasks=[outline_task, writing_task, citation_task, editing_task],
-            verbose=True,
-            process='sequential'  # Ensures proper workflow
-        )
-
-        return crew.kickoff()
-
-# Usage
-if __name__ == "__main__":
-    with open("search_result.json", "r") as f:
-        papers = json.load(f)
-    paper_crew = ReviewPaperCrew(papers=papers)
-    result = paper_crew.run()
-    # print(result)
-    # Process the CrewAI output
-    if hasattr(result, 'output'):
-        formatted_content = result.output
-    elif hasattr(result, 'raw_output'):
-        formatted_content = result.raw_output
-    else:
-        formatted_content = str(result)
+    for section in sections:
+        tasks.append(Task(
+            description=f"""
+            Create content for the '{section}' section of the review paper.
+            Your content should:
+            1. Synthesize information from relevant papers
+            2. Include proper inline citations
+            3. Suggest relevant figures or tables
+            4. Be comprehensive yet concise
+            Query the knowledge base as needed for specific information.
+            """,
+            agent=section_researcher,
+            expected_output=f"Complete content for {section} section with citations"
+        ))
     
-    # Write the formatted content to the markdown file
-    with open("attention_mechanisms_review.md", "w", encoding="utf-8") as f:
-        f.write(formatted_content)
+    return tasks
+
+image_selection_task = Task(
+    description="""
+    Review all available figures from the retrieved papers.
+    For each section of the paper:
+    1. Identify the most relevant figures
+    2. Create proper captions
+    3. Explain how each figure supports the section content
+    """,
+    agent=visualization_specialist,
+    expected_output="List of selected figures with captions and placement recommendations"
+)
+
+bibliography_task = Task(
+    description="""
+    Create a complete bibliography for the paper:
+    1. Ensure all inline citations have corresponding references
+    2. Format all references according to the specified style
+    3. Create BibTeX entries for each reference
+    """,
+    agent=citation_manager,
+    expected_output="Complete bibliography in BibTeX format"
+)
+
+latex_document_task = Task(
+    description="""
+    Create a complete LaTeX document incorporating all approved content:
+    1. Use appropriate document class and preamble
+    2. Include all sections with proper formatting
+    3. Incorporate figures with proper placement
+    4. Include complete bibliography
+    5. Ensure all cross-references work correctly
+    """,
+    agent=latex_specialist,
+    expected_output="Complete LaTeX document ready for compilation"
+)
+
+# Crew setup
+crew = Crew(
+    agents=[
+        research_manager,
+        research_architect,
+        section_researcher,
+        visualization_specialist,
+        citation_manager,
+        latex_specialist
+    ],
+    tasks=[
+        initial_research_task,
+        create_outline_task,
+        # Section tasks will be added after outline approval
+        image_selection_task,
+        bibliography_task,
+        latex_document_task
+    ],
+    verbose=2,
+    process=Process.sequential  # Tasks execute in sequence
+)
+
+# Run the crew
+def run_review_paper_generation(user_query):
+    print(f"Starting review paper generation for query: {user_query}")
     
-    print(f"Review paper has been saved to attention_mechanisms_review.md")
+    # Run initial tasks
+    result = crew.kickoff(inputs={"query": user_query})
+    
+    # After outline approval, create and add section tasks
+    # This would require some user interaction in a real implementation
+    section_tasks = create_section_tasks(result["create_outline_task"])
+    
+    # Update crew with new tasks
+    crew.tasks.extend(section_tasks)
+    
+    # Run the remaining tasks
+    final_result = crew.kickoff()
+    
+    return final_result

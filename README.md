@@ -7,3 +7,9 @@ docker run `
     --env NEO4J_AUTH=neo4j/research123 `
     neo4j:latest
 ```
+
+```
+python .\papers_extractor_bfs.py
+python .\update_metadata.py
+python .\knowledge_base.py
+```
