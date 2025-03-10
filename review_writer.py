@@ -1,11 +1,10 @@
-import os
 import json
 import re
 import time
 from typing import Dict, List, Optional, Any
 from enum import Enum
 from pathlib import Path
-
+import os
 from crewai import Agent, Task, Crew
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
@@ -296,6 +295,16 @@ class PaperGenerator:
             Paper Title: {self.paper_state['title']}
             Abstract: {self.paper_state['abstract']}
             
+            REQUIREMENTS:
+            1. Write a comprehensive, in-depth section (at least 800-1000 words)
+            2. Use formal academic style appropriate for publication
+            3. Include AT LEAST 5-7 inline citations in the format [AuthorYear] or [paper_id]
+            4. Incorporate content from the provided chunks and references thoroughly
+            5. Reference figures where appropriate using the format (Figure X)
+            6. Ensure the section flows logically and builds a complete narrative
+            7. Do not be brief - provide detailed explanations and analysis
+            8. Include relevant technical details and methodology discussions
+            
             You have the following reference material to incorporate:
             
             RELEVANT TEXT CHUNKS:
@@ -308,17 +317,16 @@ class PaperGenerator:
             {fig_info}
             
             Guidelines:
-            1. This is section {section_index + 1} of {len(self.paper_state['sections'])}
-            2. Write in a formal, academic style appropriate for publication
-            3. Use inline citations in the format [AuthorYear] or [paper_id]
-            4. Incorporate content from the provided chunks
-            5. Reference figures where appropriate using the format (Fig. X)
-            6. Ensure the section flows logically and fits with the overall paper structure
+            - This is section {section_index + 1} of {len(self.paper_state['sections'])}
+            - Ensure proper transition from previous sections
+            - Be thorough and comprehensive in your coverage
+            - Maintain academic depth and rigor
+            - DO NOT SUMMARIZE - provide detailed content
             
             Previous sections context:
             {' '.join(previous_sections) if previous_sections else 'This is the first section.'}
             """,
-            expected_output="A complete, well-written section with inline citations",
+            expected_output="A comprehensive, well-written section (800-1000+ words) with numerous inline citations",
             agent=self.agents["writer"]
         )
         
@@ -381,6 +389,170 @@ class PaperGenerator:
             "next_section_index": self.paper_state["current_section_index"]
         }
     
+    def validate_section(self, section_index):
+        """Validate a section for quality, length, and cohesion with the rest of the paper."""
+        section = self.paper_state["sections"][section_index]
+        
+        # Get the previous 5 sections for context (or as many as available)
+        start_idx = max(0, section_index - 5)
+        prev_sections = self.paper_state["sections"][start_idx:section_index]
+        
+        # Format previous sections for context
+        prev_context = "\n\n".join([
+            f"SECTION: {s['title']}\n{s['content'][:300]}..." 
+            for s in prev_sections
+        ])
+        
+        # Create a validation task
+        validation_task = Task(
+            description=f"""
+            Validate the quality and completeness of the following section for a scientific paper:
+            
+            PAPER TITLE: {self.paper_state['title']}
+            CURRENT SECTION: {section['title']}
+            
+            SECTION CONTENT:
+            {section['content']}
+            
+            PREVIOUS SECTIONS CONTEXT:
+            {prev_context}
+            
+            VALIDATION CRITERIA:
+            1. LENGTH: Section should be comprehensive (800+ words). Is it sufficiently detailed?
+            2. CITATIONS: At least 5-7 citations should be included. Are there enough?
+            3. TECHNICAL DEPTH: Content should be technically sound and thorough. Is it?
+            4. COHESION: Does it flow well from previous sections?
+            5. FIGURE USAGE: Does it reference relevant figures? Are they integrated well?
+            6. COMPLETENESS: Does it cover all aspects needed for this section?
+            
+            INSTRUCTIONS:
+            - Evaluate the section against each criterion
+            - Provide a pass/fail status for each criterion
+            - Give specific recommendations for improvement
+            - Provide an overall assessment (APPROVE or REVISE)
+            - If REVISE, list the top 3 most critical issues to fix
+            
+            OUTPUT FORMAT:
+            LENGTH: [PASS/FAIL] - [Specific comments]
+            CITATIONS: [PASS/FAIL] - [Specific comments]
+            TECHNICAL DEPTH: [PASS/FAIL] - [Specific comments]
+            COHESION: [PASS/FAIL] - [Specific comments]
+            FIGURE USAGE: [PASS/FAIL] - [Specific comments]
+            COMPLETENESS: [PASS/FAIL] - [Specific comments]
+            
+            OVERALL: [APPROVE or REVISE]
+            
+            [If REVISE, list specific improvements needed]
+            """,
+            expected_output="A detailed section validation report with specific feedback",
+            agent=self.agents["researcher"]  # Using researcher as validator
+        )
+        
+        # Create a crew and execute
+        validation_crew = Crew(
+            agents=[self.agents["researcher"]],
+            tasks=[validation_task],
+            verbose=True
+        )
+        
+        result = validation_crew.kickoff()
+        
+        # Get the string result
+        if hasattr(result, 'raw_output'):
+            validation_text = result.raw_output
+        else:
+            validation_text = str(result)
+            
+        # Determine if the section is approved
+        approved = "APPROVE" in validation_text.upper()
+        
+        return {
+            "approved": approved,
+            "feedback": validation_text
+        }    
+    def create_outline(self, query):
+        """Create a more focused outline for the paper based on the research."""
+        # Create a task to generate a focused outline
+        outline_task = Task(
+            description=f"""
+            Create a focused outline for a scientific paper on the topic: "{query}"
+            
+            Paper Title: {self.paper_state['title']}
+            Abstract: {self.paper_state['abstract']}
+            
+            REQUIREMENTS:
+            1. Create a streamlined outline with 5-7 sections maximum (not including References)
+            2. Follow standard scientific paper structure 
+            3. Merge related topics to create more comprehensive sections
+            4. Each section should have 2-3 subsections
+            5. Consider the available research data and themes
+            
+            Current themes and topics found in research:
+            {', '.join([ref['title'] for ref_id, ref in list(self.paper_state['references'].items())[:10]])}
+            
+            OUTPUT FORMAT:
+            Provide a hierarchical outline with:
+            - Main sections (5-7 total)
+            - Subsections (2-3 per main section)
+            - Brief description of content for each
+            """,
+            expected_output="A focused paper outline with 5-7 main sections and subsections",
+            agent=self.agents["researcher"]
+        )
+        
+        # Create a crew and execute
+        outline_crew = Crew(
+            agents=[self.agents["researcher"]],
+            tasks=[outline_task],
+            verbose=True
+        )
+        
+        result = outline_crew.kickoff()
+        
+        # Get the string result
+        if hasattr(result, 'raw_output'):
+            outline_text = result.raw_output
+        else:
+            outline_text = str(result)
+            
+        # Parse the outline to extract sections
+        sections = []
+        main_section = None
+        
+        # Use regex to find main sections and subsections
+        # Pattern looks for numbered sections like "1. Introduction" or "Section 1: Introduction"
+        main_pattern = r'(?:^|\n)(?:\d+\.\s+|Section\s+\d+:\s*)([A-Za-z\s]+)'
+        
+        matches = re.finditer(main_pattern, outline_text, re.MULTILINE)
+        for match in matches:
+            section_title = match.group(1).strip()
+            if section_title.lower() not in ['references', 'bibliography']:
+                sections.append({"title": section_title, "content": "", "status": SectionStatus.PENDING.value})
+                
+        # Fallback if regex didn't find enough sections
+        if len(sections) < 5:
+            # Use standard scientific paper sections
+            standard_sections = [
+                "Introduction", 
+                "Literature Review",
+                "Methodology",
+                "Results",
+                "Discussion", 
+                "Conclusion"
+            ]
+            
+            # Add any missing standard sections
+            existing = [s["title"].lower() for s in sections]
+            for section in standard_sections:
+                if section.lower() not in existing:
+                    sections.append({"title": section, "content": "", "status": SectionStatus.PENDING.value})
+        
+        # Update paper state with new sections
+        self.paper_state["sections"] = sections[:7]  # Limit to at most 7 sections
+        self.save_state()
+        
+        return [s["title"] for s in self.paper_state["sections"]]
+    
     def generate_latex(self):
         """Generate a LaTeX document from the paper state."""
         # Check if all sections are approved
@@ -392,53 +564,66 @@ class PaperGenerator:
             }
         
         # Format section content and references for the task description
+        # Include complete section content, not just previews
         sections_content = "\n\n".join([
-            f"SECTION {i+1}: {section['title']}\n\n{section['content'][:500]}..."
-            for i, section in enumerate(self.paper_state["sections"])
+            f"\\section{{{section['title']}}}\n\n{section['content']}"
+            for section in self.paper_state["sections"]
         ])
         
+        # Format references in BibTeX format
         references_formatted = "\n".join([
-            f"[{ref_id}] {ref_data['title']} by {', '.join(ref_data['authors'])} ({ref_data['year']})"
-            for ref_id, ref_data in list(self.paper_state["references"].items())[:20]
+            f"@article{{{ref_id},\n  title = {{{ref_data['title']}}},\n  author = {{{' and '.join(ref_data['authors'])}}},\n  year = {{{ref_data['year']}}}\n}}"
+            for ref_id, ref_data in self.paper_state["references"].items()
         ])
         
+        # Format figures with proper LaTeX references
         figures_formatted = "\n".join([
-            f"FIGURE {i+1}: {fig['figure_id']} - {fig['description'][:100]}... (from paper {fig['paper_id']})"
-            for i, fig in enumerate(self.paper_state["figures"][:5])
+            f"Figure {i+1}: {fig['figure_id']} - {fig['description'][:100]}... (from paper {fig['paper_id']})"
+            for i, fig in enumerate(self.paper_state["figures"])
         ])
+        
+        # Create example figure inclusion syntax
+        figure_example = "\\includegraphics[width=0.8\\columnwidth]{figures/fig_1.jpg}"
         
         # Create the LaTeX generation task
         latex_task = Task(
             description=f"""
-            Generate a complete LaTeX document for a scientific paper.
+            Generate a complete LaTeX document for a scientific paper following standard academic publishing format.
             
             Paper Title: {self.paper_state['title']}
             Abstract: {self.paper_state['abstract']}
             
+            REQUIREMENTS:
+            1. Use the standard scientific article class with two-column layout
+            2. Include proper title, authors (placeholder names are fine), and abstract
+            3. Format all sections properly with correct hierarchy
+            4. INCLUDE ALL FIGURES WITH PROPER REFERENCES in the text (critical)
+            5. Create a complete bibliography with all citations
+            6. Ensure all inline citations are properly linked to bibliography
+            7. Use the standard LaTeX article class and appropriate packages
+            8. Make sure the document structure follows academic journal standards
+            9. Include proper section numbering and formatting
+            
             The paper has {len(self.paper_state['sections'])} sections and includes 
             {len(self.paper_state['figures'])} figures and {len(self.paper_state['references'])} references.
             
-            SECTION CONTENT:
+            SECTION CONTENT (to be formatted with proper LaTeX commands):
             {sections_content}
             
-            KEY REFERENCES:
+            BIBLIOGRAPHY ENTRIES (format in BibTeX style):
             {references_formatted}
             
-            FIGURES:
+            FIGURES TO INCLUDE:
             {figures_formatted}
             
-            Requirements:
-            1. Use standard LaTeX article class with appropriate packages
-            2. Include a title, authors (placeholder), and abstract
-            3. Set up proper section headings for all sections
-            4. Include all content from each section
-            5. Set up figure references correctly
-            6. Create a proper bibliography with all references
-            7. Ensure the document compiles correctly
-            
-            Output the complete LaTeX document including preamble, document environment, and all content.
+            Important Notes:
+            - Include figure placements using \\begin{{figure}} environments
+            - For figures, use a placeholder command like: {figure_example}
+            - Create a proper bibliography section with all references
+            - Make sure ALL inline citations [AuthorYear] or [paper_id] are formatted as proper LaTeX citations
+            - Create a complete, compilable LaTeX document that follows scientific publishing standards
             """,
-            expected_output="A complete LaTeX document ready for compilation",
+            expected_output="A complete, professional LaTeX document with proper sections, figures, and bibliography",
             agent=self.agents["editor"]
         )
         
@@ -479,7 +664,7 @@ class PaperGenerator:
             "latex_document": latex_document,
             "output_path": str(output_path / "paper.tex")
         }
-    
+
     def run_pipeline(self, query, interactive=True):
         """Run the complete paper generation pipeline."""
         # Step 1: Initial research
@@ -487,8 +672,14 @@ class PaperGenerator:
         research_results = self.initial_research(query)
         
         print(f"\nTitle: {research_results['title']}")
-        print(f"Sections: {', '.join(research_results['sections'])}")
         print(f"Found {research_results['references']} references and {research_results['figures']} figures")
+        
+        # Step 2: Create a focused outline
+        print("\n📝 Creating focused outline...")
+        sections = self.create_outline(query)
+        print(f"Generated outline with {len(sections)} sections:")
+        for i, section in enumerate(sections, 1):
+            print(f"{i}. {section}")
         
         if interactive:
             proceed = input("\nContinue with this outline? (yes/no): ").lower()
@@ -496,7 +687,7 @@ class PaperGenerator:
                 print("Exiting. You can modify the paper_state.json file and restart.")
                 return
         
-        # Step 2: Write each section
+        # Step 3: Write each section
         for i, section in enumerate(self.paper_state["sections"]):
             print(f"\n📝 Writing section {i+1}/{len(self.paper_state['sections'])}: {section['title']}...")
             result = self.write_section(i)
@@ -514,12 +705,37 @@ class PaperGenerator:
                 if approve != "yes":
                     print("Exiting. You can modify the paper_state.json file and restart.")
                     return
+                
+            else:
+                # In non-interactive mode, validate the section automatically
+                print("\n🔍 Validating section quality...")
+                validation = self.validate_section(i)
+                
+                if validation["approved"]:
+                    print("✅ Section validation passed")
+                else:
+                    print("❌ Section validation failed. Rewriting section...")
+                    print("\nFeedback:")
+                    print("-" * 40)
+                    print(validation["feedback"])
+                    print("-" * 40)
+                    
+                    # Try rewriting once
+                    print("\n📝 Rewriting section based on feedback...")
+                    result = self.write_section(i)
+                    
+                    # Validate again
+                    validation = self.validate_section(i)
+                    if validation["approved"]:
+                        print("✅ Rewritten section validation passed")
+                    else:
+                        print("⚠️ Validation still failed but continuing with best version")
             
             # Approve the section
             self.approve_section(i)
-            print(f"✅ Section approved: {section['title']}")
+            print(f"✅ Section completed: {section['title']}")
         
-        # Step 3: Generate LaTeX
+        # Step 4: Generate LaTeX
         print("\n📄 Generating LaTeX document...")
         latex_result = self.generate_latex()
         
