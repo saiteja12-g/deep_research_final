@@ -1,0 +1,397 @@
+{
+    "basic_info": {
+        "title": "Im2Struct: Recovering 3D Shape Structure from a Single RGB Image",
+        "authors": [
+            "Chengjie Niu",
+            "Jun Li",
+            "Kai Xu"
+        ],
+        "paper_id": "1804.05469v1",
+        "published_year": 2018,
+        "references": []
+    },
+    "raw_chunks": [
+        {
+            "text": "4.2. Results and evaluation\n\nWe ﬁrst show in Fig. 5 some results of object mask pre- diction by our structure masking network. As can be seen in the output, the background clutters are successfully ﬁltered out and some detailed structures of the objects are captured.\n\nGoogle image challenge for structure recovery. We ﬁrst perform a qualitative evaluation on the capability and versa- tility of our structure recovery. In order for a more objective study, instead of cherry-picking a few test images, we opt to conduct a small-scale stress test with a Google image chal- lenge [24]. During the test, we perform text-based image search on Google using the keywords of “chair”, “table” and “airplane”, respectively. For each search, we try to re- cover a 3D cuboid structure for each of the top 8 returned images using our method.\n\nThe results are shown in Fig. 6. From the results, we can see that our method is able to recover 3D shape structures from real images in a detailed and accurate way. More im- portantly, our method can recover the connection and sym- metry relations of the shape parts from single view inputs,\n\nleading to high quality results with coherent and plausible structure. Examples of symmetry recovery include the re- ﬂectional symmetry of chair legs or airplane wings, the ro- tational symmetry of legs in a swivel chair or a table.\n\nThere are some failure cases (marked with red boxes in Fig. 6). The marked chair example is not even composed of multiple parts and hence may not admit a part structure. When the structure of the object of interest is unseen from our training dataset of 3D shapes, such as the marked table example, our method fails to recover a reasonable structure.\n\nQuantitative evaluation. We quantitatively evaluate our algorithm with our test dataset. For the structure mask- ing network, we evaluate the mask accuracy by the overall pixel accuracy and per-class accuracy against the ground- truth mask (see table 1). We provide a simple ablation study by comparing our method with two baselines: single-scale (without reﬁnement network) and two-scale (without jump connection). The results demonstrate the effectiveness of our multi-scale masking network.\n\nMethod Overall Pixel Per-Class single-scale 0.953 0.917 two-scale (w/o jump) 0.982 0.964 two-scale (with jump) 0.988 0.983\n\nTable 1: An ablation study of structure masking network.\n\nFor 3D shape structure recovery, we develop two mea- sures to evaluate the accuracy:\n\n* Hausdorff Error: 3p yy) (D(Si, S\") + D(S\", S;)), where Sj is a recovered shape structure (represented by a set of boxes) and $* its corresponding ground- truth. 7 is the number of models in the test dataset. yo og) : 1 pe D(S1,S2) = = Ustes, in H(B; , BZ) measures 2 £\n\nthe averaged minimum Hausdorff distance from the boxes in structure S1 to those in S2, where B1 j and B2 k represent the boxes in S1 and S2, respectively. H(B1,B2) = max min ||p−q|| is the Hausdorff dis- p∈B1 q∈B2\n\ntance between two boxes, with p and q being the corner points of box. Since Hausdorff is asymmetric, the dis- tance is computed for both directions and averaged.\n\n• Thresholded Accuracy: The percentage of boxes Bi such that δ = H(Bi,B∗ i )/L(B∗ i ) < threshold, where Bi is the i-th box in recovered shape structure S and B∗ i its nearest box in the ground-truth Sgt. H is the Hausdorff distance between two boxes as deﬁned above. L is the diagonal length of a box.\n\nWe consider as our baseline where the structure mask- ing network is simply a vanilla VGG-16 network. In ta- ble 2, we compare the accuracy of structure recovery, based\n\nFigure 6: Google image search challenge for 3D shape structure recovery. We perform text-based image search on Google with keywords “chair”, “table” and “airplane”, respectively. For each search, we run our method on the top 8 returned images (duplicate or very similar images are removed). Failure cases are marked with red boxes.\n\non the above two measures, for our method and the base- line. We also compare the two methods where VGG-16 is replaced with VGG-19. The results demonstrate the signif- icant effect of our structure masking network in helping the structure decoding. This can also be observed from the re- construction error plotted in Figure 4 (bottom). A deeper structure masking network (with VGG-19) also boosts the performance to a certain degree.\n\nMethod Vanilla VGG-16 Structure masking (VGG-16) Vanilla VGG-19 Hausdorff Error 0.0980 0.0894 0.0922 Thresholded Acc. δ < 0.2 δ < 0.1 96.8% 67.8% 97.8% 75.3% 96.4% 72.2% Structure masking (VGG-19) 0.0846 97.6% 78.5%\n\nComparison. In Fig. 7, we give a visual comparison of 3D shape reconstruction from single-view images between our method and two state-of-the-art methods, [7] and [19]. Both the two alternatives produce part-based representation of 3D shapes, making them comparable to our method. The method by Huang et al. [7] recovers 3D shapes through as- sembling parts from database shapes while preserving their symmetry relations. The method of Tulsiani et al. [19] gen- erates cuboid representation similar to ours, but does not produce symmetry relations. As can be seen, our method produces part structures which are more faithful to the in- put, due to the integration of the structure masking network, and meanwhile structurally more plausible, beneﬁting from our part relation recovery.",
+            "section": "introduction",
+            "section_idx": 0,
+            "citations": [
+                "24",
+                "7",
+                "19",
+                "7",
+                "19"
+            ]
+        },
+        {
+            "text": "3. Method\n\nWe introduce our architecture for learning 3D shape structures from single images. It is an auto-encoder com- posed of two sub-networks: a structure masking network for decerning the object structures from the input 2D image and a structure recovery network for recursive inference of a hierarchy of 3D boxes along with their mutual relations.\n\n3.1. Network architecture\n\nOur network is shown in Fig. 2, which is composed of two modules: a two-scale convolutional structure masking network and a recursive structure recovery network. The structure masking network is trained to estimate the con- tour of the object of interest. This is motivated by the ob- servation that object contours provides strong cues for un- derstanding shape structures in 2D images [16, 18]. Instead of utilizing the extracted contour mask, we feed the feature map of the last layer of the structure masking network into the structure recovery network. To retain more information in the original image, this feature is fused with the CNN feature of the input image via concatenation and fully con- nected layers, resulting in a 80D feature code. An RvNN decoder then recursively unfolds the feature code into a hi- erarchical organization of boxes, with plausible spatial con- ﬁguration and mutual relations, as the recovered structure.\n\n3.2. Structure Masking Network.\n\nOur structure masking network is inspired by the re- cently proposed multi-scale network for detailed depth es- timation [12]. Given an input RGB image rescaled to 224 × 224, we design a two-scale structure masking net- work to output a binary contour mask with a quarter of the input resolution (56 × 56). The ﬁrst scale captures the in- formation of the whole image while the second produces a detailed mask map at a quarter of the input resolution. As our prediction target is a binary mask, we use the SoftMax Loss as our training loss.\n\nWe employ VGG-16 to initialize the convolutional lay- ers (up to pool5) of the ﬁrst scale network, followed by two fully connected layers. The feature maps and outputs of the ﬁrst scale network are fed into various layers of the second scale one for reﬁned structure decerning. The second scale network, as a reﬁnement block, starts from one 9 × 9 con- volution and one pooling over the original input image, fol- lowed by nine successive 5 × 5 convolutions without pool- ing. The feature maps from the pool3, pool4 and the output of last fully connected layer of ﬁrst scale network are fused\n\ninto the second, the fourth and the sixth convolutional layer of the second scale network, respectively. All the feature fusions get through a jump connections layer, which has a 5 × 5 convolutional layer and a 2x or 4x up-sampling to match the 56 × 56 feature map size in the second scale; the jump connection from the fully connected layer is a sim- ple concatenation. It is shown that jump connections help extracting detailed structures from images effectively [12].",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "16, 18",
+                "12",
+                "12"
+            ]
+        },
+        {
+            "text": "4. Experiments\n\nWe collected a dataset containing 800 3D shapes from three categories in ShapeNet: chairs (500), tables (200), aeroplanes (100). The dataset is split into two subsets for training(70%) and testing (30%), respectively. With these 3D shapes, we generate training and testing pairs of image mask and shape structure to train the network and evaluate our method quantitatively. We also evaluate our methods qualitatively with a Google image search challenge. Both quantitative and qualitative evaluations demonstrate the ca- pability of our method in recovering 3D shape structures from single RGB images faithfully and accurately.\n\n4.1. Training data generation\n\nImage-structure pair generation. For each 3D shape, we create 36 rendered views around the shape for every 30◦ rotation and with 3 elevations. Plus another 24 randomly generated views, we create 60 rendered RGB images in total for each shape. The 3D shapes are rendered with randomly selected backgrounds from NYU v2 dataset. For each RGB image, the ground-truth object mask can be easily extracted using the depth buffer for rendering.\n\nAll 3D shapes in our dataset are pre-segmented based on their original mesh components or using the symmetry- aware segmentation proposed in [21]. We utilize symme- try hierarchy [21] to represent the shape structure, which deﬁnes how parts in a shape are recursively assembled by connectivity or grouped by symmetry. We adopt the method in [13] to infer consistent hierarchy trees for the shapes of each category. Speciﬁcally, we train a unsuper- vised auto-encoder with the task of self-reconstruction for all shapes. During testing, we use this auto-encoder to per- form a greedy search of grouping hierarchy for each shape. For more details on this process, please refer to the original work. Consequently, we generate 60 image-structure pairs for each 3D shape.\n\nData processing and augmentation. To further enhance our dataset and alleviate overﬁtting, we conduct on each training 3D shape structure-aware deformation [23] based on component-wise controllers [26] to generate a set of structurally plausible variations for the training shape. Such structure-aware deformation preserves the connection and\n\nFigure 5: Object mask predictions for six sample images from the Internet. The probability of object mask is indi- cated by the brightness in the grey-scale output.\n\nsymmetry relations between shape parts, while maintain- ing the shape texture for each part. This step is fully au- tomatic and the parameters for each variation generation is randomly set within a given range. In our implementation, we randomly generate 20 new variations for each 3D shape, thus enlarging our database to 16K 3D shapes. For the input images (and the corresponding object masks), we employ the common operations for image data augmentation [12] such as color perturbation, contrast adjustment, image ﬂip and transformation, etc.",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "21",
+                "21",
+                "13",
+                "23",
+                "26",
+                "12"
+            ]
+        },
+        {
+            "text": "6. Conclusion\n\nWe have proposed a deep learning framework that di- rectly recovers 3D shape structures from single 2D images. Our network joins a structure masking network for decern- ing the object structure and a structure recovery network for inferring 3D cuboid structure. The recovered 3D struc- tures achieve both ﬁdelity with respect to the input image and plausibility as a 3D shape structure. To the best of our knowledge, our work is the ﬁrst that recovers detailed 3D shape structures from single 2D images.\n\nOur method fails to recover structures for object cate- gories unseen from the training set. For such cases, it would be interesting to learn an incremental part assembler. Our method currently recovers 3D cuboids only but not the un- derlying part geometry. A worthy direction is to synthesize detailed part geometry matching the visual appearance of the input image. Another interesting topic is to study the profound correlation between 2D features and 3D structure, so as to achieve a more explainable 3D structure decoding.\n\nReferences\n\n[1] A. X. Chang, T. Funkhouser, L. Guibas, P. Hanrahan, Q. Huang, Z. Li, S. Savarese, M. Savva, S. Song, H. Su, et al. Shapenet: An information-rich 3d model repository. arXiv preprint arXiv:1512.03012, 2015. 3\n\n[2] C. B. Choy, D. Xu, J. Gwak, K. Chen, and S. Savarese. 3d- r2n2: A uniﬁed approach for single and multi-view 3d ob- ject reconstruction. In European Conference on Computer Vision, pages 628–644. Springer, 2016. 1, 3\n\n[3] D. Eigen and R. Fergus. Predicting depth, surface normals and semantic labels with a common multi-scale convolu- tional architecture. In Proceedings of the IEEE International Conference on Computer Vision, pages 2650–2658, 2015. 3\n\n[4] H. Fan, H. Su, and L. Guibas. A point set generation net- work for 3d object reconstruction from a single image. arXiv preprint arXiv:1612.00603, 2016. 1, 3\n\n[5] R. Girdhar, D. F. Fouhey, M. Rodriguez, and A. Gupta. Learning a predictable and generative vector representation for objects. In European Conference on Computer Vision, pages 484–499. Springer, 2016. 1, 3\n\n[6] I. Goodfellow, J. Pouget-Abadie, M. Mirza, B. Xu, D. Warde-Farley, S. Ozair, A. Courville, and Y. Bengio. Gen- erative adversarial nets. In Advances in neural information processing systems, pages 2672–2680, 2014. 3\n\n[7] Q. Huang, H. Wang, and V. Koltun. Single-view reconstruc- tion via joint analysis of image and shape collections. ACM Transactions on Graphics (TOG), 34(4):87, 2015. 3, 7\n\n[8] E. Kalogerakis, M. Averkiou, S. Maji, and S. Chaudhuri. 3d shape segmentation with projective convolutional networks. arXiv preprint arXiv:1612.02808, 2016. 1\n\n[9] D. P. Kingma and M. Welling. Auto-encoding variational bayes. arXiv preprint arXiv:1312.6114, 2013. 3\n\n[10] A. Krizhevsky, I. Sutskever, and G. E. Hinton. Imagenet classiﬁcation with deep convolutional neural networks. In Advances in neural information processing systems, pages 1097–1105, 2012. 1\n\n[11] I. Laina, C. Rupprecht, V. Belagiannis, F. Tombari, and N. Navab. Deeper depth prediction with fully convolutional residual networks. In 3D Vision (3DV), 2016 Fourth Interna- tional Conference on, pages 239–248. IEEE, 2016. 3\n\n[12] J. Li, R. Klein, and A. Yao. A two-streamed network for estimating ﬁne-scaled depth maps from single rgb images. In ICCV, 2017. 3, 4, 6\n\n[13] J. Li, K. Xu, S. Chaudhuri, E. Yumer, H. Zhang, and L. Guibas. Grass: Generative recursive autoencoders for shape structures. arXiv preprint arXiv:1705.02090, 2017. 2, 3, 4, 5\n\n[14] Z. Lun, M. Gadelha, E. Kalogerakis, S. Maji, and R. Wang. 3d shape reconstruction from sketches via multi-view convo- lutional networks. arXiv preprint arXiv:1707.06375, 2017. 3\n\n[15] N. Mitra, M. Wand, H. R. Zhang, D. Cohen-Or, V. Kim, and Q.-X. Huang. Structure-aware shape processing. In SIG- GRAPH Asia 2013 Courses, page 1. ACM, 2013. 1\n\n[16] J. Shotton, A. Blake, and R. Cipolla. Contour-based learning for object detection. In Proc. ICCV, volume 1, pages 503– 510. IEEE, 2005. 3\n\n[17] H. Su, Q. Huang, N. J. Mitra, Y. Li, and L. Guibas. Estimat- ing image depth using shape collections. ACM Transactions on Graphics (TOG), 33(4):37, 2014. 3\n\n[18] A. Toshev, B. Taskar, and K. Daniilidis. Shape-based object detection via boundary structure segmentation. International journal of computer vision, 99(2):123–146, 2012. 3\n\n[19] S. Tulsiani, H. Su, L. J. Guibas, A. A. Efros, and J. Malik. Learning shape abstractions by assembling volumetric prim- itives. arXiv preprint arXiv:1612.00404, 2016. 2, 3, 7\n\n[20] A. Vedaldi and K. Lenc. Matconvnet: Convolutional neural networks for matlab. In Proceedings of the 23rd ACM inter- national conference on Multimedia, pages 689–692. ACM, 2015. 5\n\n[21] Y. Wang, K. Xu, J. Li, H. Zhang, A. Shamir, L. Liu, Z. Cheng, and Y. Xiong. Symmetry hierarchy of man-made objects. Computer Graphics Forum, 30(2):287–296, 2011. 5\n\n[22] J. Wu, C. Zhang, T. Xue, B. Freeman, and J. Tenenbaum. Learning a probabilistic latent space of object shapes via 3d generative-adversarial modeling. In Advances in Neural In- formation Processing Systems, pages 82–90, 2016. 1, 3, 8\n\n[23] K. Xu, H. Zhang, D. Cohen-Or, and B. Chen. Fit and di- verse: set evolution for inspiring 3d shape galleries. ACM Transactions on Graphics (TOG), 31(4):57, 2012. 5\n\n[24] K. Xu, H. Zheng, H. Zhang, D. Cohen-Or, L. Liu, and Y. Xiong. Photo-inspired model-driven 3d object modeling. ACM Transactions on Graphics (TOG), 30(4):80, 2011. 3, 6, 8\n\n[25] Y. Zheng, X. Chen, M.-M. Cheng, K. Zhou, S.-M. Hu, and N. J. Mitra. Interactive images: Cuboid proxies for smart image manipulation. ACM Transactions on Graphics, 31(4):99:1–99:11, 2012. 1, 8\n\n[26] Y. Zheng, H. Fu, D. Cohen-Or, O. K.-C. Au, and C.-L. Tai. Component-wise controllers for structure-preserving shape manipulation. In Computer Graphics Forum, volume 30, pages 563–572. Wiley Online Library, 2011. 5",
+            "section": "conclusion",
+            "section_idx": 0,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26"
+            ]
+        },
+        {
+            "text": "8\n\n2018\n\n1\n\n0\n\n2 r p A 6 1 ] V C . s c [ 1 v 9 6 4 5 0 . 4 0 8 1 :\n\nv\n\ni\n\nX\n\nr\n\na\n\nIm2Struct: Recovering 3D Shape Structure from a Single RGB Image\n\nChengjie Niu Jun Li Kai Xu* National University of Defense Technology\n\nAbstract\n\nWe propose to recover 3D shape structures from single RGB images, where structure refers to shape parts repre- sented by cuboids and part relations encompassing connec- tivity and symmetry. Given a single 2D image with an ob- ject depicted, our goal is automatically recover a cuboid structure of the object parts as well as their mutual rela- tions. We develop a convolutional-recursive auto-encoder comprised of structure parsing of a 2D image followed by structure recovering of a cuboid hierarchy. The encoder is achieved by a multi-scale convolutional network trained with the task of shape contour estimation, thereby learn- ing to discern object structures in various forms and scales. The decoder fuses the features of the structure parsing net- work and the original image, and recursively decodes a hi- erarchy of cuboids. Since the decoder network is learned to recover part relations including connectivity and symme- try explicitly, the plausibility and generality of part struc- ture recovery can be ensured. The two networks are jointly trained using the training data of contour-mask and cuboid- structure pairs. Such pairs are generated by rendering stock 3D CAD models coming with part segmentation. Our method achieves unprecedentedly faithful and detailed re- covery of diverse 3D part structures from single-view 2D images. We demonstrate two applications of our method in- cluding structure-guided completion of 3D volumes recon- structed from single-view images and structure-aware inter- active editing of 2D images.\n\n1. Introduction\n\nThe last few years have witnessed a continued interest in single-view image-based 3D modeling [2, 4, 5]. The perfor- mance of this task has been dramatically boosted, due to the tremendous success of deep convolutional neural networks (CNN) on image-based learning tasks [10]. The existing deep models, however, have so far been mainly targeting the output of volumetric representation of 3D shapes [2]. Such models are essentially learned to map an input 2D im- age to a 3D image (voxel occupancy of a 3D shape in a 3D\n\n*Corresponding author: kevin.kai.xu@gmail.com\n\nFigure 1: 3D shape structures (2nd column) recovered from photos of household objects (1st column). Top row: The inferred 3D shape structure can be used to complete and reﬁne the volumetric shape estimated from the image using existing methods [22]. Bottom row: The structure is used to assist structure-aware image editing, where our cuboid structure is used as an editing proxy [25].\n\nvolume). Some compelling results have been demonstrated.\n\nWhile enjoying the high capacity of deep models in learning the image-to-image mapping, the 3D volumes re- constructed by these methods lose an important informa- tion of 3D shapes – shape topology or part structure. Once a 3D shape is converted into a volumetric representation, it would be hard to recover its topology and structure, es- pecially when there exist topological defects in the recon- structed volume. Shape structure, encompassing part com- position and part relations, has been found highly important to semantic 3D shape understanding and editing [15]. In- ferring a part segmentation for a 3D shape (surface or vol- umetric model) is known to be difﬁcult [8]. Even if a seg- mentation is given, it is still challenging to reason about part relations such as connection, symmetry, parallelism, etc.\n\nWe advocate learning a deep neural network that directly recovers 3D shape structure of an object, from a single RGB image. The extracted structure can be used for enhancing the volumetric reconstruction obtained by existing methods, facilitating structure-aware editing of the reconstructed 3D shapes, and even enabling high-level editing of the input images (see Fig. 1). However, directly mapping an image",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "2, 4, 5",
+                "10",
+                "2",
+                "22",
+                "25",
+                "15",
+                "8"
+            ]
+        },
+        {
+            "text": "Structure Masking Network\n\nStructure Recovery Network\n\nVGG-16\n\nserene\n\npool3 pool4 conv/pool ” ——> | a in atiiend\n\nInput\n\nRefinement 7 Ls ~ Br Mask\n\nreshape\n\n7 So conv/p00l cau So Pa on “oS =\n\nZ\n\nPa ca\n\nCNN &y concat.\n\n=» 4096 80\n\n\\ CNN\n\nj\n\nA\n\nof o | ao 2 08\n\nRvNN\n\ndecoder\n\n; 3 | : | _—\n\nCuboid\n\nstructure\n\nFigure 2: An overview of our network architecture. The structure masking network is a two-scale CNN which is trained to produce a contour mask for the object of interest. The structure recovery network ﬁrst fuses the feature map of the masking network and the CNN feature of the original image, and decode the fused feature recursively into a box structure. The red arrows in the resultant chair structure (right most) indicate recovered reﬂectional symmetries between chair legs.\n\nto a part structure seems a dunting task. Tulsiani et al. [19] proposed a deep architecture to map a 3D volume to a set of cuboid primitives. Their method, however, cannot be adapted to our problem setting since the output primitive set does not possess any structural information (mutual re- lations between primitives are not recovered).\n\nOur problem involves the reasoning not only about shape geometry, but also for higher level information of part com- position and relations. It poses several special challenges. 1) Different from shape geometry, part decomposition and relations do not manifest explicitly in 2D images. Mapping from pixels to part structure is highly ill-posed, as com- pared to pixel-to-voxel mapping studied in many existing 2D-to-3D reconstruction works. 2) Many 3D CAD models of man-made objects contain diverse, ﬁne-grained substruc- tures. A faithful recovery of those complicated 3D struc- tures goes far beyond shape synthesis modulated by a shape classiﬁcation. 3) Natural images always contain cluttered background and the imaged objects have large variations of appearance due to different textures and lighting conditions.\n\nHuman brains do well both in shape inference based on low-level visual stimulus and structural reasoning with the help of prior knowledge about 3D shape compositions. The strength of human perception is to integrate the two ends of processing and reasoning to form a capable vision system for high-level 3D shape understanding. Motivated by this, we propose to learn and integrate two networks, a structure masking network for accentuating multi-scale object struc- tures in an input 2D image, followed by a structure recovery network to recursively recover a hierarchy of object parts abstracted by cuboids (see Figure 2).\n\nbackground and textures in the output mask image. The structure recovery network fuses the features extracted in the structure masking network and the CNN features of the original input image and feed them into a recursive neu- ral network (RvNN) for 3D structure decoding [13]. The RvNN decoder, which is trained to explicitly model part re- lations, expands the fused image features recursively into a tree organization of 3D cuboids with plausible spatial con- ﬁguration and reasonable mutual relations.\n\nThe two networks are jointly trained, with the training data of image-mask and cuboid-structure pairs. Such pairs can be generated by rendering 3D CAD models and ex- tracting the box structure based on the given parts of the shape. Several mechanisms are devised to avoid overﬁtting in training this model. Experiments show that our method is able to faithfully recover diverse and detailed part struc- tures of 3D objects from single 2D natural images. Our paper makes the following contributions:\n\n• We propose to directly recover 3D shape structures from single RGB images. The faithful and detailed re- covery of 3D structural information of an object, such as part connectivity and symmetries, from 2D images has never been seen before, to our knowledge.\n\n• We present an architecture to tackle the hard learning task, via integrating a convolutional structure masking network and a recursive structure recovery network.\n\n• We develop two prototype applications where we use the recovered box structures 1) to reﬁne the 3D shapes reconstructed from single images by existing methods and 2) to assist structure-aware editing of 2D images.\n\nThe structure masking network produces a multi-scale attentional mask for the object of interest, thereby decerning its shape structures in various forms and scales. It designed as a multi-scale convolutional neural networks (CNN) aug- mented with jump connections to retain shape details while screening out the structure-irrelevant information such as",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "19",
+                "13"
+            ]
+        },
+        {
+            "text": "2. Related work\n\nReconstructing 3D shapes from a single image has been a long-standing pursue in both vision and graphics ﬁelds. Due to its ill-posedness, many priors and assumptions have\n\nbeen attempted, until the proliferation of high-capacity deep neural networks. We will focus only on those deep learning based models and categorize the fast-growing literature in three different dimensions.\n\nDepth estimation vs. 3D reconstruction. Depth estima- tion is perhaps the most straightforward solution for recov- ering 3D information from single images. Deep learning has been shown to be highly effective for depth estima- tion [3, 11]. Compared to depth estimation, reconstructing a full 3D model is much more challenging due to the re- quirement of reasoning about the unseen parts. The latter has to resort to shape or structure priors. Using deep neu- ral networks to encode shape priors of a speciﬁc category has received much attention lately, under the background of fast growing large 3D shape repositories [1]. Choy et al. [2] develop a 3D Recurrent Reconstruction Neural Network to generate 3D shapes in volumetric representation, given a single image as input. A point set generation network is pro- posed for generating from a 2D image a 3D shape in point cloud [4]. We are not aware of any previous works that can generate part-based structures directly from a single image.\n\nDiscriminative vs. Generative. For the task of 3D mod- eling from 2D images, discriminative models are learned to map an input image directly to the output 3D representation, either by a deep CNN for one-shot generation or a recurrent model for progressive generation [2]. The advantages of such approach include ease of training and high-quality re- sults. With the recent development of deep generative mod- els such as variational auto-encoder (VAE) [9], generative adversarial nets (GAN) [6] and their variants. Learning a generative model for 3D shape generation has gained ex- tensive research [22, 5, 13]. For generative models, the in- put image can be used to condition the sampling from the predeﬁned parameter space or learned latent space [22, 5]. Generative models are known hard to train. For the task of cross-modality mapping, we opt to train a discriminative model with a moderate size of training data.\n\nGeometry reconstruction vs. Structure recovery. The existing works based on deep learning models mostly utilize volumetric 3D shape representation [22, 5]. Some notable exceptions include generating shapes in point clouds [4], cuboid primitives [19] and manifold surfaces [14]. How- ever, none of these representations contains structural in- formation of parts and part relations. Interestingly, struc- ture recovery is only studied with non-deep-learning ap- proaches [24, 17, 7]. This is largely because of the lack of a structural 3D shape representation suitable for deep neu- ral networks. Recently, Li et al. [13] propose to use recur- sive neural networks for structural representation learning,\n\nnicely addressing the encoding/decoding of arbitrary num- ber of shape parts and various types of part relations. Our method takes the advantage of this and integrate it into a cross-modality mapping architecture for structure recovery from an RGB image.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "3, 11",
+                "1",
+                "2",
+                "4",
+                "2",
+                "9",
+                "6",
+                "22, 5, 13",
+                "22, 5",
+                "22, 5",
+                "4",
+                "19",
+                "14",
+                "24, 17, 7",
+                "13"
+            ]
+        },
+        {
+            "text": "3.3. Structure Recovery Network\n\nThe structure recovery network integrates the features extracted from the structure masking network and for the in- put image into a bottleneck feature and recursively decodes it into a hierarchy of part boxes.\n\nFeature fusion. We fuse features from two convolutional channels. One channel takes as input the feature map of the structure masking network (the last feature map before the mask prediction layer), followed by two convolutions and poolings. Another channel is the CNN feature of the original image extracted by a VGG-16. The output feature maps from the two channels are then concatenated with size 7 × 7, and further encoded into a 80D code after two fully connected layers, capturing the object structure information from the input image. We found through experiments such fused features not only improve the accuracy of structure re- covery, but also attain good domain-adaption from rendered images to real ones. We believe the reason is that the ex- tracted features for mask prediction task retain shape details through factoring them out of background clutters, texture variations and lighting conditions. Since it is hard for the masking network to produce perfect mask prediction, the CNN feature of the original image provides complimentary information via retaining more object information.\n\nStructure decoding. We adopt a recursive neural network (RvNN) as box structure decoder like in [13]. Starting from a root feature code, RvNN recursively decodes its into a hierarchy of features until reaching the leaf nodes which each can be further decoded into a vector of box parameters. There are three types of nodes in our hierarchy: leaf node, adjacency node and symmetry node. During the decoding, two types of part relations are recovered as the class of in- ternal nodes: adjacency and symmetry. Thus, each node can be decoded by one of the three decoders below, based on its type (adjacency node, symmetry node or box node):\n\nAdjacency decoder. Decoder ADJDEC splits a parent code p into two child codes c1 and c2, using the map- ping function:\n\n[c1 c2] = tanh(Wad · p + bad)\n\nwhere Wad ∈ R2n×n and bad ∈ R2n. n = 80 is the dimension of a non-leaf node.\n\nStructure Masking. tig — - Image feature Decoder at a node AdjDec Adjacency Node 80D code | 80D cod. - [ 800 code Classifier { Sym params | Box params |\n\nFigure 3: Recursive decoding of a 3D box structure from a 2D image feature (top) and an illustration of decoder net- work at a given node (bottom).\n\nSymmetry decoder. Decoder SYMDEC recovers a sym- metry group in the form of a symmetry generator (a node code c) and a vector of symmetry parameters s:\n\n[c s] = tanh(Wsd · p + bsd)\n\nwhere Wsd ∈ R(n+m)×n, and bsd ∈ Rm+n. We use m = 8 for symmetry parameters consisting of: symmetry type (1D); number of repetitions for rota- tional and translational symmetries (1D); and the re- ﬂectional plane for reﬂective symmetry, rotation axis for rotational symmetry, or position and displacement for translational symmetry (6D).\n\nBox decoder. Decoder BOXDEC converts the code of a leaf node to a 12D box parameters deﬁning the cen- ter, axes and dimensions of a 3D oriented box, similar to [13].\n\n[x] = tanh(Wld · p + bld) where Wld ∈ R12×n, and bld ∈ R12.\n\nThe decoders are recursively applied during decoding. The key is how to determine the type of a node so that the corresponding decoder can be used at the node. This is achieved by learning a node classiﬁer based on the train- ing task of structure recovery where the ground-truth box structure is known for a given training pair of image and shape structure. The node classiﬁer is jointly trained with the three decoders. The process of structure decoding is illustrated in Fig. 3. In our implementation, the node classi- ﬁer and the decoders for both adjacency and symmetry are two-layer networks, with the hidden layer and output layer being 200D and 80D vectors, respectively.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "13",
+                "13"
+            ]
+        },
+        {
+            "text": "3.4. Training details\n\nThere are two stages in the training. First, we train the structure masking network to estimate a binary object mask for the input image. The ﬁrst and the second scale of the structure masking network are trained jointly. In the next, we jointly reﬁne the structure masking network and train the structure recovery network, during which a low learn- ing rate for structure masking network is used. The struc- ture recovery loss is computed as the sum of the box recon- struction error and the cross entropy loss for node classi- ﬁcation. The reconstruction error is calculated as the sum of squared differences between the input and output param- eters for each box and symmetry node. Prior to training, all 3D shapes are resized into a unit bounding box to make the reconstruction error comparable across different shapes. In Fig. 4 (top), we plot the training and testing losses for box reconstruction, symmetry recovery and node classiﬁ- cation, respectively, demonstrating the convergence of our structure recovery network.\n\nWe use the Stochastic Gradient Descent (SGD) to opti- mize our structure recovery network with back-propagation through structure (BPTT) for the RvNN decoder training. The convolutional layers of VGG-16 are initialized with the parameters pre-trained over ImageNet; all the other con- volutional layers, the fully connected layers and the struc- ture recovery network are randomly initialized. The learn-\n\n‘Train reconstruciton loss Test reconstruciton loss '—Train symmetry loss Test symmetry loss ‘Train classification loss Test classification loss iaieieami ec ei fy 20 40 60 20 vo 104818200 —Train reconstruction loss (w/o mask) ~--Test reconstruction loss (w/o mask) —Train reconstruction loss (w/ mask) Test reconstruction loss (w/ mask) oS SS epoch\n\nFigure 4: The convergence of the structure recovery net- work. We show in the top plot the training and testing losses for cuboid reconstruction, symmetry parameter re- covery and node classiﬁcation, respectively. The bottom plot shows that our method with structure masking network yields lower reconstruction loss than without it.\n\ning rate of the structure masking network is 10−4 for pre- training and 10−5 for ﬁne-tuning. During joint training, the learning rate is 10−3 for structure masking network, 0.2 for RvNN decoder and 0.5 for RvNN node classiﬁer. These learning rates are decreased by a factor of 10 for every 50 epoches. Our network is implemented with Matlab based on the MatConvNet toolbox [20]. The details on generating training data is provided in Section 4.1.",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "20"
+            ]
+        },
+        {
+            "text": "5. Applications\n\nTable 2: Comparison of structure recovery accuracy over different methods.\n\nWe develop two prototype applications to demonstrate the utility of the recovered shape structure in structure- aware shape editing and processing.\n\nInput images Huang et al. [7] L i et al. (19) Sh # N/A | N/A tn hh e\n\nFigure 7: Comparing single-view, part-based 3D shape re- construction between our Im2Struct and two alternatives.\n\nFigure 8: Examples of structure-aware image editing. Given an input image (the left column), we show the edited structures of 3D cuboids along with the edited images.\n\nStructure-aware image editing. In [25], a structure- aware image editing is proposed, where a cuboid struc- ture is manually created for the object in the image to as- sist a plausible shape deformation. With our method, this cuboid structure can be automatically constructed. More- over, the part relations are also recovered which can be used to achieve structure-aware editing. Given an RGB image, we ﬁrst recover the 3D shape structure of the object of inter- est using our method. To align the inferred cuboid structure with the input image, we train another network to estimate the camera view. The 3D cuboids are then projected to the image space according to the estimated view. The object in the image is segmented with a CRF-based method con- strained with the cuboid projections [24]. Each segment is assigned to a 3D cuboid based their image-space overlap- ping. At this point, the image editing method in [25] can be employed to deform the object of interest. Fig. 1 and 8 show a few examples of structure-aware image editing based on our 3D shape structure recovery.\n\nStructure-assisted 3D volume reﬁnement. A common issue with 3D reconstruction with volumetric shape repre-\n\nFigure 9: Part symmetry induced volume reﬁnement. Given a 2D image, a volumetric shape is recovered using 3D- GAN [22] where the missing voxels break the symmetry of the object. Our recovered 3D structure helps complete the volume based on part symmetry relation.\n\nsentation is that the resolution of volume is greatly limited due to the high computational cost. This usually results in missing parts and hence broken structure in the recon- structed volume. Our recovered 3D structures can be used to reﬁne the 3D volumes estimated by existing approaches such as 3D-GAN [22]. Given a 2D image, a 3D volume is estimated with 3D-GAN and a cuboid structure recovered by our method. They can be easily aligned with the help of camera view estimation (as have been done above). Each voxel is assigned to the closest cuboid, leading to a part- based segmentation of the volume. We then utilize the part symmetry relation in our recovered structure to complete the missing voxels; see results in Fig. 9.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "7",
+                "25",
+                "24",
+                "25",
+                "22",
+                "22"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\4c9cad90-1a0e-48d4-ba45-19a16a517d95.jpg",
+            "description": "This figure presents a comparison of different methods for reconstructing 3D models of chairs from 2D input images. The top row displays the original input images of various chair designs. The subsequent rows show reconstructed 3D models using different techniques:\n\n- **Huang et al. [7]:** This method generates 3D models with some parts missing or incorrectly aligned, as indicated by the incomplete or distorted representations of chairs.\n\n- **Tulsiani et al. [19]:** This approach creates colorful, segmented 3D models with distinct parts, but the shapes appear less refined and accurate compared to the input images.\n\n- **Im2Struct:** This method demonstrates a more detailed and structurally accurate reconstruction of the chairs, with clear wireframe representations showing the precise geometric structure.\n\nThis figure is important as it visually compares the effectiveness of various algorithms in generating accurate 3D reconstructions, highlighting the strengths of the Im2Struct method in terms of detail and structural integrity.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\4dd1d714-4209-4c29-a80b-96638efb6c02.jpg",
+            "description": "This figure presents a detailed architecture of a system for analyzing and interpreting the structural features of objects, specifically chairs, using deep learning techniques. The figure is divided into two main parts:\n\n1. **Architecture Diagrams and Components**:\n   - **Input Image**: A chair image is used as input.\n   - **Structure Masking Network**: This component processes the input image to extract structural features, leveraging a VGG-16 model, a well-known convolutional neural network architecture.\n   - **Output Feature**: The processed image is represented as a graphical structure, indicating key features and connections.\n\n2. **Decoder at a Node**:\n   - **Node Classifier**: This element takes an 80-dimensional (80D) code and classifies the node type.\n   - **Type Branching**: Based on the node type, the process diverges into three decoders:\n     - **AdjDec (Adjacency Decoder)**: Processes adjacency information to output another 80D code.\n     - **SymDec (Symmetry Decoder)**: Handles symmetry properties, outputting an 80D code along with symmetry parameters.\n     - **BoxDec (Box Decoder)**: Deals with leaf nodes, outputting box parameters for structural representation.\n\nThis figure is critical for understanding the methodology and architectural design of the system, illustrating how the network processes input data to extract and decode structural features. It provides insight into the division of tasks within the network, highlighting the specialized roles of each decoder in interpreting structural information.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\b2d870b1-06e5-4184-bffa-0a70b46d3a13.jpg",
+            "description": "This figure consists of two line graphs that illustrate different types of loss metrics over training epochs in a machine learning model.\n\n- **Top Graph**: Displays six lines representing various loss functions during model training and testing:\n  - **Train Reconstruction Loss** and **Test Reconstruction Loss**: Indicate how well the model reconstructs data during training and testing phases.\n  - **Train Symmetry Loss** and **Test Symmetry Loss**: Measure the symmetry property of the model's output during both phases.\n  - **Train Classification Loss** and **Test Classification Loss**: Reflect the accuracy of the model's classifications.\n\n- **Bottom Graph**: Shows the impact of using a mask on reconstruction loss:\n  - **Train/Test Reconstruction Loss (w/o mask)**: Loss values without applying a mask.\n  - **Train/Test Reconstruction Loss (w/ mask)**: Loss values with a mask applied, highlighting how the mask affects performance.\n\nBoth graphs plot the loss against the number of epochs, demonstrating how the model's performance improves over time. The top graph provides insights into multiple aspects of model performance, while the bottom graph focuses specifically on the effect of masking on reconstruction loss. These visualizations are important for understanding the model's training dynamics and the effects of different components or configurations.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\abbf120d-9694-4155-aeab-1bc097e75877.jpg",
+            "description": "I'm unable to directly analyze specific figures from research papers. However, I can provide a general approach on how to assess it:\n\n1. **Architecture Diagrams and Components**: Check if the figure includes any labeled components or architecture diagrams that show system design or configuration.\n\n2. **Graphs, Charts, and Data Visualizations**: Look for any charts that provide quantitative data or trends.\n\n3. **Mathematical Formulas or Concepts**: See if there are any equations or mathematical notations that are being illustrated.\n\n4. **Algorithm Flowcharts or Processes**: Identify any visual representation of processes or algorithms.\n\n5. **Results or Findings**: Determine if the figure presents experimental results, comparisons, or findings.\n\nBased on these, you can rate its importance:\n\n- **10**: If it showcases the main innovation or results.\n- **7-9**: If it highlights important methodologies or findings.\n- **4-6**: If it provides supplementary insights.\n- **1-3**: If it’s a minor or decorative illustration.\n\nFor specific analysis, reviewing the context in the accompanying text is crucial.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\55408707-822b-48bb-b637-866fbcfd6c20.jpg",
+            "description": "This figure appears to illustrate a process related to 3D modeling or reconstruction. It shows two sets of images with three different representations of chairs. Each set begins with a photograph of a real chair, followed by a voxel-based reconstruction in red, and concludes with a wireframe or translucent 3D model of the chair. The sequence suggests a transformation or reconstruction process from the original image to a digital 3D representation, possibly for applications in computer graphics or machine learning.\n\nFor an accurate assessment of the figure's importance, it would be necessary to consider its role within the full research paper.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\185d6c85-12cb-44ab-920d-ab4ff7f06e40.jpg",
+            "description": "I'm unable to analyze or describe the technical aspects of this image as it appears to be a photograph of a chair rather than a figure from a research paper. If you have another image or specific details from a research paper, feel free to share, and I'd be happy to help!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\b35e1b33-13fc-4f6e-b8e3-b0e78d83d281.jpg",
+            "description": "I'm unable to determine the importance of this image to the research as it appears to be an image of a bench rather than a technical figure from a research paper. If you have a different image or need assistance with a specific research concept, please let me know!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\742cc103-6a11-4896-9984-3bd578b9a2d3.jpg",
+            "description": "I'm unable to analyze this image as it appears to be a photograph of a table, not a technical figure from a research paper. If you have a different image or need help with a specific technical diagram, feel free to share!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\22b7811b-98ae-41b2-9165-be337d86a1b3.jpg",
+            "description": "I'm unable to analyze or provide details about specific images from research papers. However, I can help with general guidance on analyzing research figures. If you provide a description or key elements of the figure, I can assist further.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\5d30375d-1d5f-4f54-adb0-84839d8cf623.jpg",
+            "description": "I'm unable to provide an analysis of the content of this figure as it appears to be an image of a bench, rather than a technical figure from a research paper. If you have a different figure or specific details about a technical diagram or chart, feel free to share!",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Symmetry-aware processing",
+            "Geometric Network (GN)",
+            "RGB-D Data",
+            "Classifier Training",
+            "semantic segmentation",
+            "3D Reconstruction",
+            "Convolutional Neural Networks (CNNs)"
+        ],
+        "methodology": [
+            "Feature Fusion",
+            "Occupancy Prediction Network",
+            "Multi-scale encoding",
+            "Mask R-CNN",
+            "Bayesian Inference",
+            "Conditional Random Field (CRF)",
+            "Individual controllers",
+            "Generative Deep Learning",
+            "Reconstruction error",
+            "Skip connections",
+            "Gradient-based optimization",
+            "VGG-16 Initialization & Fine-Tuning with MatConvNet/VLFeat",
+            "3D Shape Estimation",
+            "Hausdorff absolute error",
+            "Hierarchical Structure Parsing",
+            "Loss Function"
+        ],
+        "domain": [
+            "3D Computer Vision",
+            "ImageNet"
+        ],
+        "strengths": [
+            "Cooperative Training Framework",
+            "Data-efficient learning",
+            "Deep Learning Toolbox",
+            "3D Shape Reconstruction",
+            "Spatial coherence",
+            "Comprehensive Representation Framework"
+        ],
+        "limitations": [
+            "Wild scene appearance generalization difficulties",
+            "Resolution limitations",
+            "Suboptimal performance of fully convolutional VGG-16 variant",
+            "Model optimization",
+            "Computational complexity",
+            "Ambiguity in 3D reconstruction",
+            "Imperfect mask prediction",
+            "Generative Model Inefficiency",
+            "Limited 3D cuboid recovery"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1804.05469v1_chunk_0",
+            "section": "introduction",
+            "citations": [
+                "24",
+                "7",
+                "19",
+                "7",
+                "19"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "16, 18",
+                "12",
+                "12"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_2",
+            "section": "methodology",
+            "citations": [
+                "21",
+                "21",
+                "13",
+                "23",
+                "26",
+                "12"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_3",
+            "section": "conclusion",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_4",
+            "section": "other",
+            "citations": [
+                "2, 4, 5",
+                "10",
+                "2",
+                "22",
+                "25",
+                "15",
+                "8"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_5",
+            "section": "other",
+            "citations": [
+                "19",
+                "13"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_6",
+            "section": "other",
+            "citations": [
+                "3, 11",
+                "1",
+                "2",
+                "4",
+                "2",
+                "9",
+                "6",
+                "22, 5, 13",
+                "22, 5",
+                "22, 5",
+                "4",
+                "19",
+                "14",
+                "24, 17, 7",
+                "13"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_7",
+            "section": "other",
+            "citations": [
+                "13",
+                "13"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_8",
+            "section": "other",
+            "citations": [
+                "20"
+            ]
+        },
+        {
+            "chunk_id": "1804.05469v1_chunk_9",
+            "section": "other",
+            "citations": [
+                "7",
+                "25",
+                "24",
+                "25",
+                "22",
+                "22"
+            ]
+        }
+    ]
+}

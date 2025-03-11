@@ -3,4 +3,10 @@
 chroma_db
 __pycache__
 neo4j
-# output
+output
+image_db
+papers_summary_v2
+papers_summary_v1
+papers_v2
+papers_v1
+chroma.log

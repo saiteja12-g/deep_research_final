@@ -12,6 +12,8 @@ import requests
 import json
 import os
 import traceback
+from citation_mapper import CitationMapper, process_and_map_citations
+
 
 from processing_pipeline import process_research_paper
 
@@ -212,6 +214,17 @@ class ArxivReferenceExplorer:
         except Exception as e:
             print(f"LLM extraction failed: {str(e)}")
             return []
+    
+
+    def _process_citations(self, paper_id, pdf_path, json_path):
+        """Process citations for a paper and map them to references"""
+        print(f"Processing citations for paper: {paper_id}")
+        result = process_and_map_citations(paper_id, pdf_path, json_path)
+        if result["status"] == "success":
+            print(f"✓ Successfully processed citations: {result.get('references_added', 0)} references added")
+        else:
+            print(f"✗ Citation processing failed: {result.get('message', 'Unknown error')}")
+        return result
 
     def _search_arxiv_by_title(self, title):
         """
@@ -274,7 +287,8 @@ class ArxivReferenceExplorer:
                 curr_paper_id = paper_id.split("arxiv.org/abs/")[-1]
                 pdf_path = f'./papers/{curr_paper_id}.pdf'
                 json_path = f'./papers_summary/{curr_paper_id}.json'
-                
+                citation_result = self._process_citations(curr_paper_id, pdf_path, json_path)
+                print(f"  - Citations: {citation_result.get('references_added', 0)}")
                 print(f"\n{'='*60}")
                 print(f"Processing paper: {current_paper['title']} (Depth {depth})")
                 print(f"{'='*60}")
@@ -431,7 +445,7 @@ if __name__ == "__main__":
         
         # Initialize explorer with search query
         explorer = ArxivReferenceExplorer(
-            query="Diffusion Models Scientific Research",
+            query="Single image to 3d",
             initial_results=3,
             similarity_threshold=0.65
         )
@@ -441,7 +455,7 @@ if __name__ == "__main__":
         print("=" * 80)
         
         # Start traversal
-        papers = explorer.bfs_traversal(max_depth=1, max_per_level=[2, 1])
+        papers = explorer.bfs_traversal(max_depth=2, max_per_level=[2, 1])
     
         # Display results
         print("\n" + "=" * 80)

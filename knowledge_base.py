@@ -9,6 +9,7 @@ import psutil
 from sklearn.cluster import KMeans
 import numpy as np
 from sentence_transformers import SentenceTransformer
+from langchain.text_splitter import CharacterTextSplitter
 from tqdm import tqdm
 from pathlib import Path
 from dotenv import load_dotenv
@@ -16,6 +17,8 @@ import gc
 from chromadb.config import Settings
 import openai  # Updated import
 import re
+import torch
+import time
 
 # Load environment variables for API keys
 load_dotenv()
@@ -25,20 +28,25 @@ client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 class ResearchKnowledgeBase:
     def __init__(self):
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         self.vector_db = self._init_chroma()
         self.graph_db = self._init_neo4j()
         self.image_db = self._init_image_collection()
-        self.text_embedder = SentenceTransformer('BAAI/bge-base-en-v1.5')
+        self.text_embedder = SentenceTransformer('BAAI/bge-base-en-v1.5').to(device)
 
 
     def _init_chroma(self):
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"Using device: {device}")
         settings = Settings(
             chroma_segment_cache_policy="LRU",
-            chroma_memory_limit_bytes=10000000000  # ~10GB
+            chroma_memory_limit_bytes=10000000000000  # ~10GB
             )
-        client = chromadb.PersistentClient(path="./chroma_db")
+        client = chromadb.PersistentClient(path="./chroma_db", settings=settings)
+        client.heartbeat()
         embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
-            model_name='BAAI/bge-base-en-v1.5'
+            model_name='BAAI/bge-base-en-v1.5',
+            device=device
         )
         return client.get_or_create_collection(
             name="research_papers",
@@ -54,14 +62,16 @@ class ResearchKnowledgeBase:
         )
 
     def _init_image_collection(self):
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         settings = Settings(
             chroma_segment_cache_policy="LRU",
-            chroma_memory_limit_bytes=10000000000  # ~10GB
+            chroma_memory_limit_bytes=100000000000  # ~10GB
         )
 
-        client = chromadb.PersistentClient(path="./chroma_db")
+        client = chromadb.PersistentClient(path="./image_db")
         embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
-            model_name='BAAI/bge-base-en-v1.5'
+            model_name='BAAI/bge-base-en-v1.5',
+            device=device
         )
         return client.get_or_create_collection(
             name="research_images",
@@ -105,6 +115,7 @@ class ResearchKnowledgeBase:
             print(traceback.format_exc())
         
         print(f"Finished processing paper {paper_id}")
+        # time.sleep(5)
         print("======================================================")
         
         return paper_data  # Return updated paper data with chunk IDs
@@ -123,7 +134,7 @@ class ResearchKnowledgeBase:
         stored_chunks = []
         
         # Process in smaller batches
-        BATCH_SIZE = 5
+        BATCH_SIZE = 100
         for batch_start in range(0, len(raw_chunks), BATCH_SIZE):
             batch_end = min(batch_start + BATCH_SIZE, len(raw_chunks))
             print(f"Processing batch {batch_start//BATCH_SIZE + 1}: chunks {batch_start+1}-{batch_end}")
@@ -131,16 +142,18 @@ class ResearchKnowledgeBase:
             documents = []
             metadatas = []
             ids = []
+            embeddings = []
             
             # Process batch
             for idx in range(batch_start, batch_end):
                 chunk = raw_chunks[idx]
                 chunk_id = f"{paper_id}_chunk_{idx}"
                 chunk_text = chunk["text"]
-                
+                # text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)
+                # chunked_text = text_splitter.split_documents(documents)
                 # Extract citations from text if they exist
                 citations = self._extract_citations(chunk_text)
-                
+                embedding = self.text_embedder.encode(chunk_text, normalize_embeddings=True)
                 documents.append(chunk_text)
                 metadata = {
                     "paper_id": paper_id,
@@ -153,7 +166,7 @@ class ResearchKnowledgeBase:
                 }
                 metadatas.append(metadata)
                 ids.append(chunk_id)
-                
+                embeddings.append(embedding.tolist())
                 # Store chunk info to return
                 stored_chunks.append({
                     "chunk_id": chunk_id,
@@ -163,16 +176,163 @@ class ResearchKnowledgeBase:
             
             # Add this batch to ChromaDB
             try:
-                print(f"Adding batch of {len(documents)} chunks to ChromaDB")
-                self.vector_db.add(documents=documents, metadatas=metadatas, ids=ids)
-                print(f"Successfully added batch {batch_start//BATCH_SIZE + 1}")
+                # print(f"Memory before batch: {psutil.Process(os.getpid()).memory_info().rss // 1024 ** 2} MB")
+                # print(f"DEBUG: Starting add operation for {len(documents)} documents")
+                # print(f"First document excerpt: {documents[0][:100]}...") # Print first 100 chars to check content
+                self.vector_db.add(documents=documents,embeddings=embeddings, metadatas=metadatas, ids=ids)
+                # print(f"Memory after batch: {psutil.Process(os.getpid()).memory_info().rss // 1024 ** 2} MB")
+                # print(f"Successfully added batch {batch_start//BATCH_SIZE + 1}")
+                
+
             except Exception as e:
-                print(f"ChromaDB add operation failed for batch: {str(e)}")
+                print(f"ERROR ADDING BATCH: {str(e)}")
                 import traceback
                 traceback.print_exc()
+                # print(f"Failed on document length: {[len(d) for d in documents]}")
         
         return stored_chunks
+    def get_citation_text(self, chunk_id: str, citation_id: str) -> str:
+        """
+        Get the full text for a citation referenced in a chunk.
+        
+        Args:
+            chunk_id: ID of the chunk containing the citation
+            citation_id: ID of the citation (e.g., "1" for [1])
+            
+        Returns:
+            Formatted citation text
+        """
+        try:
+            # First try to get citation from citation relationships
+            with self.graph_db.session() as session:
+                result = session.run("""
+                    MATCH (c:Chunk {id: $chunk_id})-[:CITES]->(p:Paper)
+                    WHERE c.id = $chunk_id
+                    RETURN p.id, p.title, p.authors, p.year
+                """, {"chunk_id": chunk_id}).single()
+                
+                if result:
+                    paper_id = result["p.id"]
+                    title = result["p.title"]
+                    authors = result["p.authors"]
+                    year = result["p.year"]
+                    
+                    # Format as APA style
+                    authors_text = ", ".join(authors) if isinstance(authors, list) else authors
+                    return f"{authors_text} ({year}). {title}."
+            
+            # If not found in graph, try to get from chunk metadata
+            chunk_data = self.get_chunks_by_id([chunk_id])
+            if chunk_data and len(chunk_data) > 0:
+                chunk = chunk_data[0]
+                if "metadata" in chunk and "citations" in chunk["metadata"]:
+                    citations = chunk["metadata"]["citations"].split(",")
+                    if citation_id in citations:
+                        # Extract paper ID
+                        paper_id = chunk["metadata"]["paper_id"]
+                        
+                        # Look up the paper's JSON file
+                        import os
+                        json_path = os.path.join("papers_summary", f"{paper_id}.json")
+                        
+                        # Use CitationMapper to get formatted citation
+                        from citation_mapper import CitationMapper
+                        mapper = CitationMapper(self)
+                        return mapper.generate_citation_text(citation_id, json_path)
+            
+            # Default return if citation not found
+            return f"[{citation_id}]"
+        
+        except Exception as e:
+            import traceback
+            print(f"Error getting citation text: {str(e)}")
+            print(traceback.format_exc())
+            return f"[{citation_id}]"
 
+# Also add a method to replace citations in text:
+
+    def replace_citations_in_text(self, text: str, chunk_id: str, detailed_references: Dict = None) -> str:
+        """
+        Replace numeric citations like [1] with their full reference text using detailed_references.
+        
+        Args:
+            text: Text containing citations
+            chunk_id: ID of the chunk containing the citations
+            detailed_references: Optional paper's detailed references dictionary
+            
+        Returns:
+            Text with citations replaced
+        """
+        try:
+            # If no detailed_references provided, try to fetch it
+            if detailed_references is None:
+                # Get paper_id from chunk metadata
+                chunks = self.get_chunks_by_id([chunk_id])
+                if not chunks:
+                    return text
+                
+                paper_id = chunks[0].get("metadata", {}).get("paper_id")
+                if not paper_id:
+                    return text
+                
+                # Load paper data from JSON file
+                try:
+                    paper_path = os.path.join("papers_summary", f"{paper_id}.json")
+                    with open(paper_path, 'r', encoding='utf-8') as f:
+                        paper_data = json.load(f)
+                        detailed_references = paper_data.get("detailed_references", {})
+                except Exception as e:
+                    print(f"Error loading paper data: {str(e)}")
+                    return text
+            
+            # If still no detailed_references, return original text
+            if not detailed_references:
+                return text
+            
+            # Extract numeric citations using regex - pattern like [1] or [1, 2, 3]
+            numeric_pattern = r'\[(\d+)\]'
+            citations = re.findall(numeric_pattern, text)
+            
+            # Track all citations to add to the references section later
+            found_citations = {}
+            
+            # Replace each citation
+            for citation_id in citations:
+                # Look for the reference in detailed_references
+                ref_key = f"ref_{citation_id}"
+                if ref_key in detailed_references:
+                    reference = detailed_references[ref_key]
+                    
+                    # Extract key citation information in a shorter format for inline citation
+                    # This creates Harvard style citations like (Smith et al., 2019)
+                    title = reference.get("text", "")
+                    # Extract author name if possible
+                    author_match = re.search(r'([A-Za-z]+),\s+[A-Za-z\.]+', title)
+                    author = author_match.group(1) if author_match else "Author"
+                    
+                    # Extract year if possible
+                    year_match = re.search(r'(\d{4})', title)
+                    year = year_match.group(1) if year_match else "Year"
+                    
+                    # Create inline citation
+                    inline_citation = f"({author}, {year})"
+                    
+                    # Replace the citation in the text
+                    text = text.replace(f"[{citation_id}]", inline_citation)
+                    
+                    # Store full reference for bibliography
+                    found_citations[ref_key] = reference["text"]
+                
+            # Also handle author-year style citations if present
+            # This would require similar parsing as above
+            
+            return text
+            
+        except Exception as e:
+            import traceback
+            print(f"Error replacing citations: {str(e)}")
+            print(traceback.format_exc())
+            return text
 
     def _extract_citations(self, text: str) -> List[str]:
         """Extract citation references from text"""
@@ -405,16 +565,47 @@ class ResearchKnowledgeBase:
         })
 
     @staticmethod
-    def _create_chunk_citation_relationship(tx, chunk_id: str, cited_paper_id: str):
-        tx.run("""
+    def _create_chunk_citation_relationship(tx, chunk_id: str, cited_paper_id: str, citation_info=None):
+        """
+        Create or update a citation relationship between a chunk and a paper.
+        
+        Args:
+            tx: Neo4j transaction
+            chunk_id: ID of the citing chunk
+            cited_paper_id: ID of the cited paper
+            citation_info: Optional dictionary with additional citation metadata
+        """
+        # Base query to create the relationship
+        query = """
             MATCH (c:Chunk {id: $chunk_id})
             MERGE (cited:Paper {id: $cited_paper_id})
             MERGE (c)-[r:CITES]->(cited)
             SET r.strength = coalesce(r.strength, 0) + 1
-        """, {
+        """
+        
+        # Parameters for the query
+        params = {
             "chunk_id": chunk_id,
             "cited_paper_id": cited_paper_id
-        })
+        }
+        
+        # If we have additional citation information, add it to the relationship
+        if citation_info:
+            properties = []
+            for key, value in citation_info.items():
+                if key not in ["chunk_id", "cited_paper_id"]:
+                    property_name = key.replace(" ", "_").lower()
+                    params[property_name] = value
+                    properties.append(f"r.{property_name} = ${property_name}")
+            
+            if properties:
+                # Add additional SET clauses for the properties
+                property_string = ", ".join(properties)
+                query = query.replace("SET r.strength = coalesce(r.strength, 0) + 1", 
+                                f"SET r.strength = coalesce(r.strength, 0) + 1, {property_string}")
+        
+        # Execute the query
+        tx.run(query, params)
 
     @staticmethod
     def _create_theme_relationship(tx, paper_id: str, theme: str):
@@ -503,7 +694,7 @@ class ResearchKnowledgeBase:
             n_results=top_k*3,  # Get extra chunks for aggregation
             include=["metadatas", "documents", "distances"]
         )
-        
+        # print(chunk_results)
         # Aggregate chunks by paper
         paper_chunks = {}
         for doc, meta, dist in zip(chunk_results["documents"][0],
@@ -633,11 +824,39 @@ class ResearchKnowledgeBase:
                         break
             except Exception as e:
                 print(f"Error processing images: {str(e)}")
+        for paper in papers:
+        # Load paper data once for each paper to access detailed_references
+            try:
+                paper_id = paper["id"]
+                paper_path = os.path.join("papers_summary", f"{paper_id}.json")
+                with open(paper_path, 'r', encoding='utf-8') as f:
+                    paper_data = json.load(f)
+                
+                # Extract detailed_references from paper data for citation replacement
+                detailed_references = paper_data.get("detailed_references", {})
+                
+                # Add content field with combined chunks for the review paper writer
+                content = []
+                for chunk in paper["chunks"]:
+                    # Replace citations in each chunk
+                    chunk_text = self.replace_citations_in_text(
+                        chunk["text"], 
+                        chunk.get("chunk_id", ""), 
+                        detailed_references
+                    )
+                    content.append(chunk_text)
+                
+                # Add the combined content to the paper
+                paper["content"] = "\n\n".join(content)
+            except Exception as e:
+                print(f"Error processing paper {paper_id}: {str(e)}")
+                paper["content"] = "\n\n".join([chunk["text"] for chunk in paper["chunks"]])
         
         return {
             "papers": papers,
             "images": images
         }
+        
 
     @staticmethod
     def _get_enriched_paper_details(tx, paper_id: str):
@@ -993,10 +1212,10 @@ if __name__ == "__main__":
         print("Databases already populated. Skipping ingestion.")
     
     print("Generating review topics...")
-    # topics = get_review_topics(kb)
-    # print(json.dumps(topics, indent=2))
-    # with open("review_topics.json", "w", encoding="utf-8") as f:
-    #     json.dump(topics, f, indent=2)
-    search_result = kb.hybrid_search("Advances in Large Language Models for Criteria Selection: A Focus on Answer-Only Setting", include_images = True)
+    topics = get_review_topics(kb)
+    print(json.dumps(topics, indent=2))
+    with open("review_topics.json", "w", encoding="utf-8") as f:
+        json.dump(topics, f, indent=2)
+    search_result = kb.hybrid_search("Tri-hybrid Representation in 3D Reconstruction: Navigating through Recent Innovations", include_images = True)
     with open("search_result.json", "w", encoding="utf-8") as f:
         json.dump(search_result, f, indent=2)

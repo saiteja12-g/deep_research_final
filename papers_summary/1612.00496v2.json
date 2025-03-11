@@ -1,0 +1,636 @@
+{
+    "basic_info": {
+        "title": "3D Bounding Box Estimation Using Deep Learning and Geometry",
+        "authors": [
+            "Arsalan Mousavian",
+            "Dragomir Anguelov",
+            "John Flynn",
+            "Jana Kosecka"
+        ],
+        "paper_id": "1612.00496v2",
+        "published_year": 2016,
+        "references": []
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "Supplementary materials. http://bit.ly/2oYMpuw .\n3, 5",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "P. L. A. Geiger and R. Urtasun. Are we ready for autonomous\ndriving? the KITTI vision benchmark suite. In CVPR , 2012.\n1, 2, 5, 6",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "Z. Cai, Q. Fan, R. Feris, and N. Vasconcelos. A uniﬁed\nmulti-scale deep convolutional neural network for fast object\ndetection. In ECCV , 2016. 2, 5",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "X. Chen, K. Kundu, Z. Zhang, H. Ma, S. Fidler, and R. Urta-\nsun. Monocular 3d object detection for autonomous driving.\nInIEEE CVPR , 2016. 1, 2, 3, 8",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": null
+        },
+        "ref_5": {
+            "text": "X. Chen, K. Kundu, Y . Zhu, A. Berneshawi, H. Ma, S. Fidler,\nand R. Urtasun. 3d object proposals for accurate object class\ndetection. In NIPS , 2015. 6, 8",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "V . Ferrari, T. Tuytelaars, and L. Gool. Simultaneous object\nrecognition and segmentation from single or multiple model\nviews. International Journal of Computer Vision (IJCV) ,\n62(2):159–188, 2006. 2",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "R. Girshick, J. D. T. Darrell, and J. Malik. Rich feature hier-\narchies for accurate object detection and semantic segmenta-\ntion. In CVPR , 2015. 2",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "S. Hao, Q. Charles, L. Yangyan, and G. Leonidas. Render\nfor cnn: Viewpoint estimation in images using cnns trained\nwith rendered 3d model views. In The IEEE International\nConference on Computer Vision (ICCV) , December 2015. 2",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": null
+        },
+        "ref_9": {
+            "text": "A. Kar, S. Tulsiani, J. Carreira, and J. Malik. Category-\nspeciﬁc object reconstruction from a single image. In CVPR ,\n2015. 2",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "V . Lepetit, F. Moreno-Noguer, and P. Fua. EPnP: An Accu-\nrate O(n) Solution to the PnP Problem. International Journal\nof Computer Vision (IJCV) , 2009. 2",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "W. Liu, D. Anguelov, D. Erhan, C. Szegedy, S. Reed, C.-Y .\nFu, and A. C. Berg. Ssd: Single shot multibox detector. In\nECCV , 2016. 5",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": null
+        },
+        "ref_12": {
+            "text": "K. Matzen and N. Snavely. Nyc3dcars: A dataset of 3d ve-\nhicles in geographic context. In ICCV , 2013. 2",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "R. Mottaghi, Y . Xiang, and S. Savarese. A coarse-to-ﬁne\nmodel for 3d pose estimation and sub-category recognition.\nInProceedings of the IEEE International Conference on\nComputer Vision and Pattern Recognition , 2015. 2",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "G. Pavlakos, X. Zhou, A. Chan, K. G. Derpanis, and K. Dani-\nilidis. 6-dof object pose from semantic keypoints. In ICRA ,\n2017. 3, 6, 9",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "B. Pepik, M. Stark, P. Gehler, T. Ritschel, and B. Schiele. 3d\nobject class detection in the wild. In CVPR , 2015. 2",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": null
+        },
+        "ref_16": {
+            "text": "B. Pepik, M. Stark, P. Gehler, and B. Schiele. Teaching 3d\ngeometry to deformable part models. In CVPR , 2012. 2",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": null
+        },
+        "ref_17": {
+            "text": "P. Poirson, P. Ammirato, A. Berg, and J. Kosecka. Fast single\nshot detection and pose estimation. In 3DV, 2016. 2",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": null
+        },
+        "ref_18": {
+            "text": "J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You\nonly look once: Uniﬁed, real-time object detection. In\nCVPR , 2016. 5",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "F. Rothganger, S. Lazebnik, C. Schmid, and J. Ponce. 3d\nobject modeling and recognition using local afﬁne-invariant\nimage descriptors and multi-view spatial constraints. IJCV ,\n66(3):231-259, 2006. 2",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "K. Simonyan and A. Zisserman. Very deep convolu-\ntional networks for large-scale image recognition. CoRR ,\nabs/1409.1556, 2014. 2, 5",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "S. Tulsiani and J. Malik. Viewpoints and keypoints. In\nCVPR , 2015. 2, 3, 6, 9",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "Y . Xiang, W. Choi, Y . Lin, and S. Savarese. Data-driven 3d\nvoxed patterns for object categorry recognition. In Proceed-\nings of the International Conference on Learning Represen-\ntation , 2015. 2, 3, 7, 8",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": null
+        },
+        "ref_23": {
+            "text": "Y . Xiang, W. Choi, Y . Lin, and S. Savarese. Data-driven\n3d voxel patterns for object category recognition. In Pro-\nceedings of the IEEE International Conference on Computer\nVision and Pattern Recognition , 2015. 1, 3, 6",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": null
+        },
+        "ref_24": {
+            "text": "Y . Xiang, W. Choi, Y . Lin, and S. Savarese. Subcategory-\naware convolutional neural networks for object proposals\nand detection. In arXiv:1604.04693 . 2016. 1, 2, 3, 6, 8",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": "1604.04693"
+        },
+        "ref_25": {
+            "text": "Y . Xiang, W. Kim, W. Chen, J. Ji, C. Choy, H. Su, R. Mot-\ntaghi, L. Guibas, and S. Savarese. Objectnet3d: A large scale\ndatabase for 3d object recognition. In ECCV , 2016. 2",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "Y . Xiang, R. Mottaghi, and S. Savarase. Beyond pascal: A\nbenchmark for 3d object detection in the wild. In WACV ,\n2014. 1, 2, 5",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "R. Zhang, P. Isola, and A. Efros. Colorful image colorization.\nInECCV , 2016. 5",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "B. Zhou, A. Khosla, A. Lapedriza, A. Oliva, and A. Torralba.\nObject detectors emerge in deep scene cnns. In Proceedings\nof the International Conference on Learning Representation ,\n2015. 8",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "M. Zhu, K. G. Derpanis, Y . Yang, S. Brahmbhatt, M. Zhang,\nC. Phillips, M. Lecce, and K. Daniilidis. Single image 3d\nobject detection and pose estimation for grasping. In IEEE\nICRA , 2013. 2",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_December_2015": {
+            "text": "Conference on Computer Vision (ICCV) , December 2015. 2 [9] A. Kar, S. Tulsiani, J. Carreira, and J. Malik. Category-",
+            "type": "author_year",
+            "key": "December, 2015",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "1. Introduction\n\nThe problem of 3D object detection is of particular im- portance in robotic applications that require decision mak- ing or interactions with objects in the real world. 3D ob- ject detection recovers both the 6 DoF pose and the dimen-\n\nIn this work, we propose a method that estimates the pose (R,T) ∈ SE(3) and the dimensions of an object’s 3D bounding box from a 2D bounding box and the sur- rounding image pixels. Our simple and efﬁcient method is suitable for many real world applications including self- driving vehicles. The main contribution of our approach is in the choice of the regression parameters and the associated objective functions for the problem. We ﬁrst regress the orientation and object dimensions before combining these estimates with geometric constraints to produce a ﬁnal 3D pose. This is in contrast to previous techniques that attempt\n\n∗Work done as an intern at Zoox, Inc.\n\n1\n\nto directly regress to pose.\n\nA state of the art 2D object detector [3] is extended by training a deep convolutional neural network (CNN) to regress the orientation of the object’s 3D bounding box and its dimensions. Given estimated orientation and dimensions and the constraint that the projection of the 3D bounding box ﬁts tightly into the 2D detection window, we recover the translation and the object’s 3D bounding box. Although conceptually simple, our method is based on several im- portant insights. We show that a novel MultiBin discrete- continuous formulation of the orientation regression signif- icantly outperforms a more traditional L2 loss. Further con- straining the 3D box by regressing to vehicle dimensions proves especially effective, since they are relatively low- variance and result in stable ﬁnal 3D box estimates.\n\nWe evaluate our method on the KITTI [2] and Pascal 3D+[26] datasets. On the KITTI dataset, we perform an in-depth comparison of our estimated 3D boxes to the re- sults of other state-of-the-art 3D object detection algorithms [24, 4]. The ofﬁcial KITTI benchmark for 3D bounding box estimation only evaluates the 3D box orientation estimate. We introduce three additional performance metrics measur- ing the 3D box accuracy: distance to center of box, distance to the center of the closest bounding box face, and the over- all bounding box overlap with the ground truth box, mea- sured using 3D Intersection over Union (3D IoU) score. We demonstrate that given sufﬁcient training data, our method is superior to the state of the art on all the above 3D metrics. Since the Pascal 3D+ dataset does not have the physical di- mensions annotated and the intrinsic camera parameters are approximate, we only evaluate viewpoint estimation accu- racy showing that our MultiBin module achieves state-of- the-art results there as well.\n\nIn summary, the main contributions of our paper include: 1) A method to estimate an object’s full 3D pose and di- mensions from a 2D bounding box using the constraints provided by projective geometry and estimates of the ob- ject’s orientation and size regressed using a deep CNN. In contrast to other methods, our approach does not require any preprocessing stages or 3D object models. 2) A novel discrete-continuous CNN architecture called MultiBin re- gression for estimation of the object’s orientation. 3) Three new metrics for evaluating 3D boxes beyond their orienta- tion accuracy for the KITTI dataset. 4) An experimental evaluation demonstrating the effectiveness of our approach for KITTI cars, which also illustrates the importance of the speciﬁc choice of regression parameters within our 3D pose estimation framework. 5) Viewpoint evaluation on the Pas- cal 3D+ dataset.",
+            "section": "introduction",
+            "section_idx": 0,
+            "citations": [
+                "3",
+                "2",
+                "26",
+                "24, 4"
+            ]
+        },
+        {
+            "text": "4. CNN Regression of 3D Box Parameters\n\nIn this section, we describe our approach for regressing the 3D bounding box orientation and dimensions.\n\n4.1. MultiBin Orientation Estimation\n\nEstimating the global object orientation R ∈ SO(3) in the camera reference frame from only the contents of the detection window crop is not possible, as the location of the crop within the image plane is also required. Consider the rotation R(θ) parametrized only by azimuth θ (yaw). Fig. 4 shows an example of a car moving in a straight line. Al- though the global orientation R(θ) of the car (its 3D bound- ing box) does not change, its local orientation θl with re-\n\n= A 8 A 7 1 Qa Nw Camera\n\nFigure 3. Left: Car dimensions, the height of the car equals dy. Right: Illustration of local orientation θl, and global orientation of a car θ. The local orientation is computed with respect to the ray that goes through the center of the crop. The center ray of the crop is indicated by the blue arrow. Note that the center of crop may not go through the actual center of the object. Orientation of the car θ is equal to θray + θl . The network is trained to estimate the local orientation θl.\n\n. — E s o Z\n\nFigure 4. Left: cropped image of a car passing by. Right: Image of whole scene. As it is shown the car in the cropped images rotates while the car direction is constant among all different rows.\n\nspect to the ray through the crop center does, and generates changes in the appearance of the cropped image.\n\nWe thus regress to this local orientation θl. Fig. 4 shows an example, where the local orientation angle θl and the ray angle change in such a way that their combined effect is a constant global orientation of the car. Given intrinsic camera parameters, the ray direction at a particular pixel is trivial to compute. At inference time we combine this ray direction at the crop center with the estimated local orienta- tion in order to compute the global orientation of the object.\n\nIt is known that using the L2 loss is not a good ﬁt for many complex multi-modal regression problems. The L2 loss encourages the network to minimize to average loss\n\nShared Convolutional Features Angle sin + cos\n\nFigure 5. Proposed architecture for MultiBin estimation for orien- tation and dimension estimation. It consists of three branches. The left branch is for estimation of dimensions of the object of interest. The other branches are for computing the conﬁdence for each bin and also compute the cos(∆θ) and sin(∆θ) of each bin\n\nacross all modes, which results in an estimate that may be poor for any single mode. This has been observed in the context of the image colorization problem, where the L2 norm produces unrealistic average colors for items like clothing [27]. Similarly, object detectors such as Faster R-CNN [18] and SSD [11] do not regress the bounding boxes directly: instead they divide the space of the bound- ing boxes into several discrete modes called anchor boxes and then estimate the continuous offsets that need to be ap- plied to each anchor box.\n\nWe use a similar idea in our proposed MultiBin architec- ture for orientation estimation. We ﬁrst discretize the orien- tation angle and divide it into n overlapping bins. For each bin, the CNN network estimates both a conﬁdence proba- bility ci that the output angle lies inside the ith bin and the residual rotation correction that needs to be applied to the orientation of the center ray of that bin in order to obtain the output angle. The residual rotation is represented by two numbers, for the sine and the cosine of the angle. This results in 3 outputs for each bin i: (ci,cos(∆θi),sin(∆θi)). Valid cosine and sine values are obtained by applying an L2 normalization layer on top of a 2-dimensional input. The total loss for the MultiBin orientation is thus:\n\nLθ = Lconf + w × Lloc (3)\n\nThe conﬁdence loss Lconf is equal to the softmax loss of the conﬁdences of each bin. Lloc is the loss that tries to minimize the difference between the estimated angle and the ground truth angle in each of the bins that covers the ground truth angle, with adjacent bins having overlapping coverage. In the localization loss Lloc, all the bins that cover the ground truth angle are forced to estimate the correct an- gle. The localization loss tries to minimize the difference between the ground truth and all the bins that cover that value which is equivalent of maximizing cosine distance as\n\nit is shown in supplementary material [1]. Localization loss Lloc is computed as following:\n\nLtoc = —— 9, c08(6* = ¢; — AG;) (4) nox\n\nwhere nθ∗ is the number of bins that cover ground truth angle θ∗, ci is the angle of the center of bin i and ∆θi is the change that needs to be applied to the center of bin i.\n\nDuring inference, the bin with maximum conﬁdence is selected and the ﬁnal output is computed by applying the estimated ∆θ of that bin to the center of that bin. The Multi- Bin module has 2 branches. One for computing the conﬁ- dences ci and the other for computing the cosine and sine of ∆θ. As a result, 3n parameters need to be estimated for n bins.\n\nIn the KITTI dataset cars, vans, trucks, and buses are all different categories and the distribution of the object dimen- sions for category instances is low-variance and unimodal. For example, the dimension variance for cars and cyclists is on the order of several centimeters. Therefore, rather than using a discrete-continuous loss like the MultiBin loss above, we use directly the L2 loss. As is standard, for each dimension we estimate the residual relative to the mean pa- rameter value computed over the training dataset. The loss for dimension estimation Ldims is computed as follows:\n\n_il * PD _ s\\2 Liims = — 9) (D* —D-6)’, (5)\n\nwhere D∗ are the ground truth dimensions of the box, ¯D are\n\nthe mean dimensions for objects of a certain category and δ is the estimated residual with respect to the mean that the network predicts.\n\nThe CNN architecture of our parameter estimation mod- ule is shown in Figure 5. There are three branches: branches for orientation estimation and one branch for di- mension estimation. All of the branches are derived from the same shared convolutional features and the total loss is the weighted combination of L = α × Ldims + Lθ. two",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "27",
+                "18",
+                "11",
+                "1"
+            ]
+        },
+        {
+            "text": "5. Experiments and Discussions\n\n5.1. Implementation Details\n\nWe performed our experiments on the KITTI [2] and Pascal 3D+[26] datasets.\n\nKITTI dataset: The KITTI dataset has a total of 7481 training images. We train the MS-CNN [3] object detec- tor to produce 2D boxes and then estimate 3D boxes from 2D detection boxes whose scores exceed a threshold. For regressing 3D parameters, we use a pretrained VGG net- work [20] without its FC layers and add our 3D box module, which is shown in Fig. 5. In the module, the ﬁrst FC layers in each of the orientation branches have 256 dimensions,\n\nwhile the ﬁrst FC layer for dimension regression has a di- mension of 512. During training, each ground truth crop is resized to 224x224. In order to make the network more ro- bust to viewpoint changes and occlusions, the ground truth boxes are jittered and the ground truth θl is changed to ac- count for the movement of the center ray of the crop. In addition, we added color distortions and also applied mir- roring to images at random. The network is trained with SGD using a ﬁxed learning rate of 0.0001. The training is run for 20K iterations with a batch size of 8 and the best model is chosen by cross validation. Fig. 6 shows the qual- itative visualization of estimated 3D boxes for cars and cy- clists on our KITTI validation set. We used two different training/test splits for our experiments. The ﬁrst split was used to report results on the ofﬁcial KITTI test set and uses the majority of the available training images. The second split is identical to the one used by SubCNN [24], in order to enable fair comparisons. They use half of the available data for validation.\n\nPascal3D+ dataset: The dataset consists of images from Pascal VOC and Imagenet for 12 different categories that are annotated with 6 DoF pose. Images from the Pascal training set and Imagenet are used for training and the eval- uation is done on the Pascal validation set. Unlike KITTI, the intrinsic parameters are approximate and therefore it is not possible to recover the true physical object dimensions. Therefore we only evaluate on 3 DoF viewpoint estimation to show the effectiveness of our MultiBin loss. We used C × 3 MultiBin modules to predict 3 angles for each of the C classes. For a fair comparison with [21], we kept the fc6 and fc7 layers of VGG and eliminated the separate convolution branches of our MultiBin modules. All the nec- essary inputs are generated using a single fully connected layer that takes fc7 as input. We also reused the hyperpa- rameters chosen in [21] for training our model.",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "2",
+                "26",
+                "3",
+                "20",
+                "24",
+                "21",
+                "21"
+            ]
+        },
+        {
+            "text": "5.2. 3D Bounding Box Evaluation\n\nKITTI orientation accuracy. The ofﬁcial 3D metric of the KITTI dataset is Average Orientation Similarity (AOS), which is deﬁned in [2] and multiplies the average precision (AP) of the 2D detector with the average cosine distance similarity for azimuth orientation. Hence, AP is by deﬁni- tion the upper bound of AOS. At the time of publication, we are ﬁrst among all methods in terms of AOS for easy car examples and ﬁrst among all non-anonymous methods for moderate car examples on the KITTI leaderboard. Our results are summarized in Table 1, which shows that we outperform all the recently published methods on orienta- tion estimation for cars. For moderate cars we outperform SubCNN [24] despite having similar AP, while for hard ex- amples we outperform 3DOP [5] despite much lower AP. The ratio of AOS over AP for each method is representative of how each method performs only on orientation estima-\n\ntion, while factoring out the 2D detector performance. We refer to this score as Orientation Score (OS), which rep- resents the error (1 + cos(∆θ))/2 averaged across all ex- amples. OS can be converted back to angle error by the acos(2∗OS −1) formula, resulting in 3◦ error for easy, 6◦ for moderate, and 8◦ on hard cars for our MultiBin model on the ofﬁcial KITTI test set. Our method is the only one that does not rely on computing additional features such as stereo, semantic segmentation, instance segmentation and does not need preprocessing as in [24] and [23].\n\nPascal3D+ viewpoint accuracy. Two metrics are used for viewpoint accuracy: Median Error MedErr and the percentage of the estimations that are within π 6 of the groundtruth viewpoint Acc π . The distance between rota- 6 tions is computed as ∆(R1,R2) = || log(RT 1 R2)||F . The √ 2 evaluation is done using the groundtruth bounding boxes. Table 3 shows that MultiBin modules are more effective than discretized classiﬁcation [21] and also keypoint based method of [14] which is based on localizing keypoints and solving a sophisticated optimization to recover the pose.\n\nMultiBin loss analysis. Table 4 shows the effect of choos- ing a different number of bins for the Multibox loss on both KITTI and Pascal3D+. In both datasets, using more than one bin consistently outperforms the single-bin vari- ant, which is equivalent to the L2 loss. On KITTI, the best performance is achieved with 2 bins while 8 bins works the best for Pascal3D+. This is due to the fact that the view- point distribution in the Pascal3D+ dataset is more diverse. As Table 4 shows, over-binning eventually decreases the ef- fectiveness of the method, as it decreases the training data amount for each bin. We also experimented with different widths of the fully connected layers (see Table 5) and found that increasing the width of the FC layers further yielded some limited gains even beyond width 256.\n\n3D bounding box metrics and comparison. The orienta- tion estimation loss evaluates only a subset of 3D bound- ing box parameters. To evaluate the accuracy of the rest, we introduce 3 metrics, on which we compare our method against SubCNN [24] for KITTI cars. The ﬁrst metric is the average error in estimating the 3D coordinate of the cen- ter of the objects. The second metric is the average error in estimating the closest point of the 3D box to the cam- era. This metric is important for driving scenarios where the system needs to avoid hitting obstacles. The last met- ric is the 3D intersection over union (3D IoU) which is the ultimate metric utilizing all parameters of the estimated 3D bounding boxes. In order to factor away the 2D detector performance for a side-by-side comparison, we kept only the detections from both methods where the detected 2D boxes have IoU ≥ 0.7. As Fig. 8 shows, our method outper- forms the SubCNN method [24], the current state of the art, across the board in all 3 metrics. Despite this, the 3D IoU numbers are signiﬁcantly smaller than those that 2D detec-\n\nFigure 6. Qualitative illustration of the 2D detection boxes and the estimated 3D projections, in red for cars and green for cyclists.\n\nFigure 7. Visualization of Estimated Poses on Pascal3D+ dataset\n\ntors typically obtain on the corresponding 2D metric. This is due to the fact that 3D estimation is a more challenging task, especially as the distance to the object increases. For example, if the car is 50m away from the camera, a trans- lation error of 2m corresponds to about half the car length. Our method handles increasing distance well, as its error for the box center and closest point metrics in Fig. 8 in- creases approximately linearly with distance, compared to SubCNN’s super-linear degradation. To evaluate the im- portance of estimating the car dimensions, we evaluated a variant of our method that uses average sizes instead of es- timating them. The evaluation shows that regressing the di-\n\nmensions makes a difference in all the 3D metrics. To facili- tate comparisons with future work on this problem, we have made the estimated 3D boxes on the split of [22] available at http://bit.ly/2oaiBgi.\n\nTraining data requirements. One downside of our method is that it needs to learn the parameters for the fully con- nected layers; it requires more training data than methods that use additional information. To verify this hypothesis, we repeated the experiments for cars but limited the num- ber of training instances to 1100. The same method that achieves 0.9808 in Table 4 with 10828 instances can only achieve 0.9026 on the same test set. Moreover, our re-\n\nMethod Easy Moderate Hard AOS AP OS AOS AP OS AOS AP OS 3DOP[5] 91.44% 93.04% 0.9828 86.10% 88.64% 0.9713 76.52% 79.10% 0.9673 Mono3D[4] 91.01% 92.33% 0.9857 0.8662% 88.66% 0.9769 76.84% 78.96% 0.9731 SubCNN[24] 90.67% 90.81% 0.9984 88.62% 89.04% 0.9952 78.68% 79.27% 0.9925 Our Method 92.90% 92.98% 0.9991 88.75% 89.04% 0.9967 76.76% 77.17% 0.9946\n\nTable 1. Comparison of the Average Orientation Estimation (AOS), Average Precision (AP) and Orientation Score (OS) on ofﬁcial KITTI dataset for cars. Orientation score is the ratio between AOS and AP.",
+            "section": "methodology",
+            "section_idx": 2,
+            "citations": [
+                "2",
+                "24",
+                "5",
+                "24",
+                "23",
+                "21",
+                "14",
+                "24",
+                "24",
+                "22",
+                "5",
+                "4",
+                "24"
+            ]
+        },
+        {
+            "text": "Method Easy Moderate Hard AOS AP OS AOS AP OS AOS AP OS 3DOP[5] 70.13% 78.39% 0.8946 58.68% 68.94% 0.8511 52.32% 61.37% 0.8523 Mono3D[4] 65.56% 76.04% 0.8621 54.97% 66.36% 0.8283 48.77% 58.87% 0.8284 SubCNN[24] 72.00% 79.48% 0.9058 63.65% 71.06% 0.8957 56.32% 62.68% 0.8985 Our Method 69.16% 83.94% 0.8239 59.87% 74.16% 0.8037 52.50% 64.84% 0.8096\n\nTable 2. AOS comparison on the ofﬁcial KITTI dataset for cyclists. Our purely data-driven model is not able to match the performance of methods that use additional features and assumptions with just 1100 training examples.\n\nsults on the ofﬁcial KITTI set is signiﬁcantly better than the split of [22] (see Table 1) because yet more training data is used for training. A similar phenomenon is happening for the KITTI cyclist task. The number of cyclist instances are much less than the number of car instances (1144 la- beled cyclists vs 18470 labeled cars). As a result, there is not enough training data for learning the parameters of the fully connected layer well. Although our purely data-driven method achieves competitive results on the cyclists (see Ta- ble 5.2) , it cannot outperform other methods that use addi- tional features and assumptions.\n\n5.3. Implicit Emergent Attention\n\nIn this section, we visualize the parts of cars and bicycles that the network uses in order to estimate the object orien- tation accurately. Similar to [28], a small gray patch is slid around the image and for each location we record the dif- ference between the estimated and the ground truth orienta- tion. If occluding a speciﬁc part of the image by the patch causes a signiﬁcantly different output, it means that the net- work attends to that part. Fig. 9 shows such heatmaps of the output differences due to grayed out locations for sev- eral car detections. It appears that the network attends to distinct object parts such as tires, lights and side mirror for cars. Our method seems to learn local features similar to keypoints used by other methods, without ever having seen explicitly labeled keypoint ground truth. Another advantage is that our network learns task-speciﬁc local features, while human-labeled keypoints are not necessarily the best ones for the task.\n\nthe location of the 3D box center projection in the image. This allows us to recover the camera ray towards the 3D box center. Any point on that ray can be described by a single parameter λ which is the distance from the camera center. Given the projection of the center of the 3D box and the box orientation, our goal is to estimate λ and the object dimen- sions: four unknowns for which we have four constraints between 2D box sides and 3D box corners. While the num- ber of parameters to be regressed in this representation is less than those of the proposed method, this representation is more sensitive to regression errors. When there is no con- straint on the physical dimension of the box, the optimiza- tion tries to satisfy the 2D detection box constraints even if the ﬁnal dimensions are not plausible for the category of the object.\n\nIn order to evaluate the robustness of this representation, we take the ground truth 3D boxes and add realistic noise either to the orientation or to the location of the center of the 3D bounding box while keeping the enclosing 2D bounding box intact. The reason that we added noise was to simulate the parameter estimation errors. 3D boxes reconstructed us- ing this formation satisfy the 2D-3D correspondences but have large box dimension errors as result of small errors in the orientation and box center estimates, as shown in Fig. 10. This investigation supports our choice of 3D re- gression parameters.",
+            "section": "methodology",
+            "section_idx": 3,
+            "citations": [
+                "5",
+                "4",
+                "24",
+                "22",
+                "28"
+            ]
+        },
+        {
+            "text": "7\n\n2017\n\n1\n\n0\n\n2 r p A 0 1 ] V C . s c [ 2 v 6 9 4 0 0 . 2 1 6 1 :\n\nv\n\narXiv\n\ni\n\nX\n\nr\n\na\n\n3D Bounding Box Estimation Using Deep Learning and Geometry\n\nArsalan Mousavian∗ George Mason University\n\nDragomir Anguelov Zoox, Inc.\n\nJohn Flynn Zoox, Inc.\n\namousavi@gmu.edu\n\ndrago@zoox.com\n\njohn.flynn@zoox.com\n\nJana Koˇseck´a George Mason University\n\nkosecka@gmu.edu\n\nAbstract\n\nWe present a method for 3D object detection and pose estimation from a single image. In contrast to current tech- niques that only regress the 3D orientation of an object, our method ﬁrst regresses relatively stable 3D object properties using a deep convolutional neural network and then com- bines these estimates with geometric constraints provided by a 2D object bounding box to produce a complete 3D bounding box. The ﬁrst network output estimates the 3D object orientation using a novel hybrid discrete-continuous loss, which signiﬁcantly outperforms the L2 loss. The sec- ond output regresses the 3D object dimensions, which have relatively little variance compared to alternatives and can often be predicted for many object types. These estimates, combined with the geometric constraints on translation im- posed by the 2D bounding box, enable us to recover a stable and accurate 3D object pose. We evaluate our method on the challenging KITTI object detection benchmark [2] both on the ofﬁcial metric of 3D orientation estimation and also on the accuracy of the obtained 3D bounding boxes. Al- though conceptually simple, our method outperforms more complex and computationally expensive approaches that leverage semantic segmentation, instance level segmenta- tion and ﬂat ground priors [4] and sub-category detec- tion [23][24]. Our discrete-continuous loss also produces state of the art results for 3D viewpoint estimation on the Pascal 3D+ dataset[26].\n\nFigure 1. Our method takes the 2D detection bounding box and estimates a 3D bounding box.\n\nsions of an object from an image. While recently developed 2D detection algorithms are capable of handling large varia- tions in viewpoint and clutter, accurate 3D object detection largely remains an open problem despite some promising recent work. The existing efforts to integrate pose estima- tion with state-of-the-art object detectors focus mostly on viewpoint estimation. They exploit the observation that the appearance of objects changes as a function of viewpoint and that discretization of viewpoints (parametrized by az- imuth and elevation) gives rise to sub-categories which can be trained discriminatively [23]. In more restrictive driving scenarios alternatives to full 3D pose estimation explore ex- haustive sampling and scoring of all hypotheses [4] using a variety of contextual and semantic cues.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "2",
+                "4",
+                "23",
+                "24",
+                "26",
+                "23",
+                "4"
+            ]
+        },
+        {
+            "text": "2. Related Work\n\nThe classical problem of 6 DoF pose estimation of an object instance from a single 2D image has been consid-\n\nered previously as a purely geometric problem known as the perspective n-point problem (PnP). Several closed form and iterative solutions assuming correspondences between 2D keypoints in the image and a 3D model of the object can be found in [10] and references therein. Other methods fo- cus on constructing 3D models of the object instances and then ﬁnding the 3D pose in the image that best matches the model [19, 6].\n\nWith the introduction of new challenging datasets [2, 26, 25, 12], 3D pose estimation has been extended to object cat- egories, which requires handling both the appearance vari- ations due to pose changes and the appearance variations within the category [9, 15]. In [16, 26] the object detec- tion framework of discriminative part based models (DPMs) is used to tackle the problem of pose estimation formu- lated jointly as a structured prediction problem, where each mixture component represents a different azimuth section. However, such approaches predict only an Euler angle sub- set with respect to the canonical object frame, while object dimensions and position are not estimated.\n\nAn alternative direction is to exploit the availability of 3D shape models and use those for 3D hypothesis sampling and reﬁnement. For example, Mottaghi et al. [13] sample the object viewpoint, position and size and then measure the similarity between rendered 3D CAD models of the ob- ject and the detection window using HOG features. A sim- ilar method for estimating the pose using the projection of CAD model object instances has been explored by [29] in a robotics table-top setting where the detection problem is less challenging. Given the coarse pose estimate obtained from a DPM-based detector, the continuous 6 DoF pose is reﬁned by estimating the correspondences between the pro- jected 3D model and the image contours. The evaluation was carried out on PASCAL3D+ or simple table top set- tings with limited clutter or scale variations. An extension of these methods to more challenging scenarios with signiﬁ- cant occlusion has been explored in [22], which uses dictio- naries of 3D voxel patterns learned from 3D CAD models that characterize both the object’s shape and commonly en- countered occlusion patterns.\n\nRecently, deep convolutional neural networks (CNN) have dramatically improved the performance of 2D object detection and several extensions have been proposed to in- clude 3D pose estimation. In [21] R-CNN [7] is used to detect objects and the resulting detected regions are passed as input to a pose estimation network. The pose network is initialized with VGG [20] and ﬁne-tuned for pose es- timation using ground truth annotations from Pascal 3D+. This approach is similar to [8], with the distinction of using separate pose weights for each category and a large num- ber of synthetic images with pose annotation ground truth for training. In [17], Poirson et al. discretize the object viewpoint and train a deep convolutional network to jointly\n\nperform viewpoint estimation and 2D detection. The net- work shares the pose parameter weights across all classes. In [21], Tulsiani et al. explore the relationship between coarse viewpoint estimation, followed by keypoint detec- tion, localization and pose estimation. Pavlakos et al [14], used CNN to localize the keypoints and they used the key- points and their 3D coordinates from meshes to recover the pose. However, their approach required training data with annotated keypoints.\n\nSeveral recent methods have explored 3D bounding box detection for driving scenarios and are most closely related to our method. Xiang et al. [23, 24] cluster the set of pos- sible object poses into viewpoint-dependent subcategories. These subcategories are obtained by clustering 3D voxel patterns introduced previously [22]; 3D CAD models are required to learn the pattern dictionaries. The subcategories capture both shape, viewpoint and occlusion patterns and are subsequently classiﬁed discriminatively [24] using deep CNNs. Another related approach by Chen et al. [4] ad- dresses the problem by sampling 3D boxes in the physical world assuming the ﬂat ground plane constraint. The boxes are scored using high level contextual, shape and category speciﬁc features. All of the above approaches require com- plicated preprocessing including high level features such as segmentation or 3D shape repositories and may not be suit- able for robots with limited computational resources.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "10",
+                "19, 6",
+                "2, 26, 25, 12",
+                "9, 15",
+                "16, 26",
+                "13",
+                "29",
+                "22",
+                "21",
+                "7",
+                "20",
+                "8",
+                "17",
+                "21",
+                "14",
+                "23, 24",
+                "22",
+                "24",
+                "4"
+            ]
+        },
+        {
+            "text": "3. 3D Bounding Box Estimation\n\nIn order to leverage the success of existing work on 2D object detection for 3D bounding box estimation, we use the fact that the perspective projection of a 3D bounding box should ﬁt tightly within its 2D detection window. We assume that the 2D object detector has been trained to pro- duce boxes that correspond to the bounding box of the pro- jected 3D box. The 3D bounding box is described by its center T = [tx,ty,tz]T, dimensions D = [dx,dy,dz], and orientation R(θ,φ,α) , here paramaterized by the azimuth, elevation and roll angles. Given the pose of the object in the camera coordinate frame (R,T) ∈ SE(3) and the camera intrinsics matrix K, the projection of a 3D point Xo = [X,Y,Z,1]T in the object’s coordinate frame into the image x = [x,y,1]T is:\n\nx=K[R T]X, ()\n\nAssuming that the origin of the object coordinate frame is at the center of the 3D bounding box and the ob- ject dimensions D are known, the coordinates of the 3D bounding box vertices can be described simply by X1 = [dx/2,dy/2,dz/2]T, X2 = [−dx/2,dy/2,dz/2]T, ... , X8 = [−dx/2,−dy/2,−dz/2]T. The constraint that the 3D bounding box ﬁts tightly into 2D detection window re- quires that each side of the 2D bounding box to be touched\n\nby the projection of at least one of the 3D box corners. For example, consider the projection of one 3D corner X0 = [dx/2,−dy/2,dz/2]T that touches the left side of the 2D bounding box with coordinate xmin. This point-to- side correspondence constraint results in the equation:\n\ndy /2 -d, [2 d./2 ” 1 K[R T| Zmin = x\n\nwhere (.)x refers to the x coordinate from the perspective projection. Similar equations can be derived for the remain- ing 2D box side parameters xmax,ymin,ymax. In total the sides of the 2D bounding box provide four constraints on the 3D bounding box. This is not enough to constrain the nine degrees of freedom (DoF) (three for translation, three for rotation, and three for box dimensions). There are sev- eral different geometric properties we could estimate from the visual appearance of the box to further constrain the 3D box. The main criteria is that they should be tied strongly to the visual appearance and further constrain the ﬁnal 3D box.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": []
+        },
+        {
+            "text": "3.1. Choice of Regression Parameters\n\nThe ﬁrst set of parameters that have a strong effect on the 3D bounding box is the orientation around each axis (θ,φ,α). Apart from them, we choose to regress the box dimensions D rather than translation T because the vari- ance of the dimension estimate is typically smaller (e.g. cars tend to be roughly the same size) and does not vary as the object orientation changes: a desirable property if we are also regressing orientation parameters. Furthermore, the dimension estimate is strongly tied to the appearance of a particular object subcategory and is likely to be ac- curately recovered if we can classify that subcategory. In Sec. 5.4 we carried out experiments on regressing alterna- tive parameters related to translation and found that choice of parameters matters: we obtained less accurate 3D box reconstructions using that parametrization. The CNN archi- tecture and the associated loss functions for this regression problem are discussed in Sec. 4.\n\n3.2. Correspondence Constraints\n\nUsing the regressed dimensions and orientations of the 3D box by CNN and 2D detection box we can solve for the translation T that minimizes the reprojection error with respect to the initial 2D detection box constraints in Equa- tion 2. Details of how to solve for translation are included in the supplementary material [1]. Each side of the 2D detec- tion box can correspond to any of the eight corners of the 3D box which results in 84 = 4096 conﬁgurations. Each differ- ent conﬁguration involves solving an over-constrained sys- tem of linear equations which is computationally fast and\n\nFigure 2. Correspondence between the 3D box and 2D bounding box: Each ﬁgure shows a 3D bbox that surrounds an object. The front face is shown in blue and the rear face is in red. The 3D points that are active constraints in each of the images are shown with a circle (best viewed in color).\n\ncan be done in parallel. In many scenarios the objects can be assumed to be always upright. In this case, the 2D box top and bottom correspond only to the projection of ver- tices from the top and bottom of the 3D box, respectively, which reduces the number of correspondences to 1024. Fur- thermore, when the relative object roll is close to zero, the vertical 2D box side coordinates xmin and xmax can only correspond to projections of points from vertical 3D box sides. Similarly, ymin and ymax can only correspond to point projections from the horizontal 3D box sides. Conse- quently, each vertical side of the 2D detection box can cor- respond to [±dx/2,.,±dz/2] and each horizontal side of the 2D bounding corresponds to [.,±dy/2,±dz/2], yield- ing 44 = 256 possible conﬁgurations. In the KITTI dataset, object pitch and roll angles are both zero, which further re- duces of the number of conﬁgurations to 64. Fig. 2 visual- izes some of the possible correspondences between 2D box sides and 3D box points that can occur.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "1"
+            ]
+        },
+        {
+            "text": "6. Conclusions and Future Directions\n\n5.4. Alternative Representation\n\nIn this section we demonstrate the importance of choos- ing suitable regression parameters within our estimation framework. Here instead of object dimensions, we regress\n\nIn this work, we show how to recover the 3D bound- ing boxes for known object categories from a single view. Using a novel MultiBin loss for orientation prediction and an effective choice of box dimensions as regression param- eters, our method estimates stable and accurate posed 3D bounding boxes without additional 3D shape models, or sampling strategies with complex pre-processing pipelines.\n\naero bike boat bottle MedErr((21]) | 13.8 MedErr((14]) | 80 MedErr(Ours) | 13.6 Acez((21]) 0.81 0.77 0.59 Accz(Ours) | 0.78 0.83 0.57\n\n17.7) 21.3\n\n129\n\n134 40.7)\n\n117\n\n12.5 22.8\n\n83\n\n0.93\n\n0.93\n\nbus\n\ncar\n\n58\n\n9.1\n\n20\n\n55\n\n3.1\n\n5.8\n\n0.98 0.89\n\n0.94 0.90\n\nchair table mbike sofa train\n\ntv\n\nmean\n\n148\n\n15.2\n\n147\n\n13.7\n\n87\n\n15.4}\n\n13.6\n\n104\n\nN/A\n\nNA\n\n96\n\n83\n\n32.9]\n\nN/A\n\n11.9\n\n0.80\n\n0.80\n\n125\n\n0.62\n\n0.68\n\n123\n\n0.88\n\n0.86\n\n11.9] 0.82 0.80 0.80 | 0.8075 0.82 0.82 0.85 | 0.8103\n\n128\n\n63\n\n11.1\n\nTable 3. Viewpoint Estimation with Ground Truth box on Pascal3D+\n\n7 ‘Ours Ours-Avg Size =E-subcnn Mean Distance Error 1 (0-101 (20-20) (20-30) (30-40) >40 Ground Truth Distance\n\n6 Fous ours-avg Size Esubenn Distance to Impact Error 9 (0-101 [10-20] (20-30) Ground Truth Distance 1 (30-40) 340\n\n‘Ours | ours-ava size He Subcnn 9° (0-107 110-20] [20-301_——[30-40) 340 Ground Truth Distance\n\nFigure 8. 3D box metrics for KITTI cars. Left: Mean distance error for box center, in meters. Middle: Error in estimating the closest distance from the 3D box to the camera, which is proportional to time-to-impact for driving scenarios. Right: 3D IoU between the predicted and ground truth 3D bounding boxes.\n\ndataset # of Bins 1 2 4 8 16 KITTI OS 0.89 0.98 0.97 0.97 0.96 Acc π Pascal3D+ 0.65 0.72 0.78 0.81 0.77 6\n\nTable 4. The effect of the number of bins on viewpoint estimation",
+            "section": "other",
+            "section_idx": 4,
+            "citations": []
+        },
+        {
+            "text": "in KITTI and Pascal3D+ datasets\n\nFC 64 128 256 512 1024 OS 0.9583 0.9607 0.9808 0.9854 0.9861\n\nTable 5. effect of FC width in orientation accuracy\n\nFigure 10. Illustration of the sensitivity of the alternative represen- tation that is estimating both dimensions and translation from geo- metric constraints. We added small amount of noise to the ground truth angles and tried to recover the ground truth box again. All other parameters are set to the ground truth values.\n\nral information effectively and can enable the prediction of future object position and velocity.\n\nFigure 9. Visualization of the learned attention of the model for orientation estimation. The heatmap shows the image areas that contribute to orientation estimation the most. The network attends to certain meaningful parts of the car such as tires, lights, and side mirrors.\n\nReferences\n\n[1] Supplementary materials. http://bit.ly/2oYMpuw. 3, 5\n\n[2] P. L. A. Geiger and R. Urtasun. Are we ready for autonomous driving? the KITTI vision benchmark suite. In CVPR, 2012. 1, 2, 5, 6\n\n[3] Z. Cai, Q. Fan, R. Feris, and N. Vasconcelos. A uniﬁed multi-scale deep convolutional neural network for fast object detection. In ECCV, 2016. 2, 5\n\nOne future direction is to explore the beneﬁts of augmenting the RGB image input in our method with a separate depth channel computed using stereo. Another is to explore 3D box estimation in video, which requires using the tempo-\n\n[4] X. Chen, K. Kundu, Z. Zhang, H. Ma, S. Fidler, and R. Urta- sun. Monocular 3d object detection for autonomous driving. In IEEE CVPR, 2016. 1, 2, 3, 8\n\n[5] X. Chen, K. Kundu, Y. Zhu, A. Berneshawi, H. Ma, S. Fidler, and R. Urtasun. 3d object proposals for accurate object class detection. In NIPS, 2015. 6, 8\n\n[6] V. Ferrari, T. Tuytelaars, and L. Gool. Simultaneous object recognition and segmentation from single or multiple model views. International Journal of Computer Vision (IJCV), 62(2):159–188, 2006. 2\n\n[7] R. Girshick, J. D. T. Darrell, and J. Malik. Rich feature hier- archies for accurate object detection and semantic segmenta- tion. In CVPR, 2015. 2\n\n[8] S. Hao, Q. Charles, L. Yangyan, and G. Leonidas. Render for cnn: Viewpoint estimation in images using cnns trained with rendered 3d model views. In The IEEE International Conference on Computer Vision (ICCV), December 2015. 2\n\n[9] A. Kar, S. Tulsiani, J. Carreira, and J. Malik. Category- speciﬁc object reconstruction from a single image. In CVPR, 2015. 2\n\n[10] V. Lepetit, F. Moreno-Noguer, and P. Fua. EPnP: An Accu- rate O(n) Solution to the PnP Problem. International Journal of Computer Vision (IJCV), 2009. 2\n\n[11] W. Liu, D. Anguelov, D. Erhan, C. Szegedy, S. Reed, C.-Y. Fu, and A. C. Berg. Ssd: Single shot multibox detector. In ECCV, 2016. 5\n\n[12] K. Matzen and N. Snavely. Nyc3dcars: A dataset of 3d ve- hicles in geographic context. In ICCV, 2013. 2\n\n[13] R. Mottaghi, Y. Xiang, and S. Savarese. A coarse-to-ﬁne model for 3d pose estimation and sub-category recognition. In Proceedings of the IEEE International Conference on Computer Vision and Pattern Recognition, 2015. 2\n\n[14] G. Pavlakos, X. Zhou, A. Chan, K. G. Derpanis, and K. Dani- ilidis. 6-dof object pose from semantic keypoints. In ICRA, 2017. 3, 6, 9\n\n[15] B. Pepik, M. Stark, P. Gehler, T. Ritschel, and B. Schiele. 3d object class detection in the wild. In CVPR, 2015. 2\n\n[16] B. Pepik, M. Stark, P. Gehler, and B. Schiele. Teaching 3d geometry to deformable part models. In CVPR, 2012. 2\n\n[17] P. Poirson, P. Ammirato, A. Berg, and J. Kosecka. Fast single shot detection and pose estimation. In 3DV, 2016. 2\n\n[18] J. Redmon, S. Divvala, R. Girshick, and A. Farhadi. You only look once: Uniﬁed, real-time object detection. CVPR, 2016. 5 In\n\n[19] F. Rothganger, S. Lazebnik, C. Schmid, and J. Ponce. 3d object modeling and recognition using local afﬁne-invariant image descriptors and multi-view spatial constraints. IJCV, 66(3):231-259, 2006. 2\n\n[20] K. Simonyan and A. Zisserman. Very deep convolu- tional networks for large-scale image recognition. CoRR, abs/1409.1556, 2014. 2, 5\n\n[21] S. Tulsiani and J. Malik. Viewpoints and keypoints. In CVPR, 2015. 2, 3, 6, 9\n\n[22] Y. Xiang, W. Choi, Y. Lin, and S. Savarese. Data-driven 3d voxed patterns for object categorry recognition. In Proceed- ings of the International Conference on Learning Represen- tation, 2015. 2, 3, 7, 8\n\n[23] Y. Xiang, W. Choi, Y. Lin, and S. Savarese. Data-driven 3d voxel patterns for object category recognition. In Pro- ceedings of the IEEE International Conference on Computer Vision and Pattern Recognition, 2015. 1, 3, 6\n\n[24] Y. Xiang, W. Choi, Y. Lin, and S. Savarese. Subcategory- aware convolutional neural networks for object proposals and detection. In arXiv:1604.04693. 2016. 1, 2, 3, 6, 8\n\n[25] Y. Xiang, W. Kim, W. Chen, J. Ji, C. Choy, H. Su, R. Mot- taghi, L. Guibas, and S. Savarese. Objectnet3d: A large scale database for 3d object recognition. In ECCV, 2016. 2\n\n[26] Y. Xiang, R. Mottaghi, and S. Savarase. Beyond pascal: A benchmark for 3d object detection in the wild. In WACV, 2014. 1, 2, 5\n\n[27] R. Zhang, P. Isola, and A. Efros. Colorful image colorization. In ECCV, 2016. 5\n\n[28] B. Zhou, A. Khosla, A. Lapedriza, A. Oliva, and A. Torralba. Object detectors emerge in deep scene cnns. In Proceedings of the International Conference on Learning Representation, 2015. 8\n\n[29] M. Zhu, K. G. Derpanis, Y. Yang, S. Brahmbhatt, M. Zhang, C. Phillips, M. Lecce, and K. Daniilidis. Single image 3d object detection and pose estimation for grasping. In IEEE ICRA, 2013. 2",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\24cee2d7-b329-411b-b778-a4618e85bc31.jpg",
+            "description": "This figure presents a component of a neural network architecture, likely used for object detection or recognition tasks. It begins with \"Shared Convolutional Features,\" indicating a backbone of shared feature extraction layers, typically convolutional neural networks (CNNs). The features are then passed through multiple fully connected (FC) layers, which are organized into three parallel branches, each responsible for different tasks:\n\n1. **Dimensions**: This branch predicts the dimensions of the detected objects, which could refer to bounding box regression or the size of the objects.\n\n2. **L2 Norm**: This branch appears to normalize the output, possibly for stable training or to enhance feature discrimination. The mention of \"Angle sin + cos\" suggests that this branch may also be involved in predicting orientation or rotation of objects using trigonometric functions.\n\n3. **Confidences**: The final branch is likely responsible for predicting the confidence scores, which indicate the probability of the presence of objects in the detected regions.\n\nThe figure is important as it outlines the methodology used in the research, showing how shared features are processed to derive different outputs essential for the model's performance. This diagram illustrates key components of the network architecture and their roles, making it crucial for understanding the overall methodology.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\56ab03e3-98fe-4946-a606-0149d40d3520.jpg",
+            "description": "This figure is a line graph comparing the performance of different methods based on the metric of 3D Intersection over Union (IoU) across various ground truth distances. The x-axis represents different ranges of ground truth distances, segmented into intervals (e.g., [0-10], [10-20], etc.), while the y-axis represents the 3D IoU values. Three methods are compared: \"Ours\" (in red), \"Ours-Avg Size\" (in green), and \"SubCNN\" (in blue). Each method’s performance trend is illustrated with lines and error bars indicating variability or uncertainty. The graph shows that the \"Ours\" method consistently outperforms the others across all distance ranges, suggesting it is more effective at maintaining higher 3D IoU. This figure is important for understanding the comparative effectiveness of the proposed method against existing techniques, highlighting its strengths in maintaining accuracy at varying distances.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\cc29306c-a1e0-44f5-a663-8eab7626d28d.jpg",
+            "description": "This figure is a line graph comparing the performance of three different models on the metric \"Distance to Impact Error\" across various \"Ground Truth Distance\" intervals. The models compared are labeled as \"Ours,\" \"Ours-Avg Size,\" and \"SubCNN.\" The x-axis represents different ranges of ground truth distances, divided into intervals: [0-10], [10-20], [20-30], [30-40], and >40. The y-axis represents the error in terms of distance to impact. Each line represents the performance of one model, with \"Ours\" in red, \"Ours-Avg Size\" in green, and \"SubCNN\" in blue. The error bars indicate variability or uncertainty in the measurements. The graph shows how each model's error changes with increasing ground truth distance, highlighting that the \"Ours\" model generally has a lower error compared to \"SubCNN,\" especially at larger distances. This figure is important as it visualizes the comparative effectiveness of the proposed method against a baseline, demonstrating its advantages or improvements in performance.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\d93b86d5-a79f-4034-be87-78552e53b6ed.jpg",
+            "description": "This figure is a line graph comparing the performance of three different methods in terms of Mean Distance Error across different ranges of Ground Truth Distance. The three methods are labeled as \"Ours\" (red line), \"Ours-Avg Size\" (green line), and \"SubCNN\" (blue line). The x-axis categorizes the Ground Truth Distance into intervals ([0-10], [10-20], [20-30], [30-40], >40), while the y-axis represents the Mean Distance Error. Each line includes error bars, indicating variability or confidence intervals for the error measurements.\n\nThe figure demonstrates that both variations of the \"Ours\" method (red and green lines) generally perform better (lower Mean Distance Error) than the \"SubCNN\" method (blue line) across all distance intervals. The performance difference becomes more pronounced at larger Ground Truth Distances. This visualization is important as it illustrates the effectiveness of the proposed methods compared to an existing approach, highlighting a key result in the research.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\ab4e5edc-363a-49a2-9cc6-20d77d5428a0.jpg",
+            "description": "This figure appears to be a series of images showing a car on a road, likely used to illustrate a process such as object detection, tracking, or image processing in an autonomous driving context. The sequence of images seems to depict a progression or transformation, possibly showing the original input images alongside processed outputs. The left column shows images of a car from the rear, potentially indicating focus on the vehicle, while the right column shows the road ahead, suggesting an analysis of the vehicle's environment. The blurring in some images may indicate the application of a specific algorithm or technique aimed at object recognition or motion analysis. This figure likely supports the research by visualizing a key component or result of a vision system used in autonomous vehicles.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\139bc747-a6aa-45ed-ac41-73ef7ea5a441.jpg",
+            "description": "The figure appears to be an image from a computer vision system used for object detection, likely within the context of autonomous driving or advanced driver-assistance systems. It shows a street scene with various vehicles and one pedestrian identified by colored bounding boxes. The red bounding boxes highlight detected vehicles, while a green bounding box denotes a detected pedestrian. This visualization is likely illustrating the capability of an algorithm to identify and classify objects in real-time traffic scenarios, which is an important aspect of the methodology or key results being presented in the research paper.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\19b58627-81a4-4796-8ad3-9d507a9711a6.jpg",
+            "description": "The figure is an image from a research paper likely focused on computer vision or autonomous driving. It shows a street scene with multiple vehicles and a pedestrian. The image includes several bounding boxes, which are used to annotate or detect objects within the scene. Red boxes typically indicate detected vehicles, while the green box likely represents the detected pedestrian. This visual representation is important for illustrating the capability of an object detection algorithm or system, demonstrating how well it can identify and differentiate between various objects in a real-world environment. This figure is crucial for understanding the methodology and effectiveness of the detection system being discussed in the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\bb165581-8c70-44d5-a689-8313138b3797.jpg",
+            "description": "The figure appears to depict the output of an object detection algorithm applied to an image of an urban street scene. It shows bounding boxes drawn around detected objects, with different colors indicating different classes or confidence levels. Green boxes likely signify correctly detected objects (e.g., pedestrians, cyclists), while red boxes might indicate false positives or less confident detections. This visualization helps illustrate the effectiveness and accuracy of the detection algorithm in real-world scenarios. The context of the research paper would determine how critical this figure is to understanding the core findings or methodologies.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\35f61918-a142-4fa5-9008-8be4124ce3ea.jpg",
+            "description": "The figure appears to be an example of object detection in a street scene, likely using computer vision techniques. It shows a street with various objects outlined by colored bounding boxes. The green box typically indicates detected pedestrians or cyclists, while red boxes might indicate vehicles or other objects of interest. This visualization illustrates the functionality of an object detection algorithm, which is critical for applications like autonomous driving or surveillance. The figure likely demonstrates the algorithm's ability to identify and differentiate between multiple objects in a real-world environment, showcasing its practical implementation and effectiveness.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\fdf0d009-607c-456f-80fc-7e738d657a48.jpg",
+            "description": "This figure is an image of a road intersection, featuring several vehicles and pedestrians that have been detected and highlighted with red bounding boxes. It likely illustrates object detection results, which is a key component in research related to computer vision, autonomous driving, or traffic analysis. The figure demonstrates the capability of a detection algorithm to identify and localize objects in a real-world scenario. There are no graphs, charts, mathematical formulas, or flowcharts present, but the visual output is crucial for showcasing the effectiveness of the detection method being researched. This contributes significantly to understanding the practical application and accuracy of the methodology discussed in the paper.",
+            "importance": 7
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Synthetic dataset generation",
+            "Loss functions",
+            "Performance comparison",
+            "Constraint-based modeling",
+            "3D Reconstruction",
+            "Convolutional Neural Networks (CNNs)"
+        ],
+        "methodology": [
+            "Linear regression",
+            "Generative Deep Learning",
+            "Histogram of Oriented Gradients",
+            "VGG-16 Initialization & Fine-Tuning with MatConvNet/VLFeat",
+            "Sampling techniques",
+            "MultiBin analysis",
+            "3D projection",
+            "Multi-scale encoding",
+            "Geometric Regression",
+            "Plug-and-play solutions",
+            "3D IoU",
+            "Mask R-CNN",
+            "Orientation Estimation",
+            "Reconstruction error",
+            "Attention Mechanisms",
+            "Gradient-based optimization",
+            "3D Shape Estimation",
+            "Camera superpixel processing",
+            "Loss Function"
+        ],
+        "domain": [
+            "3D Computer Vision",
+            "Autonomous technology",
+            "Robotic tabletop simulation",
+            "Vehicle detection"
+        ],
+        "strengths": [
+            "Efficiently outperforms existing methods",
+            "Enhanced tri-plane transformer pipeline",
+            "Local feature learning",
+            "Deep Learning Toolbox",
+            "Geometric invariance",
+            "Multi-modal dimension regression",
+            "Benchmarking",
+            "MultiBin Optimization",
+            "Unified Appearance Modeling",
+            "Competitive benchmarking",
+            "3D Shape Reconstruction",
+            "lower variability in dimension estimate"
+        ],
+        "limitations": [
+            "Wild scene appearance generalization difficulties",
+            "Sparse ground truth",
+            "Resolution limitations",
+            "Limitations of current methods",
+            "Underconstrained system",
+            "Over-processing",
+            "Pose-dependent reconstruction error",
+            "Error sensitivity",
+            "Ambiguity in 3D reconstruction",
+            "Limited dataset requirements",
+            "Sparse object detection",
+            "Imperfect mask prediction",
+            "Limited 3D cuboid recovery",
+            "Noise susceptibility"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1612.00496v2_chunk_0",
+            "section": "introduction",
+            "citations": [
+                "3",
+                "2",
+                "26",
+                "24, 4"
+            ]
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "27",
+                "18",
+                "11",
+                "1"
+            ]
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_2",
+            "section": "methodology",
+            "citations": [
+                "2",
+                "26",
+                "3",
+                "20",
+                "24",
+                "21",
+                "21"
+            ]
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_3",
+            "section": "methodology",
+            "citations": [
+                "2",
+                "24",
+                "5",
+                "24",
+                "23",
+                "21",
+                "14",
+                "24",
+                "24",
+                "22",
+                "5",
+                "4",
+                "24"
+            ]
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_4",
+            "section": "methodology",
+            "citations": [
+                "5",
+                "4",
+                "24",
+                "22",
+                "28"
+            ]
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_5",
+            "section": "other",
+            "citations": [
+                "2",
+                "4",
+                "23",
+                "24",
+                "26",
+                "23",
+                "4"
+            ]
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_6",
+            "section": "other",
+            "citations": [
+                "10",
+                "19, 6",
+                "2, 26, 25, 12",
+                "9, 15",
+                "16, 26",
+                "13",
+                "29",
+                "22",
+                "21",
+                "7",
+                "20",
+                "8",
+                "17",
+                "21",
+                "14",
+                "23, 24",
+                "22",
+                "24",
+                "4"
+            ]
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_7",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_8",
+            "section": "other",
+            "citations": [
+                "1"
+            ]
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_9",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1612.00496v2_chunk_10",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29"
+            ]
+        }
+    ]
+}

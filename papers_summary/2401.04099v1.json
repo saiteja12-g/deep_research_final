@@ -1,0 +1,1043 @@
+{
+    "basic_info": {
+        "title": "AGG: Amortized Generative 3D Gaussians for Single Image to 3D",
+        "authors": [
+            "Dejia Xu",
+            "Ye Yuan",
+            "Morteza Mardani",
+            "Sifei Liu",
+            "Jiaming Song",
+            "Zhangyang Wang",
+            "Arash Vahdat"
+        ],
+        "paper_id": "2401.04099v1",
+        "published_year": 2024,
+        "references": [
+            "1612.00603v2",
+            "2303.16509v2"
+        ]
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "Jonathan T Barron, Ben Mildenhall, Matthew Tancik, Peter\nHedman, Ricardo Martin-Brualla, and Pratul P Srinivasan.\nMip-nerf: A multiscale representation for anti-aliasing neu-\nral radiance fields. In Proceedings of the IEEE/CVF Inter-\nnational Conference on Computer Vision , pages 5855–5864,\n2021. 2",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "Jonathan T Barron, Ben Mildenhall, Dor Verbin, Pratul P\nSrinivasan, and Peter Hedman. Mip-nerf 360: Un-\nbounded anti-aliased neural radiance fields. arXiv preprint\narXiv:2111.12077 , 2021. 2",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": "2111.12077"
+        },
+        "ref_3": {
+            "text": "Jonathan T. Barron, Ben Mildenhall, Dor Verbin, Pratul P.\nSrinivasan, and Peter Hedman. Zip-nerf: Anti-aliased grid-\nbased neural radiance fields. ICCV , 2023. 3",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "Ananta R Bhattarai, Matthias Nießner, and Artem Sev-\nastopolsky. Triplanenet: An encoder for eg3d inversion.\narXiv preprint arXiv:2303.13497 , 2023. 3",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": "2303.13497"
+        },
+        "ref_5": {
+            "text": "Eric R Chan, Connor Z Lin, Matthew A Chan, Koki Nagano,\nBoxiao Pan, Shalini De Mello, Orazio Gallo, Leonidas J\nGuibas, Jonathan Tremblay, Sameh Khamis, et al. Efficient\ngeometry-aware 3d generative adversarial networks. In Pro-\nceedings of the IEEE/CVF Conference on Computer Vision\nand Pattern Recognition , pages 16123–16133, 2022. 1, 3, 4",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "Anpei Chen, Zexiang Xu, Andreas Geiger, Jingyi Yu, and\nHao Su. Tensorf: Tensorial radiance fields. In European\nConference on Computer Vision , pages 333–350. Springer,\n2022. 3",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "Hansheng Chen, Jiatao Gu, Anpei Chen, Wei Tian, Zhuowen\nTu, Lingjie Liu, and Hao Su. Single-stage diffusion nerf: A\nunified approach to 3d generation and reconstruction. arXiv\npreprint arXiv:2304.06714 , 2023. 1",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": "2304.06714"
+        },
+        "ref_8": {
+            "text": "Zilong Chen, Feng Wang, and Huaping Liu. Text-to-3d using\ngaussian splatting. arXiv preprint arXiv:2309.16585 , 2023.\n1, 2, 3",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": "2309.16585"
+        },
+        "ref_9": {
+            "text": "Christopher B Choy, Danfei Xu, JunYoung Gwak, Kevin\nChen, and Silvio Savarese. 3d-r2n2: A unified approach\nfor single and multi-view 3d object reconstruction. In Com-\nputer Vision–ECCV 2016: 14th European Conference, Am-\nsterdam, The Netherlands, October 11-14, 2016, Proceed-\nings, Part VIII 14 , pages 628–644. Springer, 2016. 2, 3",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "Matt Deitke, Dustin Schwenk, Jordi Salvador, Luca Weihs,\nOscar Michel, Eli VanderBilt, Ludwig Schmidt, Kiana\nEhsani, Aniruddha Kembhavi, and Ali Farhadi. Objaverse:\nA universe of annotated 3d objects. In Proceedings of\nthe IEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 13142–13153, 2023. 1, 2, 8",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "Congyue Deng, Chiyu Jiang, Charles R Qi, Xinchen Yan,\nYin Zhou, Leonidas Guibas, Dragomir Anguelov, et al.\nNerdi: Single-view nerf synthesis with language-guided dif-\nfusion as general image priors. In Proceedings of the\nIEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 20637–20647, 2023. 2, 3",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": null
+        },
+        "ref_12": {
+            "text": "Ziya Erkoc ¸, Fangchang Ma, Qi Shan, Matthias Nießner,\nand Angela Dai. Hyperdiffusion: Generating implicitneural fields with weight-space diffusion. arXiv preprint\narXiv:2303.17015 , 2023. 1, 2, 3",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": "2303.17015"
+        },
+        "ref_13": {
+            "text": "Haoqiang Fan, Hao Su, and Leonidas J Guibas. A point set\ngeneration network for 3d object reconstruction from a single\nimage. In Proceedings of the IEEE conference on computer\nvision and pattern recognition , pages 605–613, 2017. 2, 3",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "Sara Fridovich-Keil, Giacomo Meanti, Frederik Rahbæk\nWarburg, Benjamin Recht, and Angjoo Kanazawa. K-planes:\nExplicit radiance fields in space, time, and appearance. In\nProceedings of the IEEE/CVF Conference on Computer Vi-\nsion and Pattern Recognition , pages 12479–12488, 2023. 3",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "Jun Gao, Tianchang Shen, Zian Wang, Wenzheng Chen,\nKangxue Yin, Daiqing Li, Or Litany, Zan Gojcic, and Sanja\nFidler. Get3d: A generative model of high quality 3d tex-\ntured shapes learned from images. Advances In Neural In-\nformation Processing Systems , 35:31841–31854, 2022. 1, 2,\n3",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": null
+        },
+        "ref_16": {
+            "text": "Rohit Girdhar, David F Fouhey, Mikel Rodriguez, and Ab-\nhinav Gupta. Learning a predictable and generative vec-\ntor representation for objects. In Computer Vision–ECCV\n2016: 14th European Conference, Amsterdam, The Nether-\nlands, October 11-14, 2016, Proceedings, Part VI 14 , pages\n484–499. Springer, 2016. 2, 3",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": null
+        },
+        "ref_17": {
+            "text": "Heewoo Jun and Alex Nichol. Shap-e: Generat-\ning conditional 3d implicit functions. arXiv preprint\narXiv:2305.02463 , 2023. 2",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": "2305.02463"
+        },
+        "ref_18": {
+            "text": "Angjoo Kanazawa, Shubham Tulsiani, Alexei A Efros, and\nJitendra Malik. Learning category-specific mesh reconstruc-\ntion from image collections. In Proceedings of the Euro-\npean Conference on Computer Vision (ECCV) , pages 371–\n386, 2018. 2, 3",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "Animesh Karnewar, Andrea Vedaldi, David Novotny, and\nNiloy J Mitra. Holodiffusion: Training a 3d diffusion model\nusing 2d images. In Proceedings of the IEEE/CVF Con-\nference on Computer Vision and Pattern Recognition , pages\n18423–18433, 2023. 1",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "Bernhard Kerbl, Georgios Kopanas, Thomas Leimk ¨uhler,\nand George Drettakis. 3d gaussian splatting for real-time\nradiance field rendering. ACM Transactions on Graphics\n(ToG) , 42(4):1–14, 2023. 1, 2, 3, 4",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "Jiaxin Li, Zijian Feng, Qi She, Henghui Ding, Changhu\nWang, and Gim Hee Lee. Mine: Towards continuous depth\nmpi with nerf for novel view synthesis. In Proceedings of\nthe IEEE/CVF International Conference on Computer Vi-\nsion, pages 12578–12588, 2021. 1, 2",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "Stefan Lionar, Xiangyu Xu, Min Lin, and Gim Hee Lee. Nu-\nmcc: Multiview compressive coding with neighborhood de-\ncoder and repulsive udf. arXiv preprint arXiv:2307.09112 ,\n2023. 1, 2, 3",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": "2307.09112"
+        },
+        "ref_23": {
+            "text": "Minghua Liu, Chao Xu, Haian Jin, Linghao Chen,\nMukund Varma T, Zexiang Xu, and Hao Su. One-2-3-45:\nAny single image to 3d mesh in 45 seconds without per-\nshape optimization. arXiv preprint arXiv:2306.16928 , 2023.\n1, 2, 6, 8",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": "2306.16928"
+        },
+        "ref_24": {
+            "text": "Ruoshi Liu, Rundi Wu, Basile Van Hoorick, Pavel Tok-\nmakov, Sergey Zakharov, and Carl V ondrick. Zero-1-to-\n3: Zero-shot one image to 3d object. arXiv preprint\narXiv:2303.11328 , 2023. 1, 2, 4, 6, 8",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": "2303.11328"
+        },
+        "ref_25": {
+            "text": "Yuan Liu, Cheng Lin, Zijiao Zeng, Xiaoxiao Long, Lingjie\nLiu, Taku Komura, and Wenping Wang. Syncdreamer: Gen-\nerating multiview-consistent images from a single-view im-\nage. arXiv preprint arXiv:2309.03453 , 2023. 4",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": "2309.03453"
+        },
+        "ref_26": {
+            "text": "Zhijian Liu, Haotian Tang, Yujun Lin, and Song Han. Point-\nvoxel cnn for efficient 3d deep learning. Advances in Neural\nInformation Processing Systems , 32, 2019. 5",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "Xiaoxiao Long, Cheng Lin, Peng Wang, Taku Komura, and\nWenping Wang. Sparseneus: Fast generalizable neural sur-\nface reconstruction from sparse views. In European Confer-\nence on Computer Vision , pages 210–227. Springer, 2022.\n6",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "Jonathan Lorraine, Kevin Xie, Xiaohui Zeng, Chen-Hsuan\nLin, Towaki Takikawa, Nicholas Sharp, Tsung-Yi Lin,\nMing-Yu Liu, Sanja Fidler, and James Lucas. Att3d:\nAmortized text-to-3d object synthesis. arXiv preprint\narXiv:2306.07349 , 2023. 3",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": "2306.07349"
+        },
+        "ref_29": {
+            "text": "Luke Melas-Kyriazi, Iro Laina, Christian Rupprecht, and\nAndrea Vedaldi. Realfusion: 360deg reconstruction of any\nobject from a single image. In Proceedings of the IEEE/CVF\nConference on Computer Vision and Pattern Recognition ,\npages 8446–8455, 2023. 1, 2, 3",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_30": {
+            "text": "Ben Mildenhall, Pratul P Srinivasan, Matthew Tancik,\nJonathan T Barron, Ravi Ramamoorthi, and Ren Ng. Nerf:\nRepresenting scenes as neural radiance fields for view syn-\nthesis. In European conference on computer vision , pages\n405–421. Springer, 2020. 1, 2",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": null
+        },
+        "ref_31": {
+            "text": "Thomas M ¨uller, Alex Evans, Christoph Schied, and Alexan-\nder Keller. Instant neural graphics primitives with a multires-\nolution hash encoding. arXiv preprint arXiv:2201.05989 ,\n2022. 1, 3",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": "2201.05989"
+        },
+        "ref_32": {
+            "text": "Alex Nichol, Heewoo Jun, Prafulla Dhariwal, Pamela\nMishkin, and Mark Chen. Point-e: A system for generat-\ning 3d point clouds from complex prompts. arXiv preprint\narXiv:2212.08751 , 2022. 2, 6, 8",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": "2212.08751"
+        },
+        "ref_33": {
+            "text": "Maxime Oquab, Timoth ´ee Darcet, Th ´eo Moutakanni, Huy\nV o, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez,\nDaniel Haziza, Francisco Massa, Alaaeldin El-Nouby, et al.\nDinov2: Learning robust visual features without supervision.\narXiv preprint arXiv:2304.07193 , 2023. 6",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": "2304.07193"
+        },
+        "ref_34": {
+            "text": "Roy Or-El, Xuan Luo, Mengyi Shan, Eli Shecht-\nman, Jeong Joon Park, and Ira Kemelmacher-Shlizerman.\nStylesdf: High-resolution 3d-consistent image and geome-\ntry generation. In Proceedings of the IEEE/CVF Conference\non Computer Vision and Pattern Recognition , pages 13503–\n13513, 2022. 1",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": null
+        },
+        "ref_35": {
+            "text": "Ben Poole, Ajay Jain, Jonathan T Barron, and Ben Milden-\nhall. Dreamfusion: Text-to-3d using 2d diffusion. arXiv\npreprint arXiv:2209.14988 , 2022. 1, 3, 8",
+            "type": "numeric",
+            "number": "35",
+            "arxiv_id": "2209.14988"
+        },
+        "ref_36": {
+            "text": "Guocheng Qian, Abdulellah Abualshour, Guohao Li, Ali\nThabet, and Bernard Ghanem. Pu-gcn: Point cloud upsam-\npling using graph convolutional networks. In Proceedings of\nthe IEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 11683–11692, 2021. 5",
+            "type": "numeric",
+            "number": "36",
+            "arxiv_id": null
+        },
+        "ref_37": {
+            "text": "Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya\nRamesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry,\nAmanda Askell, Pamela Mishkin, Jack Clark, et al. Learn-ing transferable visual models from natural language super-\nvision. In International Conference on Machine Learning ,\npages 8748–8763. PMLR, 2021. 4",
+            "type": "numeric",
+            "number": "37",
+            "arxiv_id": null
+        },
+        "ref_38": {
+            "text": "Robin Rombach, Andreas Blattmann, Dominik Lorenz,\nPatrick Esser, and Bj ¨orn Ommer. High-resolution image\nsynthesis with latent diffusion models. In Proceedings of\nthe IEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 10684–10695, 2022. 4",
+            "type": "numeric",
+            "number": "38",
+            "arxiv_id": null
+        },
+        "ref_39": {
+            "text": "Katja Schwarz, Axel Sauer, Michael Niemeyer, Yiyi Liao,\nand Andreas Geiger. V oxgraf: Fast 3d-aware image synthe-\nsis with sparse voxel grids. Advances in Neural Information\nProcessing Systems , 35:33999–34011, 2022. 1",
+            "type": "numeric",
+            "number": "39",
+            "arxiv_id": null
+        },
+        "ref_40": {
+            "text": "Junyoung Seo, Wooseok Jang, Min-Seop Kwak, Jaehoon\nKo, Hyeonsu Kim, Junho Kim, Jin-Hwa Kim, Jiyoung Lee,\nand Seungryong Kim. Let 2d diffusion model know 3d-\nconsistency for robust text-to-3d generation. arXiv preprint\narXiv:2303.07937 , 2023. 2, 3",
+            "type": "numeric",
+            "number": "40",
+            "arxiv_id": "2303.07937"
+        },
+        "ref_41": {
+            "text": "Wenzhe Shi, Jose Caballero, Ferenc Husz ´ar, Johannes Totz,\nAndrew P Aitken, Rob Bishop, Daniel Rueckert, and Zehan\nWang. Real-time single image and video super-resolution\nusing an efficient sub-pixel convolutional neural network. In\nProceedings of the IEEE conference on computer vision and\npattern recognition , pages 1874–1883, 2016. 5",
+            "type": "numeric",
+            "number": "41",
+            "arxiv_id": null
+        },
+        "ref_42": {
+            "text": "Meng-Li Shih, Shih-Yang Su, Johannes Kopf, and Jia-Bin\nHuang. 3d photography using context-aware layered depth\ninpainting. In Proceedings of the IEEE/CVF Conference\non Computer Vision and Pattern Recognition , pages 8028–\n8038, 2020. 1, 2",
+            "type": "numeric",
+            "number": "42",
+            "arxiv_id": null
+        },
+        "ref_43": {
+            "text": "Matthew Tancik, Vincent Casser, Xinchen Yan, Sabeek Prad-\nhan, Ben Mildenhall, Pratul P Srinivasan, Jonathan T Barron,\nand Henrik Kretzschmar. Block-nerf: Scalable large scene\nneural view synthesis. In Proceedings of the IEEE/CVF Con-\nference on Computer Vision and Pattern Recognition , pages\n8248–8258, 2022. 3",
+            "type": "numeric",
+            "number": "43",
+            "arxiv_id": null
+        },
+        "ref_44": {
+            "text": "Jiaxiang Tang, Jiawei Ren, Hang Zhou, Ziwei Liu, and Gang\nZeng. Dreamgaussian: Generative gaussian splatting for effi-\ncient 3d content creation. arXiv preprint arXiv:2309.16653 ,\n2023. 1, 2, 3, 6, 8",
+            "type": "numeric",
+            "number": "44",
+            "arxiv_id": "2309.16653"
+        },
+        "ref_45": {
+            "text": "Junshu Tang, Tengfei Wang, Bo Zhang, Ting Zhang, Ran Yi,\nLizhuang Ma, and Dong Chen. Make-it-3d: High-fidelity\n3d creation from a single image with diffusion prior. arXiv\npreprint arXiv:2303.14184 , 2023. 1, 2, 3",
+            "type": "numeric",
+            "number": "45",
+            "arxiv_id": "2303.14184"
+        },
+        "ref_46": {
+            "text": "Narek Tumanyan, Omer Bar-Tal, Shai Bagon, and Tali\nDekel. Splicing vit features for semantic appearance transfer.\narXiv preprint arXiv:2201.00424 , 2022. 4",
+            "type": "numeric",
+            "number": "46",
+            "arxiv_id": "2201.00424"
+        },
+        "ref_47": {
+            "text": "Guangcong Wang, Zhaoxi Chen, Chen Change Loy, and\nZiwei Liu. Sparsenerf: Distilling depth ranking for few-\nshot novel view synthesis. arXiv preprint arXiv:2303.16196 ,\n2023. 3",
+            "type": "numeric",
+            "number": "47",
+            "arxiv_id": "2303.16196"
+        },
+        "ref_48": {
+            "text": "Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei\nLiu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh\nmodels from single rgb images. In Proceedings of the Euro-\npean conference on computer vision (ECCV) , pages 52–67,\n2018. 2, 3",
+            "type": "numeric",
+            "number": "48",
+            "arxiv_id": null
+        },
+        "ref_49": {
+            "text": "Chao-Yuan Wu, Justin Johnson, Jitendra Malik, Christoph\nFeichtenhofer, and Georgia Gkioxari. Multiview compres-\nsive coding for 3d reconstruction. In Proceedings of theIEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 9065–9075, 2023. 1, 2, 3",
+            "type": "numeric",
+            "number": "49",
+            "arxiv_id": null
+        },
+        "ref_50": {
+            "text": "Tong Wu, Jiarui Zhang, Xiao Fu, Yuxin Wang, Jiawei Ren,\nLiang Pan, Wayne Wu, Lei Yang, Jiaqi Wang, Chen Qian,\net al. Omniobject3d: Large-vocabulary 3d object dataset for\nrealistic perception, reconstruction and generation. In Pro-\nceedings of the IEEE/CVF Conference on Computer Vision\nand Pattern Recognition , pages 803–814, 2023. 1, 2, 6, 8",
+            "type": "numeric",
+            "number": "50",
+            "arxiv_id": null
+        },
+        "ref_51": {
+            "text": "Dejia Xu, Yifan Jiang, Peihao Wang, Zhiwen Fan, Humphrey\nShi, and Zhangyang Wang. Sinnerf: Training neural radiance\nfields on complex scenes from a single image. In European\nConference on Computer Vision , pages 736–753. Springer,\n2022. 1, 2, 3, 4",
+            "type": "numeric",
+            "number": "51",
+            "arxiv_id": null
+        },
+        "ref_52": {
+            "text": "Dejia Xu, Yifan Jiang, Peihao Wang, Zhiwen Fan, Yi Wang,\nand Zhangyang Wang. Neurallift-360: Lifting an in-the-\nwild 2d photo to a 3d object with 360 {\\deg}views. arXiv\npreprint arXiv:2211.16431 , 2022. 1, 2, 3",
+            "type": "numeric",
+            "number": "52",
+            "arxiv_id": "2211.16431"
+        },
+        "ref_53": {
+            "text": "Qiangeng Xu, Zexiang Xu, Julien Philip, Sai Bi, Zhixin\nShu, Kalyan Sunkavalli, and Ulrich Neumann. Point-nerf:\nPoint-based neural radiance fields. In Proceedings of the\nIEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 5438–5448, 2022. 3",
+            "type": "numeric",
+            "number": "53",
+            "arxiv_id": null
+        },
+        "ref_54": {
+            "text": "Farid Yagubbayli, Yida Wang, Alessio Tonioni, and Fed-\nerico Tombari. Legoformer: Transformers for block-\nby-block multi-view 3d reconstruction. arXiv preprint\narXiv:2106.12102 , 2021. 2, 3",
+            "type": "numeric",
+            "number": "54",
+            "arxiv_id": "2106.12102"
+        },
+        "ref_55": {
+            "text": "Guandao Yang, Xun Huang, Zekun Hao, Ming-Yu Liu, Serge\nBelongie, and Bharath Hariharan. Pointflow: 3d point cloud\ngeneration with continuous normalizing flows. In Proceed-\nings of the IEEE/CVF international conference on computer\nvision , pages 4541–4550, 2019. 2, 3",
+            "type": "numeric",
+            "number": "55",
+            "arxiv_id": null
+        },
+        "ref_56": {
+            "text": "Guandao Yang, Serge Belongie, Bharath Hariharan, and\nVladlen Koltun. Geometry processing with neural fields.\nAdvances in Neural Information Processing Systems , 34:\n22483–22497, 2021. 2",
+            "type": "numeric",
+            "number": "56",
+            "arxiv_id": null
+        },
+        "ref_57": {
+            "text": "Guandao Yang, Abhijit Kundu, Leonidas J Guibas,\nJonathan T Barron, and Ben Poole. Learning a diffusion prior\nfor nerfs. arXiv preprint arXiv:2304.14473 , 2023. 1",
+            "type": "numeric",
+            "number": "57",
+            "arxiv_id": "2304.14473"
+        },
+        "ref_58": {
+            "text": "Brent Yi, Weijia Zeng, Sam Buchanan, and Yi Ma. Canon-\nical factors for hybrid neural fields. In Proceedings of the\nIEEE/CVF International Conference on Computer Vision ,\npages 3414–3426, 2023. 3",
+            "type": "numeric",
+            "number": "58",
+            "arxiv_id": null
+        },
+        "ref_59": {
+            "text": "Taoran Yi, Jiemin Fang, Guanjun Wu, Lingxi Xie, Xiaopeng\nZhang, Wenyu Liu, Qi Tian, and Xinggang Wang. Gaussian-\ndreamer: Fast generation from text to 3d gaussian splatting\nwith point cloud priors. arXiv preprint arXiv:2310.08529 ,\n2023. 1, 2, 3",
+            "type": "numeric",
+            "number": "59",
+            "arxiv_id": "2310.08529"
+        },
+        "ref_60": {
+            "text": "Alex Yu, Vickie Ye, Matthew Tancik, and Angjoo Kanazawa.\npixelnerf: Neural radiance fields from one or few images.\nInProceedings of the IEEE/CVF Conference on Computer\nVision and Pattern Recognition , pages 4578–4587, 2021. 1,\n2, 3",
+            "type": "numeric",
+            "number": "60",
+            "arxiv_id": null
+        },
+        "ref_61": {
+            "text": "Xianggang Yu, Mutian Xu, Yidan Zhang, Haolin Liu,\nChongjie Ye, Yushuang Wu, Zizheng Yan, Chenming Zhu,\nZhangyang Xiong, Tianyou Liang, et al. Mvimgnet: A\nlarge-scale dataset of multi-view images. In Proceedings of\nthe IEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 9150–9161, 2023. 1, 2",
+            "type": "numeric",
+            "number": "61",
+            "arxiv_id": null
+        },
+        "ref_62": {
+            "text": "Xiaohui Zeng, Arash Vahdat, Francis Williams, Zan Goj-\ncic, Or Litany, Sanja Fidler, and Karsten Kreis. Lion: La-\ntent point diffusion models for 3d shape generation. arXiv\npreprint arXiv:2210.06978 , 2022. 1, 2, 3, 6",
+            "type": "numeric",
+            "number": "62",
+            "arxiv_id": "2210.06978"
+        },
+        "ref_63": {
+            "text": "Richard Zhang, Phillip Isola, Alexei A Efros, Eli Shecht-\nman, and Oliver Wang. The unreasonable effectiveness of\ndeep features as a perceptual metric. In Proceedings of the\nIEEE conference on computer vision and pattern recogni-\ntion, pages 586–595, 2018. 5",
+            "type": "numeric",
+            "number": "63",
+            "arxiv_id": null
+        },
+        "ref_64": {
+            "text": "Linqi Zhou, Yilun Du, and Jiajun Wu. 3d shape generation\nand completion through point-voxel diffusion. In Proceed-\nings of the IEEE/CVF International Conference on Com-\nputer Vision , pages 5826–5835, 2021. 1",
+            "type": "numeric",
+            "number": "64",
+            "arxiv_id": null
+        },
+        "ref_Springer_2022": {
+            "text": "Conference on Computer Vision , pages 736–753. Springer, 2022. 1, 2, 3, 4 [52] Dejia Xu, Yifan Jiang, Peihao Wang, Zhiwen Fan, Yi Wang,",
+            "type": "author_year",
+            "key": "Springer, 2022",
+            "arxiv_id": null
+        },
+        "ref_Springer_2016": {
+            "text": "484–499. Springer, 2016. 2, 3 [17] Heewoo Jun and Alex Nichol. Shap-e: Generat-",
+            "type": "author_year",
+            "key": "Springer, 2016",
+            "arxiv_id": null
+        },
+        "ref_Springer_2020": {
+            "text": "405–421. Springer, 2020. 1, 2 [31] Thomas M ¨uller, Alex Evans, Christoph Schied, and Alexan-",
+            "type": "author_year",
+            "key": "Springer, 2020",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "1. Introduction\n\nThe rapid development in virtual and augmented reality in- troduces increasing demand for automatic 3D content cre- ation. Previous workflows often require tedious manual labor by human experts and need specific software tools. A 3D asset generative model is essential to allow non- professional users to realize their ideas into actual 3D digital content.\n\nMuch effort has been put into image-to-3D generation as it allows users to control the generated content. Early meth- ods study the generation of simple objects [60] or novel view synthesis of limited viewpoints [21, 42, 51]. Later on, with the help of 2D text-to-image diffusion models, score distillation sampling [35] has enabled 360-degree ob-\n\nDespite the exciting progress, how to properly generate 3D Gaussians [20] remains a less studied topic. Existing works [8, 44, 59] focus on the per-instance optimization- based setting. Though 3D Gaussians can be optimized with adaptive density control to represent certain geometry, ini- tialization remains critical for complex object structures.\n\nAn amortized pipeline is highly desired to produce the 3D Gaussians in one shot. Such a network can learn a shared 3D understanding of images that generalizes to unseen ob- jects of similar categories to the training set. This will fur- ther reduce the need for test-time optimization, trading off the computation cost of the inference stage with the training stage.\n\nHowever, building such a feed-forward pipeline is chal- lenging for two major reasons. First, 3D Gaussians rely on adaptive density control [20] to represent complex ge- ometry, but this leads to a dynamic number of 3D Gaus- sians, making it hard to predict them in an amortized train- ing setting. Second, the 3D Gaussians require curated ini- tialization [8, 59] to be updated properly via supervision on the rendering. In the amortized setting, the 3D Gaussians are instead predicted by the neural network, which leads to the need to initialize the network well such that generated Gaussians can be supervised decently. Moreover, the op- timization process often favors updating the appearance of 3D Gaussians instead of moving their positions directly to desired 3D locations.\n\nTo overcome these issues, we conduct a pilot study on the amortized generation of 3D Gaussians through a feed- forward process. As shown in Fig. 1, we propose AGG, a cascaded generation framework that generates 3D Gaus- sians from a single image input. In the first stage, we em- ploy a hybrid generator that produces 3D Gaussians at a coarse resolution. In this stage, we decompose the geom- etry and texture generation task into two distinct networks. A geometry transformer decodes image features extracted from a pre-trained image feature extractor and predicts the location of 3D Gaussians. Another texture transformer sim- ilarly generates a texture field that is later queried by the Gaussian locations to obtain other point attributes. Utilizing this hybrid representation as an intermediate optimization target stabilizes our training process when jointly optimiz- ing the geometry and texture of the 3D Gaussians. In the second stage, we leverage point-voxel convolutional net- works to extract local features effectively and super-resolve the coarse 3D Gaussians from the previous stage. RGB in- formation is further injected into the super-resolution net- works to refine the texture information.\n\nOur contributions can be summarized as follows,\n\n• We conduct a pilot study on the task of amortized single image-to-3D Gaussian setting. Unlike existing works that operate on individual objects, we build a novel cascaded generation framework that instantly presents 3D Gaus- sians in one shot.\n\n• Our AGG network first generates coarse Gaussian pre- dictions through a hybrid representation that decomposes geometry and texture. With two separate transformers predicting the geometry and texture information, the 3D Gaussian attributes can be optimized jointly and stably.\n\n• A UNet-based architecture with point-voxel layers is in- troduced for the second stage, which effectively super- resolves the 3D Gaussians.\n\n• Compared with existing baselines including optimization-based 3D Gaussian pipelines and sampling- based frameworks that use other 3D representations, AGG demonstrates competitive performance both quan- titatively and qualitatively while enabling zero-shot image-to-object generation, and being several orders of magnitude faster.",
+            "section": "introduction",
+            "section_idx": 0,
+            "citations": [
+                "60",
+                "21, 42, 51",
+                "35",
+                "20",
+                "8, 44, 59",
+                "20",
+                "8, 59"
+            ]
+        },
+        {
+            "text": "4\n\n2\n\n0 2 n a J 8 ] V C . s c [ 1 v 9 9 0 4 0 . 1 0 4 2\n\n:\n\nv\n\ni\n\nX\n\nr\n\na\n\nAGG: Amortized Generative 3D Gaussians for Single Image to 3D\n\nDejia Xu1, Ye Yuan2, Morteza Mardani2, Sifei Liu2 , Jiaming Song2, Zhangyang Wang1, Arash Vahdat2 1University of Texas at Austin 2NVIDIA\n\n——>\n\nGaussian : Super 9 ——> Resolution\n\nSok Coarse Gaussian Hybrid ~=——> Super Generator Le Resolution\n\nAbstract\n\n| —>\n\nGiven the growing need for automatic 3D content cre- ation pipelines, various 3D representations have been stud- ied to generate 3D objects from a single image. Due to its superior rendering efficiency, 3D Gaussian splatting- based models have recently excelled in both 3D reconstruc- tion and generation. 3D Gaussian splatting approaches for image to 3D generation are often optimization-based, re- quiring many computationally expensive score-distillation steps. To overcome these challenges, we introduce an Amortized Generative 3D Gaussian framework (AGG) that instantly produces 3D Gaussians from a single image, elim- inating the need for per-instance optimization. Utilizing an intermediate hybrid representation, AGG decomposes the generation of 3D Gaussian locations and other appearance attributes for joint optimization. Moreover, we propose a cascaded pipeline that first generates a coarse representa- tion of the 3D data and later upsamples it with a 3D Gaus- sian super-resolution module. Our method is evaluated against existing optimization-based 3D Gaussian frame- works and sampling-based pipelines utilizing other 3D rep- resentations, where AGG showcases competitive generation abilities both qualitatively and quantitatively while being several orders of magnitude faster. Project page: https: //ir1d.github.io/AGG/\n\nFigure 1. Overview of our AGG framework. We design a novel cascaded generation pipeline that produces 3D Gaussian-based ob- jects without per-instance optimization. Our AGG framework in- volves a coarse generator that predicts a hybrid representation for 3D Gaussians at a low resolution and a super-resolution module that delivers dense 3D Gaussians in the fine stage.\n\nject generation for in-the-wild instances [29, 45, 52]. More recently, the advances in collecting 3D datasets [10, 50, 61] have supported the training of large-scale 3D-aware genera- tive models [15, 23, 24] for better image-to-3D generations.\n\nVarious 3D representations have been studied as the me- dia to train 3D generative models. Many prior works have explored generating explicit representations, such as point clouds [62], voxels [39, 64], and occupancy grid [49]. Im- plicit representations like NeRF [30] and distance func- tions [22] are popular for easy optimization. Although ef- fective for content generation [12, 34, 57], slow rendering and optimization hinder the wide adoption of these repre- sentations. As a result, researchers have looked into more efficient volumetric representations [5, 31] to support the training of larger generative models [7, 19] and the costly optimization in score distillation [29, 52]. More recently, 3D Gaussian splatting [8, 20, 44, 59] has attracted great at- tention due to its high-quality real-time rendering ability. This owes to the visibility-aware rendering algorithm that facilitates much less optimization time cost compared with NeRF-based variants [24, 35]. Such an efficient renderer enables supervising the 3D Gaussians through loss func- tions defined on the 2D renderings, which is not suitable for other representations.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "29, 45, 52",
+                "10, 50, 61",
+                "15, 23, 24",
+                "62",
+                "39, 64",
+                "49",
+                "30",
+                "22",
+                "12, 34, 57",
+                "5, 31",
+                "7, 19",
+                "29, 52",
+                "8, 20, 44, 59",
+                "24, 35"
+            ]
+        },
+        {
+            "text": "2. Related Works\n\n2.1. Image-to-3D Generation\n\nNumerous research studies have been conducted on gen- erating 3D data from a single image. Early attempts sim- plify the challenges by either generating objects of sim- ple geometry [60] or focusing on synthesizing novel view images of limited viewpoints [21, 42, 51]. Later on, var- ious combinations of 2D image encoder and 3D represen- tations are adopted to build 3D generative models, such as on 3D voxels [9, 16, 54], point clouds [13, 22, 49, 55, 62], meshes [15, 18, 48], and implicit functions [12, 56]. More recently, with the help of score distillation sampling from a pre-trained text-to-image diffusion model, great efforts have been put into generating a 3D asset from a single image through optimization [11, 29, 40, 44, 45, 52]. Among them, DreamGaussian utilizes 3D Gaussians as an efficient 3D representation that supports real-time high-resolution ren- dering via rasterization. In addition to these optimization- based methods, building feed-forward models for image- to-3D generation avoids the time-consuming optimization process, and a large generative model can learn unified rep- resentation for similar objects, leveraging prior knowledge from the 3D dataset better. The advances in large-scale 3D datasets [10, 50, 61] largely contributed to the design of bet- ter image-to-3D generative models [15, 23, 24]. OpenAI has trained a 3D point cloud generation model Point-E [32], based on millions of internal 3D models. They later pub- lished Shap-E [17], which is trained on more 3D models and further supports generating textured meshes and neural radi- ance fields. Our work follows the direction of building feed- forward models for image-to-3D and makes the first attempt to construct an amortized model that predicts the 3D Gaus- sians instead of constructing them through optimization.\n\n2.2. Implicit 3D Representations\n\nNeural radiance field (NeRF) [30] implements a coordinate- based neural network to represent the 3D scenes and demonstrates outstanding novel view synthesis abilities. Many following works have attempted to improve NeRF in various aspects. For example, MipNeRF [1] and MipNeRF- 360 [2] introduce advanced rendering techniques to avoid\n\naliasing artifacts. SinNeRF [51], PixelNeRF [60], and SparseNeRF [47] extends the application of NeRFs to few- shot input views, making single image-to-3D generation through NeRF a more feasible direction. With the recent advances in score distillation sampling [35], numerous ap- proaches have looked into optimizing a neural radiance field through guidance from diffusion priors [11, 29, 40, 45, 52]. While suitable for optimization, NeRFs are usually ex- pressed implicitly through MLP parameters, which makes it challenging to generate them via network [12]. Conse- quently, many works [4, 5, 28] instead choose to generate hybrid representations, where NeRF MLP is adopted to de- code features stored in explicit structures [3, 5, 6, 14, 31, 53, 58]. Among them, ATT3D [28] builds an amortized framework for text-to-3D by generating Instant NGP [31] via score distillation sampling. While focusing on generat- ing explicit 3D Gaussians, our work draws inspiration from hybrid representations and utilizes hybrid structures as in- termediate generation targets, which can be later decoded into 3D Gaussians.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "60",
+                "21, 42, 51",
+                "9, 16, 54",
+                "13, 22, 49, 55, 62",
+                "15, 18, 48",
+                "12, 56",
+                "11, 29, 40, 44, 45, 52",
+                "10, 50, 61",
+                "15, 23, 24",
+                "32",
+                "17",
+                "30",
+                "1",
+                "2",
+                "51",
+                "60",
+                "47",
+                "35",
+                "11, 29, 40, 45, 52",
+                "12",
+                "4, 5, 28",
+                "3, 5, 6, 14, 31, 53, 58",
+                "28",
+                "31"
+            ]
+        },
+        {
+            "text": "2.3. Explicit 3D Representations\n\nExplicit 3D representations have been widely studied for decades. Many works have attempted to construct 3D assets through 3D voxels [9, 16, 54], point clouds [13, 22, 49, 55, 62] and meshes [15, 18, 48]. Since pure implicit radiance fields are operationally slow, often needing millions of neu- ral network queries to render large-scale scenes, great ef- forts have been put into integrating explicit representations with implicit radiance fields to combine their advantages. Many works looked into employing tensor factorization to achieve efficient explicit representations [5, 6, 14, 31, 58]. Multi-scale hash grids [31] and block decomposition [43] are introduced to extend to city-scale scenes. Another pop- ular direction focuses on empowering explicit structures with additional implicit attributes. Point NeRF [53] utilizes neural 3D points to represent and render a continuous radiance volume. Similarly, NU-MCC [22] uses latent point features, specifically focusing on shape completion tasks. 3D Gaussian splatting [20] introduces point-based α-blending along with an efficient point-based rasterizer and has attracted great attention due to their outstanding ability in reconstruction [20] and generation [8, 44, 59] tasks. However, existing works present 3D Gaussians through optimization, while our work takes one step further and focuses on building a amortized framework that generates 3D Gaussians without per-instance optimization.\n\n3. Amortized Generative 3D Gaussians\n\nUnlike the existing methods that optimize Gaussians, initialized from structure-from-motion (SfM) or random blobs, our work pursues a more challenging objective: gen- erating 3D Gaussians from a single image using a neural\n\nnetwork in one shot. Specifically, our cascaded approach begins with constructing a hybrid generator that maps input image features into a concise set of 3D Gaussian attributes. Subsequently, a UNet architecture with point-voxel layers is employed to super-resolve the 3D Gaussian representa- tion, improving its fidelity. In the following subsections, we first provide the background on 3D Gaussian splatting, then we delve deep into details about our proposed compo- nents, and finally, we illustrate how we address the rising challenges with amortized generation.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "9, 16, 54",
+                "13, 22, 49, 55, 62",
+                "15, 18, 48",
+                "5, 6, 14, 31, 58",
+                "31",
+                "43",
+                "53",
+                "22",
+                "20",
+                "20",
+                "8, 44, 59"
+            ]
+        },
+        {
+            "text": "3.1. Background: 3D Gaussian Splatting (3DGS)\n\n3D Gaussian splatting is a recently popularized explicit 3D representation that utilizes anisotropic 3D Gaussians. Each 3D Gaussian G is defined with a center position µ ∈ R3, covariance matrix Σ, color information c ∈ R3 and opacity α ∈ R1. The covariance matrix Σ describes the configura- tion of an ellipsoid and is implemented via a scaling matrix S ∈ R3 and a rotation matrix R ∈ R3×3.\n\nΣ = RSSTRT (1)\n\nThis factorization allows independent optimization of the Gaussians’ attributes while maintaining the semi-definite property of the covariance matrix. In summary, each Gaus- sian centered at point (mean) µ is defined as follows:\n\nG(x) = e− 1 2xT Σ−1x, (2)\n\nwhere x refers to the distance between µ and the query point. G(x) is multiplied by α in the blending process to construct the final accumulated color:\n\nC= > caiG(x;i) | | (1 — aj;G(a;)), (3) i-1 iEN j=l ii\n\nAn efficient tile-based rasterizer enables fast forward and backward pass that facilitates real-time rendering. The op- timization method of 3D Gaussian properties is interleaved with adaptive density control of Gaussians, namely, densi- fying and pruning operations, where Gaussians are added and occasionally removed. In our work, we follow the con- vention in 3D Gaussian splatting to establish the Gaussian attributes but identify specific canonicalization designed for single image-to-3D task. We first reduce the degree of the spherical harmonic coefficients and allow only diffuse col- ors for the 3D Gaussians. Additionally, we set canonical isotropic scale and rotation for the 3D Gaussians, as we find these attributes extremely unstable during the amortized op- timization process.\n\n3.2. Coarse Hybrid Generator\n\nIn the coarse stage, our AGG framework utilizes a hybrid generator to produce a hybrid representation as an interme- diate generation target. Initially, the input image is encoded\n\n| DINOv2\n\nBS B a\n\nad [|\n\nQueries\n\neo: —\n\nQueries es\n\nes\n\nBase Predictor Location\n\n? [bens ‘a",
+            "section": "other",
+            "section_idx": 3,
+            "citations": []
+        },
+        {
+            "text": "L chamfer\n\n—\n\nreshape\n\nOpacity, Color “\n\nFigure 2. Architecture of our coarse hybrid generator. We first use a pre-trained DINOv2 image encoder to extract essential features and then adopt two transformers that individually map learnable query tokens to Gaussian locations and a texture field. The texture field accepts location queries from the geometry branch, and a decoding MLP further converts the interpolated plane features into Gaussian attributes.\n\nusing a vision transformer. Subsequently, a geometry and a texture generator are constructed to map learnable queries into location sequences and texture fields individually. This hybrid representation is then decoded into explicit 3D Gaus- sians, which enables efficient high-resolution rendering and facilitates supervision via multi-view images. The overall architecture of our proposed coarse hybrid generator is il- lustrated in Fig. 2. Our model is trained via rendering loss defined on multi-view images and is warmed up with Cham- fer distance loss using 3D Gaussian pseudo labels.\n\nEncoding Input RGB Information Single image-to-3D is a highly ill-posed problem since multiple 3D objects can align with the single-view projection. As a result, an ef- fective image encoder is greatly needed to extract essential 3D information. Previous work [24, 25] mainly incorporate CLIP image encoder [37], benefiting from the foundational training of Stable diffusion [38]. While effective for text- to-image generation, CLIP encoder is not well-designed for identifying feature correspondences, which is crucial for 3D vision tasks. As a result, we use the pre-trained DINOv2 transformer as our image encoder, which has demonstrated robust feature extraction capability through self-supervised pre-training. Unlike previous works [46, 51] that only use the aggregated global [CLS] token , we choose to incorpo- rate patch-wise features as well.\n\npredicting the location sequence. The transformer inputs are a set of learnable queries implemented with a group of learnable position embeddings. Each query will corre- spond to one 3D Gaussian that we generate. Before feeding into the transformer network, the positional embeddings are summed with the global token [CLS] extracted from the DINOv2 model. The sequence of queries is then modulated progressively by a series of transformer blocks, each con- taining a cross-attention block, a self-attention block, and a multi-layer perception block. These components are inter- leaved with LayerNorm and GeLU activations. The cross- attention blocks accept DINOv2 features as context infor- mation. The final layer of our geometry predictor involves an MLP decoding head, converting the hidden features gen- erated by attention modules into a three-dimensional loca- tion vector.\n\nTexture Field Generator Joint prediction of texture and geometry presents significant challenges. A primary chal- lenge is the lack of direct ground truth supervision for tex- ture in 3D space. Instead, texture information is inferred through rendering losses in 2D. When geometry and texture information are decoded from a shared network, their gen- eration becomes inevitably intertwined. Consequently, up- dating the predicted location alters the supervision for ren- dered texture, leading to divergent optimization directions for texture prediction.\n\nGeometry Predictor The location information of 3D Gaussian is expressed via their 3D means following 3DGS [20], which is a three-dimensional vector for each point. Thus, we adopt a transformer-based network for\n\nTo resolve this, a distinct transformer is employed to generate a texture field. Our texture field is implemented us- ing a triplane [5], complemented by a shared decoding MLP head. The triplane accepts 3D location queries from the geometry branch and concatenates interpolated features for\n\nfurther processing. Utilization of this texture field facilitates decomposed optimization of geometry and texture informa- tion. More importantly, texture information is now stored in structured planes. Incorrect geometry predictions do not impact the texture branch’s optimization process, which re- ceives accurate supervision when geometry queries approx- imate ground truth locations.\n\nSupervision Through 2D Renderings Thanks to the ef- ficient rasterizer for 3D Gaussians, we can apply supervi- sion on novel view renderings during the training. The 3D Gaussians we generate are rendered from randomly selected novel views, and image-space loss functions are calculated against ground truth renderings available from the dataset. Concretely, we render the scene into RGB images and cor- responding foreground alpha masks. We utilize LPIPS [63] and L1 loss to minimize their differences,\n\nLrendering = Lrgba + ω1Llpips, (4)\n\nwhere ω1 is a weighting factor.",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "24, 25",
+                "37",
+                "38",
+                "46, 51",
+                "20",
+                "5",
+                "63"
+            ]
+        },
+        {
+            "text": "3.3. Gaussian Super Resolution\n\nAlthough our hybrid generator is effective in the coarse gen- eration stage, generating high-resolution 3D Gaussians re- quires many learnable queries which are computationally expensive due to the quadratic cost of self-attention lay- ers. As a result, we instead utilize a second-stage network as a super-resolution module to introduce more 3D Gaus- sians into our generation. Since coarse geometry is obtained from the first stage, the super-resolution network can fo- cus more on refining local details. For simplicity, we use a lightweight UNet architecture with the efficient point-voxel layers [26], as shown in Fig. 3.\n\nLatent Space Super-Resolution As mentioned earlier, the 3D Gaussians require curated locations to update the other attributes properly. This leads to the key challenge for the super-resolution stage, which is to introduce more point locations for the super-resolved 3D Gaussians. Inspired by previous works in 2D image [41] and point cloud super res- olution [36], we perform feature expanding as a surrogate of directly expanding the number of points. Through a point- voxel convolutional encoder, we first convert the stage one coarse 3D Gaussians into compact latent features that can be safely expanded through a feature expansion operation: rearranging a tensor of shape (B, N, C × r) to a ten- sor of shape (B, N × r, C). The expanded features are then decoded through a point-voxel convolutional decoder that predicts the Gaussian locations and other attributes.\n\nIncorporating RGB information While the first-stage network may capture the rough geometry of objects, the tex-\n\nture field may converge into blurry results due to the oscil- lating point locations and rough geometry. Consequently, utilizing the abundant texture information from the input image is crucial for the super-resolution network to generate plausible details. For this purpose, we introduce RGB fea- tures into the bottleneck of the UNet architecture. Specif- ically, we adopt cross-attention layers before and after the feature expansion operation. Image features are fed through cross-attention layers to modulate the latent point-voxel fea- tures.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "26",
+                "41",
+                "36"
+            ]
+        },
+        {
+            "text": "3.4. Overcoming Challenges in Amortized Training\n\nUnlike the vanilla 3D Gaussian splatting setting, where a set of 3D Gaussians are optimized specifically for each object, our amortized framework involves training a generator that jointly produces the 3D Gaussians for a large set of objects coming from diverse categories. As a result, many specif- ically designed operations for manipulating 3D Gaussians are not available in our setting. Below, we illustrate how we overcome these challenges in detail.\n\n3.4.1 Adaptive Density Control\n\nThe original 3D Gaussians involve special density con- trol operations to move them toward their desired 3D lo- cations. However, in the amortized training setting, it is non-straightforward to adaptively clone, split, or prune the Gaussians according to the gradients they receive. This is because these operations change the number of points, mak- ing it hard for an amortized framework to process.\n\nTo this end, we use a fixed number of 3D Gaussians for each object, avoiding the burden for the generator network to determine the number of points needed. Moreover, since we do not have access to clone and split operations, training the amortized generator leads to sharp 3D Gaussians with unpleasant colors that are trying to mimic fine-grained texture details. Once the predictions become sharp, they get stuck in the local minimum, and therefore, fewer 3D Gaussians are available to represent the overall object, leading to blurry or corrupted generations. To overcome the issue, we empirically set canonical isotropic scales and rotations for the 3D Gaussians on all objects to stabilize the training process.\n\n3.4.2 Initialization\n\nProper initialization plays an important role in the original optimization-based 3D Gaussian splatting. Though Gaus- sian locations are jointly optimized with other attributes, it is observed that optimization updates often prefer reduc- ing the opacity and scale instead of moving the Gaussians directly. By doing so, Gaussians are eliminated from the wrong location after reaching the pruning threshold. stead, the adaptive density control can then clone or split In-\n\nie\n\nie > DINOv2 Cross PVCNN Attn Figure 3. Illustration of the second-stage Gaussian",
+            "section": "other",
+            "section_idx": 6,
+            "citations": []
+        },
+        {
+            "text": "Feature ——wes Expansion\n\nCross Attn ® rendering PVCNN network. We first encode the original input image and\n\nrendering\n\n®\n\nFigure 3. Illustration of the second-stage Gaussian super-resolution network. We first encode the original input image and the stage one prediction separately. Then, we unite them through cross-attention at the latent space. We perform super-resolution in the latent space and decode the features jointly.\n\nGaussians at proper locations according to their gradients. Albeit the simplicity of pruning and cloning operations for optimization algorithms, they are non-trivial to implement with amortized neural networks.\n\nTo overcome the issues, we warm up the generator with 3D Gaussian pseudo labels. We use a few 3D objects and perform multi-view reconstruction to obtain 3D Gaussians for each object. Since multiple sets of 3D Gaussians can all be plausible for reconstructing the same 3D ground truth object, the 3D Gaussians are only considered pseudo labels where we use their attributes to initialize our network layers properly.\n\n4. Experiments\n\n4.1. Implementation Details\n\nGaussian Configuration We set the canonical isotropic scale of each 3D Gaussian to 0.03 and 0.01 when 4,096 and 16,384 3D Gaussians are produced for each object, respectively. The canonical rotation for all 3D Gaussians is set to [1, 0, 0, 0] for the rasterizer. When preparing the pseudo labels for the warmup training, we use the ground truth point clouds from the OmniObject3D [50] dataset to initialize the Gaussian locations.\n\nDue to these Gaussians being stored in random orders as sets, we cannot use L1 reconstruction loss as in generative frameworks such as LION [62].\n\nNetwork Architecture We implement our transformer blocks following the well-established practice in DI- NOv2 [33] with GeLU activation and Layer Normalization layers. The image features are extracted using a pre-trained DINOv2-base model at 256 × 256 input resolution.\n\nAs an alternative, we utilize the Chamfer distance loss to pre-train our network. Specifically, we first calculate the point matching correspondences according to the distance of Gaussians’ 3D means and then minimize the L1 differ- ence of each attribute, including location, opacity, and color. The formulation can be summarized as follows,\n\nObject Placement and Camera System We reconstruct objects in camera space and normalize the input view az- imuth to zero. This means that the image and the 3D assets are aligned and consistent as both are rotated. This 3D aug- mentation during the training stage enforces rotation equiv- ariance and prevents the network from merely overfitting the canonical placements of objects in the dataset.\n\nLenamier(f) = Tp > (fui — fasll) |P.| Pu€Pi, paj=argmin(pr—e|l3) we ey |P2| p25 €P2, par=arg min |\"—p2y|l2) (I|fo3 — fill),\n\nwhere f refers to 3D Gaussian attributes, P1 is our gener- ated set of 3D Gaussian, and P2 is the 3D Gaussian pseudo label.",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "1, 0, 0, 0",
+                "50",
+                "62",
+                "33"
+            ]
+        },
+        {
+            "text": "4.2. Baseline Methods\n\nWe compare with two streams of work. One involves the sampling-based 3D generation that uses different 3D rep- resentations, such as Point-E and One-2345. Point-E [32] includes a large diffusion transformer that generates a point cloud. Their work performs the generation in the world coordinates, where objects are always canonically placed as the original orientation in the dataset. One-2345 [23] lever- ages Zero123 [24] and utilizes SparseNeuS [27] to fuse information from noisy multi-view generations efficiently. We also compare with DreamGaussian [44]’s first stage,\n\n@eeeg\n\n_fe@ee\" “%@\n\nO%e0\n\nae\n\n1voere PeGeee< T®Oaae\n\nFigure 4. Novel view rendering comparisons against baseline methods. Our AGG model observes none of these testing images during training.\n\nTable 1. Comparisons against baseline methods regarding novel view image quality and inference speed.\n\nMethod Point-E One-2345 DreamGaussian Ours CLIP Dist ↓ 0.5139 0.3084 0.4293 0.3458 Time (s) 78 45 60 0.19\n\nwhere 3D Gaussians are optimized with SDS [35] from Zero123 [24]. Both One-2345 and DreamGaussian require the elevation of the input image at inference time. For One-2345, we use official scripts to estimate the elevation. We provide DreamGaussian with ground truth elevation extracted from the camera pose in the testing dataset.\n\n4.3. Dataset\n\nOur model is trained on OmniObject3D dataset [50], which contains high-quality scans of real-world objects. The number of 3D objects is much fewer than Objaverse [10]. Alongside point clouds, the OmniObject3D dataset pro- vides 2D renderings of objects obtained through Blender. This allows us to implement rendering-based loss functions that supervise the rendering quality in 2D space. We con- struct our training set using 2,370 objects from 73 classes in total. We train one model using all classes. The test set contains 146 objects, with two left-out objects per class.\n\n4.4. Qualitative and Quantitative Comparisons\n\nWe provide visual comparisons and quantitative analysis between our methods and existing baselines in Fig. 4 and Tab. 1. As shown in the novel view synthesis results, our model learns reasonable geometry understanding and pro- duces plausible generations of texture colors. Point-E [32] produces reasonable geometry but presents unrealistic col- ors, possibly because the model was trained on large-scale synthetic 3D data. Both One-2345 [23] and DreamGaus- sian [44] can generate corrupted shapes, which might be because the novel views synthesized from the Zero-123 dif- fusion model [24] are multi-view inconsistent.\n\nSince multiple 3D objects can be reasonable outputs in- ferred from the single view input, we don’t measure ex- act matches against the 3D ground truth. Instead, we use CLIP distance defined on image embeddings to reflect high- level image similarity on multi-view renderings, where our method obtains competitive numbers. Additionally, our AGG network enjoys the fastest inference speed.\n\nIn comparison, both Point-E and One-2345 adopt an it- erative diffusion process when producing their final results, while DreamGaussian leverages a costly optimization pro- cess through score distillation sampling.",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "32",
+                "23",
+                "24",
+                "27",
+                "44",
+                "35",
+                "24",
+                "50",
+                "10",
+                "32",
+                "23",
+                "44",
+                "24"
+            ]
+        },
+        {
+            "text": "4.5. Ablation Study\n\nWe conduct thorough experiments to validate the effective- ness of our proposed components using the available 3D\n\nTable 2. Ablation Studies. We validate the effectiveness of our proposed components by comparing their predictions against the 3D ground truth on the test set.\n\nModel PSNR↑ SSIM↑ LPIPS↓ w/o Texture Field 27.09 0.85 0.1910 27.59 w/o Super Resolution 0.87 0.1772 0.87 28.54 0.1426 Full Model\n\n0.1772 0.1426\n\ny\n\neee eee\n\n-\n\ncomparisons Field, (b) w/o\n\nof our full Super\n\nmodel (c) Resolution.\n\nInput\n\nFigure 5. Visual comparisons of our full model (c) and its variants: (a) w/o Texture Field, (b) w/o Super Resolution.\n\nground truth from the dataset. We mainly compare with two variants of the model. “w/o Super Resolution” means that we only train the coarse hybrid generator without involving the Gaussian super-resolution stage. “w/o Texture Field” refers to further removing the texture field generator branch in the coarse hybrid generator and forcing the geometry pre- dictor to generate all attributes at the same time. As shown in Tab. 2 and Fig. 5, the full model delivers the best gen- eration results when rendered from novel viewpoints. Re- sults from “w/o Super Resolution” are limited in the number of Gaussians and, therefore, suffer from low resolution and blurry results. The variant “w/o Texture Field” produces corrupted geometry due to the extra burden for the geome- try predictor to predict texture information at the same time.\n\n4.6. Limitation\n\nDespite the encouraging visual results produced by AGG, the number of 3D Gaussians we generate is still limited to represent very complex geometry. In the future, we will further explore how to expand AGG to more challenging scenarios, such as when the input image contains multiple objects with occlusion.\n\n5. Conclusion\n\nIn this work, we make the first attempt to develop an amortized pipeline capable of generating 3D Gaus- sians from a single image input. The proposed AGG framework utilizes a cascaded generation pipeline, comprising a coarse hybrid generator and a Gaussian super-resolution model. Experimental results demonstrate that our method achieves competitive performance with several orders of magnitude speedup in single-image- to-3D generation, compared to both optimization-based 3D Gaussian frameworks and sampling-based 3D gen-\n\nerative models utilizing alternative 3D representations.",
+            "section": "other",
+            "section_idx": 9,
+            "citations": []
+        },
+        {
+            "text": "References\n\n[1] Jonathan T Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo Martin-Brualla, and Pratul P Srinivasan. Mip-nerf: A multiscale representation for anti-aliasing neu- ral radiance fields. In Proceedings of the IEEE/CVF Inter- national Conference on Computer Vision, pages 5855–5864, 2021. 2\n\n[2] Jonathan T Barron, Ben Mildenhall, Dor Verbin, Pratul P Srinivasan, and Peter Hedman. Mip-nerf 360: Un- bounded anti-aliased neural radiance fields. arXiv preprint arXiv:2111.12077, 2021. 2\n\n[3] Jonathan T. Barron, Ben Mildenhall, Dor Verbin, Pratul P. Srinivasan, and Peter Hedman. Zip-nerf: Anti-aliased grid- based neural radiance fields. ICCV, 2023. 3\n\n[4] Ananta R Bhattarai, Matthias Nießner, and Artem Sev- astopolsky. Triplanenet: An encoder for eg3d inversion. arXiv preprint arXiv:2303.13497, 2023. 3\n\n[5] Eric R Chan, Connor Z Lin, Matthew A Chan, Koki Nagano, Boxiao Pan, Shalini De Mello, Orazio Gallo, Leonidas J Guibas, Jonathan Tremblay, Sameh Khamis, et al. Efficient geometry-aware 3d generative adversarial networks. In Pro- ceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 16123–16133, 2022. 1, 3, 4\n\n[6] Anpei Chen, Zexiang Xu, Andreas Geiger, Jingyi Yu, and Hao Su. Tensorf: Tensorial radiance fields. In European Conference on Computer Vision, pages 333–350. Springer, 2022. 3\n\n[7] Hansheng Chen, Jiatao Gu, Anpei Chen, Wei Tian, Zhuowen Tu, Lingjie Liu, and Hao Su. Single-stage diffusion nerf: A unified approach to 3d generation and reconstruction. arXiv preprint arXiv:2304.06714, 2023. 1\n\n[8] Zilong Chen, Feng Wang, and Huaping Liu. Text-to-3d using gaussian splatting. arXiv preprint arXiv:2309.16585, 2023. 1, 2, 3\n\n[9] Christopher B Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, and Silvio Savarese. 3d-r2n2: A unified approach for single and multi-view 3d object reconstruction. In Com- puter Vision–ECCV 2016: 14th European Conference, Am- sterdam, The Netherlands, October 11-14, 2016, Proceed- ings, Part VIII 14, pages 628–644. Springer, 2016. 2, 3\n\n[10] Matt Deitke, Dustin Schwenk, Jordi Salvador, Luca Weihs, Oscar Michel, Eli VanderBilt, Ludwig Schmidt, Kiana Ehsani, Aniruddha Kembhavi, and Ali Farhadi. Objaverse: A universe of annotated 3d objects. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 13142–13153, 2023. 1, 2, 8\n\n[11] Congyue Deng, Chiyu Jiang, Charles R Qi, Xinchen Yan, Yin Zhou, Leonidas Guibas, Dragomir Anguelov, et al. Nerdi: Single-view nerf synthesis with language-guided dif- fusion as general image priors. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 20637–20647, 2023. 2, 3\n\n[12] Ziya Erkoc¸, Fangchang Ma, Qi Shan, Matthias Nießner, and Angela Dai. Hyperdiffusion: Generating implicit\n\nneural fields with weight-space diffusion. arXiv preprint arXiv:2303.17015, 2023. 1, 2, 3\n\n[13] Haoqiang Fan, Hao Su, and Leonidas J Guibas. A point set generation network for 3d object reconstruction from a single image. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 605–613, 2017. 2, 3\n\n[14] Sara Fridovich-Keil, Giacomo Meanti, Frederik Rahbæk Warburg, Benjamin Recht, and Angjoo Kanazawa. K-planes: Explicit radiance fields in space, time, and appearance. In Proceedings of the IEEE/CVF Conference on Computer Vi- sion and Pattern Recognition, pages 12479–12488, 2023. 3\n\n[15] Jun Gao, Tianchang Shen, Zian Wang, Wenzheng Chen, Kangxue Yin, Daiqing Li, Or Litany, Zan Gojcic, and Sanja Fidler. Get3d: A generative model of high quality 3d tex- tured shapes learned from images. Advances In Neural In- formation Processing Systems, 35:31841–31854, 2022. 1, 2,\n\n3\n\n[16] Rohit Girdhar, David F Fouhey, Mikel Rodriguez, and Ab- hinav Gupta. Learning a predictable and generative vec- tor representation for objects. In Computer Vision–ECCV 2016: 14th European Conference, Amsterdam, The Nether- lands, October 11-14, 2016, Proceedings, Part VI 14, pages 484–499. Springer, 2016. 2, 3\n\n[17] Heewoo Jun and Alex Nichol. Shap-e: Generat- ing conditional 3d implicit functions. arXiv preprint arXiv:2305.02463, 2023. 2\n\n[18] Angjoo Kanazawa, Shubham Tulsiani, Alexei A Efros, and Jitendra Malik. Learning category-specific mesh reconstruc- tion from image collections. In Proceedings of the Euro- pean Conference on Computer Vision (ECCV), pages 371– 386, 2018. 2, 3\n\n[19] Animesh Karnewar, Andrea Vedaldi, David Novotny, and Niloy J Mitra. Holodiffusion: Training a 3d diffusion model using 2d images. In Proceedings of the IEEE/CVF Con- ference on Computer Vision and Pattern Recognition, pages 18423–18433, 2023. 1\n\n[20] Bernhard Kerbl, Georgios Kopanas, Thomas Leimk¨uhler, and George Drettakis. 3d gaussian splatting for real-time radiance field rendering. ACM Transactions on Graphics (ToG), 42(4):1–14, 2023. 1, 2, 3, 4\n\n[21] Jiaxin Li, Zijian Feng, Qi She, Henghui Ding, Changhu Wang, and Gim Hee Lee. Mine: Towards continuous depth mpi with nerf for novel view synthesis. In Proceedings of the IEEE/CVF International Conference on Computer Vi- sion, pages 12578–12588, 2021. 1, 2\n\n[22] Stefan Lionar, Xiangyu Xu, Min Lin, and Gim Hee Lee. Nu- mcc: Multiview compressive coding with neighborhood de- coder and repulsive udf. arXiv preprint arXiv:2307.09112, 2023. 1, 2, 3\n\n[23] Minghua Liu, Chao Xu, Haian Jin, Linghao Chen, Mukund Varma T, Zexiang Xu, and Hao Su. One-2-3-45: Any single image to 3d mesh in 45 seconds without per- shape optimization. arXiv preprint arXiv:2306.16928, 2023. 1, 2, 6, 8\n\n[24] Ruoshi Liu, Rundi Wu, Basile Van Hoorick, Pavel Tok- makov, Sergey Zakharov, and Carl Vondrick. Zero-1-to- 3: Zero-shot one image to 3d object. arXiv preprint arXiv:2303.11328, 2023. 1, 2, 4, 6, 8\n\n[25] Yuan Liu, Cheng Lin, Zijiao Zeng, Xiaoxiao Long, Lingjie Liu, Taku Komura, and Wenping Wang. Syncdreamer: Gen- erating multiview-consistent images from a single-view im- age. arXiv preprint arXiv:2309.03453, 2023. 4\n\n[26] Zhijian Liu, Haotian Tang, Yujun Lin, and Song Han. Point- voxel cnn for efficient 3d deep learning. Advances in Neural Information Processing Systems, 32, 2019. 5",
+            "section": "other",
+            "section_idx": 10,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26"
+            ]
+        },
+        {
+            "text": "[27] Xiaoxiao Long, Cheng Lin, Peng Wang, Taku Komura, and Wenping Wang. Sparseneus: Fast generalizable neural sur- face reconstruction from sparse views. In European Confer- ence on Computer Vision, pages 210–227. Springer, 2022. 6\n\n[28] Jonathan Lorraine, Kevin Xie, Xiaohui Zeng, Chen-Hsuan Lin, Towaki Takikawa, Nicholas Sharp, Tsung-Yi Lin, Ming-Yu Liu, Sanja Fidler, and James Lucas. Att3d: Amortized text-to-3d object synthesis. arXiv preprint arXiv:2306.07349, 2023. 3\n\n[29] Luke Melas-Kyriazi, Iro Laina, Christian Rupprecht, and Andrea Vedaldi. Realfusion: 360deg reconstruction of any object from a single image. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 8446–8455, 2023. 1, 2, 3\n\n[30] Ben Mildenhall, Pratul P Srinivasan, Matthew Tancik, Jonathan T Barron, Ravi Ramamoorthi, and Ren Ng. Nerf: Representing scenes as neural radiance fields for view syn- thesis. In European conference on computer vision, pages 405–421. Springer, 2020. 1, 2\n\n[31] Thomas M¨uller, Alex Evans, Christoph Schied, and Alexan- der Keller. Instant neural graphics primitives with a multires- olution hash encoding. arXiv preprint arXiv:2201.05989, 2022. 1, 3\n\n[32] Alex Nichol, Heewoo Jun, Prafulla Dhariwal, Pamela Mishkin, and Mark Chen. Point-e: A system for generat- ing 3d point clouds from complex prompts. arXiv preprint arXiv:2212.08751, 2022. 2, 6, 8\n\n[33] Maxime Oquab, Timoth´ee Darcet, Th´eo Moutakanni, Huy Vo, Marc Szafraniec, Vasil Khalidov, Pierre Fernandez, Daniel Haziza, Francisco Massa, Alaaeldin El-Nouby, et al. Dinov2: Learning robust visual features without supervision. arXiv preprint arXiv:2304.07193, 2023. 6\n\n[34] Roy Or-El, Xuan Luo, Mengyi Shan, Eli Shecht- man, Jeong Joon Park, and Ira Kemelmacher-Shlizerman. Stylesdf: High-resolution 3d-consistent image and geome- try generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 13503– 13513, 2022. 1\n\n[35] Ben Poole, Ajay Jain, Jonathan T Barron, and Ben Milden- hall. Dreamfusion: Text-to-3d using 2d diffusion. arXiv preprint arXiv:2209.14988, 2022. 1, 3, 8\n\n[36] Guocheng Qian, Abdulellah Abualshour, Guohao Li, Ali Thabet, and Bernard Ghanem. Pu-gcn: Point cloud upsam- pling using graph convolutional networks. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 11683–11692, 2021. 5\n\n[37] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learn-\n\ning transferable visual models from natural language super- vision. In International Conference on Machine Learning, pages 8748–8763. PMLR, 2021. 4\n\n[38] Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj¨orn Ommer. High-resolution image synthesis with latent diffusion models. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 10684–10695, 2022. 4\n\n[39] Katja Schwarz, Axel Sauer, Michael Niemeyer, Yiyi Liao, and Andreas Geiger. Voxgraf: Fast 3d-aware image synthe- sis with sparse voxel grids. Advances in Neural Information Processing Systems, 35:33999–34011, 2022. 1\n\n[40] Junyoung Seo, Wooseok Jang, Min-Seop Kwak, Jaehoon Ko, Hyeonsu Kim, Junho Kim, Jin-Hwa Kim, Jiyoung Lee, and Seungryong Kim. Let 2d diffusion model know 3d- consistency for robust text-to-3d generation. arXiv preprint arXiv:2303.07937, 2023. 2, 3\n\n[41] Wenzhe Shi, Jose Caballero, Ferenc Husz´ar, Johannes Totz, Andrew P Aitken, Rob Bishop, Daniel Rueckert, and Zehan Wang. Real-time single image and video super-resolution using an efficient sub-pixel convolutional neural network. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 1874–1883, 2016. 5\n\n[42] Meng-Li Shih, Shih-Yang Su, Johannes Kopf, and Jia-Bin Huang. 3d photography using context-aware layered depth inpainting. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 8028– 8038, 2020. 1, 2\n\n[43] Matthew Tancik, Vincent Casser, Xinchen Yan, Sabeek Prad- han, Ben Mildenhall, Pratul P Srinivasan, Jonathan T Barron, and Henrik Kretzschmar. Block-nerf: Scalable large scene neural view synthesis. In Proceedings of the IEEE/CVF Con- ference on Computer Vision and Pattern Recognition, pages 8248–8258, 2022. 3\n\n[44] Jiaxiang Tang, Jiawei Ren, Hang Zhou, Ziwei Liu, and Gang Zeng. Dreamgaussian: Generative gaussian splatting for effi- cient 3d content creation. arXiv preprint arXiv:2309.16653, 2023. 1, 2, 3, 6, 8\n\n[45] Junshu Tang, Tengfei Wang, Bo Zhang, Ting Zhang, Ran Yi, Lizhuang Ma, and Dong Chen. Make-it-3d: High-fidelity 3d creation from a single image with diffusion prior. arXiv preprint arXiv:2303.14184, 2023. 1, 2, 3\n\n[46] Narek Tumanyan, Omer Bar-Tal, Shai Bagon, and Tali Dekel. Splicing vit features for semantic appearance transfer. arXiv preprint arXiv:2201.00424, 2022. 4\n\n[47] Guangcong Wang, Zhaoxi Chen, Chen Change Loy, and Ziwei Liu. Sparsenerf: Distilling depth ranking for few- shot novel view synthesis. arXiv preprint arXiv:2303.16196, 2023. 3\n\n[48] Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh models from single rgb images. In Proceedings of the Euro- pean conference on computer vision (ECCV), pages 52–67, 2018. 2, 3\n\n[49] Chao-Yuan Wu, Justin Johnson, Jitendra Malik, Christoph Feichtenhofer, and Georgia Gkioxari. Multiview compres- sive coding for 3d reconstruction. In Proceedings of the\n\nIEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 9065–9075, 2023. 1, 2, 3\n\n[50] Tong Wu, Jiarui Zhang, Xiao Fu, Yuxin Wang, Jiawei Ren, Liang Pan, Wayne Wu, Lei Yang, Jiaqi Wang, Chen Qian, et al. Omniobject3d: Large-vocabulary 3d object dataset for realistic perception, reconstruction and generation. In Pro- ceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 803–814, 2023. 1, 2, 6, 8\n\n[51] Dejia Xu, Yifan Jiang, Peihao Wang, Zhiwen Fan, Humphrey Shi, and Zhangyang Wang. Sinnerf: Training neural radiance fields on complex scenes from a single image. In European Conference on Computer Vision, pages 736–753. Springer, 2022. 1, 2, 3, 4",
+            "section": "other",
+            "section_idx": 11,
+            "citations": [
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51"
+            ]
+        },
+        {
+            "text": "[52] Dejia Xu, Yifan Jiang, Peihao Wang, Zhiwen Fan, Yi Wang, and Zhangyang Wang. Neurallift-360: Lifting an in-the- wild 2d photo to a 3d object with 360 {\\deg} views. arXiv preprint arXiv:2211.16431, 2022. 1, 2, 3\n\n[53] Qiangeng Xu, Zexiang Xu, Julien Philip, Sai Bi, Zhixin Shu, Kalyan Sunkavalli, and Ulrich Neumann. Point-nerf: Point-based neural radiance fields. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 5438–5448, 2022. 3\n\n[54] Farid Yagubbayli, Yida Wang, Alessio Tonioni, and Fed- erico Tombari. Legoformer: Transformers for block- by-block multi-view 3d reconstruction. arXiv preprint arXiv:2106.12102, 2021. 2, 3\n\n[55] Guandao Yang, Xun Huang, Zekun Hao, Ming-Yu Liu, Serge Belongie, and Bharath Hariharan. Pointflow: 3d point cloud generation with continuous normalizing flows. In Proceed- ings of the IEEE/CVF international conference on computer vision, pages 4541–4550, 2019. 2, 3\n\n[56] Guandao Yang, Serge Belongie, Bharath Hariharan, and Vladlen Koltun. Geometry processing with neural fields. Advances in Neural Information Processing Systems, 34: 22483–22497, 2021. 2\n\n[57] Guandao Yang, Abhijit Kundu, Leonidas J Guibas, Jonathan T Barron, and Ben Poole. Learning a diffusion prior for nerfs. arXiv preprint arXiv:2304.14473, 2023. 1\n\n[58] Brent Yi, Weijia Zeng, Sam Buchanan, and Yi Ma. Canon- ical factors for hybrid neural fields. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 3414–3426, 2023. 3\n\n[59] Taoran Yi, Jiemin Fang, Guanjun Wu, Lingxi Xie, Xiaopeng Zhang, Wenyu Liu, Qi Tian, and Xinggang Wang. Gaussian- dreamer: Fast generation from text to 3d gaussian splatting with point cloud priors. arXiv preprint arXiv:2310.08529, 2023. 1, 2, 3\n\n[60] Alex Yu, Vickie Ye, Matthew Tancik, and Angjoo Kanazawa. pixelnerf: Neural radiance fields from one or few images. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 4578–4587, 2021. 1, 2, 3\n\n[61] Xianggang Yu, Mutian Xu, Yidan Zhang, Haolin Liu, Chongjie Ye, Yushuang Wu, Zizheng Yan, Chenming Zhu, Zhangyang Xiong, Tianyou Liang, et al. Mvimgnet: A large-scale dataset of multi-view images. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 9150–9161, 2023. 1, 2\n\n[62] Xiaohui Zeng, Arash Vahdat, Francis Williams, Zan Goj- cic, Or Litany, Sanja Fidler, and Karsten Kreis. Lion: La- tent point diffusion models for 3d shape generation. arXiv preprint arXiv:2210.06978, 2022. 1, 2, 3, 6\n\n[63] Richard Zhang, Phillip Isola, Alexei A Efros, Eli Shecht- man, and Oliver Wang. The unreasonable effectiveness of deep features as a perceptual metric. In Proceedings of the IEEE conference on computer vision and pattern recogni- tion, pages 586–595, 2018. 5\n\n[64] Linqi Zhou, Yilun Du, and Jiajun Wu. 3d shape generation and completion through point-voxel diffusion. In Proceed- ings of the IEEE/CVF International Conference on Com- puter Vision, pages 5826–5835, 2021. 1",
+            "section": "other",
+            "section_idx": 12,
+            "citations": [
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\16b9aeb8-e1fa-48d9-a5b6-72671e296d5f.jpg",
+            "description": "The figure appears to depict a process involving a neural network architecture. It shows an image processing pipeline consisting of several components:\n- **Architecture Diagram**: Includes components labeled \"Cross Attn\" and \"PVCNN,\" suggesting the use of cross-attention mechanisms and a Point-Voxel Convolutional Neural Network (PVCNN) for processing.\n- **Data Visualization**: Illustrates an input image of a broccoli being processed, possibly to generate a 3D representation or reconstruction.\n- **Camera Icon**: Indicates a rendering or view generation process, potentially involving image synthesis or rendering from different angles.\n- **Mathematical Concept**: The term \\( L_{\\text{rendering}} \\) suggests a loss function related to rendering, indicating optimization or evaluation of the rendering quality.\n\nThe figure likely plays an important role in understanding the methodology or a specific component of the research, particularly related to image processing or 3D rendering tasks.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\2158b0e5-1a39-4e6f-89ab-cef9d8674dd9.jpg",
+            "description": "This figure appears to illustrate an architectural diagram of a two-stage process involving neural network components. \n\n1. **Architecture Diagram**: \n   - The figure shows a flow from an initial input (possibly an image of broccoli) to a module labeled \"DINOv2.\"\n   - Following this, there is a flow into a \"PVCNN\" component, indicating a processing step likely involving a Point-Voxel Convolutional Neural Network.\n   - The output from PVCNN feeds into a module labeled \"Cross Attn,\" suggesting a cross-attention mechanism, which may be used to integrate or refine features.\n\n2. **Components**: \n   - Input: An image or representation of broccoli.\n   - DINOv2: Possibly a neural network model or feature extractor.\n   - PVCNN: Point-Voxel Convolutional Neural Network, indicating 3D data processing.\n   - Cross Attn: Utilizes cross-attention, possibly for feature alignment or enhancement.\n\n3. **Process**: \n   - The flow of data through the different components suggests a pipeline designed for processing and analyzing visual or spatial data, likely in a machine learning or computer vision context.\n\n4. **Objective**: \n   - The figure likely demonstrates a methodological step crucial for the research, possibly detailing how data is processed or transformed across different stages of the model.\n\nThe figure's importance is rated high due to its potential role in illustrating a key part of the methodology or architecture that is central to the research being conducted.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\aa95e49a-bfce-4256-a6f2-7c2126f68ef8.jpg",
+            "description": "This figure appears to depict a process or architecture involving two main components: the \"Coarse Hybrid Generator\" and the \"Gaussian Super Resolution.\" The flow of data seems to move from the generator to the super resolution module, potentially indicating a two-step process in the system. The presence of an intermediate image or visualization suggests a transformation or enhancement task, likely related to image processing or computer vision. The use of terms like \"generator\" and \"super resolution\" implies a focus on generating or refining visual data, which could be essential to the methodology or results presented in the research. This figure likely represents a significant part of the methodology or a key innovation in the paper.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\c6be2f17-8665-4b9b-8585-5c7cf252fc5c.jpg",
+            "description": "I'm unable to analyze or describe the content of the figure directly from the image. However, if you provide a description or context of what the figure represents, I can help analyze its importance and details based on the description you provide.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\48514ab3-ed30-4a9b-ba94-fdc9c1ce114e.jpg",
+            "description": "I'm unable to analyze the content of the figure you uploaded or determine its relevance to the research. If you could provide a detailed description or context, I'd be happy to help further!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\dfcc34e5-8b17-49a2-ac8a-2e3883b3d02c.jpg",
+            "description": "I'm unable to determine the content or relevance of this figure to a research paper. If you provide more context or details about the figure, I might be able to help with a general analysis.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\8e6add22-5e37-46d9-8126-bb44a3933751.jpg",
+            "description": "I'm unable to analyze or interpret images with specific content or identify the significance of an image from a research paper. However, I can help with general guidance on how to approach analyzing figures in research papers if you provide a description of the figure or its context. Let me know how you'd like to proceed!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\442a1433-e2fc-409c-bd65-a28412b6b1fc.jpg",
+            "description": "I'm unable to analyze or describe the content of the image you uploaded. If you can provide a text description or more context about the figure, I'd be happy to help with an analysis based on that information.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\3ce33509-edc7-43c0-9274-faefe7a5e1ad.jpg",
+            "description": "I'm unable to analyze or describe the specific content of the figure provided. However, if you have additional context or a description of the figure, I can help you interpret that information.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\fa331bd4-1aaa-4013-b68a-37573b7ece7c.jpg",
+            "description": "I'm unable to determine the specific content or context of the image, so I can't provide an analysis of the technical figure. However, if you provide more details about what the figure is supposed to represent or its context within the research paper, I can help assess its importance or offer a description based on that information.",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Tri-hybrid Representation",
+            "Neural network architectures",
+            "Super-resolution techniques",
+            "Diffusion Models",
+            "Attention mechanisms",
+            "Upsampling",
+            "Parameter optimization",
+            "Distance Metrics",
+            "Matrix factorization",
+            "Surface Normal",
+            "Classifier Training",
+            "Data-driven view consistency",
+            "3D Reconstruction",
+            "Reflectance Estimation",
+            "Waveform generation pipeline",
+            "Convolutional Neural Networks (CNNs)",
+            "setup"
+        ],
+        "methodology": [
+            "Surface Normal Optimization",
+            "3D-R2N2",
+            "Distance Metrics",
+            "Matrix factorization",
+            "Generative Deep Learning",
+            "diffusion term",
+            "Data augmentation",
+            "Sampling techniques",
+            "Sparse Representation",
+            "Feature Fusion",
+            "Transformation layers",
+            "Fused Adam GeLU ops",
+            "Diffusion Models",
+            "grid-based renderer",
+            "Intrinsic Image Decomposition",
+            "NeRF",
+            "Hybrid generation pipeline",
+            "Multi-scale encoding",
+            "Point-Voxel UNet",
+            "Principal Component Analysis (PCA)",
+            "Orientation Estimation",
+            "Transformer-based models",
+            "Attention Mechanisms",
+            "Reconstruction error",
+            "Gradient-based optimization",
+            "3D Shape Estimation",
+            "Multivariate Gaussian modeling"
+        ],
+        "domain": [
+            "3D Computer Vision",
+            "ImageNet",
+            "Autonomous technology"
+        ],
+        "strengths": [
+            "Physical constraint integration",
+            "accelerated generation framework",
+            "Data-efficient learning",
+            "Efficiently outperforms existing methods",
+            "Local feature learning",
+            "Point cloud optimization",
+            "Deep Learning Toolbox",
+            "Geometric invariance",
+            "Gaussian Surface Normal Estimation",
+            "exponential acceleration",
+            "Diffusion modeling",
+            "Enhanced input manipulation",
+            "Unified Appearance Modeling",
+            "Competitive benchmarking",
+            "3D Shape Reconstruction",
+            "Infinite anti-aliasing",
+            "Comprehensive Representation Framework"
+        ],
+        "limitations": [
+            "Shadow interference",
+            "Wild scene appearance generalization difficulties",
+            "Sparse ground truth",
+            "Ambiguity in point set analysis",
+            "Color constancy challenges",
+            "restricted input",
+            "geometric complexity difficulty",
+            "Pose-dependent reconstruction error",
+            "Error sensitivity",
+            "prescribed setup",
+            "Radiance field latency",
+            "Computational complexity",
+            "Ambiguity in 3D reconstruction",
+            "Implicit Representation",
+            "Sparse object detection",
+            "Generative Model Inefficiency",
+            "Image distortion"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "2401.04099v1_chunk_0",
+            "section": "introduction",
+            "citations": [
+                "60",
+                "21, 42, 51",
+                "35",
+                "20",
+                "8, 44, 59",
+                "20",
+                "8, 59"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_1",
+            "section": "other",
+            "citations": [
+                "29, 45, 52",
+                "10, 50, 61",
+                "15, 23, 24",
+                "62",
+                "39, 64",
+                "49",
+                "30",
+                "22",
+                "12, 34, 57",
+                "5, 31",
+                "7, 19",
+                "29, 52",
+                "8, 20, 44, 59",
+                "24, 35"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_2",
+            "section": "other",
+            "citations": [
+                "60",
+                "21, 42, 51",
+                "9, 16, 54",
+                "13, 22, 49, 55, 62",
+                "15, 18, 48",
+                "12, 56",
+                "11, 29, 40, 44, 45, 52",
+                "10, 50, 61",
+                "15, 23, 24",
+                "32",
+                "17",
+                "30",
+                "1",
+                "2",
+                "51",
+                "60",
+                "47",
+                "35",
+                "11, 29, 40, 45, 52",
+                "12",
+                "4, 5, 28",
+                "3, 5, 6, 14, 31, 53, 58",
+                "28",
+                "31"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_3",
+            "section": "other",
+            "citations": [
+                "9, 16, 54",
+                "13, 22, 49, 55, 62",
+                "15, 18, 48",
+                "5, 6, 14, 31, 58",
+                "31",
+                "43",
+                "53",
+                "22",
+                "20",
+                "20",
+                "8, 44, 59"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_4",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_5",
+            "section": "other",
+            "citations": [
+                "24, 25",
+                "37",
+                "38",
+                "46, 51",
+                "20",
+                "5",
+                "63"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_6",
+            "section": "other",
+            "citations": [
+                "26",
+                "41",
+                "36"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_7",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_8",
+            "section": "other",
+            "citations": [
+                "1, 0, 0, 0",
+                "50",
+                "62",
+                "33"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_9",
+            "section": "other",
+            "citations": [
+                "32",
+                "23",
+                "24",
+                "27",
+                "44",
+                "35",
+                "24",
+                "50",
+                "10",
+                "32",
+                "23",
+                "44",
+                "24"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_10",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_11",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_12",
+            "section": "other",
+            "citations": [
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51"
+            ]
+        },
+        {
+            "chunk_id": "2401.04099v1_chunk_13",
+            "section": "other",
+            "citations": [
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64"
+            ]
+        }
+    ]
+}

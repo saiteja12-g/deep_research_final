@@ -1,0 +1,755 @@
+{
+    "basic_info": {
+        "title": "Surface Normals in the Wild",
+        "authors": [
+            "Weifeng Chen",
+            "Donglai Xiang",
+            "Jia Deng"
+        ],
+        "paper_id": "1704.02956v1",
+        "published_year": 2017,
+        "references": [
+            "2010.03592v1"
+        ]
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "A. Bansal, B. Russell, and A. Gupta. Marr revisited: 2d-3d alignment via surface normal prediction. In Proceedings of the IEEE\nConference on Computer Vision and Pattern Recognition , pages 5965–5974, 2016. 2",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "A. Bansal, B. Russell, and A. Gupta. Marr revisited: 2d-\n3d alignment via surface normal prediction. In Proceed-\nings of the IEEE Conference on Computer Vision and Pattern\nRecognition , pages 5965–5974, 2016. 1, 8",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "J. T. Barron and J. Malik. Shape, illumination, and re-\nﬂectance from shading. TPAMI , 2015. 2",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "S. Bell, P. Upchurch, N. Snavely, and K. Bala. OpenSurfaces:\nA richly annotated catalog of surface appearance. ACM\nTrans. on Graphics (SIGGRAPH) , 32(4), 2013. 2",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": null
+        },
+        "ref_5": {
+            "text": "D. J. Butler, J. Wulff, G. B. Stanley, and M. J. Black. A\nnaturalistic open source movie for optical ﬂow evaluation.\nInECCV , Part IV , LNCS 7577, pages 611–625. Springer-\nVerlag, Oct. 2012. 2",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "A. Chakrabarti, J. Shao, and G. Shakhnarovich. Depth from\na single image by harmonizing overcomplete local network\npredictions. In Advances in Neural Information Processing\nSystems , pages 2658–2666, 2016. 1, 2, 7, 8",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "W. Chen, Z. Fu, D. Yang, and J. Deng. Single-image depth\nperception in the wild. In Advances in Neural Information\nProcessing Systems , pages 730–738, 2016. 1, 2, 3, 4, 5, 6, 7,\n8",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "A. Dai, A. X. Chang, M. Savva, M. Halber, T. Funkhouser,\nand M. Nießner. Scannet: Richly-annotated 3d reconstruc-\ntions of indoor scenes. arXiv preprint arXiv:1702.04405 ,\n2017. 2",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": "1702.04405"
+        },
+        "ref_9": {
+            "text": "D. Eigen and R. Fergus. Predicting depth, surface normals\nand semantic labels with a common multi-scale convolu-\ntional architecture. In ICCV , 2015. 1, 2, 6, 7, 8",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "D. Eigen, C. Puhrsch, and R. Fergus. Depth map prediction\nfrom a single image using a multi-scale deep network. In\nNIPS , 2014. 1, 2, 6",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "S. Galliani and K. Schindler. Just look at the image:\nviewpoint-speciﬁc surface normal prediction for improved\nmulti-view reconstruction. 2016. 3",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": null
+        },
+        "ref_12": {
+            "text": "R. Garg, G. Carneiro, and I. Reid. Unsupervised cnn for\nsingle view depth estimation: Geometry to the rescue. In\nEuropean Conference on Computer Vision , pages 740–756.\nSpringer, 2016. 2",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "A. Geiger, P. Lenz, C. Stiller, and R. Urtasun. Vision meets\nrobotics: The kitti dataset. The International Journal of\nRobotics Research , page 0278364913491297, 2013. 2",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "C. Hane, L. Ladicky, and M. Pollefeys. Direction matters:\nDepth estimation with a surface normal classiﬁer. In Pro-\nceedings of the IEEE Conference on Computer Vision and\nPattern Recognition , pages 381–389, 2015. 3",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "S. Ikehata, I. Boyadzhiev, Q. Shan, and Y . Furukawa.\nPanoramic structure from motion via geometric relationship\ndetection. arXiv preprint arXiv:1612.01256 , 2016. 3",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": "1612.01256"
+        },
+        "ref_16": {
+            "text": "K. Karsch, C. Liu, and S. B. Kang. Depthtransfer: Depth ex-\ntraction from video using non-parametric sampling. TPAMI ,\n2014. 1, 2",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": null
+        },
+        "ref_17": {
+            "text": "M. Kazhdan, M. Bolitho, and H. Hoppe. Poisson surface\nreconstruction. SGP. Eurographics Association, 2006. 3",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": null
+        },
+        "ref_18": {
+            "text": "J. J. Koenderink, A. J. Van Doorn, and A. M. Kappers. Sur-\nface perception in pictures. Attention, Perception, &amp;\nPsychophysics , 52(5):487–496, 1992. 1, 3",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "A. Kushal and S. M. Seitz. Single view reconstruction of\npiecewise swept surfaces. In 2013 International Conference\non 3D Vision-3DV 2013 , pages 239–246. IEEE, 2013. 3",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "L. Ladicky, J. Shi, and M. Pollefeys. Pulling things out of\nperspective. In CVPR , 2014. 1, 2",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "I. Laina, C. Rupprecht, V . Belagiannis, F. Tombari, and\nN. Navab. Deeper depth prediction with fully convolutional\nresidual networks. In 3D Vision (3DV), 2016 Fourth Interna-\ntional Conference on , pages 239–248. IEEE, 2016. 2, 8",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "B. Li, C. Shen, Y . Dai, A. van den Hengel, and M. He. Depth\nand surface normal estimation from monocular images using\nregression on deep features and hierarchical crfs. In CVPR ,\n2015. 1, 2",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": null
+        },
+        "ref_23": {
+            "text": "F. Liu, C. Shen, and G. Lin. Deep convolutional neural ﬁelds\nfor depth estimation from a single image. In CVPR , 2015. 1,\n2",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": null
+        },
+        "ref_24": {
+            "text": "R. Ranftl, V . Vineet, Q. Chen, and V . Koltun. Dense monoc-\nular depth estimation in complex dynamic scenes. In CVPR ,\n2016. 1",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": null
+        },
+        "ref_25": {
+            "text": "S. R. Richter, V . Vineet, S. Roth, and V . Koltun. Playing\nfor data: Ground truth from computer games. In European\nConference on Computer Vision , pages 102–118. Springer,\n2016. 2",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "A. Roy and S. Todorovic. Monocular depth estimation using\nneural regression forest. In CVPR , 2016. 1",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "A. Saxena, S. H. Chung, and A. Y . Ng. 3-d depth recon-\nstruction from a single still image. International journal of\ncomputer vision , 76(1):53–69, 2008. 2",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "N. Silberman, D. Hoiem, P. Kohli, and R. Fergus. Indoor\nsegmentation and support inference from rgbd images. In\nECCV . Springer, 2012. 2, 3, 4, 6, 8",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "P. Wang, X. Shen, Z. Lin, S. Cohen, B. Price, and A. Yuille.\nTowards uniﬁed depth and semantic prediction from a single\nimage. In CVPR . IEEE, 2015. 1, 2",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_30": {
+            "text": "P. Wang, X. Shen, B. Russell, S. Cohen, B. Price, and A. L.\nYuille. Surge: Surface regularized geometry estimation from\na single image. In Advances in Neural Information Process-\ning Systems , pages 172–180, 2016. 3",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": null
+        },
+        "ref_31": {
+            "text": "X. Wang, D. Fouhey, and A. Gupta. Designing deep net-\nworks for surface normal estimation. In Proceedings of the\nIEEE Conference on Computer Vision and Pattern Recogni-\ntion, pages 539–547, 2015. 1, 2, 8",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "J. Xie, R. Girshick, and A. Farhadi. Deep3d: Fully au-\ntomatic 2d-to-3d video conversion with deep convolutional\nneural networks. In European Conference on Computer Vi-\nsion, pages 842–857. Springer, 2016. 2",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": null
+        },
+        "ref_33": {
+            "text": "D. Zoran, P. Isola, D. Krishnan, and W. T. Freeman. Learning\nordinal relationships for mid-level vision. In ICCV , 2015. 2,\n6, 7Appendix\nA \nA \nC B \nFigure 1. Some examples of the very difﬁcult cases where the surface normal is hard to infer from the image. Point A is on tree leaves,\nwhich are small and cluttered. Point B is on a dark background where nothing can be seen clearly. In these case, the worker can indicate\nthat the surface normal is hard to tell. Please view in color.\nInput Image Ground Truth \nDepth Without \nSurface Normals With\nSurface Normals Ground Truth \nSurface Normals Without \nSurface Normals With\nSurface Normals \nFigure 2. Qualitative results of the NYU test set. Here we show example outputs of the networks trained with or without surface normals\non the NYU Subset.\n124 1416\n23\n2\nd_n_al_F_SNOW Bansal Input Image d_n_al_F_SNOW Bansal Input Image \nNormal Colors zxy22\nd_n_al_F_SNOW Bansal \nNormal Colors zxy\nd_n_al_F_SNOW Bansal \nGround-truth d_n_al_F_SNOW Bansal \nNormal Colors zxy\nd_n_al_F_SNOW Bansal \nFigure 3. Additional qualitative results on SNOW produced by our model and Bansal",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": null
+        },
+        "ref_Springer_2016": {
+            "text": "sion, pages 842–857. Springer, 2016. 2 [33] D. Zoran, P. Isola, D. Krishnan, and W. T. Freeman. Learning",
+            "type": "author_year",
+            "key": "Springer, 2016",
+            "arxiv_id": null
+        },
+        "ref_Association_2006": {
+            "text": "reconstruction. SGP. Eurographics Association, 2006. 3 [18] J. J. Koenderink, A. J. Van Doorn, and A. M. Kappers. Sur-",
+            "type": "author_year",
+            "key": "Association, 2006",
+            "arxiv_id": null
+        },
+        "ref_In_2013": {
+            "text": "piecewise swept surfaces. In 2013 International Conference",
+            "type": "author_year",
+            "key": "In, 2013",
+            "arxiv_id": null
+        },
+        "ref_Springer_2012": {
+            "text": "ECCV . Springer, 2012. 2, 3, 4, 6, 8 [29] P. Wang, X. Shen, Z. Lin, S. Cohen, B. Price, and A. Yuille.",
+            "type": "author_year",
+            "key": "Springer, 2012",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "4. Learning with surface normals\n\nOur goal is to train a deep neural network to perform depth prediction. We build our method upon [7], which uses relative depth as supervision during training. The main idea from [7] is to train a network using a loss function that penalizes the inconsistency between the predicted depth and the ground truth relative depth (ordinal relations between pairs of points). We propose to incorporate surface normals\n\nwhere z is the depth map predicted by the network. The loss term wW(ik,jx,7k,Z) Measures the inconsistency between the predicted depth map z and the k-th relative depth an- notation. The loss term }7)__, ¢(pi, mu, z) measures the in- consistency between the predicted depth map z and the /-th surface normal annotation. The hyper-parameter balances the two terms.\n\nA revised relative depth loss Chen et al. [7] deﬁne the loss\n\nterm ψ(ik,jk,rk,z) as\n\nln(1 + exp(−zik + zjk)), ln(1 + exp(zik − zjk)), rk ∈ {>} rk ∈ {<} (zik − zjk)2, rk ∈ {=} (2)\n\nThis deﬁnition encourages two depth values to be as dif- ferent as possible if their ground truth ordinal relation is an inequality, or as similar as possible if their ground truth re- lation is equality. It works well if relative depth is the only form of supervision, as shown by Chen et al. [7], but it is problematic when used in conjunction with annotations of surface normals. The problem is that it encourages the dif- ference of two unequal depth values to be inﬁnitely large. This can potentially conﬂict with annotations of surface nor- mals, which encourage the depth values to have a speciﬁc difference to form a speciﬁc surface orientation.\n\nTo address this issue we revise the loss term by intro- ducing a margin τ > 0 that stops the loss from decreasing if two depth values supposed to be unequal are already at least τ apart and if two equal depth values supposed to be equal are apart by no more than τ:\n\nln(1 + exp(−min(zik − zjk,τ))), ln(1 + exp(−min(zjk − zik,τ))), max(τ2,|zik − zjk|2), rk ∈ {>} rk ∈ {<} rk ∈ {=}. (3)\n\nTo make the loss term compatible with surface normals, we make another modiﬁcation. We add a softplus transform to the network to enforce positive depth. This is needed because a negative depth means that the object is behind the camera and will cause issues in computing surface normals from the predicted depth.\n\nAngle-based surface normal loss We now consider how to deﬁne the loss term φ(pl,nl,z) in Eqn. 1 that compares the predicted depth map z with a ground truth surface normal nl at location pl.\n\nThe ﬁrst approach we propose is to derive a surface nor- mal ν(z)pl at the same location from the predicted depth map z and compare the derived normal to the ground truth. Here ν is a function that maps a depth map to a map of surface normals, and ν(z)pl is the derived surface normal at location pl. The loss term can now be deﬁned as the angular difference between the derived normal and the ground truth normal, expressed as a dot product of the two normals:\n\nφl(pl,nl,z) = − < nl,ν(z)pl > . (4)\n\nWe call this formulation the angle-based surface normal",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "7",
+                "7",
+                "7",
+                "7"
+            ]
+        },
+        {
+            "text": "Table 1. Metric depth error evaluated on the NYU Depth dataset. Models with a * sufﬁx are trained on full metric depth.\n\nTraining | Method WKDR | WKDR WKDR Data NYU d 37.6% 36.4% 39.3% Subset | d_n_al 36.5% 35.5% 37.9% dn_al_M 34.6% 33.4% 36.3% dn_dl 38.7% 36.9% 40.5% d_n_dl-.M 39.0% 37.7% 40.5% Chen [7] 35.6% 36.1% 36.5% Zoran [33] 43.5% 44.2% 41.4% NYU dF 29.2% 32.5% 28.0% Full d_n_al_F 27.6% 31.5% 26.6% d_n_al_F_M 27.9% 32.2% 26.6% dn_dl_F 30.9% 31.7% 31.4% d_n_dl_F_M 35.5% 38.9% 34.6% Chen_Full [7] 28.3% 30.6% 28.6% Eigen(V)* [9] 34.0% 43.3% 29.6% Chakrabarti* [6] | 27.5% 30.0% 27.5%\n\nTable 2. Ordinal error evaluated on the NYU Depth dataset. Mod- els with a * sufﬁx are trained on full metric depth.\n\npairs whose ground-truth order is =) and WKDR*(WKDR of pairs whose ground-truth order is either > or <).\n\nFollowing [7], we predict the ordinal relation of point A and B by thresholding on difference of the predicted depth.\n\nThe results on relative depth are shown in Tab. 2. First it is interesting to observe that our relative-depth-only base- line model is slightly worse than Chen et al. [7], which also trains with only relative depth. We attribute this difference to our revised relative depth loss (Eqn. 3)—the loss in Chen et al. [7] encourages exaggerating depth differences, which leads to better relative depth performance at the expense of metric accuracy, as reﬂected by Tab. 1.\n\nInterestingly, adding normals improves ordinal error, but only from the angle-based normal loss, not from the depth- based normal loss. This is because depth-based normal loss places great emphasis on getting the exact steep slopes, but this does not make any difference to ordinal error as long as the sign of the slope is correct.\n\nEvaluating surface normals We now evaluate the pre- dicted depth in terms of surface normals derived from it. We use the same metrics as in [9]: the mean and median of angular difference with the ground-truth, and the percent- ages of predicted samples whose angular difference with\n\nFigure 7. Normal maps produced by our model and Bansal [2]. Please view in color. More examples are in the Appendix.\n\nWithin t◦ Model Angle Distance 11.25◦ 22.5◦ 30◦ Mean Median Normals d n al F 32.53 27.44 15.40 40.52 54.12 from d n al F SNOW 25.75 21.26 21.66 52.98 67.88 Predicted Chen Full [7] 35.16 30.26 13.70 36.56 49.56 Depth Eigen(V) [9] 48.71 46.15 6.35 18.91 28.45 FCRN [21] 48.74 45.38 5.84 18.29 28.25 Ours NYU§ Directly 31.96 26.03 18.16 43.72 56.03 Predicted Ours NYU SNOW§ 23.33 17.99 30.42 60.54 72.74 Eigen(V)§ [9] Normals 28.71 23.16 20.98 48.78 61.84 Bansal§ [2] 27.85 22.25 23.41 50.54 64.09\n\n% Within t◦ Training Method Angle Distance 11.25◦ 22.5◦ 30◦ Data Mean Median NYU d 45.46 40.62 7.56 23.65 35.10 Subset d n al 37.53 31.93 13.04 34.38 47.39 d n al M 35.39 29.51 15.50 38.43 51.40 d n dl 40.53 34.58 11.40 31.13 43.56 d n dl M 41.88 35.76 10.73 29.69 41.88 Chen* [7] 50.68 44.96 4.16 16.77 28.21 NYU d F 29.45 22.71 22.31 50.71 63.65 Full d n al F 25.92 20.09 26.28 56.45 69.26 d n al F M 26.50 20.42 26.41 55.47 68.09 d n dl F 30.85 24.51 24.51 46.93 60.31 d n dl F M 37.63 31.58 13.41 34.97 47.97 Chen Full* [7] 30.35 24.37 18.64 46.80 61.42 Eigen(V) [9] 35.97 28.34 17.67 41.12 53.49 Chakrabarti [6] 29.80 20.43 31.34 54.90 64.57 Wang§ [31] 28.8 17.9 35.2 57.1 65.5 Eigen(V)§ [9] 22.89 16.26 38.23 63.30 73.18 Bansal§ [2] 22.63 15.78 39.17 64.17 73.77\n\nTable 4. Surface normals error evaluated on SNOW. Models with a § sufﬁx directly predict surface normals.\n\noo, delity is the depth-based tation is then the\n\n. important, especially depth-based loss is more important than the angle-based loss is\n\noo, discontinuities, then surface orien- discontinuities,\n\n. at depth appropriate. If fidelity of depth more appropriate.\n\ndelity is important, especially at depth discontinuities, then the depth-based loss is more appropriate. If surface orien- tation is important than the ﬁdelity of depth discontinuities, then the angle-based loss is more appropriate.\n\nTable 3. Surface normals error evaluated on the NYU Depth dataset. The lower the better for Angle Distance metrics. The higher the better for the Percentage within t◦ metrics. Models with a § sufﬁx directly predict surface normals.",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "7",
+                "33",
+                "7",
+                "9",
+                "6",
+                "7",
+                "7",
+                "7",
+                "9",
+                "2",
+                "7",
+                "9",
+                "21",
+                "9",
+                "2",
+                "7",
+                "7",
+                "9",
+                "6",
+                "31",
+                "9",
+                "2"
+            ]
+        },
+        {
+            "text": "Figure 2. Qualitative results of the NYU test set. Here we show example outputs of the networks trained with or without surface normals on the NYU Subset.\n\nd_n_al_F_SNOW Bansal d_n_al_F_SNOW Bansal\n\nNormal Colors\n\nFigure 3. Additional qualitative results on SNOW produced by our model and Bansal [1]. The left two columns visualize some predicted normal vectors from the two methods. The other two columns are the full normal maps.\n\nReferences\n\n[1] A. Bansal, B. Russell, and A. Gupta. Marr revisited: 2d-3d alignment via surface normal prediction. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 5965-5974, 2016. 2",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "1",
+                "1"
+            ]
+        },
+        {
+            "text": "7\n\n2017\n\n1\n\n0\n\n2\n\nr\n\np A 0 1 ] V C . s c [ 1 v 6 5 9 2 0 . 4 0 7\n\n1\n\n:\n\nv\n\narXiv\n\ni\n\nX\n\nr\n\na\n\nSurface Normals in the Wild\n\nWeifeng Chen1 Donglai Xiang2∗ Jia Deng1 1University of Michigan, Ann Arbor, USA 2Tsinghua University, Beijing, China\n\nAbstract\n\nwith arbitrary images; it thus has the potential to signiﬁ- cantly advance depth estimation in the wild.\n\nWe study the problem of single-image depth estimation for images in the wild. We collect human annotated surface normals and use them to train a neural network that di- rectly predicts pixel-wise depth. We propose two novel loss functions for training with surface normal annotations. Ex- periments on NYU Depth and our own dataset demonstrate that our approach can signiﬁcantly improve the quality of depth estimation in the wild.\n\n1. Introduction\n\nOne limitation of the work by Chen et al. [7], however, is that annotations of relative depth do not capture all infor- mation that is perceptually important. In particular, relative depth is invariant to monotonic transformations of metric depth, meaning that there can be two scenes that are per- ceptually very different yet are indistinguishable in terms of relative depth. For example, it is possible to bend, wig- gle, or tilt a straight line without affecting relative depth (Fig. 2). In other words, relative depth does not capture important perceptual properties such as continuity, surface orientation, and curvature. As a result, systems trained on relative depth will not necessarily recover depth that is per- ceptually faithful in all aspects.\n\nSingle-image depth estimation is an important com- puter vision problem that has the potential to majorly boost higher-level tasks such as object recognition and scene un- derstanding. However, despite extensive research [23, 10, 22, 1, 9, 20, 29, 31, 16, 6, 26, 24, 2], single-image depth estimation remains difﬁcult. In particular, it remains dif- ﬁcult to estimate depth for unconstrained images of arbi- trary scenes, because, as prior work [7] has pointed out, ex- isting RGB-D datasets used to train current systems were collected by depth sensors. As a result, they consist of a few speciﬁc types of indoor and outdoor scenes. Systems trained on these datasets thus cannot generalize to images “in the wild” of arbitrary scenes and compositions.\n\nRecent work by Chen et al. [7] made an attempt to es- timate depth for images “in the wild”: they collected hu- man annotations of relative depth—the depth ordering of two points—for random Internet images and use the anno- tations to train a deep network that directly predicts metric depth. Chen et al. showed that it is possible to improve depth estimation for images in the wild by using human an- notations of depth. In particular, they showed that while it is difﬁcult to obtain absolute metric depth (per-pixel depth values) from humans, it is nonetheless feasible to collect in- direct, qualitative depth annotations such as relative depth, and use such annotations to learn to estimate metric depth. This strategy does not rely on depth sensors and can work\n\nIn this paper, we build on the work of Chen et al. [7] and address the limitation by introducing an additional type of indirect, qualitative depth annotation—surface nor- mals. Surface carries important information on 3D geom- etry: they encode the local orientation of surfaces and the derivatives of depth. In fact, given dense surface normals, it is possible to recover full metric depth up to scaling and translation. This suggests that annotations of surface nor- mals can eliminate the ambiguities in relative depth and result in better depth estimation. In addition, it has been well documented in human vision research that humans per- ceive surface orientation with a remarkable degree of con- sistency [18]. This suggests that it could be feasible to col- lect human annotations for images in the wild.\n\nWe consider two questions: how to crowdsource anno- tations of surface normals, and how to use surface normal annotations to help train a network that predicts per-pixel metric depth. To crowdsource surface normals, we develop a UI that allows a user to annotate a surface normal by ad- justing a virtual arrow and a virtual tangent plane. This UI allows human annotators to reliably estimate surface nor- mals. With this UI we introduce a dataset called “Surface Normals in the Wild” (SNOW), which consists of surface normal annotations collected from 60,061 Flickr images.\n\n∗Work done while a visiting student at the University of Michigan.\n\nTo incorporate surface normal annotations into training, we develop two novel loss functions to train a deep network\n\n1",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "7",
+                "23, 10, 22, 1, 9, 20, 29, 31, 16, 6, 26, 24, 2",
+                "7",
+                "7",
+                "7",
+                "18"
+            ]
+        },
+        {
+            "text": "RGB-D Data\n\nRelative Depth Annotations\n\nSurface Normal Annotations\n\nE\n\nE\n\nInput Image\n\nDeep Network with Pixel-wise Prediction\n\nMetric Depth\n\nFigure 1. Building on top of the work of Chen et al. [7], we crowdsource annotations of surface normals and use the collected surface normals to help train a better depth prediction network.\n\nDepth wese S a “Axis Bend» ® Wiggle ~® Tilt B ane\n\nFigure 2. Ambiguities of relative depth annotation. Bending, wig- gling, or tilting a 3D surface from solid line conﬁguration to dotted line conﬁguration does not change the ordinal relation that point A is farther away from the camera than point B.\n\nthat directly predicts metric depth. The ﬁrst loss function is based on directly comparing normals, that is, comput- ing the angular difference between the ground truth normals and the normals derived from the predicted depth. The sec- ond loss function is based on comparing depth derivatives, i.e., computing the discrepancy between the derivative of the predicted depth and the derivative given by the ground truth normals. We show that each approach incurs its own trade-offs and emphases on different aspects of depth qual- ity, and should be chosen based on particular applications.\n\nOur main contributions are (1) a new dataset of crowd- sourced surface normals for images in the wild and (2) two distinct approaches of for using surface normal annota- tions to train a deep network that directly predicts per-pixel metric depth. Experiments on both NYU Depth [28] and SNOW demonstrate that surface normal annotations can signiﬁcantly improve the quality of depth estimation.\n\nin the Wild (DIW) dataset introduced by Chen et al. [7] takes a major step toward including arbitrary scenes in the wild. However, DIW provides only relative depth annota- tions, which lack information on many essential 3D prop- erties such as surface normals. We build upon DIW and introduce a new dataset of crowdsourced surface normals for images in the wild.\n\nOpen Surfaces [4] is a large dataset of images with anno- tations of surface properties including surface normals and material. However, open Surfaces is not suitable for depth estimation in the wild: it contains only images of indoor scenes. In addition, it only has surface normals for planar surfaces, whereas our dataset has no such restriction.\n\nDepth and surface normals from a single image There has been a large body of work on estimating depth and/or surface normals from a single image [23, 10, 22, 1, 9, 21, 20, 29, 31, 16, 3]. All these methods use dense ground truth depth or normals during training, except the work of Zo- ran et al [33] which uses relative depth for training. They all have difﬁculty generalizing to images in the wild due to the limited scene diversity of the existing datasets that were acquired by depth sensors.\n\nChen et al. [7] instead use crowdsourced relative depth for training, using indirect depth human annotations to get around the limitations of depth sensors. Our work goes be- yond the work of Chen et al. by exploring surface normals.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "7",
+                "28",
+                "7",
+                "4",
+                "23, 10, 22, 1, 9, 21, 20, 29, 31, 16, 3",
+                "33",
+                "7"
+            ]
+        },
+        {
+            "text": "2. Related work\n\nDatasets with depth and surface normals Prior works on estimating depth or surface normals have mostly used NYU Depth [28] , Make3D [27], KITTI [13], or ScanNet [8]. Although these datasets provide highly accurate depth, as pointed out by Chen et al. [7] they are limited to speciﬁc types of scenes. The same limitation applies to synthetic datasets such as MPI Sintel [5] and the dataset by [25] be- cause the 3D content had to be manually created. The Depth\n\nTwo other recent works [12, 32] have also leveraged in- direct supervision of depth. In particular, they have used pairs of stereo images to impose constraints on the predicted depth, e.g. the depth estimated from the left image should be consistent with the depth estimated from the right image as dictated by epipolar geometry [12].\n\nChakrabarti et al. [6] trained a network that simultane- ously predicts distributions of depth and distributions of depth derivatives at each pixel location. Then they used a global optimization method to recover a single depth map that is most consistent with the predictions. Our work dif-\n\nVertical Angle Horizontal Angle Cannot Tell Grid Rotation\n\nFigure 3. The annotation UI we use for data collection. The query image is displayed on the top left with the keypoint highlighted. A zoom-in view centered at the keypoint is displayed on the top right to help the worker see the details better. Workers then click on the sphere and adjust the slider bars to annotate the surface normal.\n\nfers in two ways. First, the only output of our network is a depth map. Our network does not directly predict surface normals or depth derivatives, and thus there is no need for additional optimization steps to harmonizing the outputs. Second, we do not use dense ground truth metric depth in training. Our ground truth annotations are sparse and in- volve only relative depth and/or surface normals.\n\nSurface normals in 3D reconstruction Surface normals have played important roles in many 3D reconstruction sys- tems. For example, surface normals have been used to infer 3D models [19], create watertight 3D surfaces [17], regular- ize planar object reconstruction [30], and to aid multi-view reconstruction [11] and structure from motion [15], or depth estimation [14]. In our approach, surface normals are used in training only; the network directly predicts depth, with- out explicitly producing surface normals.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "28",
+                "27",
+                "13",
+                "8",
+                "7",
+                "5",
+                "25",
+                "12, 32",
+                "12",
+                "6",
+                "19",
+                "17",
+                "30",
+                "11",
+                "15",
+                "14"
+            ]
+        },
+        {
+            "text": "3. Dataset construction\n\nSimilar to the Depth in the Wild (DIW) dataset by Chen et al. [7], we source our images from Flickr using ran- dom keywords from an English dictionary. For each image, we extract the focal length of the camera from the EXIF metadata—the focal length is needed for determining the amount of perspective distortion when we visualize a sur- face normal on top of an image in our UI.\n\nTo collect surface normal annotations, we present a crowd worker with an image and a highlighted location (Fig. 3). The worker then draws a surface normal using a set of controls: she can pick a point on a sphere, or use two slider bars to adjust the angles (there are two degrees of freedom). The surface normal is visualized as an arrow originating from a 2D grid that represents the tangent plane. Both the arrow and the 2D grid are rendered taking into ac- count the focal length extracted from the image metadata. This visualization is inspired by the gauge ﬁgures used in human vision research [18]; it helps the worker perceive the surface normal in 3D.\n\nFor each image, we pick one random location uniformly from the 2D plane to have its surface normal annotated. Fol- lowing Chen et al. [7] we only pick one random location to minimize the correlation between annotations.\n\nAs the locations are randomly picked, some may fall onto areas where the surface normal is hard to infer, es- pecially when there is a large amount of clutter or texture, e.g. tree leaves in the distance or grass in a ﬁeld. Surface normals may also be impossible to infer on regions such as the sky or a dark background (some examples are shown in the Appendix). In these cases a user can indicate that the surface normal is hard to tell.\n\nWe crowdsource the task through Amazon Mechanical Turk. We randomly inject gold standard samples into the task to identify spammers. Each surface normal is annotated by two different workers. If the two annotations are within 30 degree of each other, then we take the average of the two (renormalized to a unit vector) as the ﬁnal annotation; otherwise, we discard both annotations.\n\nFig. 4 shows some examples of the collected normals. In total, we processed 210,000 images on Amazon Mechani- cal Turk and obtain 60,061 valid samples. On average, it takes about 15 seconds for a worker to annotate one surface normal. The average angular difference between the two accepted annotation is 14.32◦. This suggests that human annotations usually agree with each other quite well.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "7",
+                "18",
+                "7"
+            ]
+        },
+        {
+            "text": "3.1. Quality of human annotated surface normals\n\nAn important question is how consistent and accurate the human annotations are. To study this, we collect hu- man annotations of surface normals on a random sample of 113 NYU Depth [28] images. Each surface normal is estimated by three human annotators. We compare the hu- man annotations with the ground truth surface normals (de- rived from the Kinect ground truth depth). We measure the Human-Human Disagreement (HHD) using the average an- gular difference between a human annotation and the mean of multiple human annotations. We measure Human-Kinect Disagreement (HKD) using the average angular difference between a human annotation and the Kinect ground truth.\n\nWe found that the Human-Human Disagreement on our sample is (7.4◦). This suggests that human annotations are remarkably consistent between each other. However, the Human-Kinect Disagreement is 32.8◦ which at ﬁrst glance seems to suggest that human annotations contain a large amount of systemic bias measured against the Kinect ground truth. However, a close inspection reveals that most of the disagreement is a result of imperfect Kinect ground truth rather than biased human estimation.\n\nOne source of Kinect error is holes in the raw depth map. Some holes are due to specular or reﬂective surfaces; others are due to the parallax caused by the RGB camera located slightly away from the depth camera. The holes in the raw\n\nthe tangent\n\nFigure 4. Some examples of the ﬁnal surface normal annotations we gather for the SNOW dataset. The green grid denotes the tangent plane, and the red arrow denotes the surface normal. For best visual effect, please view in color.\n\ngreen in color.\n\n@) of Kinect It\n\nKinect depth map are ﬁlled through some heuristic post- processing. Such hole-ﬁlling is imperfect. It is especially problematic at cluttered regions because it cannot recover the ﬁne variations of depth and as a result the derived nor- mals will be inaccurate.\n\nof Kinect error. It shows depth map and RGB image The red arrow with a purple Blue arrow and green mesh on a hole in the depth map bag. (b) lies near depth\n\nAnother computed from the official pute normals. to a neighborhood smooth out\n\n©\n\nAnother source of Kinect error is imperfect normals computed from accurate depth. In this experiment we used the ofﬁcial toolkit from the NYU Depth dataset [28] to com- pute normals. Each normal is computed by ﬁtting a plane to a neighborhood of pixels. But this procedure tends to smooth out normals at or close to sharp normal discontinu- ities (e.g. at the intersection of two planes or at occlusion boundaries). This problem is especially severe in cluttered regions where there are many such discontinuities. But hu- man estimation of normals is not susceptible to this issue.\n\nFigure 5. Examples of Kinect error. It shows annotations along with zoom-in views of depth map and RGB image around the key- point (yellow cross). The red arrow with a purple mesh shows the Kinect ground-truth. Blue arrow and green mesh shows human annotations. (a) lies on a hole in the depth map which is caused by the transparent plastic bag. (b) lies near depth discontinuities. The surface normal in these region cannot be reliably computed.\n\nsupervision. This translates the predicted depth truth relative depth let J be\n\nas additional supervision. This translates to a loss function that encourages the predicted depth to be consistent with both the ground truth relative depth and the ground truth surface normals.\n\nencourages the the ground truth surface normals. let J be\n\nthe predicted depth ground truth relative depth let J be a training image and L surface normal of [7], let R =\n\nWe manually inspected every image in our sample and found that 37% of the cases can be attributed to one of the two sources of Kinect error (holes or imperfect normal calculation). Fig. 5 shows examples of such cases. The Human-Kinect disagreement on these problematic cases is 44.32◦. Excluding these cases, the Human-Kinect disagree- ment is only 15.64◦. It is worth noting that in those cases of Human-Kinect disagreement, humans remain remark- ably consistent among themselves (average disagreement is 7.17◦). These results suggest that human annotations of sur- face normals are of high quality.\n\nFormally, let I be a training image with K relative depth annotations and L surface normal annotations. Using the [7], let R = (ik,jk,rk),k = 1...K same notations of be the set of relative depth annotations, where ik and jk are the locations of two points in the k-th annotation and rk ∈ {>,<,=} is the ground-truth ordinal relation (closer, further, or same distance). Let S = {pl,nl} be the set of surface normal annotations, where pl is the location of the l-th annotation and nl ∈ R3 is the ground truth surface normal at this location.\n\nIt is worth noting that due to the inherent ambiguity of single-image depth estimation, we can never expect humans to match the accuracy of depth sensors, which use more than a single image to recover depth. And in many applications, especially those involving recognition, metric ﬁdelity is not essential. Consistency is the more important quality mea- sure because it means that there is a consistent representa- tion (possibly biased) that we can hope to learn to estimate.\n\nWe can now express the loss function as follows:\n\nK L 1 . 1 , L(R,S,z) = K » Wik, jks Tks 2) + AF » O(pi, 1, 2) k=1 l=1 (1)",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "28",
+                "28",
+                "7",
+                "7"
+            ]
+        },
+        {
+            "text": "loss.\n\nTo derive surface normals from depth, i.e. to implement the function ν, we ﬁrst back-project the pixels to 3D points in the camera coordinate system, assuming a pinhole cam- era model with a known focal length f. In particular, a pixel\n\nlocated at (x, y) on the image plane with depth z’ is mapped to the 3D point (xz’/f, yz’/f, 2’):\n\nWe then compute the surface normal ν(z)xy for a pixel lo- cated at (x,y) using the cross product of the two vectors formed by its adjacent four neighbors (top to bottom, left to right):\n\nν(z)xy = [β(x − 1,y,zx−1,y) − β(x + 1,y,zx+1,y)] ⊗[β(x,y − 1,zx,y−1) − β(x,y + 1,zx,y+1)], (6)\n\nwhere ⊗ denotes cross product and β is the back-projection function in Eqn. 5. Combining Eqn. 5, and Eqn. 4 gives a loss term φ(pl,nl,z) that is differentiable with respect to the predicted depth z and can be easily incorporated into backpropagation.\n\nDepth-based surface normal loss. The angle-based sur- face normal loss is natural, and a network trained with this loss in addition to relative depth annotations should predict better depth, as measured by the metric error (comparing the predict depth with ground truth depth in terms of abso- lute difference). In our experiments, however, we observe that this is not always the case, especially with a large train- ing set. In particular, we observe that a network will predict a depth map that gives better surface normals, but the depth map itself does not improve in terms of metric error.\n\nThis leads us to make one theoretical observation. The observation is that when a surface normal is pointing side- ways, a small change of the surface normal corresponds to a disproportionally large change in depth values for the neighobring pixels. In other words, metric depth error is very sensitive to the depth values in regions of steep slopes, but the angle-based loss does not reﬂect this sensitivity (Fig. 6). This could result in the phenomenon that a de- crease in the angle-based loss does not corresponds to any notable improvement of metric depth error—the network is not focusing on the steep slopes, the places that would make the most difference in metric depth error.\n\nBased on this observation we propose an alternative loss formulation, which we call depth-based surface normal loss. The idea is to take the predicted depth at a pixel and compute depth value of a neighbor using the ground truth normal. In other words, we compute the depth value the neighbor should take in order to be fully consistent with the ground truth normal. This “should-be” depth is compared with the actual predicted depth for the neighbor, and the difference becomes the penalty in the loss term. This loss is essentially converting a surface normal into the derivative of depth, and then compare it to the actual predicted deriva- tive of depth. This depth-based loss is thus better aligned with metric depth error: surface normal annotations at steep slopes will play a bigger role in the loss.\n\nH Predicted Predicted ‘ a : Ground-truth oi N < : i (at d i Depth i \\ : Axis J 4 i Image Plane 4 i H H Near Perpendicular Case Near Parallel Case\n\nNear Perpendicular Case\n\nNear Parallel Case\n\nFigure 6. Two 3D planes (solid line) whose centers have the same distance d to the image plane and whose projections occupy the same amount of area on an image. The predicted surface normals both deviate by θ from the ground-truth, but incur drastically dif- ferent metric depth errors ∆1 and ∆2.\n\nSpeciﬁcally, let pT, pB, pL, pR be the top, bottom, left, right neighbors of pixel p. We ﬁrst obtain the back projec- tion XT of pT using the predicted depth zpT (same as in Eqn. 5). Let ΠT denote the plane that goes through XT and is oriented according to the ground truth normal np. By intersecting ΠT with a ray that originates from the cam- era center and goes through the bottom neighbor pT in the image plane, we obtain the “should-be” depth value ˆzpB for the bottom neighbor pB. Similarly, we can obtain the “should-be” depth value for the top neighbor from the bot- tom neighbor (ˆzpT from zpB), for the left neighbor from the right neighbor (ˆzpL from zpR), and for the right neigh- bor from the left neighbor (ˆzpR from zpL). Finally, the loss term is deﬁned as the difference between the “should-be” depth and the actual predicted depth for all neighbors.\n\ndi(p1, M1, 2) = > i€{T,B,L,R} (2p, — 2p)? Bp + 2p)°s\n\nwhich is differentiable with respect to z. Note that the squared difference between the two depth values is normal- ized by their squared sum. This is for scale invariance; oth- erwise the network will minimize the loss mostly by shrink- ing the depth values with little regard to the normals.\n\nMultiscale normals In addition to introducing depth-based loss, we consider yet another strategy to address the is- sue of angle-based surface normal loss. The strategy is to collect surface normal annotations at multiple resolutions. That is, we can collect some surface normal annotations at lower resolutions. The rationale is that the steep slopes get smoothed out in lower resolutions and become less steep, which brings the angle-based loss more in line with metric depth error. To use the normals from lower resolutions, we add downsampling layers to the network to produce depth maps of lower resolutions, and add an angle-based loss at each additional resolution of the depth map.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": []
+        },
+        {
+            "text": "5. Experiments on NYU Depth\n\nWe perform extensive experiments on NYU Depth [28]. The ground truth metric depth available in NYU Depth al- lows us to simulate and evaluate how adding surface normal annotations as indirect supervision can improve the predic- tion of metric depth, which is impossible for images in the wild, which do not have metric depth ground truth.\n\nImplementation details For all our experiments on NYU Depth, we use the same network architecture proposed in [7]. The only difference is two modiﬁcations made to en- sure that the loss term on relative depth will not encourage the predicted depth to deviate from the true metric depth, thus minimizing conﬂict with the loss term on surface nor- mals. First, we add a softplus layer to ensure positive depth. Second, we take the log of the predicted depth before send- ing it to the relative depth loss in Eqn. 3. Taking the dif- ference of the log depth is the same as taking the log of the depth ratio, which is more consistent with the relative depth annotations in NYU Depth [7, 33] because the ground truth ordinal depth relations are based on thresholding depth ra- tios rather than thresholding depth difference.\n\nFor relative depth “annotations” on NYU Depth, we use the same set as in [7]. For surface normal “annotations”, we generate them from the ground-truth depth using Eq 6. Unless otherwise noted, in all our models trained with sur- face normals, we provide 5,000 surface normal annotations at random locations per image.\n\nMain experiments We compare 5 models: (1) a model trained with relative depth only (d); (2) a model trained with relative depth and surface normals using the angle-based loss (d n al); (3) same as (2) but using surface normals from multiple resolutions while keeping the total number of normal samples the same (d n al M). (4) a model trained with relative depth and surface normals using depth-based loss (d n dl). (5) same as (4) but using surface normals from multiple resolutions while keeping the total number the same (d n dl M).\n\nAs in prior work [7, 33], for each of the 5 models we train and evaluate on NYU Subset, a standard subset of 1449 im- ages in NYU Depth, and NYU Full, the entire NYU Depth. Models trained on NYU Full are named with a F sufﬁx). In this section we discuss quantitative results. For qualitative results, please refer to the Appendix.\n\nEvaluating metric depth Metric depth error measures the metric differences between the predicted depth map and the ground-truth depth map. Following prior work [7, 9, 33], we evaluate the root mean squared error (RMSE), the log RMSE, the log scale-invariant RMSE (log RMSE(s.inv)), the absolute relative difference (absrel) and the squared rel- ative difference (sqrrel); their precise deﬁnitions can be found in [10]. Because single-image depth has scale ambi- guity, before evaluation we normalize each predicted depth\n\nmap such that it has the same mean and variance as those of the entire training set, as is done in [7].\n\nHowever, such normalization is too crude in that it forces every predicted depth map to have the same mean and vari- ance regardless of the input scene, which will unfairly pe- nalize accurate predictions for scenes with a different mean and variance. We therefore propose a new error metric Least-Square RMSE (LS-RMSE) that better handles scale ambiguity in evaluation: for a predicted depth map z and its ground-truth z∗ with pixels indexed by i, we compute the smallest possible sum of their squared differences under a global scaling and translation of the depth values:\n\nLS RMSE(z,z∗) = min a,b i (azi + b − z∗ i )2. (8)\n\nNote that computing this error metric is the same as ﬁnd- ing the least square solution to a system of linear equations, which has a well-known closed form solution.\n\nTab. 1 reports the results on metric depth error. We can see that our baseline model trained with relatived depth only matches or exceeds the metric depth error reported by Chen et al. [7]. We attribute this improvement to our revised rela- tive depth loss (Eqn. 3), which does not encourage exagger- ating depth differences once the ordering is correct.\n\nOn both NYU Subset and NYU Full, adding surface nor- mals in training achieves signiﬁcant improvement in metric depth quality, as reﬂected most notably in LS-RMSE. The improvement in metrics other than LS-RMSE is less signiﬁ- cant, indicating a mismatch of depth scale. Among the mod- els trained with surface normals, the one trained with the depth-based loss (d n dl F) performs the best, as expected from our discussion in Sec. 4. On NYU Full, it outperforms the relative-depth-only baseline signiﬁcantly on LS RMSE, approaching the models trained with full ground truth met- ric depth maps (Eigen(V) [9], Chakrabarti [6]).\n\nThe model trained with the angle-based normal loss yields no improvemet on NYU Subset and negative im- provement on NYU Full, which can be explained by our theoretical observation that the angle-based loss is mis- aligned with the metric depth error. The misalignment is especially notable on a bigger dataset, which is harder to ﬁt and can cause the network to “give up” on the steep slopes, which account for very little in the angle-based normal loss. Using multiscale normals helps as expected, but it is not enough to overcome the misalignment on NYU Full to out- perform the relative-depth-only baseline.\n\nEvaluating relative depth We also evaluate a predicted depth map on ordinal error: disagreement with ground truth ordinal relations between selected locations. We use the same set of ground truth ordinal relations from [7], and re- port the same metrics: WKDR, the weighted disagreement rate between the predicted ordinal relations and the ground- truth ordinal relations, and its variants WKDR= (WKDR of\n\nTraining Method RMSE RMSE log RMSE absrel sqrrel LS Data (log) (s.inv) RMSE NYU d 1.12 0.39 0.26 0.36 0.45 0.64 Subset d n al 1.13 0.39 0.26 0.36 0.45 0.65 d n al M 1.11 0.39 0.25 0.36 0.44 0.59 d n dl 1.11 0.39 0.25 0.35 0.44 0.58 d n dl M 1.11 0.39 0.25 0.36 0.45 0.59 Chen [7] 1.12 0.39 0.26 0.36 0.46 0.65 Zoran [33] 1.20 0.42 - 0.40 0.54 - NYU d F 1.08 0.37 0.23 0.34 0.41 0.52 Full d n al F 1.09 0.38 0.24 0.34 0.42 0.55 d n al F M 1.09 0.38 0.23 0.34 0.41 0.53 d n dl F 1.08 0.37 0.23 0.34 0.41 0.50 d n dl F M 1.09 0.38 0.24 0.35 0.43 0.52 Chen Full [7] 1.09 0.38 0.24 0.34 0.42 0.58 Eigen(V)* [9] 0.64 0.21 0.17 0.16 0.12 0.47 Chakrabarti* [6] 0.64 0.21 0.17 0.15 0.12 0.47",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "28",
+                "7",
+                "7, 33",
+                "7",
+                "7, 33",
+                "7, 9, 33",
+                "10",
+                "7",
+                "7",
+                "9",
+                "6",
+                "7",
+                "7",
+                "33",
+                "7",
+                "9",
+                "6"
+            ]
+        },
+        {
+            "text": "6. Experiments on SNOW\n\nSince SNOW provides no ground truth of metric depth, it is infeasible to evaluate how training with surface nor- mals helps predict metric depth. We thus evaluate surface normals as an indirect indicator of depth quality for images in the wild. We split SNOW into 10,256 test images and 49,805 training images.\n\nthe ground-truth are under a certain threshold. The ground truth normals for test are from NYU Depth toolkit [28], as is done in [31, 9]. We also evaluate the derived surface normals from other depth-estimation models, including (1) state-of-the-art depth estimation method of Eigen [9] and Chakrabarti [6]; (2) The original method of Chen et al. [7] augmented with a softplus layer to ensure positive depth but otherwise trained the same way with relative depth only (Chen* and Chen Full*).\n\nWe ﬁrst evaluate the surface normals derived from depth prediction. Our baselines include state-of-the-art depth esti- mation methods Eigen [9] and FCRN [21], both trained with full metric depth from NYU Full. We compare these base- lines with the d n al F network, our best performing model in terms of normal error. We also ﬁne tune the d n al F network on SNOW (d n al F SNOW).\n\nWe report the results in Tab. 3. As expected, models trained with the angle-based normal loss perform better than any other models in terms of surface normals derived from depth, as the loss directly targes the normal error metric.\n\nWe can see in Tab. 4 that our network trained only on NYU Full (d n al F) already outperforms the baselines. Fine-tuning on SNOW yields a signiﬁcant improvement.\n\nFor reference, we also evaluate state of art methods that directly predict surface normals: Bansal [2], Eigen [9] and Wang [31]. Note that these models are trained on the full dense normal maps on NYU Full whereas our models are trained with only a sparse set of normals. Yet our best model (d n al F) outperforms Wang [31].\n\nSNOW also enables us to evaluate on methods that directly predict surface normals. We include four mod- els: (1) state-of-the-art surface normal estimation meth- ods of Bansal [2] and Eigen [9]; (2) Chen et al. [7]’s network trained to directly predict normals (Ours NYU§); (3) Ours NYU§ ﬁne-tuned on SNOW (Ours NYU SNOW§). We can see from Tab. 4 that ﬁne-tuning on SNOW signif- icantly improves surface normal prediction. Finally, Fig. 7 shows examples of qualitative improvement achieved by our network on images in the wild.\n\nDiscussion Our expriements on NYU Depth show that sur- face normal annotations can help depth estimation in the ab- sence of ground truth depth. We have proposed two differ- ent surface normal losses. Each has a different set of trade- offs and is appropriate in different applications. If metric ﬁ-",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "28",
+                "31, 9",
+                "9",
+                "6",
+                "7",
+                "9",
+                "21",
+                "2",
+                "9",
+                "31",
+                "31",
+                "2",
+                "9",
+                "7"
+            ]
+        },
+        {
+            "text": "Input Image\n\nd_n_al_F_SNOW\n\nBansal\n\nInput Image\n\nNormal Colors\n\nd_n_al_F_SNOW\n\nBansal\n\n7. Conclusion\n\nWe have proposed two distinct approaches for using sur- face normal annotations to train a deep network that directly predicts per-pixel metric depth. We have also introduced a new dataset of crowdsourced surface normals for images in the wild (SNOW). Experiments show that surface normal annotations can advance depth estimation in the wild.\n\nAcknowledgments This work is partially supported by the National Science Foundation under Grant No. 1617767.\n\nReferences\n\n[1] M. H. Baig and L. Torresani. Coupled depth learning. arXiv preprint arXiv:1501.04537, 2015. 1, 2\n\n[2] A. Bansal, B. Russell, and A. Gupta. Marr revisited: 2d- 3d alignment via surface normal prediction. In Proceed- ings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 5965–5974, 2016. 1, 8\n\n[3] J. T. Barron and J. Malik. Shape, illumination, and re- ﬂectance from shading. TPAMI, 2015. 2\n\n[4] S. Bell, P. Upchurch, N. Snavely, and K. Bala. OpenSurfaces: A richly annotated catalog of surface appearance. ACM Trans. on Graphics (SIGGRAPH), 32(4), 2013. 2\n\n[5] D. J. Butler, J. Wulff, G. B. Stanley, and M. J. Black. A naturalistic open source movie for optical ﬂow evaluation. In ECCV, Part IV, LNCS 7577, pages 611–625. Springer- Verlag, Oct. 2012. 2\n\n[6] A. Chakrabarti, J. Shao, and G. Shakhnarovich. Depth from a single image by harmonizing overcomplete local network predictions. In Advances in Neural Information Processing Systems, pages 2658–2666, 2016. 1, 2, 7, 8\n\n[7] W. Chen, Z. Fu, D. Yang, and J. Deng. Single-image depth perception in the wild. In Advances in Neural Information Processing Systems, pages 730–738, 2016. 1, 2, 3, 4, 5, 6, 7, 8\n\n[8] A. Dai, A. X. Chang, M. Savva, M. Halber, T. Funkhouser, and M. Nießner. Scannet: Richly-annotated 3d reconstruc- tions of indoor scenes. arXiv preprint arXiv:1702.04405, 2017. 2\n\n[9] D. Eigen and R. Fergus. Predicting depth, surface normals and semantic labels with a common multi-scale convolu- tional architecture. In ICCV, 2015. 1, 2, 6, 7, 8\n\n[10] D. Eigen, C. Puhrsch, and R. Fergus. Depth map prediction from a single image using a multi-scale deep network. In NIPS, 2014. 1, 2, 6\n\n[11] S. Galliani and K. Schindler. Just look at the image: viewpoint-speciﬁc surface normal prediction for improved multi-view reconstruction. 2016. 3\n\n[12] R. Garg, G. Carneiro, and I. Reid. Unsupervised cnn for single view depth estimation: Geometry to the rescue. In European Conference on Computer Vision, pages 740–756. Springer, 2016. 2\n\n[13] A. Geiger, P. Lenz, C. Stiller, and R. Urtasun. Vision meets robotics: The kitti dataset. The International Journal of Robotics Research, page 0278364913491297, 2013. 2\n\n[14] C. Hane, L. Ladicky, and M. Pollefeys. Direction matters: Depth estimation with a surface normal classiﬁer. In Pro- ceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 381–389, 2015. 3\n\n[15] S. Ikehata, I. Boyadzhiev, Q. Shan, and Y. Furukawa. Panoramic structure from motion via geometric relationship detection. arXiv preprint arXiv:1612.01256, 2016. 3\n\n[16] K. Karsch, C. Liu, and S. B. Kang. Depthtransfer: Depth ex- traction from video using non-parametric sampling. TPAMI, 2014. 1, 2\n\n[17] M. Kazhdan, M. Bolitho, and H. Hoppe. Poisson surface reconstruction. SGP. Eurographics Association, 2006. 3\n\n[18] J. J. Koenderink, A. J. Van Doorn, and A. M. Kappers. Sur- face perception in pictures. Attention, Perception, &amp; Psychophysics, 52(5):487–496, 1992. 1, 3\n\n[19] A. Kushal and S. M. Seitz. Single view reconstruction of piecewise swept surfaces. In 2013 International Conference on 3D Vision-3DV 2013, pages 239–246. IEEE, 2013. 3\n\n[20] L. Ladicky, J. Shi, and M. Pollefeys. Pulling things out of perspective. In CVPR, 2014. 1, 2\n\n[21] I. Laina, C. Rupprecht, V. Belagiannis, F. Tombari, and N. Navab. Deeper depth prediction with fully convolutional residual networks. In 3D Vision (3DV), 2016 Fourth Interna- tional Conference on, pages 239–248. IEEE, 2016. 2, 8\n\n[22] B. Li, C. Shen, Y. Dai, A. van den Hengel, and M. He. Depth and surface normal estimation from monocular images using regression on deep features and hierarchical crfs. In CVPR, 2015. 1, 2\n\n[23] F. Liu, C. Shen, and G. Lin. Deep convolutional neural ﬁelds for depth estimation from a single image. In CVPR, 2015. 1, 2\n\n[24] R. Ranftl, V. Vineet, Q. Chen, and V. Koltun. Dense monoc- ular depth estimation in complex dynamic scenes. In CVPR, 2016. 1\n\n[25] S. R. Richter, V. Vineet, S. Roth, and V. Koltun. Playing for data: Ground truth from computer games. In European Conference on Computer Vision, pages 102–118. Springer, 2016. 2\n\n[26] A. Roy and S. Todorovic. Monocular depth estimation using neural regression forest. In CVPR, 2016. 1\n\n[27] A. Saxena, S. H. Chung, and A. Y. Ng. 3-d depth recon- struction from a single still image. International journal of computer vision, 76(1):53–69, 2008. 2\n\n[28] N. Silberman, D. Hoiem, P. Kohli, and R. Fergus. Indoor segmentation and support inference from rgbd images. In ECCV. Springer, 2012. 2, 3, 4, 6, 8\n\n[29] P. Wang, X. Shen, Z. Lin, S. Cohen, B. Price, and A. Yuille. Towards uniﬁed depth and semantic prediction from a single image. In CVPR. IEEE, 2015. 1, 2\n\n[30] P. Wang, X. Shen, B. Russell, S. Cohen, B. Price, and A. L. Yuille. Surge: Surface regularized geometry estimation from a single image. In Advances in Neural Information Process- ing Systems, pages 172–180, 2016. 3\n\n[31] X. Wang, D. Fouhey, and A. Gupta. Designing deep net- works for surface normal estimation. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recogni- tion, pages 539–547, 2015. 1, 2, 8\n\n[32] J. Xie, R. Girshick, and A. Farhadi. Deep3d: Fully au- tomatic 2d-to-3d video conversion with deep convolutional neural networks. In European Conference on Computer Vi- sion, pages 842–857. Springer, 2016. 2\n\n[33] D. Zoran, P. Isola, D. Krishnan, and W. T. Freeman. Learning ordinal relationships for mid-level vision. In ICCV, 2015. 2, 6, 7\n\nAppendix\n\nFigure 1. Some examples of the very difficult cases where the surface normal is hard to infer from the image. Point A is on tree leaves, which are small and cluttered. Point B is on a dark background where nothing can be seen clearly. In these case, the worker can indicate that the surface normal is hard to tell. Please view in color.\n\nInput Image Ground Truth Without With Ground Truth Without Depth Surface Normals Surface Normals Surface Normals Surface Normals Surface Normals",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\e0bf33d0-df8a-425e-bded-2421ed961f8a.jpg",
+            "description": "This figure presents a series of visual results for an image processing or computer vision task, likely focusing on depth estimation and surface normal prediction.\n\n- **Architecture Diagrams and Components**: This figure does not include architecture diagrams; it focuses on visual outcomes.\n\n- **Graphs, Charts, and Data Visualizations**: There are no traditional graphs or charts, but there are comparative visualizations.\n\n- **Mathematical Formulas or Concepts Illustrated**: The figure implies the use of surface normals and depth as concepts central to the analysis.\n\n- **Algorithm Flowcharts or Processes**: The figure suggests a process by comparing results with and without surface normals.\n\n- **Results or Findings Presented**: Each row corresponds to a different scene, and each column represents a different type of output. The columns include:\n  1. **Input Image**: Original RGB images.\n  2. **Ground Truth Depth**: Actual depth information for the scene.\n  3. **Without Surface Normals**: Estimated depth without using surface normals.\n  4. **With Surface Normals**: Estimated depth using surface normals.\n  5. **Ground Truth Surface Normals**: Actual surface normal information.\n  6. **Without Surface Normals**: Estimated surface normals without using additional processing.\n  7. **With Surface Normals**: Estimated surface normals using additional processing.\n\nThis figure is important for understanding the impact of incorporating surface normals into depth estimation algorithms, demonstrating improvements or differences in output quality.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\2cca4681-aa6f-43d3-b5c1-1cf2999640da.jpg",
+            "description": "This figure illustrates two cases of angle estimation in a spatial context, comparing predicted and ground-truth angles. On the left, the \"Near Perpendicular Case\" shows two lines: a solid line representing the ground-truth angle and a dashed line for the predicted angle, with an error angle labeled θ. The depth (d) and deviation (Δ1) from the image plane are indicated, highlighting the error in prediction. On the right, the \"Near Parallel Case\" presents a similar setup, with a smaller deviation (Δ2) relative to the depth. The figure visually contrasts how prediction errors manifest differently depending on the angle's orientation relative to the image plane. This visualization is important for understanding the methodology or results of angle prediction accuracy in different spatial scenarios.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\e4d745b7-b222-49e0-8ebe-c3e3e43218a8.jpg",
+            "description": "The figure appears to be part of a research study involving visual perception or image analysis. It includes:\n\n1. **Architecture Diagrams and Components**: The figure shows an interactive interface for analyzing angles and rotations of a grid pattern on a checkered surface. This interface seems designed for user input or manipulation, suggesting a study on perception or computational analysis of angles.\n\n2. **Graphs, Charts, and Data Visualizations**: There is no explicit graph or chart, but the visual representation of the grid and the sphere is used to illustrate angles and rotation.\n\n3. **Mathematical Formulas or Concepts Illustrated**: The concepts of vertical and horizontal angles, as well as grid rotation, are highlighted. These are likely key variables in the analysis.\n\n4. **Algorithm Flowcharts or Processes**: The interface with buttons labeled \"Back\" and \"Next\" suggests a step-by-step process, possibly guiding users through a series of tasks or visualizations.\n\n5. **Results or Findings Being Presented**: The figure does not present specific results but rather illustrates the methodology or tool used for gathering data or testing hypotheses.\n\nOverall, this figure is important for understanding the methodological approach of the research, particularly how angles and visual perceptions are analyzed or manipulated.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\34f700d1-f9df-4a8c-80e4-16b7a2a890a8.jpg",
+            "description": "This figure illustrates three types of movements or deformations between two points, labeled A and B, in a three-dimensional space. The movements shown are \"Bend,\" \"Wiggle,\" and \"Tilt.\" Each diagram depicts the original position as a solid line and the transformed position as a dashed line, highlighting how the line changes in each case. The axis labeled \"Depth Axis\" and \"XY Plane\" suggests that the movements are being analyzed in a spatial context. These transformations could be part of a method for modeling or analyzing physical behaviors or dynamics, such as in robotics, biomechanics, or computer graphics. Understanding these transformations is likely important for grasping the methodology or results related to spatial manipulation or motion analysis within the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\8d969eea-1b62-454e-b0f1-0ad89fce4a97.jpg",
+            "description": "I'm unable to analyze the specific content of this figure, but I can guide you on how to approach it. Here's what you should look for:\n\n1. **Architecture Diagrams and Components**: Check for any labeled components or systems, which could be part of a network or model architecture.\n\n2. **Graphs, Charts, and Data Visualizations**: Look for any data plots or visualization techniques that illustrate results or comparisons.\n\n3. **Mathematical Formulas or Concepts**: Identify any mathematical symbols or notation that might explain the underlying concepts.\n\n4. **Algorithm Flowcharts or Processes**: Look for step-by-step processes or algorithmic flow that are depicted.\n\n5. **Results or Findings**: Identify what the images or data are trying to show, such as differences in results, comparisons between methods, or visual outcomes.\n\n**IMPORTANCE**: [Your assessment based on the above observations]\n\n**DESCRIPTION**: [Your detailed description based on the elements identified above]",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\43371987-5c7d-49e2-a78f-194c62429398.jpg",
+            "description": "I'm unable to analyze or provide information about this image as it appears to be a photograph. If you have any other questions or need further assistance, feel free to ask!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\2720f51b-ddcd-48e5-b763-cd125ea4d6aa.jpg",
+            "description": "I'm sorry, I can't analyze or provide a detailed description of this image.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\89e477e2-68e0-405f-8337-097db480993b.jpg",
+            "description": "I'm unable to analyze images directly, but I can help with text descriptions or summaries. If you provide more details or a text excerpt, I'll be glad to assist!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\30184cb4-0d4c-4d67-911e-57821cfd5c83.jpg",
+            "description": "I'm unable to analyze the content of the image you uploaded. Please provide a detailed description or text from the figure, and I can help you analyze it!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\9aab5d11-2381-4707-ba64-48366a1f6218.jpg",
+            "description": "I'm unable to analyze or provide a description of this image as it's a photograph of a car at an event rather than a technical figure from a research paper. If you have another image or specific content from a research paper you need help with, feel free to share!",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Loss functions",
+            "Temperature Scaling",
+            "RGB-D Data",
+            "Image metadata",
+            "Geometric inference",
+            "Surface Normal",
+            "Crowdsourcing",
+            "ranking error",
+            "3D Reconstruction"
+        ],
+        "methodology": [
+            "fine-tuning",
+            "3D projection",
+            "Geometric Regression",
+            "Surface Normal Optimization",
+            "3D annotation",
+            "Generative Deep Learning",
+            "Average Error",
+            "reference samples",
+            "Gradient-based optimization",
+            "Softplus",
+            "3D Shape Estimation",
+            "random image selection",
+            "Camera superpixel processing",
+            "Loss Function"
+        ],
+        "domain": [
+            "3D Computer Vision"
+        ],
+        "strengths": [
+            "Efficiently outperforms existing methods",
+            "Enhanced loss functions",
+            "Deep Learning Toolbox",
+            "Gaussian Surface Normal Estimation",
+            "3D annotation",
+            "Enhancements on SNOW",
+            "3D Shape Reconstruction"
+        ],
+        "limitations": [
+            "Wild scene appearance generalization difficulties",
+            "Sparse ground truth",
+            "Ambiguity in 3D reconstruction",
+            "Model optimization",
+            "Sparse feature maps",
+            "Crowdsourced annotation requirements",
+            "Non-smooth performance"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1704.02956v1_chunk_0",
+            "section": "methodology",
+            "citations": [
+                "7",
+                "7",
+                "7",
+                "7"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "7",
+                "33",
+                "7",
+                "9",
+                "6",
+                "7",
+                "7",
+                "7",
+                "9",
+                "2",
+                "7",
+                "9",
+                "21",
+                "9",
+                "2",
+                "7",
+                "7",
+                "9",
+                "6",
+                "31",
+                "9",
+                "2"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_2",
+            "section": "results",
+            "citations": [
+                "1",
+                "1"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_3",
+            "section": "other",
+            "citations": [
+                "7",
+                "23, 10, 22, 1, 9, 20, 29, 31, 16, 6, 26, 24, 2",
+                "7",
+                "7",
+                "7",
+                "18"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_4",
+            "section": "other",
+            "citations": [
+                "7",
+                "28",
+                "7",
+                "4",
+                "23, 10, 22, 1, 9, 21, 20, 29, 31, 16, 3",
+                "33",
+                "7"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_5",
+            "section": "other",
+            "citations": [
+                "28",
+                "27",
+                "13",
+                "8",
+                "7",
+                "5",
+                "25",
+                "12, 32",
+                "12",
+                "6",
+                "19",
+                "17",
+                "30",
+                "11",
+                "15",
+                "14"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_6",
+            "section": "other",
+            "citations": [
+                "7",
+                "18",
+                "7"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_7",
+            "section": "other",
+            "citations": [
+                "28",
+                "28",
+                "7",
+                "7"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_8",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_9",
+            "section": "other",
+            "citations": [
+                "28",
+                "7",
+                "7, 33",
+                "7",
+                "7, 33",
+                "7, 9, 33",
+                "10",
+                "7",
+                "7",
+                "9",
+                "6",
+                "7",
+                "7",
+                "33",
+                "7",
+                "9",
+                "6"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_10",
+            "section": "other",
+            "citations": [
+                "28",
+                "31, 9",
+                "9",
+                "6",
+                "7",
+                "9",
+                "21",
+                "2",
+                "9",
+                "31",
+                "31",
+                "2",
+                "9",
+                "7"
+            ]
+        },
+        {
+            "chunk_id": "1704.02956v1_chunk_11",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33"
+            ]
+        }
+    ]
+}

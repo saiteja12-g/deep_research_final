@@ -1,80 +1,69 @@
 [
   {
-    "title": "Advances in Large Language Models for Criteria Selection: A Focus on Answer-Only Setting",
-    "focus": "Exploration of the potential of large language models in refining criteria selection with a specific focus on answer-only settings.",
+    "title": "Advances in Large Language Models for Synthetic Dataset Generation: A Deep Dive into Transfer Learning",
+    "focus": "Exploration of the potential of large language models in generating synthetic datasets for diverse applications.",
     "themes": [
       "Large Language Models",
+      "Synthetic dataset generation"
+    ],
+    "methods": [
+      "Transfer learning",
+      "Generative Deep Learning",
+      "Sampling techniques"
+    ]
+  },
+  {
+    "title": "Emerging Tri-Hybrid Representation in 3D Reconstruction: A study on Optimization Algorithms",
+    "focus": "Understanding the application and impact of tri-hybrid representation in the field of 3D reconstruction, with a focus on optimization algorithms.",
+    "themes": [
+      "Tri-hybrid Representation",
+      "3D Reconstruction"
+    ],
+    "methods": [
+      "Optimization algorithms",
+      "3D projection",
+      "ResNet-based architectures"
+    ]
+  },
+  {
+    "title": "Recent Advances in Criteria Selection for Classifier Training: An Evaluation of Loss Function Variations",
+    "focus": "Assessment of the latest developments in criteria selection for classifier training, with a special emphasis on different loss function variations.",
+    "themes": [
       "Criteria selection",
-      "Answer-Only Setting"
+      "Classifier Training"
     ],
     "methods": [
-      "Network centrality",
-      "Correlation coefficient",
-      "Scientific methodology",
-      "Matrix",
-      "stochastic process"
+      "Loss Function",
+      "Conditional Random Field (CRF)",
+      "Matrix factorization"
     ]
   },
   {
-    "title": "Advances in Artificial Intelligence for Chain-of-Thought Reasoning: The Role of Evaluation in Answer-Only Settings",
-    "focus": "Understanding the impact of evaluation processes in chain-of-thought reasoning within AI, specifically in answer-only settings.",
+    "title": "Data Analysis in the Age of Artificial Intelligence: A Comprehensive Review on Few-shot Learning",
+    "focus": "Investigation of the role of data analysis in the context of artificial intelligence, focusing on the implications and advancements in few-shot learning.",
     "themes": [
-      "Artificial intelligence",
-      "Chain-of-Thought Reasoning",
-      "Evaluation"
-    ],
-    "methods": [
-      "Inductive coding",
-      "Scientific methodology",
-      "Data processing techniques",
-      "Assessment"
-    ]
-  },
-  {
-    "title": "Advances in Few-Shot Learning for Data Analysis: The Emergence of Truthful Frameworks",
-    "focus": "Investigating the application of few-shot learning in data analysis and the emergence of truthful frameworks.",
-    "themes": [
-      "Few-shot learning",
       "Data Analysis",
-      "Truthful Framework"
-    ],
-    "methods": [
-      "Mittag-Leffler function analysis",
-      "Integral Transforms",
-      "Power series expansion",
-      "Caputo fractional derivative"
-    ]
-  },
-  {
-    "title": "Advances in Large Language Models for Evaluation: The Intersection of Answer-Only Setting and Classification",
-    "focus": "Analyzing the use of large language models in evaluation, with an emphasis on the intersection of answer-only setting and classification.",
-    "themes": [
-      "Large Language Models",
-      "Evaluation",
-      "Answer-Only Setting",
-      "Classification"
-    ],
-    "methods": [
-      "Network centrality",
-      "Scientific methodology",
-      "Precision",
-      "Matrix",
-      "Age-based decay"
-    ]
-  },
-  {
-    "title": "Advances in Artificial Intelligence for Answer-Only Setting: A Deep Dive into Few-Shot Learning",
-    "focus": "Exploring the potential of AI in answer-only settings with a deep dive into the role of few-shot learning.",
-    "themes": [
       "Artificial intelligence",
-      "Answer-Only Setting",
       "Few-shot learning"
     ],
     "methods": [
-      "Inductive coding",
-      "Scientific methodology",
-      "Analysis",
-      "Policy community interviews"
+      "Machine learning",
+      "Principal Component Analysis (PCA)",
+      "Multivariate Gaussian modeling"
+    ]
+  },
+  {
+    "title": "The Impact of Chain-of-Thought Reasoning on 3D Reconstruction: Exploring the Role of Diffusion Models",
+    "focus": "Analysis of the influence of chain-of-thought reasoning on 3D reconstruction, particularly the role and potential of diffusion models.",
+    "themes": [
+      "Chain-of-Thought Reasoning",
+      "3D Reconstruction",
+      "Diffusion Models"
+    ],
+    "methods": [
+      "Probabilistic Graphical Models",
+      "Gradient matrix",
+      "Diffusion Models"
     ]
   }
 ]

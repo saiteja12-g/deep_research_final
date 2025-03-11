@@ -1,0 +1,1376 @@
+{
+    "basic_info": {
+        "title": "Diffusion Models Beat GANs on Image Synthesis",
+        "authors": [
+            "Prafulla Dhariwal",
+            "Alex Nichol"
+        ],
+        "paper_id": "2105.05233v4",
+        "published_year": 2021,
+        "references": []
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "David Ackley, Geoffrey Hinton, and Terrence Sejnowski. A learning algorithm for boltzmann\nmachines. Cognitive science, 9(1):147-169 , 1985.",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "Adverb. The big sleep. https://twitter.com/advadnoun/status/\n1351038053033406468 , 2021.",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "Shane Barratt and Rishi Sharma. A note on the inception score. arXiv:1801.01973 , 2018.",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": "1801.01973"
+        },
+        "ref_4": {
+            "text": "Andrew Brock, Theodore Lim, J. M. Ritchie, and Nick Weston. Neural photo editing with\nintrospective adversarial networks. arXiv:1609.07093 , 2016.",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": "1609.07093"
+        },
+        "ref_5": {
+            "text": "256-512 8.43 8.13 0.88 0.29\nADM-G (4360K), ADM-U (1050K) 1878 36 1914 3.85 5.86 0.84 0.53\nADM-G (500K), ADM-U (100K) 189 9* 198 7.59 6.84 0.84 0.53\nTable 10: Training compute requirements for our diffusion models compared to StyleGAN2 and\nBigGAN-deep. Training iterations for each diffusion model are mentioned in parenthesis. Compute\nis measured in V100-days.yImageNet 256\u0002256 classiﬁer with 150K iterations (instead of 500K).\nzImageNet 64\u000264 classiﬁer with batch size 256 (instead of 1024). *ImageNet 128 \u0002128 classiﬁer\nwith batch size 256 (instead of 1024).\n18B Detailed Formulation of DDPM\nHere, we provide a detailed review of the formulation of Gaussian diffusion models from Ho et al.",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhari-\nwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal,\nAriel Herbert-V oss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M.\nZiegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz\nLitwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish,\nAlec Radford, Ilya Sutskever, and Dario Amodei. Language models are few-shot learners.\narXiv:2005.14165 , 2020.",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": "2005.14165"
+        },
+        "ref_7": {
+            "text": "Mark Chen, Alec Radford, Rewon Child, Jeffrey Wu, Heewoo Jun, David Luan, and Ilya\nSutskever. Generative pretraining from pixels. In International Conference on Machine\nLearning , pages 1691–1703. PMLR, 2020.",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "Nanxin Chen, Yu Zhang, Heiga Zen, Ron J. Weiss, Mohammad Norouzi, and William Chan.\nWavegrad: Estimating gradients for waveform generation. arXiv:2009.00713 , 2020.",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": "2009.00713"
+        },
+        "ref_9": {
+            "text": "Rewon Child. Very deep vaes generalize autoregressive models and can outperform them on\nimages. arXiv:2011.10650 , 2021.",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": "2011.10650"
+        },
+        "ref_10": {
+            "text": "Peter Dayan, Geoffrey E Hinton, Radford M Neal, and Richard S Zemel. The helmholtz\nmachine. Neural computation , 7(5):889–904, 1995.",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "Harm de Vries, Florian Strub, Jérémie Mary, Hugo Larochelle, Olivier Pietquin, and Aaron\nCourville. Modulating early visual processing by language. arXiv:1707.00683 , 2017.",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": "1707.00683"
+        },
+        "ref_12": {
+            "text": "DeepMind. Biggan-deep 128x128 on tensorﬂow hub. https://tfhub.dev/deepmind/\nbiggan-deep-128/1 , 2018.\n13",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, and Ilya\nSutskever. Jukebox: A generative model for music. arXiv:2005.00341 , 2020.",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": "2005.00341"
+        },
+        "ref_14": {
+            "text": "Jeff Donahue and Karen Simonyan. Large scale adversarial representation learning.\narXiv:1907.02544 , 2019.",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": "1907.02544"
+        },
+        "ref_15": {
+            "text": "Yilun Du and Igor Mordatch. Implicit generation and generalization in energy-based models.\narXiv:1903.08689 , 2019.",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": "1903.08689"
+        },
+        "ref_16": {
+            "text": "Vincent Dumoulin, Jonathon Shlens, and Manjunath Kudlur. A learned representation for\nartistic style. arXiv:1610.07629 , 2017.",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": "1610.07629"
+        },
+        "ref_17": {
+            "text": "Federico A. Galatolo, Mario G. C. A. Cimino, and Gigliola Vaglini. Generating images from\ncaption and vice versa via clip-guided generative latent space search. arXiv:2102.01645 , 2021.",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": "2102.01645"
+        },
+        "ref_18": {
+            "text": "Ruiqi Gao, Yang Song, Ben Poole, Ying Nian Wu, and Diederik P. Kingma. Learning energy-\nbased models by diffusion recovery likelihood. arXiv:2012.08125 , 2020.",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": "2012.08125"
+        },
+        "ref_19": {
+            "text": "Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil\nOzair, Aaron Courville, and Yoshua Bengio. Generative adversarial networks. arXiv:1406.2661 ,\n2014.",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": "1406.2661"
+        },
+        "ref_20": {
+            "text": "Google. Cloud tpus. https://cloud.google.com/tpu/ , 2018.",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "Anirudh Goyal, Nan Rosemary Ke, Surya Ganguli, and Yoshua Bengio. Variational walkback:\nLearning a transition operator as a stochastic recurrent net. arXiv:1711.02282 , 2017.",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": "1711.02282"
+        },
+        "ref_22": {
+            "text": "Will Grathwohl, Kuan-Chieh Wang, Jörn-Henrik Jacobsen, David Duvenaud, Mohammad\nNorouzi, and Kevin Swersky. Your classiﬁer is secretly an energy based model and you should\ntreat it like one. arXiv:1912.03263 , 2019.",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": "1912.03263"
+        },
+        "ref_23": {
+            "text": "Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter.\nGans trained by a two time-scale update rule converge to a local nash equilibrium. Advances in\nNeural Information Processing Systems 30 (NIPS 2017) , 2017.",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": null
+        },
+        "ref_24": {
+            "text": "Geoffrey E Hinton. Training products of experts by minimizing contrastive divergence. Neural\ncomputation , 14(8):1771–1800, 2002.",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": null
+        },
+        "ref_25": {
+            "text": ". We start by deﬁning our data distribution x0\u0018q(x0)and a Markovian noising process qwhich\ngradually adds noise to the data to produce noised samples x1throughxT. In particular, each step of\nthe noising process adds Gaussian noise according to some variance schedule given by \ft:\nq(xtjxt\u00001):=N(xt;p\n1\u0000\ftxt\u00001;\ftI) (15)\nHo et al. [ 25] note that we need not apply qrepeatedly to sample from xt\u0018q(xtjx0). Instead,\nq(xtjx0)can be expressed as a Gaussian distribution. With \u000bt:= 1\u0000\ftand\u0016\u000bt:=Qt\ns=0\u000bs\nq(xtjx0) =N(xt;p\u0016\u000btx0;(1\u0000\u0016\u000bt)I) (16)\n=p\u0016\u000btx0+\u000fp\n1\u0000\u0016\u000bt; \u000f\u0018N(0;I) (17)\nHere, 1\u0000\u0016\u000bttells us the variance of the noise for an arbitrary timestep, and we could equivalently\nuse this to deﬁne the noise schedule instead of \ft.\nUsing Bayes theorem, one ﬁnds that the posterior q(xt\u00001jxt;x0)is also a Gaussian with mean\n~\u0016t(xt;x0)and variance ~\ftdeﬁned as follows:\n~\u0016t(xt;x0):=p\u0016\u000bt\u00001\ft\n1\u0000\u0016\u000btx0+p\u000bt(1\u0000\u0016\u000bt\u00001)\n1\u0000\u0016\u000btxt (18)\n~\ft:=1\u0000\u0016\u000bt\u00001\n1\u0000\u0016\u000bt\ft (19)\nq(xt\u00001jxt;x0) =N(xt\u00001; ~\u0016(xt;x0);~\ftI) (20)\nIf we wish to sample from the data distribution q(x0), we can ﬁrst sample from q(xT)and then sample\nreverse steps q(xt\u00001jxt)until we reach x0. Under reasonable settings for \ftandT, the distribution\nq(xT)is nearly an isotropic Gaussian distribution, so sampling xTis trivial. All that is left is to\napproximate q(xt\u00001jxt)using a neural network, since it cannot be computed exactly when the data\ndistribution is unknown. To this end, Sohl-Dickstein et al. [ 56] note thatq(xt\u00001jxt)approaches a\ndiagonal Gaussian distribution as T!1 and correspondingly \ft!0, so it is sufﬁcient to train a\nneural network to predict a mean \u0016\u0012and a diagonal covariance matrix \u0006\u0012:\np\u0012(xt\u00001jxt):=N(xt\u00001;\u0016\u0012(xt;t);\u0006\u0012(xt;t)) (21)\nTo train this model such that p(x0)learns the true data distribution q(x0), we can optimize the\nfollowing variational lower-bound Lvlbforp\u0012(x0):\nLvlb:=L0+L1+:::+LT\u00001+LT (22)\nL0:=\u0000logp\u0012(x0jx1) (23)\nLt\u00001:=DKL(q(xt\u00001jxt;x0)jjp\u0012(xt\u00001jxt)) (24)\nLT:=DKL(q(xTjx0)jjp(xT)) (25)\nWhile the above objective is well-justiﬁed, Ho et al. [ 25] found that a different objective produces\nbetter samples in practice. In particular, they do not directly parameterize \u0016\u0012(xt;t)as a neural\nnetwork, but instead train a model \u000f\u0012(xt;t)to predict\u000ffrom Equation 17. This simpliﬁed objective\nis deﬁned as follows:\nLsimple :=Et\u0018[1;T];x0\u0018q(x0);\u000f\u0018N(0;I)[jj\u000f\u0000\u000f\u0012(xt;t)jj2] (26)\nDuring sampling, we can use substitution to derive \u0016\u0012(xt;t)from\u000f\u0012(xt;t):\n\u0016\u0012(xt;t) =1p\u000bt\u0012\nxt\u00001\u0000\u000btp1\u0000\u0016\u000bt\u000f\u0012(xt;t)\u0013\n(27)\nNote thatLsimple does not provide any learning signal for \u0006\u0012(xt;t). Ho et al. [ 25] ﬁnd that instead of\nlearning \u0006\u0012(xt;t), they can ﬁx it to a constant, choosing either \ftIor~\ftI. These values correspond\nto upper and lower bounds for the true reverse step variance.\n19C Nearest Neighbors for Samples\nFigure 7: Nearest neighbors for samples from a classiﬁer guided model on ImageNet 256 \u0002256. For\neach image, the top row is a sample, and the remaining rows are the top 3 nearest neighbors from the\ndataset. The top samples were generated with classiﬁer scale 1 and 250 diffusion sampling steps (FID\n4.59). The bottom samples were generated with classiﬁer scale 2.5 and 25 DDIM steps (FID 5.44).\nOur models achieve their best FID when using a classiﬁer to reduce the diversity of the generations.\nOne might fear that such a process could cause the model to recall existing images from the training\ndataset, especially as the classiﬁer scale is increased. To test this, we looked at the nearest neighbors\n(in InceptionV3 [ 62] feature space) for a handful of samples. Figure 7 shows our results, revealing\nthat the samples are indeed unique and not stored in the training set.\nD Effect of Varying the Classiﬁer Scale\nFigure 8: Samples when increasing the classiﬁer scale from 0.0 (left) to 5.5 (right). Each row\ncorresponds to a ﬁxed noise seed. We observe that the classiﬁer drastically changes some images,\nwhile leaving others relatively unaffected.\n20E LSUN Diversity Comparison\nFigure 9: Samples from StyleGAN2 (or StyleGAN for bedrooms) with truncation 1.0 (left) vs\nsamples from our diffusion models (middle) and samples from the training set (right).\n21F Interpolating Between Dataset Images Using DDIM\nThe DDIM [ 57] sampling process is deterministic given the initial noise xT, thus giving rise to an\nimplicit latent space. It corresponds to integrating an ODE in the forward direction, and we can run\nthe process in reverse to get the latents that produce a given real image. Here, we experiment with\nencoding real images into this latent space and then interpolating between them.\nEquation 13 for the generative pass in DDIM looks like\nxt\u00001\u0000xt=p\u0016\u000bt\u00001h\u0010p\n1=\u0016\u000bt\u0000p\n1=\u0016\u000bt\u00001\u0011\nxt+\u0010p\n1=\u0016\u000bt\u00001\u00001\u0000p\n1=\u0016\u000bt\u00001\u0011\n\u000f\u0012(xt)i\nThus, in the limit of small steps, we can expect the reversal of this ODE in the forward direction\nlooks like\nxt+1\u0000xt=p\u0016\u000bt+1h\u0010p\n1=\u0016\u000bt\u0000p\n1=\u0016\u000bt+1\u0011\nxt+\u0010p\n1=\u0016\u000bt+1\u00001\u0000p\n1=\u0016\u000bt\u00001\u0011\n\u000f\u0012(xt)i\nWe found that this reverse ODE approximation gives latents with reasonable reconstructions, even\nwith as few as 250 reverse steps. However, we noticed some noise artifacts when reversing all 250\nsteps, and ﬁnd that reversing the ﬁrst 249 steps gives much better reconstructions. To interpolate\nthe latents, class embeddings, and classiﬁer log probabilities, we use cos(\u0012)x0+sin(\u0012)x1where\u0012\nsweeps linearly from 0 to\u0019\n2.\nFigures 10athrough 10cshow DDIM latent space interpolations on a class-conditional 256 \u0002256\nmodel, while varying the classiﬁer scale. The left and rightmost images are ground truth dataset\nexamples, and between them are reconstructed interpolations in DDIM latent space (including both\nendpoints). We see that the model with no guidance has almost perfect reconstructions due to its high\nrecall, whereas raising the guidance scale to 2.5 only ﬁnds approximately similar reconstructions.\nFigure 10a: DDIM latent reconstructions and interpolations on real images with no classiﬁer guidance.\n22Figure 10b: DDIM latent reconstructions and interpolations on real images with classiﬁer scale 1.0.\nFigure 10c: DDIM latent reconstructions and interpolations on real images with classiﬁer scale 2.5.\n23G Reduced Temperature Sampling\nWe achieved our best ImageNet samples by reducing the diversity of our models using classiﬁer\nguidance. For many classes of generative models, there is a much simpler way to reduce diversity:\nreducing the temperature [ 1]. The temperature parameter \u001cis typically setup so that \u001c= 1:0corre-\nsponds to standard sampling, and \u001c <1:0focuses more on high-density samples. We experimented\nwith two ways of implementing this for diffusion models: ﬁrst, by scaling the Gaussian noise used\nfor each transition by \u001c, and second by dividing \u000f\u0012(xt)by\u001c. The latter implementation makes\nsense when thinking about \u000fas a re-scaled score function (see Section 4.2), and scaling up the score\nfunction is similar to scaling up classiﬁer gradients.\nTo measure how temperature scaling affects samples, we experimented with our ImageNet 128 \u0002128\nmodel, evaluating FID, Precision, and Recall across different temperatures (Figure 11). We ﬁnd\nthat two techniques behave similarly, and neither technique provides any substantial improvement in\nour evaluation metrics. We also ﬁnd that low temperatures have both low precision and low recall,\nindicating that the model is not focusing on modes of the real data distribution. Figure 12 highlights\nthis effect, indicating that reducing temperature produces blurry, smooth images.\n10−310−2\n1 - temperature05101520FIDnoise temperature\nepsilon temperature\n10−310−2\n1 - temperature0.40.50.60.7Precision\nnoise temperature\nepsilon temperature\n10−310−2\n1 - temperature0.450.500.550.600.65Recall\nnoise temperature\nepsilon temperature\nFigure 11: The effect of changing temperature for an ImageNet 128 \u0002128 model.\nFigure 12: Samples at temperature 0.98 with epsilon scaling (left) and noise scaling (right).\n24H Conditional Diffusion Process\nIn this section, we show that conditional sampling can be achieved with a transition operator\nproportional to p\u0012(xtjxt+1)p\u001e(yjxt), wherep\u0012(xtjxt+1)approximates q(xtjxt+1)andp\u001e(yjxt)\napproximates the label distribution for a noised sample xt.\nWe start by deﬁning a conditional Markovian noising process ^qsimilar toq, and assume that ^q(yjx0)\nis a known and readily available label distribution for each sample.\n^q(x0):=q(x0) (28)\n^q(yjx0):=Known labels per sample (29)\n^q(xt+1jxt;y):=q(xt+1jxt) (30)\n^q(x1:Tjx0;y):=TY\nt=1^q(xtjxt\u00001;y) (31)\nWhile we deﬁned the noising process ^qconditioned on y, we can prove that ^qbehaves exactly like\nqwhen not conditioned on y. Along these lines, we ﬁrst derive the unconditional noising operator\n^q(xt+1jxt):\n^q(xt+1jxt) =Z\ny^q(xt+1;yjxt)dy (32)\n=Z\ny^q(xt+1jxt;y)^q(yjxt)dy (33)\n=Z\nyq(xt+1jxt)^q(yjxt)dy (34)\n=q(xt+1jxt)Z\ny^q(yjxt)dy (35)\n=q(xt+1jxt) (36)\n= ^q(xt+1jxt;y) (37)\nFollowing similar logic, we ﬁnd the joint distribution ^q(x1:Tjx0):\n^q(x1:Tjx0) =Z\ny^q(x1:T;yjx0)dy (38)\n=Z\ny^q(yjx0)^q(x1:Tjx0;y)dy (39)\n=Z\ny^q(yjx0)TY\nt=1^q(xtjxt\u00001;y)dy (40)\n=Z\ny^q(yjx0)TY\nt=1q(xtjxt\u00001)dy (41)\n=TY\nt=1q(xtjxt\u00001)Z\ny^q(yjx0)dy (42)\n=TY\nt=1q(xtjxt\u00001) (43)\n=q(x1:Tjx0) (44)\n25Using Equation 44, we can now derive ^q(xt):\n^q(xt) =Z\nx0:t\u00001^q(x0;:::;xt)dx0:t\u00001 (45)\n=Z\nx0:t\u00001^q(x0)^q(x1;:::;xtjx0)dx0:t\u00001 (46)\n=Z\nx0:t\u00001q(x0)q(x1;:::;xtjx0)dx0:t\u00001 (47)\n=Z\nx0:t\u00001q(x0;:::;xt)dx0:t\u00001 (48)\n=q(xt) (49)\n(50)\nUsing the identities ^q(xt) =q(xt)and^q(xt+1jxt) =q(xt+1jxt), it is trivial to show via Bayes rule\nthat the unconditional reverse process ^q(xtjxt+1) =q(xtjxt+1).\nOne observation about ^qis that it gives rise to a noisy classiﬁcation function, ^q(yjxt). We can show\nthat this classiﬁcation distribution does not depend on xt+1(a noisier version of xt), a fact which we\nwill later use:\n^q(yjxt;xt+1) = ^q(xt+1jxt;y)^q(yjxt)\n^q(xt+1jxt)(51)\n= ^q(xt+1jxt)^q(yjxt)\n^q(xt+1jxt)(52)\n= ^q(yjxt) (53)\n(54)\nWe can now derive the conditional reverse process:\n^q(xtjxt+1;y) =^q(xt;xt+1;y)\n^q(xt+1;y)(55)\n=^q(xt;xt+1;y)\n^q(yjxt+1)^q(xt+1)(56)\n=^q(xtjxt+1)^q(yjxt;xt+1)^q(xt+1)\n^q(yjxt+1)^q(xt+1)(57)\n=^q(xtjxt+1)^q(yjxt;xt+1)\n^q(yjxt+1)(58)\n=^q(xtjxt+1)^q(yjxt)\n^q(yjxt+1)(59)\n=q(xtjxt+1)^q(yjxt)\n^q(yjxt+1)(60)\n(61)\nThe^q(yjxt+1)term can be treated as a constant since it does not depend on xt. We thus want to\nsample from the distribution Zq(xtjxt+1)^q(yjxt)whereZis a normalizing constant. We already\nhave a neural network approximation of q(xtjxt+1), calledp\u0012(xtjxt+1), so all that is left is an\napproximation of ^q(yjxt). This can be obtained by training a classiﬁer p\u001e(yjxt)on noised images xt\nderived by sampling from q(xt).\n26I Hyperparameters\nWhen choosing optimal classiﬁer scales for our sampler, we swept over [0:5;1;2]for ImageNet\n128\u0002128 and ImageNet 256 \u0002256, and [1;2;3;3:5;4;4:5;5]for ImageNet 512\u0002512. For DDIM,\nwe swept over values [0:5;0:75;1:0;1:25;2]for ImageNet 128\u0002128,[0:5;1;1:5;2;2:5;3;3:5]for\nImageNet 256\u0002256, and [3;4;5;6;7;9;11]for ImageNet 512\u0002512.\nHyperparameters for training the diffusion and classiﬁcation models are in Table 11 and Table 12\nrespectively. Hyperparameters for guided sampling are in Table 14. Hyperparameters used to train\nupsampling models are in Table 13. We train all of our models using Adam [ 29] or AdamW [ 35]\nwith\f1= 0:9and\f2= 0:999. We train in 16-bit precision using loss-scaling [ 38], but maintain\n32-bit weights, EMA, and optimizer state. We use an EMA rate of 0.9999 for all experiments. We\nuse PyTorch",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "Alexia Jolicoeur-Martineau, Rémi Piché-Taillefer, Rémi Tachet des Combes, and Ioan-\nnis Mitliagkas. Adversarial score matching and improved sampling for image generation.\narXiv:2009.05475 , 2020.",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": "2009.05475"
+        },
+        "ref_27": {
+            "text": "Tero Karras, Samuli Laine, and Timo Aila. A style-based generator architecture for generative\nadversarial networks. arXiv:arXiv:1812.04948 , 2019.",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": "1812.04948"
+        },
+        "ref_28": {
+            "text": "115 7.25 6.33 0.58 0.43\nADM (dropout, 200K) 92 - 92 5.57 6.69 0.63 0.52\nImageNet 128\u0002128\nBigGAN-deep",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "Diederik P. Kingma and Jimmy Ba. Adam: A method for stochastic optimization.\narXiv:1412.6980 , 2014.",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": "1412.6980"
+        },
+        "ref_30": {
+            "text": "Zhifeng Kong, Wei Ping, Jiaji Huang, Kexin Zhao, and Bryan Catanzaro. Diffwave: A versatile\ndiffusion model for audio synthesis. arXiv:2009.09761 , 2020.",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": "2009.09761"
+        },
+        "ref_31": {
+            "text": "Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton. CIFAR-10 (Canadian Institute for Advanced\nResearch), 2009. URL http://www.cs.toronto.edu/~kriz/cifar.html .",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "Tuomas Kynkäänniemi, Tero Karras, Samuli Laine, Jaakko Lehtinen, and Timo Aila. Improved\nprecision and recall metric for assessing generative models. arXiv:1904.06991 , 2019.",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": "1904.06991"
+        },
+        "ref_33": {
+            "text": "Guosheng Lin, Anton Milan, Chunhua Shen, and Ian Reid. Reﬁnenet: Multi-path reﬁnement\nnetworks for high-resolution semantic segmentation. arXiv:1611.06612 , 2016.\n14",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": "1611.06612"
+        },
+        "ref_34": {
+            "text": "Ziwei Liu, Ping Luo, Xiaogang Wang, and Xiaoou Tang. Deep learning face attributes in the\nwild. In Proceedings of International Conference on Computer Vision (ICCV) , December 2015.",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": null
+        },
+        "ref_35": {
+            "text": "Ilya Loshchilov and Frank Hutter. Decoupled weight decay regularization. arXiv:1711.05101 ,\n2017.",
+            "type": "numeric",
+            "number": "35",
+            "arxiv_id": "1711.05101"
+        },
+        "ref_36": {
+            "text": "Mario Lucic, Michael Tschannen, Marvin Ritter, Xiaohua Zhai, Olivier Bachem, and Sylvain\nGelly. High-ﬁdelity image generation with fewer labels. arXiv:1903.02271 , 2019.",
+            "type": "numeric",
+            "number": "36",
+            "arxiv_id": "1903.02271"
+        },
+        "ref_37": {
+            "text": "Eric Luhman and Troy Luhman. Knowledge distillation in iterative generative models for\nimproved sampling speed. arXiv:2101.02388 , 2021.",
+            "type": "numeric",
+            "number": "37",
+            "arxiv_id": "2101.02388"
+        },
+        "ref_38": {
+            "text": "Paulius Micikevicius, Sharan Narang, Jonah Alben, Gregory Diamos, Erich Elsen, David Garcia,\nBoris Ginsburg, Michael Houston, Oleksii Kuchaiev, Ganesh Venkatesh, and Hao Wu. Mixed\nprecision training. arXiv:1710.03740 , 2017.",
+            "type": "numeric",
+            "number": "38",
+            "arxiv_id": "1710.03740"
+        },
+        "ref_39": {
+            "text": "Mehdi Mirza and Simon Osindero. Conditional generative adversarial nets. arXiv:1411.1784 ,\n2014.",
+            "type": "numeric",
+            "number": "39",
+            "arxiv_id": "1411.1784"
+        },
+        "ref_40": {
+            "text": "Takeru Miyato and Masanori Koyama. cgans with projection discriminator. arXiv:1802.05637 ,\n2018.",
+            "type": "numeric",
+            "number": "40",
+            "arxiv_id": "1802.05637"
+        },
+        "ref_41": {
+            "text": "Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. Spectral normalization\nfor generative adversarial networks. arXiv:1802.05957 , 2018.",
+            "type": "numeric",
+            "number": "41",
+            "arxiv_id": "1802.05957"
+        },
+        "ref_42": {
+            "text": "Charlie Nash, Jacob Menick, Sander Dieleman, and Peter W. Battaglia. Generating images with\nsparse representations. arXiv:2103.03841 , 2021.",
+            "type": "numeric",
+            "number": "42",
+            "arxiv_id": "2103.03841"
+        },
+        "ref_43": {
+            "text": "Alex Nichol and Prafulla Dhariwal. Improved denoising diffusion probabilistic models.\narXiv:2102.09672 , 2021.",
+            "type": "numeric",
+            "number": "43",
+            "arxiv_id": "2102.09672"
+        },
+        "ref_44": {
+            "text": "NVIDIA. Stylegan2. https://github.com/NVlabs/stylegan2 , 2019.",
+            "type": "numeric",
+            "number": "44",
+            "arxiv_id": null
+        },
+        "ref_45": {
+            "text": "Gaurav Parmar, Richard Zhang, and Jun-Yan Zhu. On buggy resizing libraries and surprising\nsubtleties in ﬁd calculation. arXiv:2104.11222 , 2021.",
+            "type": "numeric",
+            "number": "45",
+            "arxiv_id": "2104.11222"
+        },
+        "ref_46": {
+            "text": ", and train on NVIDIA Tesla V100s.\nFor all architecture ablations, we train with batch size 256, and sample using 250 sampling steps.\nFor our attention heads ablations, we use 128 base channels, 2 residual blocks per resolution, multi-\nresolution attention, and BigGAN up/downsampling, and we train the models for 700K iterations. By\ndefault, all of our experiments use adaptive group normalization, except when explicitly ablating for\nit.\nWhen sampling with 1000 timesteps, we use the same noise schedule as for training. On ImageNet,\nwe use the uniform stride from Nichol and Dhariwal [ 43] for 250 step samples and the slightly\ndifferent uniform stride from Song et al.",
+            "type": "numeric",
+            "number": "46",
+            "arxiv_id": null
+        },
+        "ref_47": {
+            "text": "Or Patashnik, Zongze Wu, Eli Shechtman, Daniel Cohen-Or, and Dani Lischinski. Styleclip:\nText-driven manipulation of stylegan imagery. arXiv:2103.17249 , 2021.",
+            "type": "numeric",
+            "number": "47",
+            "arxiv_id": "2103.17249"
+        },
+        "ref_48": {
+            "text": "Ethan Perez, Florian Strub, Harm de Vries, Vincent Dumoulin, and Aaron Courville. Film:\nVisual reasoning with a general conditioning layer. arXiv:1709.07871 , 2017.",
+            "type": "numeric",
+            "number": "48",
+            "arxiv_id": "1709.07871"
+        },
+        "ref_49": {
+            "text": "Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini\nAgarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger,\nand Ilya Sutskever. Learning transferable visual models from natural language supervision.\narXiv:2103.00020 , 2021.",
+            "type": "numeric",
+            "number": "49",
+            "arxiv_id": "2103.00020"
+        },
+        "ref_50": {
+            "text": "Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea V oss, Alec Radford, Mark\nChen, and Ilya Sutskever. Zero-shot text-to-image generation. arXiv:2102.12092 , 2021.",
+            "type": "numeric",
+            "number": "50",
+            "arxiv_id": "2102.12092"
+        },
+        "ref_51": {
+            "text": "Ali Razavi, Aaron van den Oord, and Oriol Vinyals. Generating diverse high-ﬁdelity images\nwith VQ-V AE-2. arXiv:1906.00446 , 2019.",
+            "type": "numeric",
+            "number": "51",
+            "arxiv_id": "1906.00446"
+        },
+        "ref_52": {
+            "text": "Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng\nHuang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, Alexander C. Berg, and Li Fei-Fei.\nImagenet large scale visual recognition challenge. arXiv:1409.0575 , 2014.",
+            "type": "numeric",
+            "number": "52",
+            "arxiv_id": "1409.0575"
+        },
+        "ref_53": {
+            "text": "Chitwan Saharia, Jonathan Ho, William Chan, Tim Salimans, David J. Fleet, and Mohammad\nNorouzi. Image super-resolution via iterative reﬁnement. arXiv:arXiv:2104.07636 , 2021.\n15",
+            "type": "numeric",
+            "number": "53",
+            "arxiv_id": "2104.07636"
+        },
+        "ref_54": {
+            "text": "Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, and Xi Chen.\nImproved techniques for training gans. arXiv:1606.03498 , 2016.",
+            "type": "numeric",
+            "number": "54",
+            "arxiv_id": "1606.03498"
+        },
+        "ref_55": {
+            "text": "Shibani Santurkar, Dimitris Tsipras, Brandon Tran, Andrew Ilyas, Logan Engstrom, and\nAleksander Madry. Image synthesis with a single (robust) classiﬁer. arXiv:1906.09453 , 2019.",
+            "type": "numeric",
+            "number": "55",
+            "arxiv_id": "1906.09453"
+        },
+        "ref_56": {
+            "text": "Jascha Sohl-Dickstein, Eric A. Weiss, Niru Maheswaranathan, and Surya Ganguli. Deep\nunsupervised learning using nonequilibrium thermodynamics. arXiv:1503.03585 , 2015.",
+            "type": "numeric",
+            "number": "56",
+            "arxiv_id": "1503.03585"
+        },
+        "ref_57": {
+            "text": "for 25 step DDIM.\nLSUN ImageNet 64 ImageNet 128 ImageNet 256 ImageNet 512\nDiffusion steps 1000 1000 1000 1000 1000\nNoise Schedule linear cosine linear linear linear\nModel size 552M 296M 422M 554M 559M\nChannels 256 192 256 256 256\nDepth 2 3 2 2 2\nChannels multiple 1,1,2,2,4,4 1,2,3,4 1,1,2,3,4 1,1,2,2,4,4 0.5,1,1,2,2,4,4\nHeads 4\nHeads Channels 64 64 64 64\nAttention resolution 32,16,8 32,16,8 32,16,8 32,16,8 32,16,8\nBigGAN up/downsample 3 3 3 3 3\nDropout 0.1 0.1 0.0 0.0 0.0\nBatch size 256 2048 256 256 256\nIterations varies* 540K 4360K 1980K 1940K\nLearning Rate 1e-4 3e-4 1e-4 1e-4 1e-4\nTable 11: Hyperparameters for diffusion models. *We used 200K iterations for LSUN cat, 250K for\nLSUN horse, and 500K for LSUN bedroom.\nImageNet 64 ImageNet 128 ImageNet 256 ImageNet 512\nDiffusion steps 1000 1000 1000 1000\nNoise Schedule cosine linear linear linear\nModel size 65M 43M 54M 54M\nChannels 128 128 128 128\nDepth 4 2 2 2\nChannels multiple 1,2,3,4 1,1,2,3,4 1,1,2,2,4,4 0.5,1,1,2,2,4,4\nHeads Channels 64 64 64 64\nAttention resolution 32,16,8 32,16,8 32,16,8 32,16,8\nBigGAN up/downsample 3 3 3 3\nAttention pooling 3 3 3 3\nWeight decay 0.2 0.05 0.05 0.05\nBatch size 1024 256* 256 256\nIterations 300K 300K 500K 500K\nLearning rate 6e-4 3e-4* 3e-4 3e-4\nTable 12: Hyperparameters for classiﬁcation models. *For our ImageNet 128 \u0002128!512\u0002512\nupsamples, we used a different classiﬁer for the base model, with batch size 1024 and learning rate\n6e-5.\n27ImageNet 64!256 ImageNet 128!512\nDiffusion steps 1000 1000\nNoise Schedule linear linear\nModel size 312M 309M\nChannels 192 192\nDepth 2 2\nChannels multiple 1,1,2,2,4,4 1,1,2,2,4,4*\nHeads 4\nHeads Channels 64\nAttention resolution 32,16,8 32,16,8\nBigGAN up/downsample 3 3\nDropout 0.0 0.0\nBatch size 256 256\nIterations 500K 1050K\nLearning Rate 1e-4 1e-4\nTable 13: Hyperparameters for upsampling diffusion models. *We chose this as an optimization, with\nthe intuition that a lower-resolution path should be unnecessary for upsampling 128x128 images.\nImageNet 64 ImageNet 128 ImageNet 256 ImageNet 512\nGradient Scale (250 steps) 1.0 0.5 1.0 4.0\nGradient Scale (DDIM, 25 steps) - 1.25 2.5 9.0\nTable 14: Hyperparameters for classiﬁer-guided sampling.\n28J Using Fewer Sampling Steps on LSUN\nWe initially found that our LSUN models achieved much better results when sampling with 1000\nsteps rather than 250 steps, contrary to previous results from Nichol and Dhariwal [ 43]. To address\nthis, we conducted a sweep over sampling-time noise schedules, ﬁnding that an improved schedule\ncan largely close the gap. We swept over schedules on LSUN bedrooms, and selected the schedule\nwith the best FID for use on the other two datasets. Table 15 details the ﬁndings of this sweep, and\nTable 16 applies this schedule to three LSUN datasets.\nWhile sweeping over sampling schedules is not as expensive as re-training models from scratch, it\ndoes require a signiﬁcant amount of sampling compute. As a result, we did not conduct an exhaustive\nsweep, and superior schedules are likely to exist.\nSchedule FID\n50;50;50;50;50 2.31\n70;60;50;40;30 2.17\n90;50;40;40;30 2.10\n90;60;50;30;20 2.09\n80;60;50;30;30 2.09\n90;50;50;30;30 2.07\n100;50;40;30;30 2.03\n90;60;60;20;20 2.02\nTable 15: Results of sweeping over 250 step sampling schedules on LSUN bedrooms. The schedule\nis expressed as a sequence of ﬁve integers, where each integer is the number of steps allocated to\none ﬁfth of the diffusion process. The ﬁrst integer corresponding to t2[0;199] and the last to\nt2[T\u0000200;T\u00001]. Thus, 50;50;50;50;50is a uniform schedule, and 250;0;0;0;0is a schedule\nwhere all timesteps are spent near t= 0.\nSchedule FID sFID Prec Rec\nLSUN Bedrooms 256 \u0002256\n1000 steps 1.90 5.59 0.66 0.51\n250 steps (uniform) 2.31 6.12 0.65 0.50\n250 steps (sweep) 2.02 6.12 0.67 0.50\nLSUN Horses 256\u0002256\n1000 steps 2.57 6.81 0.71 0.55\n250 steps (uniform) 3.45 7.55 0.68 0.56\n250 steps (sweep) 2.83 7.08 0.69 0.56\nLSUN Cat 256\u0002256\n1000 steps 5.57 6.69 0.63 0.52\n250 steps (uniform) 7.03 8.24 0.60 0.53\n250 steps (sweep) 5.94 7.43 0.62 0.52\nTable 16: Evaluations on LSUN bedrooms, horses, and cats using different sampling schedules. We\nﬁnd that the sweep schedule produces better results than the uniform 250 step schedule on all three\ndatasets, and mostly bridges the gap to the 1000 step schedule.\n29K Samples from ImageNet 512 \u0002512\nFigure 13: Samples from our best 512 \u0002512 model (FID: 3.85). Classes are 1: goldﬁsh, 279: arctic\nfox, 323: monarch butterﬂy, 386: african elephant, 130: ﬂamingo, 852: tennis ball.\n30Figure 14: Samples from our best 512 \u0002512 model (FID: 3.85). Classes are 933: cheeseburger, 562:\nfountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric.\n31Figure 15: Difﬁcult class samples from our best 512 \u0002512 model (FID: 3.85). Classes are 432:\nbassoon, 468: cab, 424: barbershop, 444: bicycle-built-for-two, 981: ballplayer, 550: espresso maker.\n32Figure 16: Samples from our guided 512 \u0002512 model using 250 steps with classiﬁer scale 4.0 (FID\n7.72). Classes are 1: goldﬁsh, 279: arctic fox, 323: monarch butterﬂy, 386: african elephant, 130:\nﬂamingo, 852: tennis ball.\n33Figure 17: Samples from our guided 512 \u0002512 model using 250 steps with classiﬁer scale 4.0 (FID\n7.72). Classes are 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992:\nagaric.\n34Figure 18: Random samples from our best ImageNet 512 \u0002512 model (FID 3.85).\n35Figure 19: Random samples from our guided 512 \u0002512 model using 250 steps with classiﬁer scale\n4.0 (FID 7.72).\n36L Samples from ImageNet 256 \u0002256\nFigure 20: Samples using our best 256 \u0002256 model (FID 3.94). Classes are 1: goldﬁsh, 279: arctic\nfox, 323: monarch butterﬂy, 386: african elephant, 130: ﬂamingo, 852: tennis ball, 933: cheeseburger,\n562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric\n37Figure 21: Samples from our guided 256 \u0002256 model using 250 steps with classiﬁer scale 1.0 (FID\n4.59). Classes are 1: goldﬁsh, 279: arctic fox, 323: monarch butterﬂy, 386: african elephant, 130:\nﬂamingo, 852: tennis ball, 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90:\nlorikeet, 992: agaric\n38Figure 22: Samples from our guided 256 \u0002256 model using 25 DDIM steps with classiﬁer scale 2.5\n(FID 5.44). Classes are 1: goldﬁsh, 279: arctic fox, 323: monarch butterﬂy, 386: african elephant,\n130: ﬂamingo, 852: tennis ball, 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90:\nlorikeet, 992: agaric\n39Figure 23: Random samples from our best 256 \u0002256 model (FID 3.94).\n40Figure 24: Random samples from our guided 256 \u0002256 model using 250 steps with classiﬁer scale\n1.0 (FID 4.59).\n41M Samples from LSUN\nFigure 25: Random samples from our LSUN bedroom model using 1000 sampling steps. (FID 1.90)\n42Figure 26: Random samples from our LSUN horse model using 1000 sampling steps. (FID 2.57)\n43Figure 27: Random samples from our LSUN cat model using 1000 sampling steps. (FID 5.57)\n44",
+            "type": "numeric",
+            "number": "57",
+            "arxiv_id": null
+        },
+        "ref_58": {
+            "text": "Yang Song and Stefano Ermon. Improved techniques for training score-based generative models.\narXiv:2006.09011 , 2020.",
+            "type": "numeric",
+            "number": "58",
+            "arxiv_id": "2006.09011"
+        },
+        "ref_59": {
+            "text": "Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data\ndistribution. arXiv:arXiv:1907.05600 , 2020.",
+            "type": "numeric",
+            "number": "59",
+            "arxiv_id": "1907.05600"
+        },
+        "ref_60": {
+            "text": "Yang Song, Jascha Sohl-Dickstein, Diederik P. Kingma, Abhishek Kumar, Stefano Ermon,\nand Ben Poole. Score-based generative modeling through stochastic differential equations.\narXiv:2011.13456 , 2020.",
+            "type": "numeric",
+            "number": "60",
+            "arxiv_id": "2011.13456"
+        },
+        "ref_61": {
+            "text": "Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan, Ian Good-\nfellow, and Rob Fergus. Intriguing properties of neural networks. arXiv:1312.6199 , 2013.",
+            "type": "numeric",
+            "number": "61",
+            "arxiv_id": "1312.6199"
+        },
+        "ref_62": {
+            "text": "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and Zbigniew Wojna.\nRethinking the inception architecture for computer vision. arXiv:1512.00567 , 2015.",
+            "type": "numeric",
+            "number": "62",
+            "arxiv_id": "1512.00567"
+        },
+        "ref_63": {
+            "text": "Arash Vahdat and Jan Kautz. Nvae: A deep hierarchical variational autoencoder.\narXiv:2007.03898 , 2020.",
+            "type": "numeric",
+            "number": "63",
+            "arxiv_id": "2007.03898"
+        },
+        "ref_64": {
+            "text": "Aaron van den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex\nGraves, Nal Kalchbrenner, Andrew Senior, and Koray Kavukcuoglu. Wavenet: A generative\nmodel for raw audio. arXiv:1609.03499 , 2016.",
+            "type": "numeric",
+            "number": "64",
+            "arxiv_id": "1609.03499"
+        },
+        "ref_65": {
+            "text": "Aaron van den Oord, Oriol Vinyals, and Koray Kavukcuoglu. Neural discrete representation\nlearning. arXiv:1711.00937 , 2017.",
+            "type": "numeric",
+            "number": "65",
+            "arxiv_id": "1711.00937"
+        },
+        "ref_66": {
+            "text": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez,\nLukasz Kaiser, and Illia Polosukhin. Attention is all you need. arXiv:1706.03762 , 2017.",
+            "type": "numeric",
+            "number": "66",
+            "arxiv_id": "1706.03762"
+        },
+        "ref_67": {
+            "text": "Max Welling and Yee W Teh. Bayesian learning via stochastic gradient langevin dynamics.\nInProceedings of the 28th international conference on machine learning (ICML-11) , pages\n681–688. Citeseer, 2011.",
+            "type": "numeric",
+            "number": "67",
+            "arxiv_id": null
+        },
+        "ref_68": {
+            "text": "Yan Wu, Jeff Donahue, David Balduzzi, Karen Simonyan, and Timothy Lillicrap. Logan: Latent\noptimisation for generative adversarial networks. arXiv:1912.00953 , 2019.",
+            "type": "numeric",
+            "number": "68",
+            "arxiv_id": "1912.00953"
+        },
+        "ref_69": {
+            "text": "Yuxin Wu and Kaiming He. Group normalization. arXiv:1803.08494 , 2018.",
+            "type": "numeric",
+            "number": "69",
+            "arxiv_id": "1803.08494"
+        },
+        "ref_70": {
+            "text": "Jianwen Xie, Yang Lu, Song-Chun Zhu, and Ying Nian Wu. A theory of generative convnet.\narXiv:1602.03264 , 2016.",
+            "type": "numeric",
+            "number": "70",
+            "arxiv_id": "1602.03264"
+        },
+        "ref_71": {
+            "text": "Fisher Yu, Ari Seff, Yinda Zhang, Shuran Song, Thomas Funkhouser, and Jianxiong Xiao.\nLsun: Construction of a large-scale image dataset using deep learning with humans in the loop.\narXiv:1506.03365 , 2015.",
+            "type": "numeric",
+            "number": "71",
+            "arxiv_id": "1506.03365"
+        },
+        "ref_72": {
+            "text": "Han Zhang, Tao Xu, Hongsheng Li, Shaoting Zhang, Xiaogang Wang, Xiaolei Huang, and\nDimitris Metaxas. Stackgan: Text to photo-realistic image synthesis with stacked generative\nadversarial networks. arXiv:1612.03242 , 2016.",
+            "type": "numeric",
+            "number": "72",
+            "arxiv_id": "1612.03242"
+        },
+        "ref_73": {
+            "text": "Ligeng Zhu. Thop. https://github.com/Lyken17/pytorch-OpCounter , 2018.\n16A Computational Requirements\nCompute is essential to modern machine learning applications, and more compute typically yields\nbetter results. It is thus important to compare our method’s compute requirements to competing\nmethods. In this section, we demonstrate that we can achieve results better than StyleGAN2 and\nBigGAN-deep with the same or lower compute budget.\nA.1 Throughput\nWe ﬁrst benchmark the throughput of our models in Table 7. For the theoretical throughput, we\nmeasure the theoretical FLOPs for our model using THOP [ 73], and assume 100% utilization of an\nNVIDIA Tesla V100 (120 TFLOPs), while for the actual throughput we use measured wall-clock\ntime. We include communication time across two machines whenever our training batch size doesn’t\nﬁt on a single machine, where each of our machines has 8 V100s.\nWe ﬁnd that a naive implementation of our models in PyTorch 1.7 is very inefﬁcient, utilizing only\n20-30% of the hardware. We also benchmark our optimized version, which use larger per-GPU batch\nsizes, fused GroupNorm-Swish and fused Adam CUDA ops. For our ImageNet 128 \u0002128 model in\nparticular, we ﬁnd that we can increase the per-GPU batch size from 4 to 32 while still ﬁtting in GPU\nmemory, and this makes a large utilization difference. Our implementation is still far from optimal,\nand further optimizations should allow us to reach higher levels of utilization.\nModel ImplementationBatch Size ThroughputUtilizationper GPU Imgs per V100-sec\n64\u000264Theoretical - 182.3 100%\nNaive 32 37.0 20%\nOptimized 96 74.1 41%\n128\u0002128Theoretical - 65.2 100%\nNaive 4 11.5 18%\nOptimized 32 24.8 38%\n256\u0002256Theoretical - 17.9 100%\nNaive 4 4.4 25%\nOptimized 8 6.4 36%\n64!256Theoretical - 31.7 100%\nNaive 4 6.3 20%\nOptimized 12 9.5 30%\n128!512Theoretical - 8.0 100%\nNaive 2 1.9 24%\nOptimized 2 2.3 29%\nTable 7: Throughput of our ImageNet models, measured in Images per V100-sec.\nA.2 Early stopping\nIn addition, we can train for many fewer iterations while maintaining sample quality superior to\nBigGAN-deep. Table 8 and 9 evaluate our ImageNet 128 \u0002128 and 256\u0002256 models throughout\ntraining. We can see that the ImageNet 128 \u0002128 model beats BigGAN-deep’s FID (6.02) after 500K\ntraining iterations, only one eighth of the way through training. Similarly, the ImageNet 256 \u0002256\nmodel beats BigGAN-deep after 750K iterations, roughly a third of the way through training.\nIterations FID sFID Precision Recall\n250K 7.97 6.48 0.80 0.50\n500K 5.31 5.97 0.83 0.49\n1000K 4.10 5.80 0.81 0.51\n2000K 3.42 5.69 0.83 0.53\n4360K 3.09 5.59 0.82 0.54\nTable 8: Evaluating an ImageNet 128 \u0002128 model throughout training (classiﬁer scale 1.0).\n17Iterations FID sFID Precision Recall\n250K 12.21 6.15 0.78 0.50\n500K 7.95 5.51 0.81 0.50\n750K 6.49 5.39 0.81 0.50\n1000K 5.74 5.29 0.81 0.52\n1500K 5.01 5.20 0.82 0.52\n1980K 4.59 5.25 0.82 0.52\nTable 9: Evaluating an ImageNet 256 \u0002256 model throughout training (classiﬁer scale 1.0).\nA.3 Compute comparison\nFinally, in Table 10 we compare the compute of our models with StyleGAN2 and BigGAN-deep, and\nshow we can obtain better FIDs with a similar compute budget. For BigGAN-deep, Brock et al. [ 5] do\nnot explicitly describe the compute requirements for training their models, but rather provide rough\nestimates in terms of days on a Google TPUv3 pod [ 20]. We convert their TPU-v3 estimates to V100\ndays according to 2 TPU-v3 day = 1 V100 day. For StyleGAN2, we use the reported throughput of\n25M images over 32 days 13 hour on one V100 for conﬁg-f [ 44]. We note that our classiﬁer training\nis relatively lightweight compared to training the generative model.\nModel Generator Classiﬁer Total FID sFID Precision Recall\nCompute Compute Compute\nLSUN Horse 256\u0002256\nStyleGAN2",
+            "type": "numeric",
+            "number": "73",
+            "arxiv_id": null
+        },
+        "ref_December_2015": {
+            "text": "wild. In Proceedings of International Conference on Computer Vision (ICCV) , December 2015. [35] Ilya Loshchilov and Frank Hutter. Decoupled weight decay regularization. arXiv:1711.05101 , 2017. [36] Mario Lucic, Michael Tschannen, Marvin Ritter, Xiaohua Zhai, Olivier Bachem, and Sylvain",
+            "type": "author_year",
+            "key": "December, 2015",
+            "arxiv_id": "1711.05101"
+        },
+        "ref_Citeseer_2011": {
+            "text": "681–688. Citeseer, 2011. [68] Yan Wu, Jeff Donahue, David Balduzzi, Karen Simonyan, and Timothy Lillicrap. Logan: Latent",
+            "type": "author_year",
+            "key": "Citeseer, 2011",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "2 Background\n\nIn this section, we provide a brief overview of diffusion models. For a more detailed mathematical description, we refer the reader to Appendix B.\n\nOn a high level, diffusion models sample from a distribution by reversing a gradual noising process. In particular, sampling starts with noise x7 and produces gradually less-noisy samples rp_1, 77_2, ..- until reaching a final sample xo. Each timestep ¢ corresponds to a certain noise level, and x, can be thought of as a mixture of a signal xo with some noise € where the signal to noise ratio is determined by the timestep t. For the remainder of this paper, we assume that the noise € is drawn from a diagonal Gaussian distribution, which works well for natural images and simplifies various derivations.\n\n2\n\nA diffusion model learns to produce a slightly more “denoised” x;_; from 2;. (25) parameterize this model as a function €g(2,, t) which predicts the noise component of a noisy sample x,. To train these models, each sample in a minibatch is produced by randomly drawing a data sample Xo, a timestep t, and noise €, which together give rise to a noised sample x; (Equation[I7). The training objective is then ||¢9(a,,¢) — ¢||?, ie. a simple mean-squared error loss between the true noise and the predicted noise (Equation[26}.\n\nIt is not immediately obvious how to sample from a noise predictor €9(2,,¢). Recall that diffusion sampling proceeds by repeatedly predicting x;,_1 from 2+, starting from xr. show that, under reasonable assumptions, we can model the distribution pg (x,_1|21) Of Z_1 given x, as a diagonal Gaussian N(21~1; 19(x, t), No(xe, t)), where the mean j19(az, t) can be calculated as a function of €9(x,,t) (Equation|27). The variance 4g (2;, t) of this Gaussian distribution can be fixed to a known constant or learned with a separate neural network head [43], and both approaches yield high-quality samples when the total number of diffusion steps T’ is large enough.\n\nHo et al. [25] observe that the simple mean-sqaured error objective, Lsimple, works better in practice than the actual variational lower bound Lvlb that can be derived from interpreting the denoising diffu- sion model as a VAE. They also note that training with this objective and using their corresponding sampling procedure is equivalent to the denoising score matching model from Song and Ermon [58], who use Langevin dynamics to sample from a denoising model trained with multiple noise levels to produce high quality image samples. We often use “diffusion models” as shorthand to refer to both classes of models.",
+            "section": "introduction",
+            "section_idx": 0,
+            "citations": [
+                "43",
+                "25",
+                "58"
+            ]
+        },
+        {
+            "text": "G Reduced Temperature Sampling\n\nWe achieved our best ImageNet samples by reducing the diversity of our models using classifier guidance. For many classes of generative models, there is a much simpler way to reduce diversity: reducing the temperature [1]. The temperature parameter T is typically setup so that tT = 1.0 corre- sponds to standard sampling, and 7 < 1.0 focuses more on high-density samples. We experimented with two ways of implementing this for diffusion models: first, by scaling the Gaussian noise used for each transition by r, and second by dividing €9(x;) by 7. The latter implementation makes sense when thinking about € as a re-scaled score function (see Section/4.2), and scaling up the score function is similar to scaling up classifier gradients.\n\nTo measure how temperature scaling affects samples, we experimented with our ImageNet 128×128 model, evaluating FID, Precision, and Recall across different temperatures (Figure 11). We ﬁnd that two techniques behave similarly, and neither technique provides any substantial improvement in our evaluation metrics. We also ﬁnd that low temperatures have both low precision and low recall, indicating that the model is not focusing on modes of the real data distribution. Figure 12 highlights this effect, indicating that reducing temperature produces blurry, smooth images.\n\n07 —e— noise temperature —s— epsilon temperature ° a Precision © a —*— noise temperature —s— noise temperature 0.4) —e epsilon temperature 0.45) _.— epsilon temperature 05 02 103 10 io? 10 1- temperature 1 - temperature 1- temperature\n\nFigure 11: The effect of changing temperature for an ImageNet 128×128 model.\n\nFigure 12: Samples at temperature 0.98 with epsilon scaling (left) and noise scaling (right).\n\n24\n\nH Conditional Diffusion Process\n\nIn this section, we show that conditional sampling can be achieved with a transition operator proportional to pθ(xt|xt+1)pφ(y|xt), where pθ(xt|xt+1) approximates q(xt|xt+1) and pφ(y|xt) approximates the label distribution for a noised sample xt.\n\nWe start by deﬁning a conditional Markovian noising process ˆq similar to q, and assume that ˆq(y|x0) is a known and readily available label distribution for each sample.\n\nˆq(x0) := q(x0) (28)\n\nˆq(y|x0) := Known labels per sample (29)\n\nˆq(xt+1|xt,y) := q(xt+1|xt) (30)",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "1"
+            ]
+        },
+        {
+            "text": "5 Results\n\nTo evaluate our improved model architecture on unconditional image generation, we train separate diffusion models on three LSUN [71] classes: bedroom, horse, and cat. To evaluate classiﬁer guidance, we train conditional diffusion models on the ImageNet [52] dataset at 128×128, 256×256, and 512×512 resolution.\n\n9\n\nModel FID sFID Prec Rec Model FID sFID Prec Rec LSUN Bedrooms 256×256 ImageNet 128×128 DCTransformer† [42] 6.40 6.66 0.44 0.56 BigGAN-deep [5] 6.02 7.18 0.86 0.35 DDPM [25] 4.89 9.07 0.60 0.45 LOGAN† [68] 3.36 IDDPM [43] 4.24 8.21 0.62 0.46 ADM 5.91 5.09 0.70 0.65 StyleGAN [27] 2.35 6.62 0.59 0.48 ADM-G (25 steps) 5.98 7.04 0.78 0.51 ADM (dropout) 1.90 5.59 0.66 0.51 ADM-G 2.97 5.09 0.78 0.59 LSUN Horses 256×256 ImageNet 256×256 StyleGAN2 [28] 3.84 6.46 0.63 0.48 DCTransformer† [42] 36.51 8.24 0.36 0.67 ADM ADM (dropout) 2.95 2.57 5.94 6.81 0.69 0.55 0.71 0.55 VQ-VAE-2†‡ [51] IDDPM‡ [43] 31.11 17.38 0.36 0.57 12.26 5.42 0.70 0.62 LSUN Cats 256×256 SR3†‡ [53] BigGAN-deep [5] 11.30 6.95 7.36 0.87 0.28 DDPM [25] 17.1 12.4 0.53 0.48 ADM 10.94 6.02 0.69 0.63 StyleGAN2 [28] 7.25 6.33 0.58 0.43 ADM-G (25 steps) 5.44 5.32 0.81 0.49 ADM (dropout) 5.57 6.69 0.63 0.52 ADM-G 4.59 5.25 0.82 0.52 ImageNet 64×64 ImageNet 512×512 BigGAN-deep* [5] 4.06 3.96 0.79 0.48 BigGAN-deep [5] 8.43 8.13 0.88 0.29 IDDPM [43] 2.92 3.79 0.74 0.62 ADM 23.24 10.19 0.73 0.60 ADM 2.61 3.77 0.73 0.63 ADM-G (25 steps) 8.41 9.67 0.83 0.47 ADM (dropout) 2.07 4.29 0.74 0.63 ADM-G 7.72 6.57 0.87 0.42\n\nTable 5: Sample quality comparison with state-of-the-art generative models for each task. ADM refers to our ablated diffusion model, and ADM-G additionally uses classiﬁer guidance. LSUN diffusion models are sampled using 1000 steps (see Appendix J). ImageNet diffusion models are sampled using 250 steps, except when we use the DDIM sampler with 25 steps. *No BigGAN-deep model was available at this resolution, so we trained our own. †Values are taken from a previous paper, due to lack of public models or samples. ‡Results use two-resolution stacks.",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "71",
+                "52",
+                "42",
+                "5",
+                "25",
+                "68",
+                "43",
+                "27",
+                "28",
+                "42",
+                "51",
+                "43",
+                "53",
+                "5",
+                "25",
+                "28",
+                "5",
+                "5",
+                "43"
+            ]
+        },
+        {
+            "text": "A Computational Requirements\n\nCompute is essential to modern machine learning applications, and more compute typically yields better results. It is thus important to compare our method’s compute requirements to competing methods. In this section, we demonstrate that we can achieve results better than StyleGAN2 and BigGAN-deep with the same or lower compute budget.\n\nA.1 Throughput\n\nWe ﬁrst benchmark the throughput of our models in Table 7. For the theoretical throughput, we measure the theoretical FLOPs for our model using THOP [73], and assume 100% utilization of an NVIDIA Tesla V100 (120 TFLOPs), while for the actual throughput we use measured wall-clock time. We include communication time across two machines whenever our training batch size doesn’t ﬁt on a single machine, where each of our machines has 8 V100s.\n\nWe ﬁnd that a naive implementation of our models in PyTorch 1.7 is very inefﬁcient, utilizing only 20-30% of the hardware. We also benchmark our optimized version, which use larger per-GPU batch sizes, fused GroupNorm-Swish and fused Adam CUDA ops. For our ImageNet 128×128 model in particular, we ﬁnd that we can increase the per-GPU batch size from 4 to 32 while still ﬁtting in GPU memory, and this makes a large utilization difference. Our implementation is still far from optimal, and further optimizations should allow us to reach higher levels of utilization.\n\nModel Implementation Batch Size per GPU Throughput Imgs per V100-sec Utilization Theoretical - 182.3 100% 64×64 Naive 32 37.0 20% Optimized 96 74.1 41% Theoretical - 65.2 100% 128×128 Naive 4 11.5 18% Optimized 32 24.8 38% Theoretical - 17.9 100% 256×256 Naive 4 4.4 25% Optimized 8 6.4 36% Theoretical - 31.7 100% 64 → 256 Naive 4 6.3 20% Optimized 12 9.5 30% Theoretical - 8.0 100% 128 → 512 Naive 2 1.9 24% Optimized 2 2.3 29%\n\nTable 7: Throughput of our ImageNet models, measured in Images per V100-sec.\n\nA.2 Early stopping\n\nIn addition, we can train for many fewer iterations while maintaining sample quality superior to BigGAN-deep. Table 8 and 9 evaluate our ImageNet 128×128 and 256×256 models throughout training. We can see that the ImageNet 128×128 model beats BigGAN-deep’s FID (6.02) after 500K training iterations, only one eighth of the way through training. Similarly, the ImageNet 256×256 model beats BigGAN-deep after 750K iterations, roughly a third of the way through training.\n\nIterations FID sFID Precision Recall 250K 7.97 6.48 0.80 0.50 500K 5.31 5.97 0.83 0.49 1000K 4.10 5.80 0.81 0.51 2000K 3.42 5.69 0.83 0.53 4360K 3.09 5.59 0.82 0.54\n\nTable 8: Evaluating an ImageNet 128×128 model throughout training (classiﬁer scale 1.0).\n\n17\n\nIterations FID sFID Precision Recall 250K 12.21 6.15 0.78 0.50 500K 7.95 5.51 0.81 0.50 750K 6.49 5.39 0.81 0.50 1000K 5.74 5.29 0.81 0.52 1500K 5.01 5.20 0.82 0.52 1980K 4.59 5.25 0.82 0.52\n\nTable 9: Evaluating an ImageNet 256×256 model throughout training (classiﬁer scale 1.0).",
+            "section": "results",
+            "section_idx": 1,
+            "citations": [
+                "73"
+            ]
+        },
+        {
+            "text": "J Using Fewer Sampling Steps on LSUN\n\nWe initially found that our LSUN models achieved much better results when sampling with 1000 steps rather than 250 steps, contrary to previous results from Nichol and Dhariwal [43]. To address this, we conducted a sweep over sampling-time noise schedules, ﬁnding that an improved schedule can largely close the gap. We swept over schedules on LSUN bedrooms, and selected the schedule with the best FID for use on the other two datasets. Table 15 details the ﬁndings of this sweep, and Table 16 applies this schedule to three LSUN datasets.\n\nWhile sweeping over sampling schedules is not as expensive as re-training models from scratch, it does require a signiﬁcant amount of sampling compute. As a result, we did not conduct an exhaustive sweep, and superior schedules are likely to exist.\n\nSchedule FID 50,50,50,50,50 2.31 70,60,50,40,30 2.17 90,50,40,40,30 2.10 90,60,50,30,20 2.09 80,60,50,30,30 2.09 90,50,50,30,30 2.07 100,50,40,30,30 2.03 90,60,60,20,20 2.02\n\nTable 15: Results of sweeping over 250 step sampling schedules on LSUN bedrooms. The schedule is expressed as a sequence of ﬁve integers, where each integer is the number of steps allocated to one ﬁfth of the diffusion process. The ﬁrst integer corresponding to t ∈ [0,199] and the last to t ∈ [T − 200,T − 1]. Thus, 50,50,50,50,50 is a uniform schedule, and 250,0,0,0,0 is a schedule where all timesteps are spent near t = 0.\n\nSchedule FID sFID Prec Rec LSUN Bedrooms 256×256 1000 steps 1.90 5.59 0.66 0.51 250 steps (uniform) 2.31 6.12 0.65 0.50 250 steps (sweep) 2.02 6.12 0.67 0.50 LSUN Horses 256×256 1000 steps 2.57 6.81 0.71 0.55 250 steps (uniform) 3.45 7.55 0.68 0.56 250 steps (sweep) 2.83 7.08 0.69 0.56 LSUN Cat 256×256 1000 steps 5.57 6.69 0.63 0.52 250 steps (uniform) 7.03 8.24 0.60 0.53 250 steps (sweep) 5.94 7.43 0.62 0.52\n\nTable 16: Evaluations on LSUN bedrooms, horses, and cats using different sampling schedules. We ﬁnd that the sweep schedule produces better results than the uniform 250 step schedule on all three datasets, and mostly bridges the gap to the 1000 step schedule.\n\n29",
+            "section": "results",
+            "section_idx": 2,
+            "citations": [
+                "43",
+                "0,199"
+            ]
+        },
+        {
+            "text": "7 Limitations and Future Work\n\nWhile we believe diffusion models are an extremely promising direction for generative modeling, they are still slower than GANs at sampling time due to the use of multiple denoising steps (and therefore forward passes). One promising work in this direction is from Luhman and Luhman [37], who explore a way to distill the DDIM sampling process into a single step model. The samples from the single step model are not yet competitive with GANs, but are much better than previous single-step likelihood-based models. Future work in this direction might be able to completely close the sampling speed gap between diffusion models and GANs without sacriﬁcing image quality.\n\nOur proposed classiﬁer guidance technique is currently limited to labeled datasets, and we have provided no effective strategy for trading off diversity for ﬁdelity on unlabeled datasets. In the future, our method could be extended to unlabeled data by clustering samples to produce synthetic labels [36] or by training discriminative models to predict when samples are in the true data distribution or from the sampling distribution.\n\nThe effectiveness of classiﬁer guidance demonstrates that we can obtain powerful generative models from the gradients of a classiﬁcation function. This could be used to condition pre-trained models in a plethora of ways, for example by conditioning an image generator with a text caption using a noisy version of CLIP [49], similar to recent methods that guide GANs using text prompts [17, 47,\n\n12\n\n2]. It also suggests that large unlabeled datasets could be leveraged in the future to pre-train powerful diffusion models that can later be improved by using a classiﬁer with desirable properties.\n\n8 Conclusion\n\nWe have shown that diffusion models, a class of likelihood-based models with a stationary training objective, can obtain better sample quality than state-of-the-art GANs. Our improved architecture is sufﬁcient to achieve this on unconditional image generation tasks, and our classiﬁer guidance technique allows us to do so on class-conditional tasks. In the latter case, we ﬁnd that the scale of the classiﬁer gradients can be adjusted to trade off diversity for ﬁdelity. These guided diffusion models can reduce the sampling time gap between GANs and diffusion models, although diffusion models still require multiple forward passes during sampling. Finally, by combining guidance with upsampling, we can further improve sample quality on high-resolution conditional image synthesis.",
+            "section": "conclusion",
+            "section_idx": 0,
+            "citations": [
+                "37",
+                "36",
+                "49"
+            ]
+        },
+        {
+            "text": "1 2 0 2 n u J 1 ] G L . s c [ 4\n\n2105.05233v4 arXiv\n\nv\n\n3\n\n3\n\n2\n\n5\n\n0\n\n.\n\n5\n\n0\n\n1\n\n2\n\n:\n\nv\n\ni\n\nX\n\nr\n\na\n\nDiffusion Models Beat GANs on Image Synthesis\n\nPrafulla Dhariwal∗\n\nAlex Nichol∗\n\nOpenAI OpenAI\n\nprafulla@openai.com\n\nalex@openai.com\n\nAbstract\n\nWe show that diffusion models can achieve image sample quality superior to the current state-of-the-art generative models. We achieve this on unconditional im- age synthesis by ﬁnding a better architecture through a series of ablations. For conditional image synthesis, we further improve sample quality with classiﬁer guid- ance: a simple, compute-efﬁcient method for trading off diversity for ﬁdelity using gradients from a classiﬁer. We achieve an FID of 2.97 on ImageNet 128×128, 4.59 on ImageNet 256×256, and 7.72 on ImageNet 512×512, and we match BigGAN-deep even with as few as 25 forward passes per sample, all while main- taining better coverage of the distribution. Finally, we ﬁnd that classiﬁer guidance combines well with upsampling diffusion models, further improving FID to 3.94 on ImageNet 256×256 and 3.85 on ImageNet 512×512. We release our code at https://github.com/openai/guided-diffusion.\n\n1 Introduction\n\nFigure 1: Selected samples from our best ImageNet 512×512 model (FID 3.85)\n\nOver the past few years, generative models have gained the ability to generate human-like natural language [6], inﬁnite high-quality synthetic images [5, 28, 51] and highly diverse human speech and music [64, 13]. These models can be used in a variety of ways, such as generating images from text prompts [72, 50] or learning useful feature representations [14, 7]. While these models are already\n\n∗Equal contribution\n\ncapable of producing realistic images and sound, there is still much room for improvement beyond the current state-of-the-art, and better generative models could have wide-ranging impacts on graphic design, games, music production, and countless other ﬁelds.\n\nGANs [19] currently hold the state-of-the-art on most image generation tasks [5, 68, 28] as measured by sample quality metrics such as FID [23], Inception Score [54] and Precision [32]. However, some of these metrics do not fully capture diversity, and it has been shown that GANs capture less diversity than state-of-the-art likelihood-based models [51, 43, 42]. Furthermore, GANs are often difﬁcult to train, collapsing without carefully selected hyperparameters and regularizers [5, 41, 4].\n\nWhile GANs hold the state-of-the-art, their drawbacks make them difﬁcult to scale and apply to new domains. As a result, much work has been done to achieve GAN-like sample quality with likelihood-based models [51, 25, 42, 9]. While these models capture more diversity and are typically easier to scale and train than GANs, they still fall short in terms of visual sample quality. Furthermore, except for VAEs, sampling from these models is slower than GANs in terms of wall-clock time.\n\nDiffusion models are a class of likelihood-based models which have recently been shown to produce high-quality images [56, 59, 25] while offering desirable properties such as distribution coverage, a stationary training objective, and easy scalability. These models generate samples by gradually removing noise from a signal, and their training objective can be expressed as a reweighted variational lower-bound [25]. This class of models already holds the state-of-the-art [60] on CIFAR-10 [31], but still lags behind GANs on difﬁcult generation datasets like LSUN and ImageNet. Nichol and Dhariwal [43] found that these models improve reliably with increased compute, and can produce high-quality samples even on the difﬁcult ImageNet 256×256 dataset using an upsampling stack. However, the FID of this model is still not competitive with BigGAN-deep [5], the current state-of-the-art on this dataset.\n\nWe hypothesize that the gap between diffusion models and GANs stems from at least two factors: ﬁrst, that the model architectures used by recent GAN literature have been heavily explored and reﬁned; second, that GANs are able to trade off diversity for ﬁdelity, producing high quality samples but not covering the whole distribution. We aim to bring these beneﬁts to diffusion models, ﬁrst by improving model architecture and then by devising a scheme for trading off diversity for ﬁdelity. With these improvements, we achieve a new state-of-the-art, surpassing GANs on several different metrics and datasets.\n\nThe rest of the paper is organized as follows. In Section 2, we give a brief background of diffusion models based on Ho et al. [25] and the improvements from Nichol and Dhariwal [43] and Song et al. [57], and we describe our evaluation setup. In Section 3, we introduce simple architecture improvements that give a substantial boost to FID. In Section 4, we describe a method for using gradients from a classiﬁer to guide a diffusion model during sampling. We ﬁnd that a single hyperparameter, the scale of the classiﬁer gradients, can be tuned to trade off diversity for ﬁdelity, and we can increase this gradient scale factor by an order of magnitude without obtaining adversarial examples [61]. Finally, in Section 5 we show that models with our improved architecture achieve state-of-the-art on unconditional image synthesis tasks, and with classiﬁer guidance achieve state-of- the-art on conditional image synthesis. When using classiﬁer guidance, we ﬁnd that we can sample with as few as 25 forward passes while maintaining FIDs comparable to BigGAN. We also compare our improved models to upsampling stacks, ﬁnding that the two approaches give complementary improvements and that combining them gives the best results on ImageNet 256×256 and 512×512.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "6",
+                "5, 28, 51",
+                "64, 13",
+                "72, 50",
+                "14, 7",
+                "19",
+                "5, 68, 28",
+                "23",
+                "54",
+                "32",
+                "51, 43, 42",
+                "5, 41, 4",
+                "51, 25, 42, 9",
+                "56, 59, 25",
+                "25",
+                "60",
+                "31",
+                "43",
+                "5",
+                "25",
+                "43",
+                "57",
+                "61"
+            ]
+        },
+        {
+            "text": "2.1 Improvements\n\nFollowing the breakthrough work of Song and Ermon [58] and Ho et al. [25], several recent papers have proposed improvements to diffusion models. Here we describe a few of these improvements, which we employ for our models.\n\nNichol and Dhariwal [43] ﬁnd that ﬁxing the variance Σθ(xt,t) to a constant as done in Ho et al. [25] is sub-optimal for sampling with fewer diffusion steps, and propose to parameterize Σθ(xt,t) as a neural network whose output v is interpolated as:\n\nΣθ(xt,t) = exp(v logβt + (1 − v)log ˜βt) (1)\n\nHere, 3; and 3; (Equation|19} are the variances in (25] corresponding to upper and lower bounds for the reverse process variances. Additionally, propose a hybrid objective for training both e9(z,,t) and No(z;,t) using the weighted sum Lsimpte + ALyp. Learning the reverse process variances with their hybrid objective allows sampling with fewer steps without much drop in sample quality. We adopt this objective and parameterization, and use it throughout our experiments.\n\npropose DDIM, which formulates an alternative non-Markovian noising process that has the same forward marginals as DDPM, but allows producing different reverse samplers by changing the variance of the reverse noise. By setting this noise to 0, they provide a way to turn any model €9(;,¢) into a deterministic mapping from latents to images, and find that this provides an alternative way to sample with fewer steps. We adopt this sampling approach when using fewer than 50 sampling steps, since|Nichol and Dhariwal| found it to be beneficial in this regime.\n\n2.2 Sample Quality Metrics\n\nFor comparing sample quality across models, we perform quantitative evaluations using the following metrics. While these metrics are often used in practice and correspond well with human judgement, they are not a perfect proxy, and ﬁnding better metrics for sample quality evaluation is still an open problem.\n\nInception Score (IS) was proposed by Salimans et al. [54], and it measures how well a model captures the full ImageNet class distribution while still producing individual samples that are convincing examples of a single class. One drawback of this metric is that it does not reward covering the whole distribution or capturing diversity within a class, and models which memorize a small subset of the full dataset will still have high IS [3]. To better capture diversity than IS, Fréchet Inception Distance (FID) was proposed by Heusel et al. [23], who argued that it is more consistent with human\n\n3\n\nAttention BigGAN Rescale FID FID Channels Depth — Heads resolutions up/downsample resblock 700K 1200K 160 2 1 16 x x 15.33, 13.21 128 4 -0.21 -0.48 4 -0.54 — -0.82 32,16,8 -0.72 — -0.66 v -1.20 0 -1.21 v 0.16 0.25 160 2 4 32,16,8 v x -3.14 = -3.00\n\nTable 1: Ablation of various architecture changes, evaluated at 700K and 1200K iterations\n\njudgement than Inception Score. FID provides a symmetric measure of the distance between two image distributions in the Inception-V3 [62] latent space. Recently, sFID was proposed by Nash et al. [42] as a version of FID that uses spatial features rather than the standard pooled features. They ﬁnd that this metric better captures spatial relationships, rewarding image distributions with coherent high-level structure. Finally, Kynkäänniemi et al. [32] proposed Improved Precision and Recall metrics to separately measure sample ﬁdelity as the fraction of model samples which fall into the data manifold (precision), and diversity as the fraction of data samples which fall into the sample manifold (recall).\n\nWe use FID as our default metric for overall sample quality comparisons as it captures both diversity and ﬁdelity and has been the de facto standard metric for state-of-the-art generative modeling work [27, 28, 5, 25]. We use Precision or IS to measure ﬁdelity, and Recall to measure diversity or distribution coverage. When comparing against other methods, we re-compute these metrics using public samples or models whenever possible. This is for two reasons: ﬁrst, some papers [27, 28, 25] compare against arbitrary subsets of the training set which are not readily available; and second, subtle implementation differences can affect the resulting FID values [45]. To ensure consistent comparisons, we use the entire training set as the reference batch [23, 5], and evaluate metrics for all models using the same codebase.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "58",
+                "25",
+                "43",
+                "25",
+                "54",
+                "3",
+                "23",
+                "62",
+                "42",
+                "32",
+                "27, 28, 5, 25",
+                "27, 28, 25",
+                "45",
+                "23, 5"
+            ]
+        },
+        {
+            "text": "3 Architecture Improvements\n\nIn this section we conduct several architecture ablations to ﬁnd the model architecture that provides the best sample quality for diffusion models.\n\nHo et al. [25] introduced the UNet architecture for diffusion models, which Jolicoeur-Martineau et al. [26] found to substantially improve sample quality over the previous architectures [58, 33] used for denoising score matching. The UNet model uses a stack of residual layers and downsampling convolutions, followed by a stack of residual layers with upsampling colvolutions, with skip con- nections connecting the layers with the same spatial size. In addition, they use a global attention layer at the 16×16 resolution with a single head, and add a projection of the timestep embedding into each residual block. Song et al. [60] found that further changes to the UNet architecture improved performance on the CIFAR-10 [31] and CelebA-64 [34] datasets. We show the same result on ImageNet 128×128, ﬁnding that architecture can indeed give a substantial boost to sample quality on much larger and more diverse datasets at a higher resolution.\n\nWe explore the following architectural changes:\n\n• Increasing depth versus width, holding model size relatively constant.\n\n• Increasing the number of attention heads.\n\n• Using attention at 32×32, 16×16, and 8×8 resolutions rather than only at 16×16.\n\n• Using the BigGAN [5] residual block for upsampling and downsampling the activations, following [60].\n\nRescaling residual connections with 1√\n\n, following [60, 27, 28].\n\n2\n\nFor all comparisons in this section, we train models on ImageNet 128×128 with batch size 256, and sample using 250 sampling steps. We train models with the above architecture changes and compare\n\n4\n\nNumber of heads Channels per head FID 1 14.08 2 -0.50 4 -0.97 8 -1.17 32 -1.36 64 -1.03 128 -1.08\n\nTable 2: Ablation of various attention conﬁgurations. More heads or lower channels per heads both lead to improved FID.\n\n—® ch=128, res=4 —®- ch=160, res=2, heads=4 multi-res attn biggan up/down skip rescale heads=4, multi-res attn, biggan up/down —e- Lhead —e- 2heads -e 4heads -e- 8 heads + 32 head channels —®- 64 head channels —@- 128 head channels 28 26 26 24 24 22 22 FID FID 20 18 18 16 16 14 14 60 time (hrs) 40 60 80 100 120 80 100 time (hrs) 140° 160 180 20\n\nFigure 2: Ablation of various architecture changes, showing FID as a function of wall-clock time. FID evaluated over 10k samples instead of 50k for efﬁciency.\n\nOperation FID AdaGN 13.06",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "25",
+                "26",
+                "58, 33",
+                "60",
+                "31",
+                "34",
+                "5",
+                "60",
+                "60, 27, 28"
+            ]
+        },
+        {
+            "text": "Addition + GroupNorm 15.08\n\nTable 3: Ablating the element-wise operation used when projecting timestep and class embeddings into each residual block. Replacing AdaGN with the Addition + GroupNorm layer from Ho et al. [25] makes FID worse.\n\nthem on FID, evaluated at two different points of training, in Table 1. Aside from rescaling residual connections, all of the other modiﬁcations improve performance and have a positive compounding effect. We observe in Figure 2 that while increased depth helps performance, it increases training time and takes longer to reach the same performance as a wider model, so we opt not to use this change in further experiments.\n\nWe also study other attention conﬁgurations that better match the Transformer architecture [66]. To this end, we experimented with either ﬁxing attention heads to a constant, or ﬁxing the number of channels per head. For the rest of the architecture, we use 128 base channels, 2 residual blocks per resolution, multi-resolution attention, and BigGAN up/downsampling, and we train the models for 700K iterations. Table 2 shows our results, indicating that more heads or fewer channels per head improves FID. In Figure 2, we see 64 channels is best for wall-clock time, so we opt to use 64 channels per head as our default. We note that this choice also better matches modern transformer architectures, and is on par with our other conﬁgurations in terms of ﬁnal FID.\n\n5\n\n3.1 Adaptive Group Normalization\n\nWe also experiment with a layer [43] that we refer to as adaptive group normalization (AdaGN), which incorporates the timestep and class embedding into each residual block after a group normalization operation [69], similar to adaptive instance norm [27] and FiLM [48]. We deﬁne this layer as AdaGN(h,y) = ys GroupNorm(h)+yb, where h is the intermediate activations of the residual block following the ﬁrst convolution, and y = [ys,yb] is obtained from a linear projection of the timestep and class embedding.\n\nWe had already seen AdaGN improve our earliest diffusion models, and so had it included by default in all our runs. In Table 3, we explicitly ablate this choice, and ﬁnd that the adaptive group normalization layer indeed improved FID. Both models use 128 base channels and 2 residual blocks per resolution, multi-resolution attention with 64 channels per head, and BigGAN up/downsampling, and were trained for 700K iterations.\n\nIn the rest of the paper, we use this ﬁnal improved model architecture as our default: variable width with 2 residual blocks per resolution, multiple heads with 64 channels per head, attention at 32, 16 and 8 resolutions, BigGAN residual blocks for up and downsampling, and adaptive group normalization for injecting timestep and class embeddings into residual blocks.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "25",
+                "66",
+                "43",
+                "69",
+                "27",
+                "48"
+            ]
+        },
+        {
+            "text": "4 Classiﬁer Guidance\n\nIn addition to employing well designed architectures, GANs for conditional image synthesis [39, 5] make heavy use of class labels. This often takes the form of class-conditional normalization statistics [16, 11] as well as discriminators with heads that are explicitly designed to behave like classiﬁers p(y|x) [40]. As further evidence that class information is crucial to the success of these models, Lucic et al. [36] ﬁnd that it is helpful to generate synthetic labels when working in a label-limited regime.\n\nGiven this observation for GANs, it makes sense to explore different ways to condition diffusion models on class labels. We already incorporate class information into normalization layers (Section 3.1). Here, we explore a different approach: exploiting a classiﬁer p(y|x) to improve a diffusion generator. Sohl-Dickstein et al. [56] and Song et al. [60] show one way to achieve this, wherein a pre-trained diffusion model can be conditioned using the gradients of a classiﬁer. In particular, we can train a classiﬁer pφ(y|xt,t) on noisy images xt, and then use gradients ∇xt logpφ(y|xt,t) to guide the diffusion sampling process towards an arbitrary class label y.\n\nIn this section, we first review two ways of deriving conditional sampling processes using classifiers. We then describe how we use such classifiers in practice to improve sample quality. We choose the notation pg (ya, t) = pe(ylae) and €9(2,t) = €9(xz) for brevity, noting that they refer to separate functions for each timestep ¢ and at training time the models must be conditioned on the input t.\n\n4.1 Conditional Reverse Noising Process\n\nWe start with a diffusion model with an unconditional reverse noising process pθ(xt|xt+1). To condition this on a label y, it sufﬁces to sample each transition2 according to\n\npθ,φ(xt|xt+1,y) = Zpθ(xt|xt+1)pφ(y|xt) (2)\n\nwhere Z is a normalizing constant (proof in Appendix H). It is typically intractable to sample from this distribution exactly, but Sohl-Dickstein et al. [56] show that it can be approximated as a perturbed Gaussian distribution. Here, we review this derivation.\n\nRecall that our diffusion model predicts the previous timestep xt from timestep xt+1 using a Gaussian distribution:\n\npθ(xt|xt+1) = N(µ,Σ) (3)\n\nlogpθ(xt|xt+1) = − 1 2 (xt − µ)TΣ−1(xt − µ) + C (4)\n\n2We must also sample xT conditioned on y, but a noisy enough diffusion process causes xT to be nearly Gaussian even in the conditional case.\n\n6\n\nAlgorithm 1 Classiﬁer guided diffusion sampling, given a diffusion model (µθ(xt),Σθ(xt)), classi- ﬁer pφ(y|xt), and gradient scale s.\n\nInput: class label y, gradient scale s xT ← sample from N(0,I) for all t from T to 1 do µ,Σ ← µθ(xt),Σθ(xt) xt−1 ← sample from N(µ + sΣ∇xt logpφ(y|xt),Σ) end for return x0\n\nAlgorithm 2 Classifier guided DDIM sampling, given a diffusion model €9(x,), classifier pg(y|xx), and gradient scale s.\n\nInput: class label y, gradient scale s wp < sample from V(0, I) for all t from T to 1 do é& e9(a1) — VI— & Ve, log po(y|at) end for return x09\n\nWe can assume that logφ p(y|xt) has low curvature compared to Σ−1. This assumption is reasonable in the limit of inﬁnite diffusion steps, where ||Σ|| → 0. In this case, we can approximate logpφ(y|xt) using a Taylor expansion around xt = µ as\n\nlogpφ(y|xt) ≈ logpφ(y|xt)|xt=µ + (xt − µ)∇xt logpφ(y|xt)|xt=µ = (xt − µ)g + C1 (5) (6)\n\nHere, g = ∇xt logpφ(y|xt)|xt=µ, and C1 is a constant. This gives\n\nlog(pθ(xt|xt+1)pφ(y|xt)) ≈ − 1 2 (xt − µ)TΣ−1(xt − µ) + (xt − µ)g + C2 = − 1 2 (xt − µ − Σg)TΣ−1(xt − µ − Σg) + 1 2 gTΣg + C2 = − 1 2 (xt − µ − Σg)TΣ−1(xt − µ − Σg) + C3 = logp(z) + C4,z ∼ N(µ + Σg,Σ) (7) (8) (9) (10)\n\nWe can safely ignore the constant term C4, since it corresponds to the normalizing coefﬁcient Z in Equation 2. We have thus found that the conditional transition operator can be approximated by a Gaussian similar to the unconditional transition operator, but with its mean shifted by Σg. Algorithm 1 summaries the corresponding sampling algorithm. We include an optional scale factor s for the gradients, which we describe in more detail in Section 4.3.",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "39, 5",
+                "16, 11",
+                "40",
+                "36",
+                "56",
+                "60",
+                "56"
+            ]
+        },
+        {
+            "text": "4.2 Conditional Sampling for DDIM\n\nThe above derivation for conditional sampling is only valid for the stochastic diffusion sampling process, and cannot be applied to deterministic sampling methods like DDIM [57]. To this end, we use a score-based conditioning trick adapted a [60], which leverages the connection between diffusion models and score matching [59]. In particular, if we have a model €o(Xt) that predicts the noise added to a sample, then this can be used to derive a score function:\n\n1 Ve, log po(xt) = Fool) qd) ~ Ot\n\n7\n\nFigure 3: Samples from an unconditional diffusion model with classiﬁer guidance to condition on the class \"Pembroke Welsh corgi\". Using classiﬁer scale 1.0 (left; FID: 33.0) does not produce convincing samples in this class, whereas classiﬁer scale 10.0 (right; FID: 12.0) produces much more class-consistent images.\n\nWe can now substitute this into the score function for p(xt)p(y|xt):\n\n∇xt log(pθ(xt)pφ(y|xt)) = ∇xt logpθ(xt) + ∇xt logpφ(y|xt) (12)\n\n1\n\n1 = eal) + Ve, log pg(y|ze) (13)\n\nFinally, we can define a new epsilon prediction é(x;) which corresponds to the score of the joint distribution:\n\n√\n\n(xt) = €9(a1) — V1 — & Ve, log pg (y|ae) (14)\n\nWe can then use the exact same sampling procedure as used for regular DDIM, but with the modified noise predictions é9(x;) instead of €9(xz). Algorithm [2] summaries the corresponding sampling algorithm.\n\n4.3 Scaling Classiﬁer Gradients\n\nTo apply classiﬁer guidance to a large scale generative task, we train classiﬁcation models on ImageNet. Our classiﬁer architecture is simply the downsampling trunk of the UNet model with an attention pool [49] at the 8x8 layer to produce the ﬁnal output. We train these classiﬁers on the same noising distribution as the corresponding diffusion model, and also add random crops to reduce overﬁtting. After training, we incorporate the classiﬁer into the sampling process of the diffusion model using Equation 10, as outlined by Algorithm 1.\n\nIn initial experiments with unconditional ImageNet models, we found it necessary to scale the classiﬁer gradients by a constant factor larger than 1. When using a scale of 1, we observed that the classiﬁer assigned reasonable probabilities (around 50%) to the desired classes for the ﬁnal samples, but these samples did not match the intended classes upon visual inspection. Scaling up the classiﬁer gradients remedied this problem, and the class probabilities from the classiﬁer increased to nearly 100%. Figure 3 shows an example of this effect.\n\nTo understand the effect of scaling classiﬁer gradients, note that s·∇x logp(y|x) = ∇x log 1 where Z is an arbitrary constant. As a result, the conditioning process is still theoretically grounded Zp(y|x)s, in a re-normalized classiﬁer distribution proportional to p(y|x)s. When s > 1, this distribution becomes sharper than p(y|x), since larger values are ampliﬁed by the exponent. In other words, using a larger gradient scale focuses more on the modes of the classiﬁer, which is potentially desirable for producing higher ﬁdelity (but less diverse) samples.\n\nIn the above derivations, we assumed that the underlying diffusion model was unconditional, modeling p(x). It is also possible to train conditional diffusion models, p(x|y), and use classiﬁer guidance in the exact same way. Table 4 shows that the sample quality of both unconditional and conditional models can be greatly improved by classiﬁer guidance. We see that, with a high enough scale, the guided unconditional model can get quite close to the FID of an unguided conditional model, although training directly with the class labels still helps. Guiding a conditional model further improves FID.\n\nTable 4 also shows that classiﬁer guidance improves precision at the cost of recall, thus introducing a trade-off in sample ﬁdelity versus diversity. We explicitly evaluate how this trade-off varies with\n\n8\n\nConditional Guidance Scale FID sFID Is Precision Recall 26.21 6.35 39.70 0.61 0.63 10 33.03 6.99 32.92 0.56 0.65 10.0 12.00 1040 95.41 0.76 0.44 10.94 6.02 100.98 0.69 0.63 1.0 459 5.25 186.70 0.82 0.52 10.0 9.11 10.93 283.92 0.88 0.32 VA Ax & Sx A%\n\nTable 4: Effect of classiﬁer guidance on sample quality. Both conditional and unconditional models were trained for 2M iterations on ImageNet 256×256 with batch size 256.\n\n—— FID —e sFID 1s —* precision —*— recall 16 300 0.9 14 — o 250 08 0.7 10 200 0.6 8 0.5 150 6 0.4 4 100 0.3 6 2 4 6 & 10 0 2 4 6 8 10 0 2 4 é é 10 gradient scale gradient scale gradient scale\n\nFigure 4: Change in sample quality as we vary scale of the classiﬁer gradients for a class-conditional ImageNet 128×128 model.\n\n—® BigGAN-deep —®- BigGAN-deep 0.6 —®- Classifier guidance (ours) e+ Classifier guidance (ours) 0.70 0.75 0.80 0.85 0.90 0.95 100 125 «150 «175 «200-225 250-275, Precision Is\n\nFigure 5: Trade-offs when varying truncation for BigGAN-deep and gradient scale for classiﬁer guidance. Models are evaluated on ImageNet 128×128. The BigGAN-deep results were produced using the TFHub model [12] at truncation levels [0.1,0.2,0.3,...,1.0].\n\nthe gradient scale in Figure 4. We see that scaling the gradients beyond 1.0 smoothly trades off recall (a measure of diversity) for higher precision and IS (measures of ﬁdelity). Since FID and sFID depend on both diversity and ﬁdelity, their best values are obtained at an intermediate point. We also compare our guidance with the truncation trick from BigGAN in Figure 5. We ﬁnd that classiﬁer guidance is strictly better than BigGAN-deep when trading off FID for Inception Score. Less clear cut is the precision/recall trade-off, which shows that classiﬁer guidance is only a better choice up until a certain precision threshold, after which point it cannot achieve better precision.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "57",
+                "60",
+                "59",
+                "2",
+                "49",
+                "12"
+            ]
+        },
+        {
+            "text": "5.1 State-of-the-art Image Synthesis\n\nTable 5 summarizes our results. Our diffusion models can obtain the best FID on each task, and the best sFID on all but one task. With the improved architecture, we already obtain state-of-the-art image generation on LSUN and ImageNet 64×64. For higher resolution ImageNet, we observe that classiﬁer guidance allows our models to substantially outperform the best GANs. These models obtain perceptual quality similar to GANs, while maintaining a higher coverage of the distribution as measured by recall, and can even do so using only 25 diffusion steps.\n\nFigure 6 compares random samples from the best BigGAN-deep model to our best diffusion model. While the samples are of similar perceptual quality, the diffusion model contains more modes than the GAN, such as zoomed ostrich heads, single ﬂamingos, different orientations of cheeseburgers, and a tinca ﬁsh with no human holding it. We also check our generated samples for nearest neighbors in the Inception-V3 feature space in Appendix C, and we show additional samples in Appendices K-M.\n\n5.2 Comparison to Upsampling\n\nWe also compare guidance to using a two-stage upsampling stack. Nichol and Dhariwal [43] and Saharia et al. [53] train two-stage diffusion models by combining a low-resolution diffusion model with a corresponding upsampling diffusion model. In this approach, the upsampling model is trained to upsample images from the training set, and conditions on low-resolution images that are concatenated channel-wise to the model input using a simple interpolation (e.g. bilinear). During sampling, the low-resolution model produces a sample, and then the upsampling model is conditioned on this sample. This greatly improves FID on ImageNet 256×256, but does not reach the same performance as state-of-the-art models like BigGAN-deep [43, 53], as seen in Table 5.\n\nIn Table 6, we show that guidance and upsampling improve sample quality along different axes. While upsampling improves precision while keeping a high recall, guidance provides a knob to trade\n\n10\n\nFigure 6: Samples from BigGAN-deep with truncation 1.0 (FID 6.95, left) vs samples from our diffusion model with guidance (FID 4.59, middle) and samples from the training set (right).\n\nModel Sbase Supsample FID sFID IS Precision Recall ImageNet 256×256 ADM 250 10.94 6.02 100.98 0.69 0.63 ADM-U 250 250 7.49 5.13 127.49 0.72 0.63 ADM-G 250 4.59 5.25 186.70 0.82 0.52 ADM-G, ADM-U 250 250 3.94 6.14 215.84 0.83 0.53 ImageNet 512×512 ADM 250 23.24 10.19 58.06 0.73 0.60 ADM-U 250 250 9.96 5.62 121.78 0.75 0.64 ADM-G 250 7.72 6.57 172.71 0.87 0.42 ADM-G, ADM-U 25 25 5.96 12.10 187.87 0.81 0.54 ADM-G, ADM-U 250 25 4.11 9.57 219.29 0.83 0.55",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "43",
+                "53",
+                "43, 53"
+            ]
+        },
+        {
+            "text": "ADM-G, ADM-U\n\n250\n\n250\n\n3.85\n\n5.86\n\n221.72\n\n0.84\n\n0.53\n\nTable 6: Comparing our single, upsampling and classiﬁer guided models. For upsampling, we use the upsampling stack from Nichol and Dhariwal [43] combined with our architecture improvements, which we refer to as ADM-U. The base resolution for the two-stage upsampling models is 64 and 128 for the 256 and 512 models, respectively. When combining classiﬁer guidance with upsampling, we only guide the lower resolution model.\n\noff diversity for much higher precision. We achieve the best FIDs by using guidance at a lower resolution before upsampling to a higher resolution, indicating that these approaches complement one another.\n\n6 Related Work\n\nScore based generative models were introduced by Song and Ermon [59] as a way of modeling a data distribution using its gradients, and then sampling using Langevin dynamics [67]. Ho et al. [25] found a connection between this method and diffusion models [56], and achieved excellent sample quality by leveraging this connection. After this breakthrough work, many works followed up with more promising results: Kong et al. [30] and Chen et al. [8] demonstrated that diffusion models\n\n11\n\nwork well for audio; Jolicoeur-Martineau et al. [26] found that a GAN-like setup could improve samples from these models; Song et al. [60] explored ways to leverage techniques from stochastic differential equations to improve the sample quality obtained by score-based models; Song et al. [57] and Nichol and Dhariwal [43] proposed methods to improve sampling speed; Nichol and Dhariwal [43] and Saharia et al. [53] demonstrated promising results on the difﬁcult ImageNet generation task using upsampling diffusion models. Also related to diffusion models, and following the work of Sohl-Dickstein et al. [56], Goyal et al. [21] described a technique for learning a model with learned iterative generation steps, and found that it could achieve good image samples when trained with a likelihood objective.\n\nOne missing element from previous work on diffusion models is a way to trade off diversity for ﬁdelity. Other generative techniques provide natural levers for this trade-off. Brock et al. [5] introduced the truncation trick for GANs, wherein the latent vector is sampled from a truncated normal distribution. They found that increasing truncation naturally led to a decrease in diversity but an increase in ﬁdelity. More recently, Razavi et al. [51] proposed to use classiﬁer rejection sampling to ﬁlter out bad samples from an autoregressive likelihood-based model, and found that this technique improved FID. Most likelihood-based models also allow for low-temperature sampling [1], which provides a natural way to emphasize modes of the data distribution (see Appendix G).\n\nOther likelihood-based models have been shown to produce high-ﬁdelity image samples. VQ-VAE [65] and VQ-VAE-2 [51] are autoregressive models trained on top of quantized latent codes, greatly reducing the computational resources required to train these models on large images. These models produce diverse and high quality images, but still fall short of GANs without expensive rejection sampling and special metrics to compensate for blurriness. DCTransformer [42] is a related method which relies on a more intelligent compression scheme. VAEs are another promising class of likelihood-based models, and recent methods such as NVAE [63] and VDVAE [9] have successfully been applied to difﬁcult image generation domains. Energy-based models are another class of likelihood-based models with a rich history [1, 10, 24]. Sampling from the EBM distribution is challenging, and Xie et al. [70] demonstrate that Langevin dynamics can be used to sample coherent images from these models. Du and Mordatch [15] further improve upon this approach, obtaining high quality images. More recently, Gao et al. [18] incorporate diffusion steps into an energy-based model, and ﬁnd that doing so improves image samples from these models.\n\nOther works have controlled generative models with a pre-trained classiﬁer. For example, an emerging body of work [17, 47, 2] aims to optimize GAN latent spaces for text prompts using pre-trained CLIP [49] models. More similar to our work, Song et al. [60] uses a classiﬁer to generate class-conditional CIFAR-10 images with a diffusion model. In some cases, classiﬁers can act as stand-alone generative models. For example, Santurkar et al. [55] demonstrate that a robust image classiﬁer can be used as a stand-alone generative model, and Grathwohl et al. [22] train a model which is jointly a classiﬁer and an energy-based model.",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "43",
+                "59",
+                "67",
+                "25",
+                "56",
+                "30",
+                "8",
+                "26",
+                "60",
+                "57",
+                "43",
+                "43",
+                "53",
+                "56",
+                "21",
+                "5",
+                "51",
+                "1",
+                "65",
+                "51",
+                "42",
+                "63",
+                "9",
+                "1, 10, 24",
+                "70",
+                "15",
+                "18",
+                "17, 47, 2",
+                "49",
+                "60",
+                "55",
+                "22"
+            ]
+        },
+        {
+            "text": "9 Acknowledgements\n\nWe thank Alec Radford, Mark Chen, Pranav Shyam and Raul Puri for providing feedback on this work.\n\nReferences\n\n[1] David Ackley, Geoffrey Hinton, and Terrence Sejnowski. A learning algorithm for boltzmann machines. Cognitive science, 9(1):147-169, 1985.\n\n[2] Adverb. The big sleep. https://twitter.com/advadnoun/status/ 1351038053033406468, 2021.\n\n[3] Shane Barratt and Rishi Sharma. A note on the inception score. arXiv:1801.01973, 2018.\n\n[4] Andrew Brock, Theodore Lim, J. M. Ritchie, and Nick Weston. Neural photo editing with introspective adversarial networks. arXiv:1609.07093, 2016.\n\n[5] Andrew Brock, Jeff Donahue, and Karen Simonyan. Large scale gan training for high ﬁdelity natural image synthesis. arXiv:1809.11096, 2018.\n\n[6] Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhari- wal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, and Dario Amodei. Language models are few-shot learners. arXiv:2005.14165, 2020.\n\n[7] Mark Chen, Alec Radford, Rewon Child, Jeffrey Wu, Heewoo Jun, David Luan, and Ilya Sutskever. Generative pretraining from pixels. In International Conference on Machine Learning, pages 1691–1703. PMLR, 2020.\n\n[8] Nanxin Chen, Yu Zhang, Heiga Zen, Ron J. Weiss, Mohammad Norouzi, and William Chan. Wavegrad: Estimating gradients for waveform generation. arXiv:2009.00713, 2020.\n\n[9] Rewon Child. Very deep vaes generalize autoregressive models and can outperform them on images. arXiv:2011.10650, 2021.\n\n[10] Peter Dayan, Geoffrey E Hinton, Radford M Neal, and Richard S Zemel. The helmholtz machine. Neural computation, 7(5):889–904, 1995.\n\n[11] Harm de Vries, Florian Strub, Jérémie Mary, Hugo Larochelle, Olivier Pietquin, and Aaron Courville. Modulating early visual processing by language. arXiv:1707.00683, 2017.\n\n[12] DeepMind. Biggan-deep 128x128 on tensorﬂow hub. https://tfhub.dev/deepmind/ biggan-deep-128/1, 2018.\n\n13\n\n[13] Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, and Ilya Sutskever. Jukebox: A generative model for music. arXiv:2005.00341, 2020.\n\n[14] Jeff Donahue and Karen Simonyan. Large scale adversarial representation learning. arXiv:1907.02544, 2019.\n\n[15] Yilun Du and Igor Mordatch. Implicit generation and generalization in energy-based models. arXiv:1903.08689, 2019.\n\n[16] Vincent Dumoulin, Jonathon Shlens, and Manjunath Kudlur. A learned representation for artistic style. arXiv:1610.07629, 2017.\n\n[17] Federico A. Galatolo, Mario G. C. A. Cimino, and Gigliola Vaglini. Generating images from caption and vice versa via clip-guided generative latent space search. arXiv:2102.01645, 2021.\n\n[18] Ruiqi Gao, Yang Song, Ben Poole, Ying Nian Wu, and Diederik P. Kingma. Learning energy- based models by diffusion recovery likelihood. arXiv:2012.08125, 2020.\n\n[19] Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. Generative adversarial networks. arXiv:1406.2661, 2014.\n\n[20] Google. Cloud tpus. https://cloud.google.com/tpu/, 2018.\n\n[21] Anirudh Goyal, Nan Rosemary Ke, Surya Ganguli, and Yoshua Bengio. Variational walkback: Learning a transition operator as a stochastic recurrent net. arXiv:1711.02282, 2017.\n\n[22] Will Grathwohl, Kuan-Chieh Wang, Jörn-Henrik Jacobsen, David Duvenaud, Mohammad Norouzi, and Kevin Swersky. Your classiﬁer is secretly an energy based model and you should treat it like one. arXiv:1912.03263, 2019.\n\n[23] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans trained by a two time-scale update rule converge to a local nash equilibrium. Advances in Neural Information Processing Systems 30 (NIPS 2017), 2017.\n\n[24] Geoffrey E Hinton. Training products of experts by minimizing contrastive divergence. Neural computation, 14(8):1771–1800, 2002.\n\n[25] Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models. arXiv:2006.11239, 2020.\n\n[26] Alexia Jolicoeur-Martineau, Rémi Piché-Taillefer, Rémi Tachet des Combes, and Ioan- nis Mitliagkas. Adversarial score matching and improved sampling for image generation. arXiv:2009.05475, 2020.\n\n[27] Tero Karras, Samuli Laine, and Timo Aila. A style-based generator architecture for generative adversarial networks. arXiv:arXiv:1812.04948, 2019.\n\n[28] Tero Karras, Samuli Laine, Miika Aittala, Janne Hellsten, Jaakko Lehtinen, and Timo Aila. Analyzing and improving the image quality of stylegan. arXiv:1912.04958, 2019.\n\n[29] Diederik P. Kingma and Jimmy Ba. Adam: A method for stochastic optimization. arXiv:1412.6980, 2014.\n\n[30] Zhifeng Kong, Wei Ping, Jiaji Huang, Kexin Zhao, and Bryan Catanzaro. Diffwave: A versatile diffusion model for audio synthesis. arXiv:2009.09761, 2020.\n\n[31] Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton. CIFAR-10 (Canadian Institute for Advanced Research), 2009. URL http://www.cs.toronto.edu/~kriz/cifar.html.\n\n[32] Tuomas Kynkäänniemi, Tero Karras, Samuli Laine, Jaakko Lehtinen, and Timo Aila. Improved precision and recall metric for assessing generative models. arXiv:1904.06991, 2019.\n\n[33] Guosheng Lin, Anton Milan, Chunhua Shen, and Ian Reid. Reﬁnenet: Multi-path reﬁnement networks for high-resolution semantic segmentation. arXiv:1611.06612, 2016.\n\n14\n\n[34] Ziwei Liu, Ping Luo, Xiaogang Wang, and Xiaoou Tang. Deep learning face attributes in the wild. In Proceedings of International Conference on Computer Vision (ICCV), December 2015.\n\n[35] Ilya Loshchilov and Frank Hutter. Decoupled weight decay regularization. arXiv:1711.05101, 2017.\n\n[36] Mario Lucic, Michael Tschannen, Marvin Ritter, Xiaohua Zhai, Olivier Bachem, and Sylvain Gelly. High-ﬁdelity image generation with fewer labels. arXiv:1903.02271, 2019.\n\n[37] Eric Luhman and Troy Luhman. Knowledge distillation in iterative generative models for improved sampling speed. arXiv:2101.02388, 2021.",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37"
+            ]
+        },
+        {
+            "text": "[38] Paulius Micikevicius, Sharan Narang, Jonah Alben, Gregory Diamos, Erich Elsen, David Garcia, Boris Ginsburg, Michael Houston, Oleksii Kuchaiev, Ganesh Venkatesh, and Hao Wu. Mixed precision training. arXiv:1710.03740, 2017.\n\n[39] Mehdi Mirza and Simon Osindero. Conditional generative adversarial nets. arXiv:1411.1784, 2014.\n\n[40] Takeru Miyato and Masanori Koyama. cgans with projection discriminator. arXiv:1802.05637, 2018.\n\n[41] Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. Spectral normalization for generative adversarial networks. arXiv:1802.05957, 2018.\n\n[42] Charlie Nash, Jacob Menick, Sander Dieleman, and Peter W. Battaglia. Generating images with sparse representations. arXiv:2103.03841, 2021.\n\n[43] Alex Nichol and Prafulla Dhariwal. Improved denoising diffusion probabilistic models. arXiv:2102.09672, 2021.\n\n[44] NVIDIA. Stylegan2. https://github.com/NVlabs/stylegan2, 2019.\n\n[45] Gaurav Parmar, Richard Zhang, and Jun-Yan Zhu. On buggy resizing libraries and surprising subtleties in ﬁd calculation. arXiv:2104.11222, 2021.\n\n[46] Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, et al. Pytorch: An imperative style, high-performance deep learning library. arXiv:1912.01703, 2019.\n\n[47] Or Patashnik, Zongze Wu, Eli Shechtman, Daniel Cohen-Or, and Dani Lischinski. Styleclip: Text-driven manipulation of stylegan imagery. arXiv:2103.17249, 2021.\n\n[48] Ethan Perez, Florian Strub, Harm de Vries, Vincent Dumoulin, and Aaron Courville. Film: Visual reasoning with a general conditioning layer. arXiv:1709.07871, 2017.\n\n[49] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. Learning transferable visual models from natural language supervision. arXiv:2103.00020, 2021.\n\n[50] Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-shot text-to-image generation. arXiv:2102.12092, 2021.\n\n[51] Ali Razavi, Aaron van den Oord, and Oriol Vinyals. Generating diverse high-ﬁdelity images with VQ-VAE-2. arXiv:1906.00446, 2019.\n\n[52] Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma, Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein, Alexander C. Berg, and Li Fei-Fei. Imagenet large scale visual recognition challenge. arXiv:1409.0575, 2014.\n\n[53] Chitwan Saharia, Jonathan Ho, William Chan, Tim Salimans, David J. Fleet, and Mohammad Norouzi. Image super-resolution via iterative reﬁnement. arXiv:arXiv:2104.07636, 2021.\n\n15\n\n[54] Tim Salimans, Ian Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, and Xi Chen. Improved techniques for training gans. arXiv:1606.03498, 2016.\n\n[55] Shibani Santurkar, Dimitris Tsipras, Brandon Tran, Andrew Ilyas, Logan Engstrom, and Aleksander Madry. Image synthesis with a single (robust) classiﬁer. arXiv:1906.09453, 2019.\n\n[56] Jascha Sohl-Dickstein, Eric A. Weiss, Niru Maheswaranathan, and Surya Ganguli. Deep unsupervised learning using nonequilibrium thermodynamics. arXiv:1503.03585, 2015.\n\n[57] Jiaming Song, Chenlin Meng, and Stefano Ermon. Denoising diffusion implicit models. arXiv:2010.02502, 2020.\n\n[58] Yang Song and Stefano Ermon. Improved techniques for training score-based generative models. arXiv:2006.09011, 2020.\n\n[59] Yang Song and Stefano Ermon. Generative modeling by estimating gradients of the data distribution. arXiv:arXiv:1907.05600, 2020.\n\n[60] Yang Song, Jascha Sohl-Dickstein, Diederik P. Kingma, Abhishek Kumar, Stefano Ermon, and Ben Poole. Score-based generative modeling through stochastic differential equations. arXiv:2011.13456, 2020.\n\n[61] Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan, Ian Good- fellow, and Rob Fergus. Intriguing properties of neural networks. arXiv:1312.6199, 2013.\n\n[62] Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and Zbigniew Wojna. Rethinking the inception architecture for computer vision. arXiv:1512.00567, 2015.\n\n[63] Arash Vahdat and Jan Kautz. Nvae: A deep hierarchical variational autoencoder. arXiv:2007.03898, 2020.\n\n[64] Aaron van den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, and Koray Kavukcuoglu. Wavenet: A generative model for raw audio. arXiv:1609.03499, 2016.\n\n[65] Aaron van den Oord, Oriol Vinyals, and Koray Kavukcuoglu. Neural discrete representation learning. arXiv:1711.00937, 2017.\n\n[66] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. arXiv:1706.03762, 2017.\n\n[67] Max Welling and Yee W Teh. Bayesian learning via stochastic gradient langevin dynamics. In Proceedings of the 28th international conference on machine learning (ICML-11), pages 681–688. Citeseer, 2011.\n\n[68] Yan Wu, Jeff Donahue, David Balduzzi, Karen Simonyan, and Timothy Lillicrap. Logan: Latent optimisation for generative adversarial networks. arXiv:1912.00953, 2019.\n\n[69] Yuxin Wu and Kaiming He. Group normalization. arXiv:1803.08494, 2018.\n\n[70] Jianwen Xie, Yang Lu, Song-Chun Zhu, and Ying Nian Wu. A theory of generative convnet. arXiv:1602.03264, 2016.\n\n[71] Fisher Yu, Ari Seff, Yinda Zhang, Shuran Song, Thomas Funkhouser, and Jianxiong Xiao. Lsun: Construction of a large-scale image dataset using deep learning with humans in the loop. arXiv:1506.03365, 2015.\n\n[72] Han Zhang, Tao Xu, Hongsheng Li, Shaoting Zhang, Xiaogang Wang, Xiaolei Huang, and Dimitris Metaxas. Stackgan: Text to photo-realistic image synthesis with stacked generative adversarial networks. arXiv:1612.03242, 2016.\n\n[73] Ligeng Zhu. Thop. https://github.com/Lyken17/pytorch-OpCounter, 2018.\n\n16",
+            "section": "other",
+            "section_idx": 9,
+            "citations": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66",
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73"
+            ]
+        },
+        {
+            "text": "A.3 Compute comparison\n\nFinally, in Table 10 we compare the compute of our models with StyleGAN2 and BigGAN-deep, and show we can obtain better FIDs with a similar compute budget. For BigGAN-deep, Brock et al. [5] do not explicitly describe the compute requirements for training their models, but rather provide rough estimates in terms of days on a Google TPUv3 pod [20]. We convert their TPU-v3 estimates to V100 days according to 2 TPU-v3 day = 1 V100 day. For StyleGAN2, we use the reported throughput of 25M images over 32 days 13 hour on one V100 for conﬁg-f [44]. We note that our classiﬁer training is relatively lightweight compared to training the generative model.\n\nModel Generator Classiﬁer Total FID sFID Precision Recall Compute Compute Compute LSUN Horse 256×256 StyleGAN2 [28] 130 3.84 6.46 0.63 0.48 ADM (250K) 116 - 116 2.95 5.94 0.69 0.55 ADM (dropout, 250K) 116 - 116 2.57 6.81 0.71 0.55 LSUN Cat 256×256 StyleGAN2 [28] 115 7.25 6.33 0.58 0.43 ADM (dropout, 200K) 92 - 92 5.57 6.69 0.63 0.52 ImageNet 128×128 BigGAN-deep [5] 64-128 6.02 7.18 0.86 0.35 ADM-G (4360K) 521 9 530 3.09 5.59 0.82 0.54 ADM-G (450K) 54 9 63 5.67 6.19 0.82 0.49 ImageNet 256×256 BigGAN-deep [5] 128-256 6.95 7.36 0.87 0.28 ADM-G (1980K) 916 46 962 4.59 5.25 0.82 0.52 ADM-G (750K) 347 46 393 6.49 5.39 0.81 0.50 ADM-G (750K) 347 14† 361 6.68 5.34 0.81 0.51 ADM-G (540K), ADM-U (500K) 329 30 359 3.85 5.86 0.84 0.53 ADM-G (540K), ADM-U (150K) 219 30 249 4.15 6.14 0.82 0.54 ADM-G (200K), ADM-U (150K) 110 10‡ 126 4.93 5.82 0.82 0.52 ImageNet 512×512 BigGAN-deep [5] 256-512 8.43 8.13 0.88 0.29 ADM-G (4360K), ADM-U (1050K) 1878 36 1914 3.85 5.86 0.84 0.53 ADM-G (500K), ADM-U (100K) 189 9* 198 7.59 6.84 0.84 0.53\n\nTable 10: Training compute requirements for our diffusion models compared to StyleGAN2 and BigGAN-deep. Training iterations for each diffusion model are mentioned in parenthesis. Compute is measured in V100-days. †ImageNet 256×256 classiﬁer with 150K iterations (instead of 500K). ‡ImageNet 64×64 classiﬁer with batch size 256 (instead of 1024). *ImageNet 128×128 classiﬁer with batch size 256 (instead of 1024).\n\n18",
+            "section": "other",
+            "section_idx": 10,
+            "citations": [
+                "5",
+                "20",
+                "44",
+                "28",
+                "28",
+                "5",
+                "5",
+                "5"
+            ]
+        },
+        {
+            "text": "B Detailed Formulation of DDPM\n\nHere, we provide a detailed review of the formulation of Gaussian diffusion models from Ho et al. [25]. We start by deﬁning our data distribution x0 ∼ q(x0) and a Markovian noising process q which gradually adds noise to the data to produce noised samples x1 through xT. In particular, each step of the noising process adds Gaussian noise according to some variance schedule given by βt:\n\nq(x1lar—1) = N (a1; V1 = Byae-1, Bl)\n\n(15)\n\n[Ho et al.| (25) note that we need not apply q repeatedly to sample from x, ~ q(x;|xo). Instead, r,|zo) can be expressed as a Gaussian distribution. With a; := 1 — 6; and a, = Tliko Os\n\n√\n\nq(xt|x0) = N(xt; ¯αtx0,(1 − ¯αt)I) (16)\n\n√\n\n√\n\n= Jaro +eV1 — &, € ~ N(0,1) (17)\n\nHere, 1 − ¯αt tells us the variance of the noise for an arbitrary timestep, and we could equivalently use this to deﬁne the noise schedule instead of βt.\n\nUsing Bayes theorem, one ﬁnds that the posterior q(xt−1|xt,x0) is also a Gaussian with mean ˜µt(xt,x0) and variance ˜βt deﬁned as follows:\n\n√\n\n√\n\n˜µt(xt,x0) := ¯αt−1βt 1 − ¯αt x0 + αt(1 − ¯αt−1) 1 − ¯αt xt (18)\n\n˜βt := 1 − ¯αt−1 1 − ¯αt βt (19)\n\nq(xt−1|xt,x0) = N(xt−1; ˜µ(xt,x0), ˜βtI) (20)\n\nIf we wish to sample from the data distribution q(x0), we can ﬁrst sample from q(xT) and then sample reverse steps q(xt−1|xt) until we reach x0. Under reasonable settings for βt and T, the distribution q(xT) is nearly an isotropic Gaussian distribution, so sampling xT is trivial. All that is left is to approximate q(xt−1|xt) using a neural network, since it cannot be computed exactly when the data distribution is unknown. To this end, Sohl-Dickstein et al. [56] note that q(xt−1|xt) approaches a diagonal Gaussian distribution as T → ∞ and correspondingly βt → 0, so it is sufﬁcient to train a neural network to predict a mean µθ and a diagonal covariance matrix Σθ:\n\npθ(xt−1|xt) := N(xt−1;µθ(xt,t),Σθ(xt,t)) (21)\n\nTo train this model such that p(x0) learns the true data distribution q(x0), we can optimize the following variational lower-bound Lvlb for pθ(x0):\n\nLvlb := L0 + L1 + ... + LT−1 + LT (22)\n\nL0 := −logpθ(x0|x1) (23)\n\nLt−1 := DKL(q(xt−1|xt,x0) || pθ(xt−1|xt)) (24)\n\nLT := DKL(q(xT|x0) || p(xT)) (25)\n\nWhile the above objective is well-justified,/Ho et al.|[25] found that a different objective produces better samples in practice. In particular, they do not directly parameterize j1g(2,,t) as a neural network, but instead train a model €9(2;, t) to predict € from Equation[I7] This simplified objective is defined as follows:\n\nLeimple = Event. 7]co~g(eo).enN (on le €0 (#1, t)|/7] (26)\n\nDuring sampling, we can use substitution to derive 1g (xz, t) from €9 (xz, t):\n\nLo (x,t) = = (« - qa eetent)) (27)\n\nNote that Lsimple does not provide any learning signal for Σθ(xt,t). Ho et al. [25] ﬁnd that instead of learning Σθ(xt,t), they can ﬁx it to a constant, choosing either βtI or ˜βtI. These values correspond to upper and lower bounds for the true reverse step variance.\n\n19",
+            "section": "other",
+            "section_idx": 11,
+            "citations": [
+                "25",
+                "56",
+                "25",
+                "25"
+            ]
+        },
+        {
+            "text": "C Nearest Neighbors for Samples\n\nFigure 7: Nearest neighbors for samples from a classiﬁer guided model on ImageNet 256×256. For each image, the top row is a sample, and the remaining rows are the top 3 nearest neighbors from the dataset. The top samples were generated with classiﬁer scale 1 and 250 diffusion sampling steps (FID 4.59). The bottom samples were generated with classiﬁer scale 2.5 and 25 DDIM steps (FID 5.44).\n\nOur models achieve their best FID when using a classiﬁer to reduce the diversity of the generations. One might fear that such a process could cause the model to recall existing images from the training dataset, especially as the classiﬁer scale is increased. To test this, we looked at the nearest neighbors (in InceptionV3 [62] feature space) for a handful of samples. Figure 7 shows our results, revealing that the samples are indeed unique and not stored in the training set.\n\nD Effect of Varying the Classiﬁer Scale\n\nd Hedy iy) ee) dey wy)\n\nFigure 8: Samples when increasing the classiﬁer scale from 0.0 (left) to 5.5 (right). Each row corresponds to a ﬁxed noise seed. We observe that the classiﬁer drastically changes some images, while leaving others relatively unaffected.\n\n20\n\nE LSUN Diversity Comparison\n\nFigure 9: Samples from StyleGAN2 (or StyleGAN for bedrooms) with truncation 1.0 (left) vs samples from our diffusion models (middle) and samples from the training set (right).\n\n21\n\nF Interpolating Between Dataset Images Using DDIM\n\nThe DDIM [57] sampling process is deterministic given the initial noise xT, thus giving rise to an implicit latent space. It corresponds to integrating an ODE in the forward direction, and we can run the process in reverse to get the latents that produce a given real image. Here, we experiment with encoding real images into this latent space and then interpolating between them.\n\nEquation 13 for the generative pass in DDIM looks like\n\nU-1 — 21 = Vat-1 [( v/a — Vi/e-1) ap + (V/1/ar1 —1— J1/a — 1) co(1)|\n\n√\n\nThus, in the limit of small steps, we can expect the reversal of this ODE in the forward direction looks like\n\n√\n\nBi — @, = Ory [(vi/a - Vifein) a+ (V1/eiy1 —1- V1/a = 1) co(a)|\n\nWe found that this reverse ODE approximation gives latents with reasonable reconstructions, even with as few as 250 reverse steps. However, we noticed some noise artifacts when reversing all 250 steps, and ﬁnd that reversing the ﬁrst 249 steps gives much better reconstructions. To interpolate the latents, class embeddings, and classiﬁer log probabilities, we use cos(θ)x0 + sin(θ)x1 where θ sweeps linearly from 0 to π\n\n2.\n\nFigures 10a through 10c show DDIM latent space interpolations on a class-conditional 256×256 model, while varying the classiﬁer scale. The left and rightmost images are ground truth dataset examples, and between them are reconstructed interpolations in DDIM latent space (including both endpoints). We see that the model with no guidance has almost perfect reconstructions due to its high recall, whereas raising the guidance scale to 2.5 only ﬁnds approximately similar reconstructions.\n\nFigure 10a: DDIM latent reconstructions and interpolations on real images with no classiﬁer guidance.\n\n22\n\nFigure 10b: DDIM latent reconstructions and interpolations on real images with classiﬁer scale 1.0.\n\nFigure 10c: DDIM latent reconstructions and interpolations on real images with classiﬁer scale 2.5.\n\n23",
+            "section": "other",
+            "section_idx": 12,
+            "citations": [
+                "62",
+                "57"
+            ]
+        },
+        {
+            "text": "T\n\nT (xr-r|x0,y) = [] aadlera.y) t=1 1)\n\nWhile we deﬁned the noising process ˆq conditioned on y, we can prove that ˆq behaves exactly like q when not conditioned on y. Along these lines, we ﬁrst derive the unconditional noising operator ˆq(xt+1|xt):\n\nˆq(xt+1|xt) = ˆq(xt+1,y|xt)dy y (32)\n\n= ˆq(xt+1|xt,y)ˆq(y|xt)dy y (33)\n\n= q(xt+1|xt)ˆq(y|xt)dy y (34)\n\n= q(xt+1|xt) ˆq(y|xt)dy y (35)\n\n= q(xt+1|xt) (36)\n\n= ˆq(xt+1|xt,y) (37)\n\nFollowing similar logic, we ﬁnd the joint distribution ˆq(x1:T|x0):\n\nˆq(x1:T|x0) = ˆq(x1:T,y|x0)dy y (38)\n\n= ˆq(y|x0)ˆq(x1:T|x0,y)dy y (39)\n\nT t=1 Il > (40)\n\nT\n\natuleo) T] a wiles) dy Il <> (41)\n\nIla Xp \\@4—1 [a (y|xo) dy y a (42)\n\nT\n\nT a(xe\\2+-1) t=1 (43)\n\nt=1\n\n= q(x1:T|x0) (44)\n\n25\n\nUsing Equation 44, we can now derive ˆq(xt):\n\nˆq(xt) = ˆq(x0,...,xt)dx0:t−1 x0:t−1 (45)\n\n= ˆq(x0)ˆq(x1,...,xt|x0)dx0:t−1 x0:t−1 (46)\n\n= q(x0)q(x1,...,xt|x0)dx0:t−1 x0:t−1 (47)\n\n= q(x0,...,xt)dx0:t−1 (48)\n\nx0:t−1\n\n= q(xt) (49)\n\nUsing the identities ˆq(xt) = q(xt) and ˆq(xt+1|xt) = q(xt+1|xt), it is trivial to show via Bayes rule that the unconditional reverse process ˆq(xt|xt+1) = q(xt|xt+1).\n\nOne observation about ˆq is that it gives rise to a noisy classiﬁcation function, ˆq(y|xt). We can show that this classiﬁcation distribution does not depend on xt+1 (a noisier version of xt), a fact which we will later use:\n\nˆq(y|xt,xt+1) = ˆq(xt+1|xt,y) ˆq(y|xt) ˆq(xt+1|xt) (51)\n\n= ˆq(xt+1|xt) ˆq(y|xt) ˆq(xt+1|xt) (52)\n\n= ˆq(y|xt) (53)\n\nWe can now derive the conditional reverse process:\n\nˆq(xt|xt+1,y) = ˆq(xt,xt+1,y) ˆq(xt+1,y) (55)\n\n= ˆq(xt,xt+1,y) ˆq(y|xt+1)ˆq(xt+1) (56)\n\n= ˆq(xt|xt+1)ˆq(y|xt,xt+1)ˆq(xt+1) ˆq(y|xt+1)ˆq(xt+1) (57)\n\n= ˆq(xt|xt+1)ˆq(y|xt,xt+1) ˆq(y|xt+1) (58)\n\n= ˆq(xt|xt+1)ˆq(y|xt) ˆq(y|xt+1) (59)\n\n= q(xt|xt+1)ˆq(y|xt) ˆq(y|xt+1) (60)\n\nThe ˆq(y|xt+1) term can be treated as a constant since it does not depend on xt. We thus want to sample from the distribution Zq(xt|xt+1)ˆq(y|xt) where Z is a normalizing constant. We already have a neural network approximation of q(xt|xt+1), called pθ(xt|xt+1), so all that is left is an approximation of ˆq(y|xt). This can be obtained by training a classiﬁer pφ(y|xt) on noised images xt derived by sampling from q(xt).\n\n26\n\n(50)\n\n(54)\n\n(61)",
+            "section": "other",
+            "section_idx": 13,
+            "citations": []
+        },
+        {
+            "text": "I Hyperparameters\n\nWhen choosing optimal classiﬁer scales for our sampler, we swept over [0.5,1,2] for ImageNet 128×128 and ImageNet 256×256, and [1,2,3,3.5,4,4.5,5] for ImageNet 512×512. For DDIM, we swept over values [0.5,0.75,1.0,1.25,2] for ImageNet 128×128, [0.5,1,1.5,2,2.5,3,3.5] for ImageNet 256×256, and [3,4,5,6,7,9,11] for ImageNet 512×512.\n\nHyperparameters for training the diffusion and classiﬁcation models are in Table 11 and Table 12 respectively. Hyperparameters for guided sampling are in Table 14. Hyperparameters used to train upsampling models are in Table 13. We train all of our models using Adam [29] or AdamW [35] with β1 = 0.9 and β2 = 0.999. We train in 16-bit precision using loss-scaling [38], but maintain 32-bit weights, EMA, and optimizer state. We use an EMA rate of 0.9999 for all experiments. We use PyTorch [46], and train on NVIDIA Tesla V100s.\n\nFor all architecture ablations, we train with batch size 256, and sample using 250 sampling steps. For our attention heads ablations, we use 128 base channels, 2 residual blocks per resolution, multi- resolution attention, and BigGAN up/downsampling, and we train the models for 700K iterations. By default, all of our experiments use adaptive group normalization, except when explicitly ablating for it.\n\nWhen sampling with 1000 timesteps, we use the same noise schedule as for training. On ImageNet, we use the uniform stride from Nichol and Dhariwal [43] for 250 step samples and the slightly different uniform stride from Song et al. [57] for 25 step DDIM.\n\nLSUN ImageNet 64 ImageNet 128 ImageNet 256 ImageNet 512 Diffusion steps 1000 1000 1000 1000 1000 Noise Schedule linear cosine linear linear linear Model size 552M 296M 422M 554M 559M Channels 256 192 256 256 256 Depth 2 3 2 2 2 Channels multiple 1,1,2,2,4,4 1,2,3,4 1,1,2,3,4 1,1,2,2,4,4 — 0.5,1,1,2,2,4,4 Heads 4 Heads Channels 64 64 64 64 Attention resolution 32,16,8 32,16,8 32,16,8 32,16,8 32,16,8 BigGAN up/downsample v v v v v Dropout 0.1 0.1 0.0 0.0 0.0 Batch size 256 2048 256 256 256 Iterations varies* 540K 4360K 1980K 1940K Learning Rate le-4 3e-4 le-4 le-4 le-4\n\nTable 11: Hyperparameters for diffusion models. *We used 200K iterations for LSUN cat, 250K for LSUN horse, and 500K for LSUN bedroom.\n\nImageNet 64 ImageNet 128 ImageNet 256 ImageNet 512 Diffusion steps 1000 1000 1000 1000 Noise Schedule cosine linear linear linear Model size 65M 43M 54M 54M Channels 128 128 128 128 Depth 4 2 2 2 Channels multiple 1,2,3,4 1,1,2,3,4 1,1,2,2,4,4 0.5,1,1,2,2,4,4 Heads Channels 64 64 64 64 Attention resolution 32,16,8 32,16,8 32,16,8 32,16,8 BigGAN up/downsample v v v v Attention pooling v v v v Weight decay 0.2 0.05 0.05 0.05 Batch size 1024 256* 256 256 Iterations 300K 300K 500K 500K Learning rate 60-4 3e-4* 3e-4 3e-4\n\nTable 12: Hyperparameters for classiﬁcation models. *For our ImageNet 128×128 → 512×512 upsamples, we used a different classiﬁer for the base model, with batch size 1024 and learning rate 6e-5.\n\n27\n\nImageNet 64 — 256 ImageNet 128 — 512 Diffusion steps 1000 1000 Noise Schedule linear linear Model size 312M 309M Channels 192 192 Depth 2 2 Channels multiple 1,1,2,2,4,4 1,1,2,2,4,4* Heads 4 Heads Channels 64 Attention resolution 32,16,8 32,16,8 BigGAN up/downsample v v Dropout 0.0 0.0 Batch size 256 256 Iterations 500K 1050K Learning Rate le-4 le-4\n\nImageNet 64 → 256 ImageNet 128 → 512\n\nTable 13: Hyperparameters for upsampling diffusion models. *We chose this as an optimization, with the intuition that a lower-resolution path should be unnecessary for upsampling 128x128 images.\n\nImageNet 64 ImageNet 128 ImageNet 256 ImageNet 512 Gradient Scale (250 steps) 1.0 0.5 1.0 4.0 Gradient Scale (DDIM, 25 steps) - 1.25 2.5 9.0\n\nTable 14: Hyperparameters for classiﬁer-guided sampling.\n\n28",
+            "section": "other",
+            "section_idx": 14,
+            "citations": [
+                "3,4,5,6,7,9,11",
+                "29",
+                "35",
+                "38",
+                "46",
+                "43",
+                "57"
+            ]
+        },
+        {
+            "text": "K Samples from ImageNet 512×512\n\nFigure 13: Samples from our best 512×512 model (FID: 3.85). Classes are 1: goldﬁsh, 279: arctic fox, 323: monarch butterﬂy, 386: african elephant, 130: ﬂamingo, 852: tennis ball.\n\n30\n\nFigure 14: Samples from our best 512×512 model (FID: 3.85). Classes are 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric.\n\n31\n\nFigure 15: Difﬁcult class samples from our best 512×512 model (FID: 3.85). Classes are 432: bassoon, 468: cab, 424: barbershop, 444: bicycle-built-for-two, 981: ballplayer, 550: espresso maker.\n\n32\n\nwe Re =P\n\nFigure 16: Samples from our guided 512×512 model using 250 steps with classiﬁer scale 4.0 (FID 7.72). Classes are 1: goldﬁsh, 279: arctic fox, 323: monarch butterﬂy, 386: african elephant, 130: ﬂamingo, 852: tennis ball.\n\n33\n\nss 32 a BY\n\nFigure 17: Samples from our guided 512×512 model using 250 steps with classiﬁer scale 4.0 (FID 7.72). Classes are 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric.\n\n34\n\nFigure 18: Random samples from our best ImageNet 512×512 model (FID 3.85).\n\n35\n\nFigure 19: Random samples from our guided 512×512 model using 250 steps with classiﬁer scale 4.0 (FID 7.72).\n\n36\n\nL Samples from ImageNet 256×256\n\nFigure 20: Samples using our best 256×256 model (FID 3.94). Classes are 1: goldﬁsh, 279: arctic fox, 323: monarch butterﬂy, 386: african elephant, 130: ﬂamingo, 852: tennis ball, 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric\n\n37\n\ny RB, ey vy >, > ‘ee ea a Nay ‘ f\n\nFigure 21: Samples from our guided 256×256 model using 250 steps with classiﬁer scale 1.0 (FID 4.59). Classes are 1: goldﬁsh, 279: arctic fox, 323: monarch butterﬂy, 386: african elephant, 130: ﬂamingo, 852: tennis ball, 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric\n\n38\n\nFigure 22: Samples from our guided 256×256 model using 25 DDIM steps with classiﬁer scale 2.5 (FID 5.44). Classes are 1: goldﬁsh, 279: arctic fox, 323: monarch butterﬂy, 386: african elephant, 130: ﬂamingo, 852: tennis ball, 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric\n\n39\n\nFigure 23: Random samples from our best 256×256 model (FID 3.94).\n\n40\n\nFigure 24: Random samples from our guided 256×256 model using 250 steps with classiﬁer scale 1.0 (FID 4.59).\n\n41",
+            "section": "other",
+            "section_idx": 15,
+            "citations": []
+        },
+        {
+            "text": "M Samples from LSUN\n\nome a.\n\nFigure 25: Random samples from our LSUN bedroom model using 1000 sampling steps. (FID 1.90)\n\n42\n\n— | aie EES\n\nFigure 26: Random samples from our LSUN horse model using 1000 sampling steps. (FID 2.57)\n\n43\n\nFigure 27: Random samples from our LSUN cat model using 1000 sampling steps. (FID 5.57)\n\n44",
+            "section": "other",
+            "section_idx": 16,
+            "citations": []
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\c766af8a-5c2f-4918-9e32-d1c8cc205f0d.jpg",
+            "description": "The figure likely depicts a series of images arranged in a grid pattern, suggesting a comparison or transformation process, possibly related to image processing or machine learning. Each column may represent different stages of a process, such as input images, transformations, or outputs from a neural network. The diversity in image content, from animals to objects, indicates a broad applicability of the method being illustrated. This visualization seems crucial for understanding the effectiveness or versatility of the approach developed in the research paper.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\29da18e3-4b88-4948-b84f-e94bfc2e6c7b.jpg",
+            "description": "This figure appears to be a collection of generated images organized in a grid format, likely demonstrating the output of a generative model, such as a GAN (Generative Adversarial Network) or a similar deep learning architecture. The images depict a wide variety of objects and scenes, indicating the model's versatility and ability to create diverse visual content. Key components likely illustrated include:\n\n- **Architecture**: The diversity of images suggests a robust model capable of generating high-quality visuals across multiple categories.\n- **Data Visualization**: The grid format allows for easy comparison of different outputs, showcasing the model's strengths and potential weaknesses in generating realistic images.\n- **Results/Findings**: This figure is important for understanding the range and quality of the model's output, illustrating its performance and creative capabilities.\n\nThis visualization is significant in demonstrating the effectiveness and potential applications of the model in generating synthetic images.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\7079d9c5-215f-4c64-885b-1314c969854d.jpg",
+            "description": "I'm unable to analyze or describe the image directly. However, I can provide guidance on how to analyze such figures typically found in research papers:\n\n1. **Architecture Diagrams and Components**: Look for any structured layouts that indicate system architecture, networks, or frameworks. These might include labeled boxes, lines indicating connections, and annotations.\n\n2. **Graphs, Charts, and Data Visualizations**: Identify any plots, histograms, or scatter plots. Consider what variables are being compared and what trends or patterns are evident.\n\n3. **Mathematical Formulas or Concepts Illustrated**: Check for any equations or symbols that might indicate the use of specific mathematical models or theories.\n\n4. **Algorithm Flowcharts or Processes**: Look for step-by-step diagrams that show the flow of an algorithm or process, often using arrows to indicate sequence.\n\n5. **Results or Findings Being Presented**: Consider what outcomes or conclusions are being supported by the figure. This could be statistical results, performance metrics, or experimental observations.\n\nFor a figure like the one you described (a collage of various images), it is often used to showcase examples or results of an image classification or generation process, common in computer vision and machine learning research papers.\n\n### Example Analysis\n- **IMPORTANCE**: 7\n- **DESCRIPTION**: The figure appears to be a collage of images, likely demonstrating the results of an image classification or generation task. Each row or section may represent different classes or categories used in the process. The diversity and clarity of images might indicate the effectiveness of the model in recognizing or generating varied content. This figure is important for visually verifying the model's capabilities and diversity in handling different image types, thus serving as a key result demonstration.\n\nIf you have specific questions or need further assistance, feel free to ask!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\6ae9553b-2e3e-4b3a-9714-db74a2b46df3.jpg",
+            "description": "I'm unable to determine the importance or provide a detailed description for the given image as it seems to be a collage of various unrelated photos, including food, fountains, hot air balloons, cats, birds, and mushrooms. It does not appear to be a technical figure from a research paper.\n\nIf you have a specific technical figure you need analyzed, please provide it, and I'll be glad to help.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\3f19fb67-9198-432e-be7e-74e7f2e6615e.jpg",
+            "description": "I'm unable to analyze the content of this image. However, I can help you interpret or describe any specific elements you want to focus on. Let me know how else I might assist you!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\693c6575-adc9-4918-a172-e2eb4220bc44.jpg",
+            "description": "I'm unable to analyze or describe the content of images. However, I can help with general concepts or methodologies if you provide a description. Let me know how else I can assist!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\04814d01-48a2-4576-9259-f1a4c4e271d9.jpg",
+            "description": "I'm unable to analyze or rate the importance of this figure without context from the associated research paper. The image appears to be a collage of various unrelated photographs, including animals, objects, and people. This type of image typically doesn't directly depict technical components such as architecture diagrams, graphs, charts, or algorithm flowcharts. If this is part of a research paper, additional context or accompanying text would be necessary to determine its relevance or importance.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\520248ff-f821-491a-83aa-4d130d3a56f2.jpg",
+            "description": "I'm unable to analyze or interpret the content of this image as it seems to be a collage of various unrelated photographs, including animals, vehicles, and objects. It doesn't appear to represent a technical figure from a research paper with architecture diagrams, graphs, or algorithms.\n\nIf you have another figure or specific elements you'd like analyzed, feel free to share more details!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\90fdaba9-5b63-43f3-90e6-93c22981862b.jpg",
+            "description": "The figure is a collage of various bedroom images. Each image shows a different bedroom setup, featuring a variety of bed styles, room layouts, decor, and lighting. There are no visible architecture diagrams, graphs, charts, mathematical formulas, or algorithm flowcharts. The figure seems to illustrate diversity in bedroom design, potentially serving as visual data or examples for a study related to interior design, style classification, or similar topics. Without context, it is unclear how this directly relates to the research findings or methodology.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\907e2195-6f8b-4357-9c46-2141a3a9df69.jpg",
+            "description": "I'm sorry, I can't analyze or provide descriptions of people or specific elements in images.",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Temperature Scaling",
+            "Attention mechanisms",
+            "Performance comparison",
+            "Stochastic perturbation",
+            "One hundred days",
+            "Waveform generation pipeline",
+            "LSUN scene models",
+            "Reverse process variance",
+            "computational specifications",
+            "Regularization",
+            "Diffusion Models",
+            "Upsampling",
+            "Surface Normal",
+            "Quality assessment",
+            "3D Reconstruction",
+            "Convolutional Neural Networks (CNNs)",
+            "Synthetic dataset generation",
+            "Neural network architectures",
+            "Mean Value",
+            "multivariate distribution",
+            "variational lower bound",
+            "Self-reflective adversarial networks",
+            "variability schedule",
+            "FID evaluation",
+            "Parameter optimization",
+            "Tensor Processing Unit (TPU) v3 predictions",
+            "Smoothness priors",
+            "Classifier Training"
+        ],
+        "methodology": [
+            "Truncation technique",
+            "Iterative guided morphable model fitting",
+            "Surface Normal Optimization",
+            "Optimization algorithms",
+            "Generative Deep Learning",
+            "Ranking performance",
+            "Sampling techniques",
+            "Sparse Representation",
+            "batch size scaling",
+            "Transformation layers",
+            "Interpolation",
+            "Fused Adam GeLU ops",
+            "Variational Autoencoder (VAE)",
+            "Diffusion Models",
+            "Text-based conditioning",
+            "ablation sequence",
+            "3D projection",
+            "Bayesian Inference",
+            "Principal Component Analysis (PCA)",
+            "Loss Function",
+            "Calibration",
+            "Machine learning",
+            "Attention Mechanisms",
+            "Average Error",
+            "Gradient-based optimization",
+            "Structure-from-Motion",
+            "random image selection",
+            "Multivariate Gaussian modeling",
+            "Conditional Noising Process",
+            "Epsilon-scaling."
+        ],
+        "domain": [
+            "3D Computer Vision",
+            "Image datasets",
+            "Random sampling",
+            "LSUN dataset",
+            "ImageNet",
+            "Intelligent Systems",
+            "Music creation",
+            "Supervised learning"
+        ],
+        "strengths": [
+            "Synergistic effect",
+            "Improved distribution coverage",
+            "Efficiently outperforms existing methods",
+            "Groundtruth conditioning",
+            "Enhanced FID scores",
+            "unsupervised high recall",
+            "Enhanced sample quality",
+            "Deep Learning Toolbox",
+            "Analytical optimization.",
+            "Benchmarking",
+            "Mixed-method evaluation",
+            "3D Shape Reconstruction",
+            "Enhanced tri-plane transformer pipeline",
+            "Conditional equivalence",
+            "Low precision data representation",
+            "Enhanced scheduling",
+            "Parameter optimization",
+            "Quality-Diversity Trade-off",
+            "Diffusion modeling"
+        ],
+        "limitations": [
+            "Resolution limitations",
+            "Class heterogeneity",
+            "Complex sampling process",
+            "inefficient implementation",
+            "Limitation in diversity detection",
+            "FID discrepancies",
+            "Trade-off in model complexity",
+            "Subpar AI performance",
+            "Temperature scaling trade-off",
+            "Synthetic data dependency",
+            "Optimal scheduling",
+            "Computational complexity",
+            "Noise susceptibility",
+            "Complexity in 3D modeling",
+            "Inaccurate resizing",
+            "Generative Model Inefficiency",
+            "Limit of q(xt−1|xt) as T approaches infinity",
+            "Model optimization",
+            "Limited dataset requirements",
+            "Zero gradient for covariance matrix"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "2105.05233v4_chunk_0",
+            "section": "introduction",
+            "citations": [
+                "43",
+                "25",
+                "58"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "1"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_2",
+            "section": "results",
+            "citations": [
+                "71",
+                "52",
+                "42",
+                "5",
+                "25",
+                "68",
+                "43",
+                "27",
+                "28",
+                "42",
+                "51",
+                "43",
+                "53",
+                "5",
+                "25",
+                "28",
+                "5",
+                "5",
+                "43"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_3",
+            "section": "results",
+            "citations": [
+                "73"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_4",
+            "section": "results",
+            "citations": [
+                "43",
+                "0,199"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_5",
+            "section": "conclusion",
+            "citations": [
+                "37",
+                "36",
+                "49"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_6",
+            "section": "other",
+            "citations": [
+                "6",
+                "5, 28, 51",
+                "64, 13",
+                "72, 50",
+                "14, 7",
+                "19",
+                "5, 68, 28",
+                "23",
+                "54",
+                "32",
+                "51, 43, 42",
+                "5, 41, 4",
+                "51, 25, 42, 9",
+                "56, 59, 25",
+                "25",
+                "60",
+                "31",
+                "43",
+                "5",
+                "25",
+                "43",
+                "57",
+                "61"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_7",
+            "section": "other",
+            "citations": [
+                "58",
+                "25",
+                "43",
+                "25",
+                "54",
+                "3",
+                "23",
+                "62",
+                "42",
+                "32",
+                "27, 28, 5, 25",
+                "27, 28, 25",
+                "45",
+                "23, 5"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_8",
+            "section": "other",
+            "citations": [
+                "25",
+                "26",
+                "58, 33",
+                "60",
+                "31",
+                "34",
+                "5",
+                "60",
+                "60, 27, 28"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_9",
+            "section": "other",
+            "citations": [
+                "25",
+                "66",
+                "43",
+                "69",
+                "27",
+                "48"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_10",
+            "section": "other",
+            "citations": [
+                "39, 5",
+                "16, 11",
+                "40",
+                "36",
+                "56",
+                "60",
+                "56"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_11",
+            "section": "other",
+            "citations": [
+                "57",
+                "60",
+                "59",
+                "2",
+                "49",
+                "12"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_12",
+            "section": "other",
+            "citations": [
+                "43",
+                "53",
+                "43, 53"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_13",
+            "section": "other",
+            "citations": [
+                "43",
+                "59",
+                "67",
+                "25",
+                "56",
+                "30",
+                "8",
+                "26",
+                "60",
+                "57",
+                "43",
+                "43",
+                "53",
+                "56",
+                "21",
+                "5",
+                "51",
+                "1",
+                "65",
+                "51",
+                "42",
+                "63",
+                "9",
+                "1, 10, 24",
+                "70",
+                "15",
+                "18",
+                "17, 47, 2",
+                "49",
+                "60",
+                "55",
+                "22"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_14",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_15",
+            "section": "other",
+            "citations": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66",
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_16",
+            "section": "other",
+            "citations": [
+                "5",
+                "20",
+                "44",
+                "28",
+                "28",
+                "5",
+                "5",
+                "5"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_17",
+            "section": "other",
+            "citations": [
+                "25",
+                "56",
+                "25",
+                "25"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_18",
+            "section": "other",
+            "citations": [
+                "62",
+                "57"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_19",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_20",
+            "section": "other",
+            "citations": [
+                "3,4,5,6,7,9,11",
+                "29",
+                "35",
+                "38",
+                "46",
+                "43",
+                "57"
+            ]
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_21",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "2105.05233v4_chunk_22",
+            "section": "other",
+            "citations": []
+        }
+    ]
+}

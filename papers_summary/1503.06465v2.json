@@ -1,0 +1,1204 @@
+{
+    "basic_info": {
+        "title": "Lifting Object Detection Datasets into 3D",
+        "authors": [
+            "Joao Carreira",
+            "Sara Vicente",
+            "Lourdes Agapito",
+            "Jorge Batista"
+        ],
+        "paper_id": "1503.06465v2",
+        "published_year": 2015,
+        "references": []
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "M. Everingham, L. Van Gool, C. K. I. Williams, J. Winn, and A. Zisser-\nman, “The pascal visual object classes (voc) challenge,” International\nJournal of Computer Vision , 2010.",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei, “ImageNet:\nA Large-Scale Hierarchical Image Database,” in IEEE International\nConference on Computer Vision and Pattern Recognition , 2009.",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "M. Paladini, A. Del Bue, M. Stosic, M. Dodig, J. Xavier, and L. Agapito,\n“Factorization for non-rigid and articulated structure using metric projec-\ntions,” in Computer Vision and Pattern Recognition, 2009. CVPR 2009.\nIEEE Conference on . IEEE, 2009, pp. 2898–2905.",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "C. Russell, R. Yu, and L. Agapito, “Video pop-up: Monocular 3d\nreconstruction of dynamic scenes,” in Computer Vision ECCV 2014 ,\nser. Lecture Notes in Computer Science, 2014, vol. 8695, pp. 583–598.",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": null
+        },
+        "ref_5": {
+            "text": "A. Fragkiadaki, M. Salas, P. Arbelaez, and J. Malik, “Grouping-based\nlow-rank video completion and 3d reconstruction,” in Advances in\nNeural Information Processing Systems , 2014.",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "T. Brox, L. Bourdev, S. Maji, and J. Malik, “Object segmentation by\nalignment of poselet activations to image contours,” in IEEE Interna-\ntional Conference on Computer Vision and Pattern Recognition , 2011.",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "T.-Y . Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan,\nP. Doll ´ar, and C. L. Zitnick, “Microsoft coco: Common objects in\ncontext,” arXiv preprint arXiv:1405.0312 , 2014.",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": "1405.0312"
+        },
+        "ref_8": {
+            "text": "R. I. Hartley and A. Zisserman, Multiple View Geometry in Computer\nVision . Cambridge University Press, 2004.",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": null
+        },
+        "ref_9": {
+            "text": "J. Carreira, F. Li, and C. Sminchisescu, “Object Recognition by Sequen-\ntial Figure-Ground Ranking,” International Journal of Computer Vision ,\n2012.",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "J. Carreira, R. Caseiro, J. Batista, and C. Sminchisescu, “Semantic\nsegmentation with second-order pooling,” in European Conference on\nComputer Vision , 2012.",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "S. Vicente, J. Carreira, L. Agapito, and J. Batista, “Reconstructing pascal\nvoc,” in IEEE International Conference on Computer Vision and Pattern\nRecognition , 2014.",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": null
+        },
+        "ref_12": {
+            "text": "W. E. L. Grimson, D. P. Huttenlocher et al. ,Object recognition by\ncomputer: the role of geometric constraints . Mit Press, 1990.",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "D. P. Huttenlocher and S. Ullman, “Object recognition using alignment,”\ninProceedings of the 1st International Conference on Computer Vision ,\n1987, pp. 102–111.",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "D. G. Lowe, “Three-dimensional object recognition from single two-\ndimensional images,” Artiﬁcial intelligence , vol. 31, no. 3, pp. 355–395,\n1987.",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "M. Turk and A. Pentland, “Eigenfaces for recognition,” Journal of\ncognitive neuroscience , vol. 3, no. 1, pp. 71–86, 1991.",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": null
+        },
+        "ref_16": {
+            "text": "H. Murase and S. K. Nayar, “Visual learning and recognition of 3-\nd objects from appearance,” International journal of computer vision ,\nvol. 14, no. 1, pp. 5–24, 1995.",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": null
+        },
+        "ref_17": {
+            "text": "J. L. Mundy, “Object recognition in the geometric era: A retrospective,”\ninToward Category-Level Object Recognition , 2006.",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": null
+        },
+        "ref_18": {
+            "text": "S. Ullman, “The interpretation of structure from motion,” Proceedings\nof the Royal Society of London. Series B. Biological Sciences , vol. 203,\nno. 1153, pp. 405–426, 1979.",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "C. Tomasi and T. Kanade, “Shape and motion from image streams under\northography: a factorization method,” International Journal of Computer\nVision , vol. 9, no. 2, pp. 137–154, 1992.",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "J. J. Koenderink, A. J. Van Doorn et al. , “Afﬁne structure from motion,”\nJOSA A , vol. 8, no. 2, pp. 377–385, 1991.",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "O. Faugeras, Three-dimensional computer vision: a geometric viewpoint .\nMIT press, 1993.",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "L. G. Roberts, “Machine perception of three-dimensional solids,” Ph.D.\ndissertation, Massachusetts Institute of Technology, 1963.",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": null
+        },
+        "ref_23": {
+            "text": "D. G. Lowe, “Three-dimensional object recognition from single two-\ndimensional images,” Artif. Intell. , 1987.",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": null
+        },
+        "ref_24": {
+            "text": "J. J. Lim, H. Pirsiavash, and A. Torralba, “Parsing ikea objects: Fine\npose estimation,” in IEEE International Conference on Computer Vision .\nIEEE, 2013, pp. 2992–2999.",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": null
+        },
+        "ref_25": {
+            "text": "M. Aubry, D. Maturana, A. Efros, B. Russell, and J. Sivic, “Seeing\n3d chairs: exemplar part-based 2d-3d alignment using a large dataset of\ncad models,” in IEEE International Conference on Computer Vision and\nPattern Recognition , 2014.",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "H. Su, Q. Huang, N. Mitra, Y . Li, and L. Guibas, “Estimating image\ndepth using shape collection,” Transaction of Graphics , no. Special Issue\nof SIGGRAPH 2014, 2014.",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "T. Hassner and R. Basri, “Example based 3d reconstruction from single\n2d images,” in IEEE CVPR Workshop , 2006.",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "A. Saxena, S. H. Chung, and A. Y . Ng, “3-d depth reconstruction from\na single still image,” International Journal of Computer Vision , 2008.",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "D. Hoiem, A. A. Efros, and M. Hebert, “Geometric context from a single\nimage,” IEEE International Conference on Computer Vision , 2005.IEEE TRANSACTIONS ON PATTERN ANAL YSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014 12\nGT mesh Input Our result",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_46": {
+            "text": "N. R. Twarog, M. F. Tappen, and E. H. Adelson, “Playing with puffball:\nsimple scale-invariant inﬂation for use in vision and graphics,” in ACM\nSymp. on Applied Perception , 2012.",
+            "type": "numeric",
+            "number": "46",
+            "arxiv_id": null
+        },
+        "ref_30": {
+            "text": "L. Ladicky, J. Shi, and M. Pollefeys, “Pulling things out of perspective,”\ninComputer Vision and Pattern Recognition (CVPR), 2014 IEEE\nConference on . IEEE, 2014, pp. 89–96.",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": null
+        },
+        "ref_31": {
+            "text": "V . Blanz and T. Vetter, “A morphable model for the synthesis of 3d\nfaces,” in Proceedings of the 26th annual conference on Computer\ngraphics and interactive techniques , 1999.",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "D. Anguelov, P. Srinivasan, D. Koller, S. Thrun, J. Rodgers, and J. Davis,\n“Scape: shape completion and animation of people,” in ACM Trans.\nGraph. , 2005.",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": null
+        },
+        "ref_33": {
+            "text": "M. Zia, M. Stark, B. Schiele, and K. Schindler, “Detailed 3d repre-\nsentations for object recognition and modeling,” IEEE Transactions on\nPattern Analysis and Machine Intelligence , 2013.",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": null
+        },
+        "ref_34": {
+            "text": "S. Y . Bao, M. Chandraker, Y . Lin, and S. Savarese, “Dense object\nreconstruction with semantic priors,” in Computer Vision and Pattern\nRecognition (CVPR), 2013 IEEE Conference on . IEEE, 2013, pp. 1264–\n1271.",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": null
+        },
+        "ref_35": {
+            "text": "A. Dame, V . A. Prisacariu, C. Y . Ren, and I. Reid, “Dense reconstruction\nusing 3d object shape priors,” in IEEE International Conference onComputer Vision and Pattern Recognition , 2013.",
+            "type": "numeric",
+            "number": "35",
+            "arxiv_id": null
+        },
+        "ref_36": {
+            "text": "T. J. Cashman and A. W. Fitzgibbon, “What shape are dolphins? building\n3d morphable models from 2d images,” IEEE Transactions on Pattern\nAnalysis and Machine Intelligence , 2013.",
+            "type": "numeric",
+            "number": "36",
+            "arxiv_id": null
+        },
+        "ref_37": {
+            "text": "S. Zhu, L. Zhang, and B. Smith, “Model evolution: An incremental\napproach to non-rigid structure from motion.” in IEEE International\nConference on Computer Vision and Pattern Recognition , 2010.",
+            "type": "numeric",
+            "number": "37",
+            "arxiv_id": null
+        },
+        "ref_38": {
+            "text": "M. Prasad, A. Fitzgibbon, A. Zisserman, and L. Van Gool, “Finding\nnemo: Deformable object class modelling using curve matching,” in\nIEEE International Conference on Computer Vision and Pattern Recog-\nnition , 2010.",
+            "type": "numeric",
+            "number": "38",
+            "arxiv_id": null
+        },
+        "ref_39": {
+            "text": "C. Bregler, A. Hertzmann, and H. Biermann, “Recovering non-rigid\n3D shape from image streams.” in IEEE International Conference on\nComputer Vision and Pattern Recognition , 2000.",
+            "type": "numeric",
+            "number": "39",
+            "arxiv_id": null
+        },
+        "ref_40": {
+            "text": "G. J. Agin and T. O. Binford, “Computer description of curved objects,”\nComputers, IEEE Transactions on , vol. 100, no. 4, pp. 439–449, 1976.",
+            "type": "numeric",
+            "number": "40",
+            "arxiv_id": null
+        },
+        "ref_41": {
+            "text": "D. Marr and H. K. Nishihara, “Representation and recognition of the\nspatial organization of three-dimensional shapes,” Proceedings of theIEEE TRANSACTIONS ON PATTERN ANAL YSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014 13\nFig. 13: Examples of our reconstructions for all 20 PASCAL VOC categories. For each object we show the original image,\nthe original image with the reconstruction overlaid and two different viewpoint of our reconstruction. Blue is closer to the\ncamera, red is farther (best seen in color). For most classes, our reconstructions convey the overall shape of the object, which\nis a remarkable achievement given the limited information used as input and the large amount of intra-class variation.IEEE TRANSACTIONS ON PATTERN ANAL YSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014 14\nRoyal Society of London. Series B. Biological Sciences , vol. 200, no.\n1140, pp. 269–294, 1978.",
+            "type": "numeric",
+            "number": "41",
+            "arxiv_id": null
+        },
+        "ref_42": {
+            "text": "R. Mohan and R. Nevatia, “Using perceptual organization to extract 3d\nstructures,” Pattern Analysis and Machine Intelligence, IEEE Transac-\ntions on , vol. 11, no. 11, pp. 1121–1139, 1989.",
+            "type": "numeric",
+            "number": "42",
+            "arxiv_id": null
+        },
+        "ref_43": {
+            "text": "B. Horn, “Shape from shading: A method for obtaining the shape of a\nsmooth opaque object from one view,” PhD thesis, Massachusetts Inst.\nof Technology, 1970.",
+            "type": "numeric",
+            "number": "43",
+            "arxiv_id": null
+        },
+        "ref_44": {
+            "text": "J. T. Barron and J. Malik, “Shape, albedo, and illumination from a single\nimage of an unknown object,” in IEEE International Conference on\nComputer Vision and Pattern Recognition . IEEE, 2012, pp. 334–341.",
+            "type": "numeric",
+            "number": "44",
+            "arxiv_id": null
+        },
+        "ref_45": {
+            "text": "M. Prasad, A. Zisserman, and A. W. Fitzgibbon, “Single view recon-\nstruction of curved surfaces,” in IEEE International Conference on\nComputer Vision and Pattern Recognition , 2006.",
+            "type": "numeric",
+            "number": "45",
+            "arxiv_id": null
+        },
+        "ref_47": {
+            "text": "E. Toppe, C. Nieuwenhuis, and D. Cremers, “Relative volume constraints\nfor single view 3d reconstruction,” in Computer Vision and Pattern\nRecognition (CVPR), 2013 IEEE Conference on . IEEE, 2013, pp. 177–\n184.",
+            "type": "numeric",
+            "number": "47",
+            "arxiv_id": null
+        },
+        "ref_48": {
+            "text": "S. Vicente and L. Agapito, “Balloon shapes: Reconstructing and de-\nforming objects with volume from images,” in 3DTV-Conference, 2013\nInternational Conference on . IEEE, 2013, pp. 223–230.",
+            "type": "numeric",
+            "number": "48",
+            "arxiv_id": null
+        },
+        "ref_49": {
+            "text": "L. Bourdev and J. Malik, “Poselets: Body part detectors trained using\n3d human pose annotations,” in IEEE International Conference on\nComputer Vision , 2009.",
+            "type": "numeric",
+            "number": "49",
+            "arxiv_id": null
+        },
+        "ref_50": {
+            "text": "B. C. Russell and A. Torralba, “Building a database of 3d scenes from\nuser annotations,” in IEEE International Conference on Computer Vision\nand Pattern Recognition , 2009.",
+            "type": "numeric",
+            "number": "50",
+            "arxiv_id": null
+        },
+        "ref_51": {
+            "text": "K. Karsch, Z. Liao, J. Rock, J. T. Barron, and D. Hoiem, “Boundary\ncues for 3d object shape recovery,” in IEEE International Conference\non Computer Vision and Pattern Recognition , 2013.",
+            "type": "numeric",
+            "number": "51",
+            "arxiv_id": null
+        },
+        "ref_52": {
+            "text": "Y . Xiang, R. Mottaghi, and S. Savarese, “Beyond pascal: A benchmark\nfor 3d object detection in the wild,” in IEEE Winter Conference on\nApplications of Computer Vision (WACV) , 2014.",
+            "type": "numeric",
+            "number": "52",
+            "arxiv_id": null
+        },
+        "ref_53": {
+            "text": "M. Marques and J. P. Costeira, “Estimating 3D shape from degenerate\nsequences with missing data,” Computer Vision and Image Understand-\ning, 2008.",
+            "type": "numeric",
+            "number": "53",
+            "arxiv_id": null
+        },
+        "ref_54": {
+            "text": "J. Kim and K. Grauman, “Shape sharing for object segmentation,” in\nEuropean Conference on Computer Vision , 2012.",
+            "type": "numeric",
+            "number": "54",
+            "arxiv_id": null
+        },
+        "ref_55": {
+            "text": "A. Laurentini, “The visual hull concept for silhouette-based image\nunderstanding,” IEEE Transactions on Pattern Analysis and Machine\nIntelligence , 1994.",
+            "type": "numeric",
+            "number": "55",
+            "arxiv_id": null
+        },
+        "ref_56": {
+            "text": "S. M. Seitz, B. Curless, J. Diebel, D. Scharstein, and R. Szeliski, “A\ncomparison and evaluation of multi-view stereo reconstruction algo-\nrithms,” in IEEE International Conference on Computer Vision and\nPattern Recognition . IEEE, 2006.",
+            "type": "numeric",
+            "number": "56",
+            "arxiv_id": null
+        },
+        "ref_57": {
+            "text": "K. Grauman, G. Shakhnarovich, and T. Darrell, “Inferring 3d structure\nwith a statistical image-based shape model,” in IEEE International\nConference on Computer Vision and Pattern Recognition , 2003.",
+            "type": "numeric",
+            "number": "57",
+            "arxiv_id": null
+        },
+        "ref_58": {
+            "text": "D. Cremers and K. Kolev, “Multiview stereo and silhouette consistency\nvia convex functionals over convex domains,” IEEE Transactions on\nPattern Analysis and Machine Intelligence , 2011.",
+            "type": "numeric",
+            "number": "58",
+            "arxiv_id": null
+        },
+        "ref_59": {
+            "text": "S. Vicente, V . Kolmogorov, and C. Rother, “Graph cut based image\nsegmentation with connectivity priors,” IEEE International Conference\non Computer Vision and Pattern Recognition , 2008.",
+            "type": "numeric",
+            "number": "59",
+            "arxiv_id": null
+        },
+        "ref_60": {
+            "text": "J. Shotton, R. Girshick, A. Fitzgibbon, T. Sharp, M. Cook, M. Finoc-\nchio, R. Moore, P. Kohli, A. Criminisi, A. Kipman et al. , “Efﬁcient\nhuman pose estimation from single depth images,” Pattern Analysis and\nMachine Intelligence, IEEE Transactions on , vol. 35, no. 12, pp. 2821–\n2840, 2013.",
+            "type": "numeric",
+            "number": "60",
+            "arxiv_id": null
+        },
+        "ref_61": {
+            "text": "B. Hariharan, P. Arbelaez, L. Bourdev, S. Maji, and J. Malik, “Semantic\ncontours from inverse detectors,” in IEEE International Conference on\nComputer Vision , 2011.",
+            "type": "numeric",
+            "number": "61",
+            "arxiv_id": null
+        },
+        "ref_62": {
+            "text": "V . G. Kim, W. Li, N. J. Mitra, S. Chaudhuri, S. DiVerdi, and\nT. Funkhouser, “Learning Part-based Templates from Large Collections\nof 3D Shapes,” Transactions on Graphics (Proc. of SIGGRAPH) , vol. 32,\nno. 4, 2013.",
+            "type": "numeric",
+            "number": "62",
+            "arxiv_id": null
+        },
+        "ref_63": {
+            "text": "N. Aspert, D. Santa-Cruz, and T. Ebrahimi, “Mesh: Measuring errors\nbetween surfaces using the hausdorff distance,” in ICME , 2002.",
+            "type": "numeric",
+            "number": "63",
+            "arxiv_id": null
+        },
+        "ref_64": {
+            "text": "Private communication with Roozbeh Mottaghi, 2014.",
+            "type": "numeric",
+            "number": "64",
+            "arxiv_id": null
+        },
+        "ref_65": {
+            "text": "Z. Wu, S. Song, A. Khosla, X. Tang, and J. Xiao, “3d shapenets\nfor 2.5d object recognition and next-best-view prediction,” CoRR , vol.\nabs/1406.5670, 2014.",
+            "type": "numeric",
+            "number": "65",
+            "arxiv_id": null
+        },
+        "ref_66": {
+            "text": "N. J. Mitra and M. Pauly, “Shadow art,” in ACM Transactions on\nGraphics , 2009.",
+            "type": "numeric",
+            "number": "66",
+            "arxiv_id": null
+        },
+        "ref_67": {
+            "text": "M. R. Oswald, J. St ¨uhmer, and D. Cremers, “Generalized connectivity\nconstraints for spatio-temporal 3d reconstruction,” in European Confer-\nence on Computer Vision , 2014.",
+            "type": "numeric",
+            "number": "67",
+            "arxiv_id": null
+        },
+        "ref_68": {
+            "text": "D. Hoiem and S. Savarese, Representations and techniques for 3D object\nrecognition and scene interpretation . Morgan & Claypool Publishers,\n2011, vol. 15.",
+            "type": "numeric",
+            "number": "68",
+            "arxiv_id": null
+        },
+        "ref_69": {
+            "text": "M. Sun, H. Su, S. Savarese, and L. Fei-Fei, “A multi-view probabilistic\nmodel for 3d object classes,” in IEEE International Conference on\nComputer Vision and Pattern Recognition , June 2009.\nJo˜ao Carreira received his doctorate from the\nUniversity of Bonn, Germany. His thesis focused\non sampling class-independent object segmen-\ntation proposals using the CPMC algorithm, and\non applying them in object recognition and lo-\ncalization. Systems authored by him and col-\nleagues were winners of all four PASCAL VOC\nSegmentation challenges, 2009-2012. He did\npost-doctoral work at the Institute of Systems\nand Robotics in Coimbra, Portugal and is cur-\nrently with the EECS department, at the Uni-\nversity of California in Berkeley, USA. His research interests lie at the\nintersection of recognition, segmentation, pose estimation and shape\nreconstruction of objects from a single image.\nSara Vicente received her PhD from University\nCollege London, United Kingdom. She was a\npostdoctoral researcher at Queen Mary, Univer-\nsity of London and later at University College\nLondon. She currently works as a research sci-\nentist at Anthropics Technology. Her research\nfocuses on image segmentation and 3D recon-\nstruction of deformable objects from images.\nLourdes Agapito received the BSc degree in\nphysics in 1991 and the PhD degree in 1996\nfrom the Universidad Computense in Madrid,\nSpain. She was then a Marie Curie fellow at\nOxfords Robotics Research Group. She is cur-\nrently a reader in Vision and Imaging Science\nat University College London. In 2008, she was\nawarded an ERC Starting Grant. Her research\nfocuses on the area of 3D reconstruction of non-\nrigid structure from image sequences. She is a\nmember of the IEEE.\nJorge Batista Prof. Jorge Batista received the\nM.Sc. and Ph.D. degree in Electrical Engineer-\ning from the University of Coimbra in 1992 and\n1999, respectively. He joined the Department of\nElectrical Engineering and Computers, Univer-\nsity of Coimbra, Coimbra, Portugal, in 1987 as a\nresearch assistant where he is currently an As-\nsociate Professor with tenure. He has been the\nHead of Department from 2011 to 2013. He is a\nfounding member of the Institute of Systems and\nRobotics (ISR) in Coimbra, where he is a senior\nresearcher and principal investigator of several research projects. His\nresearch interest focus on a wide range of computer vision and pattern\nanalysis related issues, including real-time vision, video surveillance,\nvideo analysis, non-rigid modeling and facial analysis.",
+            "type": "numeric",
+            "number": "69",
+            "arxiv_id": null
+        },
+        "ref_Recognition_2009": {
+            "text": "tions,” in Computer Vision and Pattern Recognition, 2009. CVPR 2009.",
+            "type": "author_year",
+            "key": "Recognition, 2009",
+            "arxiv_id": null
+        },
+        "ref_Science_2014": {
+            "text": "ser. Lecture Notes in Computer Science, 2014, vol. 8695, pp. 583–598. [5] A. Fragkiadaki, M. Salas, P. Arbelaez, and J. Malik, “Grouping-based",
+            "type": "author_year",
+            "key": "Science, 2014",
+            "arxiv_id": null
+        },
+        "ref_Press_2004": {
+            "text": "Vision . Cambridge University Press, 2004.[9] J. Carreira, F. Li, and C. Sminchisescu, “Object Recognition by Sequen-",
+            "type": "author_year",
+            "key": "Press, 2004",
+            "arxiv_id": null
+        },
+        "ref_Press_1990": {
+            "text": "computer: the role of geometric constraints . Mit Press, 1990. [13] D. P. Huttenlocher and S. Ullman, “Object recognition using alignment,”",
+            "type": "author_year",
+            "key": "Press, 1990",
+            "arxiv_id": null
+        },
+        "ref_Technology_1963": {
+            "text": "dissertation, Massachusetts Institute of Technology, 1963. [23] D. G. Lowe, “Three-dimensional object recognition from single two-",
+            "type": "author_year",
+            "key": "Technology, 1963",
+            "arxiv_id": null
+        },
+        "ref_Technology_1970": {
+            "text": "smooth opaque object from one view,” PhD thesis, Massachusetts Inst. of Technology, 1970. [44] J. T. Barron and J. Malik, “Shape, albedo, and illumination from a single",
+            "type": "author_year",
+            "key": "Technology, 1970",
+            "arxiv_id": null
+        },
+        "ref_Conference_2013": {
+            "text": "forming objects with volume from images,” in 3DTV-Conference, 2013",
+            "type": "author_year",
+            "key": "Conference, 2013",
+            "arxiv_id": null
+        },
+        "ref_Mottaghi_2014": {
+            "text": "between surfaces using the hausdorff distance,” in ICME , 2002. [64] Private communication with Roozbeh Mottaghi, 2014. [65] Z. Wu, S. Song, A. Khosla, X. Tang, and J. Xiao, “3d shapenets",
+            "type": "author_year",
+            "key": "Mottaghi, 2014",
+            "arxiv_id": null
+        },
+        "ref_Publishers_2011": {
+            "text": "recognition and scene interpretation . Morgan & Claypool Publishers, 2011, vol. 15. [69] M. Sun, H. Su, S. Savarese, and L. Fei-Fei, “A multi-view probabilistic",
+            "type": "author_year",
+            "key": "Publishers, 2011",
+            "arxiv_id": null
+        },
+        "ref_June_2009": {
+            "text": "Computer Vision and Pattern Recognition , June 2009.",
+            "type": "author_year",
+            "key": "June, 2009",
+            "arxiv_id": null
+        },
+        "ref_In_2008": {
+            "text": "at University College London. In 2008, she was",
+            "type": "author_year",
+            "key": "In, 2008",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "5.1 Sampling shape surrogates\n\nIn datasets as diverse as VOC, it is reasonable to assume that for every instance n there are at least a few shape surrogates, i.e. other instances of the same class that, despite not corresponding to the same physical object, have a similar 3D shape. Finding shape surrogates is not straightforward, however. When the surrogates have very different viewpoint it is difﬁcult to establish that their 3D shape is similar to the shape of the reference object (e.g. that they are true surrogates) because their appearance changes vastly. In visual hull approaches, such as the one we propose, a tension also exists between reconstructing from fewer silhouettes, which may result in a solution with many uncarved voxels, or from a large number of silhouettes which may instead lead to an over-carved or even empty solution, because calibration is not exact and “surrogateness” is only approximate. Here we strike a compromise: we sample groups of three views, where the two surrogates of the reference instance n are selected among those pictured from far apart viewpoints, so as to maximize the number of background voxels carved away (see ﬁg. 4).\n\n3. Note however that most object classes are non-rigid in practice, for example cars can have their doors open, wheels rotate, etc.\n\n4. An idea similar in spirit was proposed for segmentation [54]\n\n5\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nFront wheel Side view Back wheel\n\nFront wheel Back wheel Side view\n\n(a)\n\n(b)\n\nFig. 3: Viewpoint estimate before (a) and after (b) silhouette-based reﬁnement. For both (a) and (b) we show the SfM rigid shape S for the motorbike class from the front and side views. The visible ground truth keypoints are shown in green, the corresponding SfM points are shown in red and the SfM points corresponding to occluded ground truth keypoints are shown in blue. The silhouette is shown in pink. Our viewpoint reﬁnement optimizes for viewpoint estimates where all shape points project inside the object silhouette.\n\nFig. 4: Illustration of our clustering step. Instances which have a viewpoint similar to the principal directions are clustered to- gether. We sample from these clusters to generate informative triplets of exemplars for visual hull computation. The process is repeated multiple times for each target object.\n\nare never chosen as surrogate views. An illustration of this clustering step for the “aeroplanes” class is shown in ﬁg. 4. (3) Sampling We start by selecting two of the three principal directions, with a probability proportional to the number of associated instances. Then, from each of the selected principal directions, we sample one surrogate instance, which together with the reference instance forms a triplet of views.\n\nThree of the classes in the VOC dataset (bottle, dining table and potted plant) have view-dependent keypoints since it is difﬁcult to deﬁne a reference frame for the object [6]. This makes 3D registration ambiguous for all the instances of the class. Instead of sampling surrogate instances, we observed that some of the instances of these classes are approximately rotational symmetric and synthesize the surrogates from the reference instance by rotating it around the axis of symmetry, every 45 degrees. This is obviously a rough approximation for instances that considerably depart from rotational symmetry.\n\nFurthermore, when selecting far apart viewpoints we took inspiration from technical illustration practices, where the goal is to communicate 3D shape as concisely as possible, and it is common to represent the shape by drawing 3D orthographic projections on three orthogonal planes. In a similar vein, we restrict surrogate sampling to be over objects pictured from three orthogonal viewpoints, which we will call principal directions.\n\nOur sampling process has three steps:\n\n(1) Principal direction identiﬁcation We found empirically that a good set of principal directions can be obtained by computing the three PCA components of the set of 3D coordinate vectors of the mean shape S (estimated in the rigid SfM step). The results typically correspond to the top/bottom, left/right and front/back directions.\n\n(2) Clustering instances around the principal directions Instances where the viewpoint difference with respect to a principal direction is smaller than some threshold (15◦ in our implementation) are clustered together 5. All other instances\n\n5. The amount of camera roll is typically low in detection datasets and we did not compensate for it but it may be a good idea in future work.",
+            "section": "introduction",
+            "section_idx": 0,
+            "citations": [
+                "54",
+                "6"
+            ]
+        },
+        {
+            "text": "2.4 Dataset augmentation into 3D\n\nThe goal of populating detection datasets with 3D annotations has been previously considered for the class person [49], using an interactive method to reconstruct a set of body joints. In contrast, we obtain full dense reconstructions for a variety of classes. In a related approach, [50] targeted the problem of automatically bootstrapping 3D scene geometry from 2D annotations on the LabelMe dataset — instead, we focus on objects.\n\n2.2 Data-driven class-based reconstruction\n\nIn this paper we focus on a data-driven method for class- based reconstruction that operates directly on an unordered dataset of images and some associated 2D annotations, without using any 3D data. To the best of our knowledge, there have\n\nRecently and perhaps closest to our approach, Karsch et al. [51] experimented with reconstructing VOC objects, using manual curvature annotations on boundaries but computed 2.5D reconstructions while we focus on the full 3D problem. Even more recently — and concurrently with our original\n\n3\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\npaper — new 3D annotations were added to 12 rigid classes of the PASCAL dataset [52] in a largely manual effort. All instances of these 12 classes were manually associated with one out of a small set of 3D CAD models posed in the correct viewpoint. The goal of the dataset is to provide ground truth viewpoint information, not shape, and the CAD models provide only a very coarse approximation to the rich set of shapes in PASCAL (e.g. about 50% overlap, or roughly just as much as top automatic semantic segmentation systems [10]).\n\n3 PROBLEM FORMULATION\n\nWe assume we are given a set of images depicting different instances of the same object class, which may be very diverse in terms of object scale, location, pose, shape and articula- tion. We make the small simpliﬁcation in this paper of not addressing the problem of reconstructing occluded objects, that are marked as such in PASCAL. Each object instance n has a corresponding binary mask Bn — a ﬁgure-ground segmentation locating the object boundaries in the image — and Ki speciﬁc keypoints for each class i, which are on easily identiﬁable parts of the object, such as “left mirror” for cars or “nose tip” for aeroplanes. Each object instance n is annotated with its visible keypoints, i.e. the set (xn coordinates2. k,yn k) of 2D image\n\nOur goal in this paper is to obtain a dense 3D reconstruction of each of the object instances. It is easy to see that this is a severely underconstrained problem since each image corresponds to a different object instance. Without additional prior knowledge, and if each instance is to be reconstructed independently, an inﬁnite number of reconstructions would be available that could exactly generate the silhouette Bn.\n\nEstimated azimuth for cars.\n\nEstimated elevation for aeroplanes.",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "49",
+                "50",
+                "51",
+                "52",
+                "10"
+            ]
+        },
+        {
+            "text": "3.1 Our data-driven approach\n\nInstead of relying on bottom-up reconstruction methods and performing reconstruction completely independently for each instance, we leverage the information contained in images of other objects from the same category, by building upon the assumption that at least some instances of the same class will have a similar 3D shape. We propose a feedforward strategy with two phases: ﬁrst, camera viewpoints are estimated for all objects using both keypoint and silhouette information; secondly, a sampling-based approach that employs a novel variant of visual hull reconstruction is used to produce dense per-object 3D reconstructions. The details of these two steps will be further explained in the following two sections.\n\n4 CAMERA VIEWPOINT ESTIMATION AND RE- FINEMENT\n\nFig. 2: Results of the camera viewpoint estimation. Our method provides useful insight about viewpoint distribution for the different classes in VOC. Here, we show the histogram of different azimuths for “car” and a few samples of estimated elevation angle for “aeroplane”. Note the signiﬁcant intra-class variation.\n\nviewpoint estimation due to the lack of robustness to noise of specialized non-rigid SfM viewpoint estimates. Simply put, the hope is that the – admittedly ﬂawed – assumption of rigidity acts as a regularizer. The algorithm we adopted models pro- jection using scaled orthographic cameras and requires global point correspondences across the different object instances. In comparison with full perspective cameras, scaled orthographic cameras are considerably easier to model, do not require calibration parameters and are a reasonable approximation for the problem considered.\n\nThe ﬁrst step of our algorithm is to estimate the camera viewpoint for each of the instances using the factorization based rigid structure-from-motion algorithm of Marques and Costeira [53]. Although rigid modeling may appear to be a suboptimal choice at ﬁrst sight, several non-rigid structure- from-motion algorithms make use of a similar strategy in\n\nUsing the annotated keypoints we form an observation matrix for each instance:\n\nYn + Un ()\n\n2. These annotations are publicly available for all the 20 classes in the VOC dataset [6].\n\nwhere n is the object instance and K is the number of annotated keypoints. Some of the entries in this matrix may be unknown if the keypoint is not visible for this instance.\n\n4\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nThe SFM algorithm ﬁnds the 3D shape S, a 3 × K matrix that can be seen as a rough “mean shape” for the N object instances in the class, the motion matrices Mn and the translation vectors Tn, by minimizing the image reprojection error:\n\nN » n=1 2 (2) Wr-[Mn Tr] I: 5 ixK] || p\n\nunder the constraint that MnMT n = (αn)2I2×2 ∀n. This constraint guarantees that matrices Mn correspond to the ﬁrst two rows of a scaled rotation matrix which can be easily converted into a full rotation matrix Rn and scale parameter αn. The SfM algorithm used does not require that all keypoints are visible in all the instances, i.e. it can deal with missing data. We follow [53] and use an iterative method with power factorization to minimize the reprojection error.\n\nFor classes with large intra-class variation or articulation, we manually select a subset of the keypoints to perform rigid SfM. There are two types of classes that follow this behavior: the class boat and animal classes 3. The class boat includes both sailing boats and motor boats and since the sails are not present in the motor boats, we estimate the camera by only considering the keypoints on the hull. Excluding the keypoints corresponding to the sails is crucial for the reﬁnement step detailed in the next section. For animals, which undergo articulation, different instances may have very different poses. For these classes, we assume that the camera viewpoint is deﬁned with respect to the head and torso and exclude the keypoints corresponding to the limbs or wings when performing rigid SFM. For all classes, for robustness, we double the number of instances by adding left-right ﬂipped versions of each image.\n\nthe form:\n\nE(Mn,Tn) =\n\nE(Mn, Tr) = Ss 2 +D(im Tl], ° J) F\n\nunder the constraint MnMT n = (αn)2I2×2. The ﬁrst term of this energy is the reprojection error as in (2) and the second term is deﬁned as:\n\n1 K D (i Tn] ad) =D ([i: ~ vx) = >> C(u*,v\") k=1 (4)",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "53",
+                "6",
+                "53"
+            ]
+        },
+        {
+            "text": "8 CONCLUSION\n\nWe have proposed a novel data-driven methodology for boot- strapping 3D reconstructions of objects in detection datasets, based on a small set of commonly available annotations, namely ﬁgure-ground segmentations and a small set of key- points. Our approach is the ﬁrst to target class-based 3D\n\n10\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nPer-Class Ranking Performance 20° °l Te Random tg 0 ToP-Rankea é 5) | a Best Available (Lower Bound) il ° a 10g ge . 9 £ ran: 5 \"58 6 § 5° . a | M4 fa 2 9 ae gue. Rot pg ef gs SOE PION SK eEtey Fos oe &\n\nReconstruction Error with Number of Proposals : 8 5 57 ul S g | 2 >}|—Random —Top-Ranked —Best Available (Lower Bound) —— 20 5 10 15 Number of Proposals Sampled\n\nReconstruction Error with Clustering Threshold 8 1 ee 75 | Lae EEE etl 7 —all > = 65 Animals —Vehicles Po 4 _— Furniture | 2 30 15 18 2th Clustering Threshold (degrees)\n\nFig. 11: Left: average per class symmetric RMS reconstruction error when considering the top ranked, randomly selected and best available reconstructions for each individual object. Middle: average symmetric RMS reconstruction error over all classes, as a function of the size of the pool of reconstruction proposals. “Random” and “Best available” represent, respectively, upper and lower bounds on ranking error. Right: error as function of the principal direction clustering threshold for different subsets of classes.\n\nreconstruction on a challenging detection dataset, PASCAL VOC, and is demonstrated to achieve very promising perfor- mance. It produces convincing 3D shapes for most categories, handling widely different objects such as animals, vehicles and indoor furniture using the same integrated framework. We believe this paper contributes to the recently renewed interest in 3D modeling in recognition (eg. [68], [69]) and that it will promote progress in this direction since it provides the ﬁrst semi-automatic solution to 3D model acquisition from detection data, which has been a difﬁcult obstacle to research in joint object recognition and reconstruction.\n\n[9]\n\nJ. Carreira, F. Li, and C. Sminchisescu, “Object Recognition by Sequen- tial Figure-Ground Ranking,” International Journal of Computer Vision, 2012.\n\n[10] J. Carreira, R. Caseiro, J. Batista, and C. Sminchisescu, “Semantic segmentation with second-order pooling,” in European Conference on Computer Vision, 2012.\n\n[11] S. Vicente, J. Carreira, L. Agapito, and J. Batista, “Reconstructing pascal voc,” in IEEE International Conference on Computer Vision and Pattern Recognition, 2014.\n\n[12] W. E. L. Grimson, D. P. Huttenlocher et al., Object recognition by computer: the role of geometric constraints. Mit Press, 1990.\n\n[13] D. P. Huttenlocher and S. Ullman, “Object recognition using alignment,” in Proceedings of the 1st International Conference on Computer Vision, 1987, pp. 102–111.",
+            "section": "methodology",
+            "section_idx": 2,
+            "citations": [
+                "68",
+                "69",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13"
+            ]
+        },
+        {
+            "text": "D\n\nwhere C(.,.) is the distance transform map from the ﬁgure- ground segmentation Bn. A point on the mean shape S incurs a penalty if its reprojection, given by (uk,vk), is outside the silhouette and this penalty is proportional to the distance to the silhouette. To minimize this function, we use gradient descent with a projection step into the space of scaled rotation matrices. A similar projection step is used in [53]. Qualitative results of our camera viewpoint estimation can be seen in ﬁg. 2.\n\nThis camera reﬁnement step can also be used to estimate the camera viewpoint of a new test image, by initializing Mn to the identity matrix and Tn to the center of the mask. This allows our method to reconstruct a previously unseen image, the only requirement being that the keypoints are marked or have been detected and that the object is segmented.\n\n5 OBJECT RECONSTRUCTION\n\nAfter jointly estimating the camera viewpoints for all the instances in each class, we reconstruct the 3D shape of all objects using shape information borrowed from other exem- plars in the same class 4.\n\n4.1 Silhouette-based camera reﬁnement\n\nTo obtain the camera pose estimate for a particular instance, the SFM algorithm only uses the keypoints visible in that instance. If some keypoints are self-occluded, and since the shape S is an average shape of all the objects in the class, this may lead to an inaccurate estimate of the camera view- point (see ﬁg. 3 (a)). However, the silhouette provides extra constraints that can be used to reﬁne this initial estimate of the camera viewpoint. In particular, if the estimated shape was the correct one, all the keypoints, even the ones which are not visible, should reproject inside the silhouette. This constraint is not satisﬁed by the initial result of ﬁg. 3 (a), but by including a soft-constraint that encourages all points to reproject inside the silhouette we obtain a better viewpoint estimate as can be seen in ﬁg. 3 (b). We include this constraint as a soft-constraint to account for imprecisions in the shape estimation and keypoint and silhouette annotations.\n\nMore formally, we reﬁne the camera estimate Mn and Tn by ﬁxing the shape S and minimizing an energy function of",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "53"
+            ]
+        },
+        {
+            "text": "6.2 Reconstructing a synthetic PASCAL VOC\n\nWe also performed a quantitative evaluation on synthetic test images with similar segmentations and keypoints as those in VOC. To make results as representative of performance on real data as possible, we reconstruct using only surrogate shapes from VOC. We downloaded 10 meshes for each category from the web, then manually annotated keypoints consistent with those of [6] in 3D and rendered them using 5 different cameras, sampled from the ones estimated on VOC for that class. This resulted in 50 synthetic images per class, each with associated\n\nTABLE 1: Symmetric root mean square error between re- constructed and ground truth 3D models. Lowest errors are displayed in bold. We compare our full model (Full), with severed versions without our proposed camera reﬁnement process (-CRef) and reference silhouette imprinting (-SImp). As baselines we consider a recent single view silhouette-based reconstruction method [46] and the convex hull of the 3D points returned by our rigid structure-from-motion component (SFMc).\n\nsegmentation and visible keypoints, for a total of 1000 test examples.\n\nWe measure the distortion between a reconstruction and a ground truth 3D mesh using, as in the clustering experiment, the symmetric root mean squared error between the two\n\n9\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\n) x % i = ; % Azimuth before refinement * . ‘ + Azimuth after refinement * y+ e é x + + + 5 ge * ke G > oo fy ees oe # 32 ee SES & &\n\n)r| % Elevation before refinement! Z + Elevation after refinement i x 1 * + + * 3} FS «* * ++ iL * ; et ke oe $ ee Re ee ses cre &; & g oo &\n\n' eS eS sx %® Roll before refinement 2 ‘i | + Boll sierrefinement ) 3 * ; * xt ' = + % 2 s+ Fy } Sd fs ees Fr F 8 reo &s ae iS\n\nFig. 9: Viewpoint estimation errors measured using the ground truth cameras from Pascal3D+. We measure the angle between our estimate and the ground truth and report the median angle in degrees for each class. Elevation error is below 10 degrees for all classes, perhaps because most photos are taken from typical human viewpoints (PASCAL is assembled from FLICKR). Azimuth error is slightly higher for classes such as boat and bus, with possible causes being the extreme intra-class shape variation among boats (eg. kayaks, sailboats and cruise ships differ signiﬁcantly) and perspective distortion, frequent in pictures of buses.\n\nmeshes [63]. Let the root mean squared error be:",
+            "section": "results",
+            "section_idx": 1,
+            "citations": [
+                "6",
+                "46",
+                "63"
+            ]
+        },
+        {
+            "text": "7 DISCUSSION\n\nerus(S5\") =r ff alo.sras, a) pes\n\nwhere S and S” are the two meshes we want to compare and d(p,S”) is the distance of a point to a mesh, defined by the Hausdorff distance, i.e. the minimum euclidean distance between point p and any point on the mesh S’. Since this distance is not symmetric we use instead:\n\ne(S,$\") = mazlerms(S,S’),erms(S’,5)] (8)\n\nWe normalize scale using the diagonal length of the bound- ing box of the ground truth 3D model, such that the error is a percentage of this length, and report the average error over all the objects in each category. Table 1 demonstrates the beneﬁts of the different components of our proposed methodology. Since no other existing class reconstruction technique scales to such a large and diverse dataset using simple 2D annotations we compare to two simple baselines: an inﬂation technique originally proposed for silhouette based single-view reconstruction called Puffball [46] and a multiview baseline relying on our rigid SfM. Our method is signiﬁcantly better for most classes, and a visual comparison of resulting reconstructions obtained is available in ﬁg. 12, together with some of the CAD models in the dataset and their renderings.\n\nFig. 11 suggests large gains of our simple ranking approach over random selection but also that there is much to improve with the addition of more advanced features. Fig. 11 also shows the effect of varying the principal direction clustering threshold, which we have set by default to 15: reconstruction quality degrades slowly with looser thresholds. We have ob- served for example that cars tend to be more diamond-shaped if a tight frontal view is not available and instead views 30 or 40 away from the frontal view are used.\n\nWhile our results are encouraging for such a hard problem, there are several challenges that our approach does not address, such as modelling parts/articulation, occlusions and perspec- tive effects. An additional limitation of our method is the use of a single “average shape” for the objects of a class. Although our experiments show that the camera viewpoint estimation step generally provides accurate results, this simpliﬁcation may occasionally lead to incorrect camera pose estimates when the shape of the object instance differs signiﬁcantly from the “average shape”. Modelling subcategories would be a straightforward avenue for boosting the performance of all components - pose estimation, surrogate sampling and ranking. Two possible ways to obtain such subcategory information are: 1) to use image classiﬁers trained on a dataset with ﬁner- grained category information and 2) to divide shapes into subcategories during the reconstruction process and iterate.\n\nAn additional potentially powerful direction for future work is feature learning, in particular to improve the ranking of reconstructions, perhaps using one of the large collections of CAD models available online [65].\n\nFinally, while our use of imprinting when computing visual hulls helps to mitigate the issues of using different object instances as surrogate shapes, this could be combined with other advanced visual hull techniques that explicitly deform the surrogate silhouettes to reduce inconsistencies between the silhouettes [66] or that enforce connectivity of the reconstruc- tion [67].",
+            "section": "discussion",
+            "section_idx": 0,
+            "citations": [
+                "46",
+                "65",
+                "66",
+                "67"
+            ]
+        },
+        {
+            "text": "[60] J. Shotton, R. Girshick, A. Fitzgibbon, T. Sharp, M. Cook, M. Finoc- chio, R. Moore, P. Kohli, A. Criminisi, A. Kipman et al., “Efﬁcient human pose estimation from single depth images,” Pattern Analysis and Machine Intelligence, IEEE Transactions on, vol. 35, no. 12, pp. 2821– 2840, 2013.\n\n[61] B. Hariharan, P. Arbelaez, L. Bourdev, S. Maji, and J. Malik, “Semantic contours from inverse detectors,” in IEEE International Conference on Computer Vision, 2011.\n\n[62] V. G. Kim, W. Li, N. J. Mitra, S. Chaudhuri, S. DiVerdi, and T. Funkhouser, “Learning Part-based Templates from Large Collections of 3D Shapes,” Transactions on Graphics (Proc. of SIGGRAPH), vol. 32, no. 4, 2013.\n\n[63] N. Aspert, D. Santa-Cruz, and T. Ebrahimi, “Mesh: Measuring errors between surfaces using the hausdorff distance,” in ICME, 2002.\n\nJorge Batista Prof. Jorge Batista received the M.Sc. and Ph.D. degree in Electrical Engineer- ing from the University of Coimbra in 1992 and 1999, respectively. He joined the Department of Electrical Engineering and Computers, Univer- sity of Coimbra, Coimbra, Portugal, in 1987 as a research assistant where he is currently an As- sociate Professor with tenure. He has been the Head of Department from 2011 to 2013. He is a founding member of the Institute of Systems and\n\n[64] Private communication with Roozbeh Mottaghi, 2014.\n\n[65] Z. Wu, S. Song, A. Khosla, X. Tang, and J. Xiao, “3d shapenets for 2.5d object recognition and next-best-view prediction,” CoRR, vol. abs/1406.5670, 2014.\n\n[66] N. J. Mitra and M. Pauly, “Shadow art,” in ACM Transactions on Graphics, 2009.\n\nRobotics (ISR) in Coimbra, where he is a senior\n\nresearcher and principal investigator of several research projects. His research interest focus on a wide range of computer vision and pattern analysis related issues, including real-time vision, video surveillance, video analysis, non-rigid modeling and facial analysis.\n\n14",
+            "section": "discussion",
+            "section_idx": 1,
+            "citations": [
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66"
+            ]
+        },
+        {
+            "text": "6\n\n31 Jul 2016\n\n1\n\n0\n\n2\n\nl\n\nu\n\nJ\n\n1\n\n3\n\n] V C . s c [ 2 v 5 6 4 6 0 . 3 0 5 1 : v i X r a\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nLifting Object Detection Datasets into 3D\n\nJo˜ao Carreira*, Sara Vicente*, Lourdes Agapito and Jorge Batista\n\nAbstract—While data has certainly taken the center stage in computer vision in recent years, it can still be difﬁcult to obtain in certain scenarios. In particular, acquiring ground truth 3D shapes of objects pictured in 2D images remains a challenging feat and this has hampered progress in recognition-based object reconstruction from a single image. Here we propose to bypass previous solutions such as 3D scanning or manual design, that scale poorly, and instead populate object category detection datasets semi-automatically with dense, per-object 3D reconstructions, bootstrapped from:(i) class labels, (ii) ground truth ﬁgure-ground segmentations and (iii) a small set of keypoint annotations. Our proposed algorithm ﬁrst estimates camera viewpoint using rigid structure-from-motion and then reconstructs object shapes by optimizing over visual hull proposals guided by loose within-class shape similarity assumptions. The visual hull sampling process attempts to intersect an object’s projection cone with the cones of minimal subsets of other similar objects among those pictured from certain vantage points. We show that our method is able to produce convincing per-object 3D reconstructions and to accurately estimate cameras viewpoints on one of the most challenging existing object-category detection datasets, PASCAL VOC. We hope that our results will re-stimulate interest on joint object recognition and 3D reconstruction from a single image.\n\nIndex Terms—Object reconstruction, structure-from-motion, viewpoint estimation, visual hulls\n\n1 INTRODUCTION\n\nR ECOGNIZING an object’s category and the region it oc- cupies in an image, purely from pixel-level information, is now closer to becoming a reality. Next on the list to infer the object’s 3D surfaces. The availability of large datasets such as PASCAL VOC [1] and Imagenet [2] has paved the way to important advances in object segmentation and recognition over the last few years. Progress has been comparatively slower in the area of object reconstruction from a single image, hindered by the challenge in acquiring the necessary training data — ideally hundreds of thousands of images in uninstrumented settings aligned with their ground truth 3D shapes. One possible way forward, as computer graphics evolves, could be to render the data and learn to reconstruct in an environment that resembles a 3D computer game setting. Alternatively, depth sensors such as Kinect could be employed, but these are not yet fully practical in general settings — e.g. objects far from the camera, or outdoors. A third option would be to build large datasets with objects in videos and use structure-from-motion techniques [3], [4], [5] to recover their shape. is\n\nHere we propose instead to build upon existing, and ex- tremely popular, recognition datasets and to directly recon- struct them aided by available annotations. While our ex-\n\n• J. Carreira is with the Department of Electrical Engineering and Computer Science, University of California at Berkeley, and the Institute of Systems and Robotics, University of Coimbra.\n\nperimental focus will be on PASCAL VOC, our proposed techniques are general and could be applied to any other object detection dataset (e.g. [2]), as long as ground truth class labels, ﬁgure-ground segmentations and a small number of per-class keypoints are available, as is the case for VOC [6] and is illustrated in ﬁg. 1. These types of annotations can nowadays be easily crowdsourced over Mechanical Turk, as they require only a few clicks per image — e.g. a recently unveiled object detection dataset comes with around 2 million object segmentations [7].\n\nFig. 1 illustrates what may be the major difﬁculty in our stated intentions: typically there is drastic intra-class shape variation, which makes previous class-speciﬁc reconstruction approaches based on linear shape models impractical. Instead we propose a multiview reconstruction strategy. Unlike set- tings where multiple calibrated images of the same object are available [8], detection datasets are composed of uncalibrated images of different instances of the same class of objects (most often assembled from images available on the web). We bypass the problem of establishing point correspondences between different objects, which is still unmanageable with current technology, by relying on a very small set of consistent per-class ground truth keypoint matches, from which scaled orthographic camera viewpoints are bootstrapped. We also bypass segmentation, another yet incompletely solved vision problem despite much recent progress [9], [10], and rely on ground truth silhouettes as input to our dense reconstruction engine which is based on a novel visual hull based algorithm.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "2",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ]
+        },
+        {
+            "text": "E-mail: carreira@eecs.berkeley.edu\n\n• S. Vicente is with Anthropics. E-mail: sara@anthropics.co.uk\n\n• L. Agapito is with University College London. E-mail: l.agapito@cs.ucl.ac.uk\n\n• J. Batista is with the Institute of Systems and Robotics, University of Coimbra.\n\nE-mail: batista@isr.uc.pt\n\n*First two authors contributed equally.\n\nVisual hull computation has been shown to be a simple but powerful reconstruction technique when many diverse views of the same object are available. We adapt it to operate on category detection imagery proposing a novel formulation that we denote imprinted visual hull reconstruction. The basis of our algorithm is to embed visual hull reconstruction within a sampling-based approach. We propose a set of candidate\n\n1\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nBoats\n\nFig. 1: Example input images to our algorithm for four different classes – -aeroplanes, birds, boats and cars — of the PASCAL VOC dataset and their associated ﬁgure-ground segmentations and keypoints. Modern detection datasets such as VOC exhibit signiﬁcant intra-class variability, making it challenging for traditional approaches to class-speciﬁc object reconstruction based on linear non-rigid shape models.\n\nreconstructions for each input image by running the visual hull algorithm multiple times using the current image and two additional images sampled from the dataset. We prioritize viewpoints that are known to best expose the 3D shape of most objects. Finally, we select the most consistent reconstruc- tion amongst the proposed candidates by maximizing intra- category similarity.\n\nOur contributions span different areas of computer vision:\n\n• The recognition problem: a ﬁrst attempt to semi- automatically augment object detection datasets, here instantiated on PASCAL VOC, with dense per-object 3D geometry without requiring annotations beyond those readily available online.\n\n• The reconstruction problem: we propose a new data- driven method for class-based 3D reconstruction that relies only on 2D information, such as ﬁgure-ground segmentations and a few keypoint annotations.\n\nThis paper extends the original conference work [11] with additional visualizations and many new experiments: we present a direct evaluation of viewpoint estimation, a new analysis of the reconstructed shapes on PASCAL VOC and studies on the inﬂuence of the main parameters of our algorithm on the results. The full source code of our algorithm, which we call carvi as in ”carving”, and our synthetic dataset are freely available online1.\n\nof view-based approaches was their ﬂexibility: collecting a few example images of the target objects and annotating their bounding boxes or 2D keypoint locations became all the manual labor required to build a recognition system, averting the need for cumbersome manual 3D design or special instru- mentation (3D scanners). This 2D data-driven approach made it possible to attack harder problems such as category-level object recognition. Model-based recognition held important advantages, nevertheless [17]: modeling the 3D geometry of an object enabled arbitrary viewpoints and occlusion patterns to be rendered and recognized, and it also facilitated higher-level reasoning about interactions between objects and a scene.\n\nWhile the popularity of model-based recognition was falling, interest in multiview 3D reconstruction was rising, powered by breakthroughs in afﬁne structure-from-motion [18], [19], [20] and the adoption of projective geometry [21]. Multiview reconstruction has since been largely solved in the rigid case [8], as calibration parameters and correspondences can be reliably estimated and the problem reduces to a well- understood geometric optimization problem. In this paper we are interested in the harder problem of class-based reconstruc- tion, where the goal is to reconstruct different objects from the same category, each pictured in a single image. This problem will be the focus of the rest of our literature review in this section.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "11",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "8"
+            ]
+        },
+        {
+            "text": "2 RELATED WORK\n\nFormerly a dominant paradigm, model-based recognition, which reasoned jointly about object identity and 3D geometry [12], [13], [14], was permanently upstaged in the 1990’s by a ﬂurry of view-based approaches [15], [16]. The main appeal\n\n{hup:/Wwww.ist-ue.p/~joaoluis/earvi\n\n1. http://www.isr.uc.pt/∼joaoluis/carvi\n\n2.1 Class-based reconstruction with 3D data\n\nMost class-based reconstruction methods make use of 3D data in their pipeline which provides prior 3D information about the shape of the objects in the class.\n\n2\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\n2.1.1 Reconstruction as prototype selection and align- ment\n\nIn certain cases a precise 3D model of the target object is known [22], [23] and the problem can be seen as a special case of class-based reconstruction that focuses on reconstructing a speciﬁc instance of the class. The goal reduces then to locate and estimate the viewpoint of the object instance in the image. This problem has traditionally attracted much attention in computer vision and is currently going through a revival due to the increased availability of accurate 3D models for many objects and better feature extraction technology [24].\n\nOther methods rely on a dataset of 3D shapes and auto- matically choose and align the one that best ﬁts the object in the image [25]. To account for differences between the 3D exemplars and the object depicted, Su and Guibas [26] choose a few exemplars that appear to be similar to the depicted shape and combine them to produce a single depth map.\n\nonly been two previous attempts [37], [38] at tackling the problem in a purely data-driven fashion. These two approaches build upon traditional non-rigid structure-from-motion meth- ods [39], originally developed for reconstruction from video, and either produce sparse reconstructions [37] or have only been demonstrated on simple classes such as ﬂower petals and clown-ﬁsh, while requiring complex manual annotations [38].\n\nOur method differs from the above in two important aspects: (1) we require only a small set of keypoint correspondences across images and these are not the only points we reconstruct; instead we reconstruct dense 3D models of the objects, and (2) we do not build a morphable model for the class. Instead, our aim is to reconstruct every object instance, using “borrowed” shape information from a small number of similar instances seen from different viewpoints. This makes our method appli- cable to classes with large intra-class variation as those in the VOC dataset.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "37",
+                "38",
+                "39",
+                "37",
+                "38"
+            ]
+        },
+        {
+            "text": "2.1.2 Reconstruction as patch classiﬁcation\n\nHassner and Basri [27] performed class-based single-view reconstruction using also 3D training data but without building a parametric model for the class. Instead, their model searches the training set for patches similar to those in the test im- age, then transfers the associated depth information. Related methods, but employing parametric classiﬁers, have also been successfully used for scene reconstruction from a single image [28], [29], [30].\n\n2.1.3 Reconstruction using morphable models\n\nWhen multiple 3D shapes corresponding to different instances of the same class are available, they can be used to build a morphable model for the 3D class, that can then generalize and be ﬁt to unseen instances of the class. Morphable models are low-dimensional parametric models that have been used to represent the shape of many object classes. They can be built from 3D scans of different instances of the class, e.g. the face model in [31] and the human body model in [32], or using 3D meshes obtained from shape repositories, such as Google Sketchup as in [33].\n\nThe trained morphable model can then be used in a variety of tasks: (1) to reconstruct from a single image, usually with some user interaction to initialize the viewpoint [31], (2) as a prior for reconstruction from multiple images [34] or from a depth map [35], or (3) for performing object detection and pose estimation [33] in a single image. One factor that limits the applicability of these models is the need for 3D training data. In order to partially overcome this issue, [36] proposed a hybrid method that uses a single 3D shape together with 2D information in order to build a morphable model. The system was demonstrated on classes with limited intra-class shape variability such as dolphins or pigeons.\n\n2.3 Bottom-up reconstruction\n\nMore general object reconstruction approaches have been devised, that do not require any class information, tracing back to classic works by Binford, Marr and others [40], [41], [42]. Methods such as shape from shading (SfS) [43] hold great promise but have so far been applied only in very restricted settings as they make strong assumptions about global illu- mination conditions and the reﬂective properties of the object. Recently SIRFS [44] went one step beyond traditional SfS and aimed to recover not only the shape and shading of an object but also reﬂectance and incident illumination, all from a single image.\n\nAnother family of approaches attempts to compute shape from a single silhouette [45], [46], [47], [48]. For example [45] employed the representation of geometric images to suc- cessfully reconstruct simple shapes symmetric with respect to the image plane, but required large amounts of user interaction for more complex objects. A similar principle of symmetry with respect to the image plane is the basis of [47], that focused on including shading information and improving the user experience. The same symmetry principle was also used, albeit more lightly, in [48] where the focus was on coping with deformations.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "31",
+                "34",
+                "35",
+                "33",
+                "36",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "45",
+                "47",
+                "48"
+            ]
+        },
+        {
+            "text": "5.2 Imprinted visual hull reconstruction\n\nRecovering the approximate shape of an object from silhou- ettes seen from different camera viewpoints can be done by ﬁnding the visual hull of the shape [55], the reconstruction with maximum volume among all of those that reproject inside all the different silhouettes. Visual hull reconstruction is a frequent ﬁrst step in multi-view stereo [56], providing an initial shape that is then reﬁned using photo-consistency. Existing vi- sual hull methods assume that the different silhouettes project from the same physical 3D object [57]. This is in contrast with our scenario where images of different objects are considered. Visual hull reconstruction is known to be sensitive to errors in the segmentation and in the viewpoint estimate and it is clear that such sources of noise are very present in our framework, and can lead to overcarving if handled naively.\n\nA clear inefﬁciency of using the standard visual hull al- gorithm in our setting is that there is no guarantee that the visual hull is silhouette-consistent with the reference instance n, i.e. that for all the foreground pixels in the mask Bn there\n\n6\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nFig. 6: An example image where imprinting improves reconstruction signiﬁcantly. In the middle, without imprinting, the wings of the reference bird are not reconstructed because it is paired with surrogate shapes having their wings closed. In the reconstruction shown on the right, imprinting ﬁlls in wings so as to satisfy silhouette consistency with the reference bird - shown overlaid in green on the left.\n\n“Sak, Sf\n\nFig. 5: Illustration of the imprinted visual hull reconstruction method, when sampling two different triplets corresponding to the same reference instance (in white). The reconstructions are obtained by intersecting the three instances shown and their left-right ﬂipped versions.\n\nwill be an active voxel reprojecting on them. This happens because the algorithm trusts equally all silhouettes. Here we propose a variation of the original formulation that does not have this problem, which we denote imprinted visual hull reconstruction. We will use a volumetric representation of shape and formulate imprinted visual hull reconstruction as a binary labelling problem. Let T be the set of instances cor- responding to a sampled triplet and V be a set of voxels. The goal is to ﬁnd a binary labelling L = {lv : v ∈ V,lv ∈ {0,1}} such that lv = 1 if voxel v is inside the shape, and lv = 0 otherwise. Let Cm(.) be a signed distance function such that Cm(v) < 0 if voxel v is inside the camera cone of instance m, and let ¯C(v) = maxm∈T Cm(v) be the largest signed distance value over all the cameras, for each voxel v. Visual hull reconstruction can be formulated as the minimization of\n\nthe energy:\n\nE(L) = lv ¯C(v) v∈V (5)\n\nTo enforce silhouette consistency with the reference mask Bn (imprinting), we need to guarantee that all the rays cast from the foreground pixels of Bn intersect with an interior voxel. Let Rp be the set of voxels that intersect with the ray corresponding to pixel p. Imprinting is then enforced by minimizing energy (5) under the following constraints:\n\nlv ≥ 1 ∀ p ∈ Foreground(Bn). v∈Rp (6)\n\nSimilar constraints have been previously used for multi-view stereo [58], where they were enforced equally for all the images. Energy (5) can be minimized exactly under constraint v = 1 if and only if ¯C(v) < 0 or if (6), by simply setting l∗ ¯C(u). Basically, this energy has a prior ∃p,v = argminu∈Rp for thin structures, in depth. It promotes the construction of a thin layer in depth that ﬁlls in the reference mask and is positioned so as to minimize the distance to all considered masks. This is a sensible prior in many cases, because thin surfaces are likely to be carved away using visual hulls, for example sails of boats, bird wings, chair legs, etc. In a few cases, however, it is not ideal, most notoriously when masks are mismatched due to perspective effects in buses and trains (e.g. see ﬁg. 13).\n\nWe chose to formulate our reconstruction algorithm as a labelling problem, to motivate future extensions such as adding pairwise constraints between voxels or connectivity priors [59]. An example case where imprinting is particularly useful is the bird in ﬁg. 6.",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "55",
+                "56",
+                "57",
+                "58",
+                "59"
+            ]
+        },
+        {
+            "text": "5.3 Reconstruction selection\n\nOnce all reconstruction proposals have been computed based on different sampled triplets, the ﬁnal step is to choose the best reconstruction for the reference instance. Here we propose a selection criterion that follows a simple observation: recon- structions should be similar to the average shape of their object\n\n7\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\ndirections\n\nFig. 7: Average mask for each of the principal directions for the car and motorbike classes, as well as the convex hull of the 3D keypoints obtained with SFM. These average masks are used when ranking the reconstructions for a single instance. Note that for the class car, there is no instance associated with the top-bottom axis and for motorbike there is only one instance.\n\nWe reconstructed all the objects and show two example outputs from each class in ﬁg. 13. We observe that surpris- ingly accurate reconstructions are obtained for most classes, with some apparent difﬁculties for “dining table”, “sofa” and “train”. The problems with “dining table” can be explained by there being only 13 exemplars marked as unoccluded, which makes camera viewpoint estimation frail. “Sofa” has a strong concavity which makes visual-hull reconstruction hard and would beneﬁt from stereo-based post-processing, which we leave for future work. “Train” is a very difﬁcult class to reconstruct in general: different trains may have a different number of carriages, there are strong perspective effects and it is articulated. Finally, sometimes our reconstructions of animals have either fewer or more limbs than in the image, and certain reconstructions have disconnected components.\n\nclass. Our selection procedure ﬁrst computes an average mask for each of the principal directions. This is done by aligning the masks of all the instances in each principal direction cluster and averaging them. Afterwards, each reconstruction proposal is projected onto a plane perpendicular to each principal direction and the difference between this projection and the average mask associated with that direction is measured. The ﬁnal score is the sum of the three differences, one for each direction. The average masks for each principal direction for two classes are shown in ﬁg. 7.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": []
+        },
+        {
+            "text": "6 EXPERIMENTS\n\nOur main goals in terms of experiments were to evaluate the accuracy of 1) viewpoint estimation and 2) shape reconstruc- tion. We focused on the PASCAL VOC dataset because it is still the most popular object detection dataset and the anno- tations that our algorithm uses as input are already publicly available. In work published concurrently with our original publication [11], human provided viewpoint annotations have been gathered for PASCAL VOC [52]. This allows us to evaluate the camera viewpoint estimation. Regarding the shape reconstruction, in the absence of accurate ground truth data and considering the simplicity of our inputs (keypoints and ﬁgure-ground segmentation) 6 we rely on a synthetic dataset, which we hold as sufﬁciently realistic.\n\nIn all experiments, we sampled 20 reconstructions of each reference object instance and found our algorithm to be very efﬁcient: it took just 7 hours to reconstruct VOC on a 12-core computer, with the camera reﬁnement algorithm taking around 5 hours.\n\nSimple shape analysis. Reconstruction of image collections, as pursued in this paper, holds the potential to greatly extend the domain of powerful shape analysis techniques developed in the graphics community [62], that have however been mostly applied to collections of CAD models. Here, we made one small step in this direction and experimented with clustering our reconstructions on PASCAL VOC. For each class we ﬁrst computed a distance matrix between all instances (using the symmetric mesh distance from [63]), then clustered each class into 5 clusters using the K-medoids algorithm. We show the resulting prototypes (medoids) for each cluster in ﬁg. 8, ordered by the number of elements assigned to that cluster, which reﬂects how frequently each type of shape appears in the dataset.\n\nViewpoint evaluation using Pascal3D+ ground truth cam- eras. Recently, Xiang et. al. [52] augmented 12 of the object classes in the PASCAL dataset with human-provided 3D information – the Pascal3D+ dataset. To construct this dataset, for each object, a human ﬁrst selected the 3D CAD model most similar to it from a small set of options (a total of 70 CAD models for the 12 classes were used), then manually oriented and aligned it with the image. The viewpoint is then reﬁned by optimizing the projection of ground truth keypoints in the 3D model to ground truth keypoints in the image.",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "11",
+                "52",
+                "62",
+                "63",
+                "52"
+            ]
+        },
+        {
+            "text": "6.1 Reconstructing PASCAL VOC\n\nWe consider the subset of 9,087 fully visible objects in 5,363 images from the 20,775 objects and 10,803 images available in the PASCAL VOC 2012 training data and use the publicly available keypoints and ﬁgure-ground segmentations [61]. VOC has 20 classes, including highly articulated ones (dogs, cats, people), vehicles (cars, trains, bicycles) and indoor objects (dining tables, potted plants) in realistic images drawn from FLICKR. Amongst these, fewer than 1% have focal lengths in their EXIF metadata, which we ignored.\n\n6. Synthetic datasets were also successfully used in Kinect [60], where the inputs can also be rendered realistically (e.g. depth maps).\n\nWe use the Pascal3D+ dataset to evaluate our camera view- point estimation algorithm detailed in section 4. In Pascal3D+ the annotations for each object contain the camera’s azimuth, elevation and camera roll angles which we compare to our estimates. We report results for 10 of the annotated classes (we exclude classes ”bottle” and ”dining table” because the keypoints we experimented with [6] for both classes are view- dependent).\n\nThe results are shown in ﬁg. 9 and are in most cases lower than 10◦, which is the precision of the ground truth annotations of Pascal3D+ [64]. We measure the angle error in degrees and report the median for each class. The results show that our method is effective in estimating the viewpoint\n\n8\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nFig. 8: Clusters of boat, chair and car shapes, ordered from most frequent (red) to least frequent (yellow). The results agree with observation, namely SUV-like shapes and large sailboats (in yellow) are more rare than hatchbacks and something resembling a ﬂat ﬁshing boat (in red).\n\nFig. 10: Viewpoint estimation failure cases. The ﬁrst row is the input image, the second row the ground truth viewpoint in the Pascal3D+ dataset, displayed using the 3D CAD model associated with that image and the third row our viewpoint estimate using the same CAD model. Our viewpoint estimation algorithm is sometimes less accurate for images showing large perspective effects (ﬁrst column), for instances very different from the class average (second and third columns) and in the presence of articulation (last column).\n\naeroplane bicycle bird Full 3.58 4.30 9.98 -CRef 4.94 3.26 10.92 -SImp 3.95 4.75 10.34 [46] 9.64 10.51 8.76 SFMc 5.79 6.56 12.01 boat bottle bus car 5.91 8.09 6.45 3.04 6.78 10.77 6.10 6.33 6.05 8.53 6.49 3.10 8.81 6.25 11.02 11.07 6.52 12.13 7.34 3.22 cat chair cow diningtable 6.98 5.36 5.44 8.97 7.57 5.73 5.24 12.57 7.49 6.06 5.83 14.30 11.39 8.13 9.17 8.67 9.61 7.37 7.50 9.52 dog horse motorbike person pottedplant sheep sofa train tv/monitor Mean 7.08 6.05 4.12 7.35 7.72 7.18 6.11 15.73 9.73 6.96 8.38 7.05 4.24 7.95 8.15 7.15 6.24 20.55 10.45 8.01 7.19 6.38 4.16 7.55 7.99 7.66 6.31 16.19 10.28 7.53 11.61 6.90 9.24 9.14 7.58 8.77 8.06 17.01 9.67 9.57 9.91 7.41 5.32 19.46 17.86 7.16 5.75 17.47 10.08 9.40\n\nfor most objects in all classes. It also shows that our reﬁnement step detailed in section 4.1 consistently outperforms the initial estimate using rigid SFM. In ﬁg. 10 we show typical failure cases of viewpoint estimation: large perspective effects, large intra-class variation and articulations.",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "61",
+                "60",
+                "6",
+                "64",
+                "46"
+            ]
+        },
+        {
+            "text": "ACKNOWLEDGMENTS\n\nThis work was supported by FCT grants PTDC/EEA- CRO/122812/2010 and SFRH/BPD/84194/2012, by the Euro- pean Research Council under the ERC Starting Grant agree- ment 204871-HUMANIS. It was also also partly supported by the SecondHands project, funded from the European Unions Horizon 2020 Research and Innovation programme under grant agreement No 643950.\n\n[14] D. G. Lowe, “Three-dimensional object recognition from single two- dimensional images,” Artiﬁcial intelligence, vol. 31, no. 3, pp. 355–395, 1987.\n\n[15] M. Turk and A. Pentland, “Eigenfaces for recognition,” Journal of cognitive neuroscience, vol. 3, no. 1, pp. 71–86, 1991.\n\n[16] H. Murase and S. K. Nayar, “Visual learning and recognition of 3- d objects from appearance,” International journal of computer vision, vol. 14, no. 1, pp. 5–24, 1995.\n\n[17] J. L. Mundy, “Object recognition in the geometric era: A retrospective,” in Toward Category-Level Object Recognition, 2006.\n\n[18] S. Ullman, “The interpretation of structure from motion,” Proceedings of the Royal Society of London. Series B. Biological Sciences, vol. 203, no. 1153, pp. 405–426, 1979.\n\nREFERENCES\n\n[19] C. Tomasi and T. Kanade, “Shape and motion from image streams under orthography: a factorization method,” International Journal of Computer Vision, vol. 9, no. 2, pp. 137–154, 1992.\n\n[1] M. Everingham, L. Van Gool, C. K. I. Williams, J. Winn, and A. Zisser- man, “The pascal visual object classes (voc) challenge,” International Journal of Computer Vision, 2010.\n\n[2] J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li, and L. Fei-Fei, “ImageNet: A Large-Scale Hierarchical Image Database,” in IEEE International Conference on Computer Vision and Pattern Recognition, 2009.\n\n[20] J. J. Koenderink, A. J. Van Doorn et al., “Afﬁne structure from motion,” JOSA A, vol. 8, no. 2, pp. 377–385, 1991.\n\n[21] O. Faugeras, Three-dimensional computer vision: a geometric viewpoint. MIT press, 1993.\n\n[22] L. G. Roberts, “Machine perception of three-dimensional solids,” Ph.D. dissertation, Massachusetts Institute of Technology, 1963.\n\n[3] M. Paladini, A. Del Bue, M. Stosic, M. Dodig, J. Xavier, and L. Agapito, “Factorization for non-rigid and articulated structure using metric projec- tions,” in Computer Vision and Pattern Recognition, 2009. CVPR 2009. IEEE Conference on. IEEE, 2009, pp. 2898–2905.\n\n[4] C. Russell, R. Yu, and L. Agapito, “Video pop-up: Monocular 3d reconstruction of dynamic scenes,” in Computer Vision ECCV 2014, ser. Lecture Notes in Computer Science, 2014, vol. 8695, pp. 583–598.\n\n[5] A. Fragkiadaki, M. Salas, P. Arbelaez, and J. Malik, “Grouping-based low-rank video completion and 3d reconstruction,” in Advances in Neural Information Processing Systems, 2014.\n\n[6] T. Brox, L. Bourdev, S. Maji, and J. Malik, “Object segmentation by alignment of poselet activations to image contours,” in IEEE Interna- tional Conference on Computer Vision and Pattern Recognition, 2011.\n\n[7] T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Doll´ar, and C. L. Zitnick, “Microsoft coco: Common objects in context,” arXiv preprint arXiv:1405.0312, 2014.\n\n[23] D. G. Lowe, “Three-dimensional object recognition from single two- dimensional images,” Artif. Intell., 1987.\n\n[24] J. J. Lim, H. Pirsiavash, and A. Torralba, “Parsing ikea objects: Fine pose estimation,” in IEEE International Conference on Computer Vision. IEEE, 2013, pp. 2992–2999.\n\n[25] M. Aubry, D. Maturana, A. Efros, B. Russell, and J. Sivic, “Seeing 3d chairs: exemplar part-based 2d-3d alignment using a large dataset of cad models,” in IEEE International Conference on Computer Vision and Pattern Recognition, 2014.\n\n[26] H. Su, Q. Huang, N. Mitra, Y. Li, and L. Guibas, “Estimating image depth using shape collection,” Transaction of Graphics, no. Special Issue of SIGGRAPH 2014, 2014.\n\n[27] T. Hassner and R. Basri, “Example based 3d reconstruction from single 2d images,” in IEEE CVPR Workshop, 2006.\n\n[28] A. Saxena, S. H. Chung, and A. Y. Ng, “3-d depth reconstruction from a single still image,” International Journal of Computer Vision, 2008.\n\n[8] R. I. Hartley and A. Zisserman, Multiple View Geometry in Computer Vision. Cambridge University Press, 2004.\n\n[29] D. Hoiem, A. A. Efros, and M. Hebert, “Geometric context from a single image,” IEEE International Conference on Computer Vision, 2005.\n\n11\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "1",
+                "2",
+                "20",
+                "21",
+                "22",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "8",
+                "29"
+            ]
+        },
+        {
+            "text": "(46) Image view Image view Top view ~S Top view\n\nSFMc\n\nOur result\n\nGT mesh Input Top view Image view We +N SAR TEY ac CORORER eS eSO TE e=\n\nTop view\n\nImage view\n\n|\n\n=\n\n&\n\nQe ANH\n\nFig. 12: Original and reconstructed shapes (synthetic dataset). Blue means closer to the camera, red means farther (best seen in color). The ﬁrst two columns show the camera and top views of a CAD model from the synthetic dataset. The rendered mask and keypoints are shown in the third column and these are the sole inputs to our algorithm. The remaining columns show results of our method and two baselines, Puffball [46] and a convex hull approach which generates a mesh directly from the output of our rigid structure-from-motion component.\n\n[30] L. Ladicky, J. Shi, and M. Pollefeys, “Pulling things out of perspective,” in Computer Vision and Pattern Recognition (CVPR), 2014 IEEE Conference on. IEEE, 2014, pp. 89–96.\n\n[31] V. Blanz and T. Vetter, “A morphable model for the synthesis of 3d faces,” in Proceedings of the 26th annual conference on Computer graphics and interactive techniques, 1999.\n\n[32] D. Anguelov, P. Srinivasan, D. Koller, S. Thrun, J. Rodgers, and J. Davis, “Scape: shape completion and animation of people,” in ACM Trans. Graph., 2005.\n\n[33] M. Zia, M. Stark, B. Schiele, and K. Schindler, “Detailed 3d repre- sentations for object recognition and modeling,” IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.\n\n[34] S. Y. Bao, M. Chandraker, Y. Lin, and S. Savarese, “Dense object reconstruction with semantic priors,” in Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on. IEEE, 2013, pp. 1264– 1271.\n\nComputer Vision and Pattern Recognition, 2013.\n\n[36] T. J. Cashman and A. W. Fitzgibbon, “What shape are dolphins? building 3d morphable models from 2d images,” IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.\n\n[37] S. Zhu, L. Zhang, and B. Smith, “Model evolution: An incremental approach to non-rigid structure from motion.” in IEEE International Conference on Computer Vision and Pattern Recognition, 2010.\n\n[38] M. Prasad, A. Fitzgibbon, A. Zisserman, and L. Van Gool, “Finding nemo: Deformable object class modelling using curve matching,” in IEEE International Conference on Computer Vision and Pattern Recog- nition, 2010.\n\n[39] C. Bregler, A. Hertzmann, and H. Biermann, “Recovering non-rigid 3D shape from image streams.” in IEEE International Conference on Computer Vision and Pattern Recognition, 2000.\n\n[40] G. J. Agin and T. O. Binford, “Computer description of curved objects,” Computers, IEEE Transactions on, vol. 100, no. 4, pp. 439–449, 1976.\n\n[35] A. Dame, V. A. Prisacariu, C. Y. Ren, and I. Reid, “Dense reconstruction using 3d object shape priors,” in IEEE International Conference on\n\n[41] D. Marr and H. K. Nishihara, “Representation and recognition of the spatial organization of three-dimensional shapes,” Proceedings of the\n\n12\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nx\n\na rae B4 Pe Tv eH ane) Bor hi4 BL Pex~ kage Isai",
+            "section": "other",
+            "section_idx": 9,
+            "citations": [
+                "46",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "35",
+                "41"
+            ]
+        },
+        {
+            "text": "BOF eee\n\nSeu h/IPRHT~Si PG HM—~SBAQ AT SPGIC-~aX\n\nie ie\n\ni ye L\n\nFig. 13: Examples of our reconstructions for all 20 PASCAL VOC categories. For each object we show the original image, the original image with the reconstruction overlaid and two different viewpoint of our reconstruction. Blue is closer to the camera, red is farther (best seen in color). For most classes, our reconstructions convey the overall shape of the object, which is a remarkable achievement given the limited information used as input and the large amount of intra-class variation.\n\n13\n\nIEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE (PAMI), SUBMITTED OCTOBER 2014\n\nRoyal Society of London. Series B. Biological Sciences, vol. 200, no. 1140, pp. 269–294, 1978.\n\n[42] R. Mohan and R. Nevatia, “Using perceptual organization to extract 3d structures,” Pattern Analysis and Machine Intelligence, IEEE Transac- tions on, vol. 11, no. 11, pp. 1121–1139, 1989.\n\n[43] B. Horn, “Shape from shading: A method for obtaining the shape of a smooth opaque object from one view,” PhD thesis, Massachusetts Inst. of Technology, 1970.\n\n[44] J. T. Barron and J. Malik, “Shape, albedo, and illumination from a single image of an unknown object,” in IEEE International Conference on Computer Vision and Pattern Recognition. IEEE, 2012, pp. 334–341.\n\n[67] M. R. Oswald, J. St¨uhmer, and D. Cremers, “Generalized connectivity constraints for spatio-temporal 3d reconstruction,” in European Confer- ence on Computer Vision, 2014.\n\n[68] D. Hoiem and S. Savarese, Representations and techniques for 3D object recognition and scene interpretation. Morgan & Claypool Publishers, 2011, vol. 15.\n\n[69] M. Sun, H. Su, S. Savarese, and L. Fei-Fei, “A multi-view probabilistic model for 3d object classes,” in IEEE International Conference on Computer Vision and Pattern Recognition, June 2009.\n\n[45] M. Prasad, A. Zisserman, and A. W. Fitzgibbon, “Single view recon- struction of curved surfaces,” in IEEE International Conference on Computer Vision and Pattern Recognition, 2006.\n\n[46] N. R. Twarog, M. F. Tappen, and E. H. Adelson, “Playing with puffball: simple scale-invariant inﬂation for use in vision and graphics,” in ACM Symp. on Applied Perception, 2012.\n\n[47] E. Toppe, C. Nieuwenhuis, and D. Cremers, “Relative volume constraints for single view 3d reconstruction,” in Computer Vision and Pattern Recognition (CVPR), 2013 IEEE Conference on. IEEE, 2013, pp. 177– 184.\n\n[48] S. Vicente and L. Agapito, “Balloon shapes: Reconstructing and de- forming objects with volume from images,” in 3DTV-Conference, 2013 International Conference on. IEEE, 2013, pp. 223–230.\n\nJo˜ao Carreira received his doctorate from the University of Bonn, Germany. His thesis focused on sampling class-independent object segmen- tation proposals using the CPMC algorithm, and on applying them in object recognition and lo- calization. Systems authored by him and col- leagues were winners of all four PASCAL VOC Segmentation challenges, 2009-2012. He did post-doctoral work at the Institute of Systems and Robotics in Coimbra, Portugal and is cur- rently with the EECS department, at the Uni-\n\n[49] L. Bourdev and J. Malik, “Poselets: Body part detectors trained using 3d human pose annotations,” in IEEE International Conference on Computer Vision, 2009.\n\n[50] B. C. Russell and A. Torralba, “Building a database of 3d scenes from user annotations,” in IEEE International Conference on Computer Vision and Pattern Recognition, 2009.\n\nversity of California in Berkeley, USA. His research interests lie at the intersection of recognition, segmentation, pose estimation and shape reconstruction of objects from a single image.\n\n[51] K. Karsch, Z. Liao, J. Rock, J. T. Barron, and D. Hoiem, “Boundary cues for 3d object shape recovery,” in IEEE International Conference on Computer Vision and Pattern Recognition, 2013.\n\n[52] Y. Xiang, R. Mottaghi, and S. Savarese, “Beyond pascal: A benchmark for 3d object detection in the wild,” in IEEE Winter Conference on Applications of Computer Vision (WACV), 2014.\n\n[53] M. Marques and J. P. Costeira, “Estimating 3D shape from degenerate sequences with missing data,” Computer Vision and Image Understand- ing, 2008.\n\n[54] J. Kim and K. Grauman, “Shape sharing for object segmentation,” in European Conference on Computer Vision, 2012.\n\nSara Vicente received her PhD from University College London, United Kingdom. She was a postdoctoral researcher at Queen Mary, Univer- sity of London and later at University College London. She currently works as a research sci- entist at Anthropics Technology. Her research focuses on image segmentation and 3D recon- struction of deformable objects from images.\n\n[55] A. Laurentini, “The visual hull concept for silhouette-based image understanding,” IEEE Transactions on Pattern Analysis and Machine Intelligence, 1994.\n\n[56] S. M. Seitz, B. Curless, J. Diebel, D. Scharstein, and R. Szeliski, “A comparison and evaluation of multi-view stereo reconstruction algo- rithms,” in IEEE International Conference on Computer Vision and Pattern Recognition. IEEE, 2006.\n\n[57] K. Grauman, G. Shakhnarovich, and T. Darrell, “Inferring 3d structure with a statistical image-based shape model,” in IEEE International Conference on Computer Vision and Pattern Recognition, 2003.\n\n[58] D. Cremers and K. Kolev, “Multiview stereo and silhouette consistency via convex functionals over convex domains,” IEEE Transactions on Pattern Analysis and Machine Intelligence, 2011.\n\n[59] S. Vicente, V. Kolmogorov, and C. Rother, “Graph cut based image segmentation with connectivity priors,” IEEE International Conference on Computer Vision and Pattern Recognition, 2008.\n\nLourdes Agapito received the BSc degree in physics in 1991 and the PhD degree in 1996 from the Universidad Computense in Madrid, Spain. She was then a Marie Curie fellow at Oxfords Robotics Research Group. She is cur- rently a reader in Vision and Imaging Science at University College London. In 2008, she was awarded an ERC Starting Grant. Her research focuses on the area of 3D reconstruction of non- rigid structure from image sequences. She is a member of the IEEE.",
+            "section": "other",
+            "section_idx": 10,
+            "citations": [
+                "42",
+                "43",
+                "44",
+                "67",
+                "68",
+                "69",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\99ef6191-e838-4996-8bfc-fc46e1b39aa0.jpg",
+            "description": "This figure presents a graph illustrating the relationship between the number of proposals sampled and the average reconstruction error. It contains three lines representing different methods of proposal selection: \"Random\" (blue), \"Top-Ranked\" (green), and \"Best Available (Lower Bound)\" (red). The x-axis denotes the number of proposals sampled, ranging from 0 to 20, while the y-axis shows the average error, ranging from 5 to 8. The graph demonstrates how the average error decreases as more proposals are sampled, with the \"Best Available\" method achieving the lowest errors, followed by \"Top-Ranked\" and \"Random.\" This visualization is important for understanding the effectiveness of different proposal selection strategies in reducing reconstruction error, likely a key aspect of the research methodology or results.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\c41f34a6-5deb-4979-9f94-a496ca8fd34d.jpg",
+            "description": "This figure displays annotated images of four categories: Birds, Boats, Aeroplanes, and Cars. Each image includes keypoint annotations marked with different colored dots, indicating specific parts or features of the objects. The consistent use of colors suggests a standardized labeling system across different categories. This visualization likely serves to illustrate a dataset used for training or evaluation in a computer vision task, such as object detection or keypoint estimation. The diversity of objects and annotated points provides insight into the level of detail and complexity the model is expected to handle, highlighting the methodology or dataset used in the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\ba716827-e951-47e2-adaf-febd36555413.jpg",
+            "description": "The figure appears to be a visualization related to computer vision or machine learning, potentially focusing on object detection or pose estimation of a motorcycle. \n\n- **Architecture Diagrams and Components**: The figure does not contain traditional architecture diagrams, but it shows an overlay of points and lines on a motorcycle, suggesting key points or features being tracked or analyzed.\n\n- **Graphs, Charts, and Data Visualizations**: The image on the left uses colored points and lines to map specific locations and connections on a motorcycle, likely indicating a method for understanding the geometry or structure of the object. The colors might differentiate various components or key points.\n\n- **Mathematical Formulas or Concepts**: The concepts illustrated seem to be related to spatial and geometric analysis, focusing on the positioning and relationships between points.\n\n- **Algorithm Flowcharts or Processes**: The right side of the figure shows a simplified side view diagram of the motorcycle, highlighting the front and back wheels, which might represent an abstracted model used in the analysis process.\n\n- **Results or Findings Being Presented**: The figure seems to demonstrate the application of a pose estimation or feature detection method. It showcases how the algorithm or model identifies and connects various points on a motorcycle, indicating its effectiveness in capturing the spatial configuration.\n\nThe importance rating reflects its potential role in demonstrating the methodology or application of a specific technique relevant to the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\cecf243e-5646-4e86-b1b2-4283b1024147.jpg",
+            "description": "This figure likely illustrates a system or methodology for detecting and analyzing a vehicle, possibly a motorcycle, in an urban environment. \n\n- **Architecture Diagrams and Components**: The figure on the left shows an image of a motorcycle with superimposed colored lines and nodes, possibly indicating key points or features detected by a computer vision system. The colored markers could represent various parts of the motorcycle, such as wheels, handlebars, or structural components, identified by an algorithm.\n  \n- **Graphs, Charts, and Data Visualizations**: The right side may represent a simplified schematic or side view of the key points identified in the left image, showing the spatial relationships and connections between these points. This might be used to understand the structure or pose of the motorcycle.\n\n- **Algorithm Flowcharts or Processes**: The connections between the points could indicate the processing or analysis steps used, such as edge detection or feature extraction techniques applied to identify and differentiate components.\n\n- **Results or Findings**: The figure likely presents the outcome of a computer vision task, such as object detection or pose estimation, demonstrating the ability of the algorithm to accurately map and interpret the structure of a motorcycle.\n\nThis figure is important as it visualizes a key step in the methodology or demonstrates the effectiveness of the system being described in the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\db6b7599-480f-4005-9943-396239feca21.jpg",
+            "description": "This figure presents a comparative analysis of per-class ranking performance across different categories. It includes three types of markers indicating different ranking strategies: Random (cross symbol), Top-Ranked (circle symbol), and Best Available (square symbol), which serves as a lower bound. The x-axis lists various object categories, such as \"aeroplane,\" \"bicycle,\" \"bird,\" etc., while the y-axis represents the ranking performance score. Each category shows three data points, representing the performance of each ranking method. The visualization highlights how different ranking strategies perform across various classes, providing insight into the effectiveness and limitations of each method in the context of the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\a4af29da-dd61-46b2-a9a3-caf8d98a13a4.jpg",
+            "description": "This figure presents a line graph illustrating the relationship between clustering threshold (in degrees) and reconstruction error. The x-axis represents the clustering threshold ranging from 12 to 30 degrees, while the y-axis shows the reconstruction error values ranging from 6 to 8. The graph includes four lines, each representing different categories: \"All,\" \"Animals,\" \"Vehicles,\" and \"Furniture.\" \n\n- The \"All\" category is depicted in blue and shows a relatively stable reconstruction error as the clustering threshold increases.\n- The \"Animals\" category, shown in green, exhibits a slight increase in reconstruction error with higher clustering thresholds.\n- The \"Vehicles\" category, represented by a red line, has the lowest and most stable reconstruction error across the thresholds.\n- The \"Furniture\" category, in light blue, demonstrates the highest reconstruction error and a slight upward trend.\n\nThis figure is important as it visualizes the impact of different clustering thresholds on the reconstruction error for various categories, which is likely relevant to the methodology or results of the study.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\16b220de-c7ae-4432-824e-bd648674d04c.jpg",
+            "description": "This figure is a scatter plot comparing the roll values of various objects before and after a refinement process. The x-axis represents different categories of objects, such as aeroplane, bicycle, boat, bus, car, etc. The y-axis measures the roll values. Red crosses (\"Roll before refinement\") and green pluses (\"Roll after refinement\") indicate the roll values before and after refinement, respectively. This visualization shows the impact of the refinement on the roll values, illustrating improvements or changes for each object category. The figure is important for understanding the effectiveness of the refinement process in the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\741e6f39-71df-4b29-87c4-374473c59b9c.jpg",
+            "description": "This figure is a scatter plot comparing the elevation values of various objects before and after a refinement process. Each object type, such as \"aeroplane,\" \"bicycle,\" \"boat,\" etc., is plotted along the x-axis. The y-axis represents the elevation values. Red crosses indicate the elevation before refinement, while green plus symbols indicate the elevation after refinement. This visualization highlights the impact of the refinement process on the elevation values for different objects, showing a comparative analysis of improvement or changes. It likely plays an important role in demonstrating the efficacy of a refinement technique within the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\4212e413-1165-4d31-9e4d-28a7f27232bf.jpg",
+            "description": "This figure presents a comparative analysis of azimuth values before and after refinement across various object categories. The x-axis lists different object categories such as \"aeroplane,\" \"bicycle,\" \"boat,\" etc., while the y-axis likely represents error or deviation in azimuth estimation. Red crosses denote the azimuth values before refinement, and green pluses indicate the values after refinement. The visual comparison for each object category suggests how the refinement process has potentially improved the azimuth estimation, as indicated by the closeness of the green markers to a baseline or lower error level compared to the red markers. This figure is important for illustrating the effectiveness of the refinement process in the research study.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\77566b0e-34a9-4466-86b4-56f2517582fd.jpg",
+            "description": "I'm unable to analyze specific research figures or images directly. However, I can help you interpret or analyze general types of content if you describe them textually. Let me know how else I can assist!",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Synthetic dataset generation",
+            "Cross-category generalization",
+            "Matrix factorization",
+            "Classifier Training",
+            "Geometric inference",
+            "Data-driven view consistency",
+            "Distance Metrics",
+            "3D Reconstruction",
+            "measurement uncertainty",
+            "contour detection"
+        ],
+        "methodology": [
+            "Truncation technique",
+            "Iterative guided morphable model fitting",
+            "Distance Metrics",
+            "Ranking performance",
+            "Hierarchical Structure Parsing",
+            "Sampling techniques",
+            "Fungi",
+            "binary classification",
+            "Clustering algorithm",
+            "Categorical Cross Entropy Loss",
+            "3D projection",
+            "overlay video",
+            "Principal Component Analysis (PCA)",
+            "Neural rendering",
+            "Mean curvature variation",
+            "Mask R-CNN",
+            "Calibration",
+            "Orientation Estimation",
+            "3D annotation",
+            "Reconstruction error",
+            "Structure-from-Motion",
+            "Attention Mechanisms",
+            "Gradient-based optimization",
+            "Machine learning",
+            "3D Shape Estimation",
+            "Average Error",
+            "Camera superpixel processing"
+        ],
+        "domain": [
+            "LSUN dataset",
+            "3D Computer Vision",
+            "Intelligent Systems"
+        ],
+        "strengths": [
+            "Data-efficient learning",
+            "Deep Learning Toolbox",
+            "Benchmarking",
+            "Robust error metric",
+            "Generalization across diverse object classes",
+            "3D annotation",
+            "Low precision data representation",
+            "Unified Appearance Modeling",
+            "Mask and keypoint-based input",
+            "3D Shape Reconstruction",
+            "Spatial coherence"
+        ],
+        "limitations": [
+            "Class heterogeneity",
+            "Ambiguity in 3D reconstruction",
+            "Limited dining table options",
+            "Color constancy challenges",
+            "restricted input",
+            "Error sensitivity",
+            "Crowdsourced annotation requirements",
+            "Sparse object detection",
+            "Synthetic data dependency",
+            "articulatory difficulty",
+            "Noise susceptibility",
+            "Complexity in 3D modeling",
+            "Sparse ground truth",
+            "Measurement error",
+            "Subcategorization.",
+            "Over-processing",
+            "Rigid assumption",
+            "Limited dataset requirements",
+            "Train class effects",
+            "isolated structures"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1503.06465v2_chunk_0",
+            "section": "introduction",
+            "citations": [
+                "54",
+                "6"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "49",
+                "50",
+                "51",
+                "52",
+                "10"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_2",
+            "section": "methodology",
+            "citations": [
+                "53",
+                "6",
+                "53"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_3",
+            "section": "methodology",
+            "citations": [
+                "68",
+                "69",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_4",
+            "section": "results",
+            "citations": [
+                "53"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_5",
+            "section": "results",
+            "citations": [
+                "6",
+                "46",
+                "63"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_6",
+            "section": "discussion",
+            "citations": [
+                "46",
+                "65",
+                "66",
+                "67"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_7",
+            "section": "discussion",
+            "citations": [
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_8",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "2",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_9",
+            "section": "other",
+            "citations": [
+                "11",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "8"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_10",
+            "section": "other",
+            "citations": [
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "37",
+                "38",
+                "39",
+                "37",
+                "38"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_11",
+            "section": "other",
+            "citations": [
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "31",
+                "34",
+                "35",
+                "33",
+                "36",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "45",
+                "47",
+                "48"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_12",
+            "section": "other",
+            "citations": [
+                "55",
+                "56",
+                "57",
+                "58",
+                "59"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_13",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_14",
+            "section": "other",
+            "citations": [
+                "11",
+                "52",
+                "62",
+                "63",
+                "52"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_15",
+            "section": "other",
+            "citations": [
+                "61",
+                "60",
+                "6",
+                "64",
+                "46"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_16",
+            "section": "other",
+            "citations": [
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "1",
+                "2",
+                "20",
+                "21",
+                "22",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "8",
+                "29"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_17",
+            "section": "other",
+            "citations": [
+                "46",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "35",
+                "41"
+            ]
+        },
+        {
+            "chunk_id": "1503.06465v2_chunk_18",
+            "section": "other",
+            "citations": [
+                "42",
+                "43",
+                "44",
+                "67",
+                "68",
+                "69",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59"
+            ]
+        }
+    ]
+}

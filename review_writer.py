@@ -289,43 +289,33 @@ class PaperGenerator:
         ])
         
         writing_task = Task(
-            description=f"""
-            Write the '{section['title']}' section for a scientific paper.
-            
-            Paper Title: {self.paper_state['title']}
-            Abstract: {self.paper_state['abstract']}
-            
-            REQUIREMENTS:
-            1. Write a comprehensive, in-depth section (at least 800-1000 words)
-            2. Use formal academic style appropriate for publication
-            3. Include AT LEAST 5-7 inline citations in the format [AuthorYear] or [paper_id]
-            4. Incorporate content from the provided chunks and references thoroughly
-            5. Reference figures where appropriate using the format (Figure X)
-            6. Ensure the section flows logically and builds a complete narrative
-            7. Do not be brief - provide detailed explanations and analysis
-            8. Include relevant technical details and methodology discussions
-            
-            You have the following reference material to incorporate:
-            
-            RELEVANT TEXT CHUNKS:
-            {chunk_info}
-            
-            KEY REFERENCES:
-            {ref_info}
-            
-            AVAILABLE FIGURES:
-            {fig_info}
-            
-            Guidelines:
-            - This is section {section_index + 1} of {len(self.paper_state['sections'])}
-            - Ensure proper transition from previous sections
-            - Be thorough and comprehensive in your coverage
-            - Maintain academic depth and rigor
-            - DO NOT SUMMARIZE - provide detailed content
-            
-            Previous sections context:
-            {' '.join(previous_sections) if previous_sections else 'This is the first section.'}
-            """,
+        description=f"""
+        Write the '{section['title']}' section for a scientific paper.
+        
+        Paper Title: {self.paper_state['title']}
+        Abstract: {self.paper_state['abstract']}
+        
+        REQUIREMENTS:
+        1. Write a comprehensive, in-depth section (at least 800-1000 words)
+        2. Use formal academic style appropriate for publication
+        3. IMPORTANT: Use proper in-text citations in Harvard format (Author, Year)
+           For example: (Smith, 2019) or (Smith et al., 2019) for multiple authors
+        4. Incorporate content from the provided chunks and references thoroughly
+        5. Reference figures where appropriate using the format (Figure X)
+        6. Ensure the section flows logically and builds a complete narrative
+        7. Include relevant technical details and methodology discussions
+        
+        You have the following reference material to incorporate:
+        
+        RELEVANT TEXT CHUNKS:
+        {chunk_info}
+        
+        KEY REFERENCES:
+        {ref_info}
+        
+        AVAILABLE FIGURES:
+        {fig_info}
+        """,
             expected_output="A comprehensive, well-written section (800-1000+ words) with numerous inline citations",
             agent=self.agents["writer"]
         )
@@ -563,27 +553,80 @@ class PaperGenerator:
                 "error": f"Not all sections are approved. Pending sections: {', '.join(section_names)}"
             }
         
-        # Format section content and references for the task description
-        # Include complete section content, not just previews
-        sections_content = "\n\n".join([
-            f"\\section{{{section['title']}}}\n\n{section['content']}"
-            for section in self.paper_state["sections"]
-        ])
+        # Format section content
+        sections_content = []
+        for section in self.paper_state["sections"]:
+            # Convert inline citations (Author, Year) to LaTeX \cite commands
+            content = section["content"]
+            # Match patterns like (Author, Year) or (Author et al., Year)
+            citation_pattern = r'\(([A-Za-z]+)(?:\s+et\s+al\.?)?,\s*(\d{4})\)'
+            
+            # Find all citation matches
+            matches = re.findall(citation_pattern, content)
+            
+            # Create citation keys and replace inline citations
+            for author, year in matches:
+                cite_key = f"{author.lower()}{year}"
+                content = content.replace(f"({author}, {year})", f"\\cite{{{cite_key}}}")
+                content = content.replace(f"({author} et al., {year})", f"\\cite{{{cite_key}}}")
+            
+            # Add formatted section to sections content
+            sections_content.append(f"\\section{{{section['title']}}}\n\n{content}")
         
-        # Format references in BibTeX format
-        references_formatted = "\n".join([
-            f"@article{{{ref_id},\n  title = {{{ref_data['title']}}},\n  author = {{{' and '.join(ref_data['authors'])}}},\n  year = {{{ref_data['year']}}}\n}}"
-            for ref_id, ref_data in self.paper_state["references"].items()
-        ])
+        # Join all sections
+        all_sections = "\n\n".join(sections_content)
         
-        # Format figures with proper LaTeX references
-        figures_formatted = "\n".join([
-            f"Figure {i+1}: {fig['figure_id']} - {fig['description'][:100]}... (from paper {fig['paper_id']})"
-            for i, fig in enumerate(self.paper_state["figures"])
-        ])
+        # Format references in BibTeX format with proper keys
+        references_formatted = []
+        for ref_id, ref_data in self.paper_state["references"].items():
+            # Create a unique citation key from author and year
+            authors = ref_data.get("authors", ["Unknown"])
+            first_author = authors[0].split()[-1] if authors else "Unknown"
+            year = ref_data.get("year", "2000")
+            cite_key = f"{first_author.lower()}{year}"
+            
+            # Get other reference details
+            title = ref_data.get("title", "Unknown Title")
+            
+            # Create BibTeX entry with required fields
+            bibtex_entry = f"""@article{{{cite_key},
+    title = {{{title}}},
+    author = {{{' and '.join(authors)}}},
+    year = {{{year}}},
+    journal = {{Journal of Research}},
+    volume = {{1}},
+    number = {{1}},
+    pages = {{1--10}},
+    doi = {{10.0000/journal.0000}}
+    }}"""
+            references_formatted.append(bibtex_entry)
         
-        # Create example figure inclusion syntax
-        figure_example = "\\includegraphics[width=0.8\\columnwidth]{figures/fig_1.jpg}"
+        references_text = "\n\n".join(references_formatted)
+        
+        # Format figures
+        figures_text = ""
+        for i, fig in enumerate(self.paper_state["figures"]):
+            # Create a clean filename for the figure
+            clean_name = f"figure_{i+1}"
+            fig_desc = fig.get("description", "")
+            if len(fig_desc) > 100:
+                fig_desc = fig_desc[:100] + "..."
+            
+            # Create LaTeX figure environment
+            figure = f"""\\begin{{figure}}[htbp]
+        \\centering
+        \\includegraphics[width=0.8\\columnwidth]{{{clean_name}}}
+        \\caption{{{fig_desc}}}
+        \\label{{fig:{clean_name}}}
+    \\end{{figure}}"""
+            figures_text += figure + "\n\n"
+        
+        # Create figures information for README
+        figures_info = []
+        for i, fig in enumerate(self.paper_state["figures"]):
+            clean_name = f"figure_{i+1}"
+            source_path = fig.get("path", "unknown_path")
+            figures_info.append(f"{source_path} -> {clean_name}.jpg")
         
         # Create the LaTeX generation task
         latex_task = Task(
@@ -594,34 +637,32 @@ class PaperGenerator:
             Abstract: {self.paper_state['abstract']}
             
             REQUIREMENTS:
-            1. Use the standard scientific article class with two-column layout
-            2. Include proper title, authors (placeholder names are fine), and abstract
-            3. Format all sections properly with correct hierarchy
-            4. INCLUDE ALL FIGURES WITH PROPER REFERENCES in the text (critical)
-            5. Create a complete bibliography with all citations
-            6. Ensure all inline citations are properly linked to bibliography
-            7. Use the standard LaTeX article class and appropriate packages
-            8. Make sure the document structure follows academic journal standards
-            9. Include proper section numbering and formatting
+            1. Use the standard scientific article class with two-column layout (IEEEtran or similar)
+            2. Include proper title, authors, and abstract
+            3. Use the following author names: John Doe, Jane Smith, and Alex Johnson (with placeholder affiliations)
+            4. Format all sections properly with correct hierarchy
+            5. IMPORTANT: The LaTeX document should be COMPLETE and COMPILABLE
+            6. Use the natbib package for citation formatting with author-year style
+            7. Include only necessary packages (no need for complex customizations)
+            8. Generate a references section at the end using BibTeX style
             
             The paper has {len(self.paper_state['sections'])} sections and includes 
             {len(self.paper_state['figures'])} figures and {len(self.paper_state['references'])} references.
             
-            SECTION CONTENT (to be formatted with proper LaTeX commands):
-            {sections_content}
+            SECTION CONTENT (already formatted with LaTeX commands):
+            {all_sections}
             
-            BIBLIOGRAPHY ENTRIES (format in BibTeX style):
-            {references_formatted}
+            BIBLIOGRAPHY ENTRIES (in BibTeX format):
+            {references_text}
             
-            FIGURES TO INCLUDE:
-            {figures_formatted}
+            FIGURES TO INCLUDE (already formatted with LaTeX commands):
+            {figures_text}
             
             Important Notes:
-            - Include figure placements using \\begin{{figure}} environments
-            - For figures, use a placeholder command like: {figure_example}
-            - Create a proper bibliography section with all references
-            - Make sure ALL inline citations [AuthorYear] or [paper_id] are formatted as proper LaTeX citations
-            - Create a complete, compilable LaTeX document that follows scientific publishing standards
+            - The bibliography entries are already in BibTeX format, but need to be properly integrated
+            - All inline citations have been converted to LaTeX \cite{{key}} commands
+            - Create a complete document with proper preamble and document structure
+            - The document should be ready to compile with minimal modifications
             """,
             expected_output="A complete, professional LaTeX document with proper sections, figures, and bibliography",
             agent=self.agents["editor"]
@@ -644,27 +685,46 @@ class PaperGenerator:
             # Try to get the result as a string representation
             latex_document = str(result)
         
-        # Save the LaTeX document
+        # Save the LaTeX document and BibTeX file
         output_path = Path("output")
         output_path.mkdir(exist_ok=True)
         
+        # Save main LaTeX document
         with open(output_path / "paper.tex", "w", encoding="utf-8") as f:
             f.write(latex_document)
+        
+        # Save BibTeX file
+        with open(output_path / "references.bib", "w", encoding="utf-8") as f:
+            f.write(references_text)
         
         # Create a figures directory and README
         figures_path = output_path / "figures"
         figures_path.mkdir(exist_ok=True)
         
+        # Create README with figure copying instructions
         with open(figures_path / "README.txt", "w", encoding="utf-8") as f:
             f.write("Copy the following images to this directory:\n\n")
-            for fig in self.paper_state["figures"]:
-                f.write(f"{fig['path']} -> {fig['figure_id']}.jpg\n")
+            for info in figures_info:
+                f.write(f"{info}\n")
+        
+        # Also copy figures to the output directory if possible
+        try:
+            for i, fig in enumerate(self.paper_state["figures"]):
+                source_path = fig.get("path", "")
+                if os.path.exists(source_path):
+                    target_path = figures_path / f"figure_{i+1}.jpg"
+                    import shutil
+                    shutil.copy2(source_path, target_path)
+                    print(f"Copied figure: {source_path} -> {target_path}")
+        except Exception as e:
+            print(f"Error copying figures: {str(e)}")
         
         return {
             "latex_document": latex_document,
-            "output_path": str(output_path / "paper.tex")
+            "output_path": str(output_path / "paper.tex"),
+            "bib_path": str(output_path / "references.bib"),
+            "figures_path": str(figures_path)
         }
-
     def run_pipeline(self, query, interactive=True):
         """Run the complete paper generation pipeline."""
         # Step 1: Initial research

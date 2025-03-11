@@ -1,0 +1,1093 @@
+{
+    "basic_info": {
+        "title": "HoloDiffusion: Training a 3D Diffusion Model using 2D Images",
+        "authors": [
+            "Animesh Karnewar",
+            "Andrea Vedaldi",
+            "David Novotny",
+            "Niloy Mitra"
+        ],
+        "paper_id": "2303.16509v2",
+        "published_year": 2023,
+        "references": [
+            "2105.05233v4"
+        ]
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "Jonathan T Barron, Ben Mildenhall, Matthew Tancik, Peter\nHedman, Ricardo Martin-Brualla, and Pratul P Srinivasan.\nMip-nerf: A multiscale representation for anti-aliasing neu-\nral radiance fields. In Proceedings of the IEEE/CVF Inter-\nnational Conference on Computer Vision , pages 5855–5864,\n2021. 2",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "Jonathan T Barron, Ben Mildenhall, Dor Verbin, Pratul P\nSrinivasan, and Peter Hedman. Mip-nerf 360: Unbounded\nanti-aliased neural radiance fields. In Proceedings of the\nIEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 5470–5479, 2022. 2",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "Miguel Angel Bautista, Pengsheng Guo, Samira Abnar, Wal-\nter Talbott, Alexander Toshev, Zhuoyuan Chen, Laurent\nDinh, Shuangfei Zhai, Hanlin Goh, Daniel Ulbricht, et al.\nGaudi: A neural architect for immersive 3d scene genera-\ntion. arXiv preprint arXiv:2207.13751 , 2022. 3",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": "2207.13751"
+        },
+        "ref_4": {
+            "text": "Mikołaj Bi ´nkowski, Danica J Sutherland, Michael Arbel, and\nArthur Gretton. Demystifying mmd gans. arXiv preprint\narXiv:1801.01401 , 2018. 7",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": "1801.01401"
+        },
+        "ref_5": {
+            "text": "Eric R Chan, Connor Z Lin, Matthew A Chan, Koki Nagano,\nBoxiao Pan, Shalini De Mello, Orazio Gallo, Leonidas J\nGuibas, Jonathan Tremblay, Sameh Khamis, et al. Efficient\ngeometry-aware 3d generative adversarial networks. In Pro-\nceedings of the IEEE/CVF Conference on Computer Vision\nand Pattern Recognition , pages 16123–16133, 2022. 3, 6, 7,\n8",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "Eric R Chan, Marco Monteiro, Petr Kellnhofer, Jiajun Wu,\nand Gordon Wetzstein. pi-gan: Periodic implicit generative\nadversarial networks for 3d-aware image synthesis. In Pro-\nceedings of the IEEE/CVF conference on computer vision\nand pattern recognition , pages 5799–5809, 2021. 2, 6, 8",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "Anpei Chen, Zexiang Xu, Andreas Geiger, Jingyi Yu, and\nHao Su. Tensorf: Tensorial radiance fields. In European\nConference on Computer Vision (ECCV) , 2022. 2, 5",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "Terrance DeVries, Miguel Angel Bautista, Nitish Srivastava,\nGraham W Taylor, and Joshua M Susskind. Unconstrained\nscene generation with locally conditioned radiance fields. In\nProceedings of the IEEE/CVF International Conference on\nComputer Vision , pages 14304–14313, 2021. 3",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": null
+        },
+        "ref_9": {
+            "text": "Prafulla Dhariwal and Alexander Nichol. Diffusion models\nbeat gans on image synthesis. Advances in Neural Informa-\ntion Processing Systems , 34:8780–8794, 2021. 1, 12",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "Matheus Gadelha, Subhransu Maji, and Rui Wang. 3D shape\ninduction from 2D views of multiple objects. In arXiv , 2016.\n2",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "Jun Gao, Tianchang Shen, Zian Wang, Wenzheng Chen,\nKangxue Yin, Daiqing Li, Or Litany, Zan Gojcic, and\nSanja Fidler. Get3d: A generative model of high quality\n3d textured shapes learned from images. arXiv preprint\narXiv:2209.11163 , 2022. 3, 6, 7, 8",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": "2209.11163"
+        },
+        "ref_12": {
+            "text": "Xavier Glorot and Yoshua Bengio. Understanding the diffi-\nculty of training deep feedforward neural networks. In Pro-\nceedings of the thirteenth international conference on artifi-\ncial intelligence and statistics , pages 249–256. JMLR Work-\nshop and Conference Proceedings, 2010. 12",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing\nXu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and\nYoshua Bengio. Generative adversarial networks. Commu-\nnications of the ACM , 63(11):139–144, 2020. 2",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "Thibault Groueix, Matthew Fisher, Vladimir G Kim,\nBryan C Russell, and Mathieu Aubry. A papier-m ˆach´e ap-\nproach to learning 3d surface generation. In Proceedings of\nthe IEEE conference on computer vision and pattern recog-\nnition , pages 216–224, 2018. 2",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "Jiatao Gu, Lingjie Liu, Peng Wang, and Christian\nTheobalt. Stylenerf: A style-based 3d-aware genera-\ntor for high-resolution image synthesis. arXiv preprint\narXiv:2110.08985 , 2021. 2",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": "2110.08985"
+        },
+        "ref_16": {
+            "text": "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.\nDeep residual learning for image recognition. arXiv preprint\narXiv:1512.03385 , 2015. 12",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": "1512.03385"
+        },
+        "ref_17": {
+            "text": "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.\nDeep residual learning for image recognition. In Proc.\nCVPR , 2016. 5",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": null
+        },
+        "ref_18": {
+            "text": "Philipp Henzler, Niloy J Mitra, and Tobias Ritschel. Escap-\ning plato’s cave: 3d shape from adversarial rendering. In\nProceedings of the IEEE/CVF International Conference on\nComputer Vision , pages 9984–9993, 2019. 2",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "Philipp Henzler, Jeremy Reizenstein, Patrick Labatut, Ro-\nman Shapovalov, Tobias Ritschel, Andrea Vedaldi, and\nDavid Novotny. Unsupervised learning of 3d object cate-\ngories from videos in the wild. Proc. CVPR , 2021. 2, 4",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "Martin Heusel, Hubert Ramsauer, Thomas Unterthiner,\nBernhard Nessler, and Sepp Hochreiter. Gans trained by a\ntwo time-scale update rule converge to a local nash equilib-\nrium. Advances in neural information processing systems ,\n30, 2017. 7",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "Jonathan Ho, William Chan, Chitwan Saharia, Jay Whang,\nRuiqi Gao, Alexey Gritsenko, Diederik P Kingma, Ben\nPoole, Mohammad Norouzi, David J Fleet, et al. Imagen\nvideo: High definition video generation with diffusion mod-\nels.arXiv preprint arXiv:2210.02303 , 2022. 4",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": "2210.02303"
+        },
+        "ref_22": {
+            "text": "Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffu-\nsion probabilistic models. Advances in Neural Information\nProcessing Systems , 33:6840–6851, 2020. 4, 13",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": null
+        },
+        "ref_23": {
+            "text": "Jonathan Ho, Chitwan Saharia, William Chan, David J Fleet,\nMohammad Norouzi, and Tim Salimans. Cascaded diffusion\nmodels for high fidelity image generation. J. Mach. Learn.\nRes., 23:47–1, 2022. 1",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": null
+        },
+        "ref_24": {
+            "text": "Ka-Hei Hui, Ruihui Li, Jingyu Hu, and Chi-Wing Fu. Neural\nwavelet-domain diffusion for 3d shape generation, 2022. 2",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": null
+        },
+        "ref_25": {
+            "text": "Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei A\nEfros. Image-to-image translation with conditional adver-\nsarial networks. In Proceedings of the IEEE conference on\ncomputer vision and pattern recognition , pages 1125–1134,\n2017. 2",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "Ajay Jain, Ben Mildenhall, Jonathan T Barron, Pieter\nAbbeel, and Ben Poole. Zero-shot text-guided object genera-\ntion with dream fields. In Proceedings of the IEEE/CVF Con-\nference on Computer Vision and Pattern Recognition , pages\n867–876, 2022. 3",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "Angjoo Kanazawa, Shubham Tulsiani, Alexei A. Efros, and\nJitendra Malik. Learning category-specific mesh reconstruc-\ntion from image collections. In Proc. ECCV , 2018. 2",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "Animesh Karnewar, Tobias Ritschel, Oliver Wang, and Niloy\nMitra. 3inGAN: Learning a 3D generative model from im-\nages of a self-similar scene. In Proc. 3D Vision (3DV) , 2022.\n3",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "Animesh Karnewar, Tobias Ritschel, Oliver Wang, and Niloy\nMitra. Relu fields: The little non-linearity that could. In\nACM SIGGRAPH 2022 Conference Proceedings , pages 1–9,\n2022. 2",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_30": {
+            "text": "Tero Karras, Miika Aittala, Timo Aila, and Samuli Laine.\nElucidating the design space of diffusion-based generative\nmodels. arXiv preprint arXiv:2206.00364 , 2022. 13",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": "2206.00364"
+        },
+        "ref_31": {
+            "text": "Diederik P. Kingma and Jimmy Ba. Adam: A method for\nstochastic optimization. Proc. ICLR , 2015. 12",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "Jon ´aˇs Kulh ´anek, Erik Derner, Torsten Sattler, and Robert\nBabu ˇska. Viewformer: Nerf-free neural rendering\nfrom few images using transformers. arXiv preprint\narXiv:2203.10157 , 2022. 2",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": "2203.10157"
+        },
+        "ref_33": {
+            "text": "Xueting Li, Sifei Liu, Kihwan Kim, Shalini De Mello,\nVarun Jampani, Ming-Hsuan Yang, and Jan Kautz. Self-\nsupervised single-view 3d reconstruction via semantic con-\nsistency. Proc. ECCV , 2020. 2",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": null
+        },
+        "ref_34": {
+            "text": "Chen-Hsuan Lin, Jun Gao, Luming Tang, Towaki Takikawa,\nXiaohui Zeng, Xun Huang, Karsten Kreis, Sanja Fi-\ndler, Ming-Yu Liu, and Tsung-Yi Lin. Magic3d: High-\nresolution text-to-3d content creation. arXiv preprint\narXiv:2211.10440 , 2022. 2",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": "2211.10440"
+        },
+        "ref_35": {
+            "text": "Stephen Lombardi, Tomas Simon, Jason Saragih, Gabriel\nSchwartz, Andreas Lehrmann, and Yaser Sheikh. Neural vol-\numes: Learning dynamic renderable volumes from images.\narXiv preprint arXiv:1906.07751 , 2019. 2, 3, 5",
+            "type": "numeric",
+            "number": "35",
+            "arxiv_id": "1906.07751"
+        },
+        "ref_36": {
+            "text": "Calvin Luo. Understanding diffusion models: A unified per-\nspective. arXiv preprint arXiv:2208.11970 , 2022. 4",
+            "type": "numeric",
+            "number": "36",
+            "arxiv_id": "2208.11970"
+        },
+        "ref_37": {
+            "text": "Shitong Luo and Wei Hu. Diffusion probabilistic models for\n3d point cloud generation, 2021. 1",
+            "type": "numeric",
+            "number": "37",
+            "arxiv_id": null
+        },
+        "ref_38": {
+            "text": "Shitong Luo and Wei Hu. Diffusion probabilistic models for\n3d point cloud generation. In Proceedings of the IEEE/CVF\nConference on Computer Vision and Pattern Recognition ,\npages 2837–2845, 2021. 3",
+            "type": "numeric",
+            "number": "38",
+            "arxiv_id": null
+        },
+        "ref_39": {
+            "text": "Chenlin Meng, Yang Song, Jiaming Song, Jiajun Wu, Jun-\nYan Zhu, and Stefano Ermon. Sdedit: Image synthesis and\nediting with stochastic differential equations. arXiv preprint\narXiv:2108.01073 , 2021. 1",
+            "type": "numeric",
+            "number": "39",
+            "arxiv_id": "2108.01073"
+        },
+        "ref_40": {
+            "text": "Ben Mildenhall, Pratul P Srinivasan, Matthew Tancik,\nJonathan T Barron, Ravi Ramamoorthi, and Ren Ng. Nerf:\nRepresenting scenes as neural radiance fields for view syn-\nthesis. Proc. ECCV , 2020. 2, 5, 12",
+            "type": "numeric",
+            "number": "40",
+            "arxiv_id": null
+        },
+        "ref_41": {
+            "text": "Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik,\nJonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. NeRF:\nRepresenting scenes as neural radiance fields for view syn-\nthesis. In Proc. ECCV , 2020. 2, 5",
+            "type": "numeric",
+            "number": "41",
+            "arxiv_id": null
+        },
+        "ref_42": {
+            "text": "Thomas M ¨uller, Alex Evans, Christoph Schied, and Alexan-\nder Keller. Instant neural graphics primitives with a multires-\nolution hash encoding. arXiv preprint arXiv:2201.05989 ,\n2022. 2",
+            "type": "numeric",
+            "number": "42",
+            "arxiv_id": "2201.05989"
+        },
+        "ref_43": {
+            "text": "Thu Nguyen-Phuoc, Chuan Li, Lucas Theis, Christian\nRichardt, and Yong-Liang Yang. HoloGAN: Unsupervised\nlearning of 3D representations from natural images. arXiv.cs ,\nabs/1904.01326, 2019. 2",
+            "type": "numeric",
+            "number": "43",
+            "arxiv_id": null
+        },
+        "ref_44": {
+            "text": "Thu Nguyen-Phuoc, Christian Richardt, Long Mai, Yong-\nLiang Yang, and Niloy J. Mitra. Blockgan: Learning 3d\nobject-aware scene representations from unlabelled images.\n2020. 3",
+            "type": "numeric",
+            "number": "44",
+            "arxiv_id": null
+        },
+        "ref_45": {
+            "text": "Michael Niemeyer and Andreas Geiger. Campari: Camera-\naware decomposed generative neural radiance fields. In\nProc. of the International Conf. on 3D Vision (3DV) , 2021. 8",
+            "type": "numeric",
+            "number": "45",
+            "arxiv_id": null
+        },
+        "ref_46": {
+            "text": "Michael Niemeyer and Andreas Geiger. GIRAFFE: rep-\nresenting scenes as compositional generative neural feature\nfields. In Proc. CVPR , 2021. 3",
+            "type": "numeric",
+            "number": "46",
+            "arxiv_id": null
+        },
+        "ref_47": {
+            "text": "David Novotny, Roman Shapovalov, and Andrea Vedaldi.\nCanonical 3D deformer maps: Unifying parametric and non-\nparametric methods for dense weakly-supervised category\nreconstruction. In arXiv , 2020. 2",
+            "type": "numeric",
+            "number": "47",
+            "arxiv_id": null
+        },
+        "ref_48": {
+            "text": "Roy Or-El, Xuan Luo, Mengyi Shan, Eli Shecht-\nman, Jeong Joon Park, and Ira Kemelmacher-Shlizerman.\nStylesdf: High-resolution 3d-consistent image and geome-\ntry generation. In Proceedings of the IEEE/CVF Conference\non Computer Vision and Pattern Recognition , pages 13503–\n13513, 2022. 3",
+            "type": "numeric",
+            "number": "48",
+            "arxiv_id": null
+        },
+        "ref_49": {
+            "text": "Ben Poole, Ajay Jain, Jonathan T Barron, and Ben Milden-\nhall. Dreamfusion: Text-to-3d using 2d diffusion. arXiv\npreprint arXiv:2209.14988 , 2022. 2, 3",
+            "type": "numeric",
+            "number": "49",
+            "arxiv_id": "2209.14988"
+        },
+        "ref_50": {
+            "text": "Jeremy Reizenstein, Roman Shapovalov, Philipp Henzler,\nLuca Sbordone, Patrick Labatut, and David Novotny. Com-\nmon Objects in 3D: Large-scale learning and evaluation of\nreal-life 3d category reconstruction. In arXiv , 2021. 1, 2, 6",
+            "type": "numeric",
+            "number": "50",
+            "arxiv_id": null
+        },
+        "ref_51": {
+            "text": "Chitwan Saharia, William Chan, Huiwen Chang, Chris Lee,\nJonathan Ho, Tim Salimans, David Fleet, and Moham-\nmad Norouzi. Palette: Image-to-image diffusion models.\nInACM SIGGRAPH 2022 Conference Proceedings , SIG-\nGRAPH ’22, 2022. 1",
+            "type": "numeric",
+            "number": "51",
+            "arxiv_id": null
+        },
+        "ref_52": {
+            "text": "Tim Salimans and Jonathan Ho. Progressive distillation\nfor fast sampling of diffusion models. arXiv preprint\narXiv:2202.00512 , 2022. 4",
+            "type": "numeric",
+            "number": "52",
+            "arxiv_id": "2202.00512"
+        },
+        "ref_53": {
+            "text": "Johannes Lutz Sch ¨onberger and Jan-Michael Frahm.\nStructure-from-motion revisited. In Proc. CVPR , 2016. 2",
+            "type": "numeric",
+            "number": "53",
+            "arxiv_id": null
+        },
+        "ref_54": {
+            "text": "Katja Schwarz, Yiyi Liao, Michael Niemeyer, and Andreas\nGeiger. GRAF: generative radiance fields for 3D-aware im-\nage synthesis. arXiv.cs , abs/2007.02442, 2020. 2",
+            "type": "numeric",
+            "number": "54",
+            "arxiv_id": null
+        },
+        "ref_55": {
+            "text": "Katja Schwarz, Axel Sauer, Michael Niemeyer, Yiyi Liao,\nand Andreas Geiger. V oxgraf: Fast 3d-aware image synthesis\nwith sparse voxel grids. ARXIV , 2022. 3",
+            "type": "numeric",
+            "number": "55",
+            "arxiv_id": null
+        },
+        "ref_56": {
+            "text": "Vincent Sitzmann, Julien N. P. Martel, Alexander W.\nBergman, David B. Lindell, and Gordon Wetzstein. Implicit\nneural representations with periodic activation functions. In\nProc. NeurIPS , 2020. 2",
+            "type": "numeric",
+            "number": "56",
+            "arxiv_id": null
+        },
+        "ref_57": {
+            "text": "Ivan Skorokhodov, Sergey Tulyakov, Yiqun Wang, and Pe-\nter Wonka. Epigraf: Rethinking training of 3d gans. arXiv\npreprint arXiv:2206.10535 , 2022. 3",
+            "type": "numeric",
+            "number": "57",
+            "arxiv_id": "2206.10535"
+        },
+        "ref_58": {
+            "text": "Gowthami Somepalli, Vasu Singla, Micah Goldblum, Jonas\nGeiping, and Tom Goldstein. Diffusion art or digital forgery?\ninvestigating data replication in diffusion models. arXiv\npreprint arXiv:2212.03860 , 2022. 8",
+            "type": "numeric",
+            "number": "58",
+            "arxiv_id": "2212.03860"
+        },
+        "ref_59": {
+            "text": "Cheng Sun, Min Sun, and Hwann-Tzong Chen. Direct voxel\ngrid optimization: Super-fast convergence for radiance fields\nreconstruction. In Proceedings of the IEEE/CVF Conference\non Computer Vision and Pattern Recognition , pages 5459–\n5469, 2022. 2",
+            "type": "numeric",
+            "number": "59",
+            "arxiv_id": null
+        },
+        "ref_60": {
+            "text": "Ayush Tewari, Ohad Fried, Justus Thies, Vincent Sitzmann,\nStephen Lombardi, Kalyan Sunkavalli, Ricardo Martin-\nBrualla, Tomas Simon, Jason Saragih, Matthias Nießner,\net al. State of the art on neural rendering. In Computer\nGraphics Forum , volume 39, pages 701–727. Wiley Online\nLibrary, 2020. 2",
+            "type": "numeric",
+            "number": "60",
+            "arxiv_id": null
+        },
+        "ref_61": {
+            "text": "Justus Thies, Michael Zollh ¨ofer, and Matthias Nießner. De-\nferred neural rendering: Image synthesis using neural tex-tures. ACM Transactions on Graphics (TOG) , 38(4):1–12,\n2019. 2",
+            "type": "numeric",
+            "number": "61",
+            "arxiv_id": null
+        },
+        "ref_62": {
+            "text": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszko-\nreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia\nPolosukhin. Attention is all you need. In NIPS , 2017. 12",
+            "type": "numeric",
+            "number": "62",
+            "arxiv_id": null
+        },
+        "ref_63": {
+            "text": "Dor Verbin, Peter Hedman, Ben Mildenhall, Todd Zickler,\nJonathan T Barron, and Pratul P Srinivasan. Ref-nerf: Struc-\ntured view-dependent appearance for neural radiance fields.\nIn2022 IEEE/CVF Conference on Computer Vision and Pat-\ntern Recognition (CVPR) , pages 5481–5490. IEEE, 2022. 2",
+            "type": "numeric",
+            "number": "63",
+            "arxiv_id": null
+        },
+        "ref_64": {
+            "text": "Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei\nLiu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh\nmodels from single rgb images. In Proc. ECCV , 2018. 2",
+            "type": "numeric",
+            "number": "64",
+            "arxiv_id": null
+        },
+        "ref_65": {
+            "text": "Qianqian Wang, Zhicheng Wang, Kyle Genova, Pratul P\nSrinivasan, Howard Zhou, Jonathan T Barron, Ricardo\nMartin-Brualla, Noah Snavely, and Thomas Funkhouser. Ibr-\nnet: Learning multi-view image-based rendering. In Pro-\nceedings of the IEEE/CVF Conference on Computer Vision\nand Pattern Recognition , pages 4690–4699, 2021. 2",
+            "type": "numeric",
+            "number": "65",
+            "arxiv_id": null
+        },
+        "ref_66": {
+            "text": "Daniel Watson, William Chan, Ricardo Martin-Brualla,\nJonathan Ho, Andrea Tagliasacchi, and Mohammad\nNorouzi. Novel view synthesis with diffusion models. arXiv\npreprint arXiv:2210.04628 , 2022. 2",
+            "type": "numeric",
+            "number": "66",
+            "arxiv_id": "2210.04628"
+        },
+        "ref_67": {
+            "text": "Daniel Watson, William Chan, Ricardo Martin-Brualla,\nJonathan Ho, Andrea Tagliasacchi, and Mohammad\nNorouzi. Novel view synthesis with diffusion models. arXiv\npreprint arXiv:2210.04628 , 2022. 3",
+            "type": "numeric",
+            "number": "67",
+            "arxiv_id": "2210.04628"
+        },
+        "ref_68": {
+            "text": "Shangzhe Wu, Tomas Jakab, Christian Rupprecht, and An-\ndrea Vedaldi. DOVE: Learning deformable 3D objects by\nwatching videos. In arXiv , 2021. 2",
+            "type": "numeric",
+            "number": "68",
+            "arxiv_id": null
+        },
+        "ref_69": {
+            "text": "Shangzhe Wu, Christian Rupprecht, and Andrea Vedaldi.\nUnsupervised learning of probably symmetric deformable\n3d objects from images in the wild. In Proceedings of\nthe IEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 1–10, 2020. 3",
+            "type": "numeric",
+            "number": "69",
+            "arxiv_id": null
+        },
+        "ref_70": {
+            "text": "Gengshan Yang, Minh V o, Natalia Neverova, Deva Ra-\nmanan, Andrea Vedaldi, and Hanbyul Joo. Banmo: Building\nanimatable 3d neural models from many casual videos. In\nProceedings of the IEEE/CVF Conference on Computer Vi-\nsion and Pattern Recognition , pages 2863–2873, 2022. 2",
+            "type": "numeric",
+            "number": "70",
+            "arxiv_id": null
+        },
+        "ref_71": {
+            "text": "Alex Yu, Sara Fridovich-Keil, Matthew Tancik, Qinhong\nChen, Benjamin Recht, and Angjoo Kanazawa. Plenox-\nels: Radiance fields without neural networks. arXiv preprint\narXiv:2112.05131 , 2021. 2",
+            "type": "numeric",
+            "number": "71",
+            "arxiv_id": "2112.05131"
+        },
+        "ref_72": {
+            "text": "Alex Yu, Vickie Ye, Matthew Tancik, and Angjoo Kanazawa.\npixelNeRF: Neural radiance fields from one or few images.\narXiv.cs , abs/2012.02190, 2020. 2",
+            "type": "numeric",
+            "number": "72",
+            "arxiv_id": null
+        },
+        "ref_73": {
+            "text": "Kai Zhang, Gernot Riegler, Noah Snavely, and Vladlen\nKoltun. Nerf++: Analyzing and improving neural radiance\nfields. arXiv preprint arXiv:2010.07492 , 2020. 2, 12HOLODIFFUSION : Training a 3D Diffusion Model using 2D Images",
+            "type": "numeric",
+            "number": "73",
+            "arxiv_id": "2010.07492"
+        },
+        "ref_Proceedings_2010": {
+            "text": "shop and Conference Proceedings, 2010. 12 [13] Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing",
+            "type": "author_year",
+            "key": "Proceedings, 2010",
+            "arxiv_id": null
+        },
+        "ref_Library_2020": {
+            "text": "Graphics Forum , volume 39, pages 701–727. Wiley Online Library, 2020. 2 [61] Justus Thies, Michael Zollh ¨ofer, and Matthias Nießner. De-",
+            "type": "author_year",
+            "key": "Library, 2020",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "3. HOLODIFFUSION\n\nWe start by discussing the necessary background and no- tation on diffusion models in Sec. 3.1, and then we intro- duce our method in Sec. 3.2, Sec. 3.3, and Sec. 3.4.\n\n3.1. Diffusion Models\n\nGiven N i.i.d. samples {xi}N i=1 from (an unknown) data distribution p(x), the task of generative modeling is to find the parameters θ of a parametric model pθ(x) that best ap- proximate p(x). Diffusion models are a class of likelihood- based models centered on the idea of defining a forward diffusion (noising) process q(xt|xt−1), for t ∈ [0,T]. The noising process converts the data samples into pure noise,\n\ni.e., q(xT) ≈ q(xT|xT−1) = N(0,I). The model then learns the reverse process p(xt−1|xt), which iteratively con- verts the noise samples back into data samples starting from the purely Gaussian sample xT.\n\nThe Denoising Diffusion Probabilistic Model (DDPM) [22], in particular, defines the noising transi- tions using a Gaussian distribution, setting\n\n√\n\nq(xt|xt−1) := N(xt; αtxt−1,(1 − αt)I). (1)\n\nSamples can be easily drawn from this distribution by using the reparameterization trick:\n\n√\n\n√\n\nxt := αtxt−1 + 1 − αtϵ where ϵ ∼ N(0,I). (2)\n\nOne similarly defines the reverse denoising step using a Gaussian distribution:\n\n√\n\npθ(xt−1|xt) := N(xt−1; αtDθ(xt,t),(1 − αt)I), (3)\n\nwhere, the Dθ is the denoising network with learned param- eters θ. The sequence αt defines the noise schedule as:\n\nαt = 1 − βt, βt ∈ [0,1], s.t. βt > βt−1∀t ∈ [0,T]. (4)\n\nWe use a linear time schedule with T = 1000 steps.\n\nThe denoising must be applied iteratively for sampling the target distribution p(x). However, for training the model we can draw samples xt directly from q(xt|x0) as:\n\nt @, = VX + V1 — aye where, & = Il ay. (5) i=0\n\nIt is common to use the network Dθ(xt,t) to predict the noise component ϵ instead of the signal component xt−1 in eq. (2); which has the interpretation of modeling the score of the marginal distribution q(xt) up to a scaled con- stant [22, 36]. Instead, we employ the “x0-formulation” from eq. (3), which has recently been explored in the con- text of diffusion model distillation [52] and modeling of text-conditioned videos using diffusion [21]. The reason- ing behind this design choice will become apparent later.\n\nTraining. Training the “x0-formulation” of a diffusion model Dθ comprises minimizing the following loss:\n\nL = ∥Dθ(xt,t) − x0∥2, (6)\n\n√\n\nencouraging Dθ to denoise sample xt ∼ N( ¯αtx0,(1 − ¯αt)I) to predict the clean sample x0.\n\nSampling. Once the denoising network Dθ is trained, sampling can be done by first starting with pure noise, i.e., xT ∼ N(0,I), and then iteratively refining T times using the network Dθ, which terminates with a sample from target data distribution x0 ∼ q(x0) = p(x):\n\n√\n\nxt−1 ∼ N( ¯αt−1Dθ(xt,t),(1 − ¯αt−1)I). (7)",
+            "section": "introduction",
+            "section_idx": 0,
+            "citations": [
+                "22",
+                "0,1",
+                "22, 36",
+                "52",
+                "21"
+            ]
+        },
+        {
+            "text": "3.4. Implementation Details\n\nTraining details. HOLODIFFUSION training finds the op- timal model parameters θ,ζ by minimizing the sum of the photometric and the bootstrapped photometric losses Lphoto + L′ photo using the Adam optimizer with an initial learning rate 5 · 10−5 (decaying ten-fold whenever the total loss plateaus) until convergence is reached.\n\nIn each training iteration, we randomly sample 10 source views {Ij} from a randomly selected training video si to form the grid of auxiliary features ¯V . The auxiliary fea- tures are noised to form ¯Vt and later denoised with Dθ(¯Vt). Afterwards Dθ(¯Vt) is noised and denoised again during the two-pass bootstrap procedure. To avoid two rendering passes in each training iteration (one for Lphoto and the sec- ond for L′ photo), we randomly choose to optimize L′ photo with 50-50 probability in each iteration as a lazy regularization. The photometric losses compare renders rζ(·,Pj) of the de- noised voxel grid to 3 different target views (different from the source views).\n\nRendering function r¢. The differentiable rendering function r¢(V, P;) from eqs. (8) and (9) uses Emission- Absorption (EA) ray marching as follows. First, given the knowledge of the camera parameters P;, a ray ry € S? is emitted from each pixel u € {0,..., 1-1} x {0,...,W- 1} of the rendered image I; ¢ R?*/*\"_ We sample Ng 3D points (p;)X5 on each ray at regular intervals A € R. For each point p;, we sample the corresponding voxel grid feature V[p;] € R@” , where V[-] stands for trilinear inter- polation. The feature V[p,] is then decoded by an MLP as fe(V [pi], ru) := (01, ¢;) with parameters ¢ to obtain the density o; € [0,1] and the RGB color c; € [0, 1]? of each 3D point. The MLP f is designed so that the color c de- pends on the ray direction r,, while the density o does not, similar to NeRF [40]. Finally, EA ray marching renders the ru’s pixel color cy, = >>;-%, w(pi)c; as a weighted com- bination of the sampled colors. The weights are defined as w(p:) = T; — T;41 where T; = en br aA,",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "0,1",
+                "0, 1",
+                "40"
+            ]
+        },
+        {
+            "text": "5. Conclusion\n\nWe have presented HOLODIFFUSION, an unconditional 3D-consistent generative diffusion model that can be trained using only posed-image supervision. At the core of our method is a learnable rendering module that is trained in conjunction with the diffusion denoiser, which operates di- rectly in the feature space. Furthermore, we use a pretrained feature encoder to decouple the cubic volumetric memory complexity from the final image rendering resolution. We\n\nTable 1. Quantitative evaluation. FID and KID on 4 classes of CO3Dv2 comparing our HOLODIFFUSION with the baselines pi- GAN [6], EG3D [5], GET3D [11], and the non-bootstrapped version of our HOLODIFFUSION. The column “VP” denotes whether renders of a method are 3D view-consistent or not.\n\nmethod VP Apple Hydrant TeddyBear Donut Mean FID ↓ KID ↓ FID ↓ KID ↓ FID ↓ KID ↓ FID ↓ KID ↓ FID ↓ KID ↓ pi-GAN [6] ✕ 49.3 0.042 92.1 0.080 125.8 0.118 99.4 0.069 91.7 0.077 EG3D [5] ✓ 170.5 0.203 229.5 0.253 236.1 0.239 222.3 0.237 214.6 0.233 GET3D [11] ✓ 179.1 0.190 303.3 0.380 244.5 0.280 209.9 0.230 234.2 0.270 HOLODIFFUSION (No bootstrap) ✓ 342.9 0.400 277.9 0.305 222.1 0.217 272.1 0.199 278.7 0.280 HOLODIFFUSION ✓ 94.5 0.095 100.5 0.079 109.2 0.106 115.4 0.085 104.9 0.091\n\n1000\n\nne\n\n275 fi\n\n»\n\n750\n\nSg BY\n\nez\n\ntime ¢ 700\n\n>\n\n0\n\n< ‘ *\n\n« Pak\n\n&\n\nFigure 5. Sampling across time. Rendering of HOLODIFFUSION’s iterative sampling process for a hydrant and a teddy bear. The diffusion time decreases from left (t = T = 1000) to the right (t = 0).\n\ndemonstrate that the method can be trained on raw posed image sets, even in the few-image setting, striking a good balance between quality and diversity of results.\n\nAt present, our method requires access to camera infor- mation at training time. One possibility is to jointly train a viewpoint estimator to pose the input images, but the chal- lenge may be to train this module from scratch as the input view distribution is unlikely to be uniform [45]. An obvi- ous next challenge would be to test the setup for conditional generation, either based on images (i.e., single view recon- struction task) or using text guidance. Beyond generation, we would also like to support editing the generated repre- sentations, both in terms of shape and appearance, and com- pose them together towards scene generation. Finally, we want to explore multi-class training where diffusion models, unlike their GAN counterparts, are known to excel without suffering from mode collapse.\n\nAs diffusion models can be prone to memorizing the training data in limited data settings [58], our models can also be used to recover the original training samples. Ana- lyzing the severity and the extent to which our models suffer from this, is an interesting future direction for exploration.",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "6",
+                "5",
+                "11",
+                "6",
+                "5",
+                "11",
+                "45",
+                "58"
+            ]
+        },
+        {
+            "text": "2.2. 3D Generative Models\n\n3D Generative advesarial networks. Early 3D genera- tive models leveraged adversarial learning [13] as the pri- mary form of supervision. PlatonicGAN [18] learns to generate colored 3D shapes from an unstructured corpus of images belonging to the same category, by rendering a voxel grid from random viewpoints so that an adversarial discriminator cannot distinguish between the renders and natural images sampled from a large uncurated database. PrGAN [10] differs from PlatonicGAN by focusing only on rendering untextured 3D shapes. To deal with the large memory footprint of voxels, HoloGAN [43] adjusts Platon- icGAN by rendering a low-resolution 2D feature image of a coarse voxel grid, followed by a 2D convolutional decoder mapping the feature render to the final RGB image. The results are, however, not consistent with camera motion.\n\nInspired by the success of NeRF [41], GRAF [54] also trains in a data setting similar to PlatonicGAN [18] but, differently from PlatonicGAN, represents each generated scene with a neural radiance field. The GRAF pipeline was subsequently improved by PiGAN [6], leveraging a SIREN- based [56] architecture. Similar to HoloGAN, StyleN- erf [15] first renders a radiance feature field followed by\n\ni” frames } {s'} = {(G, P, n e~N(0,I) t~U)0,1] x “photo Photo S& 4 re(V, Pj) Pj bootstrapping via second denoising yy diffusion UNet camera\n\nFigure 2. Method overview. Our HOLODIFFUSION takes as input video frames for category-specific videos {si} and trains a diffusion- based generative model Dθ. The model is trained with only posed image supervision {(Ii j,P i j)}, without access to 3D ground-truth. Once trained, the model can generate view-consistent results from novel camera locations. Please refer to Sec. 3 for details.\n\na convolutional super-resolution network. EG3D [5] fur- ther improves the pipeline by initially decoding a randomly sampled latent vector to a tri-plane representation followed by a NeRF-style rendering of a radiance field supported by the tri-plane. EpiGRAF [57] further improves upon the triplane-based 3D generation. GAUDI [3] also uses the tri- plane while building upon DeVries et. al. [8] which used a single plane representing the floor map of the indoor room scenes being generated.\n\nconsistent camera poses that provide strong constraints.\n\nWhile most approaches focus on generating shapes of isolated instances of object categories, GIRAFFE [46] and BlockGAN [44] extend GRAF and HoloGAN to reconstruct compositions of objects and their background. Alterna- tive approaches focus on text-conditioned 3D shape gener- ation [3,26,49], or learn [28] a generative model by observ- ing a single self-similar scene.\n\nBesides radiance fields, other shape representations have also been explored. While VoxGRAF [55] replaces the radi- ance field of GRAF with a sparse voxel grid, StyleSDF [48] employs signed distance fields, and Neural Volumes [35] propose a novel trilinearly-warped voxel grid. Wu et al. [69] differentiably render meshes and aid the adversarial learn- ing with a set of constraints exploiting symmetry proper- ties of the reconstructed categories. Recently, GET3D [11] differentiably converts an initial tri-plane representation to colored mesh, which is finally rendered.\n\n3D diffusion models. Diffusion models for 3D shape learning have been explored only very recently. Luo et al. [38] use full 3D supervision to learn a generative dif- fusion model of point clouds. In a concurrent effort, Wat- son et al. [67] learns a new-view synthesis function which, conditioned on a posed image of a scene, generates a new view of the scene from a specified target viewpoint. Differ- ently from us, [67] do not employ an explicit image forma- tion model which may lead to geometrical inconsistencies between generated viewpoints.\n\nThe aforementioned approaches are trained solely by ob- serving uncurated category-centric image collections with- out the need for any explicit 3D supervision in form of the ground truth 3D shape or camera pose. However, since the rendering function is non-smooth under camera mo- tion, these methods can either successfully reconstruct im- age databases with a very small variation in camera poses (e.g., fronto-parallel scenes such as portrait photos of cat or human faces) or datasets with a well-defined distribution of camera intrinsics end extrinsics (e.g., synthetic datasets). We tackle the pose estimation problem by leveraging a dataset of category-centric videos each containing multiple views of the same object. Observing each object from a moving vantage point allows for estimating accurate scene-",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "13",
+                "18",
+                "10",
+                "43",
+                "41",
+                "54",
+                "18",
+                "6",
+                "56",
+                "15",
+                "5",
+                "57",
+                "3",
+                "8",
+                "46",
+                "44",
+                "3,26,49",
+                "28",
+                "55",
+                "48",
+                "35",
+                "69",
+                "11",
+                "38",
+                "67",
+                "67"
+            ]
+        },
+        {
+            "text": "4. Experiments\n\nIn this section, we evaluate our method. First we perform the quantitative evaluation and then follow it by visualizing\n\n0°\n\n60°\n\n120°\n\nViewpoint change 180°\n\n240°\n\n300°\n\n360°\n\n>\n\nHoloDiffusion @P2OOGOSSSEEH~~ 23993 B09 SC@ eee *#v¥eeteresor iret TiVIIFFTTIEY EET ROLP SSFP ERURmMAaRA BRABRARQCRESFELARR\n\n~-\n\npi-GAN\n\nSSSOSHVOSOCCCESSS SOSSSSESCEOCSETSSO $0 eset BURES SSIs $f SbRs t4 oe se\n\n4\n\na\n\ns\n\n%\n\na -\n\nFigure 3. View consistency. Evaluation of the consistency of the shape renders under camera motion. While our results (top) remain consistent, pi-GAN [6]’s results (bottom) suffer from significant appearance variations across view changes.\n\nsamples for assessing the quality of generations.\n\nDatasets and baselines. For our experiments, we use CO3Dv2 [50], which is currently the largest available dataset of fly-around real-life videos of object categories. The dataset contains videos of different object categories and each video makes a complete circle around the ob- ject, showing all sides of it. Furthermore, camera poses and object foreground masks are provided with the dataset (they were obtained by the authors by running off-the-shelf Structure-from-Motion and instance segmentation software, respectively).\n\nWe consider the four categories Apple, Hydrant, TeddyBear and Donut for our experiments. For each of the categories we train a single model on the 500 “train” videos (i.e. approx. 500×100 frames in total) with the high- est camera cloud quality score, as defined in the CO3Dv2 annotations, in order to ensure clean ground-truth camera pose information. We note that all trainings were done on 2-to-8 V100 32GB GPUs for 2 weeks.\n\nWe consider the prior works pi-GAN [6], EG3D [5], and GET3D [11] as baselines for comparison. Pi-GAN gener- ates radiance fields represented by MLPs and is trained us-\n\n, “\n\nApple 6@ @@\n\nTeddyBear Donut 4§ 00\n\n; 086 ° eB 2) * @@\n\n| @e an € ie :@@\n\nFigure 4. Comparisons. Samples generated by our HOLODIFFUSION compared to those by pi-GAN, EG3D, and GET3D.\n\ning an adversarial objective. Similar to our setting, they only use 2D image supervision for training. EG3D [5] uses the feature triplane, decoded by an MLP as the underlying representation, while needing both the images and the cam- era poses as input to the training procedure. GET3D [11] is another GAN-based baseline, which also requires the images and camera poses for training. Apart from this, GET3D also requires the fg/bg masks for training; which we supply in form of the masks available in CO3Dv2. Since GET3D applies a Deformable Marching Tetrahedra step in the pipeline, the samples generated by them are in the form of textured meshes.\n\n(MLPs) produced by pi-GAN essentially mimic a 2D image GAN.\n\nQualitative evaluation. Figure 4 depicts random sam- ples generated from all the methods under comparison. HOLODIFFUSION produces the most appealing, consistent and realistic samples among all. Figure 3 further analyzes the viewpoint consistency of pi-GAN compared to ours. It is evident that, although individual views of pi-GAN sam- ples look realistic, their appearance is inconsistent with the change of viewpoint. Please refer to the project webpage for more examples and videos of the generated samples.\n\nQuantitative evaluation. We report Frechet Inception Distance (FID) [20], and Kernel Inception Distance (KID) [4] for assessing the generative quality of our results. As shown in Table 1, our HOLODIFFUSION produces bet- ter scores than EG3D and GET3D. Although pi-GAN gets better scores than ours on some categories, we note that the 3D-agnostic training procedure of pi-GAN cannot recover the proper 3D structure of the unaligned shapes of CO3Dv2. Thus, without the 3D-view consistency, the 3D neural fields",
+            "section": "results",
+            "section_idx": 1,
+            "citations": [
+                "6",
+                "50",
+                "6",
+                "5",
+                "11",
+                "5",
+                "11",
+                "20",
+                "4"
+            ]
+        },
+        {
+            "text": "3\n\n2023\n\n2\n\n0\n\n2 y a M 1 2 ] V C . s c [ 2 v 9 0 5 6 1 . 3 0 3 2 : v\n\narXiv\n\ni\n\nX\n\nr\n\na\n\nHOLODIFFUSION: Training a 3D Diffusion Model using 2D Images\n\nAnimesh Karnewar⋆†\n\nAndrea Vedaldi\n\nDavid Novotny⋆\n\nNiloy J. Mitra\n\nUCL\n\nMeta AI\n\nMeta AI\n\nUCL\n\na.karnewar@ucl.ac.uk\n\nvedaldi@meta.com\n\ndnovotny@meta.com\n\nn.mitra@ucl.ac.uk\n\nhttps://holodiffusion.github.io\n\nTraining: Videos of object categories Generative 3D Diffusion model 2¥¥r“7— ARE 908 HOLODIFFUSION training SCOrrr\n\nFigure 1. We present HOLODIFFUSION as the first 3D-aware generative diffusion model that produces 3D-consistent images and is trained with only posed image supervision. Here we show a few different samples generated from models trained on different classes of the CO3D dataset [50].\n\nAbstract\n\n1. Introduction\n\nDiffusion models have emerged as the best approach for generative modeling of 2D images. Part of their success is due to the possibility of training them on millions if not bil- lions of images with a stable learning objective. However, extending these models to 3D remains difficult for two rea- sons. First, finding a large quantity of 3D training data is much more complex than for 2D images. Second, while it is conceptually trivial to extend the models to operate on 3D rather than 2D grids, the associated cubic growth in mem- ory and compute complexity makes this infeasible. We ad- dress the first challenge by introducing a new diffusion setup that can be trained, end-to-end, with only posed 2D images for supervision; and the second challenge by proposing an image formation model that decouples model memory from spatial memory. We evaluate our method on real-world data, using the CO3D dataset which has not been used to train 3D generative models before. We show that our dif- fusion models are scalable, train robustly, and are compet- itive in terms of sample quality and fidelity to existing ap- proaches for 3D generative modeling.\n\nDiffusion models have rapidly emerged as formidable generative models for images, replacing others (e.g., VAEs, GANs) for a range of applications, including image col- orization [51], image editing [39], and image synthesis [9, 23]. These models explicitly optimize the likelihood of the training samples, can be trained on millions if not billions of images, and have been shown to capture the underlying model distribution better [9] than previous alternatives.\n\nA natural next step is to bring diffusion models to 3D data. Compared to 2D images, 3D models facilitate di- rect manipulation of the generated content, result in perfect view consistency across different cameras, and allow object placement using direct handles. However, learning 3D dif- fusion models is hindered by the lack of a sufficient volume of 3D data for training. A further question is the choice of representation for the 3D data itself (e.g., voxels, point clouds, meshes, occupancy grids, etc.). Researchers have proposed 3D-aware diffusion models for point clouds [37],\n\n⋆ Indicates equal contribution.\n\n† part of this work was done during an internship at MetaAI.\n\nvolumetric shape data using wavelet features [24] and novel view synthesis [66]. They have also proposed to distill a pretrained 2D diffusion model to generate neural radiance fields of 3D objects [34, 49]. However, a diffusion-based 3D generator model trained using only 2D image for super- vision is not available yet.\n\nIn this paper, we contribute HOLODIFFUSION, the first unconditional 3D diffusion model that can be trained with only real posed 2D images. By posed, we mean different views of the same object with known cameras, for example, obtained by means of structure from motion [53].\n\nWe make two main technical contributions: (i) We pro- pose a new 3D model that uses a hybrid explicit-implicit feature grid. The grid can be rendered to produce images from any desired viewpoint and, since the features are de- fined in 3D space, the rendered images are consistent across different viewpoints. Compared to utilizing an explicit den- sity grid, the feature representation allows for a lower res- olution grid. The latter leads to an easier estimation of the probability density due to a smaller number of variables. Furthermore, the resolution of the grid can be decoupled from the resolution of the rendered images. (ii) We design a new diffusion method that can learn a distribution over such 3D feature grids while only using 2D images for su- pervision. Specifically, we first generate intermediate 3D- aware features conditioned only on the input posed images. Then, following the standard diffusion model learning, we add noise to this intermediate representation and train a de- noising 3D UNet to remove the noise. We apply the denois- ing loss as photometric error between the rendered images and the Ground-Truth training images. The key advantage of this approach is that it enables training of the 3D diffu- sion model from 2D images, which are abundant, sidestep- ping the difficult problem of procuring a huge dataset of 3D models for training.\n\nWe train and evaluate our method on the Co3Dv2 [50] dataset where HOLODIFFUSION outperforms existing alter- natives both qualitatively and quantitatively.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "50",
+                "51",
+                "39",
+                "9, 23",
+                "9",
+                "37",
+                "24",
+                "66",
+                "34, 49",
+                "53",
+                "50"
+            ]
+        },
+        {
+            "text": "2. Related Work\n\n2.1. Image-conditioned 3D Reconstruction\n\nNeural and differentiable rendering. Neural render- ing [60] is a class of algorithms that partially or entirely use neural networks to approximate the light transport equation.\n\nThe 2D versions of neural rendering include variants of pix2pix [25], deferred neural rendering [61], and their follow-up works. The common theme in all these meth- ods is that a post-processor neural network (usually a CNN) maps neural feature images into photorealistic RGB images.\n\nThe 3D versions of neural rendering have recently been popularized by NeRF [40], which uses a Multi Layer Per- ceptron (MLP) to model the parameters of the 3D scene\n\n(radiance and occupancy) and a physically-based render- ing procedure (Emission-Absorption raymarching). NeRF solves the inverse rendering problem where, given many 2D images of a scene, the aim is to recover its 3D shape and ap- pearance. The success of NeRF gave rise to many follow-up works [1,2,40,63,73]. While NeRF uses MLPs to represent the occupancy and radiance of the underlying scene, differ- ent representations were explored in [7,14,29,35,42,59,64, 71].\n\nFew-view reconstruction. In many cases, dense image supervision is unavailable, and one has to condition the reconstruction on a small number of scene views instead. Since 3D reconstruction from few-views is ambiguous, re- cent methods aid the reconstruction with 3D priors learned by observing many images of an object category. Works like CMR [27], C3DM [47], and UMR [33] learn to predict the parameters of a mesh by observing images of individual examples of the object category. DOVE [68] also predicts meshes, but additionally leverages stronger constraints pro- vided by videos of the deformable objects.\n\nOthers [19,72] aimed at learning to fit NeRF given only a small number of views; they do so by sampling im- age features at the 2D projections of the 3D ray samples. Later works [50,65] have improved this formulation by us- ing transformers to process the sampled features. Finally, ViewFormer [32] drops the rendering model and learns a fully implicit transformer-based new-view synthesizer. Re- cently, BANMo [70] reconstructed deformable objects with a signed distance function.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "60",
+                "25",
+                "61",
+                "40",
+                "1,2,40,63,73",
+                "7,14,29,35,42,59,64, 71",
+                "27",
+                "47",
+                "33",
+                "68",
+                "19,72",
+                "50,65",
+                "32",
+                "70"
+            ]
+        },
+        {
+            "text": "3.2. Learning 3D Categories by Watching Videos\n\nTraining data. The input to our learning procedure is a dataset of N ∈ N video sequences {si}N i=1, each de- picting an instance of the same object category (e.g., car, carrot, teddy bear). Each video si = (Ii j)Nframes j,P i j=1 com- prises Nframes pairs (Ii j,P i j), each consisting of an RGB j ∈ R3×H×W and its corresponding camera pose image Ii j ∈ R4×4, represented as a 4 × 4 camera matrix. P i\n\nOur goal is to train a generative model p(V ) where V is a representation of the shape and appearance of a 3D object; furthermore, we aim to learn this distribution using only the 2D training videos {si}N i=1.\n\n3D feature grids. As 3D representation V we pick 3D feature voxel grids V € Rt *5*S*S of size S € N con- taining d-dimensional latent feature vectors. Given the voxel grid V representing the object from a certain video s, we can reconstruct any frame (I;,P;) € s of the video as I; = r¢(V, P;) by the means of the rendering function r¢(V, Pj) : RY *8*S*S x REA Ly R3XHXW where C are the function parameters (see Sec. 3.4 for details).\n\nNext, we discuss how to build a diffusion model for the distribution p(V ) of feature grids. One might attempt to directly apply the methodology of Sec. 3.1, setting x = V , but this does not work because we have no access to ground- truth feature grids V for training; instead, these 3D models must be inferred from the available 2D videos while train- ing. We solve this problem in the next section.\n\n3.3. Bootstrapped Latent Diffusion Model\n\nIn this section, we show how to learn the distribution p(V ) of feature grids from the training videos s alone. In what follows, we use the symbol V as a shorthand for p(V ).\n\nThe training videos provide RGB images I and their cor- responding camera poses P, but no sample feature grids V from the target distribution V. As a consequence, we also √ have no access to the noised samples Vt ∼ N( ¯αtV0,(1 − ¯αt)I) required to evaluate the denoising objective eq. (6) and thus learn a diffusion model.\n\nTo solve this issue, we introduce the BLDM (Boot- strapped Latent Diffusion Model). BLDM can learn the denoiser-cum-generator Dθ given samples ¯V ∼ ¯V from an auxiliary distribution ¯V, which is closely related but not identical to the target distribution V.\n\nThe auxiliary samples ¯V . As shown in fig. 2, our idea is to obtain the auxiliary samples ¯V as a (learnable) function of the corresponding training videos s. To this end, we use a design strongly inspired by Warp-Conditioned-Embedding (WCE) [19], which demonstrated compelling performance for learning 3D object categories. Specifically, given a training video s containing frames Ij, we generate a grid ¯V ∈ RdV ×S×S×S of auxiliary features ¯V:mno ∈ [−1,1]dV\n\nby projecting the 3D coordinate xV mno of the each grid el- ement (m,n,o) to every video frame Ij, sampling corre- sponding 2D image features, and aggregating those into a single dV -dimensional descriptor per grid element. The 2D image features are extracted by a trainable encoder (we use the ResNet-32 encoder [17]) E. This process is detailed in the supplementary material.\n\nAuxiliary denoising diffusion objective. The standard denoising diffusion loss eq. (6) is unavailable in our case because the data samples V are unavailable. Instead, we leverage the “x0-formulation” of diffusion to employ an al- ternative diffusion objective which does not require knowl- edge of V . Specifically, we replace eq. (6) with a photomet- ric loss\n\nLphoto := ∥rζ(Dθ(¯Vt,t),Pj) − Ij∥2, (8)\n\nwhich compares the rendering rζ(Dθ(¯Vt,t),Pj) of the de- noising Dθ(¯Vt,t) of the noised auxiliary grid ¯Vt to the (known) image Ij with pose Pj. Equation (8) can be com- puted because the image Ij and camera parameters Pj are known and ¯Vt is derived from the auxiliary sample ¯V , whose computation is given in the previous section.\n\nTrain/test denoising discrepancy. Our denoiser Dθ takes as input a sample ¯Vt from the noised auxiliary distribution ¯Vt instead of the noised target distribution Vt. While this allows to learn the denoising model by minimizing eq. (8), it prevents us from drawing samples from the model at test time. This is because, during training, Dθ learns to denoise the auxiliary samples ¯V ∈ ¯V (obtained through fusing im- age features into a voxel-grid), but at test time we need in- stead to draw target samples V ∈ V as specified by eq. (7) per sampling step. We address this problem by using a boot- strapping technique that we describe next.\n\nTwo-pass diffusion bootstrapping. In order to remove the discrepancy between the training and testing sample dis- tributions for the denoiser Dθ, we first use the latter to ob- tain ‘clean’ voxel grids from the training videos during an initial denoising phase, and then apply a diffusion process to those, finetuning Dθ as a result.\n\nOur bootstrapping procedure rests on the assumption that once Lphoto is minimized, the denoisings Dθ(¯Vt,t) of the auxiliary grids ¯V ∼ ¯V follow the clean data distribution V, i.e., Dθ⋆(¯Vt,t) ∼ V for the optimal denoiser parameters θ⋆ that minimize Lphoto. Simply put, the denoiser Dθ learns to denoise both the diffusion noise and the noise resulting from imperfect reconstructions. Note that our assumption Dθ⋆(¯Vt,t) ∼ V is reasonable since recent single-scene neu- ral rendering methods [7, 35, 41] have demonstrated suc- cessful recovery of high-quality 3D shapes solely by op- timizing the photometric loss via differentiable rendering.\n\nGiven that Dθ⋆ is now capable of generating clean data samples, we can expose it to the noised version of the clean\n\nsamples V by executing a second denoising pass in a re- current manner. To this end, we define the bootstrapped photometric loss L′ photo:\n\nphoto := ∥rζ(Dθ(ϵt′(Dθ(¯Vt,t),t′),Pj) − Ij∥2,\n\nL′ (9)\n\n√\n\nwith ϵt′(Z) ∼ N( ¯αt′Z,(1 − ¯αt′)I) denoting the dif- fusion of input grid Z at time t′. Intuitively, eq. (9) evaluates the photometric error between the ground truth image I and the rendering of the doubly-denoised grid Dθ(ϵt′(Dθ(¯Vt,t),t′)).",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "19",
+                "17",
+                "7, 35, 41"
+            ]
+        },
+        {
+            "text": "7. Acknowledgements\n\nAnimesh and Niloy were partially funded by the European Union’s Horizon 2020 research and inno- vation programme under the Marie Skłodowska-Curie grant agreement No. 956585. This research has been partly supported by MetaAI and the UCL AI Centre. Finally, Animesh thanks Alexia Jolicoeur-Martineau for the helpful and insightful guidance on diffusion models.\n\nReferences\n\n6. Societal Impact\n\nOur method primarily contributes towards the generative modeling of 3D real-captured assets. Thus as is the case with 2D generative models, ours is also prone to misuse of generated synthetic media. In the context of synthetically generated images, our method could potentially be used to make fake 3D view-consistent GIFs or videos. Since we only train our models on the virtually harmless Co3D (Com- mon objects in 3D) dataset, our released models could not be directly used to infer potentially malicious samples.\n\n[1] Jonathan T Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo Martin-Brualla, and Pratul P Srinivasan. Mip-nerf: A multiscale representation for anti-aliasing neu- ral radiance fields. In Proceedings of the IEEE/CVF Inter- national Conference on Computer Vision, pages 5855–5864, 2021. 2\n\n[2] Jonathan T Barron, Ben Mildenhall, Dor Verbin, Pratul P Srinivasan, and Peter Hedman. Mip-nerf 360: Unbounded anti-aliased neural radiance fields. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 5470–5479, 2022. 2\n\n[3] Miguel Angel Bautista, Pengsheng Guo, Samira Abnar, Wal- ter Talbott, Alexander Toshev, Zhuoyuan Chen, Laurent Dinh, Shuangfei Zhai, Hanlin Goh, Daniel Ulbricht, et al. Gaudi: A neural architect for immersive 3d scene genera- tion. arXiv preprint arXiv:2207.13751, 2022. 3\n\n[4] Mikołaj Bi´nkowski, Danica J Sutherland, Michael Arbel, and Arthur Gretton. Demystifying mmd gans. arXiv preprint arXiv:1801.01401, 2018. 7\n\n[5] Eric R Chan, Connor Z Lin, Matthew A Chan, Koki Nagano, Boxiao Pan, Shalini De Mello, Orazio Gallo, Leonidas J Guibas, Jonathan Tremblay, Sameh Khamis, et al. Efficient geometry-aware 3d generative adversarial networks. In Pro- ceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 16123–16133, 2022. 3, 6, 7, 8\n\n[6] Eric R Chan, Marco Monteiro, Petr Kellnhofer, Jiajun Wu, and Gordon Wetzstein. pi-gan: Periodic implicit generative adversarial networks for 3d-aware image synthesis. In Pro- ceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 5799–5809, 2021. 2, 6, 8\n\n[7] Anpei Chen, Zexiang Xu, Andreas Geiger, Jingyi Yu, and Hao Su. Tensorf: Tensorial radiance fields. In European Conference on Computer Vision (ECCV), 2022. 2, 5\n\n[8] Terrance DeVries, Miguel Angel Bautista, Nitish Srivastava, Graham W Taylor, and Joshua M Susskind. Unconstrained scene generation with locally conditioned radiance fields. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 14304–14313, 2021. 3\n\n[9] Prafulla Dhariwal and Alexander Nichol. Diffusion models beat gans on image synthesis. Advances in Neural Informa- tion Processing Systems, 34:8780–8794, 2021. 1, 12\n\n[10] Matheus Gadelha, Subhransu Maji, and Rui Wang. 3D shape induction from 2D views of multiple objects. In arXiv, 2016. 2\n\n[11] Jun Gao, Tianchang Shen, Zian Wang, Wenzheng Chen, Kangxue Yin, Daiqing Li, Or Litany, Zan Gojcic, and Sanja Fidler. Get3d: A generative model of high quality 3d textured shapes learned from images. arXiv preprint arXiv:2209.11163, 2022. 3, 6, 7, 8\n\n[12] Xavier Glorot and Yoshua Bengio. Understanding the diffi- culty of training deep feedforward neural networks. In Pro- ceedings of the thirteenth international conference on artifi- cial intelligence and statistics, pages 249–256. JMLR Work- shop and Conference Proceedings, 2010. 12\n\n[13] Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio. Generative adversarial networks. Commu- nications of the ACM, 63(11):139–144, 2020. 2\n\n[14] Thibault Groueix, Matthew Fisher, Vladimir G Kim, Bryan C Russell, and Mathieu Aubry. A papier-mˆach´e ap- proach to learning 3d surface generation. In Proceedings of the IEEE conference on computer vision and pattern recog- nition, pages 216–224, 2018. 2\n\n[15] Jiatao Gu, Lingjie Liu, Peng Wang, and Christian Theobalt. Stylenerf: A style-based 3d-aware genera- tor for high-resolution image synthesis. arXiv preprint arXiv:2110.08985, 2021. 2\n\n[16] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. arXiv preprint arXiv:1512.03385, 2015. 12\n\n[17] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. In Proc. CVPR, 2016. 5\n\n[18] Philipp Henzler, Niloy J Mitra, and Tobias Ritschel. Escap- ing plato’s cave: 3d shape from adversarial rendering. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 9984–9993, 2019. 2\n\n[19] Philipp Henzler, Jeremy Reizenstein, Patrick Labatut, Ro- man Shapovalov, Tobias Ritschel, Andrea Vedaldi, and David Novotny. Unsupervised learning of 3d object cate- gories from videos in the wild. Proc. CVPR, 2021. 2, 4\n\n[20] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans trained by a two time-scale update rule converge to a local nash equilib- rium. Advances in neural information processing systems, 30, 2017. 7\n\n[21] Jonathan Ho, William Chan, Chitwan Saharia, Jay Whang, Ruiqi Gao, Alexey Gritsenko, Diederik P Kingma, Ben Poole, Mohammad Norouzi, David J Fleet, et al. Imagen video: High definition video generation with diffusion mod- els. arXiv preprint arXiv:2210.02303, 2022. 4\n\n[22] Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffu- sion probabilistic models. Advances in Neural Information Processing Systems, 33:6840–6851, 2020. 4, 13\n\n[23] Jonathan Ho, Chitwan Saharia, William Chan, David J Fleet, Mohammad Norouzi, and Tim Salimans. Cascaded diffusion models for high fidelity image generation. J. Mach. Learn. Res., 23:47–1, 2022. 1\n\n[24] Ka-Hei Hui, Ruihui Li, Jingyu Hu, and Chi-Wing Fu. Neural wavelet-domain diffusion for 3d shape generation, 2022. 2\n\n[25] Phillip Isola, Jun-Yan Zhu, Tinghui Zhou, and Alexei A Efros. Image-to-image translation with conditional adver- sarial networks. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 1125–1134, 2017. 2",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25"
+            ]
+        },
+        {
+            "text": "[26] Ajay Jain, Ben Mildenhall, Jonathan T Barron, Pieter Abbeel, and Ben Poole. Zero-shot text-guided object genera- tion with dream fields. In Proceedings of the IEEE/CVF Con- ference on Computer Vision and Pattern Recognition, pages 867–876, 2022. 3\n\n[27] Angjoo Kanazawa, Shubham Tulsiani, Alexei A. Efros, and Jitendra Malik. Learning category-specific mesh reconstruc- tion from image collections. In Proc. ECCV, 2018. 2\n\n[28] Animesh Karnewar, Tobias Ritschel, Oliver Wang, and Niloy Mitra. 3inGAN: Learning a 3D generative model from im- ages of a self-similar scene. In Proc. 3D Vision (3DV), 2022. 3\n\n[29] Animesh Karnewar, Tobias Ritschel, Oliver Wang, and Niloy Mitra. Relu fields: The little non-linearity that could. In ACM SIGGRAPH 2022 Conference Proceedings, pages 1–9, 2022. 2\n\n[30] Tero Karras, Miika Aittala, Timo Aila, and Samuli Laine. Elucidating the design space of diffusion-based generative models. arXiv preprint arXiv:2206.00364, 2022. 13\n\n[31] Diederik P. Kingma and Jimmy Ba. Adam: A method for stochastic optimization. Proc. ICLR, 2015. 12\n\n[32] Jon´aˇs Kulh´anek, Erik Derner, Torsten Sattler, and Robert Babuˇska. Viewformer: Nerf-free neural rendering from few images using transformers. arXiv preprint arXiv:2203.10157, 2022. 2\n\n[33] Xueting Li, Sifei Liu, Kihwan Kim, Shalini De Mello, Varun Jampani, Ming-Hsuan Yang, and Jan Kautz. Self- supervised single-view 3d reconstruction via semantic con- sistency. Proc. ECCV, 2020. 2\n\n[34] Chen-Hsuan Lin, Jun Gao, Luming Tang, Towaki Takikawa, Xiaohui Zeng, Xun Huang, Karsten Kreis, Sanja Fi- dler, Ming-Yu Liu, and Tsung-Yi Lin. Magic3d: High- resolution text-to-3d content creation. arXiv preprint arXiv:2211.10440, 2022. 2\n\n[35] Stephen Lombardi, Tomas Simon, Jason Saragih, Gabriel Schwartz, Andreas Lehrmann, and Yaser Sheikh. Neural vol- umes: Learning dynamic renderable volumes from images. arXiv preprint arXiv:1906.07751, 2019. 2, 3, 5\n\n[36] Calvin Luo. Understanding diffusion models: A unified per- spective. arXiv preprint arXiv:2208.11970, 2022. 4\n\n[37] Shitong Luo and Wei Hu. Diffusion probabilistic models for 3d point cloud generation, 2021. 1\n\n[38] Shitong Luo and Wei Hu. Diffusion probabilistic models for 3d point cloud generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 2837–2845, 2021. 3\n\n[39] Chenlin Meng, Yang Song, Jiaming Song, Jiajun Wu, Jun- Yan Zhu, and Stefano Ermon. Sdedit: Image synthesis and editing with stochastic differential equations. arXiv preprint arXiv:2108.01073, 2021. 1\n\n[40] Ben Mildenhall, Pratul P Srinivasan, Matthew Tancik, Jonathan T Barron, Ravi Ramamoorthi, and Ren Ng. Nerf: Representing scenes as neural radiance fields for view syn- thesis. Proc. ECCV, 2020. 2, 5, 12\n\n[41] Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. NeRF: Representing scenes as neural radiance fields for view syn- thesis. In Proc. ECCV, 2020. 2, 5\n\n[42] Thomas M¨uller, Alex Evans, Christoph Schied, and Alexan- der Keller. Instant neural graphics primitives with a multires- olution hash encoding. arXiv preprint arXiv:2201.05989, 2022. 2\n\n[43] Thu Nguyen-Phuoc, Chuan Li, Lucas Theis, Christian Richardt, and Yong-Liang Yang. HoloGAN: Unsupervised learning of 3D representations from natural images. arXiv.cs, abs/1904.01326, 2019. 2\n\n[44] Thu Nguyen-Phuoc, Christian Richardt, Long Mai, Yong- Liang Yang, and Niloy J. Mitra. Blockgan: Learning 3d object-aware scene representations from unlabelled images. 2020. 3\n\n[45] Michael Niemeyer and Andreas Geiger. Campari: Camera- aware decomposed generative neural radiance fields. In Proc. of the International Conf. on 3D Vision (3DV), 2021. 8\n\n[46] Michael Niemeyer and Andreas Geiger. GIRAFFE: rep- resenting scenes as compositional generative neural feature fields. In Proc. CVPR, 2021. 3\n\n[47] David Novotny, Roman Shapovalov, and Andrea Vedaldi. Canonical 3D deformer maps: Unifying parametric and non- parametric methods for dense weakly-supervised category reconstruction. In arXiv, 2020. 2\n\n[48] Roy Or-El, Xuan Luo, Mengyi Shan, Eli Shecht- man, Jeong Joon Park, and Ira Kemelmacher-Shlizerman. Stylesdf: High-resolution 3d-consistent image and geome- try generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 13503– 13513, 2022. 3\n\n[49] Ben Poole, Ajay Jain, Jonathan T Barron, and Ben Milden- hall. Dreamfusion: Text-to-3d using 2d diffusion. arXiv preprint arXiv:2209.14988, 2022. 2, 3\n\n[50] Jeremy Reizenstein, Roman Shapovalov, Philipp Henzler, Luca Sbordone, Patrick Labatut, and David Novotny. Com- mon Objects in 3D: Large-scale learning and evaluation of real-life 3d category reconstruction. In arXiv, 2021. 1, 2, 6\n\n[51] Chitwan Saharia, William Chan, Huiwen Chang, Chris Lee, Jonathan Ho, Tim Salimans, David Fleet, and Moham- mad Norouzi. Palette: Image-to-image diffusion models. In ACM SIGGRAPH 2022 Conference Proceedings, SIG- GRAPH ’22, 2022. 1\n\n[52] Tim Salimans and Jonathan Ho. Progressive distillation for fast sampling of diffusion models. arXiv preprint arXiv:2202.00512, 2022. 4\n\n[53] Johannes Lutz Sch¨onberger and Jan-Michael Frahm. Structure-from-motion revisited. In Proc. CVPR, 2016. 2\n\n[54] Katja Schwarz, Yiyi Liao, Michael Niemeyer, and Andreas Geiger. GRAF: generative radiance fields for 3D-aware im- age synthesis. arXiv.cs, abs/2007.02442, 2020. 2\n\n[55] Katja Schwarz, Axel Sauer, Michael Niemeyer, Yiyi Liao, and Andreas Geiger. Voxgraf: Fast 3d-aware image synthesis with sparse voxel grids. ARXIV, 2022. 3\n\n[56] Vincent Sitzmann, Julien N. P. Martel, Alexander W. Bergman, David B. Lindell, and Gordon Wetzstein. Implicit neural representations with periodic activation functions. In Proc. NeurIPS, 2020. 2\n\n[57] Ivan Skorokhodov, Sergey Tulyakov, Yiqun Wang, and Pe- ter Wonka. Epigraf: Rethinking training of 3d gans. arXiv preprint arXiv:2206.10535, 2022. 3\n\n[58] Gowthami Somepalli, Vasu Singla, Micah Goldblum, Jonas Geiping, and Tom Goldstein. Diffusion art or digital forgery? investigating data replication in diffusion models. arXiv preprint arXiv:2212.03860, 2022. 8",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58"
+            ]
+        },
+        {
+            "text": "[59] Cheng Sun, Min Sun, and Hwann-Tzong Chen. Direct voxel grid optimization: Super-fast convergence for radiance fields reconstruction. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 5459– 5469, 2022. 2\n\n[60] Ayush Tewari, Ohad Fried, Justus Thies, Vincent Sitzmann, Stephen Lombardi, Kalyan Sunkavalli, Ricardo Martin- Brualla, Tomas Simon, Jason Saragih, Matthias Nießner, et al. State of the art on neural rendering. In Computer Graphics Forum, volume 39, pages 701–727. Wiley Online Library, 2020. 2\n\n[61] Justus Thies, Michael Zollh¨ofer, and Matthias Nießner. De- ferred neural rendering: Image synthesis using neural tex-\n\ntures. ACM Transactions on Graphics (TOG), 38(4):1–12, 2019. 2\n\n[62] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszko- reit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. In NIPS, 2017. 12\n\n[63] Dor Verbin, Peter Hedman, Ben Mildenhall, Todd Zickler, Jonathan T Barron, and Pratul P Srinivasan. Ref-nerf: Struc- tured view-dependent appearance for neural radiance fields. In 2022 IEEE/CVF Conference on Computer Vision and Pat- tern Recognition (CVPR), pages 5481–5490. IEEE, 2022. 2\n\n[64] Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh models from single rgb images. In Proc. ECCV, 2018. 2\n\n[65] Qianqian Wang, Zhicheng Wang, Kyle Genova, Pratul P Srinivasan, Howard Zhou, Jonathan T Barron, Ricardo Martin-Brualla, Noah Snavely, and Thomas Funkhouser. Ibr- net: Learning multi-view image-based rendering. In Pro- ceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 4690–4699, 2021. 2\n\n[66] Daniel Watson, William Chan, Ricardo Martin-Brualla, Jonathan Ho, Andrea Tagliasacchi, and Mohammad Norouzi. Novel view synthesis with diffusion models. arXiv preprint arXiv:2210.04628, 2022. 2\n\n[67] Daniel Watson, William Chan, Ricardo Martin-Brualla, Jonathan Ho, Andrea Tagliasacchi, and Mohammad Norouzi. Novel view synthesis with diffusion models. arXiv preprint arXiv:2210.04628, 2022. 3\n\n[68] Shangzhe Wu, Tomas Jakab, Christian Rupprecht, and An- drea Vedaldi. DOVE: Learning deformable 3D objects by watching videos. In arXiv, 2021. 2\n\n[69] Shangzhe Wu, Christian Rupprecht, and Andrea Vedaldi. Unsupervised learning of probably symmetric deformable 3d objects from images in the wild. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 1–10, 2020. 3\n\n[70] Gengshan Yang, Minh Vo, Natalia Neverova, Deva Ra- manan, Andrea Vedaldi, and Hanbyul Joo. Banmo: Building animatable 3d neural models from many casual videos. In Proceedings of the IEEE/CVF Conference on Computer Vi- sion and Pattern Recognition, pages 2863–2873, 2022. 2\n\n[71] Alex Yu, Sara Fridovich-Keil, Matthew Tancik, Qinhong Chen, Benjamin Recht, and Angjoo Kanazawa. Plenox- els: Radiance fields without neural networks. arXiv preprint arXiv:2112.05131, 2021. 2\n\n[72] Alex Yu, Vickie Ye, Matthew Tancik, and Angjoo Kanazawa. pixelNeRF: Neural radiance fields from one or few images. arXiv.cs, abs/2012.02190, 2020. 2\n\n[73] Kai Zhang, Gernot Riegler, Noah Snavely, and Vladlen Koltun. Nerf++: Analyzing and improving neural radiance fields. arXiv preprint arXiv:2010.07492, 2020. 2, 12",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66",
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73"
+            ]
+        },
+        {
+            "text": "HOLODIFFUSION: Training a 3D Diffusion Model using 2D Images Supplementary material\n\nA. Views2Voxel-grid Unprojection Mechanism\n\nGiven a training video s containing frames Ij, we gener- ate a grid ¯V ∈ RdV ×S×S×S of auxiliary features ¯V:mno ∈ [−1,1]dV by using the following procedure. We first project the 3D coordinate xV mno of each grid element (m,n,o) to every video frame Ij and sample corresponding 2D image features. The 2D image features fj mno are obtained using a ResNet32 [16] encoder E(Ij). We use bilinear interpo- lation for sampling continuous values and use zero-features for projected points that lie outside the Image. Thus, we obtain Nframes features (corresponding to each frame in the video) for each grid element of the voxel-grid. We accu- mulate these features using the Accumulator MLP Aacc. The accumulator Aacc takes as input [fj mno;vj], where [;] denotes concatenation and vj corresponds to the viewing direction corresponding to the camera center of jth frame, mno;f′j and outputs [σj mno]. Finally, we compute the feature at each of the voxel grid centers as a weighted sum of the newly mapped features:\n\nInterpolated voxel “a density + Interpolated vo! features + sini encoded viewing directions\n\nFigure I. Architecture of the RenderMLP used for decoding the features of the generated voxel grids into density and radiance fields.\n\n15 Fino = Y> Fanof mmo: (10) j\n\nB. Implementation Details\n\nIn this section, we provide more details related to imple- menting our proposed method.\n\nB.1. Network Architectures\n\nalso input the view-directions at a latter layer in the MLP. The input features are not encoded, but we apply sinusoidal encodings [40,62] to the input viewing directions with max frequency level L = 4. The activation functions used are: LeakyReLU for the hidden layers, Softplus for the den- sity output head, and the Sigmoid for the radiance output head. All trainable weights are initialized using the Xavier uniform initialization [12]. Figure I shows the detailed ar- chitecture of the RenderMLP.\n\nOur proposed pipeline (Fig 2. of main paper) contains three neural components: The Encoder, Diffusion UNet and Renderer. The Encoder network is a ResNet32 model [16]. For the main diffusion network, we use a 3D variant of the UNet used by Dhariwal and Nichol [9]. The model comprises residual blocks containing downsampling, up- sampling, and self-attention blocks (with additive residual connections).",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "16",
+                "40,62",
+                "12",
+                "16",
+                "9"
+            ]
+        },
+        {
+            "text": "B.2. Renderer\n\nIn order to decode the generated voxel-grid of features into density and radiance fields, we use a NeRF-like [40] MLP (Multi-layer perceptron). The MLP contains 4 layers of 256 hidden units with a skip-connection on the 3rd hid- den layer. The skip connection concatenates the input fea- tures with the intermediate hidden layer features. Similar to NeRF, and for the reasons described in Zhang et al. [73], we\n\nB.3. Training Details\n\nWe train the full HOLODIFFUSION pipeline for 1000 epochs over the dataset containing the object-centric videos. During training, we randomly sample 11 source views for unprojecting into the initial voxel-grid, and 1 target (re- served) novel view for computing loss. The latter enforces 3D structure in the generated samples. We use L2 dis- tance between the rendered views and the G.T. views as the photometric-consistency loss. In terms of hardware, we train all our models on 4-8 32GB-V100 GPUs, with a batch-size equal to the number of GPUs in use, i.e., each GPU processes one voxel-grid during training. We use Adam [31] optimizer with a learning rate (α) of 0.00005 and default values of β1, β2, and ϵ for all the trainable networks during training.\n\nB.4. Diffusion Details\n\nWe use the DDPM [22] diffusion-formulation for our bootstrap-latent-diffusion module as described in section 4.2 of the main paper. We use the default t = 1000 time-steps and the default βt schedule in our experiments: wherein we set β0 = 0.0001;β999 = 0.02. Rest of the βt values are obtained by linearly interpolating between the β0 and β999. Finally, to improve the input conditioning of our diffusion module, we apply tanh to the voxel features to constrain their values in the range of [-1, 1], as proposed in Karras et al. [30]. This allows us to apply [-1, 1] clipping during sampling.",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "40",
+                "73",
+                "31",
+                "22",
+                "30"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\e1789f8c-155c-472f-a54d-51d313dd301c.jpg",
+            "description": "This figure illustrates a process involving a generative 3D diffusion model. On the left side, it shows a series of images from videos used for training that include various object categories such as apples, donuts, hydrants, bears, and carrots. These images serve as the input data for the training phase. In the center, there's a label \"HOLODIFFUSION training,\" indicating the training process using the diffusion model.\n\nOn the right side, the figure displays the output generated by the 3D diffusion model. These are 3D representations of the same object categories (hydrants, carrots, bears, apples, and donuts), showcasing the model's ability to generate realistic 3D objects based on the training data. This figure is important as it visually communicates the transition from 2D video inputs to 3D model outputs, highlighting the effectiveness of the training process and the capability of the generative model to create 3D objects.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\c5bdc498-0173-4029-80c2-039c7e1c1f8c.jpg",
+            "description": "The figure illustrates a sophisticated architecture for a diffusion model used in generating 3D representations from 2D image inputs. It begins with a series of input images, \\( I^i_1, I^i_2, \\ldots, I^i_{N_{\\text{frames}}} \\), each paired with a pose \\( P^i_j \\). These images are processed by an encoder \\( E \\), which converts them into latent space representations.\n\nThe core component is the \"diffuser,\" which processes these latent vectors \\( V \\in \\mathbb{R}^{S^3 \\times d^V} \\) through a diffusion process, adding noise \\( \\epsilon \\sim \\mathcal{N}(0, I) \\) and time sampling \\( t \\sim U[0, T] \\). This process transforms the latent vectors into a noisy intermediate representation \\( V_t \\).\n\nA diffusion U-Net, \\( \\mathcal{D}_\\theta \\), refines this representation, iteratively denoising it to produce a clearer 3D model \\( \\mathcal{V} \\). This model undergoes a second denoising pass for bootstrapping, enhancing its quality.\n\nThe output \\( \\mathcal{V} \\) is rendered into 2D images via a rendering function, \\( r_\\zeta(\\mathcal{V}, P_j) \\), which are compared to the original images using loss functions \\( \\mathcal{L}_{\\text{photo}} \\) and \\( \\mathcal{L}'_{\\text{photo}} \\) to ensure fidelity. The sampling results showcase the model's ability to generate diverse 3D views from the input data.\n\nOverall, this figure is crucial for understanding the methodological innovation and process flow of the research, making it highly important to the paper’s context.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\9c249ddc-25a8-4d77-b766-605f4896bc06.jpg",
+            "description": "The figure illustrates an architecture diagram likely from a neural network model used in computer graphics or 3D rendering, focusing on volumetric rendering. It shows a series of layers that process \"interpolated voxel features,\" beginning with an input size of 64. These features are passed through a sequence of layers, each with 256 units, which suggests the use of fully connected layers typical in deep learning architectures. \n\nThe diagram highlights key components:\n- Interpolated voxel features are initially fed into the network.\n- After several layers, a \"density\" value is computed, indicating a branch in the network where this intermediate result is extracted.\n- Sinusoidally encoded viewing directions, with a size of 27, are added to the network at a later stage, possibly to integrate viewing angle information into the rendering process.\n- The final output is labeled as \"Radiance,\" with a size of 128, which is likely the model's prediction of light emission or reflection from the 3D object.\n\nThis figure is important as it likely represents the core architecture of the model, showing how input features are transformed into meaningful outputs, crucial for understanding the methodology and innovations of the research.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\13a537ca-7958-4deb-96e7-03693b6ba5fe.jpg",
+            "description": "I'm unable to analyze the image directly. However, if you describe the figure's components in detail, I can help analyze it based on your description.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\8b51a24f-18bc-4c7c-bd3a-6073086617ee.jpg",
+            "description": "I'm unable to analyze or interpret images directly. However, if you describe the components, graphs, or any text from the figure, I can help you analyze it.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\a05f4631-25eb-4f13-ab1b-1a971232909c.jpg",
+            "description": "I'm unable to analyze or provide specific details about this image. However, if you can describe the figure, I can help interpret its potential importance and content.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\3bd5e893-929f-4308-be05-de4219f23f6c.jpg",
+            "description": "I'm unable to analyze this specific image. However, I can help if you provide a textual description or context from the research paper. Let me know how else I can assist!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\2215d832-f492-403a-9d5e-f765d5eb59d3.jpg",
+            "description": "I'm unable to analyze or interpret the content of the image provided, such as recognizing any diagrams, charts, or data visualizations. Please describe the figure's content, and I'd be happy to help with the analysis based on your description!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\a0ebe80f-cb77-4fa7-a48c-c0904bed8fc2.jpg",
+            "description": "I'm sorry, I can't analyze or describe the content of the image you uploaded. If you have a textual description or specific questions about the figure, feel free to share, and I'll do my best to assist you!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\df804002-f699-44b0-b1e3-958baf1e2f9c.jpg",
+            "description": "I'm unable to analyze or provide details about the content of images, such as technical figures from research papers. However, if you describe the figure, I can help interpret or analyze the information based on your description!",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Tri-hybrid Representation",
+            "Synthetic dataset generation",
+            "computational specifications",
+            "Diffusion Models",
+            "boundary",
+            "Distance Metrics",
+            "Data-driven view consistency",
+            "Classifier Training",
+            "3D Reconstruction",
+            "Reflectance Estimation",
+            "Probabilistic neural rendering",
+            "Convolutional Neural Networks (CNNs)",
+            "Photometric loss"
+        ],
+        "methodology": [
+            "Uniform Initialization",
+            "3D-R2N2",
+            "Generative Deep Learning",
+            "Sampling techniques",
+            "timeline",
+            "Feature Fusion",
+            "Interpolation",
+            "Two-pass bootstrap",
+            "Diffusion Models",
+            "Skip connections",
+            "Intrinsic Image Decomposition",
+            "Clustering algorithm",
+            "Multi-scale encoding",
+            "ResNet-based architectures",
+            "Point-Voxel UNet",
+            "Hyperbolic tangent function",
+            "Neural rendering",
+            "Transformer-based models",
+            "Attention Mechanisms",
+            "Spatial memory decoupling",
+            "Gradient-based optimization",
+            "3D Shape Estimation"
+        ],
+        "domain": [
+            "3D Computer Vision"
+        ],
+        "strengths": [
+            "Data-efficient learning",
+            "Improved distribution coverage",
+            "Efficiently outperforms existing methods",
+            "Local feature learning",
+            "Geometric invariance",
+            "Generalization across diverse object classes",
+            "Enhanced FID scores",
+            "Multi-GPU computing",
+            "Enhanced sample quality",
+            "Deep Learning Toolbox",
+            "Smoothness",
+            "Prior-based regularization",
+            "Enhanced input manipulation",
+            "Comprehensive Representation Framework",
+            "3D Shape Reconstruction",
+            "Enhanced tri-plane transformer pipeline",
+            "Unified Appearance Modeling",
+            "Quality-Diversity Trade-off",
+            "Diffusion modeling"
+        ],
+        "limitations": [
+            "Wild scene appearance generalization difficulties",
+            "Sparse ground truth",
+            "Limited image supervision",
+            "Synthetic data dependency",
+            "Complex sampling process",
+            "Computational complexity",
+            "Ambiguity in 3D reconstruction",
+            "Limited dataset requirements",
+            "Generative Model Inefficiency"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "2303.16509v2_chunk_0",
+            "section": "introduction",
+            "citations": [
+                "22",
+                "0,1",
+                "22, 36",
+                "52",
+                "21"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "0,1",
+                "0, 1",
+                "40"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_2",
+            "section": "methodology",
+            "citations": [
+                "6",
+                "5",
+                "11",
+                "6",
+                "5",
+                "11",
+                "45",
+                "58"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_3",
+            "section": "results",
+            "citations": [
+                "13",
+                "18",
+                "10",
+                "43",
+                "41",
+                "54",
+                "18",
+                "6",
+                "56",
+                "15",
+                "5",
+                "57",
+                "3",
+                "8",
+                "46",
+                "44",
+                "3,26,49",
+                "28",
+                "55",
+                "48",
+                "35",
+                "69",
+                "11",
+                "38",
+                "67",
+                "67"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_4",
+            "section": "results",
+            "citations": [
+                "6",
+                "50",
+                "6",
+                "5",
+                "11",
+                "5",
+                "11",
+                "20",
+                "4"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_5",
+            "section": "other",
+            "citations": [
+                "50",
+                "51",
+                "39",
+                "9, 23",
+                "9",
+                "37",
+                "24",
+                "66",
+                "34, 49",
+                "53",
+                "50"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_6",
+            "section": "other",
+            "citations": [
+                "60",
+                "25",
+                "61",
+                "40",
+                "1,2,40,63,73",
+                "7,14,29,35,42,59,64, 71",
+                "27",
+                "47",
+                "33",
+                "68",
+                "19,72",
+                "50,65",
+                "32",
+                "70"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_7",
+            "section": "other",
+            "citations": [
+                "19",
+                "17",
+                "7, 35, 41"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_8",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_9",
+            "section": "other",
+            "citations": [
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_10",
+            "section": "other",
+            "citations": [
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66",
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_11",
+            "section": "other",
+            "citations": [
+                "16",
+                "40,62",
+                "12",
+                "16",
+                "9"
+            ]
+        },
+        {
+            "chunk_id": "2303.16509v2_chunk_12",
+            "section": "other",
+            "citations": [
+                "40",
+                "73",
+                "31",
+                "22",
+                "30"
+            ]
+        }
+    ]
+}
