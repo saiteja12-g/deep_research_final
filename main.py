@@ -8,6 +8,13 @@ from dotenv import load_dotenv
 # Import the updated version of PaperGenerator and KnowledgeBaseConnector
 from review_writer import PaperGenerator, KnowledgeBaseConnector
 
+# import sys
+# try:
+#     from fix_encoding import *
+#     print("Applied encoding fix for Windows.")
+# except ImportError:
+#     print("Warning: Encoding fix not found. Some characters may not display correctly.")
+
 # Optional: Import the actual knowledge base if available
 try:
     from knowledge_base import ResearchKnowledgeBase
@@ -80,7 +87,7 @@ def main():
             
             while current_index < len(generator.paper_state["sections"]):
                 section = generator.paper_state["sections"][current_index]
-                print(f"\n📝 Writing section: {section['title']}...")
+                print(f"\n[WRITING] Writing section: {section['title']}...")
                 result = generator.write_section(current_index)
                 
                 if not args.non_interactive:
@@ -98,26 +105,26 @@ def main():
                         return
                 
                 generator.approve_section(current_index)
-                print(f"✅ Section approved: {section['title']}")
+                print(f"[APPROVED] Section approved: {section['title']}")
                 current_index = generator.paper_state["current_section_index"]
             
             # Generate LaTeX
-            print("\n📄 Generating LaTeX document...")
+            print("\n[DOCUMENT] Generating LaTeX document...")
             latex_result = generator.generate_latex()
             
             if "error" in latex_result:
-                print(f"❌ Error: {latex_result['error']}")
+                print(f"[ERROR] Error: {latex_result['error']}")
             else:
-                print(f"\n✅ Paper generation complete!")
+                print(f"\n[APPROVED] Paper generation complete!")
                 print(f"LaTeX document saved to: {latex_result['output_path']}")
         else:
             print("All sections are already completed. Generating LaTeX...")
             latex_result = generator.generate_latex()
             
             if "error" in latex_result:
-                print(f"❌ Error: {latex_result['error']}")
+                print(f"[ERROR] Error: {latex_result['error']}")
             else:
-                print(f"\n✅ Paper generation complete!")
+                print(f"\n[APPROVED] Paper generation complete!")
                 print(f"LaTeX document saved to: {latex_result['output_path']}")
     else:
         # Start fresh with a new query
