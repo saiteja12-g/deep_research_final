@@ -19,6 +19,8 @@ import openai  # Updated import
 import re
 import torch
 import time
+from config import NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD
+
 
 # Load environment variables for API keys
 load_dotenv()
@@ -56,10 +58,10 @@ class ResearchKnowledgeBase:
 
     def _init_neo4j(self):
         return GraphDatabase.driver(
-            "bolt://localhost:7687",
-            auth=("neo4j", "research123"),
-            encrypted=False
-        )
+        NEO4J_URI,
+        auth=(NEO4J_USER, NEO4J_PASSWORD),
+        encrypted=False
+    )
 
     def _init_image_collection(self):
         device = "cuda" if torch.cuda.is_available() else "cpu"
