@@ -882,6 +882,7 @@ class ResearchKnowledgeBase:
                 p.id AS paper_id,
                 p.title AS title,
                 p.authors AS authors,
+                p.year AS year,
                 COLLECT(DISTINCT c.id) AS chunk_ids,
                 COLLECT(DISTINCT c.section) AS chunk_sections,
                 COLLECT(DISTINCT cited.id) AS chunk_citations,

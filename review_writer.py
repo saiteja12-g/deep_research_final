@@ -543,6 +543,189 @@ class PaperGenerator:
         
         return [s["title"] for s in self.paper_state["sections"]]
     
+    # def generate_latex(self):
+    #     """Generate a LaTeX document from the paper state."""
+    #     # Check if all sections are approved
+    #     not_approved = [s for s in self.paper_state["sections"] if s["status"] != SectionStatus.APPROVED.value]
+    #     if not_approved:
+    #         section_names = [s["title"] for s in not_approved]
+    #         return {
+    #             "error": f"Not all sections are approved. Pending sections: {', '.join(section_names)}"
+    #         }
+        
+    #     # Format section content
+    #     sections_content = []
+    #     for section in self.paper_state["sections"]:
+    #         # Convert inline citations (Author, Year) to LaTeX \cite commands
+    #         content = section["content"]
+    #         # Match patterns like (Author, Year) or (Author et al., Year)
+    #         citation_pattern = r'\(([A-Za-z]+)(?:\s+et\s+al\.?)?,\s*(\d{4})\)'
+            
+    #         # Find all citation matches
+    #         matches = re.findall(citation_pattern, content)
+            
+    #         # Create citation keys and replace inline citations
+    #         for author, year in matches:
+    #             cite_key = f"{author.lower()}{year}"
+    #             content = content.replace(f"({author}, {year})", f"\\cite{{{cite_key}}}")
+    #             content = content.replace(f"({author} et al., {year})", f"\\cite{{{cite_key}}}")
+            
+    #         # Add formatted section to sections content
+    #         sections_content.append(f"\\section{{{section['title']}}}\n\n{content}")
+        
+    #     # Join all sections
+    #     all_sections = "\n\n".join(sections_content)
+        
+    #     # Format references in BibTeX format with proper keys
+    #     references_formatted = []
+    #     for ref_id, ref_data in self.paper_state["references"].items():
+    #         # Create a unique citation key from author and year
+    #         authors = ref_data.get("authors", ["Unknown"])
+    #         first_author = authors[0].split()[-1] if authors else "Unknown"
+    #         year = ref_data.get("year", "2000")
+    #         cite_key = f"{first_author.lower()}{year}"
+            
+    #         # Get other reference details
+    #         title = ref_data.get("title", "Unknown Title")
+            
+    #         # Create BibTeX entry with required fields
+    #         bibtex_entry = f"""@article{{{cite_key},
+    # title = {{{title}}},
+    # author = {{{' and '.join(authors)}}},
+    # year = {{{year}}},
+    # journal = {{Journal of Research}},
+    # volume = {{1}},
+    # number = {{1}},
+    # pages = {{1--10}},
+    # doi = {{10.0000/journal.0000}}
+    # }}"""
+    #         references_formatted.append(bibtex_entry)
+        
+    #     references_text = "\n\n".join(references_formatted)
+        
+    #     # Format figures
+    #     figures_text = ""
+    #     for i, fig in enumerate(self.paper_state["figures"]):
+    #         # Create a clean filename for the figure
+    #         clean_name = f"figure_{i+1}"
+    #         fig_desc = fig.get("description", "")
+    #         if len(fig_desc) > 100:
+    #             fig_desc = fig_desc[:100] + "..."
+            
+    #         # Create LaTeX figure environment
+    #         figure = f"""\\begin{{figure}}[htbp]
+    #     \\centering
+    #     \\includegraphics[width=0.8\\columnwidth]{{{clean_name}}}
+    #     \\caption{{{fig_desc}}}
+    #     \\label{{fig:{clean_name}}}
+    # \\end{{figure}}"""
+    #         figures_text += figure + "\n\n"
+        
+    #     # Create figures information for README
+    #     figures_info = []
+    #     for i, fig in enumerate(self.paper_state["figures"]):
+    #         clean_name = f"figure_{i+1}"
+    #         source_path = fig.get("path", "unknown_path")
+    #         figures_info.append(f"{source_path} -> {clean_name}.jpg")
+        
+    #     # Create the LaTeX generation task
+    #     latex_task = Task(
+    #         description=f"""
+    #         Generate a complete LaTeX document for a scientific paper following standard academic publishing format.
+            
+    #         Paper Title: {self.paper_state['title']}
+    #         Abstract: {self.paper_state['abstract']}
+            
+    #         REQUIREMENTS:
+    #         1. Use the standard scientific article class with two-column layout (IEEEtran or similar)
+    #         2. Include proper title, authors, and abstract
+    #         3. Use the following author names: John Doe, Jane Smith, and Alex Johnson (with placeholder affiliations)
+    #         4. Format all sections properly with correct hierarchy
+    #         5. IMPORTANT: The LaTeX document should be COMPLETE and COMPILABLE
+    #         6. Use the natbib package for citation formatting with author-year style
+    #         7. Include only necessary packages (no need for complex customizations)
+    #         8. Generate a references section at the end using BibTeX style
+            
+    #         The paper has {len(self.paper_state['sections'])} sections and includes 
+    #         {len(self.paper_state['figures'])} figures and {len(self.paper_state['references'])} references.
+            
+    #         SECTION CONTENT (already formatted with LaTeX commands):
+    #         {all_sections}
+            
+    #         BIBLIOGRAPHY ENTRIES (in BibTeX format):
+    #         {references_text}
+            
+    #         FIGURES TO INCLUDE (already formatted with LaTeX commands):
+    #         {figures_text}
+            
+    #         Important Notes:
+    #         - The bibliography entries are already in BibTeX format, but need to be properly integrated
+    #         - All inline citations have been converted to LaTeX \cite{{key}} commands
+    #         - Create a complete document with proper preamble and document structure
+    #         - The document should be ready to compile with minimal modifications
+    #         """,
+    #         expected_output="A complete, professional LaTeX document with proper sections, figures, and bibliography",
+    #         agent=self.agents["editor"]
+    #     )
+        
+    #     # Create a crew to execute the task
+    #     latex_crew = Crew(
+    #         agents=[self.agents["editor"]],
+    #         tasks=[latex_task],
+    #         verbose=True
+    #     )
+        
+    #     # Execute the LaTeX generation task
+    #     result = latex_crew.kickoff()
+        
+    #     # Get the string result from the CrewOutput object
+    #     if hasattr(result, 'raw_output'):
+    #         latex_document = result.raw_output
+    #     else:
+    #         # Try to get the result as a string representation
+    #         latex_document = str(result)
+        
+    #     # Save the LaTeX document and BibTeX file
+    #     output_path = Path("output")
+    #     output_path.mkdir(exist_ok=True)
+        
+    #     # Save main LaTeX document
+    #     with open(output_path / "paper.tex", "w", encoding="utf-8") as f:
+    #         f.write(latex_document)
+        
+    #     # Save BibTeX file
+    #     with open(output_path / "references.bib", "w", encoding="utf-8") as f:
+    #         f.write(references_text)
+        
+    #     # Create a figures directory and README
+    #     figures_path = output_path / "figures"
+    #     figures_path.mkdir(exist_ok=True)
+        
+    #     # Create README with figure copying instructions
+    #     with open(figures_path / "README.txt", "w", encoding="utf-8") as f:
+    #         f.write("Copy the following images to this directory:\n\n")
+    #         for info in figures_info:
+    #             f.write(f"{info}\n")
+        
+    #     # Also copy figures to the output directory if possible
+    #     try:
+    #         for i, fig in enumerate(self.paper_state["figures"]):
+    #             source_path = fig.get("path", "")
+    #             if os.path.exists(source_path):
+    #                 target_path = figures_path / f"figure_{i+1}.jpg"
+    #                 import shutil
+    #                 shutil.copy2(source_path, target_path)
+    #                 print(f"Copied figure: {source_path} -> {target_path}")
+    #     except Exception as e:
+    #         print(f"Error copying figures: {str(e)}")
+        
+    #     return {
+    #         "latex_document": latex_document,
+    #         "output_path": str(output_path / "paper.tex"),
+    #         "bib_path": str(output_path / "references.bib"),
+    #         "figures_path": str(figures_path)
+    #     }
+    
     def generate_latex(self):
         """Generate a LaTeX document from the paper state."""
         # Check if all sections are approved
@@ -590,15 +773,15 @@ class PaperGenerator:
             
             # Create BibTeX entry with required fields
             bibtex_entry = f"""@article{{{cite_key},
-    title = {{{title}}},
-    author = {{{' and '.join(authors)}}},
-    year = {{{year}}},
-    journal = {{Journal of Research}},
-    volume = {{1}},
-    number = {{1}},
-    pages = {{1--10}},
-    doi = {{10.0000/journal.0000}}
-    }}"""
+            title = {{{title}}},
+            author = {{{' and '.join(authors)}}},
+            year = {{{year}}},
+            journal = {{Journal of Research}},
+            volume = {{1}},
+            number = {{1}},
+            pages = {{1--10}},
+            doi = {{10.0000/journal.0000}}
+            }}"""
             references_formatted.append(bibtex_entry)
         
         references_text = "\n\n".join(references_formatted)
@@ -614,11 +797,11 @@ class PaperGenerator:
             
             # Create LaTeX figure environment
             figure = f"""\\begin{{figure}}[htbp]
-        \\centering
-        \\includegraphics[width=0.8\\columnwidth]{{{clean_name}}}
-        \\caption{{{fig_desc}}}
-        \\label{{fig:{clean_name}}}
-    \\end{{figure}}"""
+                \\centering
+                \\includegraphics[width=0.8\\columnwidth]{{{clean_name}}}
+                \\caption{{{fig_desc}}}
+                \\label{{fig:{clean_name}}}
+            \\end{{figure}}"""
             figures_text += figure + "\n\n"
         
         # Create figures information for README
@@ -628,62 +811,61 @@ class PaperGenerator:
             source_path = fig.get("path", "unknown_path")
             figures_info.append(f"{source_path} -> {clean_name}.jpg")
         
-        # Create the LaTeX generation task
-        latex_task = Task(
-            description=f"""
-            Generate a complete LaTeX document for a scientific paper following standard academic publishing format.
-            
-            Paper Title: {self.paper_state['title']}
-            Abstract: {self.paper_state['abstract']}
-            
-            REQUIREMENTS:
-            1. Use the standard scientific article class with two-column layout (IEEEtran or similar)
-            2. Include proper title, authors, and abstract
-            3. Use the following author names: John Doe, Jane Smith, and Alex Johnson (with placeholder affiliations)
-            4. Format all sections properly with correct hierarchy
-            5. IMPORTANT: The LaTeX document should be COMPLETE and COMPILABLE
-            6. Use the natbib package for citation formatting with author-year style
-            7. Include only necessary packages (no need for complex customizations)
-            8. Generate a references section at the end using BibTeX style
-            
-            The paper has {len(self.paper_state['sections'])} sections and includes 
-            {len(self.paper_state['figures'])} figures and {len(self.paper_state['references'])} references.
-            
-            SECTION CONTENT (already formatted with LaTeX commands):
+        # Create the LaTeX document directly
+        paper_title = self.paper_state["title"]
+        paper_abstract = self.paper_state["abstract"]
+        
+        # Build the complete LaTeX document with sections inline
+        latex_document = f"""\\documentclass[conference]{{IEEEtran}}
+            \\usepackage{{graphicx}}
+            \\usepackage{{natbib}}
+            \\usepackage{{amsmath,amssymb,amsfonts}}
+            \\usepackage{{algorithmic}}
+            \\usepackage{{textcomp}}
+            \\usepackage{{xcolor}}
+            \\usepackage{{hyperref}}
+
+            \\title{{{paper_title}}}
+
+            \\author{{
+            \\IEEEauthorblockN{{John Doe}}
+            \\IEEEauthorblockA{{
+            Department of Computer Science\\\\
+            University Example\\\\
+            City, Country\\\\
+            email@example.com}}
+            \\and
+            \\IEEEauthorblockN{{Jane Smith}}
+            \\IEEEauthorblockA{{
+            Department of Research\\\\
+            University Sample\\\\
+            City, Country\\\\
+            email2@example.com}}
+            \\and
+            \\IEEEauthorblockN{{Alex Johnson}}
+            \\IEEEauthorblockA{{
+            Research Institute\\\\
+            Organization Name\\\\
+            City, Country\\\\
+            email3@example.com}}
+            }}
+
+            \\begin{{document}}
+
+            \\maketitle
+
+            \\begin{{abstract}}
+            {paper_abstract}
+            \\end{{abstract}}
+
             {all_sections}
-            
-            BIBLIOGRAPHY ENTRIES (in BibTeX format):
-            {references_text}
-            
-            FIGURES TO INCLUDE (already formatted with LaTeX commands):
-            {figures_text}
-            
-            Important Notes:
-            - The bibliography entries are already in BibTeX format, but need to be properly integrated
-            - All inline citations have been converted to LaTeX \cite{{key}} commands
-            - Create a complete document with proper preamble and document structure
-            - The document should be ready to compile with minimal modifications
-            """,
-            expected_output="A complete, professional LaTeX document with proper sections, figures, and bibliography",
-            agent=self.agents["editor"]
-        )
-        
-        # Create a crew to execute the task
-        latex_crew = Crew(
-            agents=[self.agents["editor"]],
-            tasks=[latex_task],
-            verbose=True
-        )
-        
-        # Execute the LaTeX generation task
-        result = latex_crew.kickoff()
-        
-        # Get the string result from the CrewOutput object
-        if hasattr(result, 'raw_output'):
-            latex_document = result.raw_output
-        else:
-            # Try to get the result as a string representation
-            latex_document = str(result)
+
+            % Bibliography section
+            \\bibliographystyle{{unsrtnat}}
+            \\bibliography{{references}}
+
+            \\end{{document}}
+    """
         
         # Save the LaTeX document and BibTeX file
         output_path = Path("output")
@@ -825,42 +1007,3 @@ class KnowledgeBaseConnector:
         else:
             # Return dummy data for testing
             return self._get_dummy_data(query, top_k)
-    
-    def _get_dummy_data(self, query, top_k):
-        """Generate dummy data for testing without a real knowledge base."""
-        # You would replace this with actual knowledge base integration
-        sample_papers = []
-        sample_images = []
-        
-        # Load sample data from a file if available
-        try:
-            with open("search_result.json", "r") as f:
-                sample_data = json.load(f)
-                return sample_data
-        except:
-            # Create minimal dummy data if no file is available
-            for i in range(min(3, top_k)):
-                paper_id = f"paper_{i+1}"
-                sample_papers.append({
-                    "id": paper_id,
-                    "chunks": [
-                        {
-                            "text": f"Sample text for paper {i+1} related to {query}. This would be actual content from the paper.",
-                            "section": "introduction",
-                            "distance": 0.5
-                        }
-                    ],
-                    "graph_data": {
-                        "title": f"Sample Paper {i+1} on {query}",
-                        "authors": ["Author A", "Author B"],
-                        "year": "2023"
-                    }
-                })
-                
-                sample_images.append({
-                    "path": f"sample_image_{i+1}.jpg",
-                    "description": f"A sample image related to {query}",
-                    "paper_id": paper_id
-                })
-            
-            return {"papers": sample_papers, "images": sample_images}
