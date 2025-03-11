@@ -342,21 +342,21 @@ def main():
         description="Research Paper Workflow Manager",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Examples:
-  # Run complete workflow with interactive review writing
-  python workflow.py --query "Advances in transformer models" --full-workflow
-  
-  # Extract papers only
-  python workflow.py --query "Quantum computing algorithms" --extract-only
-  
-  # Load extracted papers to database only
-  python workflow.py --load-only
-  
-  # Generate review with non-interactive mode (use defaults)
-  python workflow.py --query "Neural networks" --generate-review --non-interactive
-  
-  # Continue writing a previously started paper
-  python workflow.py --generate-review --continue
+        Examples:
+        # Run complete workflow with interactive review writing
+        python workflow.py --query "Advances in transformer models" --full-workflow
+        
+        # Extract papers only
+        python workflow.py --query "Quantum computing algorithms" --extract-only
+        
+        # Load extracted papers to database only
+        python workflow.py --load-only
+        
+        # Generate review with non-interactive mode (use defaults)
+        python workflow.py --query "Neural networks" --generate-review --non-interactive
+        
+        # Continue writing a previously started paper
+        python workflow.py --generate-review --continue
         """
     )
     
