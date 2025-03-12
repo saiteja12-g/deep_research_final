@@ -314,6 +314,10 @@ import os
 import json
 import sys
 from dotenv import load_dotenv
+import platform
+__import__('pysqlite3')
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 # Import custom modules
 from papers_extractor_bfs import ArxivReferenceExplorer

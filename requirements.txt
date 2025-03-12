@@ -17,6 +17,7 @@ chromadb
 langchain-community
 langchain-openai
 langchain-core
+pysqlite3-binary>=0.5.0
 
 # PDF and image processing
 opencv-python-headless
