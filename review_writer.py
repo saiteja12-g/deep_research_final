@@ -59,7 +59,7 @@ class PaperGenerator:
             goal="Write high-quality scientific content with appropriate citations",
             backstory="""You are a professional scientific writer with experience 
             publishing in top academic journals. You can synthesize complex information 
-            into clear, structured prose following academic conventions.""",
+            into clear, structured prose following academic conventions and write in latex format for a review paper.""",
             verbose=True,
             allow_delegation=False,
             llm=creative_model
@@ -82,9 +82,103 @@ class PaperGenerator:
             "editor": editor
         }
     
-    def _query_knowledge_base(self, query, top_k=5):
-        """Query the knowledge base for relevant information."""
-        return self.kb_connector.search(query, top_k)
+    def _query_knowledge_base(self, query, section_type=None, top_k=5):
+        """
+        Query the knowledge base for relevant information with context awareness.
+        
+        Args:
+            query: The base search query
+            section_type: Optional section type (introduction, methods, results, etc.)
+            top_k: Number of results to return
+            
+        Returns:
+            Search results enhanced with contextual relevance
+        """
+        # Enhance query based on section type
+        enhanced_query = query
+        if section_type:
+            if section_type.lower() == "introduction":
+                enhanced_query = f"{query} key concepts foundational theory background"
+            elif section_type.lower() == "literature review":
+                enhanced_query = f"{query} related work previous research comparison"
+            elif section_type.lower() == "methodology":
+                enhanced_query = f"{query} methods approach technique implementation"
+            elif section_type.lower() == "results":
+                enhanced_query = f"{query} findings outcomes metrics evaluation"
+            elif section_type.lower() == "discussion":
+                enhanced_query = f"{query} implications meaning significance interpretation"
+            elif section_type.lower() == "conclusion":
+                enhanced_query = f"{query} summary future work contribution"
+                
+        # Get basic search results
+        search_results = self.kb_connector.search(enhanced_query, top_k)
+        
+        # Enhance results with related papers from the graph
+        if section_type and "papers" in search_results:
+            # Get paper IDs from initial results
+            paper_ids = [paper["id"] for paper in search_results["papers"]]
+            
+            # Get related papers based on section context
+            related_papers = self._get_related_papers(paper_ids, section_type)
+            
+            # Merge the related papers into search results if not already present
+            existing_ids = set(paper_ids)
+            for paper in related_papers:
+                if paper["id"] not in existing_ids:
+                    search_results["papers"].append(paper)
+                    existing_ids.add(paper["id"])
+        
+        return search_results
+    
+    def _get_related_papers(self, paper_ids, section_type):
+        """
+        Get related papers from the knowledge graph based on section context.
+        
+        Args:
+            paper_ids: List of paper IDs to find relationships for
+            section_type: The type of section being written
+            
+        Returns:
+            List of related papers contextually relevant to the section
+        """
+        related_papers = []
+        
+        # Different relationship types to prioritize based on section type
+        if section_type.lower() == "introduction":
+            # For introduction, get foundational papers (highly cited)
+            related = self.kb_connector.get_related_by_citation(paper_ids, limit=3)
+            related_papers.extend(related)
+            
+        elif section_type.lower() == "literature review":
+            # For literature review, get papers sharing themes and methods
+            related_themes = self.kb_connector.get_related_by_themes(paper_ids, limit=3)
+            related_methods = self.kb_connector.get_related_by_methods(paper_ids, limit=3)
+            related_papers.extend(related_themes + related_methods)
+            
+        elif section_type.lower() == "methodology":
+            # For methodology, focus on papers with relevant methods and strengths
+            related_methods = self.kb_connector.get_related_by_methods(paper_ids, limit=2)
+            related_strengths = self.kb_connector.get_related_by_strengths(paper_ids, limit=2)
+            related_papers.extend(related_methods + related_strengths)
+            
+        elif section_type.lower() == "results":
+            # For results, get papers with similar methods but different strengths
+            related = self.kb_connector.get_papers_with_different_strengths(paper_ids, limit=4)
+            related_papers.extend(related)
+            
+        elif section_type.lower() == "discussion":
+            # For discussion, get papers with complementary strengths and limitations
+            strengths_papers = self.kb_connector.get_related_by_strengths(paper_ids, limit=2)
+            limitations_papers = self.kb_connector.get_related_by_limitations(paper_ids, limit=2)
+            improvement_papers = self.kb_connector.get_papers_addressing_limitations(paper_ids, limit=2)
+            related_papers.extend(strengths_papers + limitations_papers + improvement_papers)
+            
+        elif section_type.lower() == "conclusion":
+            # For conclusion, get papers with future work directions (papers addressing limitations)
+            related = self.kb_connector.get_papers_addressing_limitations(paper_ids, limit=5)
+            related_papers.extend(related)
+            
+        return related_papers
     
     def _extract_references(self, papers):
         """Extract references from paper data."""
@@ -228,7 +322,7 @@ class PaperGenerator:
         }
     
     def write_section(self, section_index=None):
-        """Write content for a specific section or the current section."""
+        """Enhanced write_section with contextual search and knowledge graph integration."""
         if section_index is None:
             section_index = self.paper_state["current_section_index"]
         
@@ -236,20 +330,38 @@ class PaperGenerator:
             return {"error": "Section index out of bounds"}
         
         section = self.paper_state["sections"][section_index]
+        section_title = section["title"]
         
-        # Query for additional information specific to this section
-        section_query = f"{self.paper_state['title']} {section['title']}"
-        search_results = self._query_knowledge_base(section_query, top_k=5)
+        # Query with section context awareness
+        section_query = f"{self.paper_state['title']} {section_title}"
+        search_results = self._query_knowledge_base(
+            section_query, 
+            section_type=section_title,
+            top_k=5
+        )
         
         # Extract chunks from papers
         chunks = []
+        # Track strengths and limitations for this section
+        section_strengths = []
+        section_limitations = []
+        
         for paper in search_results.get("papers", []):
+            # Add paper chunks
             for chunk in paper.get("chunks", []):
                 chunks.append({
                     "text": chunk.get("text", ""),
                     "paper_id": paper.get("id", ""),
                     "section": chunk.get("section", "unknown")
                 })
+            
+            # Collect strengths and limitations
+            section_strengths.extend(paper.get("strengths", []))
+            section_limitations.extend(paper.get("limitations", []))
+        
+        # Deduplicate strengths and limitations
+        section_strengths = list(set(section_strengths))
+        section_limitations = list(set(section_limitations))
         
         # Update references and figures
         self.paper_state["references"].update(
@@ -262,7 +374,7 @@ class PaperGenerator:
             if fig["path"] not in existing_paths:
                 self.paper_state["figures"].append(fig)
         
-        # Create the writing task
+        # Create the writing task with enhanced context
         previous_sections = []
         for i in range(section_index):
             prev_section = self.paper_state["sections"][i]
@@ -288,34 +400,52 @@ class PaperGenerator:
             for i, fig in enumerate(self.paper_state["figures"][:3])
         ])
         
+        # Add section-specific guidance based on strengths and limitations
+        section_specific_guidance = self._generate_section_guidance(
+            section_title, 
+            section_strengths, 
+            section_limitations
+        )
+        
         writing_task = Task(
-        description=f"""
-        Write the '{section['title']}' section for a scientific paper.
-        
-        Paper Title: {self.paper_state['title']}
-        Abstract: {self.paper_state['abstract']}
-        
-        REQUIREMENTS:
-        1. Write a comprehensive, in-depth section (at least 800-1000 words)
-        2. Use formal academic style appropriate for publication
-        3. IMPORTANT: Use proper in-text citations in Harvard format (Author, Year)
-           For example: (Smith, 2019) or (Smith et al., 2019) for multiple authors
-        4. Incorporate content from the provided chunks and references thoroughly
-        5. Reference figures where appropriate using the format (Figure X)
-        6. Ensure the section flows logically and builds a complete narrative
-        7. Include relevant technical details and methodology discussions
-        
-        You have the following reference material to incorporate:
-        
-        RELEVANT TEXT CHUNKS:
-        {chunk_info}
-        
-        KEY REFERENCES:
-        {ref_info}
-        
-        AVAILABLE FIGURES:
-        {fig_info}
-        """,
+            description=f"""
+            Write the '{section['title']}' section for a scientific paper.
+            
+            Paper Title: {self.paper_state['title']}
+            Abstract: {self.paper_state['abstract']}
+            
+            SECTION-SPECIFIC GUIDANCE:
+            {section_specific_guidance}
+            
+            REQUIREMENTS:
+            1. Write a comprehensive, in-depth section (at least 800-1000 words)
+            2. Use formal academic style appropriate for publication
+            3. IMPORTANT: Use proper in-text citations in Harvard format (Author, Year)
+               For example: (Smith, 2019) or (Smith et al., 2019) for multiple authors
+            4. Incorporate content from the provided chunks and references thoroughly
+            5. Reference figures where appropriate using the format (Figure X)
+            6. Ensure the section flows logically and builds a complete narrative
+            7. Include relevant technical details and methodology discussions
+            8. Address the relevant strengths and limitations of the approaches discussed
+            9. write in latex format.
+            
+            You have the following reference material to incorporate:
+            
+            RELEVANT TEXT CHUNKS:
+            {chunk_info}
+            
+            KEY REFERENCES:
+            {ref_info}
+            
+            AVAILABLE FIGURES:
+            {fig_info}
+            
+            KEY STRENGTHS TO HIGHLIGHT:
+            {', '.join(section_strengths[:5]) if section_strengths else 'None identified'}
+            
+            KEY LIMITATIONS TO ADDRESS:
+            {', '.join(section_limitations[:5]) if section_limitations else 'None identified'}
+            """,
             expected_output="A comprehensive, well-written section (800-1000+ words) with numerous inline citations",
             agent=self.agents["writer"]
         )
@@ -351,7 +481,92 @@ class PaperGenerator:
             "section_index": section_index,
             "status": section["status"]
         }
-    
+    def _generate_section_guidance(self, section_title, strengths, limitations):
+        """
+        Generate section-specific guidance based on the section type and identified strengths/limitations.
+        
+        Args:
+            section_title: The title of the section
+            strengths: List of identified strengths
+            limitations: List of identified limitations
+            
+        Returns:
+            String with section-specific writing guidance
+        """
+        section_type = section_title.lower()
+        
+        if "introduction" in section_type:
+            return """
+            This introduction should:
+            - Establish the importance of the topic and provide context
+            - Identify key challenges or gaps in current knowledge
+            - Present a clear overview of the field's development
+            - Briefly mention major approaches and their strengths
+            - End with an outline of what the paper will cover
+            """
+            
+        elif "literature" in section_type or "review" in section_type:
+            return f"""
+            This literature review should:
+            - Group related works by themes, approaches, or chronology
+            - Compare and contrast different methodologies
+            - Highlight strengths in existing approaches, particularly: {', '.join(strengths[:3]) if strengths else 'various methodological innovations'}
+            - Discuss limitations that persist across the field, such as: {', '.join(limitations[:3]) if limitations else 'methodological gaps in current research'}
+            - Identify open questions and research opportunities
+            - Use a thematic organization rather than simply listing papers
+            """
+            
+        elif "method" in section_type:
+            return f"""
+            This methodology section should:
+            - Describe approaches with sufficient detail for reproducibility
+            - Justify methodological choices based on identified strengths: {', '.join(strengths[:3]) if strengths else 'theoretical foundation, accuracy, and efficiency'}
+            - Address how the approaches overcome common limitations: {', '.join(limitations[:3]) if limitations else 'data sparsity, computational complexity, and generalizability'}
+            - Compare technical details across different approaches
+            - Explain evaluation metrics and experimental design
+            """
+            
+        elif "result" in section_type:
+            return f"""
+            This results section should:
+            - Present findings clearly with appropriate tables or figures
+            - Compare performance across different approaches
+            - Highlight where results demonstrate key strengths: {', '.join(strengths[:3]) if strengths else 'efficiency, accuracy, and robustness'}
+            - Be honest about where limitations appear: {', '.join(limitations[:3]) if limitations else 'edge cases, computational demands, and data requirements'}
+            - Use statistical measures to establish significance where appropriate
+            """
+            
+        elif "discussion" in section_type:
+            return f"""
+            This discussion section should:
+            - Interpret results in the context of the wider field
+            - Connect findings to theoretical frameworks
+            - Analyze how identified strengths advance the field: {', '.join(strengths[:3]) if strengths else 'methodological innovations and performance improvements'}
+            - Critically examine limitations and their implications: {', '.join(limitations[:3]) if limitations else 'remaining challenges and boundary conditions'}
+            - Suggest explanations for unexpected results
+            - Discuss the broader implications of the findings
+            """
+            
+        elif "conclusion" in section_type:
+            return f"""
+            This conclusion section should:
+            - Summarize key findings and contributions
+            - Revisit strengths and their significance: {', '.join(strengths[:3]) if strengths else 'key advantages of the approaches discussed'}
+            - Acknowledge limitations honestly: {', '.join(limitations[:3]) if limitations else 'remaining challenges in the field'}
+            - Suggest specific directions for future research that address identified limitations
+            - End with a compelling statement about the work's impact
+            """
+            
+        else:
+            return f"""
+            This section should:
+            - Maintain clear organization and logical flow
+            - Connect to the paper's overall narrative
+            - Highlight relevant strengths: {', '.join(strengths[:3]) if strengths else 'methodological advantages'}
+            - Address pertinent limitations: {', '.join(limitations[:3]) if limitations else 'challenges and constraints'}
+            - Use appropriate evidence and citations to support claims
+            """
+
     def approve_section(self, section_index=None):
         """Approve a section and move to the next one."""
         if section_index is None:
@@ -542,190 +757,7 @@ class PaperGenerator:
         self.save_state()
         
         return [s["title"] for s in self.paper_state["sections"]]
-    
-    # def generate_latex(self):
-    #     """Generate a LaTeX document from the paper state."""
-    #     # Check if all sections are approved
-    #     not_approved = [s for s in self.paper_state["sections"] if s["status"] != SectionStatus.APPROVED.value]
-    #     if not_approved:
-    #         section_names = [s["title"] for s in not_approved]
-    #         return {
-    #             "error": f"Not all sections are approved. Pending sections: {', '.join(section_names)}"
-    #         }
-        
-    #     # Format section content
-    #     sections_content = []
-    #     for section in self.paper_state["sections"]:
-    #         # Convert inline citations (Author, Year) to LaTeX \cite commands
-    #         content = section["content"]
-    #         # Match patterns like (Author, Year) or (Author et al., Year)
-    #         citation_pattern = r'\(([A-Za-z]+)(?:\s+et\s+al\.?)?,\s*(\d{4})\)'
-            
-    #         # Find all citation matches
-    #         matches = re.findall(citation_pattern, content)
-            
-    #         # Create citation keys and replace inline citations
-    #         for author, year in matches:
-    #             cite_key = f"{author.lower()}{year}"
-    #             content = content.replace(f"({author}, {year})", f"\\cite{{{cite_key}}}")
-    #             content = content.replace(f"({author} et al., {year})", f"\\cite{{{cite_key}}}")
-            
-    #         # Add formatted section to sections content
-    #         sections_content.append(f"\\section{{{section['title']}}}\n\n{content}")
-        
-    #     # Join all sections
-    #     all_sections = "\n\n".join(sections_content)
-        
-    #     # Format references in BibTeX format with proper keys
-    #     references_formatted = []
-    #     for ref_id, ref_data in self.paper_state["references"].items():
-    #         # Create a unique citation key from author and year
-    #         authors = ref_data.get("authors", ["Unknown"])
-    #         first_author = authors[0].split()[-1] if authors else "Unknown"
-    #         year = ref_data.get("year", "2000")
-    #         cite_key = f"{first_author.lower()}{year}"
-            
-    #         # Get other reference details
-    #         title = ref_data.get("title", "Unknown Title")
-            
-    #         # Create BibTeX entry with required fields
-    #         bibtex_entry = f"""@article{{{cite_key},
-    # title = {{{title}}},
-    # author = {{{' and '.join(authors)}}},
-    # year = {{{year}}},
-    # journal = {{Journal of Research}},
-    # volume = {{1}},
-    # number = {{1}},
-    # pages = {{1--10}},
-    # doi = {{10.0000/journal.0000}}
-    # }}"""
-    #         references_formatted.append(bibtex_entry)
-        
-    #     references_text = "\n\n".join(references_formatted)
-        
-    #     # Format figures
-    #     figures_text = ""
-    #     for i, fig in enumerate(self.paper_state["figures"]):
-    #         # Create a clean filename for the figure
-    #         clean_name = f"figure_{i+1}"
-    #         fig_desc = fig.get("description", "")
-    #         if len(fig_desc) > 100:
-    #             fig_desc = fig_desc[:100] + "..."
-            
-    #         # Create LaTeX figure environment
-    #         figure = f"""\\begin{{figure}}[htbp]
-    #     \\centering
-    #     \\includegraphics[width=0.8\\columnwidth]{{{clean_name}}}
-    #     \\caption{{{fig_desc}}}
-    #     \\label{{fig:{clean_name}}}
-    # \\end{{figure}}"""
-    #         figures_text += figure + "\n\n"
-        
-    #     # Create figures information for README
-    #     figures_info = []
-    #     for i, fig in enumerate(self.paper_state["figures"]):
-    #         clean_name = f"figure_{i+1}"
-    #         source_path = fig.get("path", "unknown_path")
-    #         figures_info.append(f"{source_path} -> {clean_name}.jpg")
-        
-    #     # Create the LaTeX generation task
-    #     latex_task = Task(
-    #         description=f"""
-    #         Generate a complete LaTeX document for a scientific paper following standard academic publishing format.
-            
-    #         Paper Title: {self.paper_state['title']}
-    #         Abstract: {self.paper_state['abstract']}
-            
-    #         REQUIREMENTS:
-    #         1. Use the standard scientific article class with two-column layout (IEEEtran or similar)
-    #         2. Include proper title, authors, and abstract
-    #         3. Use the following author names: John Doe, Jane Smith, and Alex Johnson (with placeholder affiliations)
-    #         4. Format all sections properly with correct hierarchy
-    #         5. IMPORTANT: The LaTeX document should be COMPLETE and COMPILABLE
-    #         6. Use the natbib package for citation formatting with author-year style
-    #         7. Include only necessary packages (no need for complex customizations)
-    #         8. Generate a references section at the end using BibTeX style
-            
-    #         The paper has {len(self.paper_state['sections'])} sections and includes 
-    #         {len(self.paper_state['figures'])} figures and {len(self.paper_state['references'])} references.
-            
-    #         SECTION CONTENT (already formatted with LaTeX commands):
-    #         {all_sections}
-            
-    #         BIBLIOGRAPHY ENTRIES (in BibTeX format):
-    #         {references_text}
-            
-    #         FIGURES TO INCLUDE (already formatted with LaTeX commands):
-    #         {figures_text}
-            
-    #         Important Notes:
-    #         - The bibliography entries are already in BibTeX format, but need to be properly integrated
-    #         - All inline citations have been converted to LaTeX \cite{{key}} commands
-    #         - Create a complete document with proper preamble and document structure
-    #         - The document should be ready to compile with minimal modifications
-    #         """,
-    #         expected_output="A complete, professional LaTeX document with proper sections, figures, and bibliography",
-    #         agent=self.agents["editor"]
-    #     )
-        
-    #     # Create a crew to execute the task
-    #     latex_crew = Crew(
-    #         agents=[self.agents["editor"]],
-    #         tasks=[latex_task],
-    #         verbose=True
-    #     )
-        
-    #     # Execute the LaTeX generation task
-    #     result = latex_crew.kickoff()
-        
-    #     # Get the string result from the CrewOutput object
-    #     if hasattr(result, 'raw_output'):
-    #         latex_document = result.raw_output
-    #     else:
-    #         # Try to get the result as a string representation
-    #         latex_document = str(result)
-        
-    #     # Save the LaTeX document and BibTeX file
-    #     output_path = Path("output")
-    #     output_path.mkdir(exist_ok=True)
-        
-    #     # Save main LaTeX document
-    #     with open(output_path / "paper.tex", "w", encoding="utf-8") as f:
-    #         f.write(latex_document)
-        
-    #     # Save BibTeX file
-    #     with open(output_path / "references.bib", "w", encoding="utf-8") as f:
-    #         f.write(references_text)
-        
-    #     # Create a figures directory and README
-    #     figures_path = output_path / "figures"
-    #     figures_path.mkdir(exist_ok=True)
-        
-    #     # Create README with figure copying instructions
-    #     with open(figures_path / "README.txt", "w", encoding="utf-8") as f:
-    #         f.write("Copy the following images to this directory:\n\n")
-    #         for info in figures_info:
-    #             f.write(f"{info}\n")
-        
-    #     # Also copy figures to the output directory if possible
-    #     try:
-    #         for i, fig in enumerate(self.paper_state["figures"]):
-    #             source_path = fig.get("path", "")
-    #             if os.path.exists(source_path):
-    #                 target_path = figures_path / f"figure_{i+1}.jpg"
-    #                 import shutil
-    #                 shutil.copy2(source_path, target_path)
-    #                 print(f"Copied figure: {source_path} -> {target_path}")
-    #     except Exception as e:
-    #         print(f"Error copying figures: {str(e)}")
-        
-    #     return {
-    #         "latex_document": latex_document,
-    #         "output_path": str(output_path / "paper.tex"),
-    #         "bib_path": str(output_path / "references.bib"),
-    #         "figures_path": str(figures_path)
-    #     }
-    
+     
     def generate_latex(self):
         """Generate a LaTeX document from the paper state."""
         # Check if all sections are approved
@@ -859,13 +891,16 @@ class PaperGenerator:
             \\end{{abstract}}
 
             {all_sections}
+            
+            % Figures
+            {figures_text}
 
             % Bibliography section
             \\bibliographystyle{{unsrtnat}}
             \\bibliography{{references}}
 
             \\end{{document}}
-    """
+        """
         
         # Save the LaTeX document and BibTeX file
         output_path = Path("output")
@@ -992,9 +1027,8 @@ class PaperGenerator:
         return latex_result
 
 
-# Knowledge Base Connector
 class KnowledgeBaseConnector:
-    """Simple connector to the Research Knowledge Base."""
+    """Enhanced connector to the Research Knowledge Base with graph relationship queries."""
     
     def __init__(self, kb=None):
         """Initialize with an optional knowledge base instance."""
@@ -1007,3 +1041,197 @@ class KnowledgeBaseConnector:
         else:
             # Return dummy data for testing
             return self._get_dummy_data(query, top_k)
+            
+    def get_related_by_citation(self, paper_ids, limit=3):
+        """Get the most cited papers related to the given paper IDs."""
+        if not self.kb:
+            return []
+            
+        related_papers = []
+        
+        with self.kb.graph_db.session() as session:
+            result = session.run("""
+                MATCH (p:Paper)-[:CITES]->(cited:Paper)
+                WHERE p.id IN $paper_ids
+                WITH cited, count(*) AS citation_count
+                ORDER BY citation_count DESC
+                LIMIT $limit
+                RETURN cited.id AS paper_id, cited.title AS title, 
+                       cited.authors AS authors, cited.year AS year
+            """, {"paper_ids": paper_ids, "limit": limit})
+            
+            for record in result:
+                # Use the kb's search to get full paper data with chunks
+                paper_data = self.kb.hybrid_search(record["title"], top_k=1)
+                if paper_data.get("papers"):
+                    related_papers.append(paper_data["papers"][0])
+                
+        return related_papers
+        
+    def get_related_by_themes(self, paper_ids, limit=3):
+        """Get papers related by shared themes."""
+        if not self.kb:
+            return []
+            
+        related_papers = []
+        
+        with self.kb.graph_db.session() as session:
+            result = session.run("""
+                MATCH (p:Paper)-[:DISCUSSES_THEME]->(t:Theme)<-[:DISCUSSES_THEME]-(related:Paper)
+                WHERE p.id IN $paper_ids AND NOT related.id IN $paper_ids
+                WITH related, count(DISTINCT t) AS shared_themes
+                ORDER BY shared_themes DESC
+                LIMIT $limit
+                RETURN related.id AS paper_id, related.title AS title
+            """, {"paper_ids": paper_ids, "limit": limit})
+            
+            for record in result:
+                # Use the kb's search to get full paper data with chunks
+                paper_data = self.kb.hybrid_search(record["title"], top_k=1)
+                if paper_data.get("papers"):
+                    related_papers.append(paper_data["papers"][0])
+                
+        return related_papers
+        
+    def get_related_by_methods(self, paper_ids, limit=3):
+        """Get papers related by shared methodology."""
+        if not self.kb:
+            return []
+            
+        related_papers = []
+        
+        with self.kb.graph_db.session() as session:
+            result = session.run("""
+                MATCH (p:Paper)-[:USES_METHOD]->(m:Methodology)<-[:USES_METHOD]-(related:Paper)
+                WHERE p.id IN $paper_ids AND NOT related.id IN $paper_ids
+                WITH related, count(DISTINCT m) AS shared_methods
+                ORDER BY shared_methods DESC
+                LIMIT $limit
+                RETURN related.id AS paper_id, related.title AS title
+            """, {"paper_ids": paper_ids, "limit": limit})
+            
+            for record in result:
+                paper_data = self.kb.hybrid_search(record["title"], top_k=1)
+                if paper_data.get("papers"):
+                    related_papers.append(paper_data["papers"][0])
+                
+        return related_papers
+        
+    def get_related_by_strengths(self, paper_ids, limit=3):
+        """Get papers related by shared strengths."""
+        if not self.kb:
+            return []
+            
+        related_papers = []
+        
+        with self.kb.graph_db.session() as session:
+            result = session.run("""
+                MATCH (p:Paper)-[:HAS_STRENGTH]->(s:Strength)<-[:HAS_STRENGTH]-(related:Paper)
+                WHERE p.id IN $paper_ids AND NOT related.id IN $paper_ids
+                WITH related, count(DISTINCT s) AS shared_strengths
+                ORDER BY shared_strengths DESC
+                LIMIT $limit
+                RETURN related.id AS paper_id, related.title AS title
+            """, {"paper_ids": paper_ids, "limit": limit})
+            
+            for record in result:
+                paper_data = self.kb.hybrid_search(record["title"], top_k=1)
+                if paper_data.get("papers"):
+                    related_papers.append(paper_data["papers"][0])
+                
+        return related_papers
+        
+    def get_related_by_limitations(self, paper_ids, limit=3):
+        """Get papers related by shared limitations."""
+        if not self.kb:
+            return []
+            
+        related_papers = []
+        
+        with self.kb.graph_db.session() as session:
+            result = session.run("""
+                MATCH (p:Paper)-[:HAS_LIMITATION]->(l:Limitation)<-[:HAS_LIMITATION]-(related:Paper)
+                WHERE p.id IN $paper_ids AND NOT related.id IN $paper_ids
+                WITH related, count(DISTINCT l) AS shared_limitations
+                ORDER BY shared_limitations DESC
+                LIMIT $limit
+                RETURN related.id AS paper_id, related.title AS title
+            """, {"paper_ids": paper_ids, "limit": limit})
+            
+            for record in result:
+                paper_data = self.kb.hybrid_search(record["title"], top_k=1)
+                if paper_data.get("papers"):
+                    related_papers.append(paper_data["papers"][0])
+                
+        return related_papers
+        
+    def get_papers_with_different_strengths(self, paper_ids, limit=4):
+        """Get papers with similar methods but different strengths."""
+        if not self.kb:
+            return []
+            
+        related_papers = []
+        
+        with self.kb.graph_db.session() as session:
+            result = session.run("""
+                MATCH (p:Paper)-[:USES_METHOD]->(m:Methodology)<-[:USES_METHOD]-(related:Paper)
+                WHERE p.id IN $paper_ids AND NOT related.id IN $paper_ids
+                MATCH (related)-[:HAS_STRENGTH]->(s:Strength)
+                WHERE NOT EXISTS {
+                    MATCH (p2:Paper)-[:HAS_STRENGTH]->(s)
+                    WHERE p2.id IN $paper_ids
+                }
+                WITH related, count(DISTINCT m) AS method_overlap, collect(DISTINCT s.name) AS unique_strengths
+                WHERE size(unique_strengths) > 0
+                ORDER BY method_overlap DESC, size(unique_strengths) DESC
+                LIMIT $limit
+                RETURN related.id AS paper_id, related.title AS title
+            """, {"paper_ids": paper_ids, "limit": limit})
+            
+            for record in result:
+                paper_data = self.kb.hybrid_search(record["title"], top_k=1)
+                if paper_data.get("papers"):
+                    related_papers.append(paper_data["papers"][0])
+                
+        return related_papers
+    
+    def get_papers_addressing_limitations(self, paper_ids, limit=3):
+        """Get papers with strengths that address limitations in the input papers - without APOC."""
+        if not self.kb:
+            return []
+            
+        related_papers = []
+        
+        with self.kb.graph_db.session() as session:
+            # First get the limitations of the input papers
+            limitations_result = session.run("""
+                MATCH (p:Paper)-[:HAS_LIMITATION]->(l:Limitation)
+                WHERE p.id IN $paper_ids
+                RETURN collect(DISTINCT l.name) AS limitations
+            """, {"paper_ids": paper_ids})
+            
+            limitations_record = limitations_result.single()
+            if not limitations_record or not limitations_record["limitations"]:
+                return []
+                
+            limitations = limitations_record["limitations"]
+                
+            # For each limitation, find papers with potentially related strengths
+            for limitation in limitations[:2]:  # Limit to first 2 limitations for performance
+                # Use simple string matching instead of Jaro-Winkler
+                result = session.run("""
+                    MATCH (l:Limitation {name: $limitation_name})
+                    MATCH (related:Paper)-[:HAS_STRENGTH]->(s:Strength)
+                    WHERE NOT related.id IN $paper_ids
+                    // Use a simple query without complex string similarity
+                    RETURN related.id AS paper_id, related.title AS title, 
+                        collect(DISTINCT s.name) AS strengths
+                    LIMIT $limit
+                """, {"paper_ids": paper_ids, "limitation_name": limitation, "limit": limit})
+                
+                for record in result:
+                    paper_data = self.kb.hybrid_search(record["title"], top_k=1)
+                    if paper_data.get("papers"):
+                        related_papers.append(paper_data["papers"][0])
+                    
+        return related_papers[:limit]

@@ -1,0 +1,545 @@
+{
+    "basic_info": {
+        "title": "Panoramic Structure from Motion via Geometric Relationship Detection",
+        "authors": [
+            "Satoshi Ikehata",
+            "Ivaylo Boyadzhiev",
+            "Qi Shan",
+            "Yasutaka Furukawa"
+        ],
+        "paper_id": "1612.01256v1",
+        "published_year": 2016,
+        "references": []
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "S. Agarwal, K. Mierle, and Others. Ceres solver. http:\n//ceres-solver.org . 3, 5",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "J.-Y . Bouguet. Camera calibration toolbox for matlab.\nhttp://www.vision.caltech.edu/bouguetj/\ncalib_doc/ . 3",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "D. Crandall, A. Owens, N. Snavely, and D. Huttenlocher.\nDiscrete-continuous optimization for large-scale structure\nfrom motion. In CVPR, pages 3001–3008. IEEE, 2011. 2",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "A. Elqursh and A. Elgammal. Line-based relative pose esti-\nmation. In CVPR, pages 3049–3056. IEEE, 2011. 2",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": null
+        },
+        "ref_5": {
+            "text": "A. Flint, C. Mei, D. Murray, and I. Reid. A dynamic pro-\ngramming approach to reconstructing building interiors. In\nECCV, pages 394–407. 2010. 2",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "A. Gupta, A. A. Efros, and M. Hebert. Blocks world re-\nvisited: Image understanding using qualitative geometry and\nmechanics. In ECCV, pages 482–496, 2010. 2",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "H. Ha, S. Im, J. Park, H.-G. Jeon, and I. So Kweon.\nHigh-quality depth from uncalibrated small motion clip. In\nProceedings oftheIEEE Conference onComputer Vision\nandPattern Recognition, pages 5413–5421, 2016. 2, 6",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "V . Hedau, D. Hoiem, and D. Forsyth. Recovering the spatial\nlayout of cluttered rooms. In ICCV, pages 1849–1856, 2009.\n2",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": null
+        },
+        "ref_9": {
+            "text": "W. Y . Jeong and K. M. Lee. Visual SLAM with line and cor-\nner features. In Intelligent Robots andSystems, IEEE/RSJ\nInternational Conference on, pages 2570–2575. IEEE, 2006.\n2",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "C. Kim and R. Manduchi. Planar structures from line corre-\nspondences in a Manhattan world. In ACCV, pages 509–524,\n2014. 2",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "F. Liu, C. Shen, and G. Lin. Deep convolutional neural ﬁelds\nfor depth estimation from a single image. In CVPR, pages\n5162–5170, 2015. 1",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": null
+        },
+        "ref_12": {
+            "text": "A. Mallya and S. Lazebnik. Learning informative edge maps\nfor indoor scene layout prediction. In ICCV, pages 936–944,\n2015. 2",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "P. Moulon, P. Monasse, R. Marlet, and Others. Open-\nMVG. An open multiple view geometry library. https:\n//github.com/openMVG/openMVG . 5, 6, 7",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "P. K. Nathan Silberman, Derek Hoiem and R. Fergus. Indoor\nsegmentation and support inference from RGBD images. In\nECCV, 2012. 2",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "S. Ramalingam and M. Brand. Lifting 3D manhattan lines\nfrom a single image. In ICCV, pages 497–504, 2013. 2",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": null
+        },
+        "ref_16": {
+            "text": "S. Ramalingam, J. Pillai, A. Jain, and Y . Taguchi. Manhattan\njunction catalogue for spatial reasoning of indoor scenes. In\nCVPR, pages 3065–3072, 2013. 1, 2",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": null
+        },
+        "ref_17": {
+            "text": "C. Richardt, Y . Pritch, H. Zimmer, and A. Sorkine-Hornung.\nMegastereo: Constructing high-resolution stereo panoramas.\nInCVPR, pages 1256–1263, 2013. 1, 2",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": null
+        },
+        "ref_18": {
+            "text": "R. F. Salas-Moreno, B. Glocken, P. H. Kelly, and A. J. Davi-\nson. Dense planar SLAM. In ISMAR, pages 157–164. IEEE,\n2014. 2",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "G. Schindler, P. Krishnamurthy, and F. Dellaert. Line-\nbased structure from motion for urban environments. In\n3DData Processing, Visualization, andTransmission, Third\nInternational Symposium on, pages 846–853. IEEE, 2006. 2",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "H.-Y . Shum and R. Szeliski. Stereo reconstruction from mul-\ntiperspective panoramas. In ICCV, 1999. 2",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "S. N. Sinha, D. Steedly, and R. Szeliski. A multi-stage lin-\near approach to structure from motion. In ECCV Workshop\nonReconstruction andModeling ofLarge-Scale 3DVirtual\nEnvironments, 2010. 4",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "N. Snavely, S. M. Seitz, and R. Szeliski. Photo Tourism:\nExploring image collections in 3d. In SIGGRAPH, 2006. 2,\n7",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": null
+        },
+        "ref_23": {
+            "text": "C. Sweeney. Theia multiview geometry library: Tutorial &\nreference. University ofCalifornia Santa Barbara, 2, 2015. 7",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": null
+        },
+        "ref_24": {
+            "text": "R. Szeliski. Computer Vision: Algorithms andApplications.\nSpringer, 2010. 1",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": null
+        },
+        "ref_25": {
+            "text": "J. M. R. S. Tavares and A. J. M. N. Padilha. A new approach\nfor merging edge line segments. RecPad95, 1995. 3",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "C. J. Taylor and D. J. Kriegman. Structure and motion from\nline segments in multiple images. TPAMI, 17(11):1021–\n1032, 1995. 2, 5",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "R. G. von Gioi, J. Jakubowicz, J.-M. Morel, and G. Randall.\nLSD: A fast line segment detector with a false detection con-\ntrol. TPAMI, (4):722–732, 2008. 3",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "X. Wang, D. Fouhey, and A. Gupta. Designing deep net-\nworks for surface normal estimation. In CVPR, pages 539–\n547, 2015. 1, 2, 3",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "A. Wills. QPC - quadratic programming in c. http://\nsigpromu.org/quadprog/ . 5",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_30": {
+            "text": "C. Wu. VisualSFM : A visual structure from motion system.\nhttp://ccwu.me/vsfm/ . 7",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": null
+        },
+        "ref_31": {
+            "text": "J. Xiao, A. Owens, and A. Torralba. SUN3D: A database\nof big spaces reconstructed using SfM and object labels. In\nICCV, pages 1625–1632, 2013. 1",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "H. Yang and H. Zhang. Efﬁcient 3d room shape recov-\nery from a single panorama. In Proceedings oftheIEEE\nConference onComputer Vision andPattern Recognition,\npages 5422–5430, 2016. 2",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": null
+        },
+        "ref_33": {
+            "text": "F. Yu and D. Gallup. 3D reconstruction from accidental mo-\ntion. In CVPR, pages 3986–3993, 2014. 2",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": null
+        },
+        "ref_34": {
+            "text": "Y . Zhang, S. Song, P. Tan, and J. Xiao. PanoContext: A\nwhole-room 3d context model for panoramic scene under-\nstanding. In ECCV, pages 668–686, 2014. 1, 2Panoramic Structure from Motion via Geometric Relationship Classiﬁcation",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": null
+        },
+        "ref_Environments_2010": {
+            "text": "Environments, 2010. 4 [22] N. Snavely, S. M. Seitz, and R. Szeliski. Photo Tourism:",
+            "type": "author_year",
+            "key": "Environments, 2010",
+            "arxiv_id": null
+        },
+        "ref_Springer_2010": {
+            "text": "reference. University ofCalifornia Santa Barbara, 2, 2015. 7 [24] R. Szeliski. Computer Vision: Algorithms andApplications. Springer, 2010. 1 [25] J. M. R. S. Tavares and A. J. M. N. Padilha. A new approach",
+            "type": "author_year",
+            "key": "Springer, 2010",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "A quantitative evaluation of scene reconstructions with a ground-truth is a challenging task especially for complex indoor environments. We have manually clicked correspon- dences across multiple images, triangulated the 3D point, and used its reprojection errors as the accuracy measure (See Fig. 10). More precisely, for each dataset, we have selected six images with some visual overlap, where Open- MVG has estimated camera parameters. The table shows the means and standard deviations of the reprojection errors in pixels. Note that the resolution of the input images are 1980 x 1080 except for the Atrium dataset whose resolution is 1280 x 800. Our indoor panoramic image streams are ex- tremely challenging as distinctive visual feature points are\n\n6. Conclusions\n\nThis paper tackles a challenging panoramic SfM prob- lem, where input images have minimal parallax and lack in rich visual textures. Our approach detects coplanarity rela- tionships between pairs of lines by utilizing a deep-network for the surface normal estimation. The detected relation- ships provide exact geometric constraints in solving a line- based SfM problem. The presented method has outper- formed many state-of-the-art Sf(M (SLAM) algorithms on our challenging datasets. The current limitation of our ap- proach is the false coplanarity detection. While 3D structure looks clean, reprojection errors are still too large to run a stereo algorithm for obtaining a dense geometry. Our future work is to 1) incorporate point features into the framework; 2) train a proper relationship classification machinery given an image and a pair of lines; and 3) develop robust opti-\n\n& E el i & = é =~ 4 = € =| , bin : fs] (97.4%) (45.8%) (94.6% a (95.3%) 2a Via neg Sane ze) oY tr & S ¥ ye ae g * 8 z fa FS 9 ad 5 (91.2%) (41.1% (92.3% F3,.v mm® 98.6%)| (100%) Living room Bed room Play room TV room Atrium\n\nFigure 9. OpenMVG results in a top-down view. For being fair, the intrinsics are initialized to the values in our the top row. Both the intrinsics and camera rotations are initialized in the bottom row. The numbers show the ratios of registered frames. re-calibration process in\n\noO Manual matches + Ours (Before BA) + Ours (After BA) ++ OpenMVG Mean reprojection errors (px) Standard deviations (px) oom room room room | oon room room room At (Before BA) 91.6 1273 174.6 113.5 114.1 | 38.5 64.2 1143 93.8 105.2 (After BA) 40.2 95.5 131.6 44.6 46.6 | 36.5 95.0 64.0 158 34.1\n\noO Manual matches + Ours (Before BA) + Ours (After BA) ++ OpenMVG\n\nOpenMvG | 64.1 230.4 302.7 34.0 704 | 26.2\n\n75.5 145.8 27.6\n\n35.5\n\nFigure 10. Reprojection error analysis in the Living room (left) and Bed room (right) datasets. We have triangulated a 3D point from manual low rectangles), then plot reprojected pixel coordinates based on the camera parameters of our method (before or after correspondences (ye: the bundle adjustment) and OpenMVG. The table shows the means and stan ard deviations of the reprojection errors in pixels.\n\nmization strategy to handle outliers.",
+            "section": "results",
+            "section_idx": 0,
+            "citations": []
+        },
+        {
+            "text": "2016\n\n1612.01256v1 [cs.CV] 5 Dec\n\narXiv\n\nPanoramic Structure from Motion via Geometric Relationship Detection\n\nSatoshi Ikehata and Yasutaka Furukawa Washington University in St. Louis\n\nIvaylo Boyadzhiev and Qi Shan Zillow\n\nAbstract\n\nThis paper addresses the problem of Structure from Mo- tion (SfM) for indoor panoramic image streams, extremely challenging even for the state-of-the-art due to the lack of textures and minimal parallax. The key idea is the fusion of single-view and multi-view reconstruction techniques via geometric relationship detection (e.g., detecting 2D lines as coplanar in 3D). Rough geometry suffices to perform such detection, and our approach utilizes rough surface normal estimates from an image-to-normal deep network to dis- cover geometric relationships among lines. The detected re- lationships provide exact geometric constraints in our line- based linear SfM formulation. A constrained linear least squares is used to reconstruct a 3D model and camera mo- tions, followed by the bundle adjustment. We have validated our algorithm on challenging datasets, outperforming vari- ous state-of-the-art reconstruction techniques.\n\nFigure 1. Top: High quality panorama generation requires min- imal camera translations, which make multi-view reconstruction difficult. Bottom: Our algorithm fuses single-view and multi-view reconstruction techniques to solve challenging SfM problems.\n\nstraining the motions [17].\n\n1. Introduction\n\nPanorama images are everywhere on the Internet, in- stantly taking you to remote locations such as Rome, the Louvre, or Great Barrier Reef under water with immersive visualization. Panoramas have become the first-class visual contents in digital mapping, and are becoming increasingly more important with the emergence of Virtual Reality.\n\nPanoramas, if equipped with the depth information, could enable 1) full stereoscopic VR experiences; 2) 3D modeling of surrounding environments; and 3) better scene understanding. However, panoramic 3D reconstruction has been a challenge for Computer Vision due to the mini- mal parallax, which is important to reduce stitching arti- facts [24] but makes it difficult to utilize powerful multi- view reconstruction techniques. The lack of texture exac- erbates the situations for indoor scenes. The reconstruction accuracy of single-view methods is still far below the pro- duction level [34, 16, 11, 28], and successful panoramic 3D reconstruction has been demonstrated only with the use of special hardware such as a depth camera (e.g., Matterport), a camera array (e.g., Google Jump), a spherical lightfield camera (e.g., Lytro Immerge), or a motorized tripod con-\n\nThis paper proposes a novel Structure from Motion (SfM) algorithm for indoor panoramic image streams ac- quired by standard smart phones or tablets (See Fig. 1). The key idea is the fusion of single-view and multi-view recon- struction techniques. In the past, 3D vision community has rarely seen such fusion, mainly because single view meth- ods are too “rough” to be directly used with the multi-view techniques (with some exceptions [31]). We seek to utilize single-view techniques to effectively detect geometric re- lationships of lines (e.g., detecting 2D lines as coplanar in 3D), which in turn yield precise geometric constraints to be used in multi-view 3D reconstruction. For example, once we identify floor image regions, we can declare coplanarity among all the points or lines inside the floor regions, provid- ing powerful geometric constraints in solving for structure and camera motions.\n\nWe formulate an SfM algorithm that expresses these ge- ometric constraints as linear functions of our variables, and uses a constrained linear least squares to reconstruct a 3D model and camera motions, followed by the bundle adjust- ment. We have evaluated the proposed approach on many challenging datasets. The qualitative and quantitative eval- uations have demonstrated the advantages of our method\n\nFigure 2. Top: Subsampled input frames. While they may not look particularly difficult, the challenge lies in the minimal baseline, where standard SfM or SLAM algorithms fail. Bottom: A stitched panorama image with minimal artifacts due to the small baseline.\n\nover many state-of-the-art reconstruction techniques.\n\nrithms follow this “global approach”.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "17",
+                "24",
+                "34, 16, 11, 28",
+                "31"
+            ]
+        },
+        {
+            "text": "2. Related work\n\nThis paper proposes a novel SfM algorithm that in- tegrates single-view and multi-view reconstruction tech- niques, while utilizing geometric relationships as indoor structure priors. Therefore, we describe existing work on the following three domains: 1) single-view techniques for 3D reconstruction, 2) multi-view reconstruction techniques, and 3) the use of structure priors for 3D reconstruction.\n\nShum and Szeliski in the nineties [20] or Richardt et al. more recently [17] have demonstrated panoramic 3D recon- struction from rotation-dominant motions. Yu et al. [33] or Ha et al. [7] succeeded in solving Sf{M from acciden- tal camera motions. However, these methods assume rich texture and rely on visual feature tracking/matching with careful multi-view geometric analysis for 3D reconstruc- tion. | Texture-less scenes with limited camera translations still pose major challenges for existing SfM algorithms.\n\nSingle view technique: A careful analysis of lines, its connections, and its vanishing points has enabled a single- image reconstruction of architectural scenes [16, 15]. How- ever, these algorithms critically depend on the connec- tivity of lines and can easily fail. For indoor scenes, a single image scene understanding has been a very active topic [8, 14, 34]. Similar work exists for outdoor scenes [6]. However, their 3D models are mostly a combination of boxes for the purpose of scene understanding rather than reconstruction. Superpixel and line analysis allows more complicated reconstruction of an indoor scene [32]. More recently, data driven approaches, in particular deep net- works, have demonstrated interesting single-view recon- struction results [28, 12]. Despite being an exciting new direction, these reconstructions are rough and do not match up with the quality of multi-view reconstructions.\n\nStructure priors for 3D reconstruction: Structure priors have played an important role in the advancement of 3D Computer Vision. Flint et al. [5] has proposed an effective indoor scene reconstruction algorithm by assuming that an indoor scene consists of two horizontal surfaces and vertical walls. This type of high-level structural priors have also been the key to the success of single-view reconstruction techniques. However, in the domain of Sf{M or SLAM, only low-level geometric priors have been exploited in the past, often just lines and vanishing points [26, 9, 19, 4, LO] or planes at best [18]. In this paper, we seek to exploit a family of geometric relationships between lines to better constrain challenging reconstruction problems.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "20",
+                "17",
+                "33",
+                "7",
+                "16, 15",
+                "8, 14, 34",
+                "6",
+                "32",
+                "28, 12",
+                "5",
+                "18"
+            ]
+        },
+        {
+            "text": "3. Input data\n\nMulti-view technique: State-of-the-art Sf{M algorithms work very well for texture-rich scenes with reasonable base- lines. In 2006, Snavely et al. introduced a powerful “In- cremental Sf{M” algorithm [22], which incrementally grows SfM models. In 2011, Crandall et al. proposed a global ap- proach, which seeks to estimate all the camera parameters simultaneously [3]. Currently, many state-of-the-art Sf{M or SLAM (Simultaneous Localization and Mapping) algo-\n\nWe have developed simple iOS and Android apps that record 360° panoramic videos and IMU rotations (See Fig. 2). Both iOS and Android offer an API to retrieve cam- era rotations after sensor fusion. Similar to Google Card- board Camera App, we have recorded videos with a “natu- ral” body motion in which the human body is at the center\n\n'Google Cardboard Camera App produces stereoscopic panoramas from panoramic movies. Although its algorithmic details are not disclosed, feature tracking/matching is probably their primary geometric cues.\n\nFigure 3. We identify four different types of coplanarity relationships among line segments by utilizing a surface normal estimate by deep-network [28]. The colors of line segments represent their corresponding Manhattan directions.\n\nof rotation, as opposed to an “unnatural” motion where the camera must be at the center of rotation. This camera mo- tion ensures some amount of parallax, although being too small for standard SfM or SLAM algorithms. Our approach identifies geometric constraints to enable 3D reconstruction even from such small translational motions.\n\ntract Manhattan directions by detecting peaks while enforc- ing the mutual orthogonality.\n\nManhattan line extraction: We detect Manhattan line seg- ments by simply collecting lines that cast votes to each of the three peaks within a certain margin (10 degrees on the voting sphere). We avoid detecting degenerate lines that are associated with two or more Manhattan directions.\n\n4. Panoramic Structure from Motion\n\nThe input to our pipeline is a panoramic image stream with initial camera rotations from the iOS or Andorid app as well as intrinsics from precalibration [2]. The pipeline consists of four steps: 1) preprocessing, 2) geometric rela- tionship detection, 3) linear SfM, and 4) bundle adjustment. The second and third steps are the core of this paper. We now explain the details of each step.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "22",
+                "3",
+                "28",
+                "2"
+            ]
+        },
+        {
+            "text": "4.1. Preprocessing\n\nRotation refinement: Since initial rotations from IMU usually contain drifting errors, we use standard non-linear least squares optimization [1] to refine camera rotations so that the detected Manhattan line segments pass through the corresponding Manhattan vanishing points. We repeat the Manhattan axis extraction, Manhattan line extraction, and rotation refinement a few times.\n\nLine tracking: Lastly, we form tracks of Manhattan line segments by grouping nearby line segments along the same Manhattan direction across frames.\n\nThe goal of the preprocessing step is three-fold: Manhat- tan direction extraction, Manhattan line tracking, and cam- era rotation refinement. The procedure is based on standard techniques, and we here briefly describe the procedure, and refer some algorithmic and implementation details to the supplementary material.\n\nLine segment detection: First, we use a standard line seg- ment detection software (LSD [27]) to extract line segments from each input image. We use the existing algorithm [25] to merge neighboring line segments when their angle differ- ences are less than 1 degree and the minimum distance be- tween their endpoints is less than 0.05 x min(w, h) pixels where (w, h) are the width and height of the input image, respectively. After the merging, we discard line segments that are shorter than 0.05 x min(w, h) pixels.\n\n4.2. Geometric relationship detection\n\nRough surface normal estimations suffice to extract pow- erful geometric constraints among lines. We first use a deep-network by Wang et al. [28] to obtain the surface nor- mal estimation for each input image. Since estimated sur- face normals are defined on each camera coordinate frame, we project each normal onto the global Manhattan coordi- nate system using the rotation matrices.\n\nThree types of coplanarity relationships are detected for every pair of line segments in each frame. The fourth copla- narity test finds and enforces line segments on the floor to be coplanar, providing precise geometric constraints across all the frames even without any visual overlap (See Fig. 3).\n\nManhattan frame extraction: Given reasonable initial camera rotations and intrinsics, we extract the Manhattan frame from the detected lines in all the images: 1) We let each line cast votes to its potential 3D directions (i.e., a great circle) on a Gaussian sphere; then 2) sequentially ex-\n\nOrthogonal coplanarity: Our input is Manhattan lines, each of which is associated with one of the three Manhattan directions. Suppose one is given a pair of lines associated with different Manhattan directions. If the pair is copla- nar, the space between these two lines should have the same surface normal pointing towards the orthogonal Manhattan",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "1",
+                "27",
+                "25",
+                "28"
+            ]
+        },
+        {
+            "text": "a\n\nInput Manhattan limes +-VP Input normal Image Junction Orthogonal “* /Parallel\n\nFigure 5. Geometric relationship detection. Given a video sequence and a set of normal images (1st and 2nd images), our framework estimates the Manhattan-world vanishing points and cluster each line segment into one of three three Manhattan axes (3rd image). Then, we detect four different types of coplanarity relationships among line segments: junction, orthogonal, parallel, or floor coplanarity. To avoid clutter, we only show a small number of detected geometric relationships.\n\nremaining two Manhattan directions. For instance, if two lines are parallel along the X-axis, the coplanarity normal must be either along Y or Z axis.\n\nJunction coplanarity: Given a pair of lines with different Manhattan directions, two lines are deemed to be coplanar if their end-points are close, that is, within 0.1 x min(h, w).\n\nFloor coplanarity: The floor coplanarity segments the floor region in each frame by collecting pixels whose normals are within 25° degrees from the vertical direction. We ap- ply a morphological operation (dilation) once then find line segments that are fully contained inside the floor regions. We enforce these lines from all the frames to be coplanar on a horizontal surface (i.e., floor). Notice that existing SfM/SLAM algorithms require features to be commonly visible across frames. The floor coplanarity is unusually powerful and can provide constraints among all the frames even when there are no visual overlap.\n\nFigure 4. Linear SfM formulation with geometric constraints. Sup- pose a line L; was detected and formed a track in images Vi = {1i, Ij}. The mid-point (P/) of a line segment in an image (Ii) is parameterized by the depth (\\;). The line direction is a known Manhattan direction. We enforce detected coplanarities between a pair of lines as well as the colinearity between P;' and P).\n\ndirection. Therefore, we compute the average surface nor- mal inside a quad defined by the four end-points of the line segments, then declare Manhattan coplanarity if the follow- ing two conditions are met: 1) the average normal is within 20° from the expected Manhattan direction and 2) the aver- age angle difference between the average normal and all the surface normals inside the quad is less than 5°.\n\nParallel coplanarity: Given a pair of lines with the same Manhattan direction, we detect the coplanarity in exactly the same way as in the Orthogonal coplanarity case with one difference. Parallel lines are always coplanar, and we restrict the potential coplanarity normal to be one of the",
+            "section": "other",
+            "section_idx": 4,
+            "citations": []
+        },
+        {
+            "text": "4.3. Linear Sf{M formulation\n\nSinha et al. proposed a linear S{M formulation that mini- mizes reprojection errors as linear functions of the point 3D coordinates and camera translations [21]. We have formu- lated a linear SfM problem that minimizes colinearity and coplanarity constraints among lines as linear functions of the line parameters and camera translations.\n\nModel: IMU rotations and the camera intrinsics from the precalibration step allow us to focus on the estimation of camera translations ({T;}) and the 3D model, in our case, 3D lines. Since we know the direction of a line (i.e., one of the Manhattan directions), estimating the depth of a single reference point on a line suffices to uniquely determine its geometry (See Fig. 4). In particular, we seek to estimate the depth \\j of a tracked line at its mid-point P} in each image, where i and / are the image and line indexes, respectively:\n\nPi =T' +XDj.\n\nDi is the unit-length viewing ray for P’. The depths are measured along the rays as opposed to along the optical axis of the image. Note that we estimate multiple depth val- ues for a single line-track, making our line parameterization redundant. However, we have chosen this simple parame- terization because the core solver (constrained linear least squares) is scalable. In the bundle adjustment step conduct- ing non-linear optimization next, we will use more compact line parameterization. Unknown variables of our Sf{M prob- lem are camera translations and line depths, subject to the following two linear constraints.\n\nColinearity constraints: A single line-track has multiple depth values estimated across tracked images. Lines must be reconstructed exactly at the same location, and we en- force colinearity among such lines. More precisely, give a line, for every pair of tracked images (J', I’), we measure the distance between the two lines along their orthogonal Manhattan directions (Nj, N?):\n\n(Pi-P/)-Ni=0, (Pi-P/) NP =0.\n\nCoplanarity constraints: Let P' and PJ, be two lines that have been detected as coplanar. We impose coplanarity as\n\n(Pi Pin )+ Nim = 0.\n\nNim is the surface normal of the detected plane.\n\nThese constraints are linear functions of the variables ({T;}, {Ai}. As \\ (depth) must be positive, we add the non- negativity constraint for the depth variables, then use the standard dual active-set method in QPC [29].",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "21",
+                "29"
+            ]
+        },
+        {
+            "text": "4.4. Bundle adjustment\n\nBundle adjustment further improves the quality of 3D models and camera parameters. This time, we employ more compact line parameterization introduced in [26]. To be more specific, a line L; is parameterized by a vector A; that connects the origin and the closest point on the line. It is easy to show that A; becomes perpendicular to the direction of a line. The residual again consists of the three terms.\n\nColinearity: Since A; is perpendicular to the line direction, which we denote as Aj, their dot-product must be 0:\n\nA, A; = 0.\n\nCoplanarity: Given two lines that must be coplanar and are parameterized by A; and A,,, respectively, the distance of the two lines along the coplanar normal direction (Aj) must be 0:\n\n(Ar — Am) + Aim = 0.\n\nReprojection errors: We project a line L; to all its tracked images and measure the reprojection errors against the line\n\nsegments in the images. There are many ways to measure the line reprojection errors. We simply measure the aver- age distance over all the points on the line segment to the projected line [26].\n\nWe use a standard non-linear least squares optimization library Ceres [1] to refine the parameters. The weights of the three residuals are set to 1 for the reprojection error and 10* for the colinearity and coplanarity errors. Following re- cent trends in SfM literature [13], we solve this bundle ad- justment problem in three phases. In the first phase, we only refine line parameters and camera translations. We then add camera rotations in the second phase, and camera intrinsics in the last phase for refinement.\n\n5. Experimental results\n\nWe have evaluated the proposed approach with five chal- lenging datasets. The first four datasets have been captured in a residential house and named Living room (340 frames), Bed room (341 frames), Play room (296 frames), and TV room (294 frames). The resolution of these datasets are 1980 x 1080 (iPhone6s). The fifth dataset was captured at an atrium of a University building: Atrium (361 frames). The resolution of this dataset is 1280 x 800 (Nexus 9 tablet). All the datasets have been recorded as 30 fps videos, and sub- sampled so that 360° are covered by roughly 360 frames.\n\nWe have used a PC with an Intel Core i7-4770 (3.40GHz, single thread) processor and 32.0GB ram. MATLAB with some C++ mex functions have been used for the implemen- tation. The rough processing times of our computationally expensive steps are 1) 30 seconds for the line detection and merging; 2) | minute for the vanishing point estimation and rotation refinement; 3) 2 minutes for the line tracking; 4) 5 seconds per image for the coplanarity estimation; 6) 30 sec- onds for solving a constrained linear least squares problem; and 7) 1 minute for the bundle adjustment.\n\nThe main experimental results are illustrated in Fig. 6. The proposed approach has successfully recovered near- complete 3D models, registering more than 90% of the frames in each dataset. Figure 7 illustrates the contribu- tions of different geometric relationships, where we have run our algorithm on Atrium with three different sets of re- lationships: 1) junction coplanarity only; 2) junction, or- thogonal, and parallel coplanarities; and 3) everything. In addition to making the 3D structure more accurate, the geo- metric relationships help connect more images and models, which would otherwise be disconnected and become scale- ambiguous, the major and most problematic failure modes of current Sf{M methods.\n\nWe have compared against a wide range of Sf{M (SLAM) software to assess challenges in our panoramic movie datasets. First, Figure 8 shows the reconstruction results of the four state-of-the-art Sf{M/SLAM systems with ours\n\nSample input images Top-down view ww Living room (100%) Bed room (98.6%) Play room (100%) TV room (96.9%) Atrium (98.6%)\n\nFigure 6. Sample input images and our line models in three different views. The quarter view renders each line with its average color in the images. The height-field view uses the heat-map color scheme based on the heights from the floor. The top-down view is an orthographic projection view from the top. Recovered camera centers are shown by green dots. The numbers show the ratios of registered frames.\n\nfor Play room, which is a relatively easier dataset with rich textures. The left two methods are so-called “Incremen- tal Sf{M”, which sequentially adds cameras and grows the model. The next two methods are “Global SfM”, which si- multaneously recovers all the camera parameters. For fair- ness, camera intrinsics have been provided to each software as either initialization or fixed parameters, except that we could not figure out a way to specify in Theia. As the fig- ure illustrates, Global SfM is the state-of-the-art approach and outperforms in this challenging example. We have also tried to evaluate small-motion SfM algorithms, in particular,\n\nDfUSMC by Ha et al. [7]. However, they could not produce any models as the software assumes that feature tracks must be fully visible throughout the video. In rotation-heavy panoramic movies, features quickly go outside frames and tracks become short, another challenge in our problem.\n\nTo further evaluate the effectiveness of our method, Fig- ure 9 shows the reconstructed models of OpenMVG [13], the best method in the previous experiment, on all the datasets. In addition to the intrinsics (the top row), we have also provided the IMU camera rotations as the initializa- tion (the bottom row). The ratios of registered frames sug-\n\nInput frame Normal image Junction — Ortho/parallel Floor Junction Junction + Ortho/parallel Everything\n\nInput frame Normal image\n\nJunction — Ortho/parallel\n\nFigure 7. Contributions of the four coplanarity relationships, detected in the Atrium dataset. We have run our reconstruction algorithm with three different sets of coplanarity relationships: 1) junction coplanarity only; 2) junction, orthogonal, and parallel coplanarities; and 3) al the four. The middle shows the pairs of line segments detected as coplanar.\n\nGlobal S{M Incremental Sf{M Bundler (26.4%) VisualSFM (17.7%) Theia (99.3%) OpenMVG (95.9%) Ours (96.9%)\n\nFigure 8. Comparison against state-of-the-art Sf(M (SLAM) systems, Bundler [22], VisualSFM [30], Theia [23], and OpenMVG [13] for TV room. Each number shows the ratio of registered frames. Only OpenMVG and our approach have produced near perfect models.\n\n“EB = Fixing camera translations to be 0. Optimizing camera translations.\n\nOptimizing camera translations.\n\nFixing camera translations to be 0.\n\nFigure 11. Estimation of the camera translation in the SfM frame- work is crucial in obtaining a clean model.\n\noften rare in a sequence, and reprojection errors are rela- tively large throughout the sequences. Nonetheless, our er- rors are often a few times smaller than those of OpenMVG.\n\nOur final experiment is to verify the importance of cam- era translation estimation in the Sf{M framework. We have simply run our algorithm while enforcing camera transla- tions to be 0, which resembles a problem setting for line- based single view reconstruction. Figure 11 shows that the translation estimation is crucial in obtaining a clean 3D model without corruption. Please also see the supplemen- tary video for the full assessment of the input videos and the reconstruction results.\n\ngest that OpenMVG has produced near complete models for most of the examples. However, the effective complete- ness of the OpenMVG models appear much lower, espe- cially in the left three examples, where scarce features and small translations pose challenges.",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "26",
+                "26",
+                "1",
+                "13",
+                "7",
+                "13",
+                "22",
+                "30",
+                "23",
+                "13"
+            ]
+        },
+        {
+            "text": "Acknowledgement\n\nThis research is partially supported by National Science Foundation under grant IIS 1540012 and Zillow gift money. We also thank Nvidia for a generous GPU donation. Yasu- taka Furukawa is a consultant for Zillow.\n\nReferences\n\n1 S. Agarwal, K. Mierle, and Others. Ceres solver. http: //ceres-solver.org. 3,5\n\nJ.-Y. Bouguet. Camera calibration toolbox for matlab. http: //www.vision.caltech.edu/bouguet j/ calib_doc/.3\n\nD. Crandall, A. Owens, N. Snavely, and D. Huttenlocher. Discrete-continuous optimization for large-scale structure from motion. In CVPR, pages 3001-3008. IEEE, 2011. 2\n\nA. Elqursh and A. Elgammal. Line-based relative pose esti- mation. In CVPR, pages 3049-3056. IEEE, 2011. 2\n\nA. Flint, C. Mei, D. Murray, and I. Reid. A dynamic pro- gramming approach to reconstructing building interiors. In ECCV, pages 394-407. 2010. 2\n\nA. Gupta, A. A. Efros, and M. Hebert. Blocks world re- visited: Image understanding using qualitative geometry and mechanics. In ECCV, pages 482-496, 2010. 2\n\nH. Ha, S. Im, J. Park, H.-G. Jeon, and I. So Kweon. High-quality depth from uncalibrated small motion clip. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 5413-5421, 2016. 2, 6\n\nV. Hedau, D. Hoiem, and D. Forsyth. Recovering the spatial layout of cluttered rooms. In ICCV, pages 1849-1856, 2009. 2\n\nW. Y. Jeong and K. M. Lee. Visual SLAM with line and cor- ner features. In Intelligent Robots and Systems, IEEE/RSJ International Conference on, pages 2570-2575. IEEE, 2006. 2\n\n10 C. Kim and R. Manduchi. Planar structures from line corre- spondences in a Manhattan world. In ACCV, pages 509-524, 2014. 2\n\n11 F Liu, C. Shen, and G. Lin. Deep convolutional neural fields for depth estimation from a single image. In CVPR, pages 5162-5170, 2015. 1\n\n12 A. Mallya and S. Lazebnik. Learning informative edge maps for indoor scene layout prediction. In ICCV, pages 936-944, 2015. 2\n\n13 P. Moulon, P. Monasse, R. Marlet, and Others. Open- MVG. An open multiple view geometry library. https: //github.com/openMVG/openMVG. 5, 6,7\n\n14 P. K. Nathan Silberman, Derek Hoiem and R. Fergus. Indoor segmentation and support inference from RGBD images. In ECCV, 2012. 2\n\n15 S. Ramalingam and M. Brand. Lifting 3D manhattan lines from a single image. In ICCV, pages 497-504, 2013. 2\n\n16 S. Ramalingam, J. Pillai, A. Jain, and Y. Taguchi. Manhattan junction catalogue for spatial reasoning of indoor scenes. In CVPR, pages 3065-3072, 2013. 1,2\n\n17 C. Richardt, Y. Pritch, H. Zimmer, and A. Sorkine-Hornung. Megastereo: Constructing high-resolution stereo panoramas. In CVPR, pages 1256-1263, 2013. 1,2\n\nR. F. Salas-Moreno, B. Glocken, P. H. Kelly, and A. J. Davi- son. Dense planar SLAM. In ISMAR, pages 157-164. IEEE, 2014. 2\n\nG. Schindler, P. Krishnamurthy, and F. Dellaert. Line- based structure from motion for urban environments. In 3D Data Processing, Visualization, and Transmission, Third International Symposium on, pages 846-853. IEEE, 2006. 2\n\n20 H.-Y. Shum and R. Szeliski. Stereo reconstruction from mul- tiperspective panoramas. In ICCV, 1999. 2\n\n21 S. N. Sinha, D. Steedly, and R. Szeliski. A multi-stage lin- ear approach to structure from motion. In ECCV Workshop on Reconstruction and Modeling of Large-Scale 3D Virtual Environments, 2010. 4\n\nN. Snavely, S. M. Seitz, and R. Szeliski. Photo Tourism: Exploring image collections in 3d. In SIGGRAPH, 2006. 2, 7\n\n23 C. Sweeney. Theia multiview geometry library: Tutorial & reference. University of California Santa Barbara, 2, 2015. 7\n\n24 R. Szeliski. Computer Vision: Algorithms and Applications. Springer, 2010. 1\n\n25 .M.R. S. Tavares and A. J. M. N. Padilha. A new approach for merging edge line segments. RecPad95, 1995. 3\n\n26 C. J. Taylor and D. J. Kriegman. Structure and motion from ine segments in multiple images. TPAMI, 17(11):1021- 1032, 1995. 2,5\n\n27 R. G. von Gioi, J. Jakubowicz, J.-M. Morel, and G. Randall. LSD: A fast line segment detector with a false detection con- trol. TPAMI, (4):722-732, 2008. 3\n\n28 X. Wang, D. Fouhey, and A. Gupta. Designing deep net- works for surface normal estimation. In CVPR, pages 539- 547, 2015. 1, 2,3\n\n29 A. Wills. QPC - quadratic programming inc. http: // sigpromu.org/quadprog/. 5\n\n30 C. Wu. VisualSFM : A visual structure from motion system. http://ccwu.me/vsfm/. 7\n\n31 J. Xiao, A. Owens, and A. Torralba. SUN3D: A database of big spaces reconstructed using SfM and object labels. In ICCV, pages 1625-1632, 2013. 1\n\n32 H. Yang and H. Zhang. Efficient 3d room shape recov- ery from a single panorama. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 5422-5430, 2016. 2\n\n33 F. Yu and D. Gallup. 3D reconstruction from accidental mo- tion. In CVPR, pages 3986-3993, 2014. 2\n\n34 Y. Zhang, S. Song, P. Tan, and J. Xiao. PanoContext: A whole-room 3d context model for panoramic scene under- standing. In ECCV, pages 668-686, 2014. 1, 2\n\n2016\n\narXiv:1612.01256v1 [cs.CV] 5 Dec",
+            "section": "other",
+            "section_idx": 7,
+            "citations": []
+        },
+        {
+            "text": "Panoramic Structure from Motion via Geometric Relationship Classification Supplementary material\n\nSatoshi Ikehata and Yasutaka Furukawa Washington University in St. Louis\n\nIvaylo Boyadzhiev and Qi Shan Zillow\n\nThe supplementary material provides algorithmic and implementation details of the three preprocessing steps: (1) Manhattan frame (direction) extraction, (2) camera rotation refinement, and (3) Manhattan line tracking. These steps rely on standard techniques and are described here.\n\n1. Manhattan frame extraction\n\ndirections as well as the camera rotation matrices:\n\n2. Rotation refinement\n\nThe global rotation matrices given by the IMU in the consumer smartphones contain non-negligible errors. Therefore, we refine rotation matrices using extracted Man- hattan frames.\n\nManhattan frame extraction aims to recover the three or- thogonal Manhattan directions given images, camera intrin- sics and IMU rotation matrices.\n\nWe follow the VP representation as in [3]. The 3D vanishing directions are represented by the intersections of multiple interpretation planes. A interpretation plane is spanned by the global origin and the two unit vectors that pass both the origin and endpoints of each line segment in the global space. A homogeneous point vector X on the i-th image is computed by R? K~!X where K and R; are the camera intrinsic matrix and the i-th IMU rotation matrix, respectively.\n\nTo extract Manhattan frames, we first uniformly dis- cretize the Gaussian sphere centerd on the optical center of the camera into 10242 directions [4], and project the inter- pretation plane of each line segment to the Gaussian sphere using camera information. Let w € Rt be the length of a line segment on the image. We accumulate w votes to the discretized bin when the angle difference between the in- terpretation plane and the vector on the Gaussian sphere is less than 0.03 in radius. Finally, we normalize the voting map by the maximum value over all the bins to acquire the normalized Gaussian sphere. Figure | shows one example.\n\nThe Manhattan frames are extracted by using the votes on the Gaussian sphere. We use a simple peak extraction algorithm as follow. First, we find the maximum peak that is near from the gravity direction given by the IMU sen- sor (v.). Then, we subsample the vectors on the Gaussian sphere whose angle differences between the peaks and the vector are less than one degree. From this subset, we find the second peak that has the maximum votes (v,,) and the third vector (v,,) that is orthogonal to both v, and v,.\n\nWe should note that the extracted vanishing directions may contain errors. The next step improves these vanishing\n\nIn each image, we declare a line segment as a Manhat- tan line segment if the angle difference between the normal of the interpretation plane and one Manhattan direction is more than 85 degrees, and the same angle difference with the other two Manhattan directions are both less than 85 de- grees. The second condition is critical to avoid ambiguous line segments that correspond to two Manhattan directions. Given m images and N(i) Manhattan line segments, we refine rotation matrices by minimizing the following func- tional:\n\nN r-1e _.~ 2 S s (RPK Diy x RPK Gj)\" = soz i, i=l j=l |RP Kp, x REG, 5) 2 + $2 [RTR;- RITRMuS. () (i I)EN\n\nK € R°*® is the intrinsic camera matrix, and R; € R?*3 and R? € R**3 are the resulting and initial rotation ma- trices, respectively. p,; € R®*', gq, € R°*! and vi,j € R3*! are homogeneous vectors of two endpoints and its vanishing direction of j-th Manhattan line segment on the i-th image, respectively. \\ (set by 0.1 in our imple- mentation) is a trade-off parameter between the data term and the smoothness term, respectively.\n\nThe first term penalizes the angular difference between the surface normal direction of the interpretation plane and the assigned vanishing direction. The second term seeks to make the relative rotation between nearby frames un- changed during the optimization. The term exploits the fact that IMU rotation may exhibit long-term accumulation er- rors, but are fairly accurate locally. NV is constructed by the similarity of the z-axis of the camera coordinate frame that is corresponding to the display face direction of the de-\n\nFigure 1. Manhattan frame extraction. (left) We vote along the interpretation plane on the Gaussian sphere. (right) vanishing directions are extracted at the peaks on the sphere.\n\nBefore optimization After optimization\n\nFigure 2. Rotation refinement. We iteratively update the rotations and Manhattan line segments until convergence.\n\nvice. If the angle difference of the z-axes is less than 10 de- grees, two cameras are considered as neighbors. Note that we repeat the process of extracting Manhattan line segments and optimizing Eq. 1 until convergence (generally three iter- ations). Figure 2 shows that the Manhattan line segments and vanishing directions are refined over the iterations.",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "3",
+                "4"
+            ]
+        },
+        {
+            "text": "3. Line tracking\n\nWe match Manhattan line segments between pairs of frames, then find tracks. When the camera motion is purely panoramic, images are related by the Homography H [2] as\n\npair of images, a homography matrix H [2] is computed from SURF matches [1].\n\nSuppose we seek to match a Manhattan line segment in one frame against a Manhattan line segment in another. We compute their distance as follows. First, we use the esti- mated Homography to warp one line segment to the other frame. Second, for each end-point of a line segment, com- pute the distance to a line containing the other line segment. 4 such distances are computed and we take the minimum as the distance between the two line segments. We declare that a pair of line segments match if 1) this distance is less than 0.05 min (h, w); 2) the angle difference is less than 1 degree; and 3) they are mutually the closest line segment.\n\nt= Hx, (2)\n\nwhere 2; and #9 are the point location in the homogeneous coordinate. Since our input is panoramic videos, Eq. 2 is roughly satisfied. We find line tracks as follows.\n\nReferences\n\nFirst, we collect all the image pairs whose angle differ- ences of the camera Z-axes are less than 2 degrees. For each\n\n[1] H. Bay, T. Tuytelaars, and L. Van Gool. Surf: Speeded up robust features. In Computer vision~ECCV 2006,\n\npages 404417. Springer, 2006. 2\n\n[2] R. Hartley and A. Zisserman. Multiple view geometry in computer vision. Cambridge university press, 2003. 2\n\n[3] T. Kroeger, D. Dai, and L. Van Gool. Joint vanish- ing point extraction and tracking. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 2449-2457, 2015. |\n\n[4] J. Xiao, T. Fang, P. Zhao, M. Lhuillier, and L. Quan. Image-based street-side city modeling. In TOG, vol- ume 28, page 114, 2009. 1",
+            "section": "other",
+            "section_idx": 9,
+            "citations": [
+                "2",
+                "2",
+                "1",
+                "1",
+                "2",
+                "3",
+                "4"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\9ffce5d5-3f57-4cda-8ddf-f09660cf79bb.jpg",
+            "description": "This figure presents a series of visualizations likely related to an indoor scene reconstruction or understanding task. It includes:\n\n- **Sample Input Images**: The first column shows real-world images of various rooms (Living room, Bedroom, Play room, TV room, Atrium), providing context for the data used in the study.\n\n- **Quarter View, Height-field View, and Top-down View**: These columns display reconstructed models or representations of the rooms from different perspectives. The quarter view gives a three-dimensional perspective, the height-field view appears to show depth or height information with color coding, and the top-down view offers a plan-like representation.\n\n- **Percentage Indicators**: Next to each room label, a percentage is given, possibly indicating the accuracy or confidence level of the reconstruction or recognition process.\n\nOverall, the figure is crucial for understanding the methodology and results related to scene reconstruction, showcasing how input images are transformed and represented in different views. This figure visually demonstrates the effectiveness of the techniques used in the research, making it important for grasping the paper's contributions.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\80e728ec-4cdb-4cd0-af5d-b6d903569871.jpg",
+            "description": "This figure presents a comparative analysis of feature matching in a multi-room indoor environment. It includes:\n\n- **Images**: A series of images with different feature points marked. Yellow squares represent manual matches, red crosses indicate matches before bundle adjustment (BA) using the authors' method, green crosses show matches after BA, and blue crosses denote matches from OpenMVG.\n\n- **Data Table**: The table provides quantitative results, showing mean reprojection errors and standard deviations in pixels for different rooms (Living room, Bedroom, Playroom, TV room, Atrium). Two sets of data are compared: one before BA and one after BA, highlighting the improvement in accuracy after the adjustment.\n\nThis figure is important as it visually and quantitatively demonstrates the effectiveness of the proposed method in reducing reprojection errors, providing key evidence for the methodology's success in improving feature matching accuracy.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\8b8abdca-321c-41d3-8358-d817323d0c1f.jpg",
+            "description": "This figure illustrates a concept related to spherical data representation and processing, likely within the context of computer vision or photogrammetry. \n\n- **Architecture Diagrams and Components:** The central part of the figure shows a sphere with multiple colored lines converging at two points. These lines seem to represent different viewing angles or projections from two distinct cameras or viewpoints, represented by the images on either side of the sphere. The coordinates \\({R_i, K}\\) and \\({R_j, K}\\) suggest a rotational or positional parameterization of these viewpoints.\n\n- **Graphs, Charts, and Data Visualizations:** On the right, a 3D spherical plot illustrates a heatmap or some form of data distribution on a sphere. The blue coloring with yellow highlighted areas indicates regions of interest or significant data points, possibly corresponding to the convergence points of the lines on the central sphere.\n\n- **Mathematical Formulas or Concepts Illustrated:** The figure uses spherical coordinates and concepts related to the geometry of projections. The placement of images on either side of the central sphere suggests a study of how different viewpoints relate to the spherical representation.\n\n- **Algorithm Flowcharts or Processes:** The flow from the images to the sphere, and then to the 3D plot, implies a process of capturing, projecting, and analyzing data. The label \"gravity\" indicates a directional or orientational reference, possibly affecting how the data is interpreted on the sphere.\n\n- **Results or Findings Being Presented:** The visualization likely demonstrates the methodology of mapping and analyzing spatial data from multiple perspectives. The highlighted areas on the 3D plot may represent findings related to key regions of interest or significant data correlations within the spherical model.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\e89bb9a7-e7d3-4e40-a51d-64f5463af600.jpg",
+            "description": "This figure compares different Structure from Motion (SfM) techniques. It is divided into two main categories: Incremental SfM and Global SfM. Each category showcases visual outputs from different algorithms or methods, along with their respective reconstruction completeness percentages.\n\n- **Incremental SfM:**\n  - **Bundler (26.4%)**: Displays a sparse point cloud with a low percentage of completion.\n  - **VisualSfM (17.7%)**: Shows an even sparser reconstruction, indicating lower performance.\n\n- **Global SfM:**\n  - **Theia (99.3%)**: Offers a nearly complete reconstruction, with a high percentage, showcasing its effectiveness.\n  - **OpenMVG (95.9%)**: Provides a dense reconstruction, slightly less complete than Theia.\n  - **Ours (96.9%)**: Represents the method proposed by the authors, with a competitive completion rate, indicating strong performance.\n\nThe figure is important as it visually demonstrates the effectiveness and comparative performance of the proposed method against existing techniques, highlighting improvements in reconstruction completeness.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\a9f8e82c-d79b-4a2a-830c-d1c53958173e.jpg",
+            "description": "This figure illustrates relationships in a geometric or computer vision context, focusing on concepts of collinearity and coplanarity. The top section shows a 3D scene with two intersecting planes, labeled \\(I_i\\) and \\(I_j\\), connected by a line \\(L_l\\). The points \\(P_l^i\\) and \\(P_l^j\\) represent key intersection points within these planes. The notation \\(\\lambda_l^i D_l^i\\) suggests a mathematical relationship or transformation involving these elements, possibly a scaling or projection factor.\n\nThe bottom section breaks down the geometric relationships further. The \"Colinearity\" diagram shows vectors and points aligned along a line, emphasizing the linear relationship between \\(P_l^i\\) and \\(P_l^j\\). The \"Coplanarity\" diagram illustrates how points and lines lie on the same plane, with vectors \\(N_{lm}\\) and \\(L_m\\) denoting normal and line directions, respectively.\n\nThis figure is crucial for understanding the spatial relationships and mathematical principles underlying the research, likely forming a basis for algorithms or models discussed in the paper.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\16d5d79f-8780-4b33-bfc9-450bef974f7a.jpg",
+            "description": "The figure presents a comparative analysis of scene reconstruction accuracy across different indoor environments (Living room, Bedroom, Playroom, TV room, Atrium). It consists of two rows of point cloud visualizations, each representing a reconstructed 3D scene. The top row, labeled \"Given intrinsics,\" likely indicates reconstructions based solely on intrinsic camera parameters, while the bottom row, \"Given intrinsics and rotations,\" suggests the inclusion of both intrinsic parameters and rotational information for the reconstruction process.\n\nEach scene is accompanied by a percentage, which likely represents the accuracy or completeness of the reconstruction. Higher percentages suggest more successful reconstructions. The visual differences between the rows highlight the impact of including rotational data on the reconstruction quality, with the bottom row generally showing higher percentages and likely more complete scenes.\n\nThis figure is important for understanding the methodology and results of the research, particularly in terms of demonstrating the effectiveness of including rotational data in 3D scene reconstruction.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\686251bc-dc38-4bda-abf5-c27ac585555a.jpg",
+            "description": "This figure consists of three main components:\n\n1. **Mathematical Concept Illustration**: \n   - The left diagram shows a geometric representation involving vectors and angles. It illustrates the concept of calculating the angle between two vectors, \\( n \\) (in red) and \\( v \\) (in blue), using the dot product and the arc cosine function, \\( \\text{acos}(n^T v) \\). This is likely related to orientation or rotational transformations.\n\n2. **Image with Overlaid Visualization**:\n   - The middle and right images show a room with lines and arrows overlaid, representing some form of visual data processing or computer vision task. The lines in green, blue, and red may represent detected edges, normals, or axes used in the optimization process.\n\n3. **Before and After Optimization Comparison**:\n   - The images are labeled \"Before optimization\" and \"After optimization,\" indicating a comparison of a process or algorithm's performance. The overlay likely shows improvements in alignment or accuracy of detected features post-optimization.\n\nOverall, this figure is important as it visually communicates the effect of optimization on data processing, and the mathematical context gives insight into the underlying calculations or transformations used.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\dc3cb726-d249-4db3-a0ef-edb34f73c652.jpg",
+            "description": "This figure illustrates a process for understanding and analyzing indoor scenes from an input image. It is a sequential visualization showing various stages of image processing and analysis:\n\n1. **Input Image**: The original photograph of an indoor environment, serving as the initial data for further processing.\n\n2. **Input Normal**: A representation of surface normals derived from the input image, likely indicating the orientation of surfaces within the scene.\n\n3. **Manhattan Lines + VP (Vanishing Points)**: This step shows the detection of Manhattan lines (aligned with the major orthogonal directions) and the calculation of vanishing points, which are crucial for understanding the geometry of the scene.\n\n4. **Junction**: Highlights the identification of junctions or corner points within the room, marked for further spatial analysis.\n\n5. **Orthogonal/Parallel**: Displays the analysis of line orientations, categorizing them as orthogonal or parallel, which helps in understanding the room's structure.\n\n6. **Floor**: The final step likely represents the identification or segmentation of the floor area within the room, completing the spatial understanding.\n\nThis figure is important for understanding the methodology of spatial analysis in indoor scenes, showing key steps involved in extracting structural information from images.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\f5159aa9-24a4-40b8-818e-0fffaf4540d9.jpg",
+            "description": "This figure presents a sequence of visual processing steps applied to an input image of an indoor scene. The process begins with the \"Input frame,\" followed by a \"Normal image\" which likely represents a surface normal visualization. The subsequent images labeled \"Junction,\" \"Ortho/parallel,\" and \"Floor\" show different feature extraction stages, possibly identifying key structural elements in the scene such as corners, parallel lines, and floor surfaces.\n\nThe second part of the figure illustrates the synthesis of these features into a more abstract representation. The \"Junction,\" \"Junction + Ortho/parallel,\" and \"Everything\" images likely depict a progression in combining these features into a comprehensive structural map, useful for applications such as scene understanding or 3D reconstruction.\n\nThis figure is important as it visually demonstrates the methodology and the integration of various structural cues, making it crucial for understanding the research's approach to scene analysis.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\f0106476-6de3-4842-bda0-e729c3092e77.jpg",
+            "description": "This figure compares the effects of optimizing versus fixing camera translations in a 3D scene reconstruction or mapping context. On the left, the image shows a more coherent and aligned structure, suggesting that optimizing camera translations results in a more accurate representation of the spatial layout. On the right, the image appears more distorted and less structured, indicating the impact of fixing camera translations to zero, which likely leads to inaccuracies and misalignments. This visualization is important for understanding the significance of camera translation optimization in producing accurate 3D reconstructions or models, highlighting a key methodological aspect of the research.",
+            "importance": 8
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Uncertainty",
+            "3D Pose Estimation"
+        ],
+        "methodology": [
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Feature detection",
+            "3D Reconstruction"
+        ],
+        "domain": [
+            "Autonomous Robotics"
+        ],
+        "strengths": [
+            "3D Reconstruction",
+            "Enhanced Detection Techniques",
+            "Efficient Optimization",
+            "Camera pose estimation",
+            "Bayesian Hierarchy Model"
+        ],
+        "limitations": [
+            "3D Challenges",
+            "Complexity",
+            "Perceptual Color Balance",
+            "Uncertainty Analysis",
+            "Scaling Impact"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1612.01256v1_chunk_0",
+            "section": "results",
+            "citations": []
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_1",
+            "section": "other",
+            "citations": [
+                "17",
+                "24",
+                "34, 16, 11, 28",
+                "31"
+            ]
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_2",
+            "section": "other",
+            "citations": [
+                "20",
+                "17",
+                "33",
+                "7",
+                "16, 15",
+                "8, 14, 34",
+                "6",
+                "32",
+                "28, 12",
+                "5",
+                "18"
+            ]
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_3",
+            "section": "other",
+            "citations": [
+                "22",
+                "3",
+                "28",
+                "2"
+            ]
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_4",
+            "section": "other",
+            "citations": [
+                "1",
+                "27",
+                "25",
+                "28"
+            ]
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_5",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_6",
+            "section": "other",
+            "citations": [
+                "21",
+                "29"
+            ]
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_7",
+            "section": "other",
+            "citations": [
+                "26",
+                "26",
+                "1",
+                "13",
+                "7",
+                "13",
+                "22",
+                "30",
+                "23",
+                "13"
+            ]
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_8",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_9",
+            "section": "other",
+            "citations": [
+                "3",
+                "4"
+            ]
+        },
+        {
+            "chunk_id": "1612.01256v1_chunk_10",
+            "section": "other",
+            "citations": [
+                "2",
+                "2",
+                "1",
+                "1",
+                "2",
+                "3",
+                "4"
+            ]
+        }
+    ]
+}

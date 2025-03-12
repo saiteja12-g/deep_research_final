@@ -136,7 +136,7 @@ class ResearchKnowledgeBase:
         stored_chunks = []
         
         # Process in smaller batches
-        BATCH_SIZE = 100
+        BATCH_SIZE = 10
         for batch_start in range(0, len(raw_chunks), BATCH_SIZE):
             batch_end = min(batch_start + BATCH_SIZE, len(raw_chunks))
             print(f"Processing batch {batch_start//BATCH_SIZE + 1}: chunks {batch_start+1}-{batch_end}")
@@ -178,13 +178,7 @@ class ResearchKnowledgeBase:
             
             # Add this batch to ChromaDB
             try:
-                # print(f"Memory before batch: {psutil.Process(os.getpid()).memory_info().rss // 1024 ** 2} MB")
-                # print(f"DEBUG: Starting add operation for {len(documents)} documents")
-                # print(f"First document excerpt: {documents[0][:100]}...") # Print first 100 chars to check content
                 self.vector_db.add(documents=documents,embeddings=embeddings, metadatas=metadatas, ids=ids)
-                # print(f"Memory after batch: {psutil.Process(os.getpid()).memory_info().rss // 1024 ** 2} MB")
-                # print(f"Successfully added batch {batch_start//BATCH_SIZE + 1}")
-                
 
             except Exception as e:
                 print(f"ERROR ADDING BATCH: {str(e)}")
@@ -696,6 +690,7 @@ class ResearchKnowledgeBase:
             n_results=top_k*3,  # Get extra chunks for aggregation
             include=["metadatas", "documents", "distances"]
         )
+        print("done vector search")
         # print(chunk_results)
         # Aggregate chunks by paper
         paper_chunks = {}
@@ -751,6 +746,7 @@ class ResearchKnowledgeBase:
         papers = []
         for paper_id, data in sorted_papers:
             try:
+                print("started graph seach")
                 # Get base paper info from Neo4j
                 with self.graph_db.session() as session:
                     graph_data = session.execute_read(
@@ -789,7 +785,7 @@ class ResearchKnowledgeBase:
             except Exception as e:
                 print(f"Error processing paper {paper_id}: {str(e)}")
                 continue
-        
+        print("starting images")
         # Image search with theme/method alignment
         images = []
         if include_images:
@@ -865,35 +861,95 @@ class ResearchKnowledgeBase:
         """Get extended paper relationships from Neo4j including all metadata and chunks."""
         result = tx.run("""
             MATCH (p:Paper{id: $paper_id})
+
+            // Get basic paper info immediately - no need for related papers or collections if that's all we need
+            WITH p, p.id AS paper_id, p.title AS title, p.authors AS authors, p.year AS year
+
+            // Get chunks with LIMIT to prevent collecting too many
             OPTIONAL MATCH (p)-[:CONTAINS]->(c:Chunk)
-            OPTIONAL MATCH (c)-[:CITES]->(cited:Paper)
-            
+            WITH p, paper_id, title, authors, year, 
+                collect(DISTINCT c.id)[..20] AS chunk_ids,  // Limit to 20 chunks
+                collect(DISTINCT c.section)[..10] AS chunk_sections
+
+            // Get citations with LIMIT
+            OPTIONAL MATCH (p)-[:CONTAINS]->(:Chunk)-[:CITES]->(cited:Paper)
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections,
+                collect(DISTINCT cited.id)[..15] AS chunk_citations  // Limit to 15 citations
+
+            // Split the query into multiple parts - get themes and theme-related papers
             OPTIONAL MATCH (p)-[:DISCUSSES_THEME]->(t:Theme)
-            OPTIONAL MATCH (t)<-[:DISCUSSES_THEME]-(theme_related:Paper)
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations,
+                collect(DISTINCT t.name)[..10] AS themes  // Limit to 10 themes
+
+            // Get theme-related papers separately with LIMIT
+            OPTIONAL MATCH (p)-[:DISCUSSES_THEME]->(t:Theme)<-[:DISCUSSES_THEME]-(theme_related:Paper)
             WHERE theme_related <> p
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, themes,
+                collect(DISTINCT theme_related.id)[..5] AS theme_related_papers  // Limit to 5 related papers
 
+            // Get methods with LIMIT
             OPTIONAL MATCH (p)-[:USES_METHOD]->(m:Methodology)
-            OPTIONAL MATCH (m)<-[:USES_METHOD]-(method_related:Paper)
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, 
+                themes, theme_related_papers,
+                collect(DISTINCT m.name)[..8] AS methods  // Limit to 8 methods
+
+            // Get method-related papers separately with LIMIT
+            OPTIONAL MATCH (p)-[:USES_METHOD]->(m:Methodology)<-[:USES_METHOD]-(method_related:Paper)
             WHERE method_related <> p
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, 
+                themes, theme_related_papers, methods,
+                collect(DISTINCT method_related.id)[..5] AS method_related_papers  // Limit to 5 related papers
 
+            // Get domains with LIMIT
             OPTIONAL MATCH (p)-[:BELONGS_TO_DOMAIN]->(d:Domain)
-            OPTIONAL MATCH (d)<-[:BELONGS_TO_DOMAIN]-(domain_related:Paper)
-            WHERE domain_related <> p
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, 
+                themes, theme_related_papers, methods, method_related_papers,
+                collect(DISTINCT d.name)[..5] AS domains  // Limit to 5 domains
 
+            // Get domain-related papers separately with LIMIT
+            OPTIONAL MATCH (p)-[:BELONGS_TO_DOMAIN]->(d:Domain)<-[:BELONGS_TO_DOMAIN]-(domain_related:Paper)
+            WHERE domain_related <> p
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, 
+                themes, theme_related_papers, methods, method_related_papers, domains,
+                collect(DISTINCT domain_related.id)[..5] AS domain_related_papers  // Limit to 5 related papers
+
+            // Get strengths with LIMIT
+            OPTIONAL MATCH (p)-[:HAS_STRENGTH]->(s:Strength)
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, 
+                themes, theme_related_papers, methods, method_related_papers, domains, domain_related_papers,
+                collect(DISTINCT s.name)[..8] AS strengths  // Limit to 8 strengths
+
+            // Get strength-related papers separately with LIMIT
+            OPTIONAL MATCH (p)-[:HAS_STRENGTH]->(s:Strength)<-[:HAS_STRENGTH]-(strength_related:Paper)
+            WHERE strength_related <> p
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, 
+                themes, theme_related_papers, methods, method_related_papers, domains, domain_related_papers,
+                strengths,
+                collect(DISTINCT strength_related.id)[..5] AS strength_related_papers  // Limit to 5 related papers
+
+            // Get limitations with LIMIT
+            OPTIONAL MATCH (p)-[:HAS_LIMITATION]->(l:Limitation)
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, 
+                themes, theme_related_papers, methods, method_related_papers, domains, domain_related_papers,
+                strengths, strength_related_papers,
+                collect(DISTINCT l.name)[..8] AS limitations  // Limit to 8 limitations
+
+            // Get limitation-related papers separately with LIMIT
+            OPTIONAL MATCH (p)-[:HAS_LIMITATION]->(l:Limitation)<-[:HAS_LIMITATION]-(limitation_related:Paper)
+            WHERE limitation_related <> p
+            WITH p, paper_id, title, authors, year, chunk_ids, chunk_sections, chunk_citations, 
+                themes, theme_related_papers, methods, method_related_papers, domains, domain_related_papers,
+                strengths, strength_related_papers, limitations,
+                collect(DISTINCT limitation_related.id)[..5] AS limitation_related_papers  // Limit to 5 related papers
+
+            // Final RETURN statement with all collected data
             RETURN 
-                p.id AS paper_id,
-                p.title AS title,
-                p.authors AS authors,
-                p.year AS year,
-                COLLECT(DISTINCT c.id) AS chunk_ids,
-                COLLECT(DISTINCT c.section) AS chunk_sections,
-                COLLECT(DISTINCT cited.id) AS chunk_citations,
-                COLLECT(DISTINCT t.name) AS themes,
-                COLLECT(DISTINCT m.name) AS methods,
-                COLLECT(DISTINCT d.name) AS domains,
-                COLLECT(DISTINCT theme_related.id) AS theme_related_papers,
-                COLLECT(DISTINCT method_related.id) AS method_related_papers,
-                COLLECT(DISTINCT domain_related.id) AS domain_related_papers
+                paper_id, title, authors, year,
+                chunk_ids, chunk_sections, chunk_citations,
+                themes, methods, domains, strengths, limitations,
+                theme_related_papers, method_related_papers, domain_related_papers,
+                strength_related_papers, limitation_related_papers
+
         """, {"paper_id": paper_id})
         
         record = result.single()
@@ -901,6 +957,7 @@ class ResearchKnowledgeBase:
             return {"paper_id": paper_id, "found": False}
         return dict(record)
 
+    
     def get_chunks_by_id(self, chunk_ids: List[str]) -> List[Dict]:
         """Retrieve full chunk data by IDs"""
         if not chunk_ids:
@@ -951,7 +1008,6 @@ class ResearchKnowledgeBase:
         paper_count = self.vector_db.count()
         image_count = self.image_db.count()
         return paper_count > 0 and image_count > 0
-
     def generate_review_paper(self, query: str, top_k: int = 10) -> Dict:
         """Generate content for a review paper based on the provided query"""
         # First, perform a hybrid search to find relevant papers and chunks
@@ -967,6 +1023,8 @@ class ResearchKnowledgeBase:
             "themes": self._aggregate_themes(relevant_papers),
             "methods": self._aggregate_methods(relevant_papers),
             "domains": self._aggregate_domains(relevant_papers),
+            "strengths": self._aggregate_strengths(relevant_papers),
+            "limitations": self._aggregate_limitations(relevant_papers),
             "figures": search_results["images"]
         }
         
@@ -980,15 +1038,16 @@ class ResearchKnowledgeBase:
                 "chunks": paper["chunks"],
                 "citations": paper["citations"],
                 "themes": paper["themes"],
-                "methods": paper["methods"]
+                "methods": paper["methods"],
+                "strengths": paper["strengths"],
+                "limitations": paper["limitations"]
             }
             review_data["papers"].append(paper_data)
         
         # Use citation graph to suggest structure
         review_data["citation_network"] = self._analyze_citation_network(relevant_papers)
-        
-        return review_data
     
+        return review_data
     def _aggregate_themes(self, papers: List[Dict]) -> List[Dict]:
         """Aggregate and rank themes from the most relevant papers"""
         theme_counts = {}
@@ -1016,7 +1075,34 @@ class ResearchKnowledgeBase:
         # Sort by frequency and return
         sorted_methods = sorted(method_counts.items(), key=lambda x: x[1], reverse=True)
         return [{"name": method, "count": count} for method, count in sorted_methods]
+    def _aggregate_strengths(self, papers: List[Dict]) -> List[Dict]:
+        """Aggregate and rank strengths from the most relevant papers"""
+        strength_counts = {}
+        for paper in papers:
+            for strength in paper.get("strengths", []):
+                if strength in strength_counts:
+                    strength_counts[strength] += 1
+                else:
+                    strength_counts[strength] = 1
+        
+        # Sort by frequency and return
+        sorted_strengths = sorted(strength_counts.items(), key=lambda x: x[1], reverse=True)
+        return [{"name": strength, "count": count} for strength, count in sorted_strengths]
     
+    def _aggregate_limitations(self, papers: List[Dict]) -> List[Dict]:
+        """Aggregate and rank limitations from the most relevant papers"""
+        limitation_counts = {}
+        for paper in papers:
+            for limitation in paper.get("limitations", []):
+                if limitation in limitation_counts:
+                    limitation_counts[limitation] += 1
+                else:
+                    limitation_counts[limitation] = 1
+        
+        # Sort by frequency and return
+        sorted_limitations = sorted(limitation_counts.items(), key=lambda x: x[1], reverse=True)
+        return [{"name": limitation, "count": count} for limitation, count in sorted_limitations]
+
     def _aggregate_domains(self, papers: List[Dict]) -> List[Dict]:
         """Aggregate and rank domains from the most relevant papers"""
         domain_counts = {}
@@ -1047,6 +1133,9 @@ class ResearchKnowledgeBase:
         # Group papers by theme and method
         theme_groups = {}
         method_groups = {}
+        strength_groups = {}
+        limitation_groups = {}
+
         
         for paper in papers:
             for theme in paper["themes"]:
@@ -1058,11 +1147,24 @@ class ResearchKnowledgeBase:
                 if method not in method_groups:
                     method_groups[method] = []
                 method_groups[method].append(paper["id"])
+            
+            for strength in paper.get("strengths", []):
+                if strength not in strength_groups:
+                    strength_groups[strength] = []
+                strength_groups[strength].append(paper["id"])
+
+            for limitation in paper.get("limitations", []):
+                if limitation not in limitation_groups:
+                    limitation_groups[limitation] = []
+                limitation_groups[limitation].append(paper["id"])
+
         
         return {
             "most_cited": sorted(citation_counts.items(), key=lambda x: x[1], reverse=True)[:5],
             "theme_groups": theme_groups,
-            "method_groups": method_groups
+            "method_groups": method_groups,
+            "strength_groups": strength_groups,
+            "limitation_groups": limitation_groups
         }
 
 def ingest_json_directory(kb: ResearchKnowledgeBase, json_dir: str = "papers_summary"):
@@ -1127,7 +1229,7 @@ def get_review_topics(kb: ResearchKnowledgeBase, num_topics=5) -> List[Dict]:
             unique_methods = list(set(methods))
             method_clusters[f"cluster_{i}"] = unique_methods
             
-        # Query Neo4j for emerging themes and interdisciplinary connections
+        # Query Neo4j for emerging themes, strengths, limitations and interdisciplinary connections
         with kb.graph_db.session() as session:
             emerging_themes = session.execute_read(
                 lambda tx: tx.run("""
@@ -1139,6 +1241,44 @@ def get_review_topics(kb: ResearchKnowledgeBase, num_topics=5) -> List[Dict]:
                 RETURN theme, paper_count
                 """).data()
             )
+            
+            # Get common strengths from recent papers
+            common_strengths = session.execute_read(
+                lambda tx: tx.run("""
+                MATCH (s:Strength)<-[:HAS_STRENGTH]-(p:Paper)
+                WHERE p.year >= 2022
+                WITH s.name AS strength, COUNT(p) AS paper_count
+                ORDER BY paper_count DESC
+                LIMIT 8
+                RETURN strength, paper_count
+                """).data()
+            )
+            
+            # Get common limitations from recent papers
+            common_limitations = session.execute_read(
+                lambda tx: tx.run("""
+                MATCH (l:Limitation)<-[:HAS_LIMITATION]-(p:Paper)
+                WHERE p.year >= 2022
+                WITH l.name AS limitation, COUNT(p) AS paper_count
+                ORDER BY paper_count DESC
+                LIMIT 8
+                RETURN limitation, paper_count
+                """).data()
+            )
+            
+            # Get improvement opportunities (strengths addressing others' limitations)
+            improvement_opportunities = session.execute_read(
+                lambda tx: tx.run("""
+                MATCH (p1:Paper)-[:HAS_STRENGTH]->(s:Strength)
+                MATCH (p2:Paper)-[:HAS_LIMITATION]->(l:Limitation)
+                WHERE p1 <> p2 AND p1.year >= p2.year
+                WITH s.name AS strength, l.name AS limitation, COUNT(DISTINCT p1) AS strength_count, COUNT(DISTINCT p2) AS limitation_count
+                ORDER BY (strength_count + limitation_count) DESC
+                LIMIT 6
+                RETURN strength, limitation, strength_count, limitation_count
+                """).data()
+            )
+            
             interdisciplinary = session.execute_read(
                 lambda tx: tx.run("""
                 MATCH (t1:Theme)<-[:DISCUSSES_THEME]-(p:Paper)-[:DISCUSSES_THEME]->(t2:Theme)
@@ -1153,6 +1293,9 @@ def get_review_topics(kb: ResearchKnowledgeBase, num_topics=5) -> List[Dict]:
             emerging_themes=emerging_themes,
             method_clusters=method_clusters,
             interdisciplinary=interdisciplinary,
+            common_strengths=common_strengths,
+            common_limitations=common_limitations,
+            improvement_opportunities=improvement_opportunities,
             num_topics=num_topics
         )
     except Exception as e:
@@ -1161,11 +1304,20 @@ def get_review_topics(kb: ResearchKnowledgeBase, num_topics=5) -> List[Dict]:
         print(traceback.format_exc())
         return []
 
-def _synthesize_topics(emerging_themes, method_clusters, interdisciplinary, num_topics=5) -> List[Dict]:
+def _synthesize_topics(emerging_themes, method_clusters, interdisciplinary, common_strengths, common_limitations, improvement_opportunities, num_topics=5) -> List[Dict]:
     themes_text = "\n".join([f"- {item['theme']} ({item['paper_count']} papers)" for item in emerging_themes]) if emerging_themes else "No emerging themes found"
     methods_text = "\n".join([f"Cluster {cid}: {', '.join(methods)}" for cid, methods in method_clusters.items()]) if method_clusters else "No method clusters found"
     interdisciplinary_text = "\n".join([f"- {item['combined_theme']} ({item['connection_strength']} connections)" for item in interdisciplinary]) if interdisciplinary else "No interdisciplinary connections found"
+    strengths_text = "\n".join([f"- {item['strength']} ({item['paper_count']} papers)" for item in common_strengths]) if common_strengths else "No common strengths found"
+    limitations_text = "\n".join([f"- {item['limitation']} ({item['paper_count']} papers)" for item in common_limitations]) if common_limitations else "No common limitations found"
     
+    improvement_text = ""
+    if improvement_opportunities:
+        improvement_text = "\n".join([f"- Strength '{item['strength']}' ({item['strength_count']} papers) could address limitation '{item['limitation']}' ({item['limitation_count']} papers)" 
+                                   for item in improvement_opportunities])
+    else:
+        improvement_text = "No clear improvement opportunities found"
+
     prompt = f"""
     Generate {num_topics} research review paper topics based on:
 
@@ -1178,13 +1330,23 @@ def _synthesize_topics(emerging_themes, method_clusters, interdisciplinary, num_
     Interdisciplinary Connections:
     {interdisciplinary_text}
 
+    Common Strengths in Recent Papers:
+    {strengths_text}
+    
+    Common Limitations in Recent Papers:
+    {limitations_text}
+    
+    Potential Improvement Opportunities:
+    {improvement_text}
+
+
     Guidelines:
     - Combine 2-3 concepts from different areas
     - Focus on recent developments (post-2020)
     - Format: "Advances in [TECH] for [DOMAIN]: [SPECIFIC FOCUS]"
     - Include both theoretical and applied aspects
 
-    Return a JSON list with: "title", "focus", "themes", "methods"
+    Return a JSON list with: "title", "focus", "themes", "methods", "key_strengths", "addressing_limitations"
     """
     
     try:

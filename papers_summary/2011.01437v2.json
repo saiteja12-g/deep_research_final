@@ -1,0 +1,947 @@
+{
+    "basic_info": {
+        "title": "Learning Deformable Tetrahedral Meshes for 3D Reconstruction",
+        "authors": [
+            "Jun Gao",
+            "Wenzheng Chen",
+            "Tommy Xiang",
+            "Clement Fuji Tsang",
+            "Alec Jacobson",
+            "Morgan McGuire",
+            "Sanja Fidler"
+        ],
+        "paper_id": "2011.01437v2",
+        "published_year": 2020,
+        "references": []
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and\ngenerative models for 3D point clouds. In ICML , volume 80, pages 40–49, 2018.",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "Matan Atzmon, Niv Haim, Lior Yariv, Ofer Israelov, Haggai Maron, and Yaron Lipman. Controlling neural\nlevel sets. In Advances in Neural Information Processing Systems , pages 2032–2041, 2019.",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "Graham F Carey. Computational grids: generations, adaptation & solution strategies . CRC Press, 1997.",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "Angel X Chang, Thomas Funkhouser, Leonidas Guibas, Pat Hanrahan, Qixing Huang, Zimo Li, Silvio\nSavarese, Manolis Savva, Shuran Song, Hao Su, et al. Shapenet: An information-rich 3d model repository.\narXiv preprint arXiv:1512.03012 , 2015.",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": "1512.03012"
+        },
+        "ref_5": {
+            "text": "Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler.\nLearning to predict 3d objects with an interpolation-based differentiable renderer. In Advances In Neural\nInformation Processing Systems , 2019.",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "Zhiqin Chen, Andrea Tagliasacchi, and Hao Zhang. Bsp-net: Generating compact meshes via binary space\npartitioning. arXiv preprint arXiv:1911.06971 , 2019.",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": "1911.06971"
+        },
+        "ref_7": {
+            "text": "Siu-Wing Cheng, Tamal K Dey, and Jonathan Shewchuk. Delaunay mesh generation . CRC Press, 2012.",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "Christopher B Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, and Silvio Savarese. 3d-r2n2: A uniﬁed\napproach for single and multi-view 3d object reconstruction. In European conference on computer vision ,\npages 628–644. Springer, 2016.",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": null
+        },
+        "ref_9": {
+            "text": "Akio Doi and Akio Koide. An efﬁcient method of triangulating equi-valued surfaces by using tetrahedral\ncells. IEICE TRANSACTIONS on Information and Systems , 74(1):214–224, 1991.",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": "and"
+        },
+        "ref_10": {
+            "text": "Crawford Doran, Athena Chang, and Robert Bridson. Isosurface stufﬁng improved: acute lattices and\nfeature matching. In ACM SIGGRAPH 2013 Talks , pages 1–1, 2013.",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "Haoqiang Fan, Hao Su, and Leonidas J Guibas. A point set generation network for 3d object reconstruction\nfrom a single image. In Proceedings of the IEEE conference on computer vision and pattern recognition ,\npages 605–613, 2017.",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": null
+        },
+        "ref_12": {
+            "text": "Xiao-Ming Fu, Yang Liu, and Baining Guo. Computing locally injective mappings by advanced mips.\nACM Transactions on Graphics (TOG) , 34(4):1–12, 2015.",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "Jun Gao, Chengcheng Tang, Vignesh Ganapathi-Subramanian, Jiahui Huang, Hao Su, and Leonidas J\nGuibas. Deepspline: Data-driven reconstruction of parametric curves and surfaces. arXiv preprint\narXiv:1901.03781 , 2019.",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": "1901.03781"
+        },
+        "ref_14": {
+            "text": "Jun Gao, Zian Wang, Jinchen Xuan, and Sanja Fidler. Beyond ﬁxed grid: Learning geometric image\nrepresentation with a deformable grid. In ECCV , 2020.",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "Georgia Gkioxari, Jitendra Malik, and Justin Johnson. Mesh r-cnn. In Proceedings of the IEEE International\nConference on Computer Vision , pages 9785–9795, 2019.",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": null
+        },
+        "ref_16": {
+            "text": "Thibault Groueix, Matthew Fisher, Vladimir G Kim, Bryan C Russell, and Mathieu Aubry. A papier-mâché\napproach to learning 3d surface generation. In Proceedings of the IEEE conference on computer vision\nand pattern recognition , pages 216–224, 2018.\n10",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": null
+        },
+        "ref_17": {
+            "text": "Glen A Hansen, Rod W Douglass, and Andrew Zardecki. Mesh enhancement: Selected elliptic methods,\nfoundations and applications, 2005.",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": null
+        },
+        "ref_18": {
+            "text": "Yixin Hu, Qingnan Zhou, Xifeng Gao, Alec Jacobson, Denis Zorin, and Daniele Panozzo. Tetrahedral\nmeshing in the wild. ACM Trans. Graph. , 37(4):60–1, 2018.",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "Krishna Murthy J., Edward Smith, Jean-Francois Laﬂeche, Clement Fuji Tsang, Artem Rozantsev, Wen-\nzheng Chen, Tommy Xiang, Rev Lebaredian, and Sanja Fidler. Kaolin: A pytorch library for accelerating\n3d deep learning research. arXiv:1911.05063 , 2019.",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": "1911.05063"
+        },
+        "ref_20": {
+            "text": "Alec Jacobson, Ladislav Kavan, and Olga Sorkine-Hornung. Robust inside-outside segmentation using\ngeneralized winding numbers. ACM Transactions on Graphics (TOG) , 32(4):1–12, 2013.",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "Angjoo Kanazawa, Michael J Black, David W Jacobs, and Jitendra Malik. End-to-end recovery of human\nshape and pose. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition ,\npages 7122–7131, 2018.",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada. Neural 3d mesh renderer. In Proceedings of the\nIEEE Conference on Computer Vision and Pattern Recognition , pages 3907–3916, 2018.",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": null
+        },
+        "ref_23": {
+            "text": "Michael Kazhdan, Matthew Bolitho, and Hugues Hoppe. Poisson surface reconstruction. In Proceedings\nof the fourth Eurographics symposium on Geometry processing , volume 7, 2006.",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": null
+        },
+        "ref_24": {
+            "text": "Michael Kazhdan and Hugues Hoppe. Screened poisson surface reconstruction. ACM Transactions on\nGraphics (ToG) , 32(3):1–13, 2013.",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": null
+        },
+        "ref_25": {
+            "text": "François Labelle and Jonathan Richard Shewchuk. Isosurface stufﬁng: fast tetrahedral meshes with good\ndihedral angles. In ACM SIGGRAPH 2007 papers , pages 57–es, 2007.",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "Chun-Liang Li, Manzil Zaheer, Yang Zhang, Barnabas Poczos, and Ruslan Salakhutdinov. Point cloud gan.\narXiv preprint arXiv:1810.05795 , 2018.",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": "1810.05795"
+        },
+        "ref_27": {
+            "text": "Yiyi Liao, Simon Donné, and Andreas Geiger. Deep marching cubes: Learning explicit surface representa-\ntions. In Conference on Computer Vision and Pattern Recognition (CVPR) , 2018.",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "Huan Ling, Jun Gao, Amlan Kar, Wenzheng Chen, and Sanja Fidler. Fast interactive object annotation\nwith curve-gcn. In CVPR , 2019.",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "Lingjie Liu, Jiatao Gu, Kyaw Zaw Lin, Tat-Seng Chua, and Christian Theobalt. Neural sparse voxel ﬁelds.\narXiv preprint arXiv:2007.11571 , 2020.",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": "2007.11571"
+        },
+        "ref_30": {
+            "text": "Shichen Liu, Tianye Li, Weikai Chen, and Hao Li. Soft rasterizer: A differentiable renderer for image-based\n3d reasoning. The IEEE International Conference on Computer Vision (ICCV) , Oct 2019.",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": null
+        },
+        "ref_31": {
+            "text": "Zhijian Liu, Haotian Tang, Yujun Lin, and Song Han. Point-voxel cnn for efﬁcient 3d deep learning. In\nAdvances in Neural Information Processing Systems , 2019.",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "Stephen Lombardi, Tomas Simon, Jason Saragih, Gabriel Schwartz, Andreas Lehrmann, and Yaser Sheikh.\nNeural volumes: Learning dynamic renderable volumes from images. ACM Trans. Graph. , 38(4):65:1–\n65:14, July 2019.",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": null
+        },
+        "ref_33": {
+            "text": "William E Lorensen and Harvey E Cline. Marching cubes: A high resolution 3d surface construction\nalgorithm. ACM siggraph computer graphics , 21(4):163–169, 1987.",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": null
+        },
+        "ref_34": {
+            "text": "Lars Mescheder, Michael Oechsle, Michael Niemeyer, Sebastian Nowozin, and Andreas Geiger. Occupancy\nnetworks: Learning 3d reconstruction in function space. In Proceedings of the IEEE Conference on\nComputer Vision and Pattern Recognition , pages 4460–4470, 2019.",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": null
+        },
+        "ref_35": {
+            "text": "Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren\nNg. Nerf: Representing scenes as neural radiance ﬁelds for view synthesis. CoRR , abs/2003.08934, 2020.",
+            "type": "numeric",
+            "number": "35",
+            "arxiv_id": null
+        },
+        "ref_36": {
+            "text": "Neil Molino, Robert Bridson, and Ronald Fedkiw. Tetrahedral mesh generation for deformable bodies. In\nProc. Symposium on Computer Animation , 2003.",
+            "type": "numeric",
+            "number": "36",
+            "arxiv_id": null
+        },
+        "ref_37": {
+            "text": "Yinyu Nie, Xiaoguang Han, Shihui Guo, Yujian Zheng, Jian Chang, and Jian Jun Zhang. To-\ntal3dunderstanding: Joint layout, object pose and mesh reconstruction for indoor scenes from a single\nimage. arXiv preprint arXiv:2002.12212 , 2020.",
+            "type": "numeric",
+            "number": "37",
+            "arxiv_id": "2002.12212"
+        },
+        "ref_38": {
+            "text": "Michael Niemeyer, Lars Mescheder, Michael Oechsle, and Andreas Geiger. Differentiable volumetric\nrendering: Learning implicit 3d representations without 3d supervision. In Proceedings IEEE Conf. on\nComputer Vision and Pattern Recognition (CVPR) , 2020.",
+            "type": "numeric",
+            "number": "38",
+            "arxiv_id": null
+        },
+        "ref_39": {
+            "text": "Steven J Owen. A survey of unstructured mesh generation technology. IMR, 239:267, 1998.",
+            "type": "numeric",
+            "number": "39",
+            "arxiv_id": null
+        },
+        "ref_40": {
+            "text": "Junyi Pan, Xiaoguang Han, Weikai Chen, Jiapeng Tang, and Kui Jia. Deep mesh reconstruction from single\nrgb images via topology modiﬁcation networks. In Proceedings of the IEEE International Conference on\nComputer Vision , pages 9964–9973, 2019.",
+            "type": "numeric",
+            "number": "40",
+            "arxiv_id": null
+        },
+        "ref_41": {
+            "text": "Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas Geiger. Convolutional\noccupancy networks. arXiv preprint arXiv:2003.04618 , 2020.\n11",
+            "type": "numeric",
+            "number": "41",
+            "arxiv_id": "2003.04618"
+        },
+        "ref_42": {
+            "text": "Gernot Riegler, Ali Osman Ulusoy, and Andreas Geiger. Octnet: Learning deep 3d representations at high\nresolutions. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition , pages\n3577–3586, 2017.",
+            "type": "numeric",
+            "number": "42",
+            "arxiv_id": null
+        },
+        "ref_43": {
+            "text": "Tianchang Shen, Jun Gao, Amlan Kar, and Sanja Fidler. Interactive annotation of 3d object geometry using\n2d scribbles. In ECCV , 2020.",
+            "type": "numeric",
+            "number": "43",
+            "arxiv_id": null
+        },
+        "ref_44": {
+            "text": "Hang Si. Tetgen, a delaunay-based quality tetrahedral mesh generator. ACM Transactions on Mathematical\nSoftware (TOMS) , 41(2):1–36, 2015.",
+            "type": "numeric",
+            "number": "44",
+            "arxiv_id": null
+        },
+        "ref_45": {
+            "text": "Eftychios Sifakis and Jernej Barbic. Fem simulation of 3d deformable solids: a practitioner’s guide to\ntheory, discretization and model reduction. In Acm siggraph 2012 courses , pages 1–50, 2012.",
+            "type": "numeric",
+            "number": "45",
+            "arxiv_id": null
+        },
+        "ref_46": {
+            "text": "Vincent Sitzmann, Michael Zollhöfer, and Gordon Wetzstein. Scene representation networks: Continuous\n3d-structure-aware neural scene representations. In Advances in Neural Information Processing Systems ,\npages 1119–1130, 2019.",
+            "type": "numeric",
+            "number": "46",
+            "arxiv_id": null
+        },
+        "ref_47": {
+            "text": "Shubham Tulsiani, Tinghui Zhou, Alexei A Efros, and Jitendra Malik. Multi-view supervision for single-\nview reconstruction via differentiable ray consistency. In Proceedings of the IEEE conference on computer\nvision and pattern recognition , pages 2626–2634, 2017.",
+            "type": "numeric",
+            "number": "47",
+            "arxiv_id": null
+        },
+        "ref_48": {
+            "text": "Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang. Pixel2mesh:\nGenerating 3d mesh models from single rgb images. In Proceedings of the European Conference on\nComputer Vision (ECCV) , pages 52–67, 2018.",
+            "type": "numeric",
+            "number": "48",
+            "arxiv_id": null
+        },
+        "ref_49": {
+            "text": "Peng-Shuai Wang, Yang Liu, Yu-Xiao Guo, Chun-Yu Sun, and Xin Tong. O-cnn: Octree-based con-\nvolutional neural networks for 3d shape analysis. ACM Transactions on Graphics (TOG) , 36(4):1–11,\n2017.",
+            "type": "numeric",
+            "number": "49",
+            "arxiv_id": null
+        },
+        "ref_50": {
+            "text": "Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao.\n3d shapenets: A deep representation for volumetric shapes. In Proceedings of the IEEE conference on\ncomputer vision and pattern recognition , pages 1912–1920, 2015.",
+            "type": "numeric",
+            "number": "50",
+            "arxiv_id": null
+        },
+        "ref_51": {
+            "text": "Qiangeng Xu, Weiyue Wang, Duygu Ceylan, Radomir Mech, and Ulrich Neumann. Disn: Deep implicit\nsurface network for high-quality single-view 3d reconstruction. In Advances in Neural Information\nProcessing Systems , pages 490–500, 2019.",
+            "type": "numeric",
+            "number": "51",
+            "arxiv_id": null
+        },
+        "ref_52": {
+            "text": "Guandao Yang, Xun Huang, Zekun Hao, Ming-Yu Liu, Serge Belongie, and Bharath Hariharan. Pointﬂow:\n3d point cloud generation with continuous normalizing ﬂows. arXiv , 2019.",
+            "type": "numeric",
+            "number": "52",
+            "arxiv_id": null
+        },
+        "ref_53": {
+            "text": "Yuxuan Zhang, Wenzheng Chen, Huan Ling, Jun Gao, Yinan Zhang, Antonio Torralba, and Sanja Fidler.\nImage gans meet differentiable rendering for inverse graphics and interpretable 3d neural rendering. In\narXiv:2010.09125 , 2020.",
+            "type": "numeric",
+            "number": "53",
+            "arxiv_id": "2010.09125"
+        },
+        "ref_54": {
+            "text": "Qingnan Zhou, Eitan Grinspun, Denis Zorin, and Alec Jacobson. Mesh arrangements for solid geometry.\nACM Transactions on Graphics (TOG) , 35(4), 2016.\n12",
+            "type": "numeric",
+            "number": "54",
+            "arxiv_id": null
+        },
+        "ref_Press_1997": {
+            "text": "level sets. In Advances in Neural Information Processing Systems , pages 2032–2041, 2019. [3] Graham F Carey. Computational grids: generations, adaptation & solution strategies . CRC Press, 1997. [4]Angel X Chang, Thomas Funkhouser, Leonidas Guibas, Pat Hanrahan, Qixing Huang, Zimo Li, Silvio",
+            "type": "author_year",
+            "key": "Press, 1997",
+            "arxiv_id": null
+        },
+        "ref_Press_2012": {
+            "text": "partitioning. arXiv preprint arXiv:1911.06971 , 2019. [7] Siu-Wing Cheng, Tamal K Dey, and Jonathan Shewchuk. Delaunay mesh generation . CRC Press, 2012. [8]Christopher B Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, and Silvio Savarese. 3d-r2n2: A uniﬁed",
+            "type": "author_year",
+            "key": "Press, 2012",
+            "arxiv_id": "1911.06971"
+        },
+        "ref_Springer_2016": {
+            "text": "pages 628–644. Springer, 2016. [9]Akio Doi and Akio Koide. An efﬁcient method of triangulating equi-valued surfaces by using tetrahedral",
+            "type": "author_year",
+            "key": "Springer, 2016",
+            "arxiv_id": "and"
+        },
+        "ref_Oct_2019": {
+            "text": "3d reasoning. The IEEE International Conference on Computer Vision (ICCV) , Oct 2019. [31] Zhijian Liu, Haotian Tang, Yujun Lin, and Song Han. Point-voxel cnn for efﬁcient 3d deep learning. In",
+            "type": "author_year",
+            "key": "Oct, 2019",
+            "arxiv_id": null
+        },
+        "ref_July_2019": {
+            "text": "Neural volumes: Learning dynamic renderable volumes from images. ACM Trans. Graph. , 38(4):65:1– 65:14, July 2019. [33] William E Lorensen and Harvey E Cline. Marching cubes: A high resolution 3d surface construction",
+            "type": "author_year",
+            "key": "July, 2019",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "2.2 Tetrahedral Meshing\n\nTetrahedral meshing is a problem widely studied in graphics. It aims to tetrahedralize the interior of a given watertight surface [10, 44, 18], supporting many downstream tasks in graphics, physics-based simulation and engineering [3, 7, 39]. One line of work, ﬁrst tetrahedralizes the interior of a regular lattice and improves the boundary cells using physics-inspired simulation [36] or by snapping vertices and cutting faces [25]. QuarTet [10] further improves this approach by detecting and handling feature curves. A second line of work utilizes Delaunay-based tetrahedralization. A popular method TetGen [44] enforces inclusion of input faces in the mesh. Recent work TetWild [18] allows the surface to change within user-speciﬁed bounds, which greatly reduces unnecessary over-reﬁnement due to surface irregularities. Most of the existing methods involve many discrete non-differentiable operations, and are thus not suitable for end-to-end deep learning.\n\n3 Formulation\n\nIn this section, we describe our DEFTET formulation. We show applications of our representation to 3D reconstruction using either 3D or 2D supervision in Section 4.\n\n3.1 Tetrahedron Parameterization\n\nWithout loss of generality, we assume that each 3D shape lies inside a bounded space that can then be normalized to unit cube1. DEFTET deﬁnes a spatial graph operating in this space, where we fully tetrahedralize the space. Each tetrahedron is a polyhedron composed of four triangular faces, six straight edges, and four vertices2. Two neighboring tetrahedrons share a face, three edges and three vertices. Each vertex has a 3D location, deﬁned in the coordinate system of the bounding space. Each triangular face represents one surface segment, while each tetrahedron represents a subvolume and is expected to be non-degenerated. We use QuarTet3 [10] to produce the initial tetrahedralization of the space, i.e., regular subdivision of the space. This initialization is ﬁxed. Visualization is in Fig. 2.\n\nWe formulate our approach as predicting offsets for each of the vertices of the initial tetrahedrons and predicting the occupancy of each tetrahedron. Occupancy is used to identify the tetrahedrons that lie inside or outside the shape. A face that belongs to two tetrahedrons with different occupancy labels deﬁnes the object’s surface. This guarantees that the output triangle mesh is “solid” in the terminology of [54]. Vertex deformation, which is the crux of our idea, aims to better align the surface faces with the ground truth object’s surfaces. Note that when the deformation is ﬁxed, our\n\n1\n\nFor example, all ShapeNet [4] objects can be normalized into unit cube.\n\n2\n\nhttps://en.wikipedia.org/wiki/Tetrahedron\n\n3\n\nhttps://github.com/crawforddoran/quartet\n\n3\n\nDEFTET is conceptually equivalent to a voxel-grid, and can thus represent arbitrary object topology. However, by deforming the vertices, we can bypass the aliasing problem (i.e., “staircase pattern”) in the discretized volume and accommodate for ﬁner geometry in a memory and computationally efﬁcient manner. Visualization is provided in Fig. 1 and 2. We describe our DEFTET in detail next.\n\nTetrahedron Representation: We denote a vertex of a tetrahedron as vi = [xi,yi,zi]T, where i ∈ {1,··· ,N} and N the number of all vertices. We use v to denote all vertices. Each triangular face of the tetrahedron is denoted with its three vertices as: fs = [vas,vbs,vcs], with s ∈ {1,··· ,F} indexing the faces and F the total number of faces. Each tetrahedron is represented with its four vertices: Tk = [vak,vbk,vck,vdk], with k ∈ {1,··· ,K} and K the total number of tetrahedrons.\n\nWe denote the (binary) occupancy of a tetrahedron Tk as Ok. Note that occupancy depends on the positions of the vertices, which in our case can deform. We thus use a notation:\n\nOk = Ok(e(Tk)), (1)\n\nto emphasize that Ok depends on the four of the tetrahedron’s vertices. Note that different deﬁni- tions of occupancy are possible, indicated with a function e. For example, one can deﬁne the occu- pancy with respect to the tetrahedron’s centroid\n\nthe (1) the Ss | a F Figure 2:",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "10, 44, 18",
+                "3, 7, 39",
+                "36",
+                "25",
+                "10",
+                "44",
+                "18",
+                "10",
+                "54",
+                "4"
+            ]
+        },
+        {
+            "text": "Broader Impact\n\nIn this work, we propose and investigate a method for tetrahedral meshing of shapes. The method can be used to mesh arbitrary objects both from point clouds and images. Robust tetrahedral meshing is a longstanding problem in graphics and we showed how a new representation which is amenable to learning can achieve signiﬁcant advancement in this ﬁeld. There are several tetrahedral meshing methods that exist in the literature that graphics people or artists use to convert regular meshes into tetrahedral meshes. We hope our work to set the new standard in this domain. Our work targets 3D reconstruction which is a widely studied task in computer vision, robotics and machine learning. Like other work in this domain, our approach can be employed in various applications such as VR/AR, simulation and robotics. We do not anticipate ethics issues with our work.\n\nAcknowledgments and Disclosure of Funding\n\nWe would like to acknowledge contributions through helpful discussions and technical support from Jean-Francois Laﬂeche, and Joey Litalien. This work was fully funded by NVIDIA and no third-party funding was used.\n\nReferences\n\n[1] Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and generative models for 3D point clouds. In ICML, volume 80, pages 40–49, 2018.\n\n[2] Matan Atzmon, Niv Haim, Lior Yariv, Ofer Israelov, Haggai Maron, and Yaron Lipman. Controlling neural level sets. In Advances in Neural Information Processing Systems, pages 2032–2041, 2019.\n\n[3] Graham F Carey. Computational grids: generations, adaptation & solution strategies. CRC Press, 1997.\n\n[4] Angel X Chang, Thomas Funkhouser, Leonidas Guibas, Pat Hanrahan, Qixing Huang, Zimo Li, Silvio Savarese, Manolis Savva, Shuran Song, Hao Su, et al. Shapenet: An information-rich 3d model repository. arXiv preprint arXiv:1512.03012, 2015.\n\n[5] Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler. Learning to predict 3d objects with an interpolation-based differentiable renderer. In Advances In Neural Information Processing Systems, 2019.\n\n[6] Zhiqin Chen, Andrea Tagliasacchi, and Hao Zhang. Bsp-net: Generating compact meshes via binary space partitioning. arXiv preprint arXiv:1911.06971, 2019.\n\n[7] Siu-Wing Cheng, Tamal K Dey, and Jonathan Shewchuk. Delaunay mesh generation. CRC Press, 2012.\n\n[8] Christopher B Choy, Danfei Xu, JunYoung Gwak, Kevin Chen, and Silvio Savarese. 3d-r2n2: A uniﬁed approach for single and multi-view 3d object reconstruction. In European conference on computer vision, pages 628–644. Springer, 2016.\n\n[9] Akio Doi and Akio Koide. An efﬁcient method of triangulating equi-valued surfaces by using tetrahedral cells. IEICE TRANSACTIONS on Information and Systems, 74(1):214–224, 1991.\n\n[10] Crawford Doran, Athena Chang, and Robert Bridson. Isosurface stufﬁng improved: acute lattices and feature matching. In ACM SIGGRAPH 2013 Talks, pages 1–1, 2013.\n\n[11] Haoqiang Fan, Hao Su, and Leonidas J Guibas. A point set generation network for 3d object reconstruction from a single image. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 605–613, 2017.\n\n[12] Xiao-Ming Fu, Yang Liu, and Baining Guo. Computing locally injective mappings by advanced mips. ACM Transactions on Graphics (TOG), 34(4):1–12, 2015.\n\n[13] Jun Gao, Chengcheng Tang, Vignesh Ganapathi-Subramanian, Jiahui Huang, Hao Su, and Leonidas J Guibas. Deepspline: Data-driven reconstruction of parametric curves and surfaces. arXiv preprint arXiv:1901.03781, 2019.\n\n[14] Jun Gao, Zian Wang, Jinchen Xuan, and Sanja Fidler. Beyond ﬁxed grid: Learning geometric image representation with a deformable grid. In ECCV, 2020.\n\n[15] Georgia Gkioxari, Jitendra Malik, and Justin Johnson. Mesh r-cnn. In Proceedings of the IEEE International Conference on Computer Vision, pages 9785–9795, 2019.\n\n[16] Thibault Groueix, Matthew Fisher, Vladimir G Kim, Bryan C Russell, and Mathieu Aubry. A papier-mâché approach to learning 3d surface generation. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 216–224, 2018.\n\n10\n\n[17] Glen A Hansen, Rod W Douglass, and Andrew Zardecki. Mesh enhancement: Selected elliptic methods, foundations and applications, 2005.\n\n[18] Yixin Hu, Qingnan Zhou, Xifeng Gao, Alec Jacobson, Denis Zorin, and Daniele Panozzo. Tetrahedral meshing in the wild. ACM Trans. Graph., 37(4):60–1, 2018.\n\n[19] Krishna Murthy J., Edward Smith, Jean-Francois Laﬂeche, Clement Fuji Tsang, Artem Rozantsev, Wen- zheng Chen, Tommy Xiang, Rev Lebaredian, and Sanja Fidler. Kaolin: A pytorch library for accelerating 3d deep learning research. arXiv:1911.05063, 2019.\n\n[20] Alec Jacobson, Ladislav Kavan, and Olga Sorkine-Hornung. Robust inside-outside segmentation using generalized winding numbers. ACM Transactions on Graphics (TOG), 32(4):1–12, 2013.\n\n[21] Angjoo Kanazawa, Michael J Black, David W Jacobs, and Jitendra Malik. End-to-end recovery of human shape and pose. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 7122–7131, 2018.\n\n[22] Hiroharu Kato, Yoshitaka Ushiku, and Tatsuya Harada. Neural 3d mesh renderer. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 3907–3916, 2018.\n\n[23] Michael Kazhdan, Matthew Bolitho, and Hugues Hoppe. Poisson surface reconstruction. In Proceedings of the fourth Eurographics symposium on Geometry processing, volume 7, 2006.\n\n[24] Michael Kazhdan and Hugues Hoppe. Screened poisson surface reconstruction. ACM Transactions on Graphics (ToG), 32(3):1–13, 2013.\n\n[25] François Labelle and Jonathan Richard Shewchuk. Isosurface stufﬁng: fast tetrahedral meshes with good dihedral angles. In ACM SIGGRAPH 2007 papers, pages 57–es, 2007.\n\n[26] Chun-Liang Li, Manzil Zaheer, Yang Zhang, Barnabas Poczos, and Ruslan Salakhutdinov. Point cloud gan. arXiv preprint arXiv:1810.05795, 2018.\n\n[27] Yiyi Liao, Simon Donné, and Andreas Geiger. Deep marching cubes: Learning explicit surface representa- tions. In Conference on Computer Vision and Pattern Recognition (CVPR), 2018.\n\n[28] Huan Ling, Jun Gao, Amlan Kar, Wenzheng Chen, and Sanja Fidler. Fast interactive object annotation with curve-gcn. In CVPR, 2019.\n\n[29] Lingjie Liu, Jiatao Gu, Kyaw Zaw Lin, Tat-Seng Chua, and Christian Theobalt. Neural sparse voxel ﬁelds. arXiv preprint arXiv:2007.11571, 2020.\n\n[30] Shichen Liu, Tianye Li, Weikai Chen, and Hao Li. Soft rasterizer: A differentiable renderer for image-based 3d reasoning. The IEEE International Conference on Computer Vision (ICCV), Oct 2019.\n\n[31] Zhijian Liu, Haotian Tang, Yujun Lin, and Song Han. Point-voxel cnn for efﬁcient 3d deep learning. In Advances in Neural Information Processing Systems, 2019.\n\n[32] Stephen Lombardi, Tomas Simon, Jason Saragih, Gabriel Schwartz, Andreas Lehrmann, and Yaser Sheikh. Neural volumes: Learning dynamic renderable volumes from images. ACM Trans. Graph., 38(4):65:1– 65:14, July 2019.\n\n[33] William E Lorensen and Harvey E Cline. Marching cubes: A high resolution 3d surface construction algorithm. ACM siggraph computer graphics, 21(4):163–169, 1987.",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33"
+            ]
+        },
+        {
+            "text": "5.2 Single Image 3D Reconstruction\n\nWe are able to incorporate both 3D and 2D supervision in our approach. We focus on 2D supervision in the main paper, and provide 3D supervision results in the Appendix.\n\n4\n\nhttps://github.com/autonomousvision/occupancy_networks\n\n7\n\nOe s\n\nSe SRR 2E’’eeo--reee — —\n\nDEFTET+MTet\n\nFigure 5: Examples of Single Image Reconstruction with 2D supervision. Please zoom in to see details.\n\nCategory\n\nAirplane Bench Dresser\n\nCar\n\nChair Display Lamp Speaker Riﬂe\n\nSofa\n\nTable\n\nPhone Vessel Mean Time(ms)↓\n\n1.9 2.6 2.9 2.8 3.9 3.3 4.2 3.8 1.7 3.4 3.2 2.1 2.7 3.0 13.41 2.2 2.6 3.0 2.6 3.3 3.0 4.4 3.8 2.0 3.0 3.5 2.2 2.8 3.0 13725.02 4.3 4.6 4.1 3.7 4.9 5.1 5.3 4.7 5.1 4.4 4.8 3.8 4.2 4.5 51.39 2.8 3.3 3.5 3.0 4.0 4.1 4.4 4.3 3.2 3.5 3.7 2.5 3.0 3.5 67.99 3.2 3.6 3.4 3.0 3.8 4.0 4.5 4.1 3.4 3.5 3.5 2.9 3.7 3.6 52.84 2.5 3.0 3.0 2.7 3.5 3.6 4.1 3.8 2.6 3.1 3.1 2.5 3.2 3.1 69.74\n\nDIB-R [5]\n\nDVR [38]\n\nFIXEDTET\n\nFIXEDTET + MTet\n\nDEFTET\n\nDEFTET + MTet\n\nTable 2: Single Image 3D Reconstruction with 2D supervision. We report Chamfer distance (lower is better).\n\nExperimental Setting: In this experiment, we compare DEFTET with DIB-R [5] (mesh-based representation), DVR [38] (implicit function-based representation) and FIXEDTET, which is concep- tually equivalent to a voxel representation. We adopt the same encoder architecture for all baselines as in DVR [38], but adopt their respective decoders. We train one model on all 13 ShapeNet categories. We use the same dataset as in DVR [38], and evaluate Chamfer distance and inference time for all these methods. We ﬁnd that by applying Marching Tet [9] (denoted as MTet in the table) on top of our prediction allows us to extract a more accurate iso surface; details are provided in Appendix.\n\nResults: Results are shown in Table 2 and Fig 5. Voxel representation (FIXEDTET) produces bumpy shapes and achieves lower scores. The mesh-based method (DIB-R [5]) runs at fastest speed since it directly outputs a surface mesh, while ours needs a few additional operations to obtain a surface mesh from the volumetric prediction. This step can be further optimized. However, due to using a ﬁxed genus, DIB-R cannot handle complex shapes with holes, and gets a higher Chamfer loss on Chair. Implicit function method (DVR) produces more accurate reconstructions. While its accuracy is comparable to DEFTET, it takes more than 10 seconds to post-process the prediction. We get similar performance to DVR but win in terms of inference speed.",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "5",
+                "38",
+                "5",
+                "38",
+                "38",
+                "38",
+                "9",
+                "5"
+            ]
+        },
+        {
+            "text": "[35]-Geo DEFTET-Geo\n\nFigure 7: Columns 1-2 show novel view synthesis results on a test view. Columns 3-5 show the reconstructed geometry from Nerf [35], DEFTET, and the reconstructed color of DEFTET. To additionally showcase the power of DEFTET, the last two columns show DEFTET’s prediction subjected to physics-based simulation.\n\nquality of rendered views in terms of PSNR, and the exported geometries in terms of the Chamfer Distance, with respect to the training time on NVIDIA RTX 2080 GPU.\n\nResults: We report the results of hotdog and lego in Fig. 8 and 7, other results are in Appendix. Our DEFTET converges signiﬁcantly faster (421 seconds on average) than Nerf [35] (36,000 seconds, around 10 hours), since we do not train a complex neural network but directly optimize vertices colors, occupancies and positions. The drawback is a lower PSNR at converge time as we use vertex colors while Nerf uses neural features. However, to reach the same level of quality, we use signiﬁcantly less time than Nerf. E.g. to reach 30 PSNR, Nerf needs to take at least half an hour while we need Figure 8: Novel view synthesis: 3 or 4 minutes. Further more, DEFTET generates geometries with Nerf vs DEFTET. materials that can be directly used in other applications, e.g. physics-based simulation.\n\nLimitations of DEFTET: We discuss a few limitations to be solved in future work. First, non- ﬂipping of the tetrahedrons is not guaranteed by the prediction of a neural network – we only partially solve this by introducing regularization losses. Second, to represent high ﬁdelity 3D shape, ideas from Oct-trees can be borrowed. Third, our current representation of colors is relatively naive and thus improvements for the novel view synthesis application are possible, bridging the gap in the PSNR metric with the current state-of-the-art approach Nerf [35].\n\n6 Conclusion\n\nIn this paper, we introduced a parameterization called DEFTET of solid tetrahedral meshes for the 3D reconstruction problem. Our approach optimizes for vertex placement and occupancy and is differentiable with respect to standard 3D reconstruction loss functions. By utilizing neural networks, our approach is the ﬁrst to produce tetrahedral meshes directly from noisy point clouds and single images. Our work achieves comparable or higher reconstruction quality while running signiﬁcantly faster than existing work that achieves similar quality. We believe that our DEFTET can be successfully applied to a wide variety of other 3D applications.\n\n9",
+            "section": "results",
+            "section_idx": 1,
+            "citations": [
+                "35",
+                "35",
+                "35",
+                "35"
+            ]
+        },
+        {
+            "text": "0\n\n2020\n\n2\n\n0\n\n2\n\nv o N 3 2 ] V C . s c [ 2 v 7 3 4 1 0 . 1 1 0 2\n\n:\n\nv\n\ni\n\nX\n\nr\n\na\n\nLearning Deformable Tetrahedral Meshes for 3D Reconstruction\n\nJun Gao1,2,3 Wenzheng Chen1,2,3 Tommy Xiang1,2 Clement Fuji Tsang1\n\nAlec Jacobson2\n\nMorgan McGuire1 Sanja Fidler1,2,3\n\nNVIDIA1 University of Toronto2 Vector Institute3\n\n{jung, wenzchen, txiang, cfujitsang, mcguire, sfidler}@nvidia.com, jacobson@cs.toronto.edu\n\nAbstract\n\n3D shape representations that accommodate learning-based 3D reconstruction are an open problem in machine learning and computer graphics. Previous work on neural 3D reconstruction demonstrated beneﬁts, but also limitations, of point cloud, voxel, surface mesh, and implicit function representations. We introduce Deformable Tetrahedral Meshes (DEFTET) as a particular parameterization that utilizes volumetric tetrahedral meshes for the reconstruction problem. Unlike existing volumetric approaches, DEFTET optimizes for both vertex placement and occupancy, and is differentiable with respect to standard 3D reconstruction loss functions. It is thus simultaneously high-precision, volumetric, and amenable to learning-based neural architectures. We show that it can represent arbitrary, complex topology, is both memory and computationally efﬁcient, and can produce high-ﬁdelity reconstructions with a signiﬁcantly smaller grid size than alternative volumetric approaches. The predicted surfaces are also inherently deﬁned as tetrahedral meshes, thus do not require post-processing. We demonstrate that DEFTET matches or exceeds both the quality of the previous best approaches and the performance of the fastest ones. Our approach obtains high-quality tetrahedral meshes computed directly from noisy point clouds, and is the ﬁrst to showcase high-quality 3D tet-mesh results using only a single image as input. Our project webpage: https://nv-tlabs.github.io/DefTet/.\n\n1 Introduction\n\nHigh-quality 3D reconstruction is crucial to many applications in robotics, simulation, and VR/AR. The input to a reconstruction method may be one or more images, or point clouds from depth-sensing cameras, and is often noisy or imperfectly calibrated. The output is a 3D shape in some format, which must include reasonable reconstruction results even for areas that are unrepresented in the input due to viewpoint or occlusion. Because this problem is naturally ambiguous if not ill-posed, data-driven approaches that utilize deep learning have led to recent advances on solving it, including impressive results for multiview reconstruction [35, 32], single-image reconstruction with 3D [51, 34] and 2D supervision [5, 30, 22], point clouds [41, 27], and generative modeling [1, 52, 26].\n\nThe 3D geometric representation used by a neural network strongly inﬂuences the solution space. Prior representations used with deep learning for 3D reconstruction fall into several categories: points [11, 52], voxels [8, 32], surface meshes [48, 5, 40, 30], and implicit functions (e.g., signed- distance functions) [34, 51]. Each of these representations have certain advantages and disadvantages. Voxel representations support differing topologies and enable the use of 3D convolutional neural networks (CNNs), one of the most mature 3D neural architectures. However, for high-quality 3D reconstruction, voxels require high-resolution grids that are memory intensive, or hierarchical structures like octtrees [42] that are cumbersome to implement in learning-based approaches because their structure is inherently discontinuous as the tree structure changes with occupancy.\n\n34th Conference on Neural Information Processing Systems (NeurIPS 2020), Vancouver, Canada.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "35, 32",
+                "51, 34",
+                "5, 30, 22",
+                "41, 27",
+                "1, 52, 26",
+                "11, 52",
+                "8, 32",
+                "48, 5, 40, 30",
+                "34, 51",
+                "42"
+            ]
+        },
+        {
+            "text": "point cloud Input Q0|\\% image\n\nFeature Volume\n\nInit Tetrahedral Mesh (uniformly spaced vertices)\n\nDeformed Tetrahedral Mesh with predicted occupancy\n\nFigure 1: DEFTET: Given an input (either a point cloud or an image), DEFTET utilizes a neural network to deform vertices of an initial tetrahedron mesh and to predict the occupancy (green) for each tetrahedron.\n\nRepresentations based on implicit functions or point clouds have the advantage that they do not impose a predetermined resolution, but they require post-processing steps to obtain a mesh [34, 33, 24, 23]. Furthermore, unlike in mesh representations, surface-based regularizations are non-trivial to incorporate in these approaches as surfaces are implicitly deﬁned [2]. Mesh representations, which directly produce meshed objects, have been shown to produce high quality results [48, 40, 21, 5, 30]. However, they typically require the genus of the mesh to be predeﬁned (e.g., equivalent to a sphere), which limits the types of objects this approach can handle.\n\nTetrahedral meshes are one of the dominant representations for volumetric solids in graphics [10, 44, 18], and particularly widely used for physics-based simulation [45]. Similar to voxels, they model not only the surface, but the entire interior of a shape using the 3D-simplex of a tetrahedron comprising four triangles as the atom. In this work, we propose utilizing tetrahedral meshes for the reconstruction problem by making them amenable to deep learning. Our representation is a cube fully subdivided into tetrahedrons, where the 3D shape is volumetric and embedded within the tetrahedral mesh. The number of vertices and their adjacency in this mesh is ﬁxed, and proportional to the network’s output size. However, the positions of the vertices and the binary occupancy of each tetrahedron is dynamic. This allows the mesh to deform to more accurately adapt to object geometry than a corresponding voxel representation. We name this data structure a Deformable Tetrahedral Mesh (DEFTET). Given typical reconstruction loss functions, we show how to propagate gradients back to vertex positions as well as tetrahedron occupancy analytically.\n\nDEFTET offers several advantages over prior work. It can output shapes with arbitrary topology, using the occupancy of the tetrahedrons to differentiate the interior from the exterior of the object. DEFTET can also represent local geometric details by deforming the triangular faces in these tetrahedrons to better align with object surface, thus achieving high ﬁdelity reconstruction at a signiﬁcantly lower memory footprint than existing volumetric approaches. Furthermore, our representation is also computationally efﬁcient as it produces tetrahedral meshes directly, without requiring post-processing during inference. Our approach supports a variety of downstream tasks such as single and multi-view image-based 3D reconstruction with either 3D or 2D supervision. Our result is the ﬁrst to produce tetrahedral meshes directly from noisy point clouds and images, a problem that is notoriously hard in graphics even for surface meshes. We also showcase DEFTET on tetrahedral meshing in the wild, i.e. tetrahedralizing the interior of a given watertight surface, highlighting the advantages of our approach.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "34, 33, 24, 23",
+                "2",
+                "48, 40, 21, 5, 30",
+                "10, 44, 18",
+                "45"
+            ]
+        },
+        {
+            "text": "2 Related Works\n\n2.1 3D Reconstruction\n\nWe broadly categorize previous learning-based 3D reconstruction works based on the 3D representa- tion it uses: voxel, point cloud, surface mesh, or implicit function. We focus our discussion on voxel and mesh-based methods since they are the most related to our work.\n\nVoxels store inside/outside volumetric occupancy on a regular grid. Since voxels have regular topology, voxel-based methods typically employ mature 3D CNNs yielding strong performance [47, 50, 8]. The main limitation of voxel representations is that the reconstruction quality critically depends on the grid resolution, so there is a strict tradeoff between memory consumption and ﬁdelity. This can be seen in the difﬁculty of representing thin features and curves. By extending voxels to a deformable tetrahedral grid, we allow resolution to be effectively utilized. Neural Volumes [32] previously demonstrated deformable volumes as an afﬁne warping to obtain an implicit irregular grid structure. We instead explicitly place every vertex to produce a more ﬂexible representation. Hierarchical structures are another beneﬁt of voxels [49, 42]. We hypothesize that our representation could also beneﬁt from having a hierarchical structure, but we leave this to future work.\n\n2\n\nMesh reconstruction work seeks to deform a reference mesh template to the target shape [48, 5, 30, 53, 13]. These methods output a mesh directly and can inherently preserve the property that the surface is as well-formed, but they are limited in their ability to generalize to objects with different topologies. New variations [16, 40, 37] that are able to modify the template’s topology can, however, lead to holes and other inconsistencies in the surface because they do not model the volume of the shape itself. For example, AtlasNet uses multiple parametric surface elements to represent an object; while it yields results with different topologies, the output may require post-processing to convert into a closed mesh. [40] aims to represent objects with holes by deleting edges in the sphere topology, which can also lead to degenerated meshes. Mesh R-CNN [15] and [43] combine voxel and mesh representations by voxelizing predicted occupancy, forming a mesh, and then predicting updated positions of mesh vertices. The two steps are trained independently due to the non-differentiable operations employed in the conversion between representations. In contrast, in DEFTET, the occupancy and deformation are optimized jointly, thus being able to inform each other during training. BSP-Net [6] recursively subdivides the space using BSP-Trees. While recovering sharp edges, it cannot produce concave shapes. The most relevant work to ours is Differentiable Marching Cubes (DMC) [27], which deforms vertices in a voxel grid. However, DMC implicitly supervises the “occupancy” and deformation through the expectation over possible topologies, while our DEFTET explicitly deﬁnes the occupancy for tetrahedrons and deforms vertices for surface alignment. More importantly, the vertices in DMC are constrained to lie on the regular grid edges, which leads to many corner cases on available topologies. In contrast, we learn to deform the 3D vertices and only require that the tetrahedrons do not ﬂip, providing more ﬂexibility in representing geometric details.\n\nOur work builds upon the idea of deforming a regular (2D) grid geometry to better represent geometric structures in images presented in [14], and extends it to 3D geometric reasoning and 3D applications.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "47, 50, 8",
+                "32",
+                "49, 42",
+                "48, 5, 30, 53, 13",
+                "16, 40, 37",
+                "40",
+                "15",
+                "43",
+                "6",
+                "27",
+                "14"
+            ]
+        },
+        {
+            "text": "Figure 2: Tetrahedral Mesh\n\nbased on whether the centroid lies inside or outside the object. We discuss choices of e in Section 4. To not overclutter the notation with indices, we simplify notation to Ok(vk) indicating that Ok depends on the (correctly indexed) tetrahedron vertices.\n\nThe probability of whether a triangular face fs deﬁnes a surface of an object is then equal to:\n\nPs(v) = Os1(vs1)(1 − Os2(vs2)) + (1 − Os1(vs1))Os2(vs2), (2)\n\nwhere Ts1 and Ts2 are two neighboring tetrahedrons that share the face fs. This deﬁnition computes the probability of one of the neighboring tetrahedrons to be occupied and the other not.\n\n3.2 DEFTET\n\nGiven input observations I, which can be an image or a point cloud, we aim to utilize a neural network h to predict the relative offset for each vertex and the occupancy of each tetrahedron:\n\n{∆xi,∆yi,∆zi}N i=1,{Ok}K k=1 = h(v,I;θ), (3)\n\nwhere θ parameterizes neural network h. The deformed vertices are thus:\n\nv} [xi + Aaj, yi + Ay, zi 4 Az)’. (4)\n\nWe discuss neural architectures for h in Section 4, and here describe our method conceptually. We ﬁrst discuss our model through inference, i.e., how we obtain a tetrahedral mesh from the network’s prediction. We then introduce differentiable loss functions for training our DEFTET.\n\nInference: Inference in our model is performed by feeding the provided input I into the trained neural network to obtain the deformed tetrahedrons with their occupancies. We simply threshold the tetrahedrons whose occupancies are greater than a threshold, which can be optimized for using the validation set. Other methods can be further explored. To obtain the surface mesh, we can discard the internal faces by simply checking whether the faces are shared by two occupied tetrahedrons.\n\nDifferentiable Loss Function: We now introduce a differentiable loss function to train h such that best 3D reconstruction is achieved. In particular, we deﬁne our loss function as a sum of several loss terms that help in achieving good reconstruction ﬁdelity while regularizing the output shape:\n\nLall(θ) = λreconLrecon + λvolLvol + λlapLlap + λsmLsm + λdelLdel + λamipsLamips (5)\n\nHere, Lrecon is a reconstruction loss that tries to align surface faces with ground-truth faces. We discuss two different reconstruction loss functions in the following subsections, depending on whether 3D supervision is available, or only 2D image supervision is desired. Similar to mesh-based approaches [48, 5], we utilize several regularizations to encourage geometric priors. We utilize a Laplacian loss, Llap, to penalize the change in relative positions of neighboring vertices. A Delta\n\n4\n\nLoss, Ldel, penalizes large deformation for each of the vertices. An EquiVolume loss, Lvol, penalizes differences in volume for each tetrahedron, while AMIPS Loss [12], Lamips, penalizes the distortion of each tetrahedron. Smoothness loss [5], Lsm, penalizes the difference in normals for neighboring faces when 3D ground-truth is available. Lambdas are hyperparameters that weight the inﬂuence of each of the terms. Details about these regularizers is provided in the Appendix. Note that Lvol and Lamips are employed to avoid ﬂipped tetrahedrons.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "48, 5",
+                "12",
+                "5"
+            ]
+        },
+        {
+            "text": "3.2.1 Reconstruction Loss with 3D Ground-Truth\n\nOccupancy: We supervise occupancy prediction from h with Binary Cross Entropy:\n\nK Loco(#) = S> Ox log(Ox) + (1 = Ox) log(1 — Ox), (6) k=1\n\nwhere ˆOk is the ground truth occupancy for tetrahedron Tk. We obtain ˆOk using the winding number [20]. Speciﬁcally, for Tk, we ﬁrst obtain its geometric centroid by averaging its four vertices, and calculate its winding number with respect to the ground truth boundary mesh. If the winding number of the centroid of an tetrahedron is positive, we consider the tetrahedron to be occupied, otherwise non-occupied. Note that the occupancy of a tetrahedron is a piece-wise linear function of its four vertices, and thus, is dynamically changing when the tetrahedron is deforming.\n\nDeformation: Using ground truth tetrahedron occupancy, we obtain the triangular faces whose Ps(v) equals to 1 using Equation 2. We denote these faces as F. We deform F to align with the target object’s surface by minimizing the distances between the predicted and target surface. Speciﬁcally, we ﬁrst sample a set of points S from the surface of the target object. For each sampled point, we minimize its distance to the closest face in F. We also sample a set of points SF from F, and minimize their distances to the their closest points in S:\n\nLoue(0) = > min disty(p, f) + Do min distp(p. 4), (7) pes qeSF\n\nwhere distf(p,f) is an L2 distance from point p to face f, and distp(p,q) is an L2 distance from point p to q. The reconstruction loss function is:\n\nLrecon3D(θ) = Locc + λsurfLsurf, (8)\n\nwhere λsurf is a hyperparameter. Note that the loss function is differentiable with respect to vertex positions and tetrahedron occupancy.\n\n3.2.2 Reconstruction Loss via Differentiable Rendering\n\nTo reconstruct 3D shape when only 2D images are available, we design a novel differentiable rendering algorithm to project the deformable tetrahedron to a 2D image using the provided camera. Apart from geometry (vertex positions), we also support per-vertex colors.\n\nDifferentiable Renderer: Our DEFTET can be treated as a mesh with a set of vertices v and faces f. To render an RGB image with an annotated object mask, we ﬁrst assign each vertex vi with an RGB attribute Ci and a visibility attribute Di. For each pixel Ij, we shoot a ray that eminates from the camera origin, passes through the pixel Ij and hits some of the triangular faces in f. We assume that {fl1,··· ,flL} are hit with L the total number, and that the hit faces are sorted in the increasing order of depth along the ray. We render all of these faces and softly combine them via visibility.\n\nFor each face flk = (va,vb,vc), its attribute in the pixel Ij is obtained via barycentric interpolation:\n\n{wa,wb,wc} = Barycentric(va,vb,vc,Ij) j = waDa + wbDb + wcDc; Ck j = waCa + wbCb + wcCc (9)",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "20"
+            ]
+        },
+        {
+            "text": "Dk\n\nInspired by volume rendering [35, 46], we propose that the visibility mk of face flk in pixel Ij depends on its own visibility and all the faces in front of it. Namely, if all of its front faces are not visible, then this face is visible:\n\nkl mr = [Ia — Di) De (10) i=l\n\n5\n\nFinally, we use a weighted sum to obtain the color Rj and visibility Mj for pixel Ij as below:\n\nL\n\nL\n\nL L M; = Som; Ry = So mCF en) k=1 k=1\n\nNote that the gradients from Mj and Rj can be naturally back-propogated to not only color and visibility attributes, but also vertex positions via barycentric weights based on chain rule.\n\nOccupancy: We empirically found that predicting per-vertex occupancy and using the max over these as the tetrahedron’s occupancy works well, i.e., Ok = max(Dak,Dbk,Dck,Ddk).\n\n2D Loss: We use L1 distance between the rendered and GT (input) image to supervise the network:\n\nLrecon2D = > [ROT ~ Ril, + Amask |e? ~ Mj\\, (12)\n\nj\n\nHere, MGT is the mask for the object in the image. Note that the use of mask is optional and its use depends on its availability in the downstream application.\n\n4 Applications\n\nWe now discuss several applications of our DEFTET. For each application, we adopt a state-of-the-art neural architecture for the task. Since our method produces mesh outputs, we found that instead of the Laplacian regularization loss term during training, using Laplace smoothing [17] as a differentiable layer as part of the neural architecture, produces more visually pleasing results in some applications. In particular, we add this layer on top of the network’s output. We propagate gradients to h through the Laplacian layer during training, and thus h implicitly trains to be well synchronized with this layer, achieving the same accuracy quantitatively but improved qualitative results. Details about all architectures are provided in the Appendix.\n\n4.1 Point Cloud 3D Reconstruction\n\nWe show application of our DEFTET on reconstructing 3D shapes from noisy point clouds. We adopt PointVoxel CNN [41, 31] to encode the input point cloud into a voxelized feature map. For each tetrahedron vertex, we compute its feature using trilinear interpolation using the vertex’s position, and apply Graph-Convolutional-Network [28] to predict the deformation offset. For each tetrahedron, we use MLP to predict its centroid occupancy, whose feature is also obtained via trilinear interpolation using the centroid position.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "35, 46",
+                "17",
+                "41, 31",
+                "28"
+            ]
+        },
+        {
+            "text": "4.2 Single Image 3D Reconstruction\n\nOur DEFTET can also reconstruct 3D shapes from a single image. We adopt the network architecture proposed in DVR [38] and train it using either 3D supervision or 2D supervision.\n\n4.3 Tetrahedral Meshing\n\nWe use this task to evaluate our approach against non-learning, non-generic methods designed solely for tetrahedral meshing. Our DEFTET can be applied in two ways: optimization-based and learning-based. In both cases, we exploit ground truth manifold surface and 3D supervision.\n\nOptimization-based: We iteratively run two steps: 1) obtain the occupancy for each tetrahedron, 2) deform the tetrahedron by minimizing the Lall loss (with Locc being zero) by back-propagating gradients to vertex positions using gradient descent.\n\nLearning-based: To speedup the optimization, we perform amortized inference using a trained network. We ﬁrst train a neural network proposed in Sec. 4.1 to learn to predict deformation offset, where we take clean point cloud (sampled points from the surface) as input. During inference, we ﬁrst run prediction to get the initial deformation, and further run optimization to reﬁne the prediction.\n\n4.4 Novel View Synthesis and Multi-view 3D Reconstruction\n\nDEFTET can also reconstruct 3D scenes from multiple views and synthesize novel views. Similarly to [35], we optimize DEFTET with a multi-view consistency loss, and propagate the gradients through our differentiable renderer (Sec. 3.2.2) to the positions and colors of each vertex. To better represent the complexity of a given scene, similar to [29], we do adaptive subdivision. To be fair with existing work, we do not use a mask (Eq (12)) in this application. Note that DEFTET’s beneﬁt is that it outputs an explicit (tet mesh) representation which can directly be used in downstream tasks such as physics-based simulation, or be edited by artists. More details are in Appendix.\n\n6\n\n#reag at aad reds sean sea sedge sredg steag — 3DR2N2[S]__Pix2Mesh[48]\n\nBe\n\nFigure 3: Qualitative results for Point cloud 3D reconstruction. ∗ denotes original OccNet [34] architecture. Category Airplane Bench Dresser Car Chair Display Lamp Speaker Riﬂe Sofa Table Phone Vessel Mean-IoU Time(ms)↓ 3D-R2N2 [8] 59.47 49.50 78.87 80.80 63.59 64.04 42.57 82.12 52.11 77.77 56.67 72.24 66.73 65.11 174.49 DeepMCube [27] 44.72 39.90 74.33 76.39 51.01 56.24 36.25 55.88 41.80 70.52 47.19 74.94 51.64 55.45 349.83 Pixel2mesh [48] 76.57 60.24 81.96 87.15 67.76 75.87 48.90 86.01 68.55 85.17 59.49 88.31 76.92 74.07 30.31 OccNet [34] 60.28 47.52 76.93 78.29 54.51 66.40 37.18 77.88 46.91 75.26 58.02 77.62 60.09 62.84 728.36 OccNet w Our Arch 78.11 67.08 87.45 89.84 75.85 76.18 49.15 86.99 64.67 87.49 70.91 88.54 77.77 76.93 866.54 MeshRCNN [15] 71.80 60.20 86.16 88.32 70.13 73.50 45.52 80.40 60.11 84.01 60.82 86.04 70.53 72.12 228.46 FIXEDTET 67.64 55.48 81.77 84.50 65.70 69.29 45.88 83.03 54.14 80.96 58.32 80.05 69.93 68.98 43.52 DEFTET 75.12 66.89 86.97 89.83 75.20 79.65 48.86 87.28 51.99 88.04 74.93 91.67 76.07 76.35 61.39\n\nTable 1: Point cloud reconstruction (3D IoU). DEFTET is 14x faster than OccNet with similar accuracy. All baselines but the 4th row (OccNet) are originally not designed for pc reconstruction, and thus we use our encoder and their decoder for a fair comparison. OccNet also beneﬁts from our encoder’s architecture (5th row).",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "38",
+                "35",
+                "29",
+                "48",
+                "34",
+                "8",
+                "27",
+                "48",
+                "34",
+                "15"
+            ]
+        },
+        {
+            "text": "5 Experiments\n\nTo demonstrate the effectiveness of DEFTET, we use the ShapeNet core dataset [4]. We train one model on all 13 categories. For each shape in ShapeNet, we use Kaolin [19] to preprocess and generate a watertight boundary mesh. Further details are provided in the Appendix.\n\n5.1 Point Cloud 3D Reconstruction\n\nExperimental Setting: We compare DEFTET with voxel [8], mesh [48], and implicit function representations [34]. We additionally compare with Deep Marching Cubes [27] and Mesh R- CNN [15]. For a fair comparison, we apply the same point cloud encoder to all methods, and use the decoder architecture provided by the authors. For OccNet [34], we additionally compare with its original point cloud encoder. Implementation of all methods is based on the ofﬁcial codebase4 in [34]. We follow [48, 34, 41] and report 3D Intersection-over-Union (IoU). We also evaluate inference time of all the methods on the same Nvidia V100 GPU. Details and performance in terms of other metrics are provided in Appendix.\n\nResults: Quantitative results are presented in Table 1, with a few qualitative examples shown in Fig 3. Compared to mesh-based repre- sentations, we can generate shapes with different topologies, which helps in achieving a signiﬁcantly higher performance. Compared to implicit function representations, we achieve similar performance but run 14x faster as no post-processing is required. Comparing the original point cloud encoder from OccNet [34], our encoder signif- icantly improves the performance in terms of the accuracy. We also compare to our own version of the model in which we only predict occupancies but do not learn to deform the vertices. We refer to this model as FIXEDTET. Our full model is signiﬁcantly better. We also compare DEFTET with voxel-based representations at different Figure 4: Point cloud reconstruc- tion for different resolutions: vox- els vs DEFTET resolutions when only trained with Chair category in Fig. 4. We achieve similar performance at a signiﬁcantly lower memory footprint: our model at 303 grid size is comparable to voxels at 603.",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "4",
+                "19",
+                "8",
+                "48",
+                "34",
+                "27",
+                "15",
+                "34",
+                "34",
+                "48, 34, 41",
+                "34"
+            ]
+        },
+        {
+            "text": "5.3 Tetrahedral Meshing\n\nWe compare DEFTET to existing, non-learning based work on tetrahedral meshing, which tries to tetrahedralize the interior of the provided watertight surface mesh. Note that these approaches are not differentiable and cannot be used in other applications investigated in our work.\n\nExperimental Setting: We tetrahedralize all chair objects in the test set, 1685 in total. We compare our DEFTET to three state-of-the-art tetrahedral meshing methods: TetGen [44], QuarTet [10] and TetWild [18]. We employ two sets of metrics to compare performance. The ﬁrst set focuses on the generated tetrahedron quality, by measuring the distortion of each tetrahedron compared to the regular tetrahedron. We follow TetWild [18] and compute six distortion metrics. The other set of metrics focuses on the distance between ground truth surfaces and the generated tetrahedral surfaces.\n\nResults: Results are presented in Table 3. We show two representative distortion metrics in the main paper, results with other metrics are provided in the Appendix. We show two qualitative tetrahedral meshing results in Fig. 6. More can be found in the Appendix. Our method achieves comparable mesh quality compared to QuarTet, and outperforms TetGen and TetWild, in terms of distortion metrics. We also achieve comparable performance compared to TetGen and TetWild, and outperform QuarTet, in terms of distance metrics. When utilizing a neural network, we signiﬁcantly speedup the tetrahedral meshing process while achieving similar performance. Note that TetGen failed on 13 shapes and QuarTet failed on 2 shapes, while TetWild and our DEFTET succeeded on all shapes.\n\n5.4 Novel View Synthesis and Multi-view 3D Reconstruction\n\nWe showcase DEFTET’s efﬁciency in reconstructing 3D scene geometry from multiple views, and in rendering of novel views.\n\nExperimental Settings: We validate our method on the dataset from Nerf [35]. We evaluate DEFTET on the lego, hotdog and chair scenes and use the same data split as in [35]. We evaluate the\n\n8\n\n# Failed /all cases Distance Distortion Hausdorff (e-6) ↓ Chamfer (e-3) ↓ Min Dihedral ↑ AMIPS ↓ Run Time (sec.) Oracle - - - 70.52 3.00 - TetGen [44] 13 / 1685 2.30 4.06 40.35 4.42 38.26 QuarTet [10] 2 / 1685 9810.30 11.44 54.91 3.38 77.38 TetWild [18] 0 / 1685 34.66 4.08 44.73 3.78 359.29 DEFTET w.o. learning 0 / 1685 453.72 4.21 54.27 3.37 1956.80 DEFTET with learning 0 / 1685 440.11 4.27 50.33 3.61 49.13\n\nTable 3: Quantitative comparisons on tetrahedral meshing in terms of different metrics. Closer to the Oracle’s distortion (no distortion) indicates better performance.\n\nTetWild [18] Quartet [10] zoom in to see details.\n\nQuartet [10] DEFTET see details.\n\nTetGen [44] TetWild [18] Quartet [10] DEFTET\n\nTetGen [44] TetWild [18] Quartet [10] DEFTET\n\nFigure 6: Qualitative results on tetrahedral meshing. Please zoom in to see details.\n\na =\n\nDEFTET-Sim-1\n\nDEFTET-Sim-2\n\nNerf\n\nNerf [35] DEFTET",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "44",
+                "10",
+                "18",
+                "18",
+                "35",
+                "35",
+                "44",
+                "10",
+                "18",
+                "18",
+                "10",
+                "10",
+                "44",
+                "18",
+                "10",
+                "44",
+                "18",
+                "10",
+                "35"
+            ]
+        },
+        {
+            "text": "[34] Lars Mescheder, Michael Oechsle, Michael Niemeyer, Sebastian Nowozin, and Andreas Geiger. Occupancy networks: Learning 3d reconstruction in function space. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 4460–4470, 2019.\n\n[35] Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. Nerf: Representing scenes as neural radiance ﬁelds for view synthesis. CoRR, abs/2003.08934, 2020.\n\n[36] Neil Molino, Robert Bridson, and Ronald Fedkiw. Tetrahedral mesh generation for deformable bodies. In Proc. Symposium on Computer Animation, 2003.\n\n[37] Yinyu Nie, Xiaoguang Han, Shihui Guo, Yujian Zheng, Jian Chang, and Jian Jun Zhang. To- tal3dunderstanding: Joint layout, object pose and mesh reconstruction for indoor scenes from a single image. arXiv preprint arXiv:2002.12212, 2020.\n\n[38] Michael Niemeyer, Lars Mescheder, Michael Oechsle, and Andreas Geiger. Differentiable volumetric rendering: Learning implicit 3d representations without 3d supervision. In Proceedings IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2020.\n\n[39] Steven J Owen. A survey of unstructured mesh generation technology. IMR, 239:267, 1998.\n\n[40] Junyi Pan, Xiaoguang Han, Weikai Chen, Jiapeng Tang, and Kui Jia. Deep mesh reconstruction from single rgb images via topology modiﬁcation networks. In Proceedings of the IEEE International Conference on Computer Vision, pages 9964–9973, 2019.\n\n[41] Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas Geiger. Convolutional occupancy networks. arXiv preprint arXiv:2003.04618, 2020.\n\n11\n\n[42] Gernot Riegler, Ali Osman Ulusoy, and Andreas Geiger. Octnet: Learning deep 3d representations at high resolutions. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 3577–3586, 2017.\n\n[43] Tianchang Shen, Jun Gao, Amlan Kar, and Sanja Fidler. Interactive annotation of 3d object geometry using 2d scribbles. In ECCV, 2020.\n\n[44] Hang Si. Tetgen, a delaunay-based quality tetrahedral mesh generator. ACM Transactions on Mathematical Software (TOMS), 41(2):1–36, 2015.\n\n[45] Eftychios Sifakis and Jernej Barbic. Fem simulation of 3d deformable solids: a practitioner’s guide to theory, discretization and model reduction. In Acm siggraph 2012 courses, pages 1–50, 2012.\n\n[46] Vincent Sitzmann, Michael Zollhöfer, and Gordon Wetzstein. Scene representation networks: Continuous 3d-structure-aware neural scene representations. In Advances in Neural Information Processing Systems, pages 1119–1130, 2019.\n\n[47] Shubham Tulsiani, Tinghui Zhou, Alexei A Efros, and Jitendra Malik. Multi-view supervision for single- view reconstruction via differentiable ray consistency. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 2626–2634, 2017.\n\n[48] Nanyang Wang, Yinda Zhang, Zhuwen Li, Yanwei Fu, Wei Liu, and Yu-Gang Jiang. Pixel2mesh: Generating 3d mesh models from single rgb images. In Proceedings of the European Conference on Computer Vision (ECCV), pages 52–67, 2018.\n\n[49] Peng-Shuai Wang, Yang Liu, Yu-Xiao Guo, Chun-Yu Sun, and Xin Tong. O-cnn: Octree-based con- volutional neural networks for 3d shape analysis. ACM Transactions on Graphics (TOG), 36(4):1–11, 2017.\n\n[50] Zhirong Wu, Shuran Song, Aditya Khosla, Fisher Yu, Linguang Zhang, Xiaoou Tang, and Jianxiong Xiao. 3d shapenets: A deep representation for volumetric shapes. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 1912–1920, 2015.\n\n[51] Qiangeng Xu, Weiyue Wang, Duygu Ceylan, Radomir Mech, and Ulrich Neumann. Disn: Deep implicit surface network for high-quality single-view 3d reconstruction. In Advances in Neural Information Processing Systems, pages 490–500, 2019.\n\n[52] Guandao Yang, Xun Huang, Zekun Hao, Ming-Yu Liu, Serge Belongie, and Bharath Hariharan. Pointﬂow: 3d point cloud generation with continuous normalizing ﬂows. arXiv, 2019.\n\n[53] Yuxuan Zhang, Wenzheng Chen, Huan Ling, Jun Gao, Yinan Zhang, Antonio Torralba, and Sanja Fidler. Image gans meet differentiable rendering for inverse graphics and interpretable 3d neural rendering. In arXiv:2010.09125, 2020.\n\n[54] Qingnan Zhou, Eitan Grinspun, Denis Zorin, and Alec Jacobson. Mesh arrangements for solid geometry. ACM Transactions on Graphics (TOG), 35(4), 2016.\n\n12",
+            "section": "other",
+            "section_idx": 9,
+            "citations": [
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\4338684d-4654-4e66-a509-f548136db79d.jpg",
+            "description": "The figure appears to show a sequence of 3D model reconstructions or transformations. The models transition from a blue shape to various green shapes, suggesting a process of iterative refinement or modification. This may represent steps in a computational geometry or computer vision algorithm, possibly illustrating the progression of a shape through stages of an optimization or learning process. The visual progression could be key to understanding a method's effect on 3D data, indicating its importance in conveying the methodology or results.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\90bca283-2b06-449a-b59d-f4f688b27cdc.jpg",
+            "description": "The figure appears to illustrate a sequence of 3D models of a chair, likely showing a transformation or evolution process. The chairs transition from a highly fragmented, possibly voxel-based structure on the left to a smoother, more defined structure on the right. The colors shift from blue to green, which could indicate a change in material properties, stages of a process, or different algorithms applied. This sequence suggests a method for refining or reconstructing 3D objects, potentially relevant to fields like computer graphics, modeling, or machine learning. The figure is important as it visually represents the methodology or results of a process central to the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\132e03d4-b76d-4e9e-b5ca-e896cb9006e5.jpg",
+            "description": "The figure appears to illustrate a sequence of 3D models of a car, possibly demonstrating a process of transformation or optimization. The progression from left to right suggests changes in design or refinement stages. The use of different colors might indicate different phases or versions. This type of visualization is typically important for understanding the methodology or results in research involving 3D modeling, computational design, or optimization processes, making it a key component for grasping the study's approach or findings.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\22f84ee7-2eec-422f-b969-3f36dd26bbab.jpg",
+            "description": "This figure presents a visual comparison between two methods, labeled \"Nerf\" and \"DefTet,\" applied to the same 3D model of a construction vehicle. The images show the output or results of each method, likely illustrating differences in rendering quality or detail. The comparison suggests an evaluation of the visual performance or accuracy of these techniques in reconstructing or representing 3D objects. This figure is important for understanding the effectiveness and visual differences between these two approaches, which is likely a significant aspect of the research study.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\f0a0cc06-f057-4696-926f-a9d08e47573e.jpg",
+            "description": "The figure consists of a series of 3D visualizations of an airplane model, displayed in two rows. The top row shows four models, each rendered with varying levels of detail or texture application. The models appear to be progressively enhanced in terms of surface detail or coverage. The bottom row mirrors this progression with similar models, possibly indicating a comparison between different rendering techniques or stages of a computational process. This figure likely illustrates a method or result related to 3D modeling, rendering, or simulation, demonstrating either an algorithm's capability to apply textures or details effectively or a comparison of different methods. It is important for understanding the methodology or results of the research regarding 3D visualization or modeling improvements.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\55cefc78-4740-4512-883c-91f8aafcb7a4.jpg",
+            "description": "This figure appears to show a sequence of images representing variations of a chair model, likely illustrating a process in computer graphics or machine learning related to 3D model generation or transformation. The images depict different stages or versions of the chair, possibly demonstrating changes in design or structure. This could be part of a study on shape interpolation, morphing, or a generative model's capability to create diverse outputs. The visual progression is likely important for understanding the methodology or results of a system designed to manipulate or generate 3D objects.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\c4c1f2a4-d917-49e5-8a56-70eee846d604.jpg",
+            "description": "I'm unable to analyze or describe specific figures from research papers directly. However, I can help guide you on how to analyze a technical figure:\n\n1. **Architecture Diagrams and Components:** Look for labeled parts and how they are connected. This might show a system's architecture or a model's structure.\n\n2. **Graphs, Charts, and Data Visualizations:** Identify what type of data is being presented (e.g., bar charts, line graphs) and look for trends or comparisons.\n\n3. **Mathematical Formulas or Concepts:** Check for any mathematical expressions that might illustrate key concepts or results.\n\n4. **Algorithm Flowcharts or Processes:** Look for step-by-step processes that show how an algorithm or method works.\n\n5. **Results or Findings:** Determine what results are being highlighted, such as performance metrics or qualitative outcomes.\n\nFor rating the importance, consider how central the figure is to the paper's main thesis or findings. If the figure encapsulates the core concept or results, it would be more important.\n\nIf you describe the figure further or provide context, I can help you interpret its potential significance!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\e18cb9ab-20fc-44f4-8535-38904e3b6528.jpg",
+            "description": "- **Summarize the figure's key elements, focusing on how it contributes to the understanding of the research.**\n\nFor specific analysis, a detailed view and context from the paper are needed.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\fef2abf1-09ca-4d52-b796-b3e931190da6.jpg",
+            "description": "The figure appears to show visual simulations of an object, likely a mechanical system or vehicle, labeled as \"Tet-Sim-1\" and \"DefTet-Sim-2.\" The images suggest a comparison between different simulation models or methods. The variations in the simulations might illustrate different techniques or algorithms applied to achieve specific results in mechanical modeling or reconstruction. Without additional context, this figure likely serves as supplementary information to demonstrate the effectiveness or differences between simulation approaches in the research.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\f0760552-5cb7-4eff-8675-8421cb2d3b6c.jpg",
+            "description": "I'm unable to analyze or interpret images directly. However, I can provide general guidance on how to interpret a technical figure like this one if you describe it to me. Let me know how you'd like to proceed!",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Statistical modeling",
+            "Super-Resolution",
+            "Nonlinear Loss Function"
+        ],
+        "methodology": [
+            "Neural Network Training",
+            "3D Modeling",
+            "Estimation",
+            "Feature detection",
+            "Loss functions"
+        ],
+        "domain": [
+            "Autonomous Robotics",
+            "Celebrity dataset",
+            "Object removal",
+            "Physics-based simulation"
+        ],
+        "strengths": [
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Enhanced Detection Techniques",
+            "Data Enhancement",
+            "Efficient Optimization"
+        ],
+        "limitations": [
+            "Training challenges",
+            "3D Challenges",
+            "Perceptual Color Balance",
+            "Ground-truth ambiguity",
+            "Sacrifice diversity for fidelity"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "2011.01437v2_chunk_0",
+            "section": "methodology",
+            "citations": [
+                "10, 44, 18",
+                "3, 7, 39",
+                "36",
+                "25",
+                "10",
+                "44",
+                "18",
+                "10",
+                "54",
+                "4"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_2",
+            "section": "results",
+            "citations": [
+                "5",
+                "38",
+                "5",
+                "38",
+                "38",
+                "38",
+                "9",
+                "5"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_3",
+            "section": "results",
+            "citations": [
+                "35",
+                "35",
+                "35",
+                "35"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_4",
+            "section": "other",
+            "citations": [
+                "35, 32",
+                "51, 34",
+                "5, 30, 22",
+                "41, 27",
+                "1, 52, 26",
+                "11, 52",
+                "8, 32",
+                "48, 5, 40, 30",
+                "34, 51",
+                "42"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_5",
+            "section": "other",
+            "citations": [
+                "34, 33, 24, 23",
+                "2",
+                "48, 40, 21, 5, 30",
+                "10, 44, 18",
+                "45"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_6",
+            "section": "other",
+            "citations": [
+                "47, 50, 8",
+                "32",
+                "49, 42",
+                "48, 5, 30, 53, 13",
+                "16, 40, 37",
+                "40",
+                "15",
+                "43",
+                "6",
+                "27",
+                "14"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_7",
+            "section": "other",
+            "citations": [
+                "48, 5",
+                "12",
+                "5"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_8",
+            "section": "other",
+            "citations": [
+                "20"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_9",
+            "section": "other",
+            "citations": [
+                "35, 46",
+                "17",
+                "41, 31",
+                "28"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_10",
+            "section": "other",
+            "citations": [
+                "38",
+                "35",
+                "29",
+                "48",
+                "34",
+                "8",
+                "27",
+                "48",
+                "34",
+                "15"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_11",
+            "section": "other",
+            "citations": [
+                "4",
+                "19",
+                "8",
+                "48",
+                "34",
+                "27",
+                "15",
+                "34",
+                "34",
+                "48, 34, 41",
+                "34"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_12",
+            "section": "other",
+            "citations": [
+                "44",
+                "10",
+                "18",
+                "18",
+                "35",
+                "35",
+                "44",
+                "10",
+                "18",
+                "18",
+                "10",
+                "10",
+                "44",
+                "18",
+                "10",
+                "44",
+                "18",
+                "10",
+                "35"
+            ]
+        },
+        {
+            "chunk_id": "2011.01437v2_chunk_13",
+            "section": "other",
+            "citations": [
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54"
+            ]
+        }
+    ]
+}

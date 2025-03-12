@@ -1,0 +1,598 @@
+{
+    "basic_info": {
+        "title": "Occupancy Networks: Learning 3D Reconstruction in Function Space",
+        "authors": [
+            "Lars Mescheder",
+            "Michael Oechsle",
+            "Michael Niemeyer",
+            "Sebastian Nowozin",
+            "Andreas Geiger"
+        ],
+        "paper_id": "1812.03828v2",
+        "published_year": 2018,
+        "references": []
+    },
+    "raw_chunks": [
+        {
+            "text": "1. Introduction\n\nRecently, learning-based approaches for 3D reconstruc- tion have gained popularity [4,9,23,58,75,77]. In contrast to traditional multi-view stereo algorithms, learned models are able to encode rich prior information about the space of 3D shapes which helps to resolve ambiguities in the input.\n\nWhile generative models have recently achieved remark- able successes in generating realistic high resolution im- ages [36, 47, 72], this success has not yet been replicated in the 3D domain. In contrast to the 2D domain, the com-\n\nVoxel representations are a straightforward generaliza- tion of pixels to the 3D case. Unfortunately, however, the memory footprint of voxel representations grows cubically with resolution, hence limiting na¨ıve implementations to 323 or 643 voxels. While it is possible to reduce the memory footprint by using data adaptive representations such as oc- trees [61,67], this approach leads to complex implementa- tions and existing data-adaptive algorithms are still limited to relatively small 2563 voxel grids. Point clouds [1,17] and meshes [34,57,70] have been introduced as alternative rep- resentations for deep learning, using appropriate loss func- tions. However, point clouds lack the connectivity structure of the underlying mesh and hence require additional post- processing steps to extract 3D geometry from the model.\n\n†Part of this work was done while at MSR Cambridge.\n\nExisting mesh representations are typically based on de- forming a template mesh and hence do not allow arbitrary topologies. Moreover, both approaches are limited in the number of points/vertices which can be reliably predicted using a standard feed-forward network.\n\nIn this paper1, we propose a novel approach to 3D- reconstruction based on directly learning the continuous 3D occupancy function (Fig. 1d). Instead of predicting a voxelized representation at a ﬁxed resolution, we predict the complete occupancy function with a neural network fθ which can be evaluated at arbitrary resolution. This dras- tically reduces the memory footprint during training. At inference time, we extract the mesh from the learned model using a simple multi-resolution isosurface extraction algo- rithm which trivially parallelizes over 3D locations.",
+            "section": "introduction",
+            "section_idx": 0,
+            "citations": [
+                "4,9,23,58,75,77",
+                "36, 47, 72",
+                "61,67",
+                "1,17",
+                "34,57,70"
+            ]
+        },
+        {
+            "text": "3. Method\n\nIn this section, we ﬁrst introduce Occupancy Networks as a representation of 3D geometry. We then describe how we can learn a model that infers this representation from vari- ous forms of input such as point clouds, single images and low-resolution voxel representations. Lastly, we describe a technique for extracting high-quality 3D meshes from our model at test time.\n\n3.1. Occupancy Networks\n\nIdeally, we would like to reason about the occupancy not only at ﬁxed discrete 3D locations (as in voxel respresenta- tions) but at every possible 3D point p ∈ R3. We call the resulting function\n\no : R3 → {0,1} (1)\n\nthe occupancy function of the 3D object. Our key insight is that we can approximate this 3D function with a neu- ral network that assigns to every location p ∈ R3 an occu- pancy probability between 0 and 1. Note that this network is equivalent to a neural network for binary classiﬁcation, ex- cept that we are interested in the decision boundary which implicitly represents the object’s surface.\n\nWhen using such a network for 3D reconstruction of an object based on observations of that object (e.g., image, point cloud, etc.), we must condition it on the input. Fortu- nately, we can make use of the following simple functional equivalence: a function that takes an observation x ∈ X as input and has a function from p ∈ R3 to R as output can be equivalently described by a function that takes a pair (p,x) ∈ R3 × X as input and outputs a real number. The latter representation can be simply parameterized by a neu- ral network fθ that takes a pair (p,x) as input and outputs a real number which represents the probability of occupancy:\n\nfθ : R3 × X → [0,1] (2)\n\nWe call this network the Occupancy Network.\n\n3.2. Training\n\nTo learn the parameters θ of the neural network fθ(p,x), we randomly sample points in the 3D bounding volume of the object under consideration: for the i-th sample in a train- ing batch we sample K points pij ∈ R3, j = 1,...,K. We then evaluate the mini-batch loss LB at those locations:\n\n|B| kK ~ TBI FLD Lfolrss2i).05) — ) i=1 j=1\n\nHere, xi is the i’th observation of batch B, oij ≡ o(pij) de- notes the true occupancy at point pij, and L(·,·) is a cross- entropy classiﬁcation loss.\n\nThe performance of our method depends on the sam- pling scheme that we employ for drawing the locations pij that are used for training. In Section 4.6 we per- form a detailed ablation study comparing different sampling schemes. In practice, we found that sampling uniformly in- side the bounding box of the object with an additional small padding yields the best results.\n\nOur 3D representation can also be used for learn- ing probabilistic latent variable models. Towards this goal, we introduce an encoder network gψ(·) that takes locations pij and occupancies oij as input and pre- dicts mean µψ and standard deviation σψ of a Gaus- sian distribution qψ(z|(pij,oij)j=1:K) on latent z ∈ RL as output. We optimize a lower bound [21, 39, 59] to the negative log-likelihood of the generative model p((oij)j=1:K|(pij)j=1:K):\n\n\\B| CEO) = Lys Lol pis i=l 1 0%) I= + KL (gy (2[(Py,04));-1:4) [LPo(2))] 4)\n\nwhere KL denotes the KL-divergence, p0(z) is a prior dis- tribution on the latent variable zi (typically Gaussian) and zi is sampled according to qψ(zi|(pij,oij)j=1:K).",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "0,1",
+                "21, 39, 59"
+            ]
+        },
+        {
+            "text": "3.4. Implementation Details\n\nWe implemented our occupancy network using a fully- connected neural network with 5 ResNet blocks [29] and condition it on the input using conditional batch normal- ization [13,16]. We exploit different encoder architectures depending on the type of input. For single view 3D recon- struction, we use a ResNet18 architecture [29]. For point clouds we use the PointNet encoder [54]. For voxelized in- puts, we use a 3D convolutional neural network [45]. For unconditional mesh generation, we use a PointNet [54] for the encoder network gψ. More details are provided in the supplementary material.\n\n4. Experiments\n\nWe conduct three types of experiments to validate the proposed occupancy networks. First, we analyze the repre- sentation power of occupancy networks by examining how well the network can reconstruct complex 3D shapes from a learned latent embedding. This gives us an upper bound on the results we can achieve when conditioning our represen- tation on additional input. Second, we condition our occu- pancy networks on images, noisy point clouds and low reso- lution voxel representations, and compare the performance of our method to several state-of-the-art baselines. Finally, we examine the generative capabilities of occupancy net- works by adding an encoder to our model and generating unconditional samples from this model.4\n\nBaselines: For the single image 3D reconstruction task, we compare our approach against several state-of-the-art base- lines which leverage various 3D representations: we eval- uate against 3D-R2N2 [9] as a voxel-based method, Point Set Generating Networks (PSGN) [17] as a point-based technique and Pixel2Mesh [70] as well as AtlasNet [26] as mesh-based approaches. For point cloud inputs, we adapted 3D-R2N2 and PSGN by changing the encoder. As mesh- based baseline, we use Deep Marching Cubes (DMC) [43] which has recently reported state-of-the-art results on this task. For the voxel super-resolution task we assess the im- provements wrt. the input.\n\n4The code to reproduce our experiments is available under https:// github.com/LMescheder/Occupancy-Networks.\n\n16\n\n323\n\n643\n\n128°",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "29",
+                "13,16",
+                "29",
+                "54",
+                "45",
+                "54",
+                "9",
+                "17",
+                "70",
+                "26",
+                "43"
+            ]
+        },
+        {
+            "text": "4.1. Representation Power\n\nIn our ﬁrst experiment, we investigate how well occu- pancy networks represent 3D geometry, independent of the inaccuracies of the input encoding. The question we try to answer in this experiment is whether our network can\n\nle7 —*— IoU Voxelization =<: #Parameters Voxelization [2-0 ---- #Parameters ONet eae ° #Parameters / Model bad iu 0.0 i) 64 128 192 256 Resolution\n\nFigure 4: IoU vs. Resolution. This plot shows the IoU of a voxelization to the ground truth mesh (solid blue line) in comparison to our continuous representation (solid or- ange line) as well as the number of parameters per model needed for the two representations (dashed lines). Note how our representation leads to larger IoU wrt. the ground truth mesh compared to a low-resolution voxel representation. At the same time, the number of parameters of a voxel repre- sentation grows cubically with the resolution, whereas the number of parameters of occupancy networks is indepen- dent of the resolution.\n\nlearn a memory efﬁcient representation of 3D shapes while at the same time preserving as many details as possible. This gives us an estimate of the representational capacity of our model and an upper bound on the performance we may expect when conditioning our model on additional in- put. Similarly to [67], we embed each training sample in a 512 dimensional latent space and train our neural network to reconstruct the 3D shape from this embedding.\n\nWe apply our method to the training split of the “chair” category of the ShapeNet dataset. This subset is challeng- ing to represent as it is highly varied and many models con- tain high-frequency details. Since we are only interested in reconstructing the training data, we do not use separate validation and test sets for this experiment.\n\nFor evaluation, we measure the volumetric IoU to the ground truth mesh. Quantitative results and a comparison to voxel representations at various resolutions are shown in Fig. 4. We see that the Occupancy Network (ONet) is able to faithfully represent the entire dataset with a high mean IoU of 0.89 while a low-resolution voxel represen- tation is not able to represent the meshes accurately. At the same time, the occupancy network is able to encode all 4746 training samples with as little as 6M parameters, indepen- dently of the resolution. In contrast, the memory require- ments of a voxel representation grow cubically with reso- lution. Qualitative results are shown in Fig. 3. We observe that the occupancy network enables us to represent details of the 3D geometry which are lost in a low-resolution vox- elization.\n\nOurs PSGN Pix2Mesh AtlasNet 3D-R2N2 Input\n\nOurs\n\nPix2Mesh\n\nPSGN_\n\n3D-R2N2.\n\nAtlasNet",
+            "section": "methodology",
+            "section_idx": 2,
+            "citations": [
+                "67"
+            ]
+        },
+        {
+            "text": "5. Conclusion\n\nIn this paper, we introduced occupancy networks, a new representation for 3D geometry. In contrast to existing rep- resentations, occupancy networks are not constrained by the discretization of the 3D space and can hence be used to rep- resent realistic high-resolution meshes.\n\nOur experiments demonstrate that occupancy networks are very expressive and can be used effectively both for su- pervised and unsupervised learning. We hence believe that occupancy networks are a useful tool which can be applied to a wide variety of 3D tasks.\n\nAcknowledgements\n\nThis work was supported by the Intel Network on Intel- ligent Systems and by Microsoft Research through its PhD Scholarship Programme.\n\nReferences\n\n[1] P. Achlioptas, O. Diamanti, I. Mitliagkas, and L. J. Guibas. Learning representations and generative models for 3D point clouds. In Proc. of the International Conf. on Machine learn- ing (ICML), 2018. 1\n\n[2] H. A. Alhaija, S. K. Mustikovela, L. Mescheder, A. Geiger, and C. Rother. Augmented reality meets deep learning for car instance segmentation in urban scenes. In Proc. of the British Machine Vision Conf. (BMVC), 2017. 6\n\n[3] F. Bernardini, J. Mittleman, H. Rushmeier, C. Silva, and G. Taubin. The ball-pivoting algorithm for surface re- construction. IEEE Trans. on Visualization and Computer Graphics (VCG), 5(4):349–359, 1999. 2\n\n[4] A. Brock, T. Lim, J. M. Ritchie, and N. Weston. Generative and discriminative voxel modeling with convolutional neural networks. arXiv.org, 1608.04236, 2016. 1, 2\n\n[5] M. M. Bronstein, J. Bruna, Y. LeCun, A. Szlam, and P. Van- dergheynst. Geometric deep learning: Going beyond eu- clidean data. Signal Processing Magazine, 34(4):18–42, 2017. 2\n\n[6] F. Calakli and G. Taubin. SSD: smooth signed dis- tance surface reconstruction. Computer Graphics Forum, 30(7):1993–2002, 2011. 2\n\n[7] A. X. Chang, T. A. Funkhouser, L. J. Guibas, P. Hanrahan, Q. Huang, Z. Li, S. Savarese, M. Savva, S. Song, H. Su, J. Xiao, L. Yi, and F. Yu. ShapeNet: An information-rich 3D model repository. arXiv.org, 1512.03012, 2015. 5\n\n[8] Z. Chen and H. Zhang. Learning implicit ﬁelds for generative shape modeling. Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2019. 2\n\n[9] C. B. Choy, D. Xu, J. Gwak, K. Chen, and S. Savarese. 3D- R2N2: A uniﬁed approach for single and multi-view 3D ob- ject reconstruction. In Proc. of the European Conf. on Com- puter Vision (ECCV), 2016. 1, 2, 4, 5, 6, 7\n\n[10] D. Cremers, M. Rousson, and R. Deriche. A review of statis- tical approaches to level set segmentation: integrating color, texture, motion and shape. International journal of computer vision, 72(2):195–215, 2007. 2\n\n[11] B. Curless and M. Levoy. A volumetric method for build- ing complex models from range images. In ACM Trans. on Graphics (SIGGRAPH), 1996. 2\n\n[12] A. Dai, C. R. Qi, and M. Nießner. Shape completion using 3D-encoder-predictor CNNs and shape synthesis. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2017. 2\n\n[13] H. de Vries, F. Strub, J. Mary, H. Larochelle, O. Pietquin, and A. C. Courville. Modulating early visual processing by lan- guage. In Advances in Neural Information Processing Sys- tems (NIPS), 2017. 4\n\n[14] A. Dervieux and F. Thomasset. A ﬁnite element method for the simulation of a rayleigh-taylor instability. In Approxi- mation methods for Navier-Stokes problems, pages 145–158. Springer, 1980. 2\n\n[15] H. Drucker and Y. Le Cun. Improving generalization perfor- mance using double backpropagation. IEEE Trans. on Neu- ral Networks, 3(6):991–997, 1992. 4\n\n[16] V. Dumoulin, I. Belghazi, B. Poole, O. Mastropietro, A. Lamb, M. Arjovsky, and A. Courville. Adversarially learned inference. In Proc. of the International Conf. on Learning Representations (ICLR), 2017. 4\n\n[17] H. Fan, H. Su, and L. J. Guibas. A point set generation net- work for 3D object reconstruction from a single image. In Proc. IEEE Conf. on Computer Vision and Pattern Recogni- tion (CVPR), 2017. 1, 2, 4, 5\n\n[18] O. Faugeras and R. Keriven. Level set methods and the stereo problem. In International Conference on Scale-Space Theo- ries in Computer Vision, 1997. 2\n\n[19] M. Gadelha, S. Maji, and R. Wang. 3D shape induction from 2d views of multiple objects. In Proc. of the International Conf. on 3D Vision (3DV), 2017. 1\n\n[20] M. Garland and P. S. Heckbert. Simplifying surfaces with color and texture using quadric error metrics. In Visualiza- tion’98. Proceedings, pages 263–269. IEEE, 1998. 4\n\n[21] M. Garnelo, J. Schwarz, D. Rosenbaum, F. Viola, D. J. Rezende, S. M. A. Eslami, and Y. W. Teh. Neural processes. arXiv.org, 1807.01622, 2018. 3\n\n[22] A. Geiger, P. Lenz, C. Stiller, and R. Urtasun. Vision meets robotics: The KITTI dataset. International Journal of Robotics Research (IJRR), 32(11):1231–1237, 2013. 6\n\n[23] R. Girdhar, D. F. Fouhey, M. Rodriguez, and A. Gupta. Learning a predictable and generative vector representation for objects. In Proc. of the European Conf. on Computer Vision (ECCV), 2016. 1, 2\n\n[24] B. Goldluecke and M. Magnor. Space-time isosurface evo- lution for temporally coherent 3d reconstruction. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2004. 2\n\n[25] I. J. Goodfellow, J. Pouget-Abadie, M. Mirza, B. Xu, D. Warde-Farley, S. Ozair, A. C. Courville, and Y. Bengio. Generative adversarial nets. In Advances in Neural Informa- tion Processing Systems (NIPS), 2014. 2\n\n[26] T. Groueix, M. Fisher, V. G. Kim, B. Russell, and M. Aubry. AtlasNet: A papier-mˆach´e approach to learning 3d surface generation. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2018. 2, 4, 6, 7\n\n[27] K. Guo, D. Zou, and X. Chen. 3D mesh labeling via deep convolutional neural networks. In ACM Trans. on Graphics (SIGGRAPH), 2015. 2\n\n[28] C. H¨ane, S. Tulsiani, and J. Malik. Hierarchical surface pre- diction for 3D object reconstruction. In Proc. of the Interna- tional Conf. on 3D Vision (3DV), 2017. 2\n\n[29] K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learning for image recognition. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2016. 4\n\n[30] C. L. Jackins and S. L. Tanimoto. Oct-trees and their use in representing three-dimensional objects. Computer Graphics and Image Processing, 14(3):249–270, 1980. 3\n\n[31] M. Ji, J. Gall, H. Zheng, Y. Liu, and L. Fang. SurfaceNet: an end-to-end 3D neural network for multiview stereopsis. In Proc. of the IEEE International Conf. on Computer Vision (ICCV), 2017. 2\n\n[32] H. Jin, D. Cremers, A. J. Yezzi, and S. Soatto. Shedding light on stereoscopic segmentation. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2004. 2\n\n[33] A. Kanazawa, M. J. Black, D. W. Jacobs, and J. Malik. End- to-end recovery of human shape and pose. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2018. 2",
+            "section": "conclusion",
+            "section_idx": 0,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33"
+            ]
+        },
+        {
+            "text": "9\n\n1\n\n0 2 r p A 0 3 ] V C . s c [ 2 v 8 2 8 3 0 . 2 1 8 1 : v\n\ni\n\nX\n\nr\n\na\n\nOccupancy Networks: Learning 3D Reconstruction in Function Space\n\nLars Mescheder1 Michael Oechsle1,2 Michael Niemeyer1 Sebastian Nowozin3† Andreas Geiger1 1Autonomous Vision Group, MPI for Intelligent Systems and University of T¨ubingen\n\n2ETAS GmbH, Stuttgart\n\n3Google AI Berlin\n\n{firstname.lastname}@tue.mpg.de\n\nnowozin@gmail.com\n\nAbstract\n\nWith the advent of deep neural networks, learning-based approaches for 3D reconstruction have gained popularity. However, unlike for images, in 3D there is no canonical rep- resentation which is both computationally and memory ef- ﬁcient yet allows for representing high-resolution geometry of arbitrary topology. Many of the state-of-the-art learning- based 3D reconstruction approaches can hence only repre- sent very coarse 3D geometry or are limited to a restricted domain. In this paper, we propose Occupancy Networks, a new representation for learning-based 3D reconstruction methods. Occupancy networks implicitly represent the 3D surface as the continuous decision boundary of a deep neu- ral network classiﬁer. In contrast to existing approaches, our representation encodes a description of the 3D output at inﬁnite resolution without excessive memory footprint. We validate that our representation can efﬁciently encode 3D structure and can be inferred from various kinds of in- put. Our experiments demonstrate competitive results, both qualitatively and quantitatively, for the challenging tasks of 3D reconstruction from single images, noisy point clouds and coarse discrete voxel grids. We believe that occupancy networks will become a useful tool in a wide variety of learning-based 3D tasks.\n\n(a) Voxel\n\n(b) Point\n\n(c) Mesh\n\n(d) Ours\n\nFigure 1: Overview: Existing 3D representations discretize the output space differently: (a) spatially in voxel represen- tations, (b) in terms of predicted points, and (c) in terms of vertices for mesh representations. In contrast, (d) we pro- pose to consider the continuous decision boundary of a clas- siﬁer fθ (e.g., a deep neural network) as a 3D surface which allows to extract 3D meshes at any resolution.\n\nmunity has not yet agreed on a 3D output representation that is both memory efﬁcient and can be efﬁciently inferred from data. Existing representations can be broadly cate- gorized into three categories: voxel-based representations [4,19,43,58,64,69,75] , point-based representations [1,17] and mesh representations [34,57,70], see Fig. 1.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "4,19,43,58,64,69,75",
+                "1,17",
+                "34,57,70"
+            ]
+        },
+        {
+            "text": "In summary, our contributions are as follows:\n\n• We introduce a new representation for 3D geometry based on learning a continuous 3D mapping.\n\n• We show how this representation can be used for re- constructing 3D geometry from various input types.\n\n• We experimentally validate that our approach is able to generate high-quality meshes and demonstrate that it compares favorably to the state-of-the-art.\n\n2. Related Work\n\nExisting work on learning-based 3D reconstruction can be broadly categorized by the output representation they produce as either voxel-based, point-based or mesh-based.\n\nVoxel Representations: Due to their simplicity, voxels are the most commonly used representation for discriminative [45,55,63] and generative [9,23,58,64,75,77] 3D tasks.\n\nEarly works have considered the problem of recon- structing 3D geometry from a single image using 3D con- volutional neural networks which operate on voxel grids [9, 68, 77]. Due to memory requirements, however, these approaches were limited to relatively small 323 voxel grids. While recent works [74, 76, 79] have applied 3D convolu- tional neural networks to resolutions up to 1283, this is only possible with shallow architectures and small batch sizes, which leads to slow training.\n\nThe problem of reconstructing 3D geometry from mul- tiple input views has been considered in [31, 35, 52]. et al. [31] and Kar et al. [35] encode the camera parame- ters together with the input images in a 3D voxel represen- tation and apply 3D convolutions to reconstruct 3D scenes from multiple views. Paschalidou et al. [52] introduced an architecture that predicts voxel occupancies from multiple images, exploiting multi-view geometry constraints [69]. Ji\n\nOther works applied voxel representations to learn gen- erative models of 3D shapes. Most of these methods are\n\n1Also see [8,48,51] for concurrent work that proposes similar ideas.\n\neither based on variational auto-encoders [39,59] or gener- ative adversarial networks [25]. These two approaches were pursued in [4,58] and [75], respectively.\n\nDue to the high memory requirements of voxel repre- sentations, recent works have proposed to reconstruct 3D objects in a multi-resolution fashion [28,67]. However, the resulting methods are often complicated to implement and require multiple passes over the input to generate the ﬁnal 3D model. Furthermore, they are still limited to comparably small 2563 voxel grids. For achieving sub-voxel precision, several works [12,42,60] have proposed to predict truncated signed distance ﬁelds (TSDF) [11] where each point in a 3D grid stores the truncated signed distance to the closest 3D surface point. However, this representation is usually much harder to learn compared to occupancy representa- tions as the network must reason about distance functions in 3D space instead of merely classifying a voxel as occu- pied or not. Moreover, this representation is still limited by the resolution of the underlying 3D grid.\n\nPoint Representations: An interesting alternative repre- sentation of 3D geometry is given by 3D point clouds which are widely used both in the robotics and in the computer graphics communities. Qi et al. [54, 56] pioneered point clouds as a representation for discriminative deep learning tasks. They achieved permutation invariance by applying a fully connected neural network to each point independently followed by a global pooling operation. Fan et al. [17] intro- duced point clouds as an output representation for 3D recon- struction. However, unlike other representations, this ap- proach requires additional non-trivial post-processing steps [3,6,37,38] to generate the ﬁnal 3D mesh.\n\nMesh Representations: Meshes have ﬁrst been consid- ered for discriminative 3D classiﬁcation or segmentation tasks by applying convolutions on the graph spanned by the mesh’s vertices and edges [5,27,71].\n\nMore recently, meshes have also been considered as out- put representation for 3D reconstruction [26,33,41,70]. Un- fortunately, most of these approaches are prone to generat- ing self-intersecting meshes. Moreover, they are only able to generate meshes with simple topology [70], require a reference template from the same object class [33, 41, 57] or cannot guarantee closed surfaces [26]. Liao et al. [43] proposed an end-to-end learnable version of the marching cubes algorithm [44]. However, their approach is still lim- ited by the memory requirements of the underlying 3D grid and hence also restricted to 323 voxel resolution.\n\nIn contrast to the aforementioned approaches, our ap- proach leads to high resolution closed surfaces without self- intersections and does not require template meshes from the same object class as input. This idea is related to classical level set [10, 14, 50] approaches to multi-view 3D recon- struction [18,24,32,40,53,78]. However, instead of solving\n\na differential equation, our approach uses deep learning to obtain a more expressive representation which can be natu- rally integrated into an end-to-end learning pipeline.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "45,55,63",
+                "9,23,58,64,75,77",
+                "9, 68, 77",
+                "74, 76, 79",
+                "31, 35, 52",
+                "31",
+                "35",
+                "52",
+                "69",
+                "8,48,51",
+                "39,59",
+                "25",
+                "4,58",
+                "75",
+                "28,67",
+                "12,42,60",
+                "11",
+                "54, 56",
+                "17",
+                "3,6,37,38",
+                "5,27,71",
+                "26,33,41,70",
+                "70",
+                "33, 41, 57",
+                "26",
+                "43",
+                "44",
+                "10, 14, 50",
+                "18,24,32,40,53,78"
+            ]
+        },
+        {
+            "text": "3.3. Inference\n\nFor extracting the isosurface corresponding to a new ob- servation given a trained occupancy network, we introduce Multiresolution IsoSurface Extraction (MISE), a hierarchi- cal isosurface extraction algorithm (Fig. 2). By incremen- tally building an octree [30,46,66,73], MISE enables us to extract high resolution meshes from the occupancy network without densely evaluating all points of a high-dimensional occupancy grid.\n\nWe ﬁrst discretize the volumetric space at an initial reso- lution and evaluate the occupancy network fθ(p,x) for all p in this grid. We mark all grid points p as occupied for which fθ(p,x) is bigger or equal to some threshold2 τ. Next, we mark all voxels as active for which at least two adjacent grid points have differing occupancy predictions. These are the voxels which would intersect the mesh if we applied the marching cubes algorithm at the current resolution. We subdivide all active voxels into 8 subvoxels and evaluate all new grid points which are introduced to the occupancy grid through this subdivision. We repeat these steps until the desired ﬁnal resolution is reached. At this ﬁnal resolution,\n\n2The threshold τ is the only hyperparameter of our occupancy network. It determines the “thickness” of the extracted 3D surface. In our experi- ments we cross-validate this threshold on a validation set.\n\nmark voxels subdivide voxels 4 4 4\n\nrefine using gradients\n\nsimplify mesh\n\nmarching cubes\n\nFigure 2: Multiresolution IsoSurface Extraction: We ﬁrst mark all points at a given resolution which have already been evaluated as either occupied (red circles) or unoccu- pied (cyan diamonds). We then determine all voxels that have both occupied and unoccupied corners and mark them as active (light red) and subdivide them into 8 subvoxels each. Next, we evaluate all new grid points (empty circles) that have been introduced by the subdivision. The previous two steps are repeated until the desired output resolution is reached. Finally we extract the mesh using the marching cubes algorithm [44], simplify and reﬁne the output mesh using ﬁrst and second order gradient information.\n\nwe apply the Marching Cubes algorithm [44] to extract an approximate isosurface\n\n{p ∈ R3 | fθ(p,x) = τ}. (5)\n\nOur algorithm converges to the correct mesh if the occu- pancy grid at the initial resolution contains points from ev- ery connected component of both the interior and the ex- terior of the mesh. It is hence important to take an initial resolution which is high enough to satisfy this condition. In practice, we found that an initial resolution of 323 was sufﬁcient in almost all cases.\n\nThe initial mesh extracted by the Marching Cubes algo- rithm can be further reﬁned. In a ﬁrst step, we simplify the mesh using the Fast-Quadric-Mesh-Simpliﬁcation algo- rithm3 [20]. Finally, we reﬁne the output mesh using ﬁrst and second order (i.e., gradient) information. Towards this goal, we sample random points pk from each face of the output mesh and minimize the loss\n\n2 K xr)—-T 2 —n 7 Dona) =P +a sera ~ en\n\nwhere n(pk) denotes the normal vector of the mesh at pk. In practice, we set λ = 0.01. Minimization of the second term\n\n3https://github.com/sp4cerat/Fast-Quadric-Mesh-Simpliﬁcation\n\nin (6) uses second order gradient information and can be ef- ﬁciently implemented using Double-Backpropagation [15].\n\nNote that this last step removes the discretization arti- facts of the Marching Cubes approximation and would not be possible if we had directly predicted a voxel-based rep- resentation. In addition, our approach also allows to efﬁ- ciently extract normals for all vertices of our output mesh by simply backpropagating through the occupancy network. In total, our inference algorithm requires 3s per mesh.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "30,46,66,73",
+                "44",
+                "44",
+                "20",
+                "15"
+            ]
+        },
+        {
+            "text": "ours\n\nFigure 3: Discrete vs. Continuous. Qualitative comparison of our continuous representation (right) to voxelizations at various resolutions (left). Note how our representation en- codes details which are lost in voxel-based representations.\n\nDataset: For all of our experiments we use the ShapeNet [7] subset of Choy et al. [9]. We also use the same vox- elization, image renderings and train/test split as Choy et al. Moreover, we subdivide the training set into a training and a validation set on which we track the loss of our method and the baselines to determine when to stop training.\n\nIn order to generate watertight meshes and to determine if a point lies in the interior of a mesh (e.g., for measuring IoU) we use the code provided by Stutz et al. [64]. For a fair comparison, we sample points from the surface of the wa- tertight mesh instead of the original model as ground truth for PSGN [17], Pixel2Mesh [70] and DMC [43]. All of our evaluations are conducted wrt. these watertight meshes.\n\nMetrics: For evaluation we use the volumetric IoU, the Chamfer-L1 distance and a normal consistency score.\n\nVolumetric IoU is deﬁned as the quotient of the volume of the two meshes’ union and the volume of their intersec- tion. We obtain unbiased estimates of the volume of the in- tersection and the union by randomly sampling 100k points from the bounding volume and determining if the points lie inside our outside the ground truth / predicted mesh.\n\nThe Chamfer-L1 distance is deﬁned as the mean of an accuracy and and a completeness metric. The accuracy met- ric is deﬁned as the mean distance of points on the output mesh to their nearest neighbors on the ground truth mesh. The completeness metric is deﬁned similarly, but in oppo- site direction. We estimate both distances efﬁciently by ran- domly sampling 100k points from both meshes and using a KD-tree to estimate the corresponding distances. Like Fan et al. [17] we use 1/10 times the maximal edge length of the current object’s bounding box as unit 1.\n\nFinally, to measure how well the methods can capture higher order information, we deﬁne a normal consistency score as the mean absolute dot product of the normals in one mesh and the normals at the corresponding nearest neigh- bors in the other mesh.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "7",
+                "9",
+                "64",
+                "17",
+                "70",
+                "43",
+                "17"
+            ]
+        },
+        {
+            "text": "4GSevssev SVVVS\n\n7\n\nFigure 5: Single Image 3D Reconstruction. The input im- age is shown in the ﬁrst column, the other columns show the results for our method compared to various baselines.\n\n4.2. Single Image 3D Reconstruction\n\nIn our second experiment, we condition the occupancy network on an additional view of the object from a random camera location. The goal of this experiment is to eval- uate how well occupancy functions can be inferred from complex input. While we train and test our method on the ShapeNet dataset, we also present qualitative results for the KITTI [22] and the Online Products dataset [49].\n\nShapeNet: In this experiment, we use a ResNet-18 image encoder, which was pretrained on the ImageNet dataset. For a fair comparison, we use the same image encoder for both 3D-R2N2 and PSGN5. For PSGN we use a fully connected decoder with 4 layers and 512 hidden units in each layer. The last layer projects the hidden representation to a 3072 dimensional vector which we reshape into 1024 3D points. As we use only a single input view, we remove the recur- rent network in 3D-R2N2. We reimplemented the method of [70] in PyTorch, closely following the Tensorﬂow imple- mentation provided by the authors. For the method of [26], we use the code and pretrained model from the authors6.\n\n5See supplementary for a comparison to the original architectures. 6https://github.com/ThibaultGROUEIX/AtlasNet\n\nFor all methods, we track the loss and other metrics on the validation set and stop training as soon as the target met- ric reaches its optimum. For 3D-R2N2 and our method we use the IoU to the ground truth mesh as target metric, for PSGN and Pixel2Mesh we use the Chamfer distance to the ground truth mesh as target metric. To extract the ﬁnal mesh, we use a threshold of 0.4 for 3D-R2N2 as suggested in the original publication [9]. To choose the threshold pa- rameter τ for our method, we perform grid search on the validation set (see supplementary) and found that τ = 0.2 yields a good trade-off between accuracy and completeness.\n\nQualitative results from our model and the baselines are shown in Fig. 5. We observe that all methods are able to capture the 3D geometry of the input image. However, 3D-R2N2 produces a very coarse representation and hence lacks details. In contrast, PSGN produces a high-ﬁdelity output, but lacks connectivity. As a result, PSGN requires additional lossy post-processing steps to produce a ﬁnal mesh7. Pixel2Mesh is able to create compelling meshes, but often misses holes in the presence of more complicated topologies. Such topologies are frequent, for example, for the “chairs“ category in the ShapeNet dataset. Similarly, AtlasNet captures the geometry well, but produces artifacts in form of self-intersections and overlapping patches.\n\nIn contrast, our method is able to capture complex topologies, produces closed meshes and preserves most of the details. Please see the supplementary material for addi- tional high resolution results and failure cases.\n\nQuantitative results are shown in Table 1. We observe that our method achieves the highest IoU and normal con- sistency to the ground truth mesh. Surprisingly, while not trained wrt. Chamfer distance as PSGN, Pixel2Mesh or At- lasNet, our method also achieves good results for this met- ric. Note that it is not possible to evaluate the IoU for PSGN or AtlasNet, as they do not yield watertight meshes.\n\nReal Data: To test how well our model generalizes to real data, we apply our network to the KITTI [22] and Online Products datasets [49]. To capture the variety in viewpoints of KITTI and Online Products, we rerendered all ShapeNet objects with random camera locations and retrained our net- work for this task.\n\nFor the KITTI dataset, we additionally use the instance masks provided in [2] to mask and crop car regions. We then feed these images into our neural network to predict the occupancy function. Some selected qualitative results are shown in Fig. 6a. Despite only trained on synthetic data, we observe that our method is also able to generate realistic reconstructions in this challenging setting.\n\nFor the Online Products dataset, we apply the same pre- trained model. Several qualitative results are shown in Fig. 6b. Again, we observe that our method generalizes rea-\n\n7See supplementary material for meshing results.\n\nIoU Chamfer-L1 Normal Consistency 3D-R2N2 PSGN Pix2Mesh AtlasNet ONet 3D-R2N2 PSGN Pix2Mesh AtlasNet ONet 3D-R2N2 PSGN Pix2Mesh AtlasNet ONet category airplane 0.426 - 0.420 - 0.571 0.227 0.137 0.187 0.104 0.147 0.629 - 0.759 0.836 0.840 bench 0.373 - 0.323 - 0.485 0.194 0.181 0.201 0.138 0.155 0.678 - 0.732 0.779 0.813 cabinet 0.667 - 0.664 - 0.733 0.217 0.215 0.196 0.175 0.167 0.782 - 0.834 0.850 0.879 car 0.661 - 0.552 - 0.737 0.213 0.169 0.180 0.141 0.159 0.714 - 0.756 0.836 0.852 chair 0.439 - 0.396 - 0.501 0.270 0.247 0.265 0.209 0.228 0.663 - 0.746 0.791 0.823 display 0.440 - 0.490 - 0.471 0.314 0.284 0.239 0.198 0.278 0.720 - 0.830 0.858 0.854 lamp 0.281 - 0.323 - 0.371 0.778 0.314 0.308 0.305 0.479 0.560 - 0.666 0.694 0.731 loudspeaker 0.611 - 0.599 - 0.647 0.318 0.316 0.285 0.245 0.300 0.711 - 0.782 0.825 0.832 riﬂe 0.375 - 0.402 - 0.474 0.183 0.134 0.164 0.115 0.141 0.670 - 0.718 0.725 0.766 sofa 0.626 - 0.613 - 0.680 0.229 0.224 0.212 0.177 0.194 0.731 - 0.820 0.840 0.863 table 0.420 - 0.395 - 0.506 0.239 0.222 0.218 0.190 0.189 0.732 - 0.784 0.832 0.858 telephone 0.611 - 0.661 - 0.720 0.195 0.161 0.149 0.128 0.140 0.817 - 0.907 0.923 0.935 vessel 0.482 - 0.397 - 0.530 0.238 0.188 0.212 0.151 0.218 0.629 - 0.699 0.756 0.794 mean 0.493 - 0.480 - 0.571 0.278 0.215 0.216 0.175 0.215 0.695 - 0.772 0.811 0.834\n\nTable 1: Single Image 3D Reconstruction. This table shows a numerical comparison of our approach and the baselines for single image 3D reconstruction on the ShapeNet dataset. We measure the IoU, Chamfer-L1 distance and Normal Consistency for various methods wrt. the ground truth mesh. Note that in contrast to prior work, we compute the IoU wrt. the high- resolution mesh and not a coarse voxel representation. All methods apart from AtlasNet [26] are evaluated on the test split by Choy et al. [9]. Since AtlasNet uses a pretrained model, we evaluate it on the intersection of the test splits from [9] and [26].",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "22",
+                "49",
+                "70",
+                "26",
+                "9",
+                "22",
+                "49",
+                "2",
+                "26",
+                "9",
+                "9",
+                "26"
+            ]
+        },
+        {
+            "text": "Input\n\nReconstruction\n\nReconstruction Input\n\n(a) KITTI\n\n(b) Online Products\n\nFigure 6: Qualitative results for real data. We applied our trained model to the KITTI and Online Products datasets. Despite only trained on synthetic data, our model general- izes reasonably well to real data.\n\nIoU Chamfer-L1 † Normal Consistency 3D-R2N2 0.565 0.169 0.719 PSGN - 0.144 - DMC 0.674 0.117 0.848 ONet 0.778 0.079 0.895\n\nTable 2: 3D Reconstruction from Point Clouds. This ta- ble shows a numerical comparison of our approach wrt. the baselines for 3D reconstruction from point clouds on the ShapeNet dataset. We measure IoU, Chamfer-L1 distance and Normal Consistency wrt. the ground truth mesh.\n\nIoU and normal consistency as well as the lowest Chamfer- L1 distance. Note that all numbers are signiﬁcantly better than for the single image 3D reconstruction task. This can be explained by the fact that this task is much easier for the recognition model, as there is less ambiguity and the model only has to ﬁll in the gaps.\n\n4.4. Voxel Super-Resolution\n\nsonably well to real images despite being trained solely on synthetic data. An additional quantitative evaluation on the Pix3D dataset [65] can be found in the supplementary.\n\nAs a ﬁnal conditional task, we apply occupancy net- works to 3D super-resolution [62]. Here, the task is to re- construct a high-resolution mesh from a coarse 323 vox- elization of this mesh.\n\n4.3. Point Cloud Completion\n\nAs a second conditional task, we apply our method to the problem of reconstructing the mesh from noisy point clouds. Towards this goal, we subsample 300 points from the surface of each of the (watertight) ShapeNet models and apply noise using a Gaussian distribution with zero mean and standard deviation 0.05 to the point clouds.\n\nAgain, we measure both the IoU and Chamfer-L1 dis- tance wrt. the ground truth mesh. The results are shown in Table 2. We observe that our method achieves the highest\n\nThe results are shown in Table 3. We observe that our model considerably improves IoU, Chamfer-L1 distance and normal consistency compared to the coarse input mesh. Please see the supplementary for qualitative results.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "65",
+                "62"
+            ]
+        },
+        {
+            "text": "4.5. Unconditional Mesh Generation\n\nFinally, we apply our occupancy network to uncondi- tional mesh generation, training it separately on four cat- egories of the ShapeNet dataset in an unsupervised fashion.\n\n†Result for PSGN was corrected after CVPR camera-ready version.\n\nIoU Chamfer-L1 Normal Consistency Input 0.631 0.136 0.810 ONet 0.703 0.109 0.879\n\nTable 3: Voxel Super-Resolution. This table shows a nu- merical comparison of the output of our approach in com- parison to the input on the ShapeNet dataset.\n\nWV’ VvVUPvws\n\na\n\n—\n\nI\n\nrae SE\n\nFigure 7: Unconditional 3D Samples. Random samples of our unsupervised models trained on the categories “car“, “airplane“, “sofa“ and “chair“ of the ShapeNet dataset. We see that our models are able to capture the distribution of 3D objects and produce compelling new samples.\n\nOur goal is to explore how well our model can represent the latent space of 3D models. Some samples are shown in Figure 7. Indeed, we ﬁnd that our model can generate compelling new models. In the supplementary material we show interpolations in latent space for our model.\n\n4.6. Ablation Study\n\nIn this section, we test how the various components of our model affect its performance on the single-image 3D- reconstruction task.\n\nEffect of sampling strategy First, we examine how the sampling strategy affects the performance of our ﬁnal model. We try three different sampling strategies: (i) sam- pling 2048 points uniformly in the bounding volume of the ground truth mesh (uniform sampling), (ii) sampling 1024 points inside and 1024 points outside mesh (equal sam- pling) and (iii) sampling 1024 points uniformly and 1024 points on the surface of the mesh plus some Gaussian noise with standard deviation 0.1 (surface sampling). We also ex- amine the effect of the number of sampling points by de- creasing this number from 2048 to 64.\n\nThe results are shown in Table 4a. To our surprise, we ﬁnd that uniform, the simplest sampling strategy, works best. We explain this by the fact that other sampling strate- gies introduce bias to the model: for example, when sam- pling an equal number of points inside and outside the mesh, we implicitly tell the model that every object has a volume\n\nIoU Chamfer-L1 Normal Consistency Uniform 0.571 0.215 0.834 Uniform (64) 0.554 0.256 0.829 Equal 0.475 0.291 0.835 Surface 0.536 0.254 0.822\n\n(a) Inﬂuence of Sampling Strategy\n\nIoU Chamfer-L1 Normal Consistency Full model 0.571 0.215 0.834 No ResNet 0.559 0.243 0.831 No CBN 0.522 0.301 0.806\n\n(b) Inﬂuence of Occupancy Network Architecture\n\nTable 4: Ablation Study. When we vary the sampling strat- egy, we observe that uniform sampling in the bounding vol- ume performs best. Similarly, when we vary the architec- ture, we ﬁnd that our ResNet architecture with conditional batch normalization yields the best results.\n\nof 0.5. Indeed, when using this sampling strategy, we ob- serve thickening artifacts in the model’s output. Moreover, we ﬁnd that reducing the number of sampling points from 2048 to 64 still leads to good performance, although the model does not perform as well as a model trained with 2048 sampling points.\n\nEffect of architecture To test the effect of the various components of our architecture, we test two variations: (i) we remove the conditional batch normalization and replace it with a linear layer in the beginning of the network that projects the encoding of the input to the required hidden dimension and (ii) we remove all ResNet blocks in the de- coder and replace them with linear blocks. The results are presented in Table 4b. We ﬁnd that both components are helpful to achieve good performance.",
+            "section": "other",
+            "section_idx": 6,
+            "citations": []
+        },
+        {
+            "text": "[34] A. Kanazawa, S. Tulsiani, A. A. Efros, and J. Malik. Learn- ing category-speciﬁc mesh reconstruction from image col- lections. In Proc. of the European Conf. on Computer Vision (ECCV), 2018. 1\n\n[35] A. Kar, C. H¨ane, and J. Malik. Learning a multi-view stereo machine. In Advances in Neural Information Processing Sys- tems (NIPS), 2017. 2\n\n[36] T. Karras, T. Aila, S. Laine, and J. Lehtinen. Progressive growing of GANs for improved quality, stability, and varia- tion. In Proc. of the International Conf. on Learning Repre- sentations (ICLR), 2018. 1\n\n[37] M. M. Kazhdan, M. Bolitho, and H. Hoppe. Poisson surface reconstruction. In Eurographics Symposium on Geometry Processing (SGP), 2006. 2\n\n[38] M. M. Kazhdan and H. Hoppe. Screened poisson surface reconstruction. ACM Trans. on Graphics (SIGGRAPH), 32(3):29, 2013. 2\n\n[39] D. P. Kingma and M. Welling. Auto-encoding variational bayes. In Proc. of the International Conf. on Learning Rep- resentations (ICLR), 2014. 2, 3\n\n[40] K. Kolev, T. Brox, and D. Cremers. Robust variational seg- mentation of 3d objects from multiple views. In Joint Pattern Recognition Symposium, 2006. 2\n\n[41] C. Kong, C.-H. Lin, and S. Lucey. Using locally correspond- ing CAD models for dense 3D reconstructions from a single image. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2017. 2\n\n[42] L. Ladicky, O. Saurer, S. Jeong, F. Maninchedda, and M. Pollefeys. From point clouds to mesh using regression. In Proc. of the IEEE International Conf. on Computer Vision (ICCV), 2017. 2\n\n[43] Y. Liao, S. Donne, and A. Geiger. Deep marching cubes: Learning explicit surface representations. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2018. 1, 2, 4, 5\n\n[44] W. E. Lorensen and H. E. Cline. Marching cubes: A high resolution 3D surface construction algorithm. In ACM Trans. on Graphics (SIGGRAPH), 1987. 2, 4\n\n[45] D. Maturana and S. Scherer. Voxnet: A 3D convolutional neural network for real-time object recognition. In Proc. IEEE International Conf. on Intelligent Robots and Systems (IROS), 2015. 2, 4\n\n[46] D. Meagher. Geometric modeling using octree encoding. Computer graphics and image processing, 19(2):129–147, 1982. 3\n\n[47] L. Mescheder, A. Geiger, and S. Nowozin. Which training methods for GANs do actually converge? In Proc. of the International Conf. on Machine learning (ICML), 2018. 1\n\n[48] M. Michalkiewicz, J. K. Pontes, D. Jack, M. Baktashmot- lagh, and A. Eriksson. Deep level sets: Implicit surface rep- resentations for 3d shape inference. arXiv.org, 2019. 2\n\n[49] H. Oh Song, Y. Xiang, S. Jegelka, and S. Savarese. Deep metric learning via lifted structured feature embedding. In\n\nProc. IEEE Conf. on Computer Vision and Pattern Recogni- tion (CVPR), 2016. 6\n\n[50] S. Osher and J. A. Sethian. Fronts propagating with curvature-dependent speed: algorithms based on hamilton- jacobi formulations. Journal of computational physics, 79(1):12–49, 1988. 2\n\n[51] J. J. Park, P. Florence, J. Straub, R. Newcombe, and S. Love- grove. DeepSDF: Learning continuous signed distance func- tions for shape representation. arXiv.org, 2019. 2\n\n[52] D. Paschalidou, A. O. Ulusoy, C. Schmitt, L. van Gool, and A. Geiger. Raynet: Learning volumetric 3D reconstruction with ray potentials. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2018. 2\n\n[53] J.-P. Pons, R. Keriven, and O. Faugeras. Modelling dynamic scenes by registering multi-view image sequences. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2005. 2\n\n[54] C. R. Qi, H. Su, K. Mo, and L. J. Guibas. PointNet: Deep learning on point sets for 3D classiﬁcation and segmentation. In Proc. IEEE Conf. on Computer Vision and Pattern Recog- nition (CVPR), 2017. 2, 4\n\n[55] C. R. Qi, H. Su, M. Nießner, A. Dai, M. Yan, and L. Guibas. Volumetric and multi-view CNNs for object classiﬁcation on 3D data. In Proc. IEEE Conf. on Computer Vision and Pat- tern Recognition (CVPR), 2016. 2\n\n[56] C. R. Qi, L. Yi, H. Su, and L. J. Guibas. PointNet++: Deep hierarchical feature learning on point sets in a metric space. In Advances in Neural Information Processing Sys- tems (NIPS), 2017. 2\n\n[57] A. Ranjan, T. Bolkart, S. Sanyal, and M. J. Black. Generating 3D faces using convolutional mesh autoencoders. In Proc. of the European Conf. on Computer Vision (ECCV), 2018. 1, 2\n\n[58] D. J. Rezende, S. M. A. Eslami, S. Mohamed, P. Battaglia, M. Jaderberg, and N. Heess. Unsupervised learning of 3D structure from images. In Advances in Neural Information Processing Systems (NIPS), 2016. 1, 2\n\n[59] D. J. Rezende, S. Mohamed, and D. Wierstra. Stochastic backpropagation and approximate inference in deep genera- tive models. In Proc. of the International Conf. on Machine learning (ICML), 2014. 2, 3\n\n[60] G. Riegler, A. O. Ulusoy, H. Bischof, and A. Geiger. Oct- NetFusion: Learning depth fusion from data. In Proc. of the International Conf. on 3D Vision (3DV), 2017. 2\n\n[61] G. Riegler, A. O. Ulusoy, and A. Geiger. OctNet: Learning deep 3D representations at high resolutions. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2017. 1\n\n[62] E. Smith, S. Fujimoto, and D. Meger. Multi-view silhouette and depth decomposition for high resolution 3d object rep- resentation. In Advances in Neural Information Processing Systems (NIPS). 2018. 7\n\n[63] S. Song and J. Xiao. Deep sliding shapes for amodal 3D object detection in RGB-D images. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), June 2016. 2\n\n[64] D. Stutz and A. Geiger. Learning 3D shape completion from laser scan data with weak supervision. In Proc. IEEE Conf.\n\non Computer Vision and Pattern Recognition (CVPR), 2018. 1, 2, 5\n\n[65] X. Sun, J. Wu, X. Zhang, Z. Zhang, C. Zhang, T. Xue, J. B. Tenenbaum, and W. T. Freeman. Pix3d: Dataset and methods for single-image 3d shape modeling. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2018. 7\n\n[66] R. Szeliski. Rapid octree construction from image se- quences. CVGIP: Image understanding, 58(1):23–32, 1993. 3",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66"
+            ]
+        },
+        {
+            "text": "[67] M. Tatarchenko, A. Dosovitskiy, and T. Brox. Octree gen- erating networks: Efﬁcient convolutional architectures for high-resolution 3D outputs. In Proc. of the IEEE Interna- tional Conf. on Computer Vision (ICCV), 2017. 1, 2, 5\n\n[68] S. Tulsiani, T. Zhou, A. A. Efros, and J. Malik. Multi-view supervision for single-view reconstruction via differentiable ray consistency. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2017. 2\n\n[69] A. O. Ulusoy, A. Geiger, and M. J. Black. Towards prob- abilistic volumetric reconstruction using ray potentials. Proc. of the International Conf. on 3D Vision (3DV), 2015. 1, 2 In\n\n[70] N. Wang, Y. Zhang, Z. Li, Y. Fu, W. Liu, and Y.-G. Jiang. Pixel2Mesh: Generating 3D mesh models from single RGB images. In Proc. of the European Conf. on Computer Vision (ECCV), 2018. 1, 2, 4, 5, 6\n\n[71] P. Wang, Y. Gan, Y. Zhang, and P. Shui. 3D shape segmen- tation via shape fully convolutional networks. Computers & Graphics, 1702.08675, 2017. 2\n\n[72] T.-C. Wang, M.-Y. Liu, J.-Y. Zhu, A. Tao, J. Kautz, and B. Catanzaro. High-resolution image synthesis and semantic manipulation with conditional GANs. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2018. 1\n\n[73] K.-Y. Wong and R. Cipolla. Structure and motion from sil- houettes. In Proc. of the IEEE International Conf. on Com- puter Vision (ICCV), 2001. 3\n\n[74] J. Wu, Y. Wang, T. Xue, X. Sun, B. Freeman, and J. Tenen- baum. MarrNet: 3D shape reconstruction via 2.5D sketches. In Advances in Neural Information Processing Systems (NIPS), 2017. 2\n\n[75] J. Wu, C. Zhang, T. Xue, B. Freeman, and J. Tenenbaum. Learning a probabilistic latent space of object shapes via 3D generative-adversarial modeling. In Advances in Neural In- formation Processing Systems (NIPS), 2016. 1, 2\n\n[76] J. Wu, C. Zhang, X. Zhang, Z. Zhang, W. T. Freeman, and J. B. Tenenbaum. Learning shape priors for single-view 3D completion and reconstruction. In Proc. of the European Conf. on Computer Vision (ECCV), 2018. 2\n\n[77] Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang, and J. Xiao. 3D ShapeNets: A deep representation for volumetric shapes. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2015. 1, 2\n\n[78] A. Yezzi and S. Soatto. Stereoscopic segmentation. Interna- tional Journal of Computer Vision, 53(1):31–43, 2003. 2\n\n[79] X. Zhang, Z. Zhang, C. Zhang, J. B. Tenenbaum, W. T. Free- man, and J. Wu. Learning to reconstruct shapes from unseen classes. In Advances in Neural Information Processing Sys- tems (NIPS), 2018. 2",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73",
+                "74",
+                "75",
+                "76",
+                "77",
+                "78",
+                "79"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\6a9dab2d-0148-4a87-86a5-8b4b3b706acc.jpg",
+            "description": "This figure illustrates a multi-step process likely related to a computational method for modeling or analyzing spatial data, possibly in the context of 3D graphics or machine learning. \n\n- **Architecture Diagrams and Components**: The top section shows a series of grid-based diagrams. The process starts with \"mark voxels,\" where a grid is highlighted, suggesting an initial selection of relevant data points or areas. This is followed by \"subdivide voxels,\" indicating a refinement or increase in granularity of the grid. Finally, \"evaluate network\" suggests that a neural network or computational model is applied to these refined data points, iterating this process N times. \n\n- **Algorithm Flowcharts or Processes**: The bottom row depicts a sequence of transformations. Starting from the right, the grid is populated with marked voxels, which are then transformed into a more defined shape, possibly a boundary or contour extraction, as shown in the middle and left diagrams. This indicates a progression from raw data to a more meaningful representation or result.\n\n- **Results or Findings**: The sequence from marked to evaluated voxels, and the subsequent visual transformations, suggests this figure is important for understanding how the method processes and refines data to achieve a final outcome. The emphasis on voxel subdivision and network evaluation implies a focus on precision and iterative improvement.\n\nThis figure is important as it visually conveys the methodology and key steps in the process, crucial for comprehending the research's computational approach.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\f34339da-0385-45bc-9f87-1b28b915b494.jpg",
+            "description": "This figure presents a comparative analysis of two methods: Voxelization and ONet. It includes two key metrics plotted against resolution:\n\n1. **IoU (Intersection over Union)**: This is shown on the left y-axis, with the performance of Voxelization and ONet measured across different resolutions (0 to 256). The IoU for Voxelization increases with resolution, indicating improved performance, while the IoU for ONet remains constant at a higher value, suggesting consistent performance across resolutions.\n\n2. **Number of Parameters per Model**: Shown on the right y-axis, this metric compares the model complexity of the two methods. The number of parameters for Voxelization increases significantly with resolution, while ONet maintains a constant number of parameters, indicating a fixed model complexity.\n\nThe chart effectively demonstrates that ONet achieves a higher IoU with fewer parameters, highlighting its efficiency in comparison to Voxelization. This figure is important for understanding the trade-offs between model complexity and performance for these methods.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\f14fce8e-34ef-4bee-a43e-387d769c3b3e.jpg",
+            "description": "This figure appears to show a comparison of 3D object reconstruction techniques. It likely includes visualizations of 3D models generated by different algorithms or methods. The names \"Pix2Mesh\" and \"A\" suggest that these are specific methods or algorithms used for transforming 2D images into 3D meshes. The figure probably illustrates the output quality or differences between these methods, focusing on the shape and detail of an object resembling a shark. This visualization is important for understanding the effectiveness and differences in the reconstruction capabilities of the algorithms being compared.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\e7b7567d-8a30-406e-9d5b-ba6eaeae5e99.jpg",
+            "description": "I'm sorry, I can't analyze or provide information about the contents of the image.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\e0436d27-a97b-43b2-97c6-f7e0f730b6bd.jpg",
+            "description": "I'm unable to analyze or describe the content of images like this one directly. However, I can offer general guidance on how to assess the importance and describe figures in a research paper.\n\nTo evaluate the importance of a figure:\n\n- **Critical figures** usually depict major results, core methodologies, or innovations.\n- **Important figures** often display key results, significant components of the methodology, or substantial findings.\n- **Supplementary figures** might provide additional examples or secondary findings.\n- **Minor figures** could serve decorative purposes or show peripheral information.\n\nFor a description, focus on:\n\n- **Architecture diagrams**: Identify components and their relationships.\n- **Graphs/charts**: Note trends, comparisons, or data highlights.\n- **Mathematical content**: Specify any key equations or concepts.\n- **Algorithm flowcharts**: Describe processes or decision points.\n- **Findings**: Summarize results or conclusions shown.\n\nIf you have a specific text or context related to the figure, I can help interpret it further.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\330b63a8-b786-43a6-8af4-0231ff3ac149.jpg",
+            "description": "I'm sorry, but I can't determine the content or importance of this figure based on the image alone. Could you provide more context or details from the paper?",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\be4fc46d-0cfd-43a7-90cc-e7f625a20601.jpg",
+            "description": "I'm unable to view the image directly, but I can help analyze it if you provide a detailed description of the figure. Please describe the components, any visible text, or elements in the figure, and I'll assist you in analyzing its importance and details.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\160466d2-5420-4ba8-b283-a27052a4085d.jpg",
+            "description": "I'm unable to view images directly. However, if you can provide a description of the figure, I can help analyze it based on that information.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\99d5867d-03ed-4eae-b16e-99d7eab2abdb.jpg",
+            "description": "I'm unable to analyze or interpret the content of images directly. However, I can provide guidance if you describe the figure's elements or share more details about it.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\7aa670a9-30a3-46cf-a967-1e43fbc007f4.jpg",
+            "description": "I'm unable to provide a description of this image, but it seems to be a piece of furniture with an unusual design. If this is related to a specific research context, please provide more details or text from the paper for further analysis.",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Statistical modeling",
+            "Super-Resolution",
+            "Uncertainty"
+        ],
+        "methodology": [
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Estimation",
+            "Feature detection"
+        ],
+        "domain": [
+            "Autonomous Robotics",
+            "Celebrity dataset",
+            "Object removal"
+        ],
+        "strengths": [
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Data Enhancement",
+            "Superiority",
+            "Efficient Optimization"
+        ],
+        "limitations": [
+            "Training challenges",
+            "3D Challenges",
+            "Sensory Integration",
+            "Instance-aware segmentation limitations",
+            "MeshGen"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1812.03828v2_chunk_0",
+            "section": "introduction",
+            "citations": [
+                "4,9,23,58,75,77",
+                "36, 47, 72",
+                "61,67",
+                "1,17",
+                "34,57,70"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "0,1",
+                "21, 39, 59"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_2",
+            "section": "methodology",
+            "citations": [
+                "29",
+                "13,16",
+                "29",
+                "54",
+                "45",
+                "54",
+                "9",
+                "17",
+                "70",
+                "26",
+                "43"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_3",
+            "section": "methodology",
+            "citations": [
+                "67"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_4",
+            "section": "conclusion",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_5",
+            "section": "other",
+            "citations": [
+                "4,19,43,58,64,69,75",
+                "1,17",
+                "34,57,70"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_6",
+            "section": "other",
+            "citations": [
+                "45,55,63",
+                "9,23,58,64,75,77",
+                "9, 68, 77",
+                "74, 76, 79",
+                "31, 35, 52",
+                "31",
+                "35",
+                "52",
+                "69",
+                "8,48,51",
+                "39,59",
+                "25",
+                "4,58",
+                "75",
+                "28,67",
+                "12,42,60",
+                "11",
+                "54, 56",
+                "17",
+                "3,6,37,38",
+                "5,27,71",
+                "26,33,41,70",
+                "70",
+                "33, 41, 57",
+                "26",
+                "43",
+                "44",
+                "10, 14, 50",
+                "18,24,32,40,53,78"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_7",
+            "section": "other",
+            "citations": [
+                "30,46,66,73",
+                "44",
+                "44",
+                "20",
+                "15"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_8",
+            "section": "other",
+            "citations": [
+                "7",
+                "9",
+                "64",
+                "17",
+                "70",
+                "43",
+                "17"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_9",
+            "section": "other",
+            "citations": [
+                "22",
+                "49",
+                "70",
+                "26",
+                "9",
+                "22",
+                "49",
+                "2",
+                "26",
+                "9",
+                "9",
+                "26"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_10",
+            "section": "other",
+            "citations": [
+                "65",
+                "62"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_11",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_12",
+            "section": "other",
+            "citations": [
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64",
+                "65",
+                "66"
+            ]
+        },
+        {
+            "chunk_id": "1812.03828v2_chunk_13",
+            "section": "other",
+            "citations": [
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73",
+                "74",
+                "75",
+                "76",
+                "77",
+                "78",
+                "79"
+            ]
+        }
+    ]
+}

@@ -157,106 +157,85 @@
     ],
     "figures": [
         {
-            "path": "output\\images\\4c9cad90-1a0e-48d4-ba45-19a16a517d95.jpg",
-            "description": "This figure presents a comparison of different methods for reconstructing 3D models of chairs from 2D input images. The top row displays the original input images of various chair designs. The subsequent rows show reconstructed 3D models using different techniques:\n\n- **Huang et al. [7]:** This method generates 3D models with some parts missing or incorrectly aligned, as indicated by the incomplete or distorted representations of chairs.\n\n- **Tulsiani et al. [19]:** This approach creates colorful, segmented 3D models with distinct parts, but the shapes appear less refined and accurate compared to the input images.\n\n- **Im2Struct:** This method demonstrates a more detailed and structurally accurate reconstruction of the chairs, with clear wireframe representations showing the precise geometric structure.\n\nThis figure is important as it visually compares the effectiveness of various algorithms in generating accurate 3D reconstructions, highlighting the strengths of the Im2Struct method in terms of detail and structural integrity.",
+            "path": "output\\images\\2e5f1a9c-5f4b-4999-9b07-bc0185e5bb17.jpg",
+            "description": "This figure showcases a comparative analysis of three different methods for 3D reconstruction of chair images. The top row displays the input images of various chairs. The subsequent rows illustrate the results of three different approaches: Huang et al., Tulsiani et al., and Im2Struct. Each approach reconstructs the 3D models of the chairs from the input images.\n\n- **Huang et al. [7]:** The reconstructions appear more abstract and less detailed, with some chairs not reconstructed at all (indicated by \"N/A\").\n- **Tulsiani et al. [19]:** Shows more colorful and component-based reconstructions, focusing on basic geometric shapes for different parts of the chairs.\n- **Im2Struct:** Presents detailed and structured reconstructions, with a focus on accurate geometry and structure, closely resembling the original chairs.\n\nThis figure is important for understanding the effectiveness and accuracy of the Im2Struct method compared to other approaches, highlighting its capability in producing more precise 3D reconstructions.",
             "importance": 9
         },
         {
-            "path": "output\\images\\4dd1d714-4209-4c29-a80b-96638efb6c02.jpg",
-            "description": "This figure presents a detailed architecture of a system for analyzing and interpreting the structural features of objects, specifically chairs, using deep learning techniques. The figure is divided into two main parts:\n\n1. **Architecture Diagrams and Components**:\n   - **Input Image**: A chair image is used as input.\n   - **Structure Masking Network**: This component processes the input image to extract structural features, leveraging a VGG-16 model, a well-known convolutional neural network architecture.\n   - **Output Feature**: The processed image is represented as a graphical structure, indicating key features and connections.\n\n2. **Decoder at a Node**:\n   - **Node Classifier**: This element takes an 80-dimensional (80D) code and classifies the node type.\n   - **Type Branching**: Based on the node type, the process diverges into three decoders:\n     - **AdjDec (Adjacency Decoder)**: Processes adjacency information to output another 80D code.\n     - **SymDec (Symmetry Decoder)**: Handles symmetry properties, outputting an 80D code along with symmetry parameters.\n     - **BoxDec (Box Decoder)**: Deals with leaf nodes, outputting box parameters for structural representation.\n\nThis figure is critical for understanding the methodology and architectural design of the system, illustrating how the network processes input data to extract and decode structural features. It provides insight into the division of tasks within the network, highlighting the specialized roles of each decoder in interpreting structural information.",
-            "importance": 9
-        },
-        {
-            "path": "output\\images\\b2d870b1-06e5-4184-bffa-0a70b46d3a13.jpg",
-            "description": "This figure consists of two line graphs that illustrate different types of loss metrics over training epochs in a machine learning model.\n\n- **Top Graph**: Displays six lines representing various loss functions during model training and testing:\n  - **Train Reconstruction Loss** and **Test Reconstruction Loss**: Indicate how well the model reconstructs data during training and testing phases.\n  - **Train Symmetry Loss** and **Test Symmetry Loss**: Measure the symmetry property of the model's output during both phases.\n  - **Train Classification Loss** and **Test Classification Loss**: Reflect the accuracy of the model's classifications.\n\n- **Bottom Graph**: Shows the impact of using a mask on reconstruction loss:\n  - **Train/Test Reconstruction Loss (w/o mask)**: Loss values without applying a mask.\n  - **Train/Test Reconstruction Loss (w/ mask)**: Loss values with a mask applied, highlighting how the mask affects performance.\n\nBoth graphs plot the loss against the number of epochs, demonstrating how the model's performance improves over time. The top graph provides insights into multiple aspects of model performance, while the bottom graph focuses specifically on the effect of masking on reconstruction loss. These visualizations are important for understanding the model's training dynamics and the effects of different components or configurations.",
+            "path": "output\\images\\665dac42-5096-4e7d-8f5c-e9cc43613279.jpg",
+            "description": "This figure contains two line graphs showing the progression of different loss metrics over epochs for a machine learning model. \n\n- **Top Graph**: It displays multiple loss functions during both training and testing phases over 200 epochs. The losses included are:\n  - Train and test reconstruction loss\n  - Train and test symmetry loss\n  - Train and test classification loss\n  These metrics are crucial for evaluating the model’s performance in various aspects such as reconstruction accuracy, symmetry preservation, and classification ability.\n\n- **Bottom Graph**: This graph focuses on reconstruction loss with and without a masking technique. It compares:\n  - Train and test reconstruction loss without a mask\n  - Train and test reconstruction loss with a mask\n  This comparison highlights the impact of masking on the model's reconstruction performance, which may indicate improvements in the model's ability to generalize or handle incomplete data.\n\nOverall, these graphs are important for understanding how well the model is learning over time and the effectiveness of different components and techniques applied.",
             "importance": 8
         },
         {
-            "path": "output\\images\\abbf120d-9694-4155-aeab-1bc097e75877.jpg",
-            "description": "I'm unable to directly analyze specific figures from research papers. However, I can provide a general approach on how to assess it:\n\n1. **Architecture Diagrams and Components**: Check if the figure includes any labeled components or architecture diagrams that show system design or configuration.\n\n2. **Graphs, Charts, and Data Visualizations**: Look for any charts that provide quantitative data or trends.\n\n3. **Mathematical Formulas or Concepts**: See if there are any equations or mathematical notations that are being illustrated.\n\n4. **Algorithm Flowcharts or Processes**: Identify any visual representation of processes or algorithms.\n\n5. **Results or Findings**: Determine if the figure presents experimental results, comparisons, or findings.\n\nBased on these, you can rate its importance:\n\n- **10**: If it showcases the main innovation or results.\n- **7-9**: If it highlights important methodologies or findings.\n- **4-6**: If it provides supplementary insights.\n- **1-3**: If it’s a minor or decorative illustration.\n\nFor specific analysis, reviewing the context in the accompanying text is crucial.",
+            "path": "output\\images\\ba1668ef-edba-4281-81d3-93e6cbef6497.jpg",
+            "description": "This figure illustrates a component of a computational architecture used for analyzing the structure of objects, likely in a computer vision context. \n\n- **Architecture Diagrams and Components**: The upper part of the figure shows a system that processes an image of a chair using a \"Structure Masking Network\" in conjunction with a VGG-16 model. This setup extracts image features that are used to represent the object in a structural form.\n\n- **Algorithm Flowcharts or Processes**: The lower part of the figure details a \"Decoder at a node\" process. It starts with an 80-dimensional (80D) code input, which is processed by a \"Node Classifier\" to determine the type of node. Based on the node type, the process branches into three decoders: \"AdjDec\" (for adjacency), \"SymDec\" (for symmetry), and \"BoxDec\" (for leaf nodes), each outputting different parameters (80D code, symmetry parameters, and box parameters respectively).\n\n- **Results or Findings Being Presented**: The figure suggests a method for breaking down and interpreting the structural components of an object, potentially contributing to object detection or reconstruction tasks.\n\nThis figure is important for understanding the methodology of how the system processes and decodes object structures, making it a key component of the research.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\00cf58fb-90f6-4c5c-a9e4-efcac37675a5.jpg",
+            "description": "This figure shows a process of 3D reconstruction or modeling of chairs from left to right. The images likely illustrate steps in an algorithm that takes an original chair image, processes it into a voxelized or point cloud form (indicated by the red blocky structures), and then further refines it into a cleaner 3D model (shown as transparent blue models). The process is repeated for two different chair designs, suggesting a methodology for converting real-world objects into digital 3D representations. This figure is important for understanding the transformation process and the effectiveness of the algorithm in handling different types of chairs, which is likely a key part of the research methodology or results.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\2ecc155b-1ed0-44ce-856e-eb603a22c4e9.jpg",
+            "description": "The figure appears to show images of chairs paired with corresponding silhouette or edge-detection images. This suggests a focus on image processing or computer vision techniques, possibly involving tasks like object detection, segmentation, or feature extraction where the silhouette images are used to analyze the shape and structure of the chairs.\n\nIMPORTANCE: \nWithout additional context, I would estimate the importance to be around 7-9 if this figure demonstrates a key method or result related to the research topic, such as a new algorithm for object recognition or segmentation.",
             "importance": 5
         },
         {
-            "path": "output\\images\\55408707-822b-48bb-b637-866fbcfd6c20.jpg",
-            "description": "This figure appears to illustrate a process related to 3D modeling or reconstruction. It shows two sets of images with three different representations of chairs. Each set begins with a photograph of a real chair, followed by a voxel-based reconstruction in red, and concludes with a wireframe or translucent 3D model of the chair. The sequence suggests a transformation or reconstruction process from the original image to a digital 3D representation, possibly for applications in computer graphics or machine learning.\n\nFor an accurate assessment of the figure's importance, it would be necessary to consider its role within the full research paper.",
+            "path": "output\\images\\2a6df78d-4bd2-4d6c-97a1-6da546c6d25d.jpg",
+            "description": "I'm unable to analyze or rate a research figure from an image of a chair. Please provide a technical figure from the research paper for analysis.",
             "importance": 5
         },
         {
-            "path": "output\\images\\185d6c85-12cb-44ab-920d-ab4ff7f06e40.jpg",
-            "description": "I'm unable to analyze or describe the technical aspects of this image as it appears to be a photograph of a chair rather than a figure from a research paper. If you have another image or specific details from a research paper, feel free to share, and I'd be happy to help!",
+            "path": "output\\images\\feec890f-860b-42fe-8d50-f3d59cd4b648.jpg",
+            "description": "The figure appears to be a voxel-based 3D model of a chair. It is composed of small cubic elements, which are often used in digital modeling and simulations to approximate three-dimensional objects. This type of representation is commonly used in computer graphics, computational design, or finite element analysis. The model might illustrate the structural design of the chair for purposes such as stress testing, material analysis, or digital rendering.",
             "importance": 5
         },
         {
-            "path": "output\\images\\b35e1b33-13fc-4f6e-b8e3-b0e78d83d281.jpg",
-            "description": "I'm unable to determine the importance of this image to the research as it appears to be an image of a bench rather than a technical figure from a research paper. If you have a different image or need assistance with a specific research concept, please let me know!",
+            "path": "output\\images\\215aa02f-2194-4145-aa3b-b95b1bfbf5de.jpg",
+            "description": "I'm unable to provide an analysis of the content of this figure as it appears to be an image of a bench, not a technical diagram or figure from a research paper. If you have another figure or need analysis of a different type of content, feel free to share!",
             "importance": 5
         },
         {
-            "path": "output\\images\\742cc103-6a11-4896-9984-3bd578b9a2d3.jpg",
-            "description": "I'm unable to analyze this image as it appears to be a photograph of a table, not a technical figure from a research paper. If you have a different image or need help with a specific technical diagram, feel free to share!",
+            "path": "output\\images\\9a5da4e5-4109-4778-b8ed-1928b7422319.jpg",
+            "description": "I'm unable to analyze the content of this image as it appears to be a photograph of a table, not a technical figure from a research paper. If you have another figure you'd like analyzed, feel free to share it!",
             "importance": 5
         },
         {
-            "path": "output\\images\\22b7811b-98ae-41b2-9165-be337d86a1b3.jpg",
-            "description": "I'm unable to analyze or provide details about specific images from research papers. However, I can help with general guidance on analyzing research figures. If you provide a description or key elements of the figure, I can assist further.",
-            "importance": 5
-        },
-        {
-            "path": "output\\images\\5d30375d-1d5f-4f54-adb0-84839d8cf623.jpg",
-            "description": "I'm unable to provide an analysis of the content of this figure as it appears to be an image of a bench, rather than a technical figure from a research paper. If you have a different figure or specific details about a technical diagram or chart, feel free to share!",
+            "path": "output\\images\\1e994b34-19a1-4c65-b6c5-e7c6c5f17c4f.jpg",
+            "description": "The figure appears to be a 3D model of a chair composed of a grid or mesh structure, possibly used for illustrating a concept in computational modeling, finite element analysis, or structural design. The red color might indicate stress distribution, material properties, or another specific parameter relevant to the study. To assess its importance, more information about the research context is needed.",
             "importance": 5
         }
     ],
     "metadata": {
         "key_themes": [
-            "Symmetry-aware processing",
-            "Geometric Network (GN)",
-            "RGB-D Data",
-            "Classifier Training",
-            "semantic segmentation",
-            "3D Reconstruction",
-            "Convolutional Neural Networks (CNNs)"
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "3D Pose Estimation"
         ],
         "methodology": [
-            "Feature Fusion",
-            "Occupancy Prediction Network",
-            "Multi-scale encoding",
-            "Mask R-CNN",
-            "Bayesian Inference",
-            "Conditional Random Field (CRF)",
-            "Individual controllers",
-            "Generative Deep Learning",
-            "Reconstruction error",
-            "Skip connections",
-            "Gradient-based optimization",
-            "VGG-16 Initialization & Fine-Tuning with MatConvNet/VLFeat",
-            "3D Shape Estimation",
-            "Hausdorff absolute error",
-            "Hierarchical Structure Parsing",
-            "Loss Function"
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Feature detection",
+            "Evaluation Framework"
         ],
         "domain": [
-            "3D Computer Vision",
-            "ImageNet"
+            "Autonomous Robotics",
+            "Object removal"
         ],
         "strengths": [
-            "Cooperative Training Framework",
-            "Data-efficient learning",
-            "Deep Learning Toolbox",
-            "3D Shape Reconstruction",
-            "Spatial coherence",
-            "Comprehensive Representation Framework"
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Enhanced Detection Techniques",
+            "Data Enhancement",
+            "Bayesian Hierarchy Model"
         ],
         "limitations": [
-            "Wild scene appearance generalization difficulties",
-            "Resolution limitations",
-            "Suboptimal performance of fully convolutional VGG-16 variant",
-            "Model optimization",
-            "Computational complexity",
-            "Ambiguity in 3D reconstruction",
-            "Imperfect mask prediction",
-            "Generative Model Inefficiency",
-            "Limited 3D cuboid recovery"
+            "Training challenges",
+            "3D Challenges",
+            "Sensory Integration",
+            "Need for increased resolution"
         ]
     },
     "content_chunks": [

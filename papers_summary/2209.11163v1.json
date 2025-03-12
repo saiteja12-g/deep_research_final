@@ -1,0 +1,1526 @@
+{
+    "basic_info": {
+        "title": "GET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images",
+        "authors": [
+            "Jun Gao",
+            "Tianchang Shen",
+            "Zian Wang",
+            "Wenzheng Chen",
+            "Kangxue Yin",
+            "Daiqing Li",
+            "Or Litany",
+            "Zan Gojcic",
+            "Sanja Fidler"
+        ],
+        "paper_id": "2209.11163v1",
+        "published_year": 2022,
+        "references": [
+            "1612.05872v1",
+            "2011.01437v2"
+        ]
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "Autodesk Maya, https://www.autodesk.com/products/maya/overview . Accessed: 2022-05-19.",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "is a large dataset containing photorealistic 3D models of real-world humans . We\nuse it to showcase the capacity of GET3D to generate high-quality and diverse characters that can\nbe used to populate virtual environments, such as games or even movies. In particular, we use 500\nmodels from the whole dataset for training and only perform qualitative analysis.\nPreprocessing To generate the data, we ﬁrst scale each shape such that the longest edge of its\nbounding-box equals em, where em= 0:9forCar,Motorcycle , and Human ,em= 0:8forHouse ,\nandem= 0:7forChair andAnimal . For methods that use 2D supervision (Pi-GAN, GRAF, EG3D,\nand our model GET3D ), we then render the RGB images and silhouettes from camera poses sampled\nfrom the upper hemisphere of each object. Speciﬁcally, we sample 24 camera poses for Car and\nChair , and 100 poses for Motorcycle ,Animal ,House , and Human . The rotation and elevation angles\nof the camera poses are sampled uniformly from a speciﬁed range (see Table A). For all camera\nposes, we use a ﬁxed radius of 1.2 and the fov angle of 49:13\u000e. We render the images in Blender [ 15]\nusing a ﬁxed lighting, unless speciﬁed differently.\nFor the methods that rely on 3D supervision, we follow their preprocessing pipelines [ 68,43].\nSpeciﬁcally, for Pointﬂow [ 68] we randomly sample 15k points from the surface of each shape,\nwhile for OccNet [ 43] we convert the shapes into watertight meshes by rendering depth frames from\nrandom camera poses and performing TSDF fusion.\nB.2 Baselines\nPointFlow",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "Sketchfab, https://sketchfab.com/ . Accessed: 2022-05-19.",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "is a large collection of various 3D shapes with high-quality geometry and texture,\nand is thus well suited to evaluate the capacity of GET3D to generate shapes with high-quality\n3The ShapeNet license is explained at https://shapenet.org/terms\n4Herein, we used ShapeNet v1 Core subset obtained from https://shapenet.org/\n5https://www.turbosquid.com , we obtain consent via an agreement with TurboSquid, and following\nlicense at https://blog.turbosquid.com/turbosquid-3d-model-license/\n19Dataset # Shapes # Views per shape Rotation Angle Elevation Angle\nShapeNet Car 7497 24 [0, 2\u0019] [1\n3\u0019,1\n2\u0019]\nShapeNet Chair 6778 24 [0, 2\u0019] [1\n3\u0019,1\n2\u0019]\nShapeNet Motorbike 337 100 [0, 2\u0019] [1\n3\u0019,1\n2\u0019]\nTurbosquid Animal 442 100 [0, 2\u0019] [1\n4\u0019,1\n2\u0019]\nTurbosquid House 563 100 [0, 2\u0019] [1\n3\u0019,1\n2\u0019]\nRenderpeople 500 100 [0, 2\u0019] [1\n3\u0019,1\n2\u0019]\nTable A: Dataset statistics .\ndetails. To this end, we use the category Animal that contains 442 textured shapes with high diversity\nranging from cats, dogs, and lions, to bears and deer [ 60,70]. We again randomly split the shapes\ninto training (70%), validation (10%), and test (20%) set. Additionally, we provide qualitative results\non the category House that contains 563 shapes. Since we perform only qualitative evaluation on\nHouse , we use all the shapes for training.\nRenderPeople6",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": null
+        },
+        "ref_5": {
+            "text": "Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and\ngenerative models for 3d point clouds. In International conference on machine learning , pages 40–49.\nPMLR, 2018.\n10",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "Brent Burley and Walt Disney Animation Studios. Physically-based shading at disney. In ACM SIGGRAPH ,\nvolume 2012, pages 1–7. vol. 2012, 2012.",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "similar to GRAF, Pi-GAN also tackles the problem of 3D-aware image synthesis, but\nuses a Siren [ 61] network—conditioned on a randomly sampled noise vector—to parameterize the\nneural radiance ﬁeld. To generate the results of Pi-GAN [ 7], we use the original source code provided\nby the authors10and train the models on our data.\nEG3D",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "on human character generation in Sec. C.7.\nC.1 Additional Qualitative Comparison with the Baselines\nComparing the Geometry of Generated Shapes We provide additional visualization of the 3D\nshapes generated by GET3D and compare them to the baseline methods in Figure Q. GET3D is able\nto generate shapes with complex geometry, different topology, and varying genus. When compared\nto the baselines, the shapes generated by GET3D contain more details and are more diverse.\n13Inception network checkpoint path: http://download.tensorflow.org/models/image/imagenet/\ninception-2015-12-05.tgz\n22Figure G: Shape retrieval of our generated shapes . We retrieve the closest shape in the training set for each\nof shapes we showed in the Figure 1. Our generator is able to generate novel shapes that are different from the\ntraining set\n02k4k6k8k10k12k14k0.00.050.10.150.20.250.3Two DiscriminatorsSingle Discriminator\nFigure H: Training loss curve for discriminator. We compare the training dynamics of using a\nsingle discriminator on both RGB image and 2D silhouette, with the ones using two discriminators for\neach image, respectively. The horizontal axis represents the number of images that the discriminators\nhave seen during training (mod by 1000). Two discriminators greatly reduce training instability and\nhelp us obtain good results.\nComparing the Synthesized Images We provide additional results on the task of 2D image\ngeneration in Figure R. Even though GET3D is not designed for this task, it produces comparable\nresults to the strong baseline EG3D [ 8], while signiﬁcantly outperforming other baselines, such as\nPiGAN [ 7] and GRAF [ 57]. Note that GET3D directly outputs 3D textured meshes, which are\ncompatible with standard graphics engines, while extracting such representation from the baselines is\nnon-trivial.\nC.2 Additional Qualitative Results of GET3D\nWe provide additional visualizations of the generated geometry and texture in Figures S-X. GET3D\ncan generate high quality shapes with diverse textures across all the categories, from chairs, cars,\nand animals, to motorbikes, humans, and houses. Accompanying video ( demo.mp4 ) contains further\nvisualizations, including detailed 360\u000eturntable animations for 400+ shapes and interpolation results.\nClosest Shape Retrieval To demonstrate that GET3D is capable of generating novel shapes, we\nperform shape retrieval for our generated shapes. In particular, we retrieve the closest shape in the\ntraining set for each of shapes we showed in the Figure 1 by measuring the CD between the generated\n2302k4k6k8k10k12k14k05Two DiscriminatorsSingle Discriminator101520253530Figure I: Training loss curve for generator. We compare the training dynamics for using single\ndiscriminator on both RGB image and 2D silhouette with two discriminators for each image, respec-\ntively. The horizontal axis represents the number of images discriminator have seen during training\n(mod by 1000).\nModel FID\nGET3D w.o. Camera Condition 11.63\nGET3D w/ Camera Condition 10.25\nTable B: Ablations on using camera condition : We ablate using camera condition for discriminator. We train\nthe model on Shapenet Car dataset.\nshape and all training shapes. Results are provided in Figure G. All generated shapes in Figure 1\nsigniﬁcantly differ from their closest shape in the training set, exhibiting different geometry and\ntexture, while still maintaining the quality and diversity.\nVolume Subdivision We provide further qualitative results highlighting the beneﬁts of volume\nsubdivision in Figure Y. Speciﬁcally, we compare the shapes generated with and without volume\nsubdivision on ShapeNet motorbike category. V olume subdivision enables GET3D to generate ﬁner\ngeometric details like handle and steel wire, which are otherwise hard to represent.\nC.3 Additional Ablations Studies\nWe now provide additional ablation studies in an attempt to further justify our design choices.\nIn particular, we ﬁrst discuss the design choice of using two dedicated discriminators for RGB\nimages and 2D silhouettes, before ablating the impact of adding the camera pose conditioning to the\ndiscriminator.\nC.3.1 Using Two Dedicated Discriminators\nWe empirically ﬁnd that using a single discriminator on both RGB image and silhouettes introduces\nsigniﬁcant training instability, which leads to divergence when training GET3D . We provide a\ncomparison of the training dynamics in Figure H and I, where we depict the loss curves for the\ngenerator and discriminator. We hypothesize that the instability might be caused by the fact that\na single discriminator has access to both geometry (from 2D silhouettes) and texture (from RGB\nimage) of the shape, when classifying whether the image is real or not. Since we randomly initialize\nour geometry generator, the discriminator can quickly overﬁt to one aspect—either geometry or\ntexture—and thus produces bad gradients for the other branch. A two-stage approach in which two\ndiscriminators would be used in the ﬁrst stage of the training, and a single discriminator in the later\nstage, when the model has already learned to produce meaningful shapes, is an interesting research\ndirection, which we plan to explore in the future.\nC.3.2 Ablation on Using Camera Condition for Discriminator\nSince we are mainly operating on synthetic datasets in which the shapes are aligned to a canonical\ndirection, we condition the discriminators on the camera pose of each image. In this way, GET3D\n24Figure J: Additional qualitative results of GET3D trained with noisy cameras. We render generated shapes\nin Blender. The visual quality is similar to original GET3D in the main paper.\nFigure K: Additional qualitative results of GET3D trained with predicted 2D silhouettes (Mask-Black).\nWe render generated shapes in Blender. The visual quality is similar to original GET3D in the main paper.\nFigure L: Additional qualitative results of GET3D trained with predicted 2D silhouettes (Mask-\nRandom). We render generated shapes in Blender. The visual quality is similar to original GET3D in\nthe main paper.\nlearns to generate shapes in the canonical orientation, which simpliﬁes the evaluation when using\nmetrics that assume that the input shapes are canonicalized. We now ablate this design choice.\nSpeciﬁcally, we train another model without the conditioning and evaluate its performance in terms\nof FID score. Quantitative results are given in Table. B. We observe that removing the camera pose\nconditioning, only slightly degrades the performance of GET3D (-1.38 FID). This conﬁrms that our\nmodel can be successfully trained without such conditioning, and that the primary beneﬁt of using it\nis the easier evaluation.\nMethod FID\nGET3D - original 10.25\nGET3D - noisy cameras 19.53\nGET3D - predicted 2D silhouettes (Mask-Black) 29.68\nGET3D - predicted 2D silhouettes (Mask-Random) 33.16\nTable C: Additional quantitative results for noisy cameras and using predicted 2D silhouettes on\nShapenet Car dataset.\nC.4 Robustness to Noisy Cameras\nTo demonstrate the robustness of GET3D to imperfect cameras poses, we add Gaussian noises to\nthe camera poses during training. Speciﬁcally, for the rotation angle, we add a noise sampled from\na Gaussian distribution with zero mean, and 10 degrees variance. For the elevation angle, we also\nadd a noise sampled from a Gaussian distribution with zero mean, and 2 degrees variance. We use\nShapeNet Car dataset",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": null
+        },
+        "ref_9": {
+            "text": "in this experiment.\n25Figure M: Additional qualitative results of GET3D trained with \"real\" GANverse3D",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "Ding-Yun Chen, Xiao-Pei Tian, Yu-Te Shen, and Ming Ouhyoung. On visual similarity based 3d model\nretrieval. In Computer graphics forum , volume 22, pages 223–232. Wiley Online Library, 2003.",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler.\nLearning to predict 3d objects with an interpolation-based differentiable renderer. In Advances In Neural\nInformation Processing Systems , 2019.",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": null
+        },
+        "ref_12": {
+            "text": "Wenzheng Chen, Joey Litalien, Jun Gao, Zian Wang, Clement Fuji Tsang, Sameh Khalis, Or Litany, and\nSanja Fidler. DIB-R++: Learning to predict lighting and material with a hybrid differentiable renderer. In\nAdvances in Neural Information Processing Systems (NeurIPS) , 2021.",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": ". In our evaluation, we use the ofﬁcial implementation to compute dLFD12.\nWe combine these similarity measures with the evaluation metrics proposed in [ 5], which are\ncommonly used to evaluate 3D generative models:\n•Coverage (COV) measures the fraction of shapes in the reference set that are matched to at\nleast one of the shapes in the generated set. Formally, COV is deﬁned as\nCOV(Sg;Sr) =jfargminX2SrD(X;Y )jY2Sggj\njSrj; (9)\nwhere the distance metric D can be either dCDordLFD. Intuitively, COV measures the\ndiversity of the generated shapes and is able to detect mode collapse. However, COV does\n9GRAF: https://github.com/autonomousvision/graf (MIT License)\n10Pi-GAN: https://github.com/marcoamonteiro/pi-GAN (License not provided)\n11For PointFlow",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "Zhiqin Chen and Hao Zhang. Learning implicit ﬁelds for generative shape modeling. Proceedings of IEEE\nConference on Computer Vision and Pattern Recognition (CVPR) , 2019.",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "Blender Online Community. Blender - a 3D modelling and rendering package . Blender Foundation,\nStichting Blender Foundation, Amsterdam, 2018.",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": null
+        },
+        "ref_16": {
+            "text": "Prafulla Dhariwal and Alexander Nichol. Diffusion models beat gans on image synthesis. Advances in\nNeural Information Processing Systems , 34, 2021.",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": null
+        },
+        "ref_17": {
+            "text": "Akio Doi and Akio Koide. An efﬁcient method of triangulating equi-valued surfaces by using tetrahedral\ncells. IEICE TRANSACTIONS on Information and Systems , 74(1):214–224, 1991.",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": "and"
+        },
+        "ref_18": {
+            "text": "Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas\nUnterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, et al. An image is worth\n16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929 , 2020.",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": "2010.11929"
+        },
+        "ref_19": {
+            "text": "Patrick Esser, Robin Rombach, and Bjorn Ommer. Taming transformers for high-resolution image\nsynthesis. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition ,\npages 12873–12883, 2021.",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "Matheus Gadelha, Subhransu Maji, and Rui Wang. 3d shape induction from 2d views of multiple objects.\nIn2017 International Conference on 3D Vision (3DV) , pages 402–411. IEEE, 2017.",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "Rinon Gal, Or Patashnik, Haggai Maron, Amit H Bermano, Gal Chechik, and Daniel Cohen-Or. Stylegan-\nnada: Clip-guided domain adaptation of image generators. ACM Transactions on Graphics (TOG) ,\n41(4):1–13, 2022.",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "and DMTET",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": null
+        },
+        "ref_23": {
+            "text": "Jun Gao, Chengcheng Tang, Vignesh Ganapathi-Subramanian, Jiahui Huang, Hao Su, and Leonidas J\nGuibas. Deepspline: Data-driven reconstruction of parametric curves and surfaces. arXiv preprint\narXiv:1901.03781 , 2019.",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": "1901.03781"
+        },
+        "ref_24": {
+            "text": "Jun Gao, Zian Wang, Jinchen Xuan, and Sanja Fidler. Beyond ﬁxed grid: Learning geometric image\nrepresentation with a deformable grid. In European Conference on Computer Vision , pages 108–125.\nSpringer, 2020.",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": null
+        },
+        "ref_25": {
+            "text": "Jiatao Gu, Lingjie Liu, Peng Wang, and Christian Theobalt. Stylenerf: A style-based 3d aware generator\nfor high-resolution image synthesis. In International Conference on Learning Representations , 2022.",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "Zekun Hao, Arun Mallya, Serge Belongie, and Ming-Yu Liu. GANcraft: Unsupervised 3D Neural\nRendering of Minecraft Worlds. In ICCV , 2021.",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "Philipp Henzler, Niloy J. Mitra, and Tobias Ritschel. Escaping plato’s cave: 3d shape from adversarial\nrendering. In The IEEE International Conference on Computer Vision (ICCV) , October 2019.\n11",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans\ntrained by a two time-scale update rule converge to a local nash equilibrium. Advances in neural information\nprocessing systems , 30, 2017.",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "Xun Huang, Arun Mallya, Ting-Chun Wang, and Ming-Yu Liu. Multimodal conditional image synthesis\nwith product-of-experts GANs. In ECCV , 2022.",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_30": {
+            "text": "Moritz Ibing, Gregor Kobsik, and Leif Kobbelt. Octree transformer: Autoregressive 3d shape generation\non hierarchically structured sequences. arXiv preprint arXiv:2111.12480 , 2021.",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": "2111.12480"
+        },
+        "ref_31": {
+            "text": "James T. Kajiya. The rendering equation. SIGGRAPH ’86, page 143–150, 1986.",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "Brian Karis and Epic Games. Real shading in unreal engine 4. Proc. Physically Based Shading Theory\nPractice , 4(3), 2013.",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": null
+        },
+        "ref_33": {
+            "text": "Tero Karras, Miika Aittala, Samuli Laine, Erik Härkönen, Janne Hellsten, Jaakko Lehtinen, and Timo Aila.\nAlias-free generative adversarial networks. In Proc. NeurIPS , 2021.",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": null
+        },
+        "ref_34": {
+            "text": "Tero Karras, Samuli Laine, and Timo Aila. A style-based generator architecture for generative adversarial\nnetworks. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition , pages\n4401–4410, 2019.",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": null
+        },
+        "ref_35": {
+            "text": "including: using a minibatch standard devia-\ntion in the discriminator, exponential moving average for the generator, non-saturating logistic loss,\nand R1 Regularization. We train GET3D along with the 2D discriminators from scratch, without\nprogressive training or initialization from pretrained checkpoints. Most of our hyper-parameters are\nadopted form styleGAN2 [ 35]. Speciﬁcally, we use Adam optimizer with learning rate 0.002 and\n\f= 0:9. For R1 regularization, we set the regularization weight \rto 3200 for chair, 80 for car, 40\nfor animal, 80 for motorbike, 80 for renderpeople, and 200 for house. We follow StyleGAN2 [ 35]\nand use lazy regularization, which applies R1 regularization to discriminators only every 16 training\nsteps. Finally, we set the hyperparameter \u0016that controls the SDF regularization to 0.01 in all the\nexperiments. We train our model using a batch size of 32 on 8 A100 GPUs for all the experiments.\nTraining a single model takes about 2 days to converge.\nB Experimental Details\nB.1 Datasets\nWe evaluate GET3D on ShapeNet [ 9], TurboSquid [ 4], and RenderPeople [ 2] datasets. In the\nfollowing, we provide their detailed description and the preprocessing steps that were used in our\nevaluation. Detailed statistic of the datasets is available in Table A.\n2StyleGan3: https://github.com/NVlabs/stylegan3 (NVIDIA Source Code License)\n18Figure E: Disentanglement of geometry and texture achieved by the improved model depicted\nin Fig. C . In each row, we show shapes generated from the same texture latent code, while changing\nthe geometry latent code. In each column, we show shapes generated from the same geometry latent\ncode, while changing the texture code. The disentanglement in this model is poor. Comparing with\nFig. D, this improved model achieves signiﬁcant better disentanglement of geometry and texture.\nFigure F: Shape Interpolation. We interpolate the latent code from top-left corner to the bottom-\nright corner. In each row, we keep the texture latent code ﬁxed and interpolate the geometry latent\ncode. In each column, we keep the geometry latent code ﬁxed and interpolate the texture latent\ncode. GET3D adequately disentangles geometry and texture, while also providing a meaningful\ninterpolation for both geometry or texture.\nShapeNet3",
+            "type": "numeric",
+            "number": "35",
+            "arxiv_id": null
+        },
+        "ref_36": {
+            "text": ".\nOccNet",
+            "type": "numeric",
+            "number": "36",
+            "arxiv_id": null
+        },
+        "ref_37": {
+            "text": "Samuli Laine, Janne Hellsten, Tero Karras, Yeongho Seol, Jaakko Lehtinen, and Timo Aila. Modular\nprimitives for high-performance differentiable rendering. ACM Transactions on Graphics , 39(6), 2020.",
+            "type": "numeric",
+            "number": "37",
+            "arxiv_id": null
+        },
+        "ref_38": {
+            "text": "Daiqing Li, Junlin Yang, Karsten Kreis, Antonio Torralba, and Sanja Fidler. Semantic segmentation with\ngenerative models: Semi-supervised learning and strong out-of-domain generalization. In Conference on\nComputer Vision and Pattern Recognition (CVPR) , 2021.",
+            "type": "numeric",
+            "number": "38",
+            "arxiv_id": null
+        },
+        "ref_39": {
+            "text": "William E Lorensen and Harvey E Cline. Marching cubes: A high resolution 3d surface construction\nalgorithm. ACM siggraph computer graphics , 21(4):163–169, 1987.",
+            "type": "numeric",
+            "number": "39",
+            "arxiv_id": null
+        },
+        "ref_40": {
+            "text": "Sebastian Lunz, Yingzhen Li, Andrew Fitzgibbon, and Nate Kushman. Inverse graphics gan: Learning to\ngenerate 3d shapes from unstructured 2d data. arXiv preprint arXiv:2002.12674 , 2020.",
+            "type": "numeric",
+            "number": "40",
+            "arxiv_id": "2002.12674"
+        },
+        "ref_41": {
+            "text": "Andrew Luo, Tianqin Li, Wen-Hao Zhang, and Tai Sing Lee. Surfgen: Adversarial 3d shape synthesis with\nexplicit surface discriminators. In Proceedings of the IEEE/CVF International Conference on Computer\nVision , pages 16238–16248, 2021.",
+            "type": "numeric",
+            "number": "41",
+            "arxiv_id": null
+        },
+        "ref_42": {
+            "text": "Lars Mescheder, Sebastian Nowozin, and Andreas Geiger. Which training methods for gans do actually\nconverge? In International Conference on Machine Learning (ICML) , 2018.",
+            "type": "numeric",
+            "number": "42",
+            "arxiv_id": null
+        },
+        "ref_43": {
+            "text": "is an implicit method for 3D surface reconstruction, which can also be applied to\nunconditional generation of 3D shapes. OccNet is an autoencoder that learns a continuous mapping\nfrom 3D coordinates to occupancy values, from which an explicit mesh can be extracted using\nmarching cubes [ 39]. When applied to unconditional 3D shape generation, OccNet is trained as a\nvariational autoencoder. To generate the results of [ 43], we use the original source code provided by\nthe authors8and train the models on our data.\n6We follow the license of Renderpeople https://renderpeople.com/\ngeneral-terms-and-conditions/\n7PointFlow: https://github.com/stevenygd/PointFlow (MIT License)\n8OccNet: https://github.com/autonomousvision/occupancy_networks (MIT License)\n20GRAF",
+            "type": "numeric",
+            "number": "43",
+            "arxiv_id": null
+        },
+        "ref_44": {
+            "text": "Oscar Michel, Roi Bar-On, Richard Liu, Sagie Benaim, and Rana Hanocka. Text2mesh: Text-driven neural\nstylization for meshes. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern\nRecognition , pages 13492–13502, 2022.",
+            "type": "numeric",
+            "number": "44",
+            "arxiv_id": null
+        },
+        "ref_45": {
+            "text": "Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren\nNg. Nerf: Representing scenes as neural radiance ﬁelds for view synthesis. In ECCV , 2020.",
+            "type": "numeric",
+            "number": "45",
+            "arxiv_id": null
+        },
+        "ref_46": {
+            "text": "Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy Mitra, and Leonidas Guibas. Structurenet:\nHierarchical graph networks for 3d shape generation. ACM Transactions on Graphics (TOG), Siggraph\nAsia 2019 , 38(6):Article 242, 2019.",
+            "type": "numeric",
+            "number": "46",
+            "arxiv_id": null
+        },
+        "ref_47": {
+            "text": "Jacob Munkberg, Jon Hasselgren, Tianchang Shen, Jun Gao, Wenzheng Chen, Alex Evans, Thomas Müller,\nand Sanja Fidler. Extracting triangular 3d models, materials, and lighting from images. In Proceedings of\nthe IEEE/CVF Conference on Computer Vision and Pattern Recognition , pages 8280–8290, 2022.",
+            "type": "numeric",
+            "number": "47",
+            "arxiv_id": null
+        },
+        "ref_48": {
+            "text": "Charlie Nash, Yaroslav Ganin, S. M. Ali Eslami, and Peter W. Battaglia. Polygen: An autoregressive\ngenerative model of 3d meshes. ICML , 2020.",
+            "type": "numeric",
+            "number": "48",
+            "arxiv_id": null
+        },
+        "ref_49": {
+            "text": "Michael Niemeyer and Andreas Geiger. Giraffe: Representing scenes as compositional generative neural\nfeature ﬁelds. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR) , 2021.",
+            "type": "numeric",
+            "number": "49",
+            "arxiv_id": null
+        },
+        "ref_50": {
+            "text": "Michael Oechsle, Lars Mescheder, Michael Niemeyer, Thilo Strauss, and Andreas Geiger. Texture\nﬁelds: Learning texture representations in function space. In Proceedings of the IEEE/CVF International\nConference on Computer Vision , pages 4531–4540, 2019.",
+            "type": "numeric",
+            "number": "50",
+            "arxiv_id": null
+        },
+        "ref_51": {
+            "text": "Roy Or-El, Xuan Luo, Mengyi Shan, Eli Shechtman, Jeong Joon Park, and Ira Kemelmacher-Shlizerman.\nStylesdf: High-resolution 3d-consistent image and geometry generation. In Proceedings of the IEEE/CVF\nConference on Computer Vision and Pattern Recognition , pages 13503–13513, 2022.\n12",
+            "type": "numeric",
+            "number": "51",
+            "arxiv_id": null
+        },
+        "ref_52": {
+            "text": "Taesung Park, Ming-Yu Liu, Ting-Chun Wang, and Jun-Yan Zhu. Semantic image synthesis with spatially-\nadaptive normalization. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recogni-\ntion, 2019.",
+            "type": "numeric",
+            "number": "52",
+            "arxiv_id": null
+        },
+        "ref_53": {
+            "text": "Dario Pavllo, Jonas Kohler, Thomas Hofmann, and Aurelien Lucchi. Learning generative models of\ntextured 3d meshes from real-world images. In IEEE/CVF International Conference on Computer Vision\n(ICCV) , 2021.",
+            "type": "numeric",
+            "number": "53",
+            "arxiv_id": null
+        },
+        "ref_54": {
+            "text": "Dario Pavllo, Graham Spinks, Thomas Hofmann, Marie-Francine Moens, and Aurelien Lucchi. Convolu-\ntional generation of textured 3d meshes. In Advances in Neural Information Processing Systems (NeurIPS) ,\n2020.",
+            "type": "numeric",
+            "number": "54",
+            "arxiv_id": null
+        },
+        "ref_55": {
+            "text": "Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas Geiger. Convolutional\noccupancy networks. In European Conference on Computer Vision (ECCV) , 2020.",
+            "type": "numeric",
+            "number": "55",
+            "arxiv_id": null
+        },
+        "ref_56": {
+            "text": "Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish\nSastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning transferable visual models from\nnatural language supervision. In International Conference on Machine Learning , pages 8748–8763. PMLR,\n2021.",
+            "type": "numeric",
+            "number": "56",
+            "arxiv_id": null
+        },
+        "ref_57": {
+            "text": "is a generative model that tackles the problem of 3D-aware image synthesis. GRAF’s\nunderlying representation is a neural radiance ﬁeld—conditioned on the shape and appearance latent\ncodes—parameterized using a multi-layer perceptron with positional encoding. To synthesize novel\nviews, GRAF utilizes a neural volume rendering approach similar to Nerf [ 45]. In our evaluation, we\nuse the source code provided by the authors9and train GRAF models on our data.\nPi-GAN",
+            "type": "numeric",
+            "number": "57",
+            "arxiv_id": null
+        },
+        "ref_58": {
+            "text": "Katja Schwarz, Axel Sauer, Michael Niemeyer, Yiyi Liao, and Andreas Geiger. V oxgraf: Fast 3d-aware\nimage synthesis with sparse voxel grids. ARXIV , 2022.",
+            "type": "numeric",
+            "number": "58",
+            "arxiv_id": null
+        },
+        "ref_59": {
+            "text": "Tianchang Shen, Jun Gao, Amlan Kar, and Sanja Fidler. Interactive annotation of 3d object geometry using\n2d scribbles. In European Conference on Computer Vision , pages 751–767. Springer, 2020.",
+            "type": "numeric",
+            "number": "59",
+            "arxiv_id": null
+        },
+        "ref_60": {
+            "text": ",\nwe us two copies of the geometry generator. One generates the vertex offsets \u0001v, while the other\noutputs the SDF values s. The architecture of both is the same, except for the output dimension and\nactivation function of the last layer.\n𝒗a\n𝒗𝒃𝒗𝒂𝒃=𝒗𝒂+𝒗𝒃\n𝟐\n𝒔𝒂𝒃=𝒔𝒂+𝒔𝒃\n𝟐\nFigure A: With volume subdivi-\nsion, each tetrahedron is divided\ninto 8 smaller tetrahedra by con-\nnecting midpoints.Volume Subdivision: In cases where modeling at a high-\nresolution is required (e.g. motorbike with thin structures in the\nwheels), we further use volume subdivision following DMTET [ 60].\nAs illustrated in Fig. A, we ﬁrst subdivide the tetrahedral grid and\ncompute SDF values of the new vertices (midpoints) by averaging\nthe SDF values on the edge. Then we identify tetrahedra that have\nvertices with different SDF signs. These are the tetrahedra that\nintersect with the underlying surface encode by SDF. To reﬁne the\nsurface at increased grid resolution after subdivision, we further\npredict the residual on SDF values and deformations to update s\nand\u0001vof the vertices in identiﬁed tetrahedra. Speciﬁcally, we\nuse an additional 3D convolutional layer to upsample feature vol-\numeF0\ngeotoF00\ngeoof shape 64\u000264\u000264\u00028conditioned on w1. Then, following the steps described\nabove, we use trilinear interpolation to obtain per-vertex feature, concatenate it with PE and decode\nthe residuals \u000esand\u000evusing conditional FC layers. The ﬁnal SDF and vertex offset are computed as:\ns0=s+\u000es;\u0001v0= \u0001v+\u000ev: (6)\nA.3 Texture Generator\nWe adapt the generator architecture from StyleGAN2 [ 35] to generate a tri-plane representation of\nthe texture ﬁeld. Similar as in the geometry generator, we start from a randomly initialized feature\ngridFtex2R4\u00024\u0002512that is shared across the shapes, and is learned during training. This initial\nfeature grid is up-sampled to a feature grid F0\ntex2R256\u0002256\u000296that is conditioned on w1andw2.\nSpeciﬁcally, we use a series of six modulated 2D convolution blocks ( ModBlock2D in Figure B).\nTheModBlock2D blocks are the same as the ModBlock3D blocks, except that the convolution is 2D\nand that the conditioning is on w1\bw2, where\bdenotes concatenation. Additionally, the output\nof each ModBlock2D block is passed through a conditional tTPF layer that applies a conditional\n2D convolution with kernel size 1x1. Note that, following the practices from StyleGAN2 [ 35],\nthe conditioning in the tTPF layers is performed only through modulation of the weights (no\ndemodulation ).\n16Figure C: Improved generator architecture of GET3D . High-level overview leftand detailed\narchitecture right . Different to the model architecture proposed in the main paper, the new generator\nshares the same backbone network for both geometry and texture generation. This improves the\ninformation ﬂow and enables better disentanglement of the geometry and texture.\nThe output of the last tTPF layer is then reshaped into three axis-aligned feature planes of size\n256\u0002256\u000232.\nTo obtain the feature ftex2R32of a surface point p2R3, we ﬁrst project ponto each plane, perform\nbilinear interpolation of the features, and ﬁnally sum the interpolated features:\nftex=X\ne\u001a(\u0019e(p)); (7)\nwhere\u0019e(p)is the projection of the point pto the feature plane eand\u001a(\u0001)denotes bilinear interpo-\nlation of the features. Color c2R3of the point pis then decoded from ftusing three conditional\nFC layers ( ModFC ) conditioned on w1\bw2. The hidden dimension of each layer is 16. Following\nStyleGAN2",
+            "type": "numeric",
+            "number": "60",
+            "arxiv_id": null
+        },
+        "ref_61": {
+            "text": "Vincent Sitzmann, Julien N.P. Martel, Alexander W. Bergman, David B. Lindell, and Gordon Wetzstein.\nImplicit neural representations with periodic activation functions. In Proc. NeurIPS , 2020.",
+            "type": "numeric",
+            "number": "61",
+            "arxiv_id": null
+        },
+        "ref_62": {
+            "text": "Edward J Smith and David Meger. Improved adversarial systems for 3d object generation and reconstruction.\nInConference on Robot Learning , pages 87–96. PMLR, 2017.",
+            "type": "numeric",
+            "number": "62",
+            "arxiv_id": null
+        },
+        "ref_63": {
+            "text": "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jon Shlens, and Zbigniew Wojna. Rethinking the\ninception architecture for computer vision. In Proceedings of the IEEE conference on computer vision and\npattern recognition , pages 2818–2826, 2016.",
+            "type": "numeric",
+            "number": "63",
+            "arxiv_id": null
+        },
+        "ref_64": {
+            "text": "Jiaping Wang, Peiran Ren, Minmin Gong, John Snyder, and Baining Guo. All-frequency rendering of\ndynamic, spatially-varying reﬂectance. In ACM SIGGRAPH Asia 2009 papers , pages 1–10. 2009.",
+            "type": "numeric",
+            "number": "64",
+            "arxiv_id": null
+        },
+        "ref_65": {
+            "text": "Peter Welinder, Steve Branson, Takeshi Mita, Catherine Wah, Florian Schroff, Serge Belongie, and Pietro\nPerona. Caltech-ucsd birds 200. 2010.",
+            "type": "numeric",
+            "number": "65",
+            "arxiv_id": null
+        },
+        "ref_66": {
+            "text": "Jiajun Wu, Chengkai Zhang, Tianfan Xue, Bill Freeman, and Josh Tenenbaum. Learning a probabilistic\nlatent space of object shapes via 3d generative-adversarial modeling. Advances in neural information\nprocessing systems , 29, 2016.",
+            "type": "numeric",
+            "number": "66",
+            "arxiv_id": null
+        },
+        "ref_67": {
+            "text": "Yinghao Xu, Sida Peng, Ceyuan Yang, Yujun Shen, and Bolei Zhou. 3d-aware image synthesis via learning\nstructural and textural representations. In CVPR , 2022.",
+            "type": "numeric",
+            "number": "67",
+            "arxiv_id": null
+        },
+        "ref_68": {
+            "text": ", we directly use Npoints generated by the model.\n12LFD: https://github.com/Sunwinds/ShapeDescriptor/tree/master/LightField/\n3DRetrieval_v1.8/3DRetrieval_v1.8 (License not provided)\n21not measure the quality of individual generated shapes. In fact, it is possible to achieve high\nCOV even when the generated shapes are of very low quality.\n•Minimum Matching Distance (MMD) complements COV metric, by measuring the qual-\nity of the individual generated shapes. Formally, MMD is deﬁned as\nMMD (Sg;Sr) =1\njSrjX\nX2Srmin\nY2SgD(X;Y ); (10)\nwhere D can again be either dCDordLFD. Intuitively, MMD measures the quality of the\ngenerated shapes by comparing their geometry to the closest reference shape.\nB.3.2 Evaluating the Texture and Geometry\nTo evaluate the quality of the generated textures, we adopt the Fréchet Inception Distance (FID)\nmetric, commonly used to evaluate the synthesis quality of 2D images. In particular, for each category,\nwe render 50k views of the generated shapes (one view per shape) from the camera poses randomly\nsampled from the predeﬁned camera distribution, and use all the images in the test set. We then\nencode these images using a pretrained Inception v3 [ 63] model13, where we consider the output of\nthe last pooling layer as our ﬁnal encoding. The FID metric can then be computed as:\nFID(Sg;Sr) =jj\u0016g\u0000\u0016rjj2\n2+Tr[\u0006g+\u0006r\u00002(\u0006g\u0006r)1=2]jj; (11)\nwhere Tr denotes the trace operation. \u0016gand\u0006gare the mean value and covariance matrix of the\ngenerated image encoding, while \u0016rand\u0006rare obtained from the encoding of the test images.\nAs brieﬂy discussed in the main paper, we use two variants of FID, which differ in the way in which\nthe 2D images are rendered. In particular, for FID-Ori, we directly use the neural volume rendering\nof the 3D-aware image synthesis methods to obtain the 2D images. This metric favours the baselines\nthat were designed to directly generate valid 2D images through neural rendering. Additionally, we\npropose a new metric, FID-3D, which puts more emphasis on the overall quality of the generated 3D\nshape. Speciﬁcally, for the baselines which do not output a textured mesh, we extract the geometry\nfrom their underlying neural ﬁeld using marching cubes [ 39]. Then, we ﬁnd the intersection point of\neach pixel ray with the generated mesh and use the 3D location of the intersected point to query the\nRGB value from the network. In this way, the rendered image is a more faithful representation of\nthe underlying 3D shape and takes the quality of both geometry and texture into account. Note that\nFID-3D and FID-Ori are identical for methods that directly generate textured 3D meshes, as it is the\ncase with GET3D.\nC Additional Results on the Unconditioned Shape Generation\nIn this section we provide additional results on the task of unconditional 3D shape generation. First,\nwe perform additional qualitative comparison of GET3D with the baselines in Section C.1. Second,\nwe present further qualitative results of GET3D in Section C.2. Third, we provide additional ablation\nstudies in Section C.3. We also analyse the robustness and effectiveness of GET3D . Speciﬁcally,\nin Sec. C.4 and C.5, we evaluate GET3D trained with noisy cameras and 2D silhouettes predicted\nby 2D segmentation networks. We further provide addition experiments on StyleGAN generated\nrealistic dataset from GANverse3D [ 73] in Sec. C.6. Finally, we provide additional comparison with\nEG3D",
+            "type": "numeric",
+            "number": "68",
+            "arxiv_id": null
+        },
+        "ref_69": {
+            "text": "Kangxue Yin, Jun Gao, Maria Shugrina, Sameh Khamis, and Sanja Fidler. 3dstylenet: Creating 3d shapes\nwith geometric and texture style variations. In Proceedings of the IEEE/CVF International Conference on\nComputer Vision , pages 12456–12465, 2021.",
+            "type": "numeric",
+            "number": "69",
+            "arxiv_id": null
+        },
+        "ref_70": {
+            "text": "Kangxue Yin, Jun Gao, Maria Shugrina, Sameh Khamis, and Sanja Fidler. 3dstylenet: Creating 3d shapes\nwith geometric and texture style variations. In Proceedings of International Conference on Computer\nVision (ICCV) , 2021.",
+            "type": "numeric",
+            "number": "70",
+            "arxiv_id": null
+        },
+        "ref_71": {
+            "text": "Jonathan Young. xatlas, 2021. https://github.com/jpcy/xatlas.",
+            "type": "numeric",
+            "number": "71",
+            "arxiv_id": null
+        },
+        "ref_72": {
+            "text": "Kai Zhang, Fujun Luan, Qianqian Wang, Kavita Bala, and Noah Snavely. Physg: Inverse rendering with\nspherical gaussians for physics-based material editing and relighting. In The IEEE/CVF Conference on\nComputer Vision and Pattern Recognition (CVPR) , 2021.",
+            "type": "numeric",
+            "number": "72",
+            "arxiv_id": null
+        },
+        "ref_73": {
+            "text": "data. We\nrender generated shapes in Blender.\nFigure N: We show randomly sampled 2D images and silhouettes from GANverse3D [ 73] data. Note the\nrealism of the images and the imperfections of the 2D silhouettes.\nThe quantitative results are provided in Table C and qualitative examples are depicted in Figure J.\nAdding camera noise harms the FID metric, whereas we observe only little degradation in visual\nquality. We hypothesize that the drop in the FID is a consequence of the camera pose distribution\nmismatch, which occurs as result of rendering the testing dataset, used to calculate the FID score,\nwith a camera pose distribution without added noise. Nevertheless, based on the visual quality of\nthe generated shapes, we conclude that GET3D is robust to a moderate level of noise in the camera\nposes.\nC.5 Robustness to Imperfect 2D Silhouettes\nTo evaluate the robustness of GET3D when trained with imperfect 2D silhouettes, we replace ground\ntruth 2D masks with the ones obtained from Detectron214using pretrained PointRend checkpoint,\nmimicking how one could obtain the 2D segmentation masks in the real world. Since our training\nimages are rendered with the black background, we use two approaches to obtain the 2D silhouettes:\ni) we directly feed the original training image into Detectron2 to obtain the predicted segmentation\nmask (we refer to this as Mask-Black), and ii) we add a background image, randomly sampled\nfrom PASCAL-VOC 2012 dataset (we refer to this as Mask-Random). In this setting, the pretrained\nDetectron2 model achieve",
+            "type": "numeric",
+            "number": "73",
+            "arxiv_id": null
+        },
+        "ref_74": {
+            "text": "Yuxuan Zhang, Huan Ling, Jun Gao, Kangxue Yin, Jean-Francois Laﬂeche, Adela Barriuso, Antonio\nTorralba, and Sanja Fidler. Datasetgan: Efﬁcient labeled data factory with minimal human effort. In CVPR ,\n2021.",
+            "type": "numeric",
+            "number": "74",
+            "arxiv_id": null
+        },
+        "ref_75": {
+            "text": "Linqi Zhou, Yilun Du, and Jiajun Wu. 3d shape generation and completion through point-voxel diffusion.\nInProceedings of the IEEE/CVF International Conference on Computer Vision , pages 5826–5835, 2021.",
+            "type": "numeric",
+            "number": "75",
+            "arxiv_id": null
+        },
+        "ref_76": {
+            "text": "Peng Zhou, Lingxi Xie, Bingbing Ni, and Qi Tian. Cips-3d: A 3d-aware generator of gans based on\nconditionally-independent pixel synthesis. arXiv preprint arXiv:2110.09788 , 2021.",
+            "type": "numeric",
+            "number": "76",
+            "arxiv_id": "2110.09788"
+        },
+        "ref_77": {
+            "text": "implementation of Poisson surface reconstruction",
+            "type": "numeric",
+            "number": "77",
+            "arxiv_id": null
+        },
+        "ref_Library_2003": {
+            "text": "retrieval. In Computer graphics forum , volume 22, pages 223–232. Wiley Online Library, 2003. [11] Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler.",
+            "type": "author_year",
+            "key": "Library, 2003",
+            "arxiv_id": null
+        },
+        "ref_Amsterdam_2018": {
+            "text": "Stichting Blender Foundation, Amsterdam, 2018. [16] Prafulla Dhariwal and Alexander Nichol. Diffusion models beat gans on image synthesis. Advances in",
+            "type": "author_year",
+            "key": "Amsterdam, 2018",
+            "arxiv_id": null
+        },
+        "ref_Springer_2020": {
+            "text": "2d scribbles. In European Conference on Computer Vision , pages 751–767. Springer, 2020. [60] Tianchang Shen, Jun Gao, Kangxue Yin, Ming-Yu Liu, and Sanja Fidler. Deep marching tetrahedra: a",
+            "type": "author_year",
+            "key": "Springer, 2020",
+            "arxiv_id": null
+        },
+        "ref_October_2019": {
+            "text": "rendering. In The IEEE International Conference on Computer Vision (ICCV) , October 2019.",
+            "type": "author_year",
+            "key": "October, 2019",
+            "arxiv_id": null
+        },
+        "ref_Asia_2019": {
+            "text": "Asia 2019 , 38(6):Article 242, 2019. [47] Jacob Munkberg, Jon Hasselgren, Tianchang Shen, Jun Gao, Wenzheng Chen, Alex Evans, Thomas Müller,",
+            "type": "author_year",
+            "key": "Asia, 2019",
+            "arxiv_id": null
+        },
+        "ref_Asia_2009": {
+            "text": "dynamic, spatially-varying reﬂectance. In ACM SIGGRAPH Asia 2009 papers , pages 1–10. 2009. [65] Peter Welinder, Steve Branson, Takeshi Mita, Catherine Wah, Florian Schroff, Serge Belongie, and Pietro",
+            "type": "author_year",
+            "key": "Asia, 2009",
+            "arxiv_id": null
+        },
+        "ref_Car_7497": {
+            "text": "ShapeNet Car 7497 24 [0, 2\u0019] [1 3\u0019,1 2\u0019]",
+            "type": "author_year",
+            "key": "Car, 7497",
+            "arxiv_id": null
+        },
+        "ref_Chair_6778": {
+            "text": "ShapeNet Chair 6778 24 [0, 2\u0019] [1 3\u0019,1 2\u0019]",
+            "type": "author_year",
+            "key": "Chair, 6778",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "3 Method\n\nWe now present our GET3D framework for synthesizing textured 3D shapes. Our generation process is split into two parts: a geometry branch, which differentiably outputs a surface mesh of arbitrary topology, and a texture branch that produces a texture ﬁeld that can be queried at the surface points to produce colors. The latter can be extended to other surface properties such as for example materials (Sec. 4.3.1). During training, an efﬁcient differentiable rasterizer is utilized to render the resulting textured mesh into 2D high-resolution images. The entire process is differentiable, allowing for adversarial training from images (with masks indicating an object of interest) by propagating the gradients from the 2D discriminator to both generator branches. Our model is illustrated in Fig. 2. In the following, we ﬁrst introduce our 3D generator in Sec 3.1, before proceeding to the differentiable rendering and loss functions in Sec 3.2.\n\n3.1 Generative Model of 3D Textured Meshes\n\nWe aim to learn a 3D generator M,E = G(z) to map a sample from a Gaussian distribution z ∈ N(0,I) to a mesh M with texture E.\n\nSince the same geometry can have different textures, and the same texture can be applied to different geometries, we sample two random input vectors z1 ∈ R512 and z2 ∈ R512. Following StyleGAN [34, 35, 33], we then use non-linear mapping networks fgeo and ftex to map z1 and z2 to intermediate latent vectors w1 = fgeo(z1) and w2 = ftex(z2) which are further used to produce styles that control the generation of 3D shapes and texture, respectively. We formally introduce the generator for geometry in Sec. 3.1.1 and the texture generator in Sec. 3.1.2.\n\n3\n\nTraining\n\nInference\n\n. NOD)\n\nN(0,1)\n\nZ2\n\nw2 +\n\nGeometry generator\n\nreshape\n\noy _ =\n\n|\n\ni\n\na RGB\n\nom image\n\nReal/Fake?\n\n2D Silhouette\n\nMapping network\n\nTexture generator\n\n‘Textured mesh\n\nDifferentiable rendering Discriminators\n\nFigure 2: Overview of GET3D: We generate a 3D SDF and a texture ﬁeld via two latent codes. We utilize DMTet [60] to extract a 3D surface mesh from the SDF, and query the texture ﬁeld at surface points to get colors. We train with adversarial losses deﬁned on 2D images. In particular, we use a rasterization-based differentiable renderer [37] to obtain RGB images and silhouettes. We utilize two 2D discriminators, each on RGB image, and silhouette, respectively, to classify whether the inputs are real or fake. The whole model is end-to-end trainable. Note that we additionally provide an improved version of our Generator in Appendix A.5 and Fig. C.",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "34, 35, 33",
+                "60",
+                "37"
+            ]
+        },
+        {
+            "text": "A.6 Training Procedure and Hyperparameters\n\nWe implement GET3D on top of the ofﬁcial PyTorch implementation of StyleGAN2 [35]2. Our training conﬁguration largely follows StyleGAN2 [35] including: using a minibatch standard devia- tion in the discriminator, exponential moving average for the generator, non-saturating logistic loss, and R1 Regularization. We train GET3D along with the 2D discriminators from scratch, without progressive training or initialization from pretrained checkpoints. Most of our hyper-parameters are adopted form styleGAN2 [35]. Speciﬁcally, we use Adam optimizer with learning rate 0.002 and β = 0.9. For R1 regularization, we set the regularization weight γ to 3200 for chair, 80 for car, 40 for animal, 80 for motorbike, 80 for renderpeople, and 200 for house. We follow StyleGAN2 [35] and use lazy regularization, which applies R1 regularization to discriminators only every 16 training steps. Finally, we set the hyperparameter µ that controls the SDF regularization to 0.01 in all the experiments. We train our model using a batch size of 32 on 8 A100 GPUs for all the experiments. Training a single model takes about 2 days to converge.\n\nB Experimental Details\n\nB.1 Datasets\n\nWe evaluate GET3D on ShapeNet [9], TurboSquid [4], and RenderPeople [2] datasets. In the following, we provide their detailed description and the preprocessing steps that were used in our evaluation. Detailed statistic of the datasets is available in Table A.\n\n2StyleGan3: https://github.com/NVlabs/stylegan3 (NVIDIA Source Code License)\n\n18\n\nBR OBE\n\nFigure E: Disentanglement of geometry and texture achieved by the improved model depicted in Fig. C. In each row, we show shapes generated from the same texture latent code, while changing the geometry latent code. In each column, we show shapes generated from the same geometry latent code, while changing the texture code. The disentanglement in this model is poor. Comparing with Fig. D, this improved model achieves signiﬁcant better disentanglement of geometry and texture.\n\nxc Lf a oS ZS ne \\\n\nFigure F: Shape Interpolation. We interpolate the latent code from top-left corner to the bottom- right corner. In each row, we keep the texture latent code ﬁxed and interpolate the geometry latent code. In each column, we keep the geometry latent code ﬁxed and interpolate the texture latent code. GET3D adequately disentangles geometry and texture, while also providing a meaningful interpolation for both geometry or texture.\n\nShapeNet3 [9] contains more than 51k shapes from 55 different categories and is the most commonly used dataset for benchmarking 3D generative models4. Prior work [68, 75] typically uses the categories Airplane, Car, and Chair for evaluation. Herein, we replace the category Airplane with Motorcycle, which has more complex geometry and contains shapes with varying genus. Car, Chair, and Motorcycle contain 7497, 6778, and 337 shapes, respectively. We random split the shapes of each category into training (70%), validation (10%), and test (20%) and remove from the test set shapes that have duplicates in the training set.\n\nTurboSquid5 [4] is a large collection of various 3D shapes with high-quality geometry and texture, and is thus well suited to evaluate the capacity of GET3D to generate shapes with high-quality\n\n3The ShapeNet license is explained at https://shapenet.org/terms\n\n4Herein, we used ShapeNet v1 Core subset obtained from https://shapenet.org/\n\n5https://www.turbosquid.com, we obtain consent via an agreement with TurboSquid, and following\n\nlicense at https://blog.turbosquid.com/turbosquid-3d-model-license/\n\n19\n\nDataset # Shapes # Views per shape Rotation Angle Elevation Angle ShapeNet Car 7497 24 [0, 2π] [1 3π, 1 2π] ShapeNet Chair 6778 24 [0, 2π] [1 3π, 1 2π] ShapeNet Motorbike 337 100 [0, 2π] [1 3π, 1 2π] Turbosquid Animal 442 100 [0, 2π] [1 4π, 1 2π] Turbosquid House 563 100 [0, 2π] [1 3π, 1 2π] Renderpeople 500 100 [0, 2π] [1\n\n3π, 1\n\n2π]\n\nTable A: Dataset statistics.\n\ndetails. To this end, we use the category Animal that contains 442 textured shapes with high diversity ranging from cats, dogs, and lions, to bears and deer [60, 70]. We again randomly split the shapes into training (70%), validation (10%), and test (20%) set. Additionally, we provide qualitative results on the category House that contains 563 shapes. Since we perform only qualitative evaluation on House, we use all the shapes for training.\n\nRenderPeople6 [2] is a large dataset containing photorealistic 3D models of real-world humans. We use it to showcase the capacity of GET3D to generate high-quality and diverse characters that can be used to populate virtual environments, such as games or even movies. In particular, we use 500 models from the whole dataset for training and only perform qualitative analysis.\n\nPreprocessing To generate the data, we ﬁrst scale each shape such that the longest edge of its bounding-box equals em, where em = 0.9 for Car, Motorcycle, and Human, em = 0.8 for House, and em = 0.7 for Chair and Animal. For methods that use 2D supervision (Pi-GAN, GRAF, EG3D, and our model GET3D), we then render the RGB images and silhouettes from camera poses sampled from the upper hemisphere of each object. Speciﬁcally, we sample 24 camera poses for Car and Chair, and 100 poses for Motorcycle, Animal, House, and Human. The rotation and elevation angles of the camera poses are sampled uniformly from a speciﬁed range (see Table A). For all camera poses, we use a ﬁxed radius of 1.2 and the fov angle of 49.13◦. We render the images in Blender [15] using a ﬁxed lighting, unless speciﬁed differently.\n\nFor the methods that rely on 3D supervision, we follow their preprocessing pipelines [68, 43]. Speciﬁcally, for Pointﬂow [68] we randomly sample 15k points from the surface of each shape, while for OccNet [43] we convert the shapes into watertight meshes by rendering depth frames from random camera poses and performing TSDF fusion.",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "35",
+                "35",
+                "35",
+                "35",
+                "9",
+                "4",
+                "2",
+                "9",
+                "68, 75",
+                "4",
+                "60, 70",
+                "2",
+                "15",
+                "68, 43",
+                "68",
+                "43"
+            ]
+        },
+        {
+            "text": "B.2 Baselines\n\nPointFlow [68] is a 3D point cloud generative model based on continuous normalizing ﬂows. It models the generative process by learning a distribution of distributions. Where the former, denotes the distribution of shapes, and the latter the distribution of points given a shape [68]. PointFlow generates only the geometry, which is represented in the form of a point cloud. To generate the results of [68], we use the original source code provided by the authors7 and train the models on our data. To compute the metrics based on LFD, we convert the output point clouds (10k points) to a mesh representation using Open3D [77] implementation of Poisson surface reconstruction [36].\n\nOccNet [43] is an implicit method for 3D surface reconstruction, which can also be applied to unconditional generation of 3D shapes. OccNet is an autoencoder that learns a continuous mapping from 3D coordinates to occupancy values, from which an explicit mesh can be extracted using marching cubes [39]. When applied to unconditional 3D shape generation, OccNet is trained as a variational autoencoder. To generate the results of [43], we use the original source code provided by the authors8 and train the models on our data.\n\n6We follow the license of Renderpeople https://renderpeople.com/ general-terms-and-conditions/\n\n7PointFlow: https://github.com/stevenygd/PointFlow (MIT License)\n\n8OccNet: https://github.com/autonomousvision/occupancy_networks (MIT License)\n\n20\n\nGRAF [57] is a generative model that tackles the problem of 3D-aware image synthesis. GRAF’s underlying representation is a neural radiance ﬁeld—conditioned on the shape and appearance latent codes—parameterized using a multi-layer perceptron with positional encoding. To synthesize novel views, GRAF utilizes a neural volume rendering approach similar to Nerf [45]. In our evaluation, we use the source code provided by the authors9 and train GRAF models on our data.\n\nPi-GAN [7] similar to GRAF, Pi-GAN also tackles the problem of 3D-aware image synthesis, but uses a Siren [61] network—conditioned on a randomly sampled noise vector—to parameterize the neural radiance ﬁeld. To generate the results of Pi-GAN [7], we use the original source code provided by the authors10 and train the models on our data.\n\nEG3D [8] is a recent model for 3D-aware image synthesis. Similar to our method, EG3D builds upon the StyleGAN formulation and uses a tri-plane representation to parameterize the underlying neural radiance ﬁeld. To improve the efﬁciency and to enable synthesis at higher resolution, EG3D utilizes neural rendering at a lower resolution and then upsamples the output using a 2D CNN. The source code of EG3D was provided to us by the authors. To generate the results, we train and evaluate EG3D on our data.",
+            "section": "methodology",
+            "section_idx": 2,
+            "citations": [
+                "68",
+                "68",
+                "68",
+                "77",
+                "36",
+                "43",
+                "39",
+                "43",
+                "57",
+                "45",
+                "7",
+                "61",
+                "7",
+                "8"
+            ]
+        },
+        {
+            "text": "C.3.1 Using Two Dedicated Discriminators\n\nWe empirically ﬁnd that using a single discriminator on both RGB image and silhouettes introduces signiﬁcant training instability, which leads to divergence when training GET3D. We provide a comparison of the training dynamics in Figure H and I, where we depict the loss curves for the generator and discriminator. We hypothesize that the instability might be caused by the fact that a single discriminator has access to both geometry (from 2D silhouettes) and texture (from RGB image) of the shape, when classifying whether the image is real or not. Since we randomly initialize our geometry generator, the discriminator can quickly overﬁt to one aspect—either geometry or texture—and thus produces bad gradients for the other branch. A two-stage approach in which two discriminators would be used in the ﬁrst stage of the training, and a single discriminator in the later stage, when the model has already learned to produce meaningful shapes, is an interesting research direction, which we plan to explore in the future.\n\nC.3.2 Ablation on Using Camera Condition for Discriminator\n\nSince we are mainly operating on synthetic datasets in which the shapes are aligned to a canonical direction, we condition the discriminators on the camera pose of each image. In this way, GET3D\n\n24\n\nSwe\n\nFSeaee\n\nrc\n\nansrtoe\n\nFigure J: Additional qualitative results of GET3D trained with noisy cameras. We render generated shapes in Blender. The visual quality is similar to original GET3D in the main paper.\n\nFigure K: Additional qualitative results of GET3D trained with predicted 2D silhouettes (Mask-Black). We render generated shapes in Blender. The visual quality is similar to original GET3D in the main paper.\n\nCacorese@qragcities,:\n\nhoe gs\n\nKl &\n\nhae &\n\nLe\n\nFigure L: Additional qualitative results of GET3D trained with predicted 2D silhouettes (Mask- Random). We render generated shapes in Blender. The visual quality is similar to original GET3D in the main paper.\n\nlearns to generate shapes in the canonical orientation, which simpliﬁes the evaluation when using metrics that assume that the input shapes are canonicalized. We now ablate this design choice. Speciﬁcally, we train another model without the conditioning and evaluate its performance in terms of FID score. Quantitative results are given in Table. B. We observe that removing the camera pose conditioning, only slightly degrades the performance of GET3D (-1.38 FID). This conﬁrms that our model can be successfully trained without such conditioning, and that the primary beneﬁt of using it is the easier evaluation.\n\nMethod FID GET3D - original 10.25 GET3D - noisy cameras 19.53 GET3D - predicted 2D silhouettes (Mask-Black) 29.68 GET3D - predicted 2D silhouettes (Mask-Random) 33.16\n\nTable C: Additional quantitative results for noisy cameras and using predicted 2D silhouettes on Shapenet Car dataset.",
+            "section": "methodology",
+            "section_idx": 3,
+            "citations": []
+        },
+        {
+            "text": "3.1.1 Geometry Generator\n\nWe design our geometry generator to incorporate DMTet [60], a recently proposed differentiable surface representation. DMTet represents geometry as a signed distance ﬁeld (SDF) deﬁned on a deformable tetrahedral grid [22, 24], from which the surface can be differentiably recovered through marching tetrahedra [17]. Deforming the grid by moving its vertices results in a better utilization of its resolution. By adopting DMTet for surface extraction, we can produce explicit meshes with arbitrary topology and genus. We next provide a brief summary of DMTet and refer the reader to the original paper for further details.\n\nLet (Vr, T) denote the full 3D space that the object lies in, where Vr are the vertices in the tetrahedral grid T. Each tetrahedron Tj, € T is defined using four vertices {Va,,Vb,;Vex» Vd, }» With k € {1,...,K}, where K is the total number of tetrahedra, and v;, € Vr, vi, € R®. In addition to its 3D coordinates, each vertex v; contains the SDF value s; € R and the deformation Av; € R® of the vertex from its initial canonical coordinate. This representation allows recovering the explicit mesh through differentiable marching tetrahedra [60], where SDF values in continuous space are computed by a barycentric interpolation of their value s; on the deformed vertices v; = v; + Av;.\n\nNetwork Architecture We map w1 ∈ R512 to SDF values and deformations at each vertex vi through a series of conditional 3D convolutional and fully connected layers. Speciﬁcally, we ﬁrst use 3D convolutional layers to generate a feature volume conditioned on w1. We then query the feature at each vertex vi ∈ VT using trilinear interpolation and feed it into MLPs that outputs the SDF value si and the deformation ∆vi. In cases where modeling at a high-resolution is required (e.g. motorbike with thin structures in the wheels), we further use volume subdivision following [60].\n\nDifferentiable Mesh Extraction After obtaining s; and Av; for all the vertices, we use the differentiable marching tetrahedra algorithm to extract the explicit mesh. Marching tetrahedra determines the surface topology within each tetrahedron based on the signs of s;. In particular, a mesh face is extracted when sign(s;) 4 sign(s;), where i,j denotes the indices of vertices in the edge of tetrahedron, and the vertices m;_; of that face are determined by a linear interpolation as mj j = we Note that the above equation is only evaluated when s; # s;, thus it is differentiable, and the gradient from m;,; can be back-propagated into the SDF values s; and deformations Av;. With this representation, the shapes with arbitrary topology can easily be generated by predicting different signs of s;.",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "60",
+                "22, 24",
+                "17",
+                "60",
+                "60"
+            ]
+        },
+        {
+            "text": "Appendix\n\nIn this Appendix, we ﬁrst provide detailed description of the GET3D network architecture (Sec. A.1- A.4) along with the training procedure and hyperparameters (Sec. A.6). We then describe the datasets (Sec. B.1), baselines (Sec. B.2), and evaluation metrics (Sec. B.3). Additional qualitative results, ablation studies, robustness analysis, and results on the real dataset are available in Sec. C. Details and additional results of the material generation for view-dependent lighting effects are provided in Sec. D. Sec E contains more information about the text-guided shape generation experiments as well as more additional qualitative results. The readers are also kindly referred to the accompanying video (demo.mp4) that includes 360-degree renderings of our results (more than 400 generated shapes for each category), detailed zoom-ins, interpolations, material generation, and shapes generated with text-guidance.\n\nA Details of Our Model\n\nIn Sec. 3 we have provided a high level description of GET3D. Here, we provide the implementation details that were omitted due to the lack of space. Please consult the Figure B and Figure 2 in the main paper for more context. Source code is available at our project webpage\n\nA.1 Mapping Network\n\nFollowing StyleGAN [34, 35], our mapping networks fgeo and ftex are 8-layer MLPs in which each fully-connected layer has 512 hidden dimensions and a leaky-ReLU activation (Figure B). The mapping networks are used to map the randomly sampled noise vectors z1 ∈ R512 and z2 ∈ R512 to the latent vectors w1 ∈ R512 and w2 ∈ R512 as w1 = fgeo(z1) and w2 = ftex(z2).\n\nA.2 Geometry Generator\n\nThe geometry generator of GET3D starts from a randomly initialized feature volume Feo € IR**4%4%256 that is shared across the generated shapes, and is learned during training. Through a series of four modulated 3D convolution blocks (ModBlock3D in Figure B), the initial volume is up-sampled to a feature volume Fy, € R®?*#?**2*64 that is conditioned on w1. Specifically, in each ModBlock3D, the input feature volume is first upsampled by a factor of two using trilinear interpolation. It is then passed through a small 3D ResNet, where the residual path uses a 3D convo- lutional layer with kernel size 1x1x1, and the main path applies two conditional 3D convolutional layers with kernel size 3x3x3. To perform the conditioning, we follow StyleGAN2 [35] and first map the latent vector w, to style h through a learned affine transformation (A in Figure B). The style h is then used to modulate (M) and demodulate (D) the weights of the convolutional layers as:\n\nM: 9 j.teslym = (4)\n\nD: OF i desl (5)\n\nwhere 6 and 6” are the original and modulated weight, respectively. hi; is the style corresponding to the ith input channel, 7 is the output channel dimension, and k,/,m denote the spatial dimension of the 3D convolutional filter.\n\nOnce we obtain the final feature volume F',,.,, the feature vector f/,, € IR° of each vertex v in the tetrahedral grid can be obtained through trilinear interpolation. We additionally feed the coordinates of the point p to a [sin(p), cos(p)] positional encoding (PE) and concatenate the output with the feature vector f7.,. To decode the concatenated feature vector into the vertex offset Av € R° or the SDF value s € R, we pass it through three conditional FC layers (VodFC in Figure B). The modulation and demodulation in these layers is done analogously to Eq. 5. All the layers, except for the last, are followed by the leaky-ReLU activation function. In the last layer, we apply tanh to either normalize the SDF prediction s to be within [-1, 1], or normalize the Av to be within [- L Ly tet-res ’, tet-res where tet-res denotes the resolution of our tetrahedral grid, which we set to 90 in all the experiments.\n\n15\n\n| I | 1 | \\ | | 1\n\n\\ \\ co 1 ! i\n\nze ee { Geometry Generator r ce a 1 \\ Texture Generator Pp 4 R \\ Vy Fo(12,512) | ' [Const 4x 4x 4x 256 TI pei ! Const x 4 x 512 Project |! I I 1 ~ = x FC(S12,512) | | [ ModBlocksD(056,256) ModFO(0a56)]! | | ModBlock2(512,512) | [sTPF -@ Bilinear Interp. || ——— 1 I T i i] in Up (2x) x | ; ' Fo(i2,s12) | | [ModBlocksD@56,128) ModFC(256,256)]| | i“ 13x REREAD) | ! | I I | | [ModBlock2D (512,256) | — [eTPF be ModFC(16,16) | | ro(izsi2) | | LModBlocksD@2560 Moar O(2563/]! | Up (2x) ModFCU6,3) |! —r— |! v | | [MoaBlock2D (256,128) | [GPF }+-} _ 1 FO(12512) 1 | 1 \\ a _ FO(512,512) | | ModBlock*D(a,b) f ModFC(a,b) tTPF(a) [i Ati te ! i FC(512,512) 1 v peas (2x) a-~ a-~ i Modulation FC(612,512) 1 aw (D— Conv*D(a,b,3) M—», w-, 'D Demodulation | —_ \\ —Tr _ Conv*D(a,b,1) ' | 1 | | RO Reshape \\ ow eet? | A+M—D-— Conv*D(ab,3) D— Fc(ap) Conv2D(a,961) | Leaky ReLU | | t { T rT 1 © Summation — | to“ 1o |\n\nFigure B: Network architecture of GET3D. TI and PE denote trilinear interpolation and positional encoding, respectively. FC(a,b) represents a fully connected layer with a and b denoting the input and output dimension, respectively. Similarly, Conv3D(a,b,c) denotes a 3D convolutional layer with a input channels, b output channels, and kernel dimension c × c × c. In the Texture Generator, the block ModBlock2D(512,512) is repeated four times. All convolutional layers have stride 1.\n\nNote that for simplicity, we remove all the noise vector from StyleGAN [34, 35] and only have stochasticity in the input z. Furthermore, following practices from DEFTET [22] and DMTET [60], we us two copies of the geometry generator. One generates the vertex offsets ∆v, while the other outputs the SDF values s. The architecture of both is the same, except for the output dimension and activation function of the last layer.\n\nVolume Subdivision: In cases where modeling at a high- resolution is required (e.g. motorbike with thin structures in the wheels), we further use volume subdivision following DMTET [60]. As illustrated in Fig. A, we ﬁrst subdivide the tetrahedral grid and compute SDF values of the new vertices (midpoints) by averaging the SDF values on the edge. Then we identify tetrahedra that have vertices with different SDF signs. These are the tetrahedra that intersect with the underlying surface encode by SDF. To reﬁne the surface at increased grid resolution after subdivision, we further predict the residual on SDF values and deformations to update s and ∆v of the vertices in identiﬁed tetrahedra. Speciﬁcally, we use an additional 3D convolutional layer to upsample feature vol-\n\n_\n\nFigure A: With volume subdivi- sion, each tetrahedron is divided into 8 smaller tetrahedra by con- necting midpoints.\n\nume F%,,, to FZ, of shape 64 x 64 x 64 x 8 conditioned on w;. Then, following the steps described above, we use trilinear interpolation to obtain per-vertex feature, concatenate it with PE and decode the residuals 5s and dv using conditional FC layers. The final SDF and vertex offset are computed as:\n\ns'=8s+6s, Av’ = Av +ov. (6)",
+            "section": "results",
+            "section_idx": 1,
+            "citations": [
+                "34, 35",
+                "35",
+                "34, 35",
+                "22",
+                "60",
+                "60"
+            ]
+        },
+        {
+            "text": "A.4 2D Discriminator\n\nWe use two discriminators to train GET3D: one for the RGB output and one for the 2D silhouettes. For both, we use exactly the same architecture as the discriminator in StyleGAN [34]. Empirically, we have observed that conditioning the discriminator on the camera pose leads to canonicalization of the shape orientations. However, discarding this conditioning only slightly affects the performance, as shown in Section C.3. In fact, we primarily use this conditioning to enable the evaluation of geometry using evaluation metrics, which assume that the shapes are generated in the canonical frame.\n\nA.5 Improved Generator\n\nThe motivation for sampling two noise vectors (z1, z2) in the generator is to enable disentanglement of the geometry and texture, where geometry is to be treated as a ﬁrst-class citizen. Indeed, the geometry should only be controlled by the geometry latent code, while the texture should be able to not only adapt to the changes in the texture latent code, but also to the changes in geometry, i.e. a change in the geometry latent should propagate to the texture. However, in the original design of the GET3D generator (c.f. Sec. 3 and Fig. 2) the information ﬂow from the geometry to the texture generator is very limited—concatenation of the two latent codes (Fig. B). Such a weak connection makes it hard to learn the disentanglement of geometry and texture and the texture generator can even learn to ignore the texture latent code (Fig. D.).\n\nThis empirical observation motivated us to improve the design of the generator network, after the initial submission, by improving the information ﬂow, which in turn better supports the disentangle- ment of the geometry and texture. To this end, our improved generator shares the same backbone network for both geometry and texture generation, as shown in Fig. C. In particular, we follow SemanticGAN [38] and use StyleGAN2 [35] backbone. Each ModBlock2D (modulated with the geometry latent code w1), now has two tTPF branches, one for generating the geometry feature (tGEO), and the other for generating texture features (tTEX). The output of this backbone network are two feature triplanes, one for geometry and one for texture. To predict the SDF value and deformation\n\n17\n\nFigure D: Disentanglement of geometry and texture achieved by the original model depicted in Fig. 2. In each row, we show shapes generated from the same texture latent code, while changing the geometry latent code. In each column, we show shapes generated from the same geometry latent code, while changing the texture code. The original model fails to achieve good disentanglement.\n\nfor each vertex in the tetrahedral grid, we project the vertex onto each of the geometry triplanes, obtain its feature vector using Eq. 7, and ﬁnally use a ModFC to decode si and ∆vi. The prediction of the color in the texture branch remains unchanged.\n\nQualitative result of the geometry and texture disentanglement achieved with this improved generator is depicted in Fig. E and F. Shared backbone network allows us to achieve much better disentangle- ment of geometry and texture (Fig. D vs Fig. E), while also achieving better quantitative metrics on the task of unconditional generation (Tab. 2).",
+            "section": "results",
+            "section_idx": 2,
+            "citations": [
+                "34",
+                "38",
+                "35"
+            ]
+        },
+        {
+            "text": "B.3 Evaluation Metrics\n\nTo evaluate the performance, we compare both the texture and geometry of the generated shapes Sg to the reference ones Sr.\n\nB.3.1 Evaluating the Geometry\n\nTo evaluate the geometry, we use all shapes of the test set as Sr, and synthesize ﬁve times as many generated shapes, such that |Sg| = 5|Sr|, where | · | denotes the cardinality of a set. Following prior work [68, 14], we use Chamfer Distance dCD and Light Field Distance dLFD [13] to measure the similarity of the shapes, which is in turn used to compute Coverage (COV) and Minimum Matching Distance (MMD) evaluation metrics.\n\nLet X ∈ Sg denote a generated shape and Y ∈ Sr a reference one. To compute dCD, we ﬁrst randomly sample N = 2048 points Xp ∈ RN×3 and Yp ∈ RN×3 from the surface of the shapes X and Y , respectively11 . The dCD can then be computed as:\n\ndep(Xp Yo) = DP min |ix—y|[-+ YJ min px — yll3- (8) xeXp ” yeYyp\n\nWhile Chamfer distance has been widely used in the ﬁeld of 3D generative models and reconstruc- tion [11, 22, 60], LFD has received a lot attention in computer graphics [13]. Inspired by human perception, LFD measures the similarity between the 3D shapes based on their appearance from different viewpoints. In particular, LFD renders the shapes X and Y (represented as explicit meshes) from a set of selected viewpoints, encodes the rendered images using Zernike moments and Fourier descriptors, and computes the similarity over these encodings. Formal deﬁnition of LFD is available in [13]. In our evaluation, we use the ofﬁcial implementation to compute dLFD 12.\n\nWe combine these similarity measures with the evaluation metrics proposed in [5], which are commonly used to evaluate 3D generative models:\n\n• Coverage (COV) measures the fraction of shapes in the reference set that are matched to at least one of the shapes in the generated set. Formally, COV is deﬁned as\n\nCOV(Sg,Sr) = |{argminX∈Sr D(X,Y )|Y ∈ Sg}| |Sr| , (9)\n\nwhere the distance metric D can be either dCD or dLFD. Intuitively, COV measures the diversity of the generated shapes and is able to detect mode collapse. However, COV does",
+            "section": "results",
+            "section_idx": 3,
+            "citations": [
+                "68, 14",
+                "13",
+                "11, 22, 60",
+                "13",
+                "13",
+                "5"
+            ]
+        },
+        {
+            "text": "C Additional Results on the Unconditioned Shape Generation\n\nIn this section we provide additional results on the task of unconditional 3D shape generation. First, we perform additional qualitative comparison of GET3D with the baselines in Section C.1. Second, we present further qualitative results of GET3D in Section C.2. Third, we provide additional ablation studies in Section C.3. We also analyse the robustness and effectiveness of GET3D. Speciﬁcally, in Sec. C.4 and C.5, we evaluate GET3D trained with noisy cameras and 2D silhouettes predicted by 2D segmentation networks. We further provide addition experiments on StyleGAN generated realistic dataset from GANverse3D [73] in Sec. C.6. Finally, we provide additional comparison with EG3D [8] on human character generation in Sec. C.7.\n\nC.1 Additional Qualitative Comparison with the Baselines\n\nComparing the Geometry of Generated Shapes We provide additional visualization of the 3D shapes generated by GET3D and compare them to the baseline methods in Figure Q. GET3D is able to generate shapes with complex geometry, different topology, and varying genus. When compared to the baselines, the shapes generated by GET3D contain more details and are more diverse.\n\n13Inception network checkpoint path: http://download.tensorflow.org/models/image/imagenet/ inception-2015-12-05.tgz\n\n22\n\naa? sie -\n\nGG. 7. Eke L\n\nPoa d | eat ore\n\n| ore a cue Oh Gi egy Oth Vr avy BM Or\n\nTHtitidiid\n\nmie ee de\n\nFigure G: Shape retrieval of our generated shapes. We retrieve the closest shape in the training set for each of shapes we showed in the Figure 1. Our generator is able to generate novel shapes that are different from the training set\n\n. Mt 0.25 0.2 Two Discriminators Single Discriminator 0.15, 0.1 0.0 ne A ie} 2k 4k 6k 8k 10k 12k 14k\n\nFigure H: Training loss curve for discriminator. We compare the training dynamics of using a single discriminator on both RGB image and 2D silhouette, with the ones using two discriminators for each image, respectively. The horizontal axis represents the number of images that the discriminators have seen during training (mod by 1000). Two discriminators greatly reduce training instability and help us obtain good results.\n\nComparing the Synthesized Images We provide additional results on the task of 2D image generation in Figure R. Even though GET3D is not designed for this task, it produces comparable results to the strong baseline EG3D [8], while signiﬁcantly outperforming other baselines, such as PiGAN [7] and GRAF [57]. Note that GET3D directly outputs 3D textured meshes, which are compatible with standard graphics engines, while extracting such representation from the baselines is non-trivial.",
+            "section": "results",
+            "section_idx": 4,
+            "citations": [
+                "73",
+                "8",
+                "8",
+                "7",
+                "57"
+            ]
+        },
+        {
+            "text": "C.2 Additional Qualitative Results of GET3D\n\nWe provide additional visualizations of the generated geometry and texture in Figures S-X. GET3D can generate high quality shapes with diverse textures across all the categories, from chairs, cars, and animals, to motorbikes, humans, and houses. Accompanying video (demo.mp4) contains further visualizations, including detailed 360◦ turntable animations for 400+ shapes and interpolation results.\n\nClosest Shape Retrieval To demonstrate that GET3D is capable of generating novel shapes, we perform shape retrieval for our generated shapes. In particular, we retrieve the closest shape in the training set for each of shapes we showed in the Figure 1 by measuring the CD between the generated\n\n23\n\nTwo Discriminators Single Discriminator Bp yn homme rrncl enfin 0 2k 4k 6k 8k 10k 12k 14k\n\nFigure I: Training loss curve for generator. We compare the training dynamics for using single discriminator on both RGB image and 2D silhouette with two discriminators for each image, respec- tively. The horizontal axis represents the number of images discriminator have seen during training (mod by 1000).\n\nModel FID GET3D w.o. Camera Condition 11.63 GET3D w/ Camera Condition 10.25\n\nTable B: Ablations on using camera condition: We ablate using camera condition for discriminator. We train the model on Shapenet Car dataset.\n\nshape and all training shapes. Results are provided in Figure G. All generated shapes in Figure 1 signiﬁcantly differ from their closest shape in the training set, exhibiting different geometry and texture, while still maintaining the quality and diversity.\n\nVolume Subdivision We provide further qualitative results highlighting the beneﬁts of volume subdivision in Figure Y. Speciﬁcally, we compare the shapes generated with and without volume subdivision on ShapeNet motorbike category. Volume subdivision enables GET3D to generate ﬁner geometric details like handle and steel wire, which are otherwise hard to represent.\n\nC.3 Additional Ablations Studies\n\nWe now provide additional ablation studies in an attempt to further justify our design choices. In particular, we ﬁrst discuss the design choice of using two dedicated discriminators for RGB images and 2D silhouettes, before ablating the impact of adding the camera pose conditioning to the discriminator.",
+            "section": "results",
+            "section_idx": 5,
+            "citations": []
+        },
+        {
+            "text": "5 Conclusion\n\nWe introduced GET3D, a novel 3D generative model that is able to synthesize high-quality 3D textured meshes with arbitrary topology. GET3D is trained using only 2D images as supervision. We experimentally demonstrated signiﬁcant improvements on generating 3D shapes over previous state-of-the-art methods on multiple categories. We hope that this work brings us one step closer to democratizing 3D content creation using A.I..\n\nLimitations While GET3D makes a signiﬁcant step towards a practically useful 3D generative model of 3D textured shapes, it still has some limitations. In particular, we still rely on 2D silhouettes as well as the knowledge of camera distribution during training. As a consequence, GET3D was currently only evaluated on synthetic data. A promising extension could use the advances in instance segmentation and camera pose estimation to mitigate this issue and extend GET3D to real-world data. GET3D is also trained per-category; extending it to multiple categories in the future, could help us better represent the inter-category diversity.\n\nBroader Impact We proposed a novel 3D generative model that generates 3D textured meshes, which can be readily imported into current graphics engines. Our model is able to generate shapes with arbitrary topology, high quality textures and rich geometric details, paving the path for democratizing A.I. tool for 3D content creation. As all machine learning models, GET3D is also prone to biases introduced in the training data. Therefore, an abundance of caution should be applied when dealing with sensitive applications, such as generating 3D human bodies, as GET3D is not tailored for these applications. We do not recommend using GET3D if privacy or erroneous recognition could lead to potential misuse or any other harmful applications. Instead, we do encourage practitioners to carefully inspect and de-bias the datasets before training our model to depict a fair and wide distribution of possible skin tones, races or gender identities.",
+            "section": "conclusion",
+            "section_idx": 0,
+            "citations": []
+        },
+        {
+            "text": "2\n\n2022\n\n2\n\n0\n\n2\n\np e S 2 2 ] V C . s c [ 1 v 3 6 1 1 1 . 9 0 2 2\n\n:\n\nv\n\ni\n\nX\n\nr\n\na\n\nGET3D: A Generative Model of High Quality 3D Textured Shapes Learned from Images\n\nJun Gao1,2,3\n\nTianchang Shen1,2,3\n\nZian Wang1,2,3\n\nWenzheng Chen1,2,3\n\nDaiqing Li1 Or Litany1 Zan Gojcic1 Sanja Fidler1,2,3\n\nKangxue Yin1\n\nNVIDIA1 University of Toronto2 Vector Institute3\n\n{jung, frshen, zianw, wenzchen, kangxuey, daiqingl, olitany, zgojcic, sfidler}@nvidia.com\n\nAbstract\n\nAs several industries are moving towards modeling massive 3D virtual worlds, the need for content creation tools that can scale in terms of the quantity, quality, and diversity of 3D content is becoming evident. In our work, we aim to train performant 3D generative models that synthesize textured meshes that can be directly consumed by 3D rendering engines, thus immediately usable in down- stream applications. Prior works on 3D generative modeling either lack geometric details, are limited in the mesh topology they can produce, typically do not support textures, or utilize neural renderers in the synthesis process, which makes their use in common 3D software non-trivial. In this work, we introduce GET3D, a Generative model that directly generates Explicit Textured 3D meshes with complex topology, rich geometric details, and high ﬁdelity textures. We bridge recent success in the differentiable surface modeling, differentiable rendering as well as 2D Generative Adversarial Networks to train our model from 2D image collections. GET3D is able to generate high-quality 3D textured meshes, rang- ing from cars, chairs, animals, motorbikes and human characters to buildings, achieving signiﬁcant improvements over previous methods. Our project page: https://nv-tlabs.github.io/GET3D\n\n1 Introduction\n\nDiverse, high-quality 3D content is becoming increasingly important for several industries, including gaming, robotics, architecture, and social platforms. However, manual creation of 3D assets is very time-consuming and requires speciﬁc technical knowledge as well as artistic modeling skills. One of the main challenges is thus scale – while one can ﬁnd 3D models on 3D marketplaces such as Turbosquid [4] or Sketchfab [3], creating many 3D models to, say, populate a game or a movie with a crowd of characters that all look different still takes a signiﬁcant amount of artist time.\n\nTo facilitate the content creation process and make it accessible to a variety of (novice) users, generative 3D networks that can produce high-quality and diverse 3D assets have recently become an active area of research [5, 14, 43, 46, 53, 68, 75, 60, 59, 69, 23]. However, to be practically useful for current real-world applications, 3D generative models should ideally fulﬁll the following requirements: (a) They should have the capacity to generate shapes with detailed geometry and arbitrary topology, (b) The output should be a textured mesh, which is a primary representation used by standard graphics software packages such as Blender [15] and Maya [1], and (c) We should be able to leverage 2D images for supervision, as they are more widely available than explicit 3D shapes.\n\nPrior work on 3D generative modeling has focused on subsets of the above requirements, but no method to date fulﬁlls all of them (Tab. 1). For example, methods that generate 3D point clouds [5,\n\n36th Conference on Neural Information Processing Systems (NeurIPS 2022).\n\nMethod Application Representation | Supervision Textured mesh —_ Arbitrary topology OceNet [43] 3D generation Implicit 3D x Vv PointFlow [68] | 3D generation Point cloud 3D x v Texture3D [53] | 3D generation Mesh 2D v xK StyleNerf [25] | 3D-aware NV Neural field 2D x Vv EG3D [8] 3D-aware NV Neural field 2D x Vv PiGAN [7] 3D-aware NV Neural field 2D x v GRAF [57] 3D-aware NV Neural field 2D x v Ours 3D generation Mesh 2D 7 7\n\nTable 1: Comparison with prior works. (NV: Novel view synthesis.)\n\n68, 75] typically do not produce textures and have to be converted to a mesh in post-processing. Methods generating voxels often lack geometric details and do not produce texture [66, 20, 27, 40]. Generative models based on neural ﬁelds [43, 14] focus on extracting geometry but disregard texture. Most of these also require explicit 3D supervision. Finally, methods that directly output textured 3D meshes [54, 53] typically require pre-deﬁned shape templates and cannot generate shapes with complex topology and variable genus.\n\nRecently, rapid progress in neural volume rendering [45] and 2D Generative Adversarial Networks (GANs) [34, 35, 33, 29, 52] has led to the rise of 3D-aware image synthesis [7, 57, 8, 49, 51, 25]. However, this line of work aims to synthesize multi-view consistent images using neural rendering in the synthesis process and does not guarantee that meaningful 3D shapes can be generated. While a mesh can potentially be obtained from the underlying neural ﬁeld representation using the marching cube algorithm [39], extracting the corresponding texture is non-trivial.\n\nIn this work, we introduce a novel approach that aims to tackle all the requirements of a practically useful 3D generative model. Speciﬁcally, we propose GET3D, a Generative model for 3D shapes that directly outputs Explicit Textured 3D meshes with high geometric and texture detail and arbitrary mesh topology. In the heart of our approach is a generative process that utilizes a differentiable explicit surface extraction method [60] and a differentiable rendering technique [47, 37]. The former enables us to directly optimize and output textured 3D meshes with arbitrary topology, while the latter allows us to train our model with 2D images, thus leveraging powerful and mature discriminators developed for 2D image synthesis. Since our model directly generates meshes and uses a highly efﬁcient (differentiable) graphics renderer, we can easily scale up our model to train with image resolution as high as 1024 × 1024, allowing us to learn high-quality geometric and texture details.\n\nWe demonstrate state-of-the-art performance for unconditional 3D shape generation on multiple categories with complex geometry from ShapeNet [9], Turbosquid [4] and Renderpeople [2], such as chairs, motorbikes, cars, human characters, and buildings. With explicit mesh as output representation, GET3D is also very ﬂexible and can easily be adapted to other tasks, including: (a) learning to generate decomposed material and view-dependent lighting effects using advanced differentiable rendering [12], without supervision, (b) text-guided 3D shape generation using CLIP [56] embedding.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "4",
+                "3",
+                "5, 14, 43, 46, 53, 68, 75, 60, 59, 69, 23",
+                "15",
+                "1",
+                "43",
+                "68",
+                "53",
+                "25",
+                "8",
+                "7",
+                "57",
+                "66, 20, 27, 40",
+                "43, 14",
+                "54, 53",
+                "45",
+                "34, 35, 33, 29, 52",
+                "7, 57, 8, 49, 51, 25",
+                "39",
+                "60",
+                "47, 37",
+                "9",
+                "4",
+                "2",
+                "12",
+                "56"
+            ]
+        },
+        {
+            "text": "2 Related Work\n\nWe review recent advances in 3D generative models for geometry and appearance, as well as 3D-aware generative image synthesis.\n\n3D Generative Models In recent years, 2D generative models have achieved photorealistic quality in high-resolution image synthesis [34, 35, 33, 52, 29, 19, 16]. This progress has also inspired research in 3D content generation. Early approaches aimed to directly extend the 2D CNN generators to 3D voxel grids [66, 20, 27, 40, 62], but the high memory footprint and computational complexity of 3D convolutions hinder the generation process at high resolution. As an alternative, other works have explored point cloud [5, 68, 75, 46], implicit [43, 14], or octree [30] representations. However, these works focus mainly on generating geometry and disregard appearance. Their output representations also need to be post-processed to make them compatible with standard graphics engines.\n\nMore similar to our work, Textured3DGAN [54, 53] and DIBR [11] generate textured 3D meshes, but they formulate the generation as a deformation of a template mesh, which prevents them from generating complex topology or shapes with varying genus, which our method can do. PolyGen [48] and SurfGen [41] can produce meshes with arbitrary topology, but do not synthesize textures.\n\n2\n\nag, GB A ee, SS ae\n\nGeen we E be\n\nie Medak 1. Anand\n\nISSReeeees\n\nFigure 1: We export our generated shapes and visualize them in Blender. GET3D is able to generate diverse shapes with arbitrary topology, high quality geometry, and texture.\n\n3D-Aware Generative Image Synthesis Inspired by the success of neural volume rendering [45] and implicit representations [43, 14], recent work started tackling the problem of 3D-aware image synthesis [7, 57, 49, 26, 25, 76, 8, 51, 58, 67]. However, neural volume rendering networks are typically slow to query, leading to long training times [7, 57], and generate images of limited resolution. GIRAFFE [49] and StyleNerf [25] improve the training and rendering efﬁciency by performing neural rendering at a lower resolution and then upsampling the results with a 2D CNN. However, the performance gain comes at the cost of a reduced multi-view consistency. By utilizing a dual discriminator, EG3D [8] can partially mitigate this problem. Nevertheless, extracting a textured surface from methods that are based on neural rendering is a non-trivial endeavor. In contrast, GET3D directly outputs textured 3D meshes that can be readily used in standard graphics engines.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "34, 35, 33, 52, 29, 19, 16",
+                "66, 20, 27, 40, 62",
+                "5, 68, 75, 46",
+                "43, 14",
+                "30",
+                "54, 53",
+                "11",
+                "48",
+                "41",
+                "45",
+                "43, 14",
+                "7, 57, 49, 26, 25, 76, 8, 51, 58, 67",
+                "7, 57",
+                "49",
+                "25",
+                "8"
+            ]
+        },
+        {
+            "text": "3.1.2 Texture Generator\n\nDirectly generating a texture map consistent with the output mesh is not trivial, as the generated shape can have an arbitrary genus and topology. We thus parameterize the texture as a texture ﬁeld [50].\n\n4\n\nSpeciﬁcally, we model the texture ﬁeld with a function ft that maps the 3D location of a surface point p ∈ R3, conditioned on the w2, to the RGB color c ∈ R3 at that location. Since the texture ﬁeld depends on geometry, we additionally condition this mapping on the geometry latent code w1, such that c = ft(p,w1 ⊕ w2), where ⊕ denotes concatenation.\n\nNetwork Architecture We represent our texture ﬁeld using a tri-plane representation, which is efﬁcient and expressive in reconstructing 3D objects [55] and generating 3D-aware images [8] . Speciﬁcally, we follow [8, 35] and use a conditional 2D convolutional neural network to map the latent code w1 ⊕w2 to three axis-aligned orthogonal feature planes of size N ×N ×(C ×3), where N = 256 denotes the spatial resolution and C = 32 the number of channels.\n\nGiven the feature planes, the feature vector f’ € R* of a surface point p can be recovered as f' = >. p(we(p)), where 7-(p) is the projection of the point p to the feature plane e and p(-) denotes bilinear interpolation of the features. An additional fully connected layer is then used to map the aggregated feature vector f’ to the RGB color c. Note that, different from other works on 3D-aware image synthesis [8, 25, 7, 57] that also use a neural field representation, we only need to sample the texture field at the locations of the surface points (as opposed to dense samples along a ray). This greatly reduces the computational complexity for rendering high-resolution images and guarantees to generate multi-view consistent images by construction.\n\n3.2 Differentiable Rendering and Training\n\nIn order to supervise our model during training, we draw inspiration from Nvdiffrec [47] that performs multi-view 3D object reconstruction by utilizing a differentiable renderer. Speciﬁcally, we render the extracted 3D mesh and the texture ﬁeld into 2D images using a differentiable renderer [37], and supervise our network with a 2D discriminator, which tries to distinguish the image from a real object or rendered from the generated object.\n\nDifferentiable Rendering We assume that the camera distribution C that was used to acquire the images in the dataset is known. To render the generated shapes, we randomly sample a camera c from C, and utilize a highly-optimized differentiable rasterizer Nvdiffrast [37] to render the 3D mesh into a 2D silhouette as well as an image where each pixel contains the coordinates of the corresponding 3D point on the mesh surface. These coordinates are further used to query the texture ﬁeld to obtain the RGB values. Since we operate directly on the extracted mesh, we can render high-resolution images with high efﬁciency, allowing our model to be trained with image resolution as high as 1024×1024.\n\nDiscriminator & Objective We train our model using an adversarial objective. We adopt the discriminator architecture from StyleGAN [34], and use the same non-saturating GAN objective with R1 regularization [42]. We empirically ﬁnd that using two separate discriminators, one for RGB images and another one for silhouettes, yields better results than a single discriminator operating on both. Let Dx denote the discriminator, where x can either be an RGB image or a silhouette. The adversarial objective is then be deﬁned as follows:\n\nL(Dx,G) = Ez∈N,c∈C[g(Dx(R(G(z),c)))] + EIx∈px[g(−Dx(Ix)) + λ||∇Dx(Ix)||2\n\n2],\n\nwhere g(u) is deﬁned as g(u) = −log(1+exp(−u)), px is the distribution of real images, R denotes rendering, and λ is a hyperparameter. Since R is differentiable, the gradients can be backpropagated from 2D images to our 3D generators.\n\nRegularization To remove internal ﬂoating faces that are not visible in any of the views, we further regularize the geometry generator with a cross-entropy loss deﬁned between the SDF values of the neighboring vertices [47]:\n\nLreg = H (σ(si),sign(sj)) + H (σ(sj),sign(si)), i,j∈Se (2)\n\nwhere H denotes binary cross-entropy loss and o denotes the sigmoid function. The sum in Eq. 2 is defined over the set of unique edges S, in the tetrahedral grid, for which sign(s;) # sign(s,).\n\nThe overall loss function is then deﬁned as:\n\nL = L(Drgb,G) + L(Dmask,G) + µLreg, (3)\n\nwhere µ is a hyperparameter that controls the level of regularization.\n\n5\n\n(1)\n\nCategory Method COV (%, ↑) MMD (↓) FID (↓) LFD CD LFD CD Ori 3D PointFlow [68] 51.91 57.16 1971 0.82 - - OccNet [43] 27.29 42.63 1717 0.61 - - Pi-GAN [7] 0.82 0.55 6626 25.54 52.82 104.29 Car GRAF [57] EG3D [8] 1.57 60.16 1.57 49.52 6012 1527 10.63 0.72 49.95 15.52 52.85 21.89 Ours 66.78 58.39 1491 0.71 10.25 10.25 Ours+Subdiv. 62.48 55.93 1553 0.72 12.14 12.14 Ours (improved G) 59.00 47.95 1473 0.81 10.60 10.60 PointFlow [68] 49.58 71.87 3755 3.03 - - OccNet [43] 61.10 67.13 3494 3.98 - - Pi-GAN [7] 53.76 39.65 4092 6.65 65.70 120.53 Chair GRAF [57] EG3D [8] 50.23 58.31 39.28 50.14 4055 3444 6.80 4.72 43.82 38.87 61.63 46.06 Ours 69.08 69.91 3167 3.72 23.28 23.28 Ours+Subdiv. 71.59 70.84 3163 3.95 23.17 23.17\n\nCategory Method COV (%, ↑) MMD (↓) FID (↓) LFD CD LFD CD Ori 3D PointFlow [68] 50.68 63.01 4023 1.38 - - OccNet [43] 30.14 47.95 4551 2.04 - - Pi-GAN [7] 2.74 6.85 8864 21.08 72.67 131.38 Mbike GRAF [57] EG3D [8] 43.84 38.36 50.68 34.25 4528 4199 2.40 2.21 83.20 66.38 113.39 89.97 Ours 67.12 67.12 3631 1.72 65.60 65.60 Ours+Subdiv. 63.01 61.64 3440 1.79 54.12 54.12 Ours (improved G) 69.86 65.75 3393 1.79 48.90 48.90 PointFlow [68] 42.70 74.16 4885 1.68 - - OccNet [43] 56.18 75.28 4418 2.39 - - Pi-GAN [7] 31.46 30.34 6084 8.37 36.26 150.86 Animal GRAF [57] EG3D [8] 60.67 74.16 61.80 58.43 5083 4889 4.81 3.42 42.07 40.03 52.48 83.47 Ours 79.77 78.65 3798 2.02 28.33 28.33 Ours+Subdiv. 66.29 74.16 3864 2.03 28.49 28.49",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "50",
+                "55",
+                "8",
+                "8, 35",
+                "8, 25, 7, 57",
+                "47",
+                "37",
+                "37",
+                "34",
+                "42",
+                "47",
+                "68",
+                "43",
+                "7",
+                "57",
+                "8",
+                "68",
+                "43",
+                "7",
+                "57",
+                "8",
+                "68",
+                "43",
+                "7",
+                "57",
+                "8",
+                "68",
+                "43",
+                "7",
+                "57",
+                "8"
+            ]
+        },
+        {
+            "text": "Ours (improved G)\n\n71.96\n\n71.96\n\n3125\n\n3.96\n\n22.41\n\n22.41\n\nOurs (improved G)\n\n74.16\n\n82.02\n\n3767\n\n1.97\n\n27.18\n\n27.18\n\nTable 2: Quantitative evaluation of generation results: ↑: the higher the better, ↓: the lower the better. The best scores are highlighted in bold. MMD-CD scores are multiplied by 103. The results of Ours (improved G) were obtained after the review process by improving the design of the generator network architecture G (see Appendix A.5 for more details).\n\n3\n\n2 =\n\na a ~ = = 1 — é meds = ee a\n\nPointFlow\n\nOccNet\n\nPiGAN\n\nGRAF\n\nEG3D\n\nOurs-tex\n\nFigure 3: Qualitative comparison of GET3D to the baseline methods in terms of extracted 3D geometry. GET3D is able to generate shapes with much higher geometric detail across all categories.\n\n4 Experiments\n\nWe conduct extensive experiments to evaluate our model. We ﬁrst compare the quality of the 3D textured meshes generated by GET3D to the existing methods using the ShapeNet [9] and Turbosquid [4] datasets. Next, we ablate our design choices in Sec. 4.2. Finally, we demonstrate the ﬂexibility of GET3D by adapting it to downstream applications in Sec. 4.3. Additional experimental results and implementation details are provided in Appendix.\n\n4.1 Experiments on Synthetic Datasets\n\nDatasets For evaluation on ShapeNet [9], we use three categories with complex geometry – Car, Chair, and Motorbike, which contain 7497, 6778, and 337 shapes, respectively. We randomly split each category into training (70%), validation (10 %), and test (20 %), and further remove from the test set shapes that have duplicates in the training set. To render the training data, we randomly sample camera poses from the upper hemisphere of each shape. For the Car and Chair categories, we use 24 random views, while for Motorbike we use 100 views due to less number of shapes. As models in ShapeNet only have simple textures, we also evaluate GET3D on an Animal dataset (442 shapes) collected from TurboSquid [4], where textures are more detailed and we split it into training, validation and test as deﬁned above. Finally, to demonstrate the versatility of GET3D, we also provide qualitative results on the House dataset collected from Turbosquid (563 shapes), and Human Body dataset from Renderpeople [2] (500 shapes). We train a separate model on each category.\n\n6\n\n= & | <\n\nE|",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "9",
+                "4",
+                "9",
+                "4",
+                "2"
+            ]
+        },
+        {
+            "text": "OG\n\nChair\n\nMotorbike\n\nPiGAN\n\nFigure 4: Qualitative comparison of GET3D to the baseline methods in terms of generated 2D images. GET3D generates sharp textures with high level of detail.\n\nCmocns £8E\n\nwee\n\neee\n\nZee\n\nLIL\n\not\n\nEre?\n\nRh\n\nSwe)\n\ney\n\nWatney\n\na eioge\n\nSyaroei\n\nSyetoy?\n\nif\n\nTt\n\nB88\n\nsae\n\nTi\n\nTi)\n\naw\n\nsee\n\nFigure 5: Shapes generated by GET3D rendered in Blender. GET3D generates high-quality shapes with diverse texture, high-quality geometry, and complex topology. Zoom-in for details.\n\nBaselines We compare GET3D to two groups of works: 1) 3D generative models that rely on 3D supervision: PointFlow [68] and OccNet [43]. Note that these methods only generate geometry without texture. 2) 3D-aware image generation methods: GRAF [57], PiGAN [7], and EG3D [8].\n\nMetrics To evaluate the quality of our synthesis, we consider both the geometry and texture of the generated shapes. For geometry, we adopt metrics from [5] and use both Chamfer Distance (CD) and Light Field Distance [10] (LFD) to compute the Coverage score and Minimum Matching Distance. For OccNet [43], GRAF [57], PiGAN [7] and EG3D [8], we use marching cubes to extract the underlying geometry. For PointFlow [68], we use Poisson surface reconstruction to convert a point cloud into a mesh when evaluating LFD. To evaluate texture quality, we adopt the FID [28] metric commonly used to evaluate image synthesis. In particular, for each category, we render the test shapes into 2D images, and also render the generated 3D shapes from each model into 50k images using the same camera distribution. We then compute FID on the two image sets. As the baselines from 3D-aware image synthesis [57, 7, 8] do not directly output textured meshes, we compute FID score in two ways: (i) we use their neural volume rendering to obtain 2D images, which we refer to as FID-Ori, and (ii) we extract the mesh from their neural ﬁeld representation using marching cubes, render it, and then use the 3D location of each pixel to query the network to obtain the RGB values. We refer to this score, that is more aware of the actual 3D shape, as FID-3D. Further details on the evaluation metrics are available in the Appendix B.3.\n\nExperimental Results We provide quantitative results in Table. 2 and qualitative examples in Fig. 3 and Fig. 4. Additional results are available in the supplementary video. Compared to OccNet [43] that\n\n7\n\nah, Bi Be Ke, GH GH, BH, SH, SB, SB,\n\nee eee\n\nFigure 6: Shape interpolation. We interpolate both geometry and texture latent codes from left to right.\n\nFigure 7: Shape variation. We locally perturb each latent code to generate different shapes.\n\nuses 3D supervision during training, GET3D achieves better performance in terms of both diversity (COV) and quality (MMD), and our generated shapes have more geometric details. PointFlow [68] outperforms GET3D in terms of MMD on CD, while GET3D is better in MMD on LFG. We hypothesize that this is because PointFlow directly optimizes on point locations, which favours CD. GET3D also performs favourably when compared to 3D-aware image synthesis methods, we achieve signiﬁcant improvements over PiGAN [7] and GRAF [57] in terms of all metrics on all datasets. Our generated shapes also contain more detailed geometry and texture. Compared with recent work EG3D [8]. We achieve comparable performance on generating 2D images (FID-ori), while we signiﬁcantly improve on 3D shape synthesis in terms of FID-3D, which demonstrates the effectiveness of our model on learning actual 3D geometry and texture.\n\nSince we synthesize textured meshes, we can export our shapes into Blender1. We show rendering\n\nresults in Fig. 1 and 5. GET3D is able to generate shapes with diverse and high quality geometry and topology, very thin structures (motorbikes), as well as complex textures on cars, animals, and houses.\n\nShape Interpolation GET3D also enables shape interpolation, which can be useful for editing purposes. We explore the latent space of GET3D in Fig. 6, where we interpolate the latent codes to generate each shape from left to right. GET3D is able to faithfully generate a smooth and meaningful transition from one shape to another. We further explore the local latent space by slightly perturbing the latent codes to a random direction. GET3D produces novel and diverse shapes when applying local editing in the latent space (Fig. 7).",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "68",
+                "43",
+                "57",
+                "7",
+                "8",
+                "5",
+                "10",
+                "43",
+                "57",
+                "7",
+                "8",
+                "68",
+                "28",
+                "57, 7, 8",
+                "43",
+                "68",
+                "7",
+                "57",
+                "8"
+            ]
+        },
+        {
+            "text": "4.2 Ablations\n\nWe ablate our model in two ways: 1) w/ and w/o volume subdivision, 2) training using different image resolutions. Further ablations are provided in the Appendix C.3.\n\nAblation of Volume Subdivision As shown in Tbl. 2, volume subdivision signiﬁcantly improves the performance on classes with thin structures (e.g., motorbikes), while not getting gains on other classes. We hypothesize that the initial tetrahedral resolution is already sufﬁcient to capture the de- tailed geometry on Chairs and Cars, and hence the subdivision cannot provide further improvements.\n\nClass Img Res COV (%, ↑) LFD CD MMD (↓) LFD CD FID (↓) Car 1282 5122 10242 9.28 52.32 66.78 8.25 44.13 58.39 2224 1593 1491 1.30 0.80 0.71 39.21 13.19 10.25 1282 38.25 33.98 3886 5.90 43.04 Chair Mbike 5122 10242 5122 10242 68.80 69.08 68.49 67.12 69.92 67.87 65.75 64.38 3149 3167 3421 3631 3.90 3.74 1.74 1.73 30.16 23.28 74.04 65.60 Animal 5122 10242 77.53 79.78 78.65 78.65 3828 3798 2.01 2.03 29.75 28.33\n\nAblating Different Image Resolutions We ab- late the effect of the training image resolution in Tbl. 3. As expected, increased image resolution\n\nTable 3: Ablating the image resolution. ↑: higher is better, ↓: lower is better.\n\n1We use xatlas [71] to get texture coordinates for the extracted mesh, from where we can warp our 3D mesh into a 2D plane and obtain the corresponding 3D location on the mesh surface for any position on the 2D plane. We then discretize the 2D plane into an image, and for each pixel, we query the texture ﬁeld using corresponding 3D location to obtain the RGB color to get the texture map.\n\n8\n\nBase Color Roughness Metallic Normal Relight 1 Specular 1 Relight 2. Specular 2\n\nFigure 8: Material generation and relighting. Despite being unsupervised, our model generates reasonable material properties, and can be realistically rendered with real-world HDR panoramas (bottom right). Normals are computed from the generated mesh. Note how specular effects change under two different lighting conditions.\n\nimproves the performance in terms of FID and shape quality, as the network can see more details, which are often not available in the low-resolution images. This corroborates the importance of training with higher image resolution, which are often hard to make use of for implicit-based methods.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "71"
+            ]
+        },
+        {
+            "text": "4.3 Applications\n\n4.3.1 Material Generation for View-dependent Lighting Effects\n\nGET3D can easily be extended to also generate surface materials that are directly usable in modern graphics engines. In particular, we follow the widely used Disney BRDF [6, 32] and describe the materials in terms of the base color (R3), metallic (R), and roughness (R) properties. As a result, we repurpouse our texture generator to now output a 5-channel reﬂectance ﬁeld (instead of only RGB). To accommodate differentiable rendering of materials, we adopt an efﬁcient spherical Gaussian (SG) based deferred rendering pipeline [12]. Speciﬁcally, we rasterize the reﬂectance ﬁeld into a G-buffer, and randomly sample an HDR image from a set of real-world outdoor HDR panoramas Slight = {LSG}K, where LSG ∈ R32×7 is obtained by ﬁtting 32 SG lobes to each panorama. The SG renderer [12] then uses the camera c to render an RGB image with view-dependent lighting effects, which we feed into the discriminator during training. Note that GET3D does not require material supervision during training and learns to generate decomposed materials in an unsupervised manner.\n\nWe provide qualitative results of generated surface materials in Fig. 8. Despite unsupervised, GET3D discovers interesting material decomposition, e.g., the windows are correctly predicted with a smaller roughness value to be more glossy than the car’s body, and the car’s body is discovered as more dielectric while the window is more metallic. Generated materials enable us to produce realistic relighting results, which can account for complex specular effects under different lighting conditions.\n\n4.3.2 Text-Guided 3D Synthesis\n\nSimilar to image GANs, GET3D also supports text-guided 3D content synthesis by ﬁne-tuning a pre-trained model under the guidance of CLIP [56]. Note that our ﬁnal synthesis result is a textured 3D mesh. To this end, we follow the dual-generator design from styleGAN-NADA [21], where a trainable copy Gt and a frozen copy Gf of the pre-trained generator are adopted. During optimization Gt and Gf both render images from 16 random camera views. Given a text query, we sample 500 pairs of noise vectors z1 and z2. For each sample, we optimize the parameters of Gt to minimize the directional CLIP loss [21] (the source text labels are “car”, “animal” and “house” for the corresponding categories), and select the samples with minimal loss. To accelerate this process, we ﬁrst run a small number of optimization steps for the 500 samples, then choose the top 50 samples with the lowest losses, and run the optimization for 300 steps. The results and comparison against a SOTA text-driven mesh stylization method, Text2Mesh [44], are provided in Fig. 9. Note that, [44] requires a mesh of the shape as an input to the method. We provide our generated meshes from the frozen generator as input meshes to it. Since it needs mesh vertices to be dense to synthesize surface details with vertex displacements, we further subdivide the input meshes with mid-point subdivision to make sure each mesh has 50k-150k vertices on average.\n\n9\n\n> Ry te\n\nText2Mesh\n\nOur results\n\nFigure 9: Text-guided 3D synthesis. Note that Text2Mesh [44] requires 3D mesh geometry as input. To fulﬁl the requirement, we provide our generated geometry as its input mesh.",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "6, 32",
+                "12",
+                "12",
+                "56",
+                "21",
+                "21",
+                "44",
+                "44",
+                "44"
+            ]
+        },
+        {
+            "text": "6 Disclosure of Funding\n\nThis work was funded by NVIDIA. Jun Gao, Tianchang Shen, Zian Wang and Wenzheng Chen acknowledge additional revenue in the form of student scholarships from University of Toronto and the Vector Institute, which are not in direct support of this work.\n\nReferences\n\n[1] Autodesk Maya, https://www.autodesk.com/products/maya/overview. Accessed: 2022-05-19.\n\n[2] Renderpeople, http://https://renderpeople.com/. Accessed: 2022-05-19.\n\n[3] Sketchfab, https://sketchfab.com/. Accessed: 2022-05-19.\n\n[4] Turbosquid by Shutterstock, https://www.turbosquid.com/. Accessed: 2022-05-19.\n\n[5] Panos Achlioptas, Olga Diamanti, Ioannis Mitliagkas, and Leonidas Guibas. Learning representations and generative models for 3d point clouds. In International conference on machine learning, pages 40–49. PMLR, 2018.\n\n10\n\n[6] Brent Burley and Walt Disney Animation Studios. Physically-based shading at disney. In ACM SIGGRAPH, volume 2012, pages 1–7. vol. 2012, 2012.\n\n[7] Eric Chan, Marco Monteiro, Petr Kellnhofer, Jiajun Wu, and Gordon Wetzstein. pi-gan: Periodic implicit generative adversarial networks for 3d-aware image synthesis. In Proc. CVPR, 2021.\n\n[8] Eric R Chan, Connor Z Lin, Matthew A Chan, Koki Nagano, Boxiao Pan, Shalini De Mello, Orazio Gallo, Leonidas J Guibas, Jonathan Tremblay, Sameh Khamis, et al. Efﬁcient geometry-aware 3d generative adversarial networks. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 16123–16133, 2022.\n\n[9] Angel X Chang, Thomas Funkhouser, Leonidas Guibas, Pat Hanrahan, Qixing Huang, Zimo Li, Silvio Savarese, Manolis Savva, Shuran Song, Hao Su, et al. Shapenet: An information-rich 3d model repository. arXiv preprint arXiv:1512.03012, 2015.\n\n[10] Ding-Yun Chen, Xiao-Pei Tian, Yu-Te Shen, and Ming Ouhyoung. On visual similarity based 3d model retrieval. In Computer graphics forum, volume 22, pages 223–232. Wiley Online Library, 2003.\n\n[11] Wenzheng Chen, Jun Gao, Huan Ling, Edward Smith, Jaakko Lehtinen, Alec Jacobson, and Sanja Fidler. Learning to predict 3d objects with an interpolation-based differentiable renderer. In Advances In Neural Information Processing Systems, 2019.\n\n[12] Wenzheng Chen, Joey Litalien, Jun Gao, Zian Wang, Clement Fuji Tsang, Sameh Khalis, Or Litany, and Sanja Fidler. DIB-R++: Learning to predict lighting and material with a hybrid differentiable renderer. In Advances in Neural Information Processing Systems (NeurIPS), 2021.\n\n[13] Yanqin Chen, Xin Jin, and Qionghai Dai. Distance measurement based on light ﬁeld geometry and ray tracing. Optics Express, 25(1):59–76, 2017.\n\n[14] Zhiqin Chen and Hao Zhang. Learning implicit ﬁelds for generative shape modeling. Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019.\n\n[15] Blender Online Community. Blender - a 3D modelling and rendering package. Blender Foundation, Stichting Blender Foundation, Amsterdam, 2018.\n\n[16] Prafulla Dhariwal and Alexander Nichol. Diffusion models beat gans on image synthesis. Advances in Neural Information Processing Systems, 34, 2021.\n\n[17] Akio Doi and Akio Koide. An efﬁcient method of triangulating equi-valued surfaces by using tetrahedral cells. IEICE TRANSACTIONS on Information and Systems, 74(1):214–224, 1991.\n\n[18] Alexey Dosovitskiy, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, Matthias Minderer, Georg Heigold, Sylvain Gelly, et al. An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929, 2020.\n\n[19] Patrick Esser, Robin Rombach, and Bjorn Ommer. Taming transformers for high-resolution image synthesis. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 12873–12883, 2021.\n\n[20] Matheus Gadelha, Subhransu Maji, and Rui Wang. 3d shape induction from 2d views of multiple objects. In 2017 International Conference on 3D Vision (3DV), pages 402–411. IEEE, 2017.\n\n[21] Rinon Gal, Or Patashnik, Haggai Maron, Amit H Bermano, Gal Chechik, and Daniel Cohen-Or. Stylegan- nada: Clip-guided domain adaptation of image generators. ACM Transactions on Graphics (TOG), 41(4):1–13, 2022.\n\n[22] Jun Gao, Wenzheng Chen, Tommy Xiang, Clement Fuji Tsang, Alec Jacobson, Morgan McGuire, and Sanja Fidler. Learning deformable tetrahedral meshes for 3d reconstruction. In Advances In Neural Information Processing Systems, 2020.\n\n[23] Jun Gao, Chengcheng Tang, Vignesh Ganapathi-Subramanian, Jiahui Huang, Hao Su, and Leonidas J Guibas. Deepspline: Data-driven reconstruction of parametric curves and surfaces. arXiv preprint arXiv:1901.03781, 2019.\n\n[24] Jun Gao, Zian Wang, Jinchen Xuan, and Sanja Fidler. Beyond ﬁxed grid: Learning geometric image representation with a deformable grid. In European Conference on Computer Vision, pages 108–125. Springer, 2020.\n\n[25] Jiatao Gu, Lingjie Liu, Peng Wang, and Christian Theobalt. Stylenerf: A style-based 3d aware generator for high-resolution image synthesis. In International Conference on Learning Representations, 2022.\n\n[26] Zekun Hao, Arun Mallya, Serge Belongie, and Ming-Yu Liu. GANcraft: Unsupervised 3D Neural Rendering of Minecraft Worlds. In ICCV, 2021.\n\n[27] Philipp Henzler, Niloy J. Mitra, and Tobias Ritschel. Escaping plato’s cave: 3d shape from adversarial rendering. In The IEEE International Conference on Computer Vision (ICCV), October 2019.\n\n11\n\n[28] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans trained by a two time-scale update rule converge to a local nash equilibrium. Advances in neural information processing systems, 30, 2017.\n\n[29] Xun Huang, Arun Mallya, Ting-Chun Wang, and Ming-Yu Liu. Multimodal conditional image synthesis with product-of-experts GANs. In ECCV, 2022.\n\n[30] Moritz Ibing, Gregor Kobsik, and Leif Kobbelt. Octree transformer: Autoregressive 3d shape generation on hierarchically structured sequences. arXiv preprint arXiv:2111.12480, 2021.\n\n[31] James T. Kajiya. The rendering equation. SIGGRAPH ’86, page 143–150, 1986.\n\n[32] Brian Karis and Epic Games. Real shading in unreal engine 4. Proc. Physically Based Shading Theory Practice, 4(3), 2013.\n\n[33] Tero Karras, Miika Aittala, Samuli Laine, Erik Härkönen, Janne Hellsten, Jaakko Lehtinen, and Timo Aila. Alias-free generative adversarial networks. In Proc. NeurIPS, 2021.",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33"
+            ]
+        },
+        {
+            "text": "[34] Tero Karras, Samuli Laine, and Timo Aila. A style-based generator architecture for generative adversarial networks. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pages 4401–4410, 2019.\n\n[35] Tero Karras, Samuli Laine, Miika Aittala, Janne Hellsten, Jaakko Lehtinen, and Timo Aila. Analyzing and improving the image quality of StyleGAN. In Proc. CVPR, 2020.\n\n[36] Michael Kazhdan, Matthew Bolitho, and Hugues Hoppe. Poisson surface reconstruction. In Proceedings of the fourth Eurographics symposium on Geometry processing, volume 7, 2006.\n\n[37] Samuli Laine, Janne Hellsten, Tero Karras, Yeongho Seol, Jaakko Lehtinen, and Timo Aila. Modular primitives for high-performance differentiable rendering. ACM Transactions on Graphics, 39(6), 2020.\n\n[38] Daiqing Li, Junlin Yang, Karsten Kreis, Antonio Torralba, and Sanja Fidler. Semantic segmentation with generative models: Semi-supervised learning and strong out-of-domain generalization. In Conference on Computer Vision and Pattern Recognition (CVPR), 2021.\n\n[39] William E Lorensen and Harvey E Cline. Marching cubes: A high resolution 3d surface construction algorithm. ACM siggraph computer graphics, 21(4):163–169, 1987.\n\n[40] Sebastian Lunz, Yingzhen Li, Andrew Fitzgibbon, and Nate Kushman. Inverse graphics gan: Learning to generate 3d shapes from unstructured 2d data. arXiv preprint arXiv:2002.12674, 2020.\n\n[41] Andrew Luo, Tianqin Li, Wen-Hao Zhang, and Tai Sing Lee. Surfgen: Adversarial 3d shape synthesis with explicit surface discriminators. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 16238–16248, 2021.\n\n[42] Lars Mescheder, Sebastian Nowozin, and Andreas Geiger. Which training methods for gans do actually converge? In International Conference on Machine Learning (ICML), 2018.\n\n[43] Lars Mescheder, Michael Oechsle, Michael Niemeyer, Sebastian Nowozin, and Andreas Geiger. Occupancy networks: Learning 3d reconstruction in function space. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 4460–4470, 2019.\n\n[44] Oscar Michel, Roi Bar-On, Richard Liu, Sagie Benaim, and Rana Hanocka. Text2mesh: Text-driven neural stylization for meshes. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 13492–13502, 2022.\n\n[45] Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. Nerf: Representing scenes as neural radiance ﬁelds for view synthesis. In ECCV, 2020.\n\n[46] Kaichun Mo, Paul Guerrero, Li Yi, Hao Su, Peter Wonka, Niloy Mitra, and Leonidas Guibas. Structurenet: Hierarchical graph networks for 3d shape generation. ACM Transactions on Graphics (TOG), Siggraph Asia 2019, 38(6):Article 242, 2019.\n\n[47] Jacob Munkberg, Jon Hasselgren, Tianchang Shen, Jun Gao, Wenzheng Chen, Alex Evans, Thomas Müller, and Sanja Fidler. Extracting triangular 3d models, materials, and lighting from images. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 8280–8290, 2022.\n\n[48] Charlie Nash, Yaroslav Ganin, S. M. Ali Eslami, and Peter W. Battaglia. Polygen: An autoregressive generative model of 3d meshes. ICML, 2020.\n\n[49] Michael Niemeyer and Andreas Geiger. Giraffe: Representing scenes as compositional generative neural feature ﬁelds. In Proc. IEEE Conf. on Computer Vision and Pattern Recognition (CVPR), 2021.\n\n[50] Michael Oechsle, Lars Mescheder, Michael Niemeyer, Thilo Strauss, and Andreas Geiger. Texture ﬁelds: Learning texture representations in function space. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 4531–4540, 2019.\n\n[51] Roy Or-El, Xuan Luo, Mengyi Shan, Eli Shechtman, Jeong Joon Park, and Ira Kemelmacher-Shlizerman. Stylesdf: High-resolution 3d-consistent image and geometry generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pages 13503–13513, 2022.\n\n12\n\n[52] Taesung Park, Ming-Yu Liu, Ting-Chun Wang, and Jun-Yan Zhu. Semantic image synthesis with spatially- adaptive normalization. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recogni- tion, 2019.\n\n[53] Dario Pavllo, Jonas Kohler, Thomas Hofmann, and Aurelien Lucchi. Learning generative models of textured 3d meshes from real-world images. In IEEE/CVF International Conference on Computer Vision (ICCV), 2021.\n\n[54] Dario Pavllo, Graham Spinks, Thomas Hofmann, Marie-Francine Moens, and Aurelien Lucchi. Convolu- tional generation of textured 3d meshes. In Advances in Neural Information Processing Systems (NeurIPS), 2020.\n\n[55] Songyou Peng, Michael Niemeyer, Lars Mescheder, Marc Pollefeys, and Andreas Geiger. Convolutional occupancy networks. In European Conference on Computer Vision (ECCV), 2020.\n\n[56] Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, et al. Learning transferable visual models from natural language supervision. In International Conference on Machine Learning, pages 8748–8763. PMLR, 2021.\n\n[57] Katja Schwarz, Yiyi Liao, Michael Niemeyer, and Andreas Geiger. Graf: Generative radiance ﬁelds for 3d-aware image synthesis. In Advances in Neural Information Processing Systems (NeurIPS), 2020.\n\n[58] Katja Schwarz, Axel Sauer, Michael Niemeyer, Yiyi Liao, and Andreas Geiger. Voxgraf: Fast 3d-aware image synthesis with sparse voxel grids. ARXIV, 2022.\n\n[59] Tianchang Shen, Jun Gao, Amlan Kar, and Sanja Fidler. Interactive annotation of 3d object geometry using 2d scribbles. In European Conference on Computer Vision, pages 751–767. Springer, 2020.\n\n[60] Tianchang Shen, Jun Gao, Kangxue Yin, Ming-Yu Liu, and Sanja Fidler. Deep marching tetrahedra: a hybrid representation for high-resolution 3d shape synthesis. In Advances in Neural Information Processing Systems (NeurIPS), 2021.\n\n[61] Vincent Sitzmann, Julien N.P. Martel, Alexander W. Bergman, David B. Lindell, and Gordon Wetzstein. Implicit neural representations with periodic activation functions. In Proc. NeurIPS, 2020.",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61"
+            ]
+        },
+        {
+            "text": "[62] Edward J Smith and David Meger. Improved adversarial systems for 3d object generation and reconstruction. In Conference on Robot Learning, pages 87–96. PMLR, 2017.\n\n[63] Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jon Shlens, and Zbigniew Wojna. Rethinking the inception architecture for computer vision. In Proceedings of the IEEE conference on computer vision and pattern recognition, pages 2818–2826, 2016.\n\n[64] Jiaping Wang, Peiran Ren, Minmin Gong, John Snyder, and Baining Guo. All-frequency rendering of dynamic, spatially-varying reﬂectance. In ACM SIGGRAPH Asia 2009 papers, pages 1–10. 2009.\n\n[65] Peter Welinder, Steve Branson, Takeshi Mita, Catherine Wah, Florian Schroff, Serge Belongie, and Pietro Perona. Caltech-ucsd birds 200. 2010.\n\n[66] Jiajun Wu, Chengkai Zhang, Tianfan Xue, Bill Freeman, and Josh Tenenbaum. Learning a probabilistic latent space of object shapes via 3d generative-adversarial modeling. Advances in neural information processing systems, 29, 2016.\n\n[67] Yinghao Xu, Sida Peng, Ceyuan Yang, Yujun Shen, and Bolei Zhou. 3d-aware image synthesis via learning structural and textural representations. In CVPR, 2022.\n\n[68] Guandao Yang, Xun Huang, Zekun Hao, Ming-Yu Liu, Serge Belongie, and Bharath Hariharan. Point- ﬂow: 3d point cloud generation with continuous normalizing ﬂows. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 4541–4550, 2019.\n\n[69] Kangxue Yin, Jun Gao, Maria Shugrina, Sameh Khamis, and Sanja Fidler. 3dstylenet: Creating 3d shapes with geometric and texture style variations. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 12456–12465, 2021.\n\n[70] Kangxue Yin, Jun Gao, Maria Shugrina, Sameh Khamis, and Sanja Fidler. 3dstylenet: Creating 3d shapes with geometric and texture style variations. In Proceedings of International Conference on Computer Vision (ICCV), 2021.\n\n[71] Jonathan Young. xatlas, 2021. https://github.com/jpcy/xatlas.\n\n[72] Kai Zhang, Fujun Luan, Qianqian Wang, Kavita Bala, and Noah Snavely. Physg: Inverse rendering with spherical gaussians for physics-based material editing and relighting. In The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2021.\n\n[73] Yuxuan Zhang, Wenzheng Chen, Huan Ling, Jun Gao, Yinan Zhang, Antonio Torralba, and Sanja Fidler. Image gans meet differentiable rendering for inverse graphics and interpretable 3d neural rendering. In International Conference on Learning Representations, 2021.\n\n13\n\n[74] Yuxuan Zhang, Huan Ling, Jun Gao, Kangxue Yin, Jean-Francois Laﬂeche, Adela Barriuso, Antonio Torralba, and Sanja Fidler. Datasetgan: Efﬁcient labeled data factory with minimal human effort. In CVPR, 2021.\n\n[75] Linqi Zhou, Yilun Du, and Jiajun Wu. 3d shape generation and completion through point-voxel diffusion. In Proceedings of the IEEE/CVF International Conference on Computer Vision, pages 5826–5835, 2021.\n\n[76] Peng Zhou, Lingxi Xie, Bingbing Ni, and Qi Tian. Cips-3d: A 3d-aware generator of gans based on conditionally-independent pixel synthesis. arXiv preprint arXiv:2110.09788, 2021.\n\n[77] Qian-Yi Zhou, Jaesik Park, and Vladlen Koltun. Open3D: A modern library for 3D data processing. arXiv:1801.09847, 2018.\n\n14",
+            "section": "other",
+            "section_idx": 9,
+            "citations": [
+                "62",
+                "63",
+                "64",
+                "65",
+                "66",
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73",
+                "74",
+                "75",
+                "76",
+                "77"
+            ]
+        },
+        {
+            "text": "A.3 Texture Generator\n\nWe adapt the generator architecture from StyleGAN2 [35] to generate a tri-plane representation of the texture field. Similar as in the geometry generator, we start from a randomly initialized feature grid F,.. € R**4*5!? that is shared across the shapes, and is learned during training. This initial feature grid is up-sampled to a feature grid F/,, € IR?°°*?5%*96 that is conditioned on w, and wo. Specifically, we use a series of six modulated 2D convolution blocks (ModBlock2D in Figure B). The ModBlock2D blocks are the same as the ModBlock3D blocks, except that the convolution is 2D and that the conditioning is on w; © we, where @ denotes concatenation. Additionally, the output of each ModBlock2D block is passed through a conditional t7PF layer that applies a conditional 2D convolution with kernel size 1x1. Note that, following the practices from StyleGAN2 [35], the conditioning in the tTPF layers is performed only through modulation of the weights (no demodulation).\n\n16\n\nZy so “Tl -— Const 4 x 4 x 512 @{¢TEX]~[ModBlock2D (512,512) —-[iGEO}-p 4 Up (2x) Up (2x) N(0,1) Geometry triplane | 13x | qE 13x 3x ° $x |—[ModBlock2D (512,256) || a i TEX|—|ModBlock2b (256, 128)]|—| R Mapping network Texture triplane Detailed network architecture\n\nFigure C: Improved generator architecture of GET3D. High-level overview left and detailed architecture right. Different to the model architecture proposed in the main paper, the new generator shares the same backbone network for both geometry and texture generation. This improves the information ﬂow and enables better disentanglement of the geometry and texture.\n\nThe output of the last tTPF layer is then reshaped into three axis-aligned feature planes of size 256 × 256 × 32.\n\nTo obtain the feature ftex ∈ R32 of a surface point p ∈ R3, we ﬁrst project p onto each plane, perform bilinear interpolation of the features, and ﬁnally sum the interpolated features:\n\nftex = ρ(πe(p)), e (7)\n\nwhere πe(p) is the projection of the point p to the feature plane e and ρ(·) denotes bilinear interpo- lation of the features. Color c ∈ R3 of the point p is then decoded from ft using three conditional FC layers (ModFC) conditioned on w1 ⊕ w2. The hidden dimension of each layer is 16. Following StyleGAN2 [35], we do not apply normalization to the ﬁnal output.",
+            "section": "other",
+            "section_idx": 10,
+            "citations": [
+                "35",
+                "35",
+                "35"
+            ]
+        },
+        {
+            "text": "9GRAF: https://github.com/autonomousvision/graf (MIT License)\n\n10Pi-GAN: https://github.com/marcoamonteiro/pi-GAN (License not provided)\n\n11For PointFlow [68], we directly use N points generated by the model.\n\n12LFD: https://github.com/Sunwinds/ShapeDescriptor/tree/master/LightField/ 3DRetrieval_v1.8/3DRetrieval_v1.8 (License not provided)\n\n21\n\nnot measure the quality of individual generated shapes. In fact, it is possible to achieve high COV even when the generated shapes are of very low quality.\n\n• Minimum Matching Distance (MMD) complements COV metric, by measuring the qual- ity of the individual generated shapes. Formally, MMD is deﬁned as\n\n,,_ lL : MMD(S,, S;) = Bl & gain D(X,Y), (10)\n\nwhere D can again be either dCD or dLFD. Intuitively, MMD measures the quality of the generated shapes by comparing their geometry to the closest reference shape.\n\nB.3.2 Evaluating the Texture and Geometry\n\nTo evaluate the quality of the generated textures, we adopt the Fréchet Inception Distance (FID) metric, commonly used to evaluate the synthesis quality of 2D images. In particular, for each category, we render 50k views of the generated shapes (one view per shape) from the camera poses randomly sampled from the predeﬁned camera distribution, and use all the images in the test set. We then encode these images using a pretrained Inception v3 [63] model13, where we consider the output of the last pooling layer as our ﬁnal encoding. The FID metric can then be computed as:\n\nFID(Sg,Sr) = ||µg − µr||2 2 + Tr[Σg + Σr − 2(ΣgΣr)1/2]||, (11)\n\nwhere Tr denotes the trace operation. µg and Σg are the mean value and covariance matrix of the generated image encoding, while µr and Σr are obtained from the encoding of the test images.\n\nAs brieﬂy discussed in the main paper, we use two variants of FID, which differ in the way in which the 2D images are rendered. In particular, for FID-Ori, we directly use the neural volume rendering of the 3D-aware image synthesis methods to obtain the 2D images. This metric favours the baselines that were designed to directly generate valid 2D images through neural rendering. Additionally, we propose a new metric, FID-3D, which puts more emphasis on the overall quality of the generated 3D shape. Speciﬁcally, for the baselines which do not output a textured mesh, we extract the geometry from their underlying neural ﬁeld using marching cubes [39]. Then, we ﬁnd the intersection point of each pixel ray with the generated mesh and use the 3D location of the intersected point to query the RGB value from the network. In this way, the rendered image is a more faithful representation of the underlying 3D shape and takes the quality of both geometry and texture into account. Note that FID-3D and FID-Ori are identical for methods that directly generate textured 3D meshes, as it is the case with GET3D.",
+            "section": "other",
+            "section_idx": 11,
+            "citations": [
+                "68",
+                "63",
+                "39"
+            ]
+        },
+        {
+            "text": "C.4 Robustness to Noisy Cameras\n\nTo demonstrate the robustness of GET3D to imperfect cameras poses, we add Gaussian noises to the camera poses during training. Speciﬁcally, for the rotation angle, we add a noise sampled from a Gaussian distribution with zero mean, and 10 degrees variance. For the elevation angle, we also add a noise sampled from a Gaussian distribution with zero mean, and 2 degrees variance. We use ShapeNet Car dataset [9] in this experiment.\n\n25\n\nFigure M: Additional qualitative results of GET3D trained with \"real\" GANverse3D [73] data. We render generated shapes in Blender.\n\nFigure N: We show randomly sampled 2D images and silhouettes from GANverse3D [73] data. Note the realism of the images and the imperfections of the 2D silhouettes.\n\nThe quantitative results are provided in Table C and qualitative examples are depicted in Figure J. Adding camera noise harms the FID metric, whereas we observe only little degradation in visual quality. We hypothesize that the drop in the FID is a consequence of the camera pose distribution mismatch, which occurs as result of rendering the testing dataset, used to calculate the FID score, with a camera pose distribution without added noise. Nevertheless, based on the visual quality of the generated shapes, we conclude that GET3D is robust to a moderate level of noise in the camera poses.\n\nC.5 Robustness to Imperfect 2D Silhouettes\n\nTo evaluate the robustness of GET3D when trained with imperfect 2D silhouettes, we replace ground truth 2D masks with the ones obtained from Detectron214 using pretrained PointRend checkpoint, mimicking how one could obtain the 2D segmentation masks in the real world. Since our training images are rendered with the black background, we use two approaches to obtain the 2D silhouettes: i) we directly feed the original training image into Detectron2 to obtain the predicted segmentation mask (we refer to this as Mask-Black), and ii) we add a background image, randomly sampled from PASCAL-VOC 2012 dataset (we refer to this as Mask-Random). In this setting, the pretrained Detectron2 model achieved 97.4 and 95.8 IoU for the Mask-Black and Mask-Random versions, respectively. We again use the Shapenet Car dataset [9] in this experiment.\n\nExperimental Results Quantitative results are summarized in Table C, with qualitative examples provided in Figures K and L. Although we observe drop in the FID scores, qualitatively the results are still similar to the original results in the main paper. Our model can generate high quality shapes even when trained with the imperfect masks. Note that, in this scenario, the training data for GET3D is different from the testing data that is used to compute the FID score, which could be one of the reasons for worse performance.",
+            "section": "other",
+            "section_idx": 12,
+            "citations": [
+                "9",
+                "73",
+                "73",
+                "9"
+            ]
+        },
+        {
+            "text": "C.6 Experiments on \"Real\" Image\n\nSince many real-world datasets lack camera poses, we follow GANverse3D [73] and utilize pretrained 2D StyleGAN to generate a realistic car dataset. We train GET3D on this dataset to demonstrate the potential applications to real-world data.\n\n14https://github.com/facebookresearch/detectron2\n\n26\n\nMethod FID (↓) Ori 3D EG3D [8] 13.77 60.42 GET3D 14.27 14.27\n\nTable D: Additional quantitative comparison with EG3D [8] on Human Body dataset [2].\n\nEG3D [8]\n\nOurs\n\nOurs\n\nOurs-Tex\n\nFigure O: Additional qualitative comparison on Human Body dataset. We compare our method with EG3D [8] on the extracted geometry.\n\nExperimental Setting Following GANverse3D [73], we manipulate the latent codes of 2D Style- GAN and generate multi-view car images. To obtain the 2D segmentation of each image, we use DatasetGAN [74] to predict the 2D silhouette. We then use SfM [65] to obtain the camera initializa- tion for each generated image. We visualize some examples of this dataset in Fig N and refer the reader to the original GANverse3D paper for more details. Note that, in this dataset both cameras and 2D silhouettes are imperfect.\n\nExperimental Results We provide qualitative examples in Fig. M. Even when faced with the imperfect inputs during training, GET3D is still capable of generating reasonable 3D textured meshes, with variation in geometry and texture.\n\nC.7 Comparison with EG3D on Human Body\n\nFollowing the suggestion of the reviewer, we also train EG3D model on the Human Body dataset rendered from Renderpeople [2] and compare it to the results of GET3D.\n\nQuantitative results are available in Table D and qualitative comparisons in Figure O. GET3D achieves comparable performance to EG3D [8] in terms of generated 2D images (FID-ori), while signiﬁcantly outperforming it on 3D shape synthesis (FID-3D). This once more demonstrates the effectiveness of our model in learning actual 3D geometry and texture.\n\nD Material Generation for View-dependent Lighting Effects\n\nIn modern computer graphics engines such as Blender [15] and Unreal Engine [32], surface properties are represented by material parameters crafted by graphics artists. To make the generated assets graphics-compatible, one direct extension of our method is to also generate surface material properties. In this section, we describe how GET3D is able to incorporate physics-based rendering models, predicting SVBRDF to represent view-dependent lighting effects such as specular surface reﬂections.\n\n27\n\nAs described in main paper Sec. 4.3.1, two modules need to be adapted to facilitate material generation. Namely, the texture generation and the rendering process. Speciﬁcally, we repurpose the texture generator branch to predict the Disney BRDF properties [6, 32] on the surface as a reﬂectance ﬁeld. Speciﬁcally, the texture generator now outputs a 5-channel reﬂectance property, including surface base color cbase ∈ R3, roughness β ∈ R and metallic m ∈ R parameters.\n\nNote that different from a texture ﬁeld, rendering the reﬂectance ﬁeld requires one additional shading step after rasterization into the G-buffer. Thus, the second adaptation is to replace the texture rasterization with an expressive rendering model capable of rendering the reﬂectance ﬁeld. According to the non-emissive rendering equation [31], the outgoing radiance Lo at the camera direction ωo is given by:\n\nLo(ωo) = Li(ωi)fr(ωi,ωo;cbase,β,m)(n · ωi)+ dωi, S2 (12)\n\nwhere Li is the incoming radiance, fr is the BRDF, n is the normal direction on the surface points, n · ωi is the cosine foreshortening term, ωi is incoming light direction sampled on sphere S2, while (n · ωi)+ = max(n · ωi,0) constrains the integration over the positive hemisphere. Standard ray tracing technique adopts Monte Carlo sampling methods to estimate this integral, but this incurs large computation and memory cost. Inspired by [64, 72, 12], we instead employ a spherical Gaussian (SG) rendering framework [12], which approximates every term in Eq. (12) with SGs and allows us to analytically compute the outgoing radiance without sampling any rays, from where we can obtain the RGB color for each pixel in the image. We refer the reader to [12] for more details.\n\nSimilar to the original training pipeline, we randomly sample light from a set of real-world outdoor HDR panoramas (detailed in the following “Datasets” paragraph) and render the generated 3D assets into 2D images using cameras sampled from the camera distribution of training set. We train the model using the same method as in the main paper by adopting the discriminators to encourage the perceptual realism of the rendered images under arbitrary real-world lighting, along with a second discriminator on the 2D silhouettes to learn the geometry. Note that no supervision from material ground truth is used during training, and the material decomposition emerges in a fully unsupervised manner. When equipped with a physics-based rendering models, GET3D successfully predicts reasonable surface material parameters, generating delicate models which can be directly utilized in stand rendering engines like Blender [15] and Unreal [32].\n\nDatasets We collect a set of 724 outdoor HDR panoramas from HDRIHaven15, DoschDesign16 and HDRMaps17, which cover a diverse range of real-world lighting distribution for outdoor scenes. We also apply random ﬂipping and random rotation along azimuth as data augmentation. During training, we convert all the environment maps to SG lighting representations, where we adopt 32 SG lobes, optimizing their directions, sharpness and amplitudes such that the approximated lighting is close to the environment map. We optimize 7000 iterations with MSE loss and Adam optimizer. The converged SG lighting can preserve the most contents in the environment map.\n\nAs ShapeNet dataset [9] does not contain consistent material deﬁnition, we additionally collect 1494 cars from Turbosquid [4] with materials consistently deﬁned with Disney BRDF. To render the dataset using Blender [15], we follow the camera conﬁguration of ShapeNet Car dataset, and randomly select from the collected set of HDR panoramas as lighting. In the dataset, the groundtruth roughness for car windows is in the range of [0.2,0.4] and the metallic is set to 1; for car paint, the groundtruth roughness is in the range of [0.3,0.6] and the metallic is set to 0. We disable complex materials such as the transparency and clear coat effects, such that the rendered results can be interpreted by the basic Disney BRDF properties including base color, metallic and roughness.\n\nEvaluation metrics Since we aim to generate 3D assets that can be used in graphics workﬂow to produce realistic 2D renderings, we quantitatively evaluate the realism of the 2D rendered images under real-world lighting using FID score.\n\nComparisons To the best of our knowledge, up to date no generative model can directly generate complex geometry (meshes) with material information. We therefore only compare different version",
+            "section": "other",
+            "section_idx": 13,
+            "citations": [
+                "73",
+                "8",
+                "8",
+                "2",
+                "8",
+                "8",
+                "73",
+                "74",
+                "65",
+                "2",
+                "8",
+                "15",
+                "32",
+                "6, 32",
+                "31",
+                "64, 72, 12",
+                "12",
+                "12",
+                "15",
+                "32",
+                "9",
+                "4",
+                "15"
+            ]
+        },
+        {
+            "text": "15polyhaven.com/hdris (License: CC0)\n\n16doschdesign.com (License: doschdesign.com/information.php?p=2)\n\n17hdrmaps.com (License: Royalty-Free)\n\n28\n\nof our model. In particular, we compare the results to the texture prediction version of GET3D, where we do not use material and directly predict RGB color for the surface points. We then ablate the effects of using real-world HDR panoramas for lighting, which are typically hard to obtain. To this end, we manually use two spherical Gaussians for ambient lighting and a random directions to simulate the lighting when rendering the generated shapes during training, and try to learn the materials under this simulated lighting.\n\nResults The quantitative FID scores are provided in Table E. With material generation, the FID score improves by more than 2 points when compared to the texture prediction baseline (18.53 vs 20.78). This indicates that the material generation version of GET3D has better capacity and improved realism compared to the texture only baseline. When using the simulated lighting, instead of real-world HDR panorama, the FID score gets slightly worse but still produces reasonable performance. We further provide additional qualitative results in Fig. P visualizing rendering results of generated assets under different real-world lighting conditions. We import our generated assets in Blender and show animated visualization in the accompanied video (demo.mp4).\n\nMethod FID Ours (Texture) 20.78 Ours + Material (Ambient and directional light) 22.83 Ours + Material (Real-world light) 18.53\n\nTable E: Quantitative FID results of material generation.\n\nE Text-Guided 3D Synthesis\n\nTechnical details. As brieﬂy described in Sec. 4.3.2, our text-guided 3D synthesis method follows the dual-Generator design from StyleGAN-NADA [21], and uses the directional CLIP loss [21]. In particular, at each optimization iteration, we randomly sample N = 16 camera views and render N paired images using two generators: the frozen one (Gf) and the trainable one (Gt). The directional CLIP loss can then be computed as:\n\na AI, - AT (3) Petip = 1 5G JAT,|- |AT]\n\nwhere ∆Ii = E(R(Gt(w),ci)) − E(R(Gf(w),ci)) is the translation of the CLIP embeddings (E) from the rendering with Gf to the rendering with Gt, under camera ci and ∆T is the CLIP embedding translation from the class text label to the provided query text. In our implementation, we used two pre-trained CLIP models with different Vision Transformers (‘ViT-32/B’ and ‘ViT-B/16’) [18] for different level of details, and follow the text augmentation as in the StyleGAN-NADA codebase18.",
+            "section": "other",
+            "section_idx": 14,
+            "citations": [
+                "21",
+                "21",
+                "18"
+            ]
+        },
+        {
+            "text": "18https://github.com/rinongal/StyleGAN-nada (MIT License)\n\n29\n\nBase Color\n\nRoughness\n\nMetallic\n\nNormal\n\nRelight 1\n\nSpecular 1\n\nRelight 2\n\nSpecular 2\n\nRelight 3\n\nSpecular 3\n\nRelight 4\n\n- aa dw\n\noo”, Ne\n\nST ve\n\nwas 6\n\nSpecular 4\n\nFigure P: Material generation and relighting. We visualize seven generated cars’ material proper- ties and relight with four different lighting conditions.\n\n30\n\n2 2 2 S =\n\nPointFlow\n\nOccNet\n\nPiGAN\n\nGRAF\n\nEG3D\n\nOurs-tex\n\nFigure Q: Generated 3D Geometry. Additional qualitative comparison with baseline methods on generated 3D geometry\n\n31\n\nAnimal\n\nCar\n\nChair\n\nMotorbike\n\nPiGAN\n\nGRAF\n\nEG3D\n\nOurs\n\nFigure R: Generated Image. Additional qualitative comparison with baseline methods on generated 2D images.\n\n32\n\nFigure S: Qualitative results on ShapeNet cars.\n\n33\n\nFigure T: Qualitative results on ShapeNet chairs.\n\n34\n\nFigure U: Qualitative results on Turbosquid houses.\n\n35\n\nFigure V: Qualitative results on Turbosquid animals.\n\n36\n\nFigure W: Qualitative results on ShapeNet motorbikes.\n\n37\n\nFigure X: Qualitative results on Renderpeople.\n\n38\n\nw/o volume subdivision\n\nw/\n\nvolume subdivision\n\nFigure Y: We compare results with and without applying volume subdivision on ShapeNet motorbikes. With volume subdivision, our model can generate ﬁner geometric details like handle and steel wire.\n\n39",
+            "section": "other",
+            "section_idx": 15,
+            "citations": []
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\62969d6f-4172-4bdf-aba2-9be3d9d5bdc4.jpg",
+            "description": "This figure presents a series of visualizations showcasing the process of 3D reconstruction from point clouds to fully rendered models. The images are organized in columns, with each column representing a different object category: animals, cars, chairs, and motorcycles. Each row in a column depicts a stage in the reconstruction process, starting from the initial point cloud, moving through intermediate steps, and culminating in the final rendered 3D model.\n\nThe figure highlights the transformation and refinement at each stage, emphasizing the progression from a sparse and raw point cloud to a detailed and complete 3D object. This visualization is crucial for understanding the methodology and effectiveness of the reconstruction algorithm being examined, demonstrating its ability to handle various object types and complexities.\n\nThis figure is important because it visually communicates the core results and capabilities of the research, illustrating the algorithm's performance and the quality of its outputs across multiple object categories.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\abf967eb-32c0-4119-8a51-f15f4c7d7333.jpg",
+            "description": "This figure illustrates a comprehensive architecture and component overview for a generative model, likely related to 3D or texture synthesis. It consists of several interconnected modules with specific functionalities:\n\n- **Architecture Diagrams and Components:**\n  - **Mapping Network:** Depicted on the left, this network maps input latent vector \\( z \\in \\mathbb{R}^{512} \\) through several fully connected (FC) layers, producing an output \\( w \\in \\mathbb{R}^{512} \\).\n  - **Geometry Generator:** This module processes \\( w \\) and includes constant inputs, 3D Modulation Blocks (ModBlock3D), and Modulated Fully Connected (ModFC) layers.\n  - **Texture Generator:** Similar to the geometry generator but focuses on 2D Modulation Blocks (ModBlock2D) and includes a texture transformation path function (tTPF).\n  - **Project Module:** Involves bilinear interpolation and further processing through ModFC layers for projection.\n\n- **Graphs, Charts, and Data Visualizations:** \n  - There are no traditional graphs or charts, but the structure and flow of data are visualized through block diagrams and arrows, indicating the flow and transformation of data through different layers.\n\n- **Mathematical Formulas or Concepts Illustrated:**\n  - The figure uses vector spaces such as \\( z \\in \\mathbb{R}^{512} \\) and \\( p \\in \\mathbb{R}^3 \\), indicating the dimensionality of data at various stages.\n\n- **Algorithm Flowcharts or Processes:**\n  - The flow of data and transformations (e.g., affine transformations, modulation, demodulation) are shown using arrows and labeled pathways between modules.\n\n- **Results or Findings Being Presented:**\n  - This figure primarily explains the methodology and architecture, which is critical for understanding the process and innovations of the research. It suggests a novel framework or method for generating or transforming data, likely contributing significantly to the paper's findings.\n\nThis figure is crucial for understanding the methodology and components of the research, making it highly important for grasping the framework and innovations introduced.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\1d3f12f7-c7dd-41b9-9b00-6d0fb30a0ea4.jpg",
+            "description": "The figure presents a detailed overview of a neural network architecture used for generating or processing data with both geometry and texture components. \n\n- **Architecture diagrams and components**: \n  - The left side shows a mapping network that transforms latent vectors \\(z_1\\) and \\(z_2\\), sampled from a normal distribution \\(\\mathcal{N}(0, I)\\), into intermediate latent spaces \\(w_1\\) and \\(w_2\\). These are then reshaped into geometry and texture triplanes, representing spatial data.\n  - The right side provides a detailed architecture of the network, which processes these triplanes. It includes blocks labeled as \"ModBlock2D\" with specific dimensions, indicating modular components that handle 2D data. The architecture involves repeated processing steps, shown as \"3x,\" suggesting iterative refinement or layered processing.\n\n- **Graphs, charts, and data visualizations**: \n  - The figure includes conceptual visualizations of the geometry and texture triplanes, depicted as layered grids, indicating multidimensional data representation.\n\n- **Mathematical formulas or concepts illustrated**: \n  - The use of \\(\\mathcal{N}(0, I)\\) indicates the sampling of latent vectors from a standard normal distribution, a common approach in generative models.\n\n- **Algorithm flowcharts or processes**: \n  - The figure illustrates the flow of data from the initial latent space through the mapping network to the final triplane representations, followed by detailed processing in the architectural blocks on the right side.\n\n- **Results or findings being presented**: \n  - While the figure does not directly show results, it is crucial for understanding the methodology, especially the dual-pathway for geometry and texture, which likely underpins the main innovations or capabilities of the research.\n\nOverall, this figure is important for comprehending the methodology and core components of the research.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\92b4109d-76f4-434f-9630-9a643e074044.jpg",
+            "description": "The figure presents a series of images comparing original 3D models of motorcycles and bicycles with their reconstructed or generated counterparts. Each row seems to depict a different type of vehicle, with the original models on the left and their reconstructed versions on the right. The reconstructions appear in a bluish, less detailed texture, indicating a focus on form rather than surface detail. This figure likely illustrates the effectiveness of a 3D reconstruction or generation algorithm, demonstrating how well the algorithm can recreate or model various vehicle types based on limited input data. The consistency in vehicle orientation and perspective across the original and reconstructed models suggests an evaluation of shape fidelity and structural accuracy. This visualization is important for understanding the methodology's capability to perform 3D reconstruction accurately, providing insight into key results of the research.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\4a067bf6-ed39-40f9-b3eb-b4ebc66219c0.jpg",
+            "description": "This figure presents a comparative analysis of 3D house models in two different stages: textured and non-textured (or geometry-focused). Each row appears to depict a different set of house models, showcasing a transition from a detailed, realistic rendering to a simplified geometric form. The textured models show intricate details, including color and texture, while the non-textured models focus on the basic geometric structure, likely used for computational or algorithmic purposes.\n\nThe figure likely illustrates a key component of a process in computer graphics or architectural reconstruction, possibly demonstrating how complex models are broken down into simpler forms for analysis or processing. It may highlight the effectiveness of an algorithm or method in retaining essential geometrical features while disregarding non-essential details.\n\nThis visualization is important for understanding the methodology and capabilities of the process being presented in the research, especially in terms of how well the models maintain structural fidelity through simplification.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\8416e972-0ca4-4885-be1d-c919f17947ce.jpg",
+            "description": "This figure presents a line graph comparing the performance of two configurations in a machine learning experiment: one using \"Two Discriminators\" (shown in red) and the other using a \"Single Discriminator\" (shown in blue). The x-axis represents iterations or sample size, labeled in thousands (k), while the y-axis represents a performance metric or loss value ranging from 0.0 to 0.3. The graph shows how the performance metric changes over time for both configurations, with the two discriminator setup generally maintaining a lower and more stable metric compared to the single discriminator, which exhibits sharp peaks. The figure likely illustrates the effectiveness of using two discriminators over one in reducing the metric, which is a significant component of the research study's methodology or results.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\7e0850f3-c331-4d5c-a0d1-09f84d834b6f.jpg",
+            "description": "This figure appears to show a collection of 3D models of various vehicles, likely used in a research context involving computer vision or 3D reconstruction. The images are arranged in pairs, with each pair showing a real vehicle model on the left and a corresponding simplified or reconstructed model on the right. The simplified models are shown in a uniform blue color, possibly indicating a focus on form rather than texture or color.\n\nThis type of figure is commonly used to demonstrate the effectiveness of an algorithm or model in reconstructing 3D shapes from limited data, such as single-view images or incomplete 3D scans. The consistency in layout and presentation suggests a systematic approach to validation, making it important for understanding the methodology and results of the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\0ac79d76-08d5-4066-9abb-16a0bc5a693f.jpg",
+            "description": "This figure appears to showcase a set of 3D object reconstructions across different categories, such as animals, cars, chairs, and motorcycles. Each column likely represents a different method or model being compared. The images depict various viewpoints or transformations of each object, highlighting differences in detail, texture, or shape fidelity. This visualization is important for evaluating the effectiveness of the reconstruction algorithms or models used in the research, providing a clear comparison of their output quality.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\3ef65bdd-50e5-434c-b4bf-6ccb9e5a32a9.jpg",
+            "description": "This figure showcases a series of car images alongside their corresponding silhouette masks. Each pair consists of an original photograph of a car and a white silhouette on a black background, likely representing the car's shape or outline. This setup is commonly used in computer vision research to illustrate tasks such as object detection, segmentation, or shape recognition. The figure likely serves to demonstrate the effectiveness of a segmentation algorithm or model in correctly identifying and outlining the cars in diverse images. The inclusion of multiple examples suggests a focus on the model's consistency and reliability across various scenarios and car models. This visualization is important for understanding the methodology and results of the research, particularly in assessing the model's capability to accurately perform segmentation tasks.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\0cdaa33d-dd0f-4d9a-ab27-71e2631ca00d.jpg",
+            "description": "The figure presents a series of 3D models showcasing different categories of objects, including cars, animals, and buildings. Each row appears to depict a progression or transformation of these objects, possibly illustrating variations, reconstructions, or different stages of a modeling process. The models range from abstract or incomplete to more detailed and realistic representations. This visualization likely demonstrates the capabilities of a 3D reconstruction or rendering technique, emphasizing the method's ability to handle diverse object types and achieve varying levels of detail. The figure is important for understanding the practical application and effectiveness of the technique described in the research.",
+            "importance": 7
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Statistical modeling",
+            "Super-Resolution",
+            "Bayesian Inference"
+        ],
+        "methodology": [
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Feature detection",
+            "Estimation"
+        ],
+        "domain": [
+            "Autonomous Robotics",
+            "Celebrity dataset",
+            "Object removal",
+            "Reflectance Imaging",
+            "Interactive Entertainment"
+        ],
+        "strengths": [
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Data Enhancement",
+            "Enhanced Detection Techniques",
+            "Superiority"
+        ],
+        "limitations": [
+            "Training challenges",
+            "3D Challenges",
+            "Complexity",
+            "Implicit Fields",
+            "Suboptimal Efficiency"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "2209.11163v1_chunk_0",
+            "section": "methodology",
+            "citations": [
+                "34, 35, 33",
+                "60",
+                "37"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "35",
+                "35",
+                "35",
+                "35",
+                "9",
+                "4",
+                "2",
+                "9",
+                "68, 75",
+                "4",
+                "60, 70",
+                "2",
+                "15",
+                "68, 43",
+                "68",
+                "43"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_2",
+            "section": "methodology",
+            "citations": [
+                "68",
+                "68",
+                "68",
+                "77",
+                "36",
+                "43",
+                "39",
+                "43",
+                "57",
+                "45",
+                "7",
+                "61",
+                "7",
+                "8"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_3",
+            "section": "methodology",
+            "citations": []
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_4",
+            "section": "results",
+            "citations": [
+                "60",
+                "22, 24",
+                "17",
+                "60",
+                "60"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_5",
+            "section": "results",
+            "citations": [
+                "34, 35",
+                "35",
+                "34, 35",
+                "22",
+                "60",
+                "60"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_6",
+            "section": "results",
+            "citations": [
+                "34",
+                "38",
+                "35"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_7",
+            "section": "results",
+            "citations": [
+                "68, 14",
+                "13",
+                "11, 22, 60",
+                "13",
+                "13",
+                "5"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_8",
+            "section": "results",
+            "citations": [
+                "73",
+                "8",
+                "8",
+                "7",
+                "57"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_9",
+            "section": "results",
+            "citations": []
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_10",
+            "section": "conclusion",
+            "citations": []
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_11",
+            "section": "other",
+            "citations": [
+                "4",
+                "3",
+                "5, 14, 43, 46, 53, 68, 75, 60, 59, 69, 23",
+                "15",
+                "1",
+                "43",
+                "68",
+                "53",
+                "25",
+                "8",
+                "7",
+                "57",
+                "66, 20, 27, 40",
+                "43, 14",
+                "54, 53",
+                "45",
+                "34, 35, 33, 29, 52",
+                "7, 57, 8, 49, 51, 25",
+                "39",
+                "60",
+                "47, 37",
+                "9",
+                "4",
+                "2",
+                "12",
+                "56"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_12",
+            "section": "other",
+            "citations": [
+                "34, 35, 33, 52, 29, 19, 16",
+                "66, 20, 27, 40, 62",
+                "5, 68, 75, 46",
+                "43, 14",
+                "30",
+                "54, 53",
+                "11",
+                "48",
+                "41",
+                "45",
+                "43, 14",
+                "7, 57, 49, 26, 25, 76, 8, 51, 58, 67",
+                "7, 57",
+                "49",
+                "25",
+                "8"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_13",
+            "section": "other",
+            "citations": [
+                "50",
+                "55",
+                "8",
+                "8, 35",
+                "8, 25, 7, 57",
+                "47",
+                "37",
+                "37",
+                "34",
+                "42",
+                "47",
+                "68",
+                "43",
+                "7",
+                "57",
+                "8",
+                "68",
+                "43",
+                "7",
+                "57",
+                "8",
+                "68",
+                "43",
+                "7",
+                "57",
+                "8",
+                "68",
+                "43",
+                "7",
+                "57",
+                "8"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_14",
+            "section": "other",
+            "citations": [
+                "9",
+                "4",
+                "9",
+                "4",
+                "2"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_15",
+            "section": "other",
+            "citations": [
+                "68",
+                "43",
+                "57",
+                "7",
+                "8",
+                "5",
+                "10",
+                "43",
+                "57",
+                "7",
+                "8",
+                "68",
+                "28",
+                "57, 7, 8",
+                "43",
+                "68",
+                "7",
+                "57",
+                "8"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_16",
+            "section": "other",
+            "citations": [
+                "71"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_17",
+            "section": "other",
+            "citations": [
+                "6, 32",
+                "12",
+                "12",
+                "56",
+                "21",
+                "21",
+                "44",
+                "44",
+                "44"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_18",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_19",
+            "section": "other",
+            "citations": [
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_20",
+            "section": "other",
+            "citations": [
+                "62",
+                "63",
+                "64",
+                "65",
+                "66",
+                "67",
+                "68",
+                "69",
+                "70",
+                "71",
+                "72",
+                "73",
+                "74",
+                "75",
+                "76",
+                "77"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_21",
+            "section": "other",
+            "citations": [
+                "35",
+                "35",
+                "35"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_22",
+            "section": "other",
+            "citations": [
+                "68",
+                "63",
+                "39"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_23",
+            "section": "other",
+            "citations": [
+                "9",
+                "73",
+                "73",
+                "9"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_24",
+            "section": "other",
+            "citations": [
+                "73",
+                "8",
+                "8",
+                "2",
+                "8",
+                "8",
+                "73",
+                "74",
+                "65",
+                "2",
+                "8",
+                "15",
+                "32",
+                "6, 32",
+                "31",
+                "64, 72, 12",
+                "12",
+                "12",
+                "15",
+                "32",
+                "9",
+                "4",
+                "15"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_25",
+            "section": "other",
+            "citations": [
+                "21",
+                "21",
+                "18"
+            ]
+        },
+        {
+            "chunk_id": "2209.11163v1_chunk_26",
+            "section": "other",
+            "citations": []
+        }
+    ]
+}

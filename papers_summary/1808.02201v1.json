@@ -1,0 +1,760 @@
+{
+    "basic_info": {
+        "title": "Holistic 3D Scene Parsing and Reconstruction from a Single RGB Image",
+        "authors": [
+            "Siyuan Huang",
+            "Siyuan Qi",
+            "Yixin Zhu",
+            "Yinxue Xiao",
+            "Yuanlu Xu",
+            "Song-Chun Zhu"
+        ],
+        "paper_id": "1808.02201v1",
+        "published_year": 2018,
+        "references": []
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "Soatto, S.: Actionable information in vision. In: Machine learning for computer\nvision. Springer (2013)",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "Qi, S., Zhu, Y., Huang, S., Jiang, C., Zhu, S.C.: Human-centric indoor scene\nsynthesis using stochastic grammar. In: CVPR. (2018)",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "Jiang, Y., Koppula, H., Saxena, A.: Hallucinated humans as the hidden context\nfor labeling 3d scenes. In: CVPR. (2013)",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "Gupta, A., Efros, A.A., Hebert, M.: Blocks world revisited: Image understanding\nusing qualitative geometry and mechanics. In: ECCV. (2010)",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": null
+        },
+        "ref_5": {
+            "text": "Liu, X., Zhao, Y., Zhu, S.C.: Single-view 3d scene parsing by attributed grammar.\nIn: CVPR. (2014)",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "Zheng, B., Zhao, Y., Joey, C.Y., Ikeuchi, K., Zhu, S.C.: Detecting potential falling\nobjects by inferring human action and natural disturbance. In: IEEE International\nConference on Robotics and Automation (ICRA). (2014)",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "Yuille, A., Kersten, D.: Vision as bayesian inference: analysis by synthesis? Trends\nin cognitive sciences (2006)",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "Grenander, U.: Lectures in pattern theory i, ii and iii: Pattern analysis, pattern\nsynthesis and regular structures (1976)",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": null
+        },
+        "ref_9": {
+            "text": "Loper, M.M., Black, M.J.: Opendr: An approximate diﬀerentiable renderer. In:\nECCV. (2014)",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "Dai, J., He, K., Sun, J.: Boxsup: Exploiting bounding boxes to supervise convolu-\ntional networks for semantic segmentation. In: ICCV. (2015)",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "Zheng, S., Jayasumana, S., Romera-Paredes, B., Vineet, V., Su, Z., Du, D., Huang,\nC., Torr, P.H.: Conditional random ﬁelds as recurrent neural networks. In: ICCV.\n(2015)",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": null
+        },
+        "ref_12": {
+            "text": "Noh, H., Hong, S., Han, B.: Learning deconvolution network for semantic segmen-\ntation. In: ICCV. (2015)",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "Chen, L.C., Papandreou, G., Kokkinos, I., Murphy, K., Yuille, A.L.: Deeplab:\nSemantic image segmentation with deep convolutional nets, atrous convolution,\nand fully connected crfs. IEEE Transactions on Pattern Analysis and Machine\nIntelligence (TPAMI) (2017)",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "Long, J., Shelhamer, E., Darrell, T.: Fully convolutional networks for semantic\nsegmentation. In: CVPR. (2015)",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "Lin, G., Milan, A., Shen, C., Reid, I.: Reﬁnenet: Multi-path reﬁnement networks\nfor high-resolution semantic segmentation. In: CVPR. (2017)",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": null
+        },
+        "ref_16": {
+            "text": "Zhao, H., Shi, J., Qi, X., Wang, X., Jia, J.: Pyramid scene parsing network. In:\nCVPR. (2017)",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": null
+        },
+        "ref_17": {
+            "text": "Zhao, Y., Zhu, S.C.: Image parsing with stochastic scene grammar. In: Conference\non Neural Information Processing Systems (NIPS). (2011)",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": null
+        },
+        "ref_18": {
+            "text": "Zhao, Y., Zhu, S.C.: Scene parsing by integrating function, geometry and appear-\nance models. In: CVPR. (2013)",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "Choi, W., Chao, Y.W., Pantofaru, C., Savarese, S.: Understanding indoor scenes\nusing 3d geometric phrases. In: CVPR. (2013)",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "Lin, D., Fidler, S., Urtasun, R.: Holistic scene understanding for 3d object detection\nwith rgbd cameras. In: ICCV. (2013)",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "Guo, R., Hoiem, D.: Support surface prediction in indoor scenes. In: ICCV. (2013)",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "Zhang, Y., Song, S., Tan, P., Xiao, J.: Panocontext: A whole-room 3d context\nmodel for panoramic scene understanding. In: ECCV. (2014)16 S. Huang et al.",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": null
+        },
+        "ref_23": {
+            "text": "Zhang, Y., Song, S., Yumer, E., Savva, M., Lee, J.Y., Jin, H., Funkhouser, T.:\nPhysically-based rendering for indoor scene understanding using convolutional neu-\nral networks. In: CVPR. (2017)",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": null
+        },
+        "ref_24": {
+            "text": "Zou, C., Li, Z., Hoiem, D.: Complete 3d scene parsing from single rgbd image.\narXiv preprint arXiv:1710.09490 (2017)",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": "1710.09490"
+        },
+        "ref_25": {
+            "text": "Hoiem, D., Efros, A.A., Hebert, M.: Automatic photo pop-up. ACM Transactions\non Graphics (TOG) (2005)",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "Han, F., Zhu, S.C.: Bottom-up/top-down image parsing by attribute graph gram-\nmar. In: ICCV. (2005)",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "Saxena, A., Chung, S.H., Ng, A.Y.: Learning depth from single monocular images.\nIn: Conference on Neural Information Processing Systems (NIPS). (2006)",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "Hedau, V., Hoiem, D., Forsyth, D.: Recovering the spatial layout of cluttered\nrooms. In: CVPR. (2009)",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "Lee, D.C., Hebert, M., Kanade, T.: Geometric reasoning for single image structure\nrecovery. In: CVPR. (2009)",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_30": {
+            "text": "Mallya, A., Lazebnik, S.: Learning informative edge maps for indoor scene layout\nprediction. In: ICCV. (2015)",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": null
+        },
+        "ref_31": {
+            "text": "Dasgupta, S., Fang, K., Chen, K., Savarese, S.: Delay: Robust spatial layout esti-\nmation for cluttered indoor scenes. In: CVPR. (2016)",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "Ren, Y., Li, S., Chen, C., Kuo, C.C.J.: A coarse-to-ﬁne indoor layout estimation\n(cﬁle) method. In: Asian Conference on Computer Vision (ACCV). (2016)",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": null
+        },
+        "ref_33": {
+            "text": "Izadinia, H., Shan, Q., Seitz, S.M.: Im2cad. In: CVPR. (2017)",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": null
+        },
+        "ref_34": {
+            "text": "Lee, C.Y., Badrinarayanan, V., Malisiewicz, T., Rabinovich, A.: Roomnet: End-\nto-end room layout estimation. In: ICCV. (2017)",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": null
+        },
+        "ref_35": {
+            "text": "Zhao, H., Lu, M., Yao, A., Guo, Y., Chen, Y., Zhang, L.: Physics inspired op-\ntimization on semantic transfer features: An alternative method for room layout\nestimation. In: CVPR. (2017)",
+            "type": "numeric",
+            "number": "35",
+            "arxiv_id": null
+        },
+        "ref_36": {
+            "text": "Salas-Moreno, R.F., Newcombe, R.A., Strasdat, H., Kelly, P.H., Davison, A.J.:\nSlam++: Simultaneous localisation and mapping at the level of objects. In: CVPR.\n(2013)",
+            "type": "numeric",
+            "number": "36",
+            "arxiv_id": null
+        },
+        "ref_37": {
+            "text": "Aubry, M., Maturana, D., Efros, A.A., Russell, B.C., Sivic, J.: Seeing 3d chairs:\nexemplar part-based 2d-3d alignment using a large dataset of cad models. In:\nCVPR. (2014)",
+            "type": "numeric",
+            "number": "37",
+            "arxiv_id": null
+        },
+        "ref_38": {
+            "text": "Lim, J.J., Khosla, A., Torralba, A.: Fpm: Fine pose parts-based model with 3d\ncad models. In: ECCV. (2014)",
+            "type": "numeric",
+            "number": "38",
+            "arxiv_id": null
+        },
+        "ref_39": {
+            "text": "Song, S., Xiao, J.: Sliding shapes for 3d object detection in depth images. In:\nECCV. (2014)",
+            "type": "numeric",
+            "number": "39",
+            "arxiv_id": null
+        },
+        "ref_40": {
+            "text": "Tulsiani, S., Malik, J.: Viewpoints and keypoints. In: CVPR. (2015)",
+            "type": "numeric",
+            "number": "40",
+            "arxiv_id": null
+        },
+        "ref_41": {
+            "text": "Bansal, A., Russell, B., Gupta, A.: Marr revisited: 2d-3d alignment via surface\nnormal prediction. In: CVPR. (2016)",
+            "type": "numeric",
+            "number": "41",
+            "arxiv_id": null
+        },
+        "ref_42": {
+            "text": "Song, S., Xiao, J.: Deep sliding shapes for amodal 3d object detection in rgb-d\nimages. In: CVPR. (2016)",
+            "type": "numeric",
+            "number": "42",
+            "arxiv_id": null
+        },
+        "ref_43": {
+            "text": "Wu, J., Xue, T., Lim, J.J., Tian, Y., Tenenbaum, J.B., Torralba, A., Freeman,\nW.T.: Single image 3d interpreter network. In: ECCV. (2016)",
+            "type": "numeric",
+            "number": "43",
+            "arxiv_id": null
+        },
+        "ref_44": {
+            "text": "Deng, Z., Latecki, L.J.: Amodal detection of 3d objects: Inferring 3d bounding\nboxes from 2d ones in rgb-depth images. In: CVPR. (2017)",
+            "type": "numeric",
+            "number": "44",
+            "arxiv_id": null
+        },
+        "ref_45": {
+            "text": "Song, S., Lichtenberg, S.P., Xiao, J.: Sun RGB-D: A RGB-D scene understanding\nbenchmark suite. In: CVPR. (2015)",
+            "type": "numeric",
+            "number": "45",
+            "arxiv_id": null
+        },
+        "ref_46": {
+            "text": "Song, S., Yu, F., Zeng, A., Chang, A.X., Savva, M., Funkhouser, T.: Semantic\nscene completion from a single depth image. In: CVPR. (2017)Holistic 3D Scene Parsing and Reconstruction 17",
+            "type": "numeric",
+            "number": "46",
+            "arxiv_id": null
+        },
+        "ref_47": {
+            "text": "Jiang, Y., Saxena, A.: Modeling high-dimensional humans for activity anticipation\nusing gaussian process latent crfs. In: Robotics: Science and Systems (RSS). (2014)",
+            "type": "numeric",
+            "number": "47",
+            "arxiv_id": null
+        },
+        "ref_48": {
+            "text": "Xie, D., Todorovic, S., Zhu, S.C.: Inferring ”dark matter” and ”dark energy” from\nvideos. In: ICCV. (2013)",
+            "type": "numeric",
+            "number": "48",
+            "arxiv_id": null
+        },
+        "ref_49": {
+            "text": "Wu, J., Wang, Y., Xue, T., Sun, X., Freeman, W.T., Tenenbaum, J.B.: MarrNet:\n3D Shape Reconstruction via 2.5D Sketches. In: Conference on Neural Information\nProcessing Systems (NIPS). (2017)",
+            "type": "numeric",
+            "number": "49",
+            "arxiv_id": null
+        },
+        "ref_50": {
+            "text": "Dai, J., Qi, H., Xiong, Y., Li, Y., Zhang, G., Hu, H., Wei, Y.: Deformable convo-\nlutional networks. In: ICCV. (2017)",
+            "type": "numeric",
+            "number": "50",
+            "arxiv_id": null
+        },
+        "ref_51": {
+            "text": "Bodla, N., Singh, B., Chellappa, R., Davis, L.S.: Soft-nms – improving object\ndetection with one line of code. In: ICCV. (2017)",
+            "type": "numeric",
+            "number": "51",
+            "arxiv_id": null
+        },
+        "ref_52": {
+            "text": "Chang, A.X., Funkhouser, T., Guibas, L., Hanrahan, P., Huang, Q., Li, Z.,\nSavarese, S., Savva, M., Song, S., Su, H., et al.: Shapenet: An information-rich\n3d model repository. arXiv preprint arXiv:1512.03012 (2015)",
+            "type": "numeric",
+            "number": "52",
+            "arxiv_id": "1512.03012"
+        },
+        "ref_53": {
+            "text": "Savva, M., Chang, A.X., Hanrahan, P.: Semantically-enriched 3d models for\ncommon-sense knowledge. In: CVPR Workshop. (2015)",
+            "type": "numeric",
+            "number": "53",
+            "arxiv_id": null
+        },
+        "ref_54": {
+            "text": "Hastings, W.K.: Monte carlo sampling methods using markov chains and their\napplications. Biometrika (1970)",
+            "type": "numeric",
+            "number": "54",
+            "arxiv_id": null
+        },
+        "ref_55": {
+            "text": "Zhang, Y., Yu, F., Song, S., Xu, P., Seﬀ, A., Xiao, J.: Large-scale scene under-\nstanding challenge: Room layout estimation. In: CVPR Workshop. (2015)Holistic 3D Scene Parsing and Reconstruction\nfrom a Single RGB Image",
+            "type": "numeric",
+            "number": "55",
+            "arxiv_id": null
+        },
+        "ref_Springer_2013": {
+            "text": "vision. Springer (2013)",
+            "type": "author_year",
+            "key": "Springer, 2013",
+            "arxiv_id": null
+        },
+        "ref_Biometrika_1970": {
+            "text": "applications. Biometrika (1970)",
+            "type": "author_year",
+            "key": "Biometrika, 1970",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "1.1 Related Work\n\nScene Parsing: Existing scene parsing approaches fall into two streams. i) Dis- criminative approaches [10-16] classify each pixel to a semantic label. Although prior work has achieved high accuracy in labeling the pixels, these methods lack a general representation of visual vocabulary and a principle approach to explor- ing the semantic structure of a general scene. ii) Generative approaches [17-24] can distill scene structure, making it closer to human-interpretable structure of a scene, enabling potential applications in robotics, VQA, etc. In this paper, we combine those two streams in an analysis-by-synthesis framework to infer the hidden factors that generate the image.\n\nScene Reconstruction from a Single Image: Previous approaches [25-27] of indoor scene reconstruction from a single RGB image can be categorized into three streams. i) 2D or 3D room layout prediction by extracting geometric fea- tures and ranking the 3D cuboids proposals [28-35]. ii) By representing objects via geometric primitives or CAD models, previous approaches [36-44] utilize 3D object recognition or pose estimation to align object proposals to a RGB or depth image. iii) Joint estimation of the room layout and 3D objects with contexts [18, 19, 22-24, 33, 45, 46]. In particular, Izadinia et al. [33] show promis- ing results in inferring the layout and objects without the contextual relations and physical constraints. In contrast, our method jointly models the hierarchi- cal scene structure, hidden human context and physical constraints, providing a semantic representation for holistic scene understanding. Furthermore, the pro- posed method presents a joint inference algorithm using MCMC, which in theory can achieve a global optimal.\n\nScene Grammar: Scene grammar models have been used to infer the 3D structure and functionality from a RGB image [3, 17, 18,47]. Our HSG differs from [17,18] in two aspects: i) Our model represents the 3D objects with CAD models rather than geometric primitives, capable of modeling detail contextual relations (e.g., supporting relation), which provides better realization of parsing\n\n3\n\n4 S. Huang e¢ al.\n\n4\n\nFunctional Space 1Roo Geometric Space - OBedroom@\n\nFig. 2: An indoor scene represented by a parse graph (pg) of the HSG that spans across the functional space and the geometric space. The functional space characterizes the hierarchical structure and the geometric space encodes the spatial entities with contextual relations.\n\nand reconstruction. ii) We infer hidden human and activity groups in the HSG, which helps the explanation and parsing. Compared to [3, 47], we model and parse the 3D structure of objects and layouts from a single RGB image, rather than the labelled point-clouds using RGB-D images.",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "33",
+                "3, 17, 18,47",
+                "17,18",
+                "3, 47"
+            ]
+        },
+        {
+            "text": "3 Implementation Details\n\nFor 2D object detection, we fine-tune the object detector on SUN RGB-D with 30 object categories. Since [4] and [9] have no ground-truth of the camera parameter, we train the 2D layout estimation module using [4] as the initial model, followed by using the feature of the heatmap (stacking three FC layers (512-16-1)) to further train camera parameter and scene category on SUN RGB-D. During the initialization and joint inference process, we use the depth estimation model as described in [10], surface normal estimation in [11], and semantic segmentation in [12]. These models are trained on the training set of the SUN RGB-D or NYU v2 dataset [13] (included in the SUN RGB-D). In this paper, we further incorporate human context inference on the subset of offices and skip it on other scenes. During joint inference, we fix the scene category, object categories and support relations to reduce the computational complexity. We used OpenGL [14] to render the depth, surface normal and segmentation map. Rendering each map takes about 1 second. On average, our joint inference process takes about one hour for each image on a single CPU core.\n\n4 Additional Experiment Results\n\n4.1 Evaluation of 2D Layout Estimation\n\nWe evaluate the 2D layout estimation without joint inference on LSUN dataset [4] and Hedau dataset [9]. The LSUN dataset consists of 4000 training, 394 valida- tion and 1000 test images. The Hedau dataset contains 209 training, 56 validation and 105 test images. We follow the standard evaluation procedure [17] and use pixel errors and keypoint errors as two evaluation metrics. Pixel errors compute the pixel-wise error between the ground truth and estimations of the surface label, and the keypoint errors only considers the average Euclidean distance between the annotated and estimated keypoints. As reported in Table 1, our\n\nTable 1: Quantitative comparisons of 2D layout estimation on LSUN [4] and Hedau dataset [9]\n\nMethod LSUN Hedau Keypoint Error (%) Pixel Error (%) |] Pixel Error(%) Hedaw et al. (2009) [9] 15.48 24.23 21.20 Zhao et al. (2013) [15] - - 14.50 Mallya et al. (2015) [16] 11.02 16.71 12.83 Dasgupta et al. (2016) [17] 8.20 10.63 9.73 Ren et al. (2016) [18] 7.57 5.23 8.67 Izadinia et al. (2017) [19] - 10.04 10.15 Lee et al. (2017) [3] 6.30 9.86 8.34 Zhao et al. (2017) [20] 5.29 3.84 6.60 Ours (init.) 5.22 4.53 7.03\n\n3\n\n4 S. Huang e¢ al.\n\napproach achieves 5.22% keypoint error, which outperforms all existing methods and comparable pixel error with the previous best results [20] on both LSUN and Hedau dataset.",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "4",
+                "9",
+                "4",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "4",
+                "9",
+                "17",
+                "4",
+                "9",
+                "9",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "3",
+                "20",
+                "20"
+            ]
+        },
+        {
+            "text": "4.2 Evaluation of Camera Parameter Estimation\n\nWe compute the mean absolute error between our estimation and the ground- truth on testing set of SUN RGB-D. As shown in Table 2, comparing with the traditional geometry-based method [9], the proposed method gains a significant improvement. Quantitative results of the comparison over all the scene categories are shown in Figure 3. Empirically, geometry-based methods perform poorly in cluttered scenes (e.g., storage rooms) and perform well in clean scenes with clear orthogonal lines (e.g., receptions). Our method provides a good estimation which applies to most of the indoor scenes, improving the generalization ability of the monocular reconstruction algorithms.\n\nFigure 3 shows the comparison in detail over all categories. We can see that the geometry-based method performs well over the scenes with clear lines in three orthogonal directions like receptions, but results in large errors over cluttered scenes like storage rooms. Our method provides a good estimation which applies to most of the indoor scenes, improve the generalization ability for the single- view reconstruction algorithms.\n\n4.3 Evaluation of 3D Layout Estimation\n\nFigure 4 shows the comparison with 3DGP over all categories; we can also ob- serve that 3DGP fails in some scene categories such as dinette and cafeteria, which further reflects the drawbacks of the geometry-based methods.\n\nTable 2: Camera parameter estimation.\n\nMean Absolute Error focal length pitch — roll Hedau et al. [9] 141.78 3.45 33.85 Ours 35.87 3.12 7.60 Method\n\nTable 3: Comparisons of 3D object detection on SUN RGB-D dataset.\n\nMethod bed chair sofa table desk toilet___fridge sink bathtub bookshelf counter door dresser lamp tv pall 562 231 3.24 1.23 Ours (init.) 45.55 5.91 23.64 4.20 2.50 1.91 14.00 2.12 0.55 216 0.34 0.01 569 112 0.62 Ours (joint.) 58.29 13.56 28.37 12.12 4.79 16.50 15.18 2.18 2.84 7.04 1.60 1.56 13.71 2.41 1.04 nightstand books tvstand sofachair cabinet endtable dressermirror person recyclebin curtain whiteboard mirror picture paper computer 5.83 0.00 3.04 887 0.00 0.65 17.16 1310.00. 0.27 0.00 0.00 0.00 0.00 0.00 8.80 0.02 6.69 16.99 0.48 3.15 19.43 4.04 0.63 0.40 0.20 0.00 0.00 0.00 0.00\n\nHolistic 3D Scene Parsing and Reconstruction\n\nOo Geometric Method i Ours Focal Length Estimation Error (pixel) “ty eg eg “nny Yay KS % ae, Pag ap,\n\n“ Gi Mig, ng, Ua ig Ute, iy og eg ln Mo big tec ig bate ag ge ht, Ma ita Mg te Re a te ee ty aging ey baat aos %, % 4 % \"6, ey Ry a ay, 7 ey he * a a “% %\n\nFig. 4: Quantitative comparisons of 3D layout estimation.",
+            "section": "methodology",
+            "section_idx": 2,
+            "citations": [
+                "9",
+                "9"
+            ]
+        },
+        {
+            "text": "6 Conclusion\n\nWe present an analysis-by-synthesis framework to recover the 3D structure of an indoor scene from a single RGB image using a stochastic grammar model integrated with latent human context, geometry and physics. We demonstrate the effectiveness of our algorithm from three perspectives: i) the joint inference algorithm significantly improves results in various individual tasks and ii) out- performs other methods; iii) ablative analysis shows each of module plays an important role in the whole framework. In general, we believe this will be a step towards a unifying framework for the holistic 3D scene understanding. Acknowledgments. We thank Professor Ying Nian Wu from UCLA Statistics Department for helpful discussions. This work is supported by DARPA XAI N66001-17-2-4029, MURI ONR N00014-16-1-2007, SPAWAR N66001-17-2-3602, and ARO W911NF-18-1-0296.\n\nHolistic 3D Scene Parsing and Reconstruction 15\n\nReferences\n\n. Soatto, S.: Actionable information in vision. In: Machine learning for computer vision. Springer (2013)\n\n. Qi, S., Zhu, Y., Huang, S., Jiang, C., Zhu, S.C.: Human-centric indoor scene synthesis using stochastic grammar. In: CVPR. (2018)\n\n. Jiang, Y., Koppula, H., Saxena, A.: Hallucinated humans as the hidden context for labeling 3d scenes. In: CVPR. (2013)\n\n. Gupta, A., Efros, A.A., Hebert, M.: Blocks world revisited: Image understanding using qualitative geometry and mechanics. In: ECCV. (2010)\n\nol . Liu, X., Zhao, Y., Zhu, $.C.: Single-view 3d scene parsing by attributed grammar. In: CVPR. (2014)\n\n. Zheng, B., Zhao, Y., Joey, C.Y., Ikeuchi, K., Zhu, $.C.: Detecting potential falling objects by inferring human action and natural disturbance. In: IEEE International Conference on Robotics and Automation (ICRA). (2014)\n\n. Yuille, A., Kersten, D.: Vision as bayesian inference: analysis by synthesis? Trends in cognitive sciences (2006)\n\n. Grenander, U.: Lectures in pattern theory i, ii and iii: Pattern analysis, pattern synthesis and regular structures (1976)\n\n. Loper, M.M., Black, M.J.: Opendr: An approximate differentiable renderer. In: ECCV. (2014)\n\n10. Dai, J., He, K., Sun, J.: Boxsup: Exploiting bounding boxes to supervise convolu- tional networks for semantic segmentation. In: ICCV. (2015)\n\n11. Zheng, S., Jayasumana, S., Romera-Paredes, B., Vineet, V., Su, Z., Du, D., Huang, C., Torr, P.H.: Conditional random fields as recurrent neural networks. In: ICCV. (2015)\n\n12. Noh, H., Hong, S., Han, B.: Learning deconvolution network for semantic segmen- tation. In: ICCV. (2015)\n\n13. Chen, L.C., Papandreou, G., Kokkinos, I., Murphy, K., Yuille, A.L.: Deeplab: Semantic image segmentation with deep convolutional nets, atrous convolution, and fully connected crfs. IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI) (2017)\n\n14. Long, J., Shelhamer, E., Darrell, T.: Fully convolutional networks for semantic segmentation. In: CVPR. (2015)\n\n. Lin, G., Milan, A., Shen, C., Reid, I.: Refinenet: Multi-path refinement networks for high-resolution semantic segmentation. In: CVPR. (2017)\n\n16. Zhao, H., Shi, J., Qi, X., Wang, X., Jia, J.: Pyramid scene parsing network. In: CVPR. (2017)\n\n17. Zhao, Y., Zhu, S.C.: Image parsing with stochastic scene grammar. In: Conference on Neural Information Processing Systems (NIPS). (2011)\n\n18. Zhao, Y., Zhu, S.C.: Scene parsing by integrating function, geometry and appear- ance models. In: CVPR. (2013)\n\n19. Choi, W., Chao, Y.W., Pantofaru, C., Savarese, S.: Understanding indoor scenes using 3d geometric phrases. In: CVPR. (2013)\n\n20. Lin, D., Fidler, S., Urtasun, R.: Holistic scene understanding for 3d object detection with rgbd cameras. In: ICCV. (2013)\n\n21. Guo, R., Hoiem, D.: Support surface prediction in indoor scenes. In: ICCV. (2013)\n\n22. Zhang, Y., Song, S., Tan, P., Xiao, J.: Panocontext: A whole-room 3d context model for panoramic scene understanding. In: ECCV. (2014)\n\n16 S. Huang e¢ al.\n\n23. Zhang, Y., Song, S., Yumer, E., Savva, M., Lee, J.Y., Jin, H., Funkhouser, T.: Physically-based rendering for indoor scene understanding using convolutional neu- ral networks. In: CVPR. (2017)\n\n24. Zou, C., Li, Z., Hoiem, D.: Complete 3d scene parsing from single rgbd image. arXiv preprint arXiv:1710.09490 (2017)\n\n. Hoiem, D., Efros, A.A., Hebert, M.: Automatic photo pop-up. ACM Transactions on Graphics (TOG) (2005)\n\n26. Han, F., Zhu, $.C.: Bottom-up/top-down image parsing by attribute graph gram- mar. In: ICCV. (2005)\n\n27. Saxena, A., Chung, $.H., Ng, A.Y.: Learning depth from single monocular images. In: Conference on Neural Information Processing Systems (NIPS). (2006)\n\n28. Hedau, V., Hoiem, D., Forsyth, D.: Recovering the spatial layout of cluttered rooms. In: CVPR. (2009)\n\n29. Lee, D.C., Hebert, M., Kanade, T.: Geometric reasoning for single image structure recovery. In: CVPR. (2009)\n\n30. Mallya, A., Lazebnik, $.: Learning informative edge maps for indoor scene layout prediction. In: ICCV. (2015)\n\n31. Dasgupta, S., Fang, K., Chen, K., Savarese, S.: Delay: Robust spatial layout esti- mation for cluttered indoor scenes. In: CVPR. (2016)\n\n32. Ren, Y., Li, S., Chen, C., Kuo, C.C.J.: A coarse-to-fine indoor layout estimation (cfile) method. In: Asian Conference on Computer Vision (ACCV). (2016)\n\n33. Izadinia, H., Shan, Q., Seitz, S.M.: Im2cad. In: CVPR. (2017)\n\n34. Lee, C.Y., Badrinarayanan, V., Malisiewicz, T., Rabinovich, A.: Roomnet: End- to-end room layout estimation. In: ICCV. (2017)\n\n. Zhao, H., Lu, M., Yao, A., Guo, Y., Chen, Y., Zhang, L.: Physics inspired op- timization on semantic transfer features: An alternative method for room layout estimation. In: CVPR. (2017)\n\n36. Salas-Moreno, R.F., Newcombe, R.A., Strasdat, H., Kelly, P.H., Davison, A.J.: Slam+-+: Simultaneous localisation and mapping at the level of objects. In: CVPR. (2013)\n\n37. Aubry, M., Maturana, D., Efros, A.A., Russell, B.C., Sivic, J.: Seeing 3d chairs: exemplar part-based 2d-3d alignment using a large dataset of cad models. In: CVPR. (2014)\n\n38. Lim, J.J., Khosla, A., Torralba, A.: Fpm: Fine pose parts-based model with 3d cad models. In: ECCV. (2014)\n\n39. Song, S., Xiao, J.: Sliding shapes for 3d object detection in depth images. In: ECCV. (2014)\n\n. Tulsiani, S., Malik, J.: Viewpoints and keypoints. In: CVPR. (2015)\n\n. Bansal, A., Russell, B., Gupta, A.: Marr revisited: 2d-3d alignment via surface normal prediction. In: CVPR. (2016)\n\n. Song, S., Xiao, J.: Deep sliding shapes for amodal 3d object detection in rgb-d images. In: CVPR. (2016)\n\n. Wu, J., Xue, T., Lim, J.J., Tian, Y., Tenenbaum, J.B., Torralba, A., Freeman, W.T.: Single image 3d interpreter network. In: ECCV. (2016)\n\n. Deng, Z., Latecki, L.J.: Amodal detection of 3d objects: Inferring 3d bounding boxes from 2d ones in rgb-depth images. In: CVPR. (2017)\n\n. Song, S., Lichtenberg, S.P., Xiao, J.: Sun RGB-D: A RGB-D scene understanding benchmark suite. In: CVPR. (2015)\n\n. Song, S., Yu, F., Zeng, A., Chang, A.X., Savva, M., Funkhouser, T.: Semantic scene completion from a single depth image. In: CVPR. (2017)",
+            "section": "results",
+            "section_idx": 0,
+            "citations": []
+        },
+        {
+            "text": "4.4 Evaluation of 3D Object Detection\n\nTable 3 shows the evaluation of 3D object detection over 30 categories of objects.\n\n5\n\n6 S. Huang et al.\n\n5 More Qualitative Results\n\nFig. 5: More qualitative results\n\nHolistic 3D Scene Parsing and Reconstruction\n\nFig. 5: More qualitative results (cont.)\n\nS. Huang e¢ al.\n\nFig. 5: More qualitative results (cont.)\n\nHolistic 3D Scene Parsing and Reconstruction\n\nFig. 5: More qualitative results (cont.)\n\n9\n\n10 S. Huang e¢ al.\n\nReferences\n\n. Song, S., Lichtenberg, S.P., Xiao, J.: Sun RGB-D: A RGB-D scene understanding benchmark suite. In: CVPR. (2015)\n\n. Wu, C., Zhang, J., Savarese, S., Saxena, A.: Watch-n-patch: Unsupervised under- standing of actions and relations. In: CVPR. (2015)\n\n. Lee, C.Y., Badrinarayanan, V., Malisiewicz, T., Rabinovich, A.: Roomnet: End- to-end room layout estimation. In: ICCV. (2017)\n\n. Zhang, Y., Yu, F., Song, S., Xu, P., Seff, A., Xiao, J.: Large-scale scene under- standing challenge: Room layout estimation. In: CVPR Workshop. (2015)\n\nol . Coughlan, J.M., Yuille, A.L.: Manhattan world: Compass direction from a single image by bayesian inference. In: CVPR. (1999)\n\n. Newell, A., Yang, K., Deng, J.: Stacked hourglass networks for human pose esti- mation. In: ECCV. (2016)\n\n. Badrinarayanan, V., Kendall, A., Cipolla, R.: Segnet: A deep convolutional encoder-decoder architecture for scene segmentation. IEEE Transactions on Pat- tern Analysis and Machine Intelligence (TPAMI) 39(12) (2017) 2481-2495\n\n. Kingma, D., Ba, J.: Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980 (2014)\n\n. Hedau, V., Hoiem, D., Forsyth, D.: Recovering the spatial layout of cluttered rooms. In: CVPR. (2009)\n\n10. Laina, I., Rupprecht, C., Belagiannis, V., Tombari, F., Navab, N.: Deeper depth prediction with fully convolutional residual networks. In: International Conference on 3D Vision (3DV). (2016)\n\n11. Zhang, Y., Song, S., Yumer, E., Savva, M., Lee, J.Y., Jin, H., Funkhouser, T.: Physically-based rendering for indoor scene understanding using convolutional neu- ral networks. In: CVPR. (2017)\n\n12. Lin, G., Milan, A., Shen, C., Reid, I.: Refinenet: Multi-path refinement networks for high-resolution semantic segmentation. In: CVPR. (2017)\n\n13. Silberman, N., Hoiem, D., Kohli, P., Fergus, R.: Indoor segmentation and support inference from rgbd images. In: ECCV. (2012)\n\n14. Shreiner, D., Group, B.T.K.O.A.W., et al.: OpenGL programming guide: the offi- cial guide to learning OpenGL, versions 3.0 and 3.1. Pearson Education (2009)\n\n. Zhao, Y., Zhu, $.C.: Scene parsing by integrating function, geometry and appear- ance models. In: CVPR. (2013)\n\n16. Mallya, A., Lazebnik, $.: Learning informative edge maps for indoor scene layout prediction. In: ICCV. (2015)\n\n17. Dasgupta, S., Fang, K., Chen, K., Savarese, S.: Delay: Robust spatial layout esti- mation for cluttered indoor scenes. In: CVPR. (2016)\n\n18. Ren, Y., Li, S., Chen, C., Kuo, C.C.J.: A coarse-to-fine indoor layout estimation (cfile) method. In: Asian Conference on Computer Vision (ACCV). (2016)\n\n19. Izadinia, H., Shan, Q., Seitz, S.M.: Im2cad. In: CVPR. (2017)\n\n20. Zhao, H., Lu, M., Yao, A., Guo, Y., Chen, Y., Zhang, L.: Physics inspired op- timization on semantic transfer features: An alternative method for room layout estimation. In: CVPR. (2017)\n\n21. Choi, W., Chao, Y.W., Pantofaru, C., Savarese, S.: Understanding indoor scenes using 3d geometric phrases. In: CVPR. (2013)",
+            "section": "results",
+            "section_idx": 1,
+            "citations": []
+        },
+        {
+            "text": "8\n\n2018\n\n1\n\n0\n\n2 g u A 7 ] V C . s c [ 1 v 1 0 2 2 0 . 8 0 8 1 : v\n\ni\n\nX\n\nr\n\na\n\nHolistic 3D Scene Parsing and Reconstruction from a Single RGB Image\n\nSiyuan Huang! ?, Siyuan Qib?, Yixin Zhu! ?, Yinxue Xiao!, Yuanlu Xul?, and Song-Chun Zhu?\n\nUniversity of California, Los Angeles\n\n? International Center for AI and Robot Autonomy (CARA)\n\nAbstract. We propose a computational framework to jointly parse a single RGB image and reconstruct a holistic 3D configuration composed by a set of CAD models using a stochastic grammar model. Specifically, we introduce a Holistic Scene Grammar (HSG) to represent the 3D scene structure, which characterizes a joint distribution over the functional and geometric space of indoor scenes. The proposed HSG captures three es- sential and often latent dimensions of the indoor scenes: i) latent human context, describing the affordance and the functionality of a room ar- rangement, ii) geometric constraints over the scene configurations, and iii) physical constraints that guarantee physically plausible parsing and reconstruction. We solve this joint parsing and reconstruction problem in an analysis-by-synthesis fashion, seeking to minimize the differences between the input image and the rendered images generated by our 3D representation, over the space of depth, surface normal, and object seg- mentation map. The optimal configuration, represented by a parse graph, is inferred using Markov chain Monte Carlo (MCMC), which efficiently traverses through the non-differentiable solution space, jointly optimizing object localization, 3D layout, and hidden human context. Experimental results demonstrate that the proposed algorithm improves the general- ization ability and significantly outperforms prior methods on 3D layout estimation, 3D object detection, and holistic scene understanding.\n\nKeywords: 3D Scene Parsing and Reconstruction - Analysis-by-Synthesis - Holistic Scene Grammar - Markov chain Monte Carlo\n\n1 Introduction\n\nThe complexity and richness of human vision are not only reflected by the abil- ity to recognize visible objects, but also to reason about the latent actionable information [1], including inferring latent human context as the functionality of a scene [2, 3], reconstructing 3D hierarchical geometric structure [4,5], and complying with the physical constraints that guarantee the physically plausible scene configurations [6]. Such rich understandings of an indoor scene are the essence for building an intelligent computational system, which transcends the prevailing appearance- and geometry-based recognition tasks to account also for the deeper reasoning of observed images or patterns.\n\n2 S. Huang et al.\n\n2\n\nInput 2D Image 3D Scene Configuration » SoBe Layout Parse & : Initialize . Reconstruct = Object Ey Ei ut Proposal | = | Render Surface Normal Direct Estimate Depth Map Object Mask a O Project Compare —_—\n\nFig. 1: Illustration of the proposed holistic 3D indoor scene parsing and recon- struction in an analysis-by synthesis fashion. A 3D representation is initialized by individual vision modules (e.g., object detection, 2D layout estimation). A joint inference algorithm compares the differences between the rendered normal, depth, and segmentation map with the ones estimated directly from the input RGB image, and adjust the 3D structure iteratively.\n\nOne promising direction is analysis-by-synthesis [7| or “vision as inverse graphics” [8,9]. In this paradigm, computer vision is treated as an inverse prob- lem as opposed to computer graphics, of which the goal is to reverse-engineer hidden factors occurred in the physical process that produces observed images.\n\nIn this paper, we embrace the concept of vision as inverse graphics, and pro- pose a holistic 3D indoor scene parsing and reconstruction algorithm that simul- taneously reconstructs the functional hierarchy and the 3D geometric structure of an indoor scene from a single RGB image. Figure 1 schematically illustrates the analysis-by-synthesis inference process. The joint inference algorithm takes proposals from various vision modules and infers the 3D structure by comparing various projections (i.e., depth, normal, and segmentation) rendered from the recovered 3D structure with the ones directly estimated from an input image.\n\nSpecifically, we introduce a Holistic Scene Grammar (HSG) to represent the hierarchical structure of a scene. As illustrated in Figure 2, our HSG decomposes a scene into latent groups in the functional space (t.e., hierarchical structure in- cluding activity groups) and object instances in the geometric space (i.e., CAD models). For the functional space, in contrast to the conventional method that only models the object-object relations, we propose a novel method to model human-object relations by imagining latent human in activity groups to further help explain and parse the observed image. For the geometric space, the geo- metric attributes (e.g., size, position, orientation) of individual objects are taken\n\nHolistic 3D Scene Parsing and Reconstruction\n\ninto considerations, as well as the geometric relations (e.g., supporting relation) among them. In addition, physical constraints (e.g., collision among the objects, violations of the layout) are incorporated to generate a physically plausible 3D parsing and reconstruction of the observed image.\n\nHere, an indoor scene is represented by a parse graph (pg) of a grammar, which consists of a hierarchical structure and a Markov random field (MRF) over terminal nodes that captures the rich contextual relations between objects and room layout (i.e., the room configuration of walls, floors, and ceilings).\n\nA maximum a posteriori probability (MAP) estimate is designed to find the optimal solution that parses and reconstructs the observed image. The likelihood measures the similarity between the observed image and the rendered images projected from the inferred pg onto various 2D image spaces. Thus, the pg can be iteratively refined by sampling an MCMC with simulated annealing based on posterior probability. We evaluate our method on a large-scale RGB-D dataset by comparing the reconstructed 3D indoor rooms with the ground-truth.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "1",
+                "2, 3",
+                "4,5",
+                "6",
+                "8,9"
+            ]
+        },
+        {
+            "text": "1.2 Contributions\n\nThis paper makes five major contributions:\n\n1. We integrate geometry and physics to interpret and reconstruct indoor scenes with CAD models. We jointly optimize 3D room layouts and object config- urations, largely improving the performance of scene parsing and reconstruction on SUN RGB-D dataset [45].\n\n2. We incorporate hidden human context (7.e., functionality) into our gram- mar, enabling to imagine latent human pose in each activity group by grouping and sampling. In this way, we can optimize the joint distribution of both visible and invisible [48] components of the scene.\n\n3. We propose a complete computational framework to combine generative model (i.e., a stochastic grammar), discriminative models (i.e., direct estima- tions of depth, normal, and segmentation maps), and graphics engines (.e., rendered images) in scene parsing and reconstruction.\n\n4. To the best of our knowledge, ours is the first work to use the inferred depth, surface normal and object segmentation map to assist parsing and re- constructing 3D scenes (both room layout and multiple objects). Note that [49] uses similar intermediate representation for a single object.\n\n5. By learning the supporting relations among objects, the proposed method eliminates the widely adopted assumption in previous work that all objects must stand on the ground. Such flexibility of the model yields better parsing and reconstruction of the real-world scenes with complex object relations.\n\nHolistic 3D Scene Parsing and Reconstruction\n\n2 Holistic Scene Grammar\n\nWe represent the hierarchical structure of indoor scenes by a Holistic Scene Grammar (HSG). An HSG consists of a latent hierarchical structure in the functional space F and terminal object entities in the geometric space G. The intuition is that, for man-made environments, the object arrangement in the geometric space should be a “projection” from the functional space (7.e., human activities). The functional space as a probabilistic context free grammar (PCFG) captures the hierarchy of the functional groups, and the geometric space captures the spatial contexts among objects by defining an MRF on the terminal nodes. The two spaces together form a stochastic context-sensitive grammar (SCSG). The HSG starts from a root scene node and ends with a set of terminal nodes. An indoor scene is represented by a parse graph pg as illustrated in Figure 2.\n\nDefinition: The stochastic context-sensitive grammar HSG is defined as a 5- tuple (S,V,R,E,P). S denotes the root node of the indoor scene. V is the vertex set that includes both non-terminal nodes V> € F and terminal nodes V, € G. R denotes the production rule, and F the contextual relations among the terminal nodes, which are represented by the horizontal links in the pg. P is the probability model defined on the pg.\n\nFunctional Space F: The non-terminal nodes V; = {V;, VP VP, Vi} € F consist of the scene category nodes V;, activity group nodes V;\", objects nodes V?, and layout nodes Vp\n\nGeometric Space G: The terminal nodes V, = {V?, Vit € Gare the CAD models of object entities and room layouts. Each object v € V? is represented as a CAD model, and the object appearance is parameterized by its 3D size, location, and orientation. The room layout v € Vi is represented as a cuboid which is further decomposed into five planar surfaces of the room (left wall, right wall, middle wall, floor, and ceiling with respect to the camera coordinate).\n\nProduction Rule R: The following production rules are defined for HSG:\n\neS — Vf: scene + category 1 | category 2| ... (e.g., scene — office | kitchen) eVE VP: Vy}: category — activity groups - layout (e.g., office > (walking, reading) - layout)\n\neV? — Vp: activity group > functional objects (e.g., sitting + (desk, chair)) where - denotes the deterministic decomposition, | alternative explanations, and () combination. Contextual relations F capture relations among objects, includ- ing their relative positions, relative orientations, grouping relations, and sup- porting relations. The objects could be supported by either other objects or the room layout; e.g., a lamp could be supported by a night stand or the floor.\n\nFinally, a scene configuration is represented by a pg, whose terminals are room layouts and objects with their attributes and relations. As shown in Fig- ure 2, a pg can be decomposed as pg = (D9 fs PIq)> where pg, and pg, denote the functional part and geometric part of the pg, respectively. E € pg, denotes the contextual relations in the terminal layer.\n\nol\n\n6 S. Huang e¢ al.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "45",
+                "48",
+                "49"
+            ]
+        },
+        {
+            "text": "3 Probabilistic Formulation\n\nThe objective of the holistic scene parsing is to find an optimal pg that represents all the contents and relations observed in the scene. Given an input RGB image I, the optimal pg could be derived by an MAP estimator,\n\np(pgll) « p(pg) - p(|pg) (1)\n\nx p(pg¢)- P(p9g|Pg ¢) - PU |p9q) (2)\n\n= zor E(pg 7) — E(p9q\\p9 5) — E(L|p9q)} + (3)\n\nwhere the prior probability p(pg) is decomposed into p(pgp)p(pgqlpgf), and pU|pg) = pU|pg,) since the image space is independent of the functional space given the geometric space. We model the joint distribution with a Gibbs distri- bution; E(pg >), E(pgg|pg;) and E(I|pg,) are the corresponding energy terms.\n\nFunctional Prior €(pg +) characterizes the prior of the functional aspect in a pg, which models the hierarchical structure and production rules in the func- tional space. For production rules of alternative explanations | and combination (), each rule selects child nodes and the probability of the selections is mod- eled with a multinomial distribution. The production rule - is deterministically expanded with probability 1. Given the production rules R, the energy can be written as E(pg¢) = )0,,er — log p(ri).\n\nGeometric Prior E (pg 4|P9 7) is the prior of the geometric aspect in a pg. Besides modeling the size, position and orientation distribution of each object, we also consider two types of contextual relations E = {F,,£,} among the objects: i) relations E., between supported objects and their supporting objects; ii) relations E, between imagined human and objects in an activity group.\n\nWe define different potential functions for each type of contextual relations, constructing an MRF in the geometric space including four terms:\n\nE(pgq\\P9 ¢) = Esc PI glP9 6) + Espe(P9 glP9 ¢) + Egrp (PI qlP9¢) + Epny(PGg)- (4)\n\ne Size Consistency Esc constrains the size of an object. Esc(pgglpg¢) = Yv,eve — log p(silV?), where s; denotes the size of object vj. We model the v g distribution of object scale in a non-parametric way, i.e., kernel density estima- tion (KDE).\n\ne Supporting Constraint Esp, characterizes the contextual relations between supported objects and supporting objects (including floors, walls and ceilings). We model the distribution with their relative heights and overlapping areas:\n\nExpt (P9g1P96) = Yoo, ep, Ko(ves¥s) + Kalvisvs) — Astog p (viv | VI.VP). (5) (v0; )€\n\nwhere K,(v;,v0;) = 1 — area(v; U v;)/area(v;) defines the overlapping ratio in xy-plane, and K;,(v;,v;) defines the relative height between the lower surface of v; and the upper surface of v;. K,(-) and Ka(-) is 0 if supporting object is floor and wall, respectively. (vi, ¥y|V}, VP ) is the prior frequency of the supporting relation modeled by multinoulli distributions. \\, is a balancing constant.\n\nHolistic 3D Scene Parsing and Reconstruction\n\ne Human-Centric Grouping Constraint Egrp. For each activity group, we imagine the invisible and latent human poses to help parse and understand the scene. The intuition is that the indoor scenes are designed to serve human daily activities, thus the indoor images should be jointly interpreted by the observed entities and the unobservable human activities. This is known as the Dark Mat- ter [48] in computer vision that drives the visible components in the scene. Prior methods on scene parsing often merely model the object-object relations. In this paper, we go beyond passive observations to model the latent human-object relations, thereby proposing a human-centric grouping relationship and a joint inference algorithm over both the visible scene and the invisible latent human context. Specifically, for each activity group v € V;', we define correspondent imagined human with a six tuple < y, ,t,7r, s, {4 >, where y is the activity type, pw € R®>* is the mean human pose (represented by 25 joints) of activity type y, t denotes the translation, r denotes the rotation, s denotes the scale, and ji is the imagined human skeleton: 4 = w-r-s +t. The energy among the imagined human and objects is defined as:",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "48"
+            ]
+        },
+        {
+            "text": "Egrp\n\n(PI g|P9 5) = SS Egrp(fuilvi) vieVve 6 ~ do evy eyeente Daft, 453 4) + Dn (fa, ¥55h) + Do (fia, v7; 0),\n\nwhere ch(v;) denotes the set of child nodes of v;, v; denotes the 3D position of vj. Da(-), Pn(-) and D,(-) denote geometric distances, heights and orientation differences, respectively, calculated by the center of the imagined human pose to the object center subtracted by their mean (i.e., d, h and 6).\n\ne Physical Constraints: Additionally, in order to avoid violating the physical laws during parsing, we define the physical constraints €,,,(pg,) to penalize physical violations. Exceeding the room cuboid or overlapping among the objects are defined as violations. This term is formulated as:\n\nEval PI.) = eve Daevpns CHD F Dog, yg UMM)»\n\nwhere O,(-) denotes the overlapping area between objects, and O;(-) denotes the area of objects exceeding the layout.\n\nLikelihood &(I|pg,) characterizes the similarity between the observed im- age and the rendered image generated by the parsing results. Due to various lighting conditions, textures, and material properties, there will be an inevitable difference between the rendered RGB images and the observed scenes. Here, in- stead of using RGB images, we solve this problem in an analysis-by-synthesis fashion by comparing the depth, surface normal, and object segmentation map.\n\nBy combining generative models and discriminative models, the proposed approach tries to reverse-engineer the hidden factors that generate the observed image. Specifically, we first use discriminative methods to project the observed image I to various feature spaces. In this paper, we directly estimate three intermediate images—depth map @q(J), surface normal map ©&,,(I) and object segmentation map ®,,,(J), as the feature representation of the observed image I. Meanwhile, a pg inferred by our method represents the 3D structure of the observed image, which is used to reconstruct image I’ to recover the correspond-\n\n7\n\n8 S. Huang e¢ al.\n\ning depth map @,(J’), surface normal map @,,(J’), and object segmentation map ®,,,(I’) through a forward graphics rendering.\n\nFinally, we compute the likelihood term by comparing these rendered results from the generative model with the directly estimated results calculated by the discriminative models. Specifically, the likelihood is computed by the pixel-wise differences between the two sets of maps,\n\nE(I p94) = Dp(Pa(1), PalI')) + Do(Pn(L), Pn(I')) + Do(Gm(L),Pm(I')), (8)\n\nwhere D,(-) is the sum of pixel-wise Euclidean distances between two maps. Note a weight is associated with each energy term, which is learned by cross-validation or set empirically.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": []
+        },
+        {
+            "text": "4 Inference\n\nGiven a single RGB image as the input, the goal of inference is to find the optimal pg that best explains the hidden factors that generate the observed image while recovering the 3D scene structure. The inference includes three major steps:\n\ne Room geometry estimation: estimate the room geometry by predicting the 2D room layout and the camera parameter, and by projecting the estimated 2D layout to 3D. Details are provided in subsection 4.1.\n\ne Objects initialization: detect objects and retrieve CAD models correspond- ingly with the most similar appearance, then roughly estimate their 3D poses, positions, sizes, and initialize the support relations. See subsection 4.2.\n\ne Joint inference: optimize the objects, layout and hidden human context in the 3D scene in an analysis-by-synthesis fashion by maximizing the posterior probability of the pg. Details are provided in subsection 4.3.\n\n4.1 Room Geometry Estimation\n\nAlthough recent approaches [33-35] are capable of generating a relatively robust prediction of the 2D room layout using CNN features, 3D room layout estima- tions are still inaccurate due to its sensitivity to camera parameter estimation in clusttered scenes. To address the inconsistency between the 2D layout estimation and camera parameter estimation, we design a deep neural network to estimate the 2D layout, and use the layout heatmap to estimate the camera parameter.\n\n2D Layout Estimation: Similar to [34], we represent the 2D layout with its room layout type and keypoint positions. The network structure is provided in the supplementary material. The network optimizes the Euclidean loss for layout heatmap regression and the cross-entropy loss for room type estimation.\n\nCamera Parameter: Traditional geometry-based method [28] computes the camera parameter by estimating the vanishing points from the observed image, which is sensitive and unstable in cluttered indoor scenes with heavy occlusions. Inspired by [43], we propose a learning-based method that uses the keypoints heatmaps to predict the camera parameters, i.e., focal length, together with the yaw, pitch, and roll angles of the camera. Since the yaw angle has already been\n\nHolistic 3D Scene Parsing and Reconstruction\n\nincorporated into the evaluation of room layout, we estimate the remaining three variables (focal length, pitch and roll) by stacking four FC layers (1024-128-16-3) on the keypoint heatmaps.\n\n3D Layout Initialization: Using the estimated 2D layout and camera pa- rameters, we project the corners of the 2D layout to 3D in order to obtain a 3D room cuboid. We assume the cameras and the ceilings are 1.2m and 3.0m high, respectively. For simplicity, we translate and rotate the 83D rooms so that one of the visible room corners is at the origin of the world coordinate system.",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "34",
+                "28",
+                "43"
+            ]
+        },
+        {
+            "text": "4.2 Objects Initialization\n\nWe fine-tune the Deformable Convolutional Networks [50] using Soft-NMS [51] to detect 2D bounding boxes. To initialize the 3D objects, we retrieve the most similar CAD models and initialize their 3D poses, sizes, and positions.\n\nModel Retrieval: We consider all the models in the ShapeNetSem reposi- tory [52,53] and render each model from 48 viewpoints consisting of uniformly sampled 16 azimuth and 3 elevation angles. We extract 7 x 7 features from the ROI-pooling layer of the fine-tuned detector of images in the detected bounding boxes and candidate rendered images. By ranking the cosine distance between each detected object feature and rendered image feature in the same object category, we obtain the top-10 CAD models with corresponding poses.\n\nGeometric Attributes Estimation: The geometric attributes of an object are represented by a 9D vector of 3D pose, position, and size, where 3D poses are initialized from the retrieval procedure. Prior work roughly projected 2D points to 3D, and recovered the 3D position and size by assuming that all the objects are on the floor. Such approach shows limitations in complex scenarios.\n\nWithout making the above assumption, we estimate the depth of each object by computing the average depth value of the pixels that are in both the detection bounding box and the segmentation map. We then compute its 3D position using the depth value. Empirically, this approach is more robust since per-pixel depth estimation error is small even in cluttered scenes. To avoid the alignment problem of the 2D bounding boxes, we initialize the object size by sampling object sizes from a learned distribution and choose the one with the largest probability.\n\nSupporting Relation Estimation: For each object v; € V7, we find its supporting object vj of minimal supporting energy from objects or layout:\n\nvy =argmin K,(v;,0j;) +Kn(vi, vj) — As log p(v;, v;|Vz,VP), vj € (V7.V/P). (9) J Uj\n\n4.3 Joint Inference\n\nGiven an image J, we first estimate the room geometry, object attributes and relations as described in the above two subsections. As summarized in Alg.1, the joint inference includes: (1) optimize the objects and layout (Figure 3); (2) group objects, assign activity label and imagine human pose in each activity group; and (3) optimize the objects, layout and human pose iteratively.\n\n9\n\n10 S. Huang et al.\n\n10\n\nTarget Initialization Iteration 150 Iteration 300 Iteration 500 Iteration 900 Iteration 1200\n\nFig. 3: The process of joint inference of objects and layout by MCMC with sim- ulated annealing. Top: depth maps. Middle: normal maps. Bottom: object segmentation maps. Objects and layout are optimized iteratively.\n\nIn each step, we use distinct MCMC processes. Specifically, to traverse non- differentiable solution spaces, we design Markov chain dynamics {q?, ¢3, q3} for objects, {q/,q5} for layout, and {q>, g?, gt} for human pose. Specifically,\n\ne Object Dynamics: Dynamics gq? adjusts the position of a random object, which translates the object center in one of the three Cartesian coordinate axes. Instead of translating the object center and changing the object size directly, Dynamics q§ translates one of the six faces of the cuboid to generate a smoother diffusion. Dynamics g§ proposes rotation of the object with a specified angle. Each dynamic can diffuse in two directions, e.g., each object can translate in direction of ‘+2’ and ‘—z’, or rotate in direction of clockwise and counterclock- wise. By computing the local gradient of P(pg|), the dynamics propose to move following the direction of the gradient with a proposal probability of 0.8, or the inverse direction of the gradient with proposal probability of 0.2.\n\ne Layout Dynamics: Dynamics qi translates the faces of the layout, which also optimizes the camera height when translating the floor. Dynamics q) rotates the layout.\n\ne Human pose Dynamics q'/, qi and q} are designed to translate, rotate and scale the human pose, respectively.\n\nGiven the current pg, each dynamic will propose a new pg’ according to a proposal probability p(pg’|pg, J). The proposal is accepted according to an acceptance probability a(pg — pg’) defined by the Metropolis-Hasting algo- rithm [54]:\n\np(pg|pe’, 1)p(pg' |Z) ’ p(pg’|pg. 1)p(pglL) ” (0) a(pg > pg’) = min(1\n\nIn step (2), we group objects and assign activity labels. For each type of activity, there is a object category which has the highest occurrence frequency (i.e., chair in activity ‘reading’). Intuitively, the correspondence between objects and activities should be n-to-n but not n-to-one, which means each object can belong to several activity groups. In order to find out all possible activity groups, for each type of activity, we define an activity group around each major object and incorporate nearby objects (within a distance threshold) with prior larger\n\nHolistic 3D Scene Parsing and Reconstruction 11",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "50",
+                "51",
+                "52,53",
+                "54"
+            ]
+        },
+        {
+            "text": "Algorithm 1 Joint inference algorithm\n\n1: Given Image J, initialized parse graph PSinit\n\n2: procedure SrepPl(V?, Vy)\n\n> Inference without hidden human context\n\n3 for different temperatures do p Different temperatures are adopted in simulated annealing 4 for ¥1 iterations do\n\n5:\n\nrandomly choose layout, apply layout dynamics to optimize layout vy\n\n6: for each object vi € Vy do\n\n7: for y2 iterations do\n\n8 randomly apply object dynamics to optimize object uv;\n\n9 : procedure STEP2(V;\", {})\n\n> Inference of hidden human context\n\n10: group objects and assign activity labels (see last paragraph in subsection 4.3)\n\n11: for each activity group vi € vy do\n\n12: repeat\n\n13:\n\nrandomly apply human pose dynamics to optimize fi;\n\n14: until E(ji;|v;) converges\n\n15: procedure STEP3(V?, Vy {jt})\n\n> Maximizing grouping energy in Equation 11 > Iterative inference of whole parse graph\n\n16: for different temperatures do\n\n17: for 73 iterations do\n\n18:\n\nrandomly choose layout, objects or human pose\n\n19: apply random dynamics to minimize P(pg|J)\n\n20: Return pgoptimized\n\npgoptimized\n\nvarious indoor scenes. Objects\n\nFig. 4: Sampled human poses in various indoor scenes. Objects in multiple activ- ity groups have multiple poses. We visualize the pose with the highest likelihood.\n\nthan 0. For each activity group v; € V;', the pose of the imagined human is estimated by maximizing the likelihood p(v;|/i;), which is equivalent to minimize the grouping energy E,,p(fi;|v;) defined in Equation 6,\n\n* * * * * : ~ Yes; b4 748i\n\nFigure 4 shows the results of sampled human poses in various indoor scenes.\n\n5 Experiments\n\nWe use the SUN RGB-D dataset [45] to evaluate our approach on 3D scene parsing, 3D reconstruction, as well as other 3D scene understanding tasks. The\n\n12 S. Huang e¢ al.\n\nTable 1: 3D scene parsing and reconstruction results on SUN RGB-D dataset\n\n3D Layout Estimation Holistic Scene Understanding Method # of image ToU P, R, R, ToU 3DGP [19] 5050 19.2 2.1 0.7 0.6 13.9 Ours (init.) 5050 46.7 25.9 15.5 12.2 36.6 Ours (joint.) 5050 54.9 37.7 23.0 18.3 40.7 3DGP [19] 749 33.4 5.3 2.7 2.1 34.2 IM2CAD [33] 484 62.6 - - - 49.0 Ours (init.) 749 61.2 29.7 17.3 14.4 47.1 Ours (joint.) 749 66.4 40.5 26.8 21.7 52.1\n\nTable 2: Comparisons of 3D object detection on SUN RGB-D dataset\n\nMethod bed chair sofa table desk toilet fridge sink bathtub bookshelf counter door dresser lamp tv mAP {19] 5.62 2.31 3.24 1.23 - - - - - - - - - - - Ours (init.) 45.55 5.91 23.64 4.20 2.50 1.91 14.00 2.12 0.55 2.16 0.34 0.01 5.69 1.12 0.62 7.35 Ours (joint.) 58.29 13.56 28.37 12.12 4.79 16.50 15.18 2.18 2.84 7.04 1.6 1.56 13.71 2.41 1.0412.07\n\ndataset has 5050 testing images and 10,355 images in total. Although it provides RGB-D data, we only use the RGB images as the input for training and testing. Figure 5 shows some qualitative parsing results (top 20%).\n\nWe evaluate our method on three tasks: i) 3D layout estimation, ii) 3D object detection, and iii) holistic scene understanding with all the 5050 testing images of SUN RGB-D across all scene categories. The capability of generalization to all the scene categories is difficult for most of the conventional methods due to the inaccuracy of camera parameter estimation and severe sensitivity to the occlusions in cluttered scenes. In this paper, we alleviate it by using the proposed learning-based camera parameter estimation and a novel method to initialize the geometric attributes. In addition, we also achieve the state-of-the-art results in 2D layout estimation on LSUN dataset [55] and Hedau dataset [28]. The implementation details, and additional results of camera parameter estimation and 2D layout estimation are summarized in the supplementary material.\n\n3D Layout Estimation: The 3D room layout is optimized using the pro- osed joint inference. We compare the estimation by our method (with and without joint inference) with 3DGP [19]. Following the evaluation protocol de- fined in [45], we calculate the average Intersection over Union (IoU) between the ree space from the ground truth and the free space estimated by our method. Table 1 shows our method outperforms 3DGP by a large margin. We also im- rove the performance by 8.2% after jointly inferring the objects and layout, demonstrating the usefulness of integrating the joint inference process.\n\nSince IM2CAD [33] manually selected 484 images from living rooms and edrooms without releasing the image list, we compare our method with them on the entire set of living rooms and bedrooms. Table 1 shows our method surpasses IM2CAD, especially after incorporating the joint inference process.\n\nHolistic 3D Scene Parsing and Reconstruction 13\n\n13\n\n(2D) _ Initialization (3D) wow —~ ¥\n\nInput RGB Image _ Initialization (2D) _ Initialization (3D) Result (2D) Result (3D) Result (Rendered) —~ wow —~ | ¥\n\nresults of the proposed method improves the\n\nFig. 5: Qualitative results of the proposed method on SUN RGB-D dataset. The joint inference significantly improves the performance over individual modules.\n\n3D Object Detection: We evaluate our 3D object detection results using the metrics defined in [45]. We compute the mean average precision (mAP) using the 3D IoU between the predicted and ground truth 3D bounding boxes. In the absence of depth, we adjust threshold IoU from 0.25 (evaluation setting with depth as the input) to 0.15 and report our results in Table 2. 15 out of 30 object categories are reported here due to the limited space; full table is reported in the supplementary material. The results indicate our method not only exceeds the detection score by a significant margin but also makes it possible to evaluate the entire object categories. Note that although IM2CAD also evaluates the detection, they use the metric related to a specified distance threshold. Here, we also compare with IM2CAD on the subset with this special metric rather than IoU threshold. We are able to obtain an mAP of 80.2%, higher than an mAP of 74.6% reported in the IM2CAD.\n\nHolistic Scene Understanding: We estimate the detailed 3D scene in- cluding both objects and room layout. Using the metrics proposed in [45], we evaluate the geometric precision Py, geometric recall Ry, and semantic recall R,. with the IoU threshold set to 0.15. We also evaluate the IoU of the free space (3D voxels inside the room polygon but outside any object bounding box) between the ground truth and the estimation. Table 1 shows that the proposed method\n\n14 S. Huang e¢ al.\n\nTable 3: Ablative analysis of our method on SUN RGB-D dataset. We evaluate on holistic scene understanding under different settings. We denote support relation as C1, physical constraint as Cg and human imagination as C3. Similarly, we denote the setting of only optimizing the layout during inference as 54, only optimizing the objects during inference as Ss\n\nSetting | w/o Ci | w/o C2 | w/o C3 | w/o (Ci,C2,Cs) | Sa Ss All IoU 42.3 A138 43.8 38.4 39.4 | 36.3 | 44.7 Py 29.3 23.5 32.1 19.4 14.9 | 28.4 | 34.4 Ry 17.4 15.6 20.4 12.4 11.2 | 19.7 | 24.1 R, 14.1 10.5 16.5 8.7 8.6 13.3 | 19.2\n\ndemonstrates a significant improvement. Moreover, we improve the initializa- tion result by 12.2% on geometric precision, 7.5% on geometric recall, 6.1% on semantic recall, and 4.1% on free space estimation. The improvement of total scene understanding indicates that the joint inference can largely improve the performance of each task. Using the same setting with 3D layout estimation, we compare with IM2CAD [33] and improve the free space IoU by 3.1%.\n\nAblative Analysis: The proposed HSG incorporates several key compo- nents including supporting relations, physics constraints and latent human con- textual relations. To analyze how each component would influence the final re- sults, as well as how much the joint inference process would benefit each task, we conduct the ablative analysis on holistic scene understanding under differ- ent settings, through turning on and off certain components or skipping certain steps during joint inference. The experiments are tested on the subset of offices where we incorporate the latent human context. Table 3 summarizes the results. Among all the energy terms we incorporate, physical constraints influence the performance the most, which demonstrates the importance of the physical com- mon sense during inference. It also reflects the efficiency of joint inference as the performances would drop by a large margin without the iterative joint inference.",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "45",
+                "19",
+                "19",
+                "33",
+                "55",
+                "28",
+                "19",
+                "45",
+                "33",
+                "45",
+                "45",
+                "33"
+            ]
+        },
+        {
+            "text": "Holistic 3D Scene Parsing and Reconstruction 17\n\n47. Jiang, Y., Saxena, A.: Modeling high-dimensional humans for activity anticipation using gaussian process latent crfs. In: Robotics: Science and Systems (RSS). (2014)\n\n48. Xie, D., Todorovic, S., Zhu, $.C.: Inferring ”dark matter” and ” dark energy” from videos. In: ICCV. (2013)\n\n49. Wu, J., Wang, Y., Xue, T., Sun, X., Freeman, W.T., Tenenbaum, J.B.: MarrNet: 3D Shape Reconstruction via 2.5D Sketches. In: Conference on Neural Information Processing Systems (NIPS). (2017)\n\n50. Dai, J., Qi, H., Xiong, Y., Li, Y., Zhang, G., Hu, H., Wei, Y.: Deformable convo- lutional networks. In: ICCV. (2017)\n\nol. Bodla, N., Singh, B., Chellappa, R., Davis, L.S.: Soft-nms — improving object detection with one line of code. In: ICCV. (2017)\n\n52. Chang, A.X., Funkhouser, T., Guibas, L., Hanrahan, P., Huang, Q., Li, Z., Savarese, S., Savva, M., Song, S., Su, H., et al.: Shapenet: An information-rich 3d model repository. arXiv preprint arXiv:1512.03012 (2015)\n\n53. Savva, M., Chang, A.X., Hanrahan, P.: Semantically-enriched 3d models for common-sense knowledge. In: CVPR Workshop. (2015)\n\n54. Hastings, W.K.: Monte carlo sampling methods using markov chains and their applications. Biometrika (1970)\n\n. Zhang, Y., Yu, F., Song, S., Xu, P., Seff, A., Xiao, J.: Large-scale scene under- standing challenge: Room layout estimation. In: CVPR Workshop. (2015)\n\nHolistic 3D Scene Parsing and Reconstruction from a Single RGB Image\n\nSupplementary Material\n\nSiyuan Huang! ?, Siyuan Qib?, Yixin Zhu! ?, Yinxue Xiao!, Yuanlu Xul?, and Song-Chun Zhu?\n\nUniversity of California, Los Angeles\n\n?\n\nInternational Center for AI and Robot Autonomy (CARA)\n\n1 Learning of Prior Knowledge\n\nThe learning process of our method includes two steps: i) collecting the statistics of scene categories, object categories, object sizes, and supporting relations from SUN RGB-D dataset [1]; ii) collecting the statistics of grouping occurrences and the geometric relations between objects and human from Watch-n-Patch [2].\n\nUsing SUN RGB-D, we model the prior of scene types, object categories and support relations by multinoulli distributions. For example, a lamp is supported by the floor with a probability of 0.4 and by a desk with a probability of 0.2. The branching probability is simply counting the frequency of each alternative choice. The distribution of the object sizes is learned via non-parametric kernel density estimation.\n\nThe human-centric grouping occurrence and human-object interactions in 3D space are learned from the Watch-n-Patch. This dataset collects the RGB-D videos of human activities in offices and kitchens. Since some activities are irrele- vant with objects, we learn the activities of ‘reading’, ‘play-computer’, ‘take-item’ and ‘put-down-item’ in all the office videos. For each activity, we first extract key frames from each sequence with group activity labels. Then we compute the occurrence frequency of the objects around human within a distance threshold, and model the prior of object category using a multinomial distribution. The geometric relations between the objects and humans are similarly learned by fitting normal distributions of relative distance, height, and orientation between each joint of a human pose and the object center.",
+            "section": "other",
+            "section_idx": 7,
+            "citations": [
+                "1",
+                "2"
+            ]
+        },
+        {
+            "text": "2 2D Room Layout Estimation\n\nSimilar to [3], we use a keypoint-based room layout representation to train our network. Figure 1 shows the regular room types defined in [4] with their respec- tive keypoints.\n\nOur model is able to predict both keypoint and room type from an input image using a single model. To achieve this goal, we increase the number of\n\n2 S. Huang et al.\n\n2\n\nRILipi yw Ace Type 0 Type 1 Type 2 Type 3 Type 4 Type 5\n\nRILipi yw Ace Type 0 Type 1 Type 2 Type 3 Type 4 Type 5 Type 6 Type 7 Type 8 Type 9 Type 10\n\nType 6 Type 7 Type 8 Type 9 Type 10\n\nFig. 1: Types of room layout. The room types are defined in [4]. These 11 room types cover most of the possible configurations of the indoor scenes under Man- hattan world assumption [5].\n\nRoom type learning/inference Keypoint heatmaps Single \"hourglass\" module\n\nFig. 2: Network Architecture. The “hourglass” modules work as encoder-decoders which allow for repeated bottom-up, top-down inference.\n\nchannels in the output layer to match the total number of keypoints (in total 48) of all 11 room types. The cost function is the same as described in [3], which incorporates the Euclidean loss for layout heatmap regression and the cross-entropy loss for room type estimation.\n\nFigure 2 shows our network architecture. Compared with [3], we use the “stacked hourglass” network [6] as our basic network architecture rather than SegNet [7]. Our network consists of multiple stacked hourglass modules which allow for repeated bottom-up, top-down inference.\n\nThe input to the network is 256x256. The output of the network is the room type keypoint heatmaps in a resolution 64x64 within a respect room type cat- egory label. We use the Adam optimizer [8] with batch size 16, initial learning rate 0.0001. We train 150 epochs, which takes about 2 days on a 12GB NVIDIA Titan X GPU. We also degrade the gradient of background pixels by multiply- ing them with a factor of 0.2 to prevent the output converges to zero due to the imbalance between foreground and background distribution.\n\nHolistic 3D Scene Parsing and Reconstruction",
+            "section": "other",
+            "section_idx": 8,
+            "citations": [
+                "3",
+                "4",
+                "4",
+                "5",
+                "3",
+                "3",
+                "6",
+                "7",
+                "8"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\656326e2-d995-4af1-bef1-d773e5bc439b.jpg",
+            "description": "This figure illustrates a process for transforming RGB images into 3D rendered models. It shows a series of stages for each scene:\n\n1. **Input RGB Image**: The initial input images of various indoor scenes, such as bedrooms and living rooms.\n\n2. **Initialization (2D)**: The initial detection and bounding box placement of objects in 2D space, highlighted with colored outlines.\n\n3. **Initialization (3D)**: The transition from 2D to 3D space, showing the initial 3D point cloud or mesh representation of the scene with basic structural outlines.\n\n4. **Result (2D)**: The refined 2D representation after processing, with improved object detection and more accurate bounding boxes.\n\n5. **Result (3D)**: The advanced 3D visualization with more detailed and accurate object representation, maintaining the structural integrity of the original scene.\n\n6. **Result (Rendered)**: The final rendered 3D models, demonstrating realistic textures and lighting effects, closely resembling the input images.\n\nThis figure is crucial for understanding the methodology of converting 2D images into 3D models, showcasing the progression and improvements at each stage of the process.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\af129eef-d086-4a18-9619-345e8d41719f.jpg",
+            "description": "This figure illustrates a detailed pipeline for reconstructing a 3D scene from a 2D image. The process begins with an input 2D image of a bedroom scene. The architecture involves several key steps:\n\n1. **3D Layout Initialization**: Initial estimation of the room layout from the 2D image.\n2. **Object Proposal**: Identification and proposal of objects within the scene.\n3. **Surface Normal, Depth Map, and Object Mask**: Generation of surface normals and depth map to understand the geometry of the scene, and an object mask to identify distinct objects.\n4. **Comparison and Projection**: These steps involve comparing the estimated depth and object mask with a projected version to refine the 3D scene understanding.\n5. **Parse & Reconstruct**: Iterative parsing and reconstruction of the scene to enhance accuracy.\n6. **3D Scene Configuration**: The scene is configured in a 3D space, represented with axes and angles (pitch, yaw, roll).\n7. **Render**: The final step involves rendering the reconstructed scene for visualization.\n\nThis figure is crucial as it visually summarizes the methodology for converting a 2D image into a 3D model, highlighting the core innovation of the research.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\11583c1b-f7d8-4724-bc33-c839e5b9f2d8.jpg",
+            "description": "This figure appears to illustrate a method for detecting and representing human poses and spatial relationships in indoor environments. Each image is paired with a corresponding diagram, where red skeletal figures represent detected human poses, and multicolored 3D wireframe boxes outline the spatial geometry of the room and furniture. The images show various indoor settings, including meeting rooms and workspaces, with different configurations of tables, chairs, and other furniture items. The diagrams likely depict the algorithm's ability to interpret and reconstruct the 3D spatial layout and human interaction with the environment. This figure is important as it visually demonstrates the methodology and effectiveness of the proposed approach in a variety of real-world scenarios, supporting the paper's claims about its capabilities.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\9361bf4b-0662-49f3-9aab-f51c4f1e0933.jpg",
+            "description": "The figure presents a dual-space representation combining \"Functional Space\" and \"Geometric Space\" to model and analyze interior environments.\n\n- **Functional Space (Left Panel):**\n  - **Architecture Diagram:** Displays a hierarchical tree structure illustrating relationships between various components in a room, such as \"Root,\" \"Bedroom,\" and specific activities like \"Sleeping,\" \"Storing,\" and \"Dressing.\"\n  - **Components:** Shows how objects like \"Bed,\" \"Ottoman,\" \"Plant,\" \"Nightstand,\" \"Cabinet,\" \"Dresser,\" and \"Chair\" fit into the scene. These are connected to activities they support, such as sleeping and storing.\n  - **Symbols:** Uses different shapes and lines to denote relationships, such as support relationships, scene categories, and activities.\n\n- **Geometric Space (Right Panel):**\n  - **Visualization:** Depicts a room with furniture outlined in blue, showing a real-world application of the concepts from the functional space.\n  - **Annotations:** Highlights interactions between objects and activities, using arrows to represent \"Bottom-up Proposals\" and \"Top-down Inference\" processes. Human figures are superimposed to demonstrate activity recognition.\n\n- **Legend (Bottom):** Clarifies the symbols used, such as scene layout, object instances, and the direction of inferences.\n\nThis figure is crucial as it visually integrates the theoretical framework (functional space) with its practical application (geometric space), showcasing the methodology for analyzing and inferring activities in a structured environment.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\9242ae56-dbd5-43d5-b8ba-6300c3a38c14.jpg",
+            "description": "The figure presents a comparative bar chart showing performance metrics for two different methods: \"3DGP\" (in gray) and \"Ours\" (in brown), across various room types. Each bar represents a specific room category, such as \"dancing_room,\" \"reception_room,\" \"study,\" etc. The height of the bars indicates the performance level, with the \"Ours\" method generally outperforming \"3DGP\" across most categories. \n\nAbove the bars, there are visual examples associated with some of the room categories, likely illustrating instances from the dataset or highlighting specific scenarios where the methods were applied. These visual examples serve to provide context or qualitative insights alongside the quantitative data.\n\nThis figure is important as it visualizes the effectiveness of the new method compared to an existing one, highlighting the advantages in various room types, which is likely a key aspect of the research findings.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\b6bc82f6-4dac-4094-818a-c1dd009a218b.jpg",
+            "description": "The figure presents a bar chart comparing the focal length estimation error (in pixels) across different room types using two methods: a Geometric Method and the authors' proposed method. Each bar represents the error for a specific room type, with two colored sections indicating the performance of each method. The room types are labeled along the x-axis, and the error magnitude is shown on the y-axis. Additionally, sample images of different room environments are shown above the chart, with arrows pointing to their respective categories, providing visual context for the data. This figure is important as it highlights the effectiveness of the authors' method in reducing estimation errors compared to the existing geometric approach, demonstrating a key result of their research.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\2767d6cf-cead-441b-9dcf-2f6acb28be54.jpg",
+            "description": "The figure illustrates a deep learning architecture, specifically showcasing a series of \"hourglass\" modules, which are commonly used in convolutional neural networks for tasks requiring capture of spatial hierarchies. The architecture processes an input image, likely for a computer vision task such as room analysis or scene understanding. The figure highlights two main outputs: keypoint heatmaps and room type learning/inference. The keypoint heatmaps are represented as a volumetric output with dimensions 64x64x48, indicating spatial and possibly channel dimensions. The room type learning/inference is depicted as a fully connected layer sequence, with dimensions reducing from 1024 to 512 to 1, suggesting a classification or regression task. This figure is important as it visualizes the methodology and key components of the neural network used in the research.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\9005fe76-853c-4ea0-9cea-3b724ad016b6.jpg",
+            "description": "This figure presents a series of visual outputs likely related to depth estimation or scene segmentation in a neural network or computer vision context. The images are organized in three rows, each showing a progression or comparison of results:\n\n- **Top Row**: Displays depth maps, where colors represent different depth levels, with brighter colors typically indicating closer objects and darker colors indicating objects further away.\n  \n- **Middle Row**: Shows segmentation maps, where various objects in a room (e.g., bed, furniture) are assigned distinct colors, suggesting different classes identified by a segmentation model.\n\n- **Bottom Row**: Appears to refine or simplify the segmentation, possibly indicating further processed results, such as improved segmentation accuracy or different model outputs.\n\nThis figure is important as it visually demonstrates key outcomes of the research, showing how well the proposed method or model handles the tasks of depth estimation and semantic segmentation in indoor scenes. The progression across rows may illustrate improvements, comparisons between models, or outputs from different stages of the model pipeline.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\bbd3293b-f292-44aa-b589-1ddb3d8de647.jpg",
+            "description": "This figure appears to be a grid of images showcasing various indoor scenes, likely from a dataset used in a research study related to computer vision or scene understanding. The scenes include different types of rooms with furniture arrangements, such as living rooms, offices, classrooms, and bedrooms. This visualization is important as it provides an overview of the dataset used for training or testing a model, highlighting the diversity and complexity of indoor environments. Understanding the dataset is crucial for evaluating the model's performance and generalizability in recognizing or analyzing indoor scenes.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\1e16f04b-2ae3-4654-bcc8-06ca28b6e52f.jpg",
+            "description": "This figure appears to display a collection of images depicting various types of furniture in indoor settings. It seems to illustrate different environments or scenarios where furniture is used, possibly for a study related to interior design, computer vision, or machine learning for object recognition. The images could be used to show examples of data sets, results of a classification algorithm, or a generative model's output. The diversity in furniture styles, arrangements, and lighting conditions might be important for demonstrating the effectiveness or versatility of a proposed method or model. This figure likely serves as an important visualization of methodology or key results, as it directly relates to the study's focus on recognizing or generating furniture arrangements.",
+            "importance": 7
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Bayesian Inference",
+            "Assessment metrics",
+            "Virtual Realism"
+        ],
+        "methodology": [
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Feature detection",
+            "Estimation"
+        ],
+        "domain": [
+            "Autonomous Robotics",
+            "Interactive Entertainment"
+        ],
+        "strengths": [
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Enhanced Detection Techniques",
+            "Superiority",
+            "Bayesian Hierarchy Model"
+        ],
+        "limitations": [
+            "Training challenges",
+            "3D Challenges",
+            "Complexity",
+            "Perceptual Color Balance",
+            "Inconsistency in evaluation metrics"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1808.02201v1_chunk_0",
+            "section": "methodology",
+            "citations": [
+                "33",
+                "3, 17, 18,47",
+                "17,18",
+                "3, 47"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "4",
+                "9",
+                "4",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "4",
+                "9",
+                "17",
+                "4",
+                "9",
+                "9",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "3",
+                "20",
+                "20"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_2",
+            "section": "methodology",
+            "citations": [
+                "9",
+                "9"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_3",
+            "section": "results",
+            "citations": []
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_4",
+            "section": "results",
+            "citations": []
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_5",
+            "section": "other",
+            "citations": [
+                "1",
+                "2, 3",
+                "4,5",
+                "6",
+                "8,9"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_6",
+            "section": "other",
+            "citations": [
+                "45",
+                "48",
+                "49"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_7",
+            "section": "other",
+            "citations": [
+                "48"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_8",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_9",
+            "section": "other",
+            "citations": [
+                "34",
+                "28",
+                "43"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_10",
+            "section": "other",
+            "citations": [
+                "50",
+                "51",
+                "52,53",
+                "54"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_11",
+            "section": "other",
+            "citations": [
+                "45",
+                "19",
+                "19",
+                "33",
+                "55",
+                "28",
+                "19",
+                "45",
+                "33",
+                "45",
+                "45",
+                "33"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_12",
+            "section": "other",
+            "citations": [
+                "1",
+                "2"
+            ]
+        },
+        {
+            "chunk_id": "1808.02201v1_chunk_13",
+            "section": "other",
+            "citations": [
+                "3",
+                "4",
+                "4",
+                "5",
+                "3",
+                "3",
+                "6",
+                "7",
+                "8"
+            ]
+        }
+    ]
+}

@@ -848,155 +848,90 @@
     ],
     "figures": [
         {
-            "path": "output\\images\\b375505f-6b2a-4c45-a62f-90f6c428843c.jpg",
-            "description": "This figure presents an analysis of different methods for reconstructing 3D shape, surface normals, reflectance, shading, and illumination from images of a 3D object (a sitting animal). The figure consists of three sections, each corresponding to different illumination conditions and image types:\n\n1. **Grayscale Image, Laboratory Illumination**: The top section shows results using grayscale input images under controlled laboratory lighting. It compares the \"True\" values (ground truth) with the output of several methods: SIRFS, SIRFS+S, Retinex, and Tappen. Each row represents a method and includes visualizations of shape, normals, reflectance, shading, and lighting.\n\n2. **Color Image, Laboratory Illumination**: The middle section displays the same analysis using color input images under laboratory conditions. Again, it compares the true values with the results of the different methods (SIRFS, SIRFS+S, Retinex, and Gehler) for the same properties.\n\n3. **Color Image, Natural Illumination**: The bottom section uses color input images but under natural lighting conditions. It follows the same format, comparing the true values with the outputs from SIRFS, SIRFS+S, Retinex, and Gehler for the various reconstructed properties.\n\nEach column in the figure represents a particular property being evaluated: shape, normals, reflectance, shading, and light. This comprehensive comparison highlights the effectiveness and differences among the algorithms in accurately reconstructing these properties under varying conditions.\n\nThe figure is important as it visually summarizes the performance and comparative analysis of several algorithms, making it crucial for understanding the methodology and results of the research.",
+            "path": "output\\images\\7849c52d-abf8-4a0a-8b14-54ee58d77453.jpg",
+            "description": "This figure is a comprehensive visualization comparing the processing of grayscale and color images under different lighting conditions. It is divided into two main sections: \"Grayscale Images, Laboratory Illumination\" and \"Color Images, Natural Illumination.\" Each section illustrates a series of transformations applied to different objects, including buildings, faces, and everyday items.\n\nKey components include:\n- **Image**: The original input images.\n- **Shape**: The reconstructed 3D shape of the objects.\n- **Normals**: Surface normals derived from the images, showing the orientation of surfaces.\n- **Refl. (Reflectance)**: Reflectance properties of the surfaces, indicating how they reflect light.\n- **Shading Light**: Shading information illustrating how light interacts with the surface.\n- **Rotated**: Images rotated to show the object from different perspectives.\n- **Relit**: Images with altered lighting conditions to demonstrate relighting capabilities.\n\nThe figure effectively showcases the methodology for extracting and manipulating 3D information from 2D images and highlights the differences in processing between grayscale and color images. It is crucial for understanding the research's approach to image-based modeling and rendering, demonstrating both the process and outcomes of the techniques used.",
             "importance": 9
         },
         {
-            "path": "output\\images\\09cdd616-142f-42a9-9846-156b437a079f.jpg",
-            "description": "This figure presents a comparative analysis of different methods for reconstructing 3D shapes from images under various lighting conditions. It is divided into three sections based on the type of image and lighting: Grayscale Image with Laboratory Illumination, Color Image with Laboratory Illumination, and Color Image with Natural Illumination.\n\nEach section includes the following columns:\n- **Image**: The input image used for reconstruction.\n- **Shape**: The 3D shape reconstruction results.\n- **Normals**: The surface normals derived from the reconstruction.\n- **Refl.**: The reflectance properties displayed in terms of texture or albedo.\n- **Shading**: The shading component of the reconstruction.\n- **Light**: The estimated lighting environment, often depicted as a sphere.\n\nThe rows in each section compare different methods:\n- **True**: The ground truth data for reference.\n- **SIRFS**: A method for shape, illumination, and reflectance from shading.\n- **SIRFS+S**: An enhanced version of SIRFS with additional smoothing or refinement techniques.\n- **Retinex**: A model based traditionally on the human visual perception of color constancy.\n- **Tappen/Gehler**: Other established methods or baselines for the task.\n\nThis figure is crucial as it visually demonstrates the efficacy and accuracy of various reconstruction methods in handling shape, normals, reflectance, shading, and lighting under different conditions, providing insight into each method's strengths and weaknesses.",
+            "path": "output\\images\\f5268634-afdc-4e76-bac8-62dc337b0ae9.jpg",
+            "description": "This figure presents a comparative analysis of different algorithms for intrinsic image decomposition under varying conditions. The figure is organized into three main sections based on image type and illumination: grayscale image under laboratory illumination, color image under laboratory illumination, and color image under natural illumination.\n\nEach section includes a series of rows corresponding to different methods: True (ground truth), SIRFS, SIRFS+S, Retinex, and Gehler/Tappen. The columns represent different components of the decomposition: Shape, Normals, Reflectance, Shading, and Light.\n\n- **Shape**: Visualized using color-coded depth maps to indicate the 3D structure.\n- **Normals**: Shown with color-coded normal maps that depict surface orientations.\n- **Reflectance**: Displays the intrinsic color of the object, independent of shading.\n- **Shading**: Grayscale images highlighting the influence of lighting on the surface.\n- **Light**: Spherical visualizations of the estimated light source.\n\nThe figure is crucial for understanding the effectiveness of each method in accurately retrieving intrinsic components, making it important for evaluating methodology and results in the research.",
             "importance": 9
         },
         {
-            "path": "output\\images\\55e3ded4-06d2-4a88-a6fe-44bf789cb4dc.jpg",
-            "description": "This figure presents a comparative analysis of different methods for intrinsic image decomposition under various illumination conditions. The figure is organized into three main sections, each corresponding to different image and lighting setups: grayscale image with laboratory illumination, color image with laboratory illumination, and color image with natural illumination.\n\n- **Rows**: Each row represents a method used for decomposition: \"True\" (ground truth), SIRFS, SIRFS+S, Tappen, Retinex, and Gehler. These methods are likely algorithms or models designed to extract intrinsic components from images.\n  \n- **Columns**: The columns illustrate different intrinsic components extracted from the images:\n  1. **Image**: The original input image.\n  2. **Shape**: The estimated shape of the object.\n  3. **Normals**: Surface normals showing the orientation of the surface at each point.\n  4. **Reflectance (Refl.)**: The estimated reflectance properties of the object's surface.\n  5. **Shading**: The shading effect on the object due to lighting.\n  6. **Light**: The estimated lighting conditions.\n\nEach set of images visually compares the outputs of each method against the ground truth. The visual differences highlight the performance and accuracy of each method in capturing the true intrinsic properties of the images under different conditions. This figure is important for understanding the effectiveness of the different algorithms and their ability to handle variations in illumination and color.",
+            "path": "output\\images\\e5309e56-d489-4598-a592-a379f90c2c71.jpg",
+            "description": "This figure presents a comparative analysis of different computational methods for estimating surface properties from images under various illumination conditions. The figure is divided into three sections based on image type and lighting conditions: grayscale image with laboratory illumination, color image with laboratory illumination, and color image with natural illumination.\n\nEach section compares multiple methods (e.g., SIRFS, SIRFS+S, Retinex, Tappen, Gehler) against a \"True\" baseline. The columns depict different features extracted by these methods:\n\n1. **Image**: The original input image used for analysis.\n2. **Shape**: The estimated surface shape, typically represented in 3D or depth map form.\n3. **Normals**: Surface normals calculated by each method, often visualized with color coding.\n4. **Reflectance (Refl.)**: The reflectance properties of the surface, showing how light interacts with the material.\n5. **Shading**: Shading effects as interpreted by each method, indicating how light and shadow are distributed.\n6. **Light**: The inferred lighting conditions, often represented using a sphere to show direction and intensity.\n\nThe figure is crucial for understanding the effectiveness of each method in accurately reconstructing surface properties and lighting conditions, highlighting differences in performance across various scenarios. This makes it an important visualization of the methodology and key results.",
             "importance": 9
         },
         {
-            "path": "output\\images\\7726c6e4-e852-4cb5-89ba-60c7ec857062.jpg",
-            "description": "This figure illustrates the performance of different algorithms in reconstructing intrinsic image components under various lighting conditions. It is organized into three sections, each corresponding to different inputs: grayscale image under laboratory illumination, color image under laboratory illumination, and color image under natural illumination.\n\n- **Rows**: Each row represents a different method or ground truth:\n  - **True**: The actual or ideal decomposition.\n  - **SIRFS**: An algorithm for intrinsic image decomposition.\n  - **SIRFS+S**: An enhanced version of SIRFS.\n  - **Retinex**: A traditional method for intrinsic image analysis.\n  - **Gehler**: Another approach to image decomposition.\n\n- **Columns**: Each column shows a different aspect of the intrinsic image decomposition:\n  - **Image**: The original input image.\n  - **Shape**: The reconstructed 3D shape.\n  - **Normals**: Surface normals extracted from the image.\n  - **Refl.**: Reflected color or albedo.\n  - **Shading**: Shading component, indicating how light interacts with the surface.\n  - **Light**: The estimated light source or environment map.\n\nThis figure is important as it visually compares the efficacy of different algorithms in decomposing images into their intrinsic components, underlining the strengths and weaknesses of each method across different lighting conditions.",
+            "path": "output\\images\\da014a74-2a2a-46e8-b6ba-f906cfac6a1f.jpg",
+            "description": "The figure presents a comprehensive comparison of different algorithms for intrinsic image decomposition under various lighting conditions. It includes three scenarios: grayscale image with laboratory illumination, color image with laboratory illumination, and color image with natural illumination. Each scenario showcases the original image, followed by outputs from different methods: True, SIRFS, SIRFS+S, Retinex, and Gehler.\n\nFor each method, the figure illustrates:\n- **Shape**: A visualization of the object's geometry.\n- **Normals**: Surface normals indicating the orientation of each surface point.\n- **Reflectance (Refl.)**: The color and texture information, independent of shading.\n- **Shading**: The light and shadow effects on the object.\n- **Light**: The estimated lighting conditions.\n\nThis figure is crucial for understanding the effectiveness of each algorithm in separating intrinsic image components. It provides visual evidence of how different methods perform in preserving and reconstructing the shape, normals, reflectance, and shading of the objects under varying conditions, thus highlighting the strengths and weaknesses of each approach.",
             "importance": 9
         },
         {
-            "path": "output\\images\\0e27134f-5085-4bc4-b113-7ac58918fdef.jpg",
-            "description": "This figure presents a comparative analysis of image processing techniques under different lighting conditions. It is divided into two main sections: \"Grayscale Images, Laboratory Illumination\" and \"Color Images, Natural Illumination.\" Each section contains multiple rows demonstrating different stages of image analysis and manipulation:\n\n- Each row represents a different object or face, showing the progression from the original image to various processed outputs.\n- The columns include: \n  - Original Image\n  - Shape extraction\n  - Normals (surface orientation)\n  - Reflectance\n  - Shading Light\n  - Rotated views\n  - Relit results\n\nThe figure illustrates the effectiveness of the techniques in capturing and reconstructing 3D shapes and lighting effects from 2D images. It highlights differences in handling grayscale versus color images and the impact of controlled versus natural lighting on the results. This visualization is important for understanding the methodology and key results of the research, showcasing the robustness of the proposed techniques.",
+            "path": "output\\images\\af18dca9-99cc-4743-a05b-67114c36e0af.jpg",
+            "description": "The figure presents a comparative analysis of different methods for inferring intrinsic scene properties from images. It is divided into three sections based on the type of input image and lighting conditions: Grayscale Image with Laboratory Illumination, Color Image with Laboratory Illumination, and Color Image with Natural Illumination.\n\nEach section compares the results of various algorithms (Tappen, Retinex, SIRFS, SIRFS+S, Gehler) against the true scene properties. The columns represent different reconstructed properties: shape, normals, reflectance (Refl.), shading, and light. Each row showcases the output of a different algorithm, allowing for a visual comparison of their performance across these properties.\n\nThe figure is likely important for understanding the efficacy of the algorithms in accurately reconstructing scene properties under different conditions, making it a key visualization of methodology and results.",
             "importance": 8
         },
         {
-            "path": "output\\images\\a869f9c0-9418-4b40-bce4-905444a4262b.jpg",
-            "description": "This figure presents a graph comparing the log-likelihood of empirical data (red line) versus a model (black line). The x-axis represents a mathematical expression involving \\(N^x(Z)n^x + N^y(Z)n^y\\), indicating a composite variable or interaction between different parameters or variables \\(N^x\\), \\(N^y\\), \\(n^x\\), and \\(n^y\\). The y-axis represents the log-likelihood, which is a measure of how well the model predicts the observed data. The close alignment or divergence between the data and model lines provides insight into the model's accuracy and efficacy. This visualization is important for understanding the methodology and results, particularly in assessing the model's performance against real data.",
+            "path": "output\\images\\3212dcb8-4a05-452c-8d0b-a97d30c0e87a.jpg",
+            "description": "This figure presents a graph that compares the log-likelihood of observed data (red line) with a model prediction (black line). The x-axis represents a mathematical formula, \\(N^x(Z)n^x + N^y(Z)n^y\\), which likely indicates a combination of variables or parameters involved in the model. The y-axis shows the log-likelihood values, which are crucial for assessing how well the model fits the data. The close alignment between the model and data curves suggests a good model fit, indicating the model's effectiveness in capturing the underlying patterns in the data. This type of visualization is important for understanding the validation of the model against empirical data, making it a significant component of the research findings.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\b393dc75-addd-4f8b-a9a0-90fceeb0808e.jpg",
+            "description": "This figure appears to be a graph comparing empirical data against a theoretical model. The x-axis is labeled \\(N^z(Z)\\) and the y-axis represents \"Likelihood.\" The red line represents the actual data, while the black line represents the model prediction. The purpose of this graph is likely to show how well the model fits the data. A close alignment between the red and black lines would indicate a strong model fit, while deviations suggest areas where the model may not accurately capture the data's behavior. This type of figure is important for validating the methodology and demonstrating the model's effectiveness in capturing the observed phenomena.",
             "importance": 7
         },
         {
-            "path": "output\\images\\146191d6-f361-493a-9825-c9e4ea80861a.jpg",
-            "description": "The figure appears to be a series of comparative images, likely demonstrating a visual transformation or rendering process. Each row seems to represent a sequence or a progression of steps in a method, possibly related to graphics processing or texture mapping. Starting with a basic shape or surface, the transformations showcase how textures or lighting effects are applied. This kind of figure is important for illustrating the effectiveness of an algorithm or technique, providing visual evidence of the research’s claims and methodology.",
+            "path": "output\\images\\3dbf58fc-71a0-4ab4-9881-5d85a3e341b2.jpg",
+            "description": "The figure is a graph titled \"Log-Likelihood\" with the x-axis labeled as \"R.\" It features two plots: a red line representing \"Data\" and a black line representing \"Model.\" The graph shows the log-likelihood values for different values of R, comparing how closely the model fits the data across this range. The model appears to have a smoother curve, while the data is more jagged, indicating variability or noise in the data. This visualization likely illustrates the effectiveness of the model in capturing the underlying distribution or trend of the data.",
             "importance": 7
         },
         {
-            "path": "output\\images\\187c61b5-f054-487e-ae4a-9da04d1f77cc.jpg",
-            "description": "The figure is a graph comparing \"Data\" (red line) and \"Model\" (black line) in terms of \"Likelihood\" plotted against \\( N^z(Z) \\). The red line represents empirical data, while the black line represents a theoretical or computational model. The likelihood axis suggests this graph deals with probabilistic or statistical analysis. The close alignment or divergence between the data and model lines can indicate how well the model fits the empirical data, which is often key in validating the model's accuracy and predictive power. This type of figure is crucial for understanding the validity and reliability of the model used in the research.",
+            "path": "output\\images\\854743bb-3c2a-44b2-9f22-68e0aa7d3e8e.jpg",
+            "description": "This figure shows a comparison between empirical data and a theoretical model using a graph. The x-axis represents a variable denoted as ∇B, while the y-axis shows the Log-Likelihood. The red line represents the data, and the black line represents the model. The close alignment between the data and model suggests that the model accurately fits or predicts the data over the range of ∇B. This type of figure is important for validating the model against observed data, thus playing a key role in demonstrating the research's findings.",
             "importance": 7
         },
         {
-            "path": "output\\images\\4a94b992-31f2-4b17-88de-d32b745a6318.jpg",
-            "description": "The figure presents a graph comparing two aspects: \"Data\" and \"Model,\" indicated by red and black lines respectively. The x-axis is labeled as \\( R \\), and the y-axis represents \"Log-Likelihood.\" The plot illustrates how closely the model (black line) fits the data (red line) across different values of \\( R \\). The variability and trends in the data are captured by the model, with notable deviations at certain points. This visualization is important for evaluating the model's accuracy and effectiveness in representing the observed data, making it a key component in understanding the research methodology and results.",
-            "importance": 7
-        },
-        {
-            "path": "output\\images\\dc37f35e-0c4d-43f2-b0da-5cb6dff71e19.jpg",
-            "description": "The figure presents a plot comparing empirical data with a theoretical model. The x-axis represents the variable ∇B, while the y-axis displays the Log-Likelihood. The red line represents the empirical data, and the black line represents the model. The close alignment between the two lines suggests the model accurately fits the data within the range shown. This figure likely serves to validate the model's accuracy in capturing the phenomenon represented by ∇B, which is critical for understanding the research findings.",
+            "path": "output\\images\\8f3fabc3-6a75-4700-aab2-1a4c55d8ce1e.jpg",
+            "description": "The figure appears to present a graph comparing \"Data\" and \"Model\" using a log-likelihood metric plotted against a variable represented by the symbol ∇H(Z). \n\n- The **graph** shows two curves: a red curve for \"Data\" and a black curve for \"Model,\" which seems to be a fit or theoretical prediction.\n- The **vertical axis** is labeled as \"Log-Likelihood,\" indicating the graph is assessing how well the model fits the data.\n- The **horizontal axis** is marked with ∇H(Z), possibly representing a gradient or another mathematical transformation of variable Z.\n- The graph's shape, with a peak at the center, might suggest a distribution or the model's behavior around a critical point.\n\nThis figure likely plays an important role in illustrating how well the proposed model aligns with the empirical data, which is a critical aspect of validating the research findings or methodology.",
             "importance": 7
         }
     ],
     "metadata": {
         "key_themes": [
-            "Loss functions",
-            "boundary",
-            "Mean Value",
-            "Diffusion Models",
-            "contour detection",
-            "Parameter optimization",
-            "RGB-D Data",
-            "Smoothness priors",
-            "Matrix factorization",
-            "Surface Normal",
-            "Geometric inference",
-            "Quality assessment",
-            "3D Reconstruction",
-            "Reflectance Estimation",
-            "Color constancy",
-            "Ambiguous Bas-Relief",
-            "Photometric loss"
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Statistical modeling",
+            "Super-Resolution",
+            "Nonlinear Loss Function"
         ],
         "methodology": [
-            "Histogram-based signal entropy calculation",
-            "Surface Normal Optimization",
-            "Iterative guided morphable model fitting",
-            "Linear regression",
-            "Simple Baseline",
-            "Generative Deep Learning",
-            "Hausdorff absolute error",
-            "Sparse Representation",
-            "Gradient matrix",
-            "Retinex",
-            "Interpolation",
-            "Expectation-Maximization (EM)",
-            "Geometric prior",
-            "pre-calculating",
-            "Intrinsic Image Decomposition",
-            "Quadratic Parzen window",
-            "SIRFS-based shape estimation",
-            "Cost aggregation",
-            "Geometric Regression",
-            "Bayesian Inference",
-            "Grid relaxation",
-            "Principal Component Analysis (PCA)",
-            "Mean curvature variation",
-            "Average Error",
-            "Sparse feature selection",
-            "Gradient-based optimization",
-            "3D Shape Estimation",
-            "Multivariate Gaussian modeling",
-            "Optimization algorithms"
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Feature detection",
+            "Estimation"
         ],
         "domain": [
-            "3D Computer Vision",
-            "Intelligent Systems",
-            "illumination enhancement"
+            "Autonomous Robotics",
+            "Object removal",
+            "Reflectance Imaging",
+            "Bayesian Occam's razor"
         ],
         "strengths": [
-            "Gaussian Surface Normal Estimation",
-            "Improved distribution coverage",
-            "Efficiently outperforms existing methods",
-            "Geometric invariance",
-            "Generalization across diverse object classes",
-            "Cooperative Training Framework",
-            "Accurate shape estimation",
-            "promotes frugality",
-            "Smoothness",
-            "Deep Learning Toolbox",
-            "Analytical optimization.",
-            "Robust error metric",
-            "Prior-based regularization",
-            "Mixed-method evaluation",
-            "Bas-Relief calibration",
-            "limb mimicry",
-            "Differentiable entropy",
-            "Unified Appearance Modeling",
-            "3D Shape Reconstruction",
-            "Sparse learning"
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Enhanced Detection Techniques",
+            "Data Enhancement",
+            "Superiority"
         ],
         "limitations": [
-            "Shadow interference",
-            "Overfitting",
-            "High-dimensional entropy complexity",
-            "Inconsistencies in physical predictions",
-            "Restricted to controlled environments",
-            "Ambiguity in 3D reconstruction",
-            "Non-smooth performance",
-            "Color constancy challenges",
-            "Sparse feature maps",
-            "Sparse object detection",
-            "Bas-Relief Ambiguity",
-            "Grayscale image pixel collapse bug",
-            "Suboptimal Optimization",
-            "Computational complexity",
-            "Perceptual quality assessment",
-            "Microscale limb effect",
-            "Sparse ground truth",
-            "Model optimization",
-            "Limited dataset requirements",
-            "misuse of prior definitions"
+            "Training challenges",
+            "3D Challenges",
+            "Complexity",
+            "Perceptual Color Balance",
+            "Ground-truth ambiguity"
         ]
     },
     "content_chunks": [

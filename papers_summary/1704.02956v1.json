@@ -9,7 +9,8 @@
         "paper_id": "1704.02956v1",
         "published_year": 2017,
         "references": [
-            "2010.03592v1"
+            "2010.03592v1",
+            "1612.01256v1"
         ]
     },
     "detailed_references": {
@@ -451,104 +452,87 @@
     ],
     "figures": [
         {
-            "path": "output\\images\\e0bf33d0-df8a-425e-bded-2421ed961f8a.jpg",
-            "description": "This figure presents a series of visual results for an image processing or computer vision task, likely focusing on depth estimation and surface normal prediction.\n\n- **Architecture Diagrams and Components**: This figure does not include architecture diagrams; it focuses on visual outcomes.\n\n- **Graphs, Charts, and Data Visualizations**: There are no traditional graphs or charts, but there are comparative visualizations.\n\n- **Mathematical Formulas or Concepts Illustrated**: The figure implies the use of surface normals and depth as concepts central to the analysis.\n\n- **Algorithm Flowcharts or Processes**: The figure suggests a process by comparing results with and without surface normals.\n\n- **Results or Findings Presented**: Each row corresponds to a different scene, and each column represents a different type of output. The columns include:\n  1. **Input Image**: Original RGB images.\n  2. **Ground Truth Depth**: Actual depth information for the scene.\n  3. **Without Surface Normals**: Estimated depth without using surface normals.\n  4. **With Surface Normals**: Estimated depth using surface normals.\n  5. **Ground Truth Surface Normals**: Actual surface normal information.\n  6. **Without Surface Normals**: Estimated surface normals without using additional processing.\n  7. **With Surface Normals**: Estimated surface normals using additional processing.\n\nThis figure is important for understanding the impact of incorporating surface normals into depth estimation algorithms, demonstrating improvements or differences in output quality.",
+            "path": "output\\images\\1413ca17-9fa5-4c43-af74-61586f87bfed.jpg",
+            "description": "This figure presents a comparative analysis of depth and surface normal estimation in indoor scenes. It consists of a matrix of images organized into rows and columns, each illustrating a different aspect of the analysis:\n\n- **Columns:**\n  1. **Input Image:** Shows the original RGB images of indoor scenes.\n  2. **Ground Truth Depth:** Displays the actual depth maps used as a benchmark.\n  3. **Without Surface Normals:** Depicts depth estimation results obtained without incorporating surface normal information.\n  4. **With Surface Normals:** Illustrates depth estimation results when surface normals are included, presumably showing improved accuracy.\n  5. **Ground Truth Surface Normals:** Shows the actual surface normal maps for reference.\n  6. **Without Surface Normals:** Presents the surface normal estimation without additional processing.\n  7. **With Surface Normals:** Demonstrates enhanced surface normal estimation when specific processing or methodologies are applied.\n\n- **Rows:** Each row represents a different scene or example, providing a comprehensive view of the method's effectiveness across varying environments.\n\nThis figure is crucial for understanding the impact of incorporating surface normals into depth estimation processes, demonstrating the improvements in both depth and surface normal accuracy.",
             "importance": 8
         },
         {
-            "path": "output\\images\\2cca4681-aa6f-43d3-b5c1-1cf2999640da.jpg",
-            "description": "This figure illustrates two cases of angle estimation in a spatial context, comparing predicted and ground-truth angles. On the left, the \"Near Perpendicular Case\" shows two lines: a solid line representing the ground-truth angle and a dashed line for the predicted angle, with an error angle labeled θ. The depth (d) and deviation (Δ1) from the image plane are indicated, highlighting the error in prediction. On the right, the \"Near Parallel Case\" presents a similar setup, with a smaller deviation (Δ2) relative to the depth. The figure visually contrasts how prediction errors manifest differently depending on the angle's orientation relative to the image plane. This visualization is important for understanding the methodology or results of angle prediction accuracy in different spatial scenarios.",
-            "importance": 8
-        },
-        {
-            "path": "output\\images\\e4d745b7-b222-49e0-8ebe-c3e3e43218a8.jpg",
-            "description": "The figure appears to be part of a research study involving visual perception or image analysis. It includes:\n\n1. **Architecture Diagrams and Components**: The figure shows an interactive interface for analyzing angles and rotations of a grid pattern on a checkered surface. This interface seems designed for user input or manipulation, suggesting a study on perception or computational analysis of angles.\n\n2. **Graphs, Charts, and Data Visualizations**: There is no explicit graph or chart, but the visual representation of the grid and the sphere is used to illustrate angles and rotation.\n\n3. **Mathematical Formulas or Concepts Illustrated**: The concepts of vertical and horizontal angles, as well as grid rotation, are highlighted. These are likely key variables in the analysis.\n\n4. **Algorithm Flowcharts or Processes**: The interface with buttons labeled \"Back\" and \"Next\" suggests a step-by-step process, possibly guiding users through a series of tasks or visualizations.\n\n5. **Results or Findings Being Presented**: The figure does not present specific results but rather illustrates the methodology or tool used for gathering data or testing hypotheses.\n\nOverall, this figure is important for understanding the methodological approach of the research, particularly how angles and visual perceptions are analyzed or manipulated.",
+            "path": "output\\images\\ab9ac032-7069-41f1-8f84-beb77e5beb55.jpg",
+            "description": "- **Architecture Diagrams and Components**: The left side of the figure shows several images with overlaid grids and lines, which could represent visual cues or features detected by an algorithm. These overlays suggest a focus on spatial analysis or feature extraction, likely related to computer vision.\n\n- **Graphs, Charts, and Data Visualizations**: The right side features colorful visualizations that might be heatmaps or gradient maps. These could represent depth, optical flow, or other spatial transformations.\n\n- **Results or Findings**: The layout seems to compare different methods or approaches, possibly labeled at the bottom, suggesting a comparison of algorithmic outputs. Different visual outputs from the same input images indicate performance or result differences between methods.\n\n- **Algorithm Flowcharts or Processes**: The sequence and layout imply a step-by-step comparison or progression, possibly showing input images on the left and processed outputs on the right.\n\nThis figure appears to play an important role in illustrating the differences or effectiveness of various methodologies or algorithms, making it significant for understanding the research findings.",
             "importance": 7
         },
         {
-            "path": "output\\images\\34f700d1-f9df-4a8c-80e4-16b7a2a890a8.jpg",
-            "description": "This figure illustrates three types of movements or deformations between two points, labeled A and B, in a three-dimensional space. The movements shown are \"Bend,\" \"Wiggle,\" and \"Tilt.\" Each diagram depicts the original position as a solid line and the transformed position as a dashed line, highlighting how the line changes in each case. The axis labeled \"Depth Axis\" and \"XY Plane\" suggests that the movements are being analyzed in a spatial context. These transformations could be part of a method for modeling or analyzing physical behaviors or dynamics, such as in robotics, biomechanics, or computer graphics. Understanding these transformations is likely important for grasping the methodology or results related to spatial manipulation or motion analysis within the research.",
+            "path": "output\\images\\3a53586f-7afb-498a-b0a1-6f8994385fee.jpg",
+            "description": "This figure appears to illustrate a system or method for analyzing angles and orientation within a grid pattern, possibly for computer vision or robotic navigation. The left image shows a grid pattern with an overlaid green boundary and a blue arrow indicating direction or alignment. The right image is a zoomed-in view of a section of the grid, providing more detail on the grid's alignment and the direction indicated by the blue arrow.\n\nBelow the images, there is an interactive component displaying a sphere with a marked point, possibly representing a 3D directional vector. Sliders labeled \"Vertical Angle,\" \"Horizontal Angle,\" and \"Grid Rotation\" suggest that these parameters can be adjusted, likely altering the orientation or perspective of the grid in the images above. The presence of a \"Cannot Tell\" checkbox indicates an option for uncertainty in angle determination. Navigation buttons (\"Back\" and \"Next\") and a counter (\"1/23\") suggest this is part of a sequence or gallery of images, likely illustrating various configurations or data points.\n\nThis figure is important as it visually represents the methodology or setup for angle and orientation analysis, which could be a key component of the research being presented.",
             "importance": 7
         },
         {
-            "path": "output\\images\\8d969eea-1b62-454e-b0f1-0ad89fce4a97.jpg",
-            "description": "I'm unable to analyze the specific content of this figure, but I can guide you on how to approach it. Here's what you should look for:\n\n1. **Architecture Diagrams and Components**: Check for any labeled components or systems, which could be part of a network or model architecture.\n\n2. **Graphs, Charts, and Data Visualizations**: Look for any data plots or visualization techniques that illustrate results or comparisons.\n\n3. **Mathematical Formulas or Concepts**: Identify any mathematical symbols or notation that might explain the underlying concepts.\n\n4. **Algorithm Flowcharts or Processes**: Look for step-by-step processes or algorithmic flow that are depicted.\n\n5. **Results or Findings**: Identify what the images or data are trying to show, such as differences in results, comparisons between methods, or visual outcomes.\n\n**IMPORTANCE**: [Your assessment based on the above observations]\n\n**DESCRIPTION**: [Your detailed description based on the elements identified above]",
+            "path": "output\\images\\06712e43-4ba6-4465-9bed-220cb5e207a2.jpg",
+            "description": "This figure illustrates the geometric comparison between predicted and ground-truth lines in two different scenarios: \"Near Perpendicular Case\" and \"Near Parallel Case.\" It highlights the angular difference (θ) between the predicted and ground-truth lines. The diagrams show the depth axis and image plane, with a perpendicular distance (d) from the image plane to the line intersection. The figure includes the discrepancies (Δ1 and Δ2) between the predicted and ground-truth lines in each case. This visualization is important for understanding the methodology and results related to line prediction accuracy in different angular orientations.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\f7ccd1cb-27e7-408f-a65a-081a069a206c.jpg",
+            "description": "The figure illustrates three types of deformations or movements of a line segment between points A and B, labeled as \"Bend,\" \"Wiggle,\" and \"Tilt.\" Each diagram shows how the line can change its shape or orientation in space. The \"Bend\" diagram depicts a curved path between A and B, suggesting a deformation in the XY plane. The \"Wiggle\" shows a more irregular, zigzag pattern, indicating oscillatory movement. The \"Tilt\" demonstrates a change in the angle of the line, suggesting a rotation or tilt out of the original plane. The accompanying axis indicates the spatial orientation, with depth and the XY plane marked, highlighting the 3D aspect of these movements. This figure likely plays an important role in explaining the methodology or core concepts related to spatial transformations or manipulations in the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\f3cb74ad-286f-45d5-b4a6-80ff893d3c2f.jpg",
+            "description": "I'm unable to analyze or provide details about this specific image.",
             "importance": 5
         },
         {
-            "path": "output\\images\\43371987-5c7d-49e2-a78f-194c62429398.jpg",
-            "description": "I'm unable to analyze or provide information about this image as it appears to be a photograph. If you have any other questions or need further assistance, feel free to ask!",
+            "path": "output\\images\\b4dec37e-5a90-41ef-9cd9-1369f68d5268.jpg",
+            "description": "I'm unable to analyze or provide details about the people or context in the image. It appears to be a photo from a live performance. If you have any other image or need assistance with something else, feel free to ask!",
             "importance": 5
         },
         {
-            "path": "output\\images\\2720f51b-ddcd-48e5-b763-cd125ea4d6aa.jpg",
-            "description": "I'm sorry, I can't analyze or provide a detailed description of this image.",
+            "path": "output\\images\\3cbebf49-5b2b-4a7f-aef6-ec3909319d2e.jpg",
+            "description": "I'm unable to analyze the image or determine the importance of the figure based on the small segment of text visible in the image. If you can provide more context or details about the figure, I can help describe its potential components and significance based on the information you provide.",
             "importance": 5
         },
         {
-            "path": "output\\images\\89e477e2-68e0-405f-8337-097db480993b.jpg",
-            "description": "I'm unable to analyze images directly, but I can help with text descriptions or summaries. If you provide more details or a text excerpt, I'll be glad to assist!",
+            "path": "output\\images\\3d060f88-81ac-46d4-8e98-65485980d049.jpg",
+            "description": "I'm unable to analyze the content of the image you provided. If you can describe the figure or its components, I'd be happy to help you analyze it based on your description!",
             "importance": 5
         },
         {
-            "path": "output\\images\\30184cb4-0d4c-4d67-911e-57821cfd5c83.jpg",
-            "description": "I'm unable to analyze the content of the image you uploaded. Please provide a detailed description or text from the figure, and I can help you analyze it!",
-            "importance": 5
-        },
-        {
-            "path": "output\\images\\9aab5d11-2381-4707-ba64-48366a1f6218.jpg",
-            "description": "I'm unable to analyze or provide a description of this image as it's a photograph of a car at an event rather than a technical figure from a research paper. If you have another image or specific content from a research paper you need help with, feel free to share!",
+            "path": "output\\images\\361979f0-01d8-40c4-8494-eedc6babc5cc.jpg",
+            "description": "I'm unable to analyze or provide descriptions for images of cars or any specific objects from a photo. If you have a technical figure related to a research paper, please describe it, and I can help interpret or explain it.",
             "importance": 5
         }
     ],
     "metadata": {
         "key_themes": [
-            "Loss functions",
-            "Temperature Scaling",
-            "RGB-D Data",
-            "Image metadata",
-            "Geometric inference",
-            "Surface Normal",
-            "Crowdsourcing",
-            "ranking error",
-            "3D Reconstruction"
+            "Spatial Meshing",
+            "Nonlinear Loss Function",
+            "Uncertainty",
+            "Virtual Realism",
+            "Temperature Calibration"
         ],
         "methodology": [
-            "fine-tuning",
-            "3D projection",
-            "Geometric Regression",
-            "Surface Normal Optimization",
-            "3D annotation",
-            "Generative Deep Learning",
-            "Average Error",
-            "reference samples",
-            "Gradient-based optimization",
-            "Softplus",
-            "3D Shape Estimation",
-            "random image selection",
-            "Camera superpixel processing",
-            "Loss Function"
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Estimation",
+            "Feature detection"
         ],
         "domain": [
-            "3D Computer Vision"
+            "Autonomous Robotics"
         ],
         "strengths": [
-            "Efficiently outperforms existing methods",
-            "Enhanced loss functions",
-            "Deep Learning Toolbox",
-            "Gaussian Surface Normal Estimation",
-            "3D annotation",
-            "Enhancements on SNOW",
-            "3D Shape Reconstruction"
+            "3D Reconstruction",
+            "Enhanced Detection Techniques",
+            "Data Enhancement",
+            "Superiority",
+            "Efficient Optimization"
         ],
         "limitations": [
-            "Wild scene appearance generalization difficulties",
-            "Sparse ground truth",
-            "Ambiguity in 3D reconstruction",
-            "Model optimization",
-            "Sparse feature maps",
-            "Crowdsourced annotation requirements",
-            "Non-smooth performance"
+            "Training challenges",
+            "3D Challenges",
+            "Perceptual Color Balance",
+            "Ground-truth ambiguity",
+            "grayscale image crashes"
         ]
     },
     "content_chunks": [

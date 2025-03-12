@@ -1,0 +1,691 @@
+{
+    "basic_info": {
+        "title": "Ground-aware Monocular 3D Object Detection for Autonomous Driving",
+        "authors": [
+            "Yuxuan Liu",
+            "Yuan Yixuan",
+            "Ming Liu"
+        ],
+        "paper_id": "2102.00690v1",
+        "published_year": 2021,
+        "references": []
+    },
+    "detailed_references": {
+        "ref_1": {
+            "text": "Peng Yun, Lei Tai, Yuan Wang, and Ming Liu. Focal loss in 3d\nobject detection. CoRR , abs/1809.06065, 2018.",
+            "type": "numeric",
+            "number": "1",
+            "arxiv_id": null
+        },
+        "ref_2": {
+            "text": "Wang Sukai, Sun Yuxiang, Liu Chengju, and Liu Ming. Pointtrack-\nnet: An end-to-end network for 3-d object detection and tracking\nfrom point clouds. IEEE Robotics and Automation Letters , PP:1–1,\n02 2020.",
+            "type": "numeric",
+            "number": "2",
+            "arxiv_id": null
+        },
+        "ref_3": {
+            "text": "Z. Chen, Q. Liao, Z. Wang, Y. Liu, and M. Liu. Image detector\nbased automatic 3d data labeling and training for vehicle detec-\ntion on point cloud. In 2019 IEEE Intelligent Vehicles Symposium\n(IV), pages 1408–1413, June 2019.",
+            "type": "numeric",
+            "number": "3",
+            "arxiv_id": null
+        },
+        "ref_4": {
+            "text": "Peiliang Li, Xiaozhi Chen, and Shaojie Shen. Stereo R-CNN\nbased 3d object detection for autonomous driving. CoRR ,\nabs/1902.09738, 2019.",
+            "type": "numeric",
+            "number": "4",
+            "arxiv_id": null
+        },
+        "ref_5": {
+            "text": "Andretti Naiden, Vlad Paunescu, Gyeongmo Kim, ByeongMoon\nJeon, and Marius Leordeanu. Shift R-CNN: deep monocular 3d\nobject detection with closed-form geometric constraints. CoRR ,\nabs/1905.09970, 2019.",
+            "type": "numeric",
+            "number": "5",
+            "arxiv_id": null
+        },
+        "ref_6": {
+            "text": "Eskil J ¨orgensen, Christopher Zach, and Fredrik Kahl. Monocular\n3d object detection and box ﬁtting trained end-to-end using\nintersection-over-union loss. CoRR , abs/1906.08070, 2019.",
+            "type": "numeric",
+            "number": "6",
+            "arxiv_id": null
+        },
+        "ref_7": {
+            "text": "Pei-Xuan Li, Huaici Zhao, Pengfei Liu, and Feidao Cao. Rtm3d:\nReal-time monocular 3d detection from object keypoints for au-\ntonomous driving. ArXiv , abs/2001.03343, 2020.",
+            "type": "numeric",
+            "number": "7",
+            "arxiv_id": null
+        },
+        "ref_8": {
+            "text": "S. Hinterstoisser, V . Lepetit, S. Ilic, S. Holzer, G. Bradski, K. Kono-\nlige, , and N. Navab. Model based training, detection and pose\nestimation of texture-less 3d objects in heavily cluttered scenes.\n2012.",
+            "type": "numeric",
+            "number": "8",
+            "arxiv_id": null
+        },
+        "ref_9": {
+            "text": "E. Delage, Honglak Lee, and A. Y. Ng. A dynamic bayesian\nnetwork model for autonomous 3d reconstruction from a single\nindoor image. In 2006 IEEE Computer Society Conference on Com-\nputer Vision and Pattern Recognition (CVPR’06) , volume 2, pages\n2418–2428, 2006.",
+            "type": "numeric",
+            "number": "9",
+            "arxiv_id": null
+        },
+        "ref_10": {
+            "text": "C. Chun, D. Park, W. Kim, and C. Kim. Floor detection based\ndepth estimation from a single indoor scene. In 2013 IEEE\nInternational Conference on Image Processing , pages 3358–3362, 2013.",
+            "type": "numeric",
+            "number": "10",
+            "arxiv_id": null
+        },
+        "ref_11": {
+            "text": "Yan Wang, Wei-Lun Chao, Divyansh Garg, Bharath Hariharan,\nMark Campbell, and Kilian Weinberger. Pseudo-lidar from visual\ndepth estimation: Bridging the gap in 3d object detection for\nautonomous driving. arXiv preprint arXiv:1812.07179 , 2018.",
+            "type": "numeric",
+            "number": "11",
+            "arxiv_id": "1812.07179"
+        },
+        "ref_12": {
+            "text": "Xinzhu Ma and/ Zhihui Wang, Haojie Li, Wanli Ouyang, and\nPengbo Zhang. Accurate monocular 3d object detection via color-\nembedded 3d reconstruction for autonomous driving. CoRR ,\nabs/1903.11444, 2019.",
+            "type": "numeric",
+            "number": "12",
+            "arxiv_id": null
+        },
+        "ref_13": {
+            "text": "Vianney Jean Marie Uwabeza, Aich Shubhra, and Liu Bingbing.\nReﬁnedmpl: Reﬁned monocular pseudolidar for 3d object detec-\ntion in autonomous driving, 11 2019.",
+            "type": "numeric",
+            "number": "13",
+            "arxiv_id": null
+        },
+        "ref_14": {
+            "text": "Xinshuo Weng and Kris Kitani. Monocular 3d object detection\nwith pseudo-lidar point cloud. CoRR , abs/1903.09847, 2019.",
+            "type": "numeric",
+            "number": "14",
+            "arxiv_id": null
+        },
+        "ref_15": {
+            "text": "Jason Ku, Alex D. Pon, and Steven L. Waslander. Monocular\n3d object detection leveraging accurate proposals and shape\nreconstruction. CoRR , abs/1904.01690, 2019.",
+            "type": "numeric",
+            "number": "15",
+            "arxiv_id": null
+        },
+        "ref_16": {
+            "text": "Zechen Liu, Zizhang Wu, and Roland T ´oth. SMOKE: Single-stage\nmonocular 3d object detection via keypoint estimation. arXiv\npreprint arXiv:2002.10111 , 2020.",
+            "type": "numeric",
+            "number": "16",
+            "arxiv_id": "2002.10111"
+        },
+        "ref_17": {
+            "text": "Xingyi Zhou, Dequan Wang, and Philipp Kr ¨ahenb ¨uhl. Objects as\npoints. In arXiv preprint arXiv:1904.07850 , 2019.",
+            "type": "numeric",
+            "number": "17",
+            "arxiv_id": "1904.07850"
+        },
+        "ref_18": {
+            "text": "Garrick Brazil and Xiaoming Liu. M3D-RPN: monocular 3d re-\ngion proposal network for object detection. CoRR , abs/1907.06038,\n2019.",
+            "type": "numeric",
+            "number": "18",
+            "arxiv_id": null
+        },
+        "ref_19": {
+            "text": "Mingyu Ding, Yuqi Huo, Hongwei Yi, Zhe Wang, Jianping Shi,\nZhiwu Lu, and Ping Luo. Learning depth-guided convolutions\nfor monocular 3d object detection. 12 2019.",
+            "type": "numeric",
+            "number": "19",
+            "arxiv_id": null
+        },
+        "ref_20": {
+            "text": "Huan Fu, Mingming Gong, Chaohui Wang, Kayhan Batmanghe-\nlich, and Dacheng Tao. Deep ordinal regression network for\nmonocular depth estimation. CoRR , abs/1806.02446, 2018.",
+            "type": "numeric",
+            "number": "20",
+            "arxiv_id": null
+        },
+        "ref_21": {
+            "text": "R. D ´ıaz and A. Marathe. Soft labels for ordinal regression. In 2019\nIEEE/CVF Conference on Computer Vision and Pattern Recognition\n(CVPR) , pages 4733–4742, 2019.",
+            "type": "numeric",
+            "number": "21",
+            "arxiv_id": null
+        },
+        "ref_22": {
+            "text": "Jin Han Lee, Myung-Kyu Han, Dong Wook Ko, and Il Hong\nSuh. From big to small: Multi-scale local planar guidance for\nmonocular depth estimation. arXiv preprint arXiv:1907.10326 , 2019.",
+            "type": "numeric",
+            "number": "22",
+            "arxiv_id": "1907.10326"
+        },
+        "ref_23": {
+            "text": "Shubhra Aich, Jean Marie Uwabeza Vianney, Md Amirul Islam,\nMannat Kaur, and Bingbing Liu. Bidirectional attention network\nfor monocular depth estimation. arXiv preprint arXiv:2009.00743 ,\n2020.",
+            "type": "numeric",
+            "number": "23",
+            "arxiv_id": "2009.00743"
+        },
+        "ref_24": {
+            "text": "Pushmeet Kohli Nathan Silberman, Derek Hoiem and Rob Fergus.\nIndoor segmentation and support inference from rgbd images. In\nECCV , 2012.",
+            "type": "numeric",
+            "number": "24",
+            "arxiv_id": null
+        },
+        "ref_25": {
+            "text": "Igor Vasiljevic, Nick Kolkin, Shanyi Zhang, Ruotian Luo, Haochen\nWang, Falcon Z. Dai, Andrea F. Daniele, Mohammadreza\nMostajabi, Steven Basart, Matthew R. Walter, and Gregory\nShakhnarovich. DIODE: A Dense Indoor and Outdoor DEpth\nDataset. CoRR , abs/1908.00463, 2019.",
+            "type": "numeric",
+            "number": "25",
+            "arxiv_id": null
+        },
+        "ref_26": {
+            "text": "Joseph Redmon and Ali Farhadi. Yolov3: An incremental im-\nprovement. arXiv , 2018.",
+            "type": "numeric",
+            "number": "26",
+            "arxiv_id": null
+        },
+        "ref_27": {
+            "text": "Andreas Geiger, Philip Lenz, and Raquel Urtasun. Are we ready\nfor autonomous driving? the kitti vision benchmark suite. In\nConference on Computer Vision and Pattern Recognition (CVPR) , 2012.",
+            "type": "numeric",
+            "number": "27",
+            "arxiv_id": null
+        },
+        "ref_28": {
+            "text": "Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such,\nEric Frank, Alex Sergeev, and Jason Yosinski. An intriguing failing\nof convolutional neural networks and the coordconv solution.\nCoRR , abs/1807.03247, 2018.",
+            "type": "numeric",
+            "number": "28",
+            "arxiv_id": null
+        },
+        "ref_29": {
+            "text": "Andrea Simonelli, Samuel Rota Bul `o, Lorenzo Porzi, Manuel\nL´opez-Antequera, and Peter Kontschieder. Disentangling monoc-\nular 3d object detection. CoRR , abs/1905.12365, 2019.",
+            "type": "numeric",
+            "number": "29",
+            "arxiv_id": null
+        },
+        "ref_30": {
+            "text": "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep\nresidual learning for image recognition. CoRR , abs/1512.03385,\n2015.",
+            "type": "numeric",
+            "number": "30",
+            "arxiv_id": null
+        },
+        "ref_31": {
+            "text": "Tsung-Yi Lin, Priyal Goyal, Ross Girshick, Kaiming He, and Piotr\nDollar. Focal loss for dense object detection. IEEE Transactions on\nPattern Analysis and Machine Intelligence , PP:1–1, 07 2018.",
+            "type": "numeric",
+            "number": "31",
+            "arxiv_id": null
+        },
+        "ref_32": {
+            "text": "Ross B. Girshick. Fast R-CNN. CoRR , abs/1504.08083, 2015.",
+            "type": "numeric",
+            "number": "32",
+            "arxiv_id": null
+        },
+        "ref_33": {
+            "text": "Olaf Ronneberger, Philipp Fischer, and Thomas Brox. U-net: Con-\nvolutional networks for biomedical image segmentation. CoRR ,\nabs/1505.04597, 2015.",
+            "type": "numeric",
+            "number": "33",
+            "arxiv_id": null
+        },
+        "ref_34": {
+            "text": "Cl ´ement Godard, Oisin Mac Aodha, and Gabriel J. Brostow. Unsu-\npervised monocular depth estimation with left-right consistency.\nInCVPR , 2017.",
+            "type": "numeric",
+            "number": "34",
+            "arxiv_id": null
+        },
+        "ref_35": {
+            "text": "Xiaozhi Chen, Kaustav Kundu, Yukun Zhu, Andrew G Berne-\nshawi, Huimin Ma, Sanja Fidler, and Raquel Urtasun. 3d object\nproposals for accurate object class detection. In C. Cortes, N. D.\nLawrence, D. D. Lee, M. Sugiyama, and R. Garnett, editors,\nAdvances in Neural Information Processing Systems 28 , pages 424–\n432. Curran Associates, Inc., 2015.",
+            "type": "numeric",
+            "number": "35",
+            "arxiv_id": null
+        },
+        "ref_36": {
+            "text": "Zhenyu Zhang, Zhen Cui, Chunyan Xu, Yan Yan, Nicu Sebe, and\nJian Yang. Pattern-afﬁnitive propagation across depth, surface\nnormal and semantic segmentation. In The IEEE Conference on\nComputer Vision and Pattern Recognition (CVPR) , pages 4106–4115,\n2019.",
+            "type": "numeric",
+            "number": "36",
+            "arxiv_id": null
+        },
+        "ref_37": {
+            "text": "W. Yin, Y. Liu, C. Shen, and Y. Yan. Enforcing geometric con-\nstraints of virtual normal for depth prediction. In 2019 IEEE/CVF\nInternational Conference on Computer Vision (ICCV) , pages 5683–\n5692, 2019.",
+            "type": "numeric",
+            "number": "37",
+            "arxiv_id": null
+        },
+        "ref_38": {
+            "text": "M. Everingham, L. Van Gool, C. K. I. Williams, J. Winn, and\nA. Zisserman. The pascal visual object classes (voc) challenge.\nInternational Journal of Computer Vision , 88(2):303–338, June 2010.",
+            "type": "numeric",
+            "number": "38",
+            "arxiv_id": null
+        },
+        "ref_39": {
+            "text": "Abhinav Shrivastava, Abhinav Gupta, and Ross B. Girshick.\nTraining region-based object detectors with online hard example\nmining. CoRR , abs/1604.03540, 2016.",
+            "type": "numeric",
+            "number": "39",
+            "arxiv_id": null
+        },
+        "ref_40": {
+            "text": "Xizhou Zhu, Han Hu, Stephen Lin, and Jifeng Dai. De-\nformable convnets v2: More deformable, better results. CoRR ,\nabs/1811.11168, 2018.",
+            "type": "numeric",
+            "number": "40",
+            "arxiv_id": null
+        },
+        "ref_In_2019": {
+            "text": "straints of virtual normal for depth prediction. In 2019 IEEE/CVF",
+            "type": "author_year",
+            "key": "In, 2019",
+            "arxiv_id": null
+        },
+        "ref_In_2006": {
+            "text": "indoor image. In 2006 IEEE Computer Society Conference on Com-",
+            "type": "author_year",
+            "key": "In, 2006",
+            "arxiv_id": null
+        },
+        "ref_In_2013": {
+            "text": "depth estimation from a single indoor scene. In 2013 IEEE",
+            "type": "author_year",
+            "key": "In, 2013",
+            "arxiv_id": null
+        },
+        "ref_June_2010": {
+            "text": "International Journal of Computer Vision , 88(2):303–338, June 2010. [39] Abhinav Shrivastava, Abhinav Gupta, and Ross B. Girshick.",
+            "type": "author_year",
+            "key": "June, 2010",
+            "arxiv_id": null
+        }
+    },
+    "raw_chunks": [
+        {
+            "text": "Qualitative results are presented in Figure 6. Depth predictions inside the range of LiDAR are generally consistent. Depth predictions along long, vertical objects like trees are consistent thanks to the ground aware con- volution module. We point out that there are still artifacts around the edge of objects and areas without supervision because the network receives no post-processing and little pre-training. The depth prediction results show that the proposed module and the proposed network can improve depth inferencing from monocular images in autonomous driving scenes.\n\nV. MODEL ANALYSIS AND DISCUSSION\n\nWe provide an ablation study of the model in Sec- tion V.\n\nC. Experiments on Monocular Depth Prediction\n\nWe further evaluate the proposed depth prediction network in the KITTI depth prediction benchmark [27].\n\nIn this section, we further analyze the performance of the proposed method and discuss the effectiveness of each design choice. The experiments will focus more on monocular 3D detection. We conduct ablation studies to validate the contribution of anchor preprocessing and the ground-aware convolution module.\n\nYUXUAN LIU et al.: GROUND-AWARE MONOCULAR 3D OBJECT DETECTION FOR AUTONOMOUS DRIVING\n\n—\n\nFig. 6: Qualitative examples of depth prediction from validation sets. The depth maps on the right are rendered with the ofﬁcial color map.\n\nTABLE III: 3D Detection Ablation Study Results of Car on KITTI Validation Set\n\nIoU ≥ 0.7 3D Easy/Moderate/Hard Baseline Model 23.63 %/ 16.16 %/ 12.06 % 60.92 %/ 42.18 %/ 32.02 % w/o Anchor Filtering 21.39 %/ 14.35 %/ 11.11 % 59.76 %/ 41.00 %/ 31.10 % 22.45 %/ 15.10 %/ 11.29 % 60.71 %/ 42.01 %/ 31.88 % 21.57 %/ 15.26 %/ 11.35 % 58.17 %/ 41.17 %/ 32.58 % w DisparityConv 22.13 %/ 15.42 %/ 11.34 % 60.13 %/ 41.62 %/ 33.07 % w Deformable Conv 22.16 %/ 15.71 %/ 11.75 % 62.24 %/ 43.93 %/ 33.76 %\n\nIoU ≥ 0.5 3D Easy/Moderate/Hard\n\nMethods\n\nw OHEM\n\nw Conv\n\nA. Anchor Preprocessing\n\nWe ﬁrst conduct experiments on anchor ﬁltering. In the experiment, we do not ﬁlter out unnecessary anchors during training and testing. We notice that the proposed ﬁltering will ﬁlter out half of the negative anchors, so we also conduct an experiment against Online Hard Example Mining (OHEM), where we ﬁlter out half of the easy negative anchors during training[39].\n\nAs shown in Table III, the baseline model outperforms the ablated one and OHEM. The baseline model per- forms better at 3D inference. We also point out that there is almost no difference in 2D detection between the two models.\n\nGenerally, a one-stage single-scale object detector not only needs to classify background from the foreground but also needs to select anchors with the correct scales at foreground pixels, which also means selecting the proper depth prior. Filtering off-the-ground anchors dur- ing training and testing signiﬁcantly lowers the learning burden for the classiﬁcation branch of the object detec- tor. Thus the classiﬁcation branch can focus more on selecting the right anchors for foreground pixels. Such a method, as a result, also outperforms position-invariant ﬁltering methods like OHEM.\n\nB. Ground-Aware Convolution Module\n\nIntuitively, basic convolutions provide a uniform re- ceptive ﬁeld for each pixel, and the network could implicitly learn to adjust its receptive ﬁeld by ﬁne-tuning the weights of multiple convolution layers. Deformable convolutions [40] further explicitly encourage the net- work to adapt its receptive ﬁeld according to each pixel’s\n\nsurrounding context. Compared with deformable convo- lutions, the ground-aware convolution module ﬁxes the search direction and allows a larger search range.\n\nWe substitute the proposed module with basic con- volutions, disparity-conditioned convolutions (i.e., con- volution with the depth prior as an additional fea- ture map), and deformable convolutions to examine the performance. The results are shown in Table III. The experiments with deformable convolutions demonstrate better 2D detection results.\n\nDeformable convolution can enhance the performance with a generally larger receptive ﬁeld. While disparity- conditioned convolution provides the network with prior depths, the receptive ﬁeld of the network is lacking. These two modules improve the performance, but the proposed module has better results by a considerable margin.",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "27",
+                "39",
+                "40"
+            ]
+        },
+        {
+            "text": "VI. CONCLUSION\n\nIn this paper, we presented ground-aware monocu- lar 3D object detection for autonomous driving scenes. First, we improved the problem setup for monocular 3D detection and introduced an anchor ﬁltering procedure to inject ground plane priors and statistical priors in anchors. Second, we introduced a ground-aware convo- lution module, providing sufﬁcient hints and geometric priors for the network to reason based on ground plane priors. The proposed monocular 3D object detection net- work was tested on the KITTI detection benchmark and achieved SOTA performance among monocular meth- ods. We further tested the ground-aware convolution module in the monocular depth prediction task, and it\n\n7\n\n8\n\nIEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED JANUARY, 2021\n\nalso produced competitive results on the KITTI depth prediction benchmark.\n\nWe note that the ”ﬂoor-wall” assumption is limited to scenes with speciﬁc camera poses, and it only partially holds in a complex driving scene. The proposed methods still do not reason explicitly based on the boundaries of the ground and other objects. Instead, we encode sufﬁcient information and priors into the network and adopt a data-driven approach.\n\n[18] Garrick Brazil and Xiaoming Liu. M3D-RPN: monocular 3d re- gion proposal network for object detection. CoRR, abs/1907.06038, 2019.\n\n[19] Mingyu Ding, Yuqi Huo, Hongwei Yi, Zhe Wang, Jianping Shi, Zhiwu Lu, and Ping Luo. Learning depth-guided convolutions for monocular 3d object detection. 12 2019.\n\n[20] Huan Fu, Mingming Gong, Chaohui Wang, Kayhan Batmanghe- lich, and Dacheng Tao. Deep ordinal regression network for monocular depth estimation. CoRR, abs/1806.02446, 2018.\n\n[21] R. D´ıaz and A. Marathe. Soft labels for ordinal regression. In 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 4733–4742, 2019.\n\nNevertheless, the proposed method pushes the bound- ary of 3D detection and depth inference from images and produces powerful neural network models for au- tonomous driving and mobile robotics scenes.\n\n[22] Jin Han Lee, Myung-Kyu Han, Dong Wook Ko, and Il Hong Suh. From big to small: Multi-scale local planar guidance for monocular depth estimation. arXiv preprint arXiv:1907.10326, 2019.\n\n[23] Shubhra Aich, Jean Marie Uwabeza Vianney, Md Amirul Islam, Mannat Kaur, and Bingbing Liu. Bidirectional attention network for monocular depth estimation. arXiv preprint arXiv:2009.00743, 2020.",
+            "section": "results",
+            "section_idx": 1,
+            "citations": [
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23"
+            ]
+        },
+        {
+            "text": "1\n\n2021\n\n2\n\n0\n\n2\n\nb e F 1 ] V C . s c [ 1 v 0 9 6 0 0 . 2 0 1\n\n2\n\n:\n\nv\n\narXiv\n\ni\n\nX\n\nr\n\na\n\nIEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED JANUARY, 2021\n\nGround-aware Monocular 3D Object Detection for Autonomous Driving\n\nYuxuan Liu1, Yuan Yixuan2 and Ming Liu1\n\nAbstract—Estimating the 3D position and orientation of objects in the environment with a single RGB camera is a critical and challenging task for low-cost urban autonomous driving and mobile robots. Most of the existing algorithms are based on the geometric constraints in 2D-3D correspon- dence, which stems from generic 6D object pose estimation. We ﬁrst identify how the ground plane provides additional clues in depth reasoning in 3D detection in driving scenes. Based on this observation, we then improve the processing of 3D anchors and introduce a novel neural network module to fully utilize such application-speciﬁc priors in the frame- work of deep learning. Finally, we introduce an efﬁcient neural network embedded with the proposed module for 3D object detection. We further verify the power of the proposed module with a neural network designed for monoc- ular depth prediction. The two proposed networks achieve state-of-the-art performances on the KITTI 3D object de- tection and depth prediction benchmarks, respectively. The code will be published in https://www.github.com/Owen- Liuyuxuan/visualDet3D\n\nIndex Terms—Automation Technologies for Smart Cities; Deep Learning for Visual Perception; Object Detection, Segmentation and Categorization\n\nI. INTRODUCTION\n\nSimultaneously estimating the position, orientation, and dimensions of an object in 3D with a single well- calibrated RGB camera image in an autonomous driving scene is generally an ill-posed problem. Lidar-based methods and stereo-vision-based methods, which re- spectively obtain depths and distance information from lidar measurements and triangulation, can achieve su- perior performance [1][2][3][4]. Monocular setups are cheaper and more versatile than LiDAR setups and are more robust to variations in extrinsic parameters than stereo cameras. As a result, 3D detection with a single camera is still a heated research direction despite a lack of depth information.\n\nRecent developments in monocular 3D object detec- tion mainly utilize geometric constraints between the 3D\n\nobject and the its projection on a 2D image. ShiftRCNN [5], SS3D [6], and RTM3D [7] optimize the estimation of depth and orientation by solving a Perspective-n-Point problem with noisy observation.\n\nMost of these ideas come from a more general problem of monocular 6D pose estimation. Monocular 6D pose estimation benchmarks like LINEMOD [8] are based on the assumption that the CAD models of the objects of interest are known. However, we do not have access to accurate car models for each vehicle in autonomous driving scenes; thus, the performances of monocular 3D object detectors in autonomous driving scenes are limited.\n\nIn autonomous driving and mobile robotics applica- tions, we can generally assume that most important dynamic objects are on a ground plane, and the camera is mounted at a certain height above the ground. Some traditional depth prediction methods also note the im- portance of ground planes and introduce a similar ”ﬂoor- wall” assumption for indoor environments [9], [10]. Such perspective priors on the ground plane, not presented in general monocular 6D pose estimation problems, pro- vide a signiﬁcant amount of information for geometric reasoning for monocular 3D object detection in driving scenes. Few recent works explicitly inject the perspective priors on the ground plane into a neural network.\n\nThis paper proposes two novel procedures to allow a monocular object detector to reason over the ground plane explicitly.\n\nThe ﬁrst procedure is anchor ﬁltering, where we explicitly break the invariance in the neural network predictions. Given a prior distance between an anchor and its distance to the camera, we back-project the anchor to 3D. Since all objects of interest are located around the ground plane, we ﬁlter out 3D anchors far from the ground plane during training and testing. This operation focuses the network on positions where objects of interest are likely to appear. We will further introduce this procedure in Section III-A.\n\nManuscript received: October, 14, 2020; Revised November, 30, 2020 ; Accepted January, 5, 2021.\n\nThis paper was recommended for publication by Youngjin Choi upon evaluation of the Associate Editor and Reviewers’ comments.\n\n1Yuxuan Liu and Ming Liu are with the Robotics and Multi- Perception Laborotary, Department of Electronic and Computer En- gineering, The Hong Kong University of Science and Technology yliuhb@connect.ust.hk ,eelium@ust.hk\n\n2Yuan Yixuan is with the Department of Electrical Engi- neering, City University of Hong Kong, Hong Kong, China. yxyuan.ee@cityu.edu.hk\n\nThe second procedure is a ground-aware convolution module. The motivation of this module is illustrated by Figure 1. For a human, ground pixels around a car are useful to estimate the car’s 3D position, orientation, and dimensions. For an anchor-based detector, features at the center are responsible for estimating all the car’s 3D parameters. However, to infer depth with ground pixels like a human, the network model needs to perform the following steps from the center of an object (e.g. the red\n\nDigital Object Identiﬁer (DOI): see top of this page.\n\n1\n\n2\n\nIEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED JANUARY, 2021\n\nFig. 1: Contact points with the ground plane are important in inferreing 3D information of an object. Predicting depths of background pixels (e.g., the brown point) also rely on the geometry of the ground plane. Best viewed in color.\n\n• We evaluate the proposed module and design meth- ods on the KITTI 3D object detection benchmark and the depth prediction benchmark, and we achieve competitive results.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ]
+        },
+        {
+            "text": "II. RELATED WORKS\n\nA. Pseudo-LiDAR for Monocular 3D Object Detection\n\nThe idea of pseudo-LiDAR, reconstructing point clouds from mono or stereo images, has led to the recent advances in 3D detection [11][12][13][14][15]. Pseudo- LiDAR methods usually reconstruct the point cloud from a single RGB image with off-the-shelf depth prediction networks, which limit their performance. Moreover, the current SOTA monocular depth prediction networks generally take about 0.05s per frame, which signiﬁcantly limits the inference speed of pseudo-lidar detection pipelines.\n\nB. One-Stage Detection for Monocular 3D Object Detection\n\ndot in the ﬁgure)\n\n1) identiﬁng the contact points of the object and the ground plane (e.g. the blue curve beneath the car).\n\n2) computing the 3D position of the contact points with perspective geometry.\n\n3) gathering information from these contact points with a receptive ﬁeld focusing downwards.\n\nA standard object detection or depth prediction net- work is built to have a uniform receptive ﬁeld, and nei- ther perspective geometry priors nor camera parameters are provided to the network. Thus, it is non-trivial to train a standard neural network to make inferences like a human.\n\nThe ground-aware convolution module is designed to guide the network to incorporate the ground-based reasoning in network inferencing. We encode each pixel point’s prior depth value as an additional feature map, and we guide each pixel point of the feature map to incorporate features from pixels below them. Details of this module will be introduced in Section III-B.\n\nIncorporating the two proposed procedures into the network, we propose a one-stage framework with ex- plicit ground plane hypothesis usage. The network is fast thanks to its clean structure and can run at about 20 frames-per-second (FPS) on a modern GPU.\n\nSeveral recent advances in monocular 3D object detec- tion directly regress 3D bounding boxes in a one-stage object detection framework.\n\nOptimization-based Methods: SS3D [6] concurrently es- timated 2D bounding boxes, depth, orientation, dimen- sions, and 3D corners. Nonlinear optimization was ap- plied to merge all these predictions. Shift-RCNN[5] also estimated 3D information in a 2D anchor and applied a small sub-network instead of a nonlinear solver. More re- cent methods, SMOKE[16] and RTM3D [7] incoperate the aforementioned optimization scheme into the anchor- free object detector CenterNet [17].\n\n3D Anchor-based Methods: M3D-RPN [18] introduced 3D priors in 2D anchors, and also emphasized the impor- tance of the ground plane hypothesis. It also introduced height-wise convolution while D4LCN [19] introduced depth-guided convolution. Both techniques came at a high cost to efﬁciency and only utilized the ground plane hypothesis implicitly.\n\nWe point out that anchor-based methods are still better than anchor-free methods in 3D detection. Anchor-free detectors implicitly require the network to learn the correlation between the object’s apparent size and its distance value. In contrast, anchor-based detectors can embed this in an anchor’s preprocessing. As a result, we develop our framework upon anchor-based detectors.\n\nWe further incorporate the ground-aware convolu- tion module in a u-net-based structure on monocular depth prediction. Both networks achieve state-of-the-art (SOTA) performance on the KITTI dataset.\n\nThe contribution of the paper is three-fold.\n\nTo our knowledge, our proposed framework is the ﬁrst 3D anchor-based method to explicitly utilize the ground plane hypothesis of driving scenes in monocular 3D detection and achieves the SOTA performance at the time of writing.\n\n• We identify the beneﬁt of learning from the ground plane priors in urban scenes for 3D reasoning from images.\n\nC. Supervised Monocular Depth Prediction With Deep Learn-\n\ning\n\n• We introduce a processing method and a ground- aware convolution module in monocular 3D object detection to use the ground plane hypothesis.\n\nSupervised monocular depth prediction is another hot research topic closely related to monocular 3D object detection.\n\nYUXUAN LIU et al.: GROUND-AWARE MONOCULAR 3D OBJECT DETECTION FOR AUTONOMOUS DRIVING\n\nconv > filtering | 39 NMS }+ 4 y Backbone GAC }> conv -+R\n\n4 y\n\nthe depth is computed for each pre-deﬁned anchor box, while variance is computed globally instead. The global variance is only computed to normalize the targets for the neural net.\n\nFig. 2: Network structure for 3D object detection. We extract features from image I and predict classﬁcation tensor C and regression tensor R. We ﬁlter anchors far from the ground before post-processing and produce the ﬁnal bounding boxes B.\n\nDORN [20] and SoftDorn [21] proposed to treat the depth estimation problem as an ordinal regression prob- lem to improve the convergence rate. BTS [22] proposed the local planar guidance module and incorporated normal information to constraint the depth prediction results in the scenes. BANet [23], meanwhile, proposed a bidirectional attention network to improve the receptive ﬁelds and global information understanding of depth prediction networks.\n\nMany of the methods above focus on depth prediction for multiple datasets and scenarios. Images in datasets like NYUv2[24] and DIODE[25] are taken from various viewpoints, and it is hard to extract ﬂoor priors, unlike the cases in driving scenes. As a result, the neural networks mentioned above do not utilize the camera’s extrinsic parameters to extract environment priors, and the absolute scale is lacking during the network infer- ence process.\n\nWe further observe that the variance of the depth z of an anchor is inversely proportional to the object’s size in the image. Thus, we consider each anchor as a distri- bution with individual mean and variance of the object proposal in 3D. To collect prior statistical knowledge in the anchors, we iterate through the training set and collect all objects sharing a large intersection-over-union (IoU) with the box for each anchor box with a different shape. Then we calculate the mean and variance of the depth z, sin(α) and cos(α) for each pre-deﬁned anchor box. We can signiﬁcantly lower the prior variance of the depth z for large anchor boxes / close objects.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "6",
+                "5",
+                "16",
+                "7",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25"
+            ]
+        },
+        {
+            "text": "Since we have considered anchors as distribution of 3D proposals, the associated 3D targets should not de- viate much from the expectation. We utilize the fact that most objects of interest should be on the ground plane. Each anchor, centering at (u,v) with pre-computed mean depth ˆz, can be back-projected to 3D:\n\nx3d = u − cx fx ˆz y3d = v − cy fy ˆz, (1)\n\nwhere (cx,cy) is the camera’s principal point and (fx, fy) is the camera’s focal length. Anchors with y3d too far from the ground will be ﬁltered out from training and testing. Such a strategy allows the network to train with 3D anchors around the region of interest and simplify the classiﬁcation problem.\n\nIII. METHODS\n\nIn this section, we elaborate on the methods applied in this paper. First, we present the formulation of the detection network’s inference results and the data pre- processing procedure. Second, we introduce the ground- aware convolution module that extracts depth priors from the ground plane hypothesis. Finally, we present the network’s architecture with other major modiﬁca- tions in the training and inferencing process.\n\nB. Ground-Aware Convolution Module\n\nGround-aware convolution is designed to guide the object center to extract features and reason the depth from its contact point; the structure is presented in Figure 4.\n\nTo ﬁrst inject perspective geometry into the network, we encode the prior depth value z of each pixel point, assuming that it is on the ground. The persepctive geometry foundation is presented in Figure 3.\n\nA. Anchors Preprocessing\n\n1) Anchors Deﬁnition: We follow the idea from YOLO [26] to densely predict bounding boxes with dense an- chors. Each anchor on the image also acts as a proposal of an object in 3D. A 3D anchor consists of a 2D bound- ing box parameterized by [x,y,w2d,h2d], where (x,y) is the center of the 2D box and (w2d,h2d) is the width and height; 3D centers of an object are presented as [cx,cy,z], where (cx,cy) is the center of the object projected on the image plane and z is the depth; [w3d,h3d,l3d] corresponds to the width, height and length of the 3D bounding box, and [sin(α),cos(α)] is the sine and cosine value of the observation angle α.\n\n2) Priors Extraction from Anchors: The shape and size of an anchor or an object are highly correlated with the depth. In some prior methods [18], the mean of\n\nAccording to the ideal pin-hole camera model, the relation between the depth z and height y3d can be obtained as:\n\nz · v = fy · y3d + cy · z + Ty, (2)\n\nwhere fy,cy, and Ty are focal lengths, the principal point coordinate and relative translation respectively, and v is the pixel’s y-coordinate in the image.\n\nAssume we know the expected elevation EL of the camera from the ground (1.65 meters in the KITTI dataset [27]). The distance from the ground plane pixel to the camera in z can be solved from Equation 2 as:\n\nz = fy · EL + Ty v − cy . (3)\n\nWe note that the function is not continuous around the vanishing line of the ground plane (v = cy), and, as\n\n3\n\n4\n\nIEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED JANUARY, 2021\n\nCamera -\"} . = >Z elevation EL Ground | depth prior z ™ y\n\nFig. 3: Perspective geometry for the GAC module. When we calculate the vertical offsets δ0 y, we assume pixels are foreground object centers. When we compute the depth priors z, we assume pixels are on the ground because they are features to be queried.\n\noutput feature map\n\ninput feature map\n\ninput feature map output feature a concat conv offsets depth prior\n\nFig. 4: Ground-aware convolution. The network predicts the offsets in the vertical direction, and we sample the corresponding features and depth priors from pixels below. Depth priors are computed with perspective geometry with ground plane assumption.\n\nEach point pi in the feature map will then dynamically predict an offset δyi as if it is the center of a foreground object\n\nyi + ∆ δyi = δ0 i = ˆh 2EL − ˆh · (v − cy) + ∆ i,\n\n, where ˆh is the height of the object (we ﬁx this to be the average height of foreground objects of the dataset), ∆ i is the residual predicted by the convolution networks.\n\nThen, as shown in Figure |4} we extract features fi at position p; + dy; using linear interpolation. The extracted features f! are merged back to the original point p; with a residual connection.\n\nThe ground-aware convolution module mimics how humans utilize the ground plane in depth perception. It extracts geometric priors and features from pixels be- neath. The other part of the network is then responsible for predicting the depth residual between the priors and the targets. The module is differentiable and trained end- to-end with the entire network.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "26",
+                "18",
+                "27"
+            ]
+        },
+        {
+            "text": "C. Network Architecture for Monocular 3D Detection\n\nThe inference structure of the network is presented in Figure 2. We adopt ResNet-101 [30] as the backbone network, and we only take features at scale 1/16. The feature map is then fed into the classiﬁcation branch and regression branch.\n\nThe classiﬁcation branch consists of two convolutional layers, while the regression branch is composed of a ground-aware convolution module followed by a con- volutional output layer.\n\nindicated in Figure 3, physically unachievable for v < cy. To detour from such a problem, we ﬁrst propose to encode the depth value as the disparity of a virtual stereo setup (baseline B = 0.54m, similar to the KITTI stereo setup), and we derive the virtual disparity\n\nd = fy · B v − cy fy · EL + Ty (4)\n\nbased on the depth z in Equation 3. Rectiﬁed Linear Unit (ReLU) activation (max(x,0)) is then applied to suppress pixels with disparity smaller than zero, which is physically unachievable for forward-facing cameras. After these two steps, the depth priors of the image becomes spatially continuous and consistent.\n\nInspired by CoordinateConv [28], we treat this depth prior as an additional feature map with the same spatial size as the base feature map. Each element in the feature map is now encoded with depth priors assuming it is on the ground.\n\nAs motivated in Figure 1, pixels at the center of the object need to query the depth and image features from contact points, which are usually below the object centers.\n\nThe shape of the output tensor from the classiﬁcation branch C is (B, W 16, H 16,K ∗ #anchors), where K represents the number of classes and #anchors means the number of anchors per pixel. The output tensor from the regres- sion branch is (B, W 16, H 16,12 ∗ #anchors). There are nine parameters for each anchor: four for 2D bounding box estimation, three for object center predictions, three for dimension predictions, and two more for observation angle predictions.\n\n1) Loss Functions: The total loss L is the aggregation of classiﬁcation loss for objectness Lcls, and regression loss for other parameters Lreg:\n\nL = Lcls + Lreg.\n\nWe adopt focal loss [1], [31] for classiﬁcation of ob- jectness and cross-entropy loss for the multi-bin clas- siﬁcation of width, height, and length. Other parame- ters, [x2d,y2d,w2d,h2d,cx,cy,z,w3d,h3d,l3d,sin(α),cos(α)], are normalized based on the anchors’ prior parameters and optimized through smoothed-L1 loss [32].\n\n2) Post Optimization: We follow [18] to apply hill- climbing algorithms as a post-optimization procedure. By perturbating the observation angle and depth esti- mation, the algorithm incrementally maximizes the IoU between the directly estimated 2D bounding box and the\n\nYUXUAN LIU et al.: GROUND-AWARE MONOCULAR 3D OBJECT DETECTION FOR AUTONOMOUS DRIVING\n\nTABLE I: 3D Object Detection Results of Car on KITTI Test Set\n\nMethods 3D Easy 3D Moderate 3D Hard BEV Easy BEV Moderate BEV Hard Time MonoPSR[15] 10.76 % 7.25 % 5.85 % 18.33 % 12.58 % 9.91 % 0.2s PLiDAR[14] 10.76 % 7.50 % 6.10 % 21.27 % 13.92 % 11.25 % 0.1s SS3D[6] 10.78 % 7.68 % 6.51 % 16.33 % 11.52 % 9.93 % 0.05s MonoDIS[29] 10.37 % 7.94 % 6.40 % 17.23 % 13.19 % 11.12 % 0.1s M3D-RPN[18] 14.76 % 9.71 % 7.42 % 21.02 % 13.67 % 10.42 % 0.16s RTM3D[7] 14.41 % 10.34 % 8.77 % 19.17 % 14.20 % 11.99 % 0.05s AM3D[12] 16.50 % 10.74 % 9.52 % 25.03 % 17.32 % 14.91 % 0.4s D4LCN[19] 16.65 % 11.72 % 9.51 % 22.51 % 16.02 % 12.55 % 0.2s Ours 21.65 % 13.25 % 9.91 % 29.81 % 17.98 % 13.08 % 0.05s\n\n2D bounding box projected from the 3D bounding box to the image plane.\n\nThe original implementation optimizes the depth and observation angle concurrently. With repeated experi- ments, we ﬁnd that optimizing only the observation angle produces even better results in the validation set. Concurrently optimizing two variables could overﬁt to the sparse 3D-2D constraints and affect the accuracy of the 3D prediction.\n\nTABLE II: Depth Prediction Results on KITTI Test Set\n\nMethods PAP[36] VNL[37] SILog 13.08 12.65 sqErrorRel 2.72 % 2.46 % absErrorRel 10.27 % 10.15 % iRMSE 13.95 13.02 SoftDorn[21] 12.39 2.49 % 10.10 % 13.48 Base U-Net 12.78 3.11 % 10.12 % 13.46 Ours 12.13 2.61 % 9.41 % 12.65",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "30",
+                "28",
+                "1",
+                "31",
+                "32",
+                "18",
+                "15",
+                "14",
+                "6",
+                "29",
+                "18",
+                "7",
+                "12",
+                "19",
+                "36",
+                "37",
+                "21"
+            ]
+        },
+        {
+            "text": "IV. EXPERIMENTS\n\nA. Dataset and Training Setups\n\nD. Network Architecture for Monocular Depth Prediction\n\nWe adopt a U-Net [33] structure for supervised dense depth prediction. We select a pretrained ResNet-34 [30] as the backbone encoder.\n\nIn the decoding phase, the features are bilinearly upsampled, followed by two convolution layers and concat with the skip connections. We add a ground- aware convolution module before the two convolution layers in the decoder.\n\nThe depth prediction network densely predicts the logarithm of depth from each image with a (B,1, H,W) tensor y = logz. We provide supervision on each output scale l. The total loss is the sum of a scale-invariant (SI) loss LSI [21] and a smoothness loss Lsmooth [34] with hyperparameter α:\n\nL = ∑ (LSI + αLsmooth). (5) l\n\nSI loss is commonly used to simultaneously minimize the mean-square-error (MSE) and improve global con- sistency. Smoothness loss is needed because the super- vision from the KITTI dataset [27] is sparse and lacks local consistency. The SI loss and smoothness loss are computed with the following equations:\n\nLSI = 1 n ∑ i d2 i − λ n2 (∑ i di)2 (6)\n\nLsmooth = 1 N ∑ i|e−||∂xIl |∂xzl i|| + |∂yzl i i|e−||∂yIl i||, (7)\n\nWe ﬁrst evaluate the proposed monocular 3D detec- tion network on the KITTI benchmark [27]. The dataset consists of 7,481 training frames and 7,518 test frames. Chen et al. [35] further splits the training set into 3,712 training frames and 3,769 validation frames.\n\nWe ﬁrst determine the hyperparameters of the net- work with a family of smaller networks ﬁne-tuned on Chen’s split [35]. Then, we retrain the ﬁnal network on the entire training set with the same hyperparameters before uploading the result for testing on the KITTI server. The ablation study that follows is also conducted on the validation set of Chen’s split.\n\nSimilar to RTM3D [7], we double the training set by utilizing images both from the left and right RGB cameras (only RGB images from the left camera are used in validation and ﬁnal testing) and use random horizontal mirroring as data augmentation (not applied in validation and testing), which signiﬁcantly enlarges the training set and improve performance. The top 100 pixels of each image are cropped to speed up inference, and the cropped input images are scaled to 288 × 1280 for the model submitted to the KITTI server, which is similar to the original scale of the images. The feature map produced by the backbone, therefore, has a shape of 18 × 80. Regression loss and classiﬁcation loss that are too small in magnitude (1e-3) are clipped to prevent overﬁtting. The network is trained with a batch size of 8 on a single Nvidia 1080Ti GPU. During inference, the network is fed one image at a time, and the total average processing time, including ﬁle IO and post-optimization, is 0.05s per frame.\n\nwhere di = logzi −logz∗ i , n is the number of valid pixels, λ ∈ [0,1] is a hyperparameter balancing the absolute MSE loss and relative scale loss, N is the number of total pixels, and ∂xI and ∂yI are the gradients of the input images.\n\nB. Evaluation Metric and Results for 3D Detection\n\nAs pointed out by Simonelli et al. [29] and the KITTI team, evaluating performance with 40 recall positions\n\n5\n\n6\n\nIEEE ROBOTICS AND AUTOMATION LETTERS. PREPRINT VERSION. ACCEPTED JANUARY, 2021\n\nFig. 5: Qualitative examples from validation sets. Blue boxes, pink boxes and yellow boxes indicate the ground truth 2D bounding box, estimated 2D bounding box, and estimated 3D bounding box respectively. Red points are object centers and green points visualize the offsets δyi in the GAC module.\n\n(AP40) instead of the 11 recall positions (AP11) proposed in the original Pascal VOC benchmark[38] could elim- inate the problematic results presented in the lowest recall bin. Therefore, we present our results on the test set and also ablation study based on AP40.\n\nThe results are presented in Table I alongside those of other SOTA monocular 3D detection methods based on the KITTI benchmark.\n\nThe dataset for monocular depth prediction consists of 42949 training frames, 1000 validation samples, and 500 test samples, annotated with sparse point clouds.\n\nThe input images are cropped to 352 × 1216 during training and testing. In the loss function, we applied α= 0.3, λ=0.3 through grid-search on the validation set. The network is also trained with a batch size of 8 on a single Nvidia 1080Ti GPU.\n\nThe proposed network signiﬁcantly outperforms ex- isting methods on easy and moderate vehicles. We do expect ground-aware convolutions to produce more ac- curate predictions for close-up vehicles with clear bor- ders with the ground plane.\n\nQualitative results are presented in Figure 5. The model shown here shares the same hyperparameters as the model submitted to the KITTI server but is only trained on the training sub-split. In the images on the left-hand side of the ﬁgure, cars are mostly detected and estimated accurately. The effect of the GAC module is also visualized.\n\nWe present several typical failure cases on the right- hand side of Figure 5, and in the top-right image, the network does not detect a heavily obscured car. In the middle-right image, truncated cars and a car that is quite far away are not detected. We acknowledge that the network could still have trouble detecting small objects. We show the bottom-right image to demonstrate cases in which the network give an inaccurate estimation of the 3D dimensions of a car because, as stated in Section III, it is still difﬁcult to estimate the width, length, and height of an object merely by semantic information in the image.\n\nScale-invariant log error (SILog) is the primary metric used in the KITTI benchmark to evaluate depth predic- tion algorithms.\n\nThe results are presented in Table II. The proposed network produces one of the best performances on the KITTI dataset, providing competitive results compared with SOTA methods. We also show that the network improves signiﬁcantly against the baseline U-Net Model.",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "33",
+                "30",
+                "21",
+                "34",
+                "27",
+                "27",
+                "35",
+                "35",
+                "7",
+                "0,1",
+                "29",
+                "38"
+            ]
+        },
+        {
+            "text": "REFERENCES\n\n[1] Peng Yun, Lei Tai, Yuan Wang, and Ming Liu. Focal loss in 3d object detection. CoRR, abs/1809.06065, 2018.\n\n[2] Wang Sukai, Sun Yuxiang, Liu Chengju, and Liu Ming. Pointtrack- net: An end-to-end network for 3-d object detection and tracking from point clouds. IEEE Robotics and Automation Letters, PP:1–1, 02 2020.\n\n[24] Pushmeet Kohli Nathan Silberman, Derek Hoiem and Rob Fergus. Indoor segmentation and support inference from rgbd images. In ECCV, 2012.\n\n[25] Igor Vasiljevic, Nick Kolkin, Shanyi Zhang, Ruotian Luo, Haochen Wang, Falcon Z. Dai, Andrea F. Daniele, Mohammadreza Mostajabi, Steven Basart, Matthew R. Walter, and Gregory Shakhnarovich. DIODE: A Dense Indoor and Outdoor DEpth Dataset. CoRR, abs/1908.00463, 2019.\n\n[3] Z. Chen, Q. Liao, Z. Wang, Y. Liu, and M. Liu. Image detector based automatic 3d data labeling and training for vehicle detec- tion on point cloud. In 2019 IEEE Intelligent Vehicles Symposium (IV), pages 1408–1413, June 2019.\n\n[4] Peiliang Li, Xiaozhi Chen, and Shaojie Shen. Stereo R-CNN based 3d object detection for autonomous driving. CoRR, abs/1902.09738, 2019.\n\n[5] Andretti Naiden, Vlad Paunescu, Gyeongmo Kim, ByeongMoon Jeon, and Marius Leordeanu. Shift R-CNN: deep monocular 3d object detection with closed-form geometric constraints. CoRR, abs/1905.09970, 2019.\n\n[6] Eskil J¨orgensen, Christopher Zach, and Fredrik Kahl. Monocular 3d object detection and box ﬁtting trained end-to-end using intersection-over-union loss. CoRR, abs/1906.08070, 2019.\n\n[7] Pei-Xuan Li, Huaici Zhao, Pengfei Liu, and Feidao Cao. Rtm3d: Real-time monocular 3d detection from object keypoints for au- tonomous driving. ArXiv, abs/2001.03343, 2020.\n\n[8] S. Hinterstoisser, V. Lepetit, S. Ilic, S. Holzer, G. Bradski, K. Kono- lige, , and N. Navab. Model based training, detection and pose estimation of texture-less 3d objects in heavily cluttered scenes. 2012.\n\n[9] E. Delage, Honglak Lee, and A. Y. Ng. A dynamic bayesian network model for autonomous 3d reconstruction from a single indoor image. In 2006 IEEE Computer Society Conference on Com- puter Vision and Pattern Recognition (CVPR’06), volume 2, pages 2418–2428, 2006.\n\n[10] C. Chun, D. Park, W. Kim, and C. Kim. Floor detection based depth estimation from a single indoor scene. In 2013 IEEE International Conference on Image Processing, pages 3358–3362, 2013.\n\n[11] Yan Wang, Wei-Lun Chao, Divyansh Garg, Bharath Hariharan, Mark Campbell, and Kilian Weinberger. Pseudo-lidar from visual depth estimation: Bridging the gap in 3d object detection for autonomous driving. arXiv preprint arXiv:1812.07179, 2018.\n\n[12] Xinzhu Ma and/ Zhihui Wang, Haojie Li, Wanli Ouyang, and Pengbo Zhang. Accurate monocular 3d object detection via color- embedded 3d reconstruction for autonomous driving. CoRR, abs/1903.11444, 2019.\n\n[13] Vianney Jean Marie Uwabeza, Aich Shubhra, and Liu Bingbing. Reﬁnedmpl: Reﬁned monocular pseudolidar for 3d object detec- tion in autonomous driving, 11 2019.\n\n[26] Joseph Redmon and Ali Farhadi. Yolov3: An incremental im- provement. arXiv, 2018.\n\n[27] Andreas Geiger, Philip Lenz, and Raquel Urtasun. Are we ready for autonomous driving? the kitti vision benchmark suite. In Conference on Computer Vision and Pattern Recognition (CVPR), 2012.\n\n[28] Rosanne Liu, Joel Lehman, Piero Molino, Felipe Petroski Such, Eric Frank, Alex Sergeev, and Jason Yosinski. An intriguing failing of convolutional neural networks and the coordconv solution. CoRR, abs/1807.03247, 2018.\n\n[29] Andrea Simonelli, Samuel Rota Bul`o, Lorenzo Porzi, Manuel L´opez-Antequera, and Peter Kontschieder. Disentangling monoc- ular 3d object detection. CoRR, abs/1905.12365, 2019.\n\n[30] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition. CoRR, abs/1512.03385, 2015.\n\n[31] Tsung-Yi Lin, Priyal Goyal, Ross Girshick, Kaiming He, and Piotr Dollar. Focal loss for dense object detection. IEEE Transactions on Pattern Analysis and Machine Intelligence, PP:1–1, 07 2018.\n\n[32] Ross B. Girshick. Fast R-CNN. CoRR, abs/1504.08083, 2015.\n\n[33] Olaf Ronneberger, Philipp Fischer, and Thomas Brox. U-net: Con- volutional networks for biomedical image segmentation. CoRR, abs/1505.04597, 2015.\n\n[34] Cl´ement Godard, Oisin Mac Aodha, and Gabriel J. Brostow. Unsu- pervised monocular depth estimation with left-right consistency. In CVPR, 2017.\n\n[35] Xiaozhi Chen, Kaustav Kundu, Yukun Zhu, Andrew G Berne- shawi, Huimin Ma, Sanja Fidler, and Raquel Urtasun. 3d object proposals for accurate object class detection. In C. Cortes, N. D. Lawrence, D. D. Lee, M. Sugiyama, and R. Garnett, editors, Advances in Neural Information Processing Systems 28, pages 424– 432. Curran Associates, Inc., 2015.\n\n[36] Zhenyu Zhang, Zhen Cui, Chunyan Xu, Yan Yan, Nicu Sebe, and Jian Yang. Pattern-afﬁnitive propagation across depth, surface normal and semantic segmentation. In The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pages 4106–4115, 2019.\n\n[37] W. Yin, Y. Liu, C. Shen, and Y. Yan. Enforcing geometric con- straints of virtual normal for depth prediction. In 2019 IEEE/CVF International Conference on Computer Vision (ICCV), pages 5683– 5692, 2019.\n\n[14] Xinshuo Weng and Kris Kitani. Monocular 3d object detection with pseudo-lidar point cloud. CoRR, abs/1903.09847, 2019.\n\n[15] Jason Ku, Alex D. Pon, and Steven L. Waslander. Monocular 3d object detection leveraging accurate proposals and shape reconstruction. CoRR, abs/1904.01690, 2019.\n\n[16] Zechen Liu, Zizhang Wu, and Roland T´oth. SMOKE: Single-stage monocular 3d object detection via keypoint estimation. arXiv preprint arXiv:2002.10111, 2020.\n\n[17] Xingyi Zhou, Dequan Wang, and Philipp Kr¨ahenb¨uhl. Objects as points. In arXiv preprint arXiv:1904.07850, 2019.\n\n[38] M. Everingham, L. Van Gool, C. K. I. Williams, J. Winn, and A. Zisserman. The pascal visual object classes (voc) challenge. International Journal of Computer Vision, 88(2):303–338, June 2010.\n\n[39] Abhinav Shrivastava, Abhinav Gupta, and Ross B. Girshick. Training region-based object detectors with online hard example mining. CoRR, abs/1604.03540, 2016.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "1",
+                "2",
+                "24",
+                "25",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "14",
+                "15",
+                "16",
+                "17",
+                "38",
+                "39"
+            ]
+        },
+        {
+            "text": "[40] Xizhou Zhu, Han Hu, Stephen Lin, and Jifeng Dai. De- formable convnets v2: More deformable, better results. CoRR, abs/1811.11168, 2018.",
+            "section": "other",
+            "section_idx": 6,
+            "citations": [
+                "40"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\8643890a-1bab-4f4b-882a-0c61408d7e40.jpg",
+            "description": "This figure illustrates a component of a deep learning architecture, likely related to image processing or computer vision. It shows the flow of data through various stages:\n\n- **Input Feature Map**: Begins with an input feature map labeled as \\( p_i \\).\n\n- **Convolution Layer (conv)**: The input is processed through a convolution layer to produce offsets.\n\n- **Offsets**: These offsets are used to adjust or manipulate the input features, likely for alignment or transformation purposes.\n\n- **Depth Prior**: The offsets are concatenated with another input, labeled as \\( f_t \\), representing a depth prior. This suggests a focus on depth information, possibly for tasks like depth estimation or 3D reconstruction.\n\n- **Sample**: The combined data goes through a sampling process, which may involve spatial transformation or resampling based on the offsets.\n\n- **Output Feature Map**: Finally, the processed data goes through another convolution layer and is combined with the original input feature map using an addition operation, resulting in the output feature map.\n\nThe figure is important as it visualizes the methodology or a key component of the architecture involving depth information and spatial transformation, which is likely central to the research's innovation or approach.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\b77625ff-39e0-4fa0-aaa4-44dd8be5561f.jpg",
+            "description": "The figure shows images of road scenes with multiple vehicles, each marked with bounding boxes. These boxes are likely the result of an object detection algorithm, typically used in computer vision research. The different colored lines and boxes might represent various detected classes or confidence levels associated with the detection. This figure likely demonstrates the capability or effectiveness of the algorithm in identifying and localizing vehicles in diverse traffic scenarios. Such visualizations are important for illustrating the performance and accuracy of detection methods used in autonomous driving or traffic analysis systems.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\7868a714-e111-4fbc-a7b8-18ab8b6aaffd.jpg",
+            "description": "This figure appears to illustrate a computer vision application, likely object detection, within a street scene. Vehicles on the street are enclosed in bounding boxes, which are color-coded, possibly indicating different categories or confidence levels of detection. This visualization demonstrates the capability of a detection algorithm to identify and localize objects within an image. The use of bounding boxes and color overlays suggests a focus on highlighting detected objects, possibly as part of an autonomous vehicle or smart city research project. This figure is important for understanding the performance and real-world application of the detection algorithm discussed in the paper.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\e4228bb4-e5a4-4e56-acd1-18f41f4d484e.jpg",
+            "description": "This figure is a geometric diagram illustrating the relationship between camera positioning, image projection, and depth estimation. Key components include:\n\n- **Camera Position**: The camera is shown at an elevated position labeled \"elevation EL.\"\n- **Coordinates and Axes**: The coordinate system includes the z-axis and y-axis, defining the spatial relationship between the camera and the ground.\n- **Image Plane and Image**: The image plane is depicted, with a dotted line indicating the connection between the camera and the image points.\n- **Depth Estimation**: The diagram shows how depth prior \\( z \\) and elevation \\( EL \\) relate to the image coordinates and height \\( \\hat{h} \\).\n- **Mathematical Notations**: Variables such as \\( \\delta_y^0 \\), \\( v \\), and \\( c_y \\) are used to describe distances and projections in the image plane.\n- **Projection Lines**: Green lines represent the projection from the camera through the image plane down to the ground.\n  \nThis figure helps in understanding the methodology for calculating depth and elevation from image data, making it an important part of the research's methodology section.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\d679f7ca-3f23-4322-b272-9d642819b9be.jpg",
+            "description": "This image appears to be a visual representation of a computer vision task, likely involving object detection. The figure shows a street scene with vehicles, and each vehicle is enclosed within a 3D bounding box. The bounding boxes are marked by colored lines, potentially indicating the detection algorithm's output, such as location, orientation, and dimensions of the detected objects. This figure likely illustrates the capability of an algorithm to identify and localize objects in a real-world environment, an important aspect of autonomous driving or surveillance systems. The presence of multiple bounding boxes suggests an evaluation of the system's accuracy and effectiveness in detecting objects under varied conditions. This figure is important for understanding the practical application and performance of the proposed method within the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\0044207a-d38d-4f60-b627-ab5622413542.jpg",
+            "description": "The figure shows an image of a street scene with several cars parked along the sides. Overlaid on the image are 3D bounding boxes, highlighted in pink and yellow lines, indicating detected objects, likely vehicles. This suggests the use of computer vision techniques, possibly for autonomous driving or object detection research. The bounding boxes illustrate the system's capability to identify and localize objects in three-dimensional space. This type of visualization is important for demonstrating the effectiveness of an algorithm in correctly identifying and localizing objects in real-world scenarios.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\e0e4a09c-ec23-41db-ab21-de85de32564d.jpg",
+            "description": "The figure appears to depict a surveillance or detection setup involving a vehicle. The red dot and lines suggest a focal point or sensor on the back of the car, possibly indicating a detection or monitoring system. The blue outline might represent a detection zone or area of interest, likely related to an algorithm for spatial awareness or navigation. This could be part of a research study on autonomous driving, parking assistance, or object detection, making it important for understanding key components or results within the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\875a3d8e-dc9e-4dc6-a095-1085cf85c8c3.jpg",
+            "description": "This figure is likely a depth map visualization, which uses color to represent the distance of objects from the camera. The color gradient, typically ranging from blue to red, indicates varying distances, with one end representing closer objects and the other representing farther ones. Such visualizations are crucial for understanding spatial relationships in a scene, particularly in tasks like object detection, navigation, or 3D reconstruction. The presence of distinct color variations suggests different object positions, which could be people, vehicles, or environmental features. This type of figure is important for illustrating how well a depth sensing system or algorithm can capture and interpret spatial data.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\503943aa-00e4-4d67-887e-628b497bbbbe.jpg",
+            "description": "** The figure likely shows a depth map where different colors represent different depths or distances in a scene. The colors transition from blue (closer) to red (farther away), illustrating spatial information which might be used in applications like 3D reconstruction, autonomous navigation, or object detection.\n\nIf you have more context or text from the paper, I can help further analyze or interpret its significance!",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\bd7ebd94-70a5-433e-8001-90ed9a3169b6.jpg",
+            "description": "I'm unable to analyze or provide detailed descriptions of images. However, I can help with general guidance or answer questions you might have about interpreting technical figures. Let me know how I can assist you!",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Nonlinear Loss Function",
+            "Assessment metrics",
+            "Smoothness and Robustness"
+        ],
+        "methodology": [
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Feature detection",
+            "Loss functions"
+        ],
+        "domain": [
+            "Autonomous Robotics"
+        ],
+        "strengths": [
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Enhanced Detection Techniques",
+            "Superiority",
+            "Efficient Optimization"
+        ],
+        "limitations": [
+            "Training challenges",
+            "3D Challenges",
+            "Complexity",
+            "Implicit Fields",
+            "MeshGen"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "2102.00690v1_chunk_0",
+            "section": "results",
+            "citations": [
+                "27",
+                "39",
+                "40"
+            ]
+        },
+        {
+            "chunk_id": "2102.00690v1_chunk_1",
+            "section": "results",
+            "citations": [
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23"
+            ]
+        },
+        {
+            "chunk_id": "2102.00690v1_chunk_2",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10"
+            ]
+        },
+        {
+            "chunk_id": "2102.00690v1_chunk_3",
+            "section": "other",
+            "citations": [
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "6",
+                "5",
+                "16",
+                "7",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25"
+            ]
+        },
+        {
+            "chunk_id": "2102.00690v1_chunk_4",
+            "section": "other",
+            "citations": [
+                "26",
+                "18",
+                "27"
+            ]
+        },
+        {
+            "chunk_id": "2102.00690v1_chunk_5",
+            "section": "other",
+            "citations": [
+                "30",
+                "28",
+                "1",
+                "31",
+                "32",
+                "18",
+                "15",
+                "14",
+                "6",
+                "29",
+                "18",
+                "7",
+                "12",
+                "19",
+                "36",
+                "37",
+                "21"
+            ]
+        },
+        {
+            "chunk_id": "2102.00690v1_chunk_6",
+            "section": "other",
+            "citations": [
+                "33",
+                "30",
+                "21",
+                "34",
+                "27",
+                "27",
+                "35",
+                "35",
+                "7",
+                "0,1",
+                "29",
+                "38"
+            ]
+        },
+        {
+            "chunk_id": "2102.00690v1_chunk_7",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "24",
+                "25",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "14",
+                "15",
+                "16",
+                "17",
+                "38",
+                "39"
+            ]
+        },
+        {
+            "chunk_id": "2102.00690v1_chunk_8",
+            "section": "other",
+            "citations": [
+                "40"
+            ]
+        }
+    ]
+}

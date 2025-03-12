@@ -261,7 +261,7 @@ class ArxivReferenceExplorer:
             print(f"arXiv search error: {str(e)}")
             return None
 
-    def bfs_traversal(self, max_depth=2, max_per_level=[5, 3]):
+    def bfs_traversal(self, max_depth=2, max_per_level=[5, 3], progress_callback=None):
         """
         Traverse the paper citation network using breadth-first search
         
@@ -427,6 +427,8 @@ class ArxivReferenceExplorer:
                         json.dump(existing_data, json_file, indent=4)
                     
                     print(f"Updated references in {json_path}")
+                    if progress_callback:
+                        progress_callback(depth, max_depth, self.paper_cache)
                     
                 except Exception as e:
                     print(f"\n⚠️ Error processing paper: {str(e)}")

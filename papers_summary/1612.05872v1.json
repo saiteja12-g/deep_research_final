@@ -1,0 +1,394 @@
+{
+    "basic_info": {
+        "title": "3D Shape Induction from 2D Views of Multiple Objects",
+        "authors": [
+            "Matheus Gadelha",
+            "Subhransu Maji",
+            "Rui Wang"
+        ],
+        "paper_id": "1612.05872v1",
+        "published_year": 2016,
+        "references": []
+    },
+    "raw_chunks": [
+        {
+            "text": "3. Method\n\nOur method builds upon the GAN architecture proposed in Goodfellow et al. [10]. The purpose of the GAN is to train a generative model in an adversarial setup. The model consists of two different parts: a generator and a discrim- inator. The generator G aims to transform samples drawn from a simple distribution P that appear to have been sam- pled from the original dataset. The goal of the discriminator D is to distinguish synthetic samples (created by the gener- ator) from real samples (drawn from a data distribution D). Both the generator and the discriminator are trained jointly to solving for the following optimization:\n\nmin G max D Ex∼D[log(D(x))] + Ez∼P[log(1 − D(G(z)))]. (1)\n\nOur main task is to train a generative model capable of creating 3D shapes without relying on 3D data itself, but in 2D images from those shapes, without any view or shape annotation. In other words, the data distribution consists of 2D images taken from different views and are of different objects. To address this issue, we factorize the 2D image generator into a 3D shape generator, viewpoint generator, and a projection module (Fig. 2). The challenge is to iden- tify a representation suitable for a diverse set of shapes and a differentiable projection module to create ﬁnal 2D images and enable end-to-end training. We describe the architec- ture employed for each of these next.\n\n3D shape generator. The input to the entire generator is z ∈ R201 with each dimension drawn independently from a uniform distribution U(−1,1). Our 3D shape generator transforms the ﬁrst 200 dimensions of z to a 32 × 32 × 32 voxel representation of the shape. Each voxel contains a value v ∈ [0,1] that represents its occupancy. The archi- tecture of the 3D shape generator is inspired by the DC- GAN [23] and 3D-GAN [33] architectures. It consists of\n\na four-layer network shown in Fig. 2. The ﬁrst layer trans- forms the 200 dimensional vector to a 256×4×4×4 vector using a fully-connected layer. Subsequent layers have batch normalization and ReLU layers between them and use 3D kernels of size 5 × 5 × 5. The last layer is succeeded by a sigmoid activation instead of a ReLU.\n\nViewpoint generator. The viewpoint generator takes the last dimension of z ∈ U(−1,1) and transforms it to a view- point vector (θ,φ). The training images are assumed to have been generated from 3D models that are upright ori- ented along a consistent vertical axis (e.g., y-axis), and are centered at the origin. Most models in online repositories and the real world satisfy this assumption (e.g., chairs are on horizontal planes). We generate images by sampling views uniformly at random from one of eight pre-selected directions evenly spaced around the y-axis (i.e., θ = 0 and φ = 0◦, 45◦, 90◦, ..., 315◦), as seen in Fig 3. Thus the viewpoint generator picks one of these directions uniformly at random.\n\nProjection module. The projection module works as fol- lows. The first step is to rotate the voxel grid to the corre- sponding viewpoint. Let V : Z* — [0,1] € R be the voxel grid, a function that given given an integer 3D coordinate c = (i,j,k) returns the occupancy of the voxel centered at c. The rotated version of the voxel grid V(c) is defined as Vo,g = V([R(c,,¢)|), where R(c, 0, d) is the coordi- nate obtained by rotating c around the origin according to the spherical angles (6,). For simplicity we use nearest neighbor sampling (hence the floor operator).\n\nThe second step is to perform the projection to create an image from the rotated voxel grid. This is done by applying the projection operator P((i,j),V) = 1 — e7 Exe VGIA), Intuitively, the operator sums up the voxel occupancy values along each line of sight (assuming othographic projection),\n\nt . LE\n\nFigure 3. Our dataset samples eight viewpoints evenly spaced around the y-axis (only four are shown and the remaining four are diametrically opposite to these). The top four images on the right are training images from the dataset. The bottom four images are created by using the projection module on the voxel representation of the object. Note that the top and bottom match qualitatively.\n\nand applies exponential falloff to create a smooth and dif- ferentiable function. When there is no voxel along the line of sight, the value is 0; as the number of voxels increases, the value approaches 1. Combined with the rotated version of the voxel grid, we define our final projection module as: Py((i,j),V) = 1—e7 © Ve.e(45-*), As seen in Fig. 3 the projection module can well approximate the rendering of a 3D shape as a binary silhouette image, and is differentiable.\n\nDiscriminator. The discriminator consists of a sequence of 2D convolutional layers with batch normalization and LeakyReLU layers [21] between them. The sequence of transformations done in the network are: 32 × 32 → 256 × 16 × 16 → 512 × 8 × 8 → 1024 × 4 × 4 → 1. Similarly to the generator, the last layer of the discriminator is followed by a sigmoid activation instead of a LeakyReLU.\n\nTraining details. We train the entire architecture by op- timizing the objective in Equation 1. Usually, the training updates to minimize each one of the losses is applied once at each iteration. However, in our model, the generator and the discriminator have a considerably different number of parameters. The generator is trying to create 3D shapes, while the discriminator is trying to classify 2D images. To mitigate this issue, we employ an adaptive training strategy. At each iteration of the training, if the discriminator accu- racy is higher than 75%, we skip its training. We also set different different learning rates for the discriminator and the generator: 10−5 and 0.0025, respectively. Similarly to the DCGAN architecture [23], we use ADAM with β = 0.5 for the optimization.",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "10",
+                "0,1",
+                "23",
+                "33",
+                "0,1",
+                "21",
+                "23"
+            ]
+        },
+        {
+            "text": "4. Experiments\n\nIn this section we describe the set of experiments to eval- uate our method and to demonstrate the extension of its ca- pabilities. First, we show the effectiveness of our method as both 2D and 3D shape generators. To this end, we compare our model with a traditional GAN for image generation and\n\n(a) Results from 2D-GAN.\n\n(a) Results from PrGAN.\n\nFigure 4. Comparision between 2D-GAN [10] and our PrGAN model for image generation on the chairs dataset. Refer to Fig. 9 third row, left column for samples of the input data.\n\na GAN for 3D shapes. We present quantitative and qual- itative results. Second, we demonstrate that our method is able to induce 3D shapes from unlabelled images even when there is only a single view per object. Third, we present 3D shapes induced by our model from a variety of categories such as airplanes, cars, chairs, motorbikes, and vases. Us- ing the same architecture, we show how our model is able to induce coherent 3D shapes when the training data contains images mixed from multiple categories. Finally, we show applications of our method in predicting 3D shape from a novel 2D shape, and performing shape interpolation.\n\nInput data. We generate training images synthetically us- ing several categories of 3D shapes available in the Model- Net [34] and ShapeNet [6] databases. Each category con- tains a few hundred to thousand shapes. We render each shape from 8 evenly spaced viewing angles with ortho- graphic projection to produce binary images. To reduce aliasing, we render each image at 64 × 64 resolution and downsample to 32 × 32. We have found that this generally improves the results. Using synthetic data allows us to eas- ily perform controlled experiments to analyze our method. It is also possible to use real images downloaded from a search engine as discussed in Section 5.\n\nValidation. We quantitatively evaluate our model by comparing its ability to generate 2D and 3D shapes. To do so, we use 2D image GAN similar to DCGAN [23] and a 3D-GAN similar to the one presented at [33]. At the time of this writing the implementation of [33] is not public yet, therefore we implemented our own version. We will refer to them as 2D-GAN and 3D-GAN, respectively. The 2D-GAN has the same discriminator architecture as the PrGAN, but the generator contains a sequence of 2D transposed con- volutions instead of 3D ones, and the projection module is removed. The 3D-GAN has a discriminator with 3D convo-\n\nHe",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": [
+                "10",
+                "34",
+                "6",
+                "23",
+                "33",
+                "33"
+            ]
+        },
+        {
+            "text": "ae (a) Results from 3D-GAN. iF FS\n\nhh\n\ny\n\n&\n\n%\n\n*:\n\n(a) Results from PrGAN.\n\nFigure 5. Comparison between 3D-GAN [33] and our PrGAN for 3D shape generation. The 3D-GAN is trained on 3D voxel representation of the chair models, and the PrGAN is trained on images of the chair models (refer to Fig. 9 third row).\n\nlutions instead of 3D ones. The 3D-GAN generator is the same of the PrGAN, but without the projection module.\n\nThe models used in this experiment are chairs from Mod- elNet dataset [34]. From those models, we create two sets of training data: voxel grids and images. The voxel grids are generated by densely sampling the surface and inside of each mesh, and binning the sample points into 32×32×32 grid. A value 1 is assigned to any voxel that contains at least one sample point, and 0 otherwise. Notice that the voxel grids are only used to train the 3D-GAN, while the images are used to train the 2D-GAN and our PrGAN.\n\nOur quantitative evaluation is done by taking the Maxi- mum Mean Discrepancy (MMD) [11] between the data cre- ated by the generative models and the training data. We use a kernel bandwidth of 10−3 for images and 10−2 for voxel grids. The training data consists of 989 voxel grids and 7912 images. To compute the MMD, we draw 128 random data points from each one of the generative models. The distance metric between the data points is the hamming distance di- vided by the dimensionality of the data. Because the data represents continuous occupancy values, we binaritize them by using a threshold of 0.001 for images or voxels created by PrGAN, and 0.1 for voxels created by the 3D-GAN.\n\nResults show that for 2D-GAN, the MMD between the generated images and the training data is 90.13. For PrGAN, the MMD is 88.31, which is slightly better quan-\n\neB -P psy = é.\n\nFigure 6. Shapes generated from PrGAN by varying the number of views per object in the training data. From the top row to the bottom row, the number of views per object in the training set are 1, 2, 4, and 8 respectively.\n\ntitatively than 2D-GAN. Fig. 4 shows a qualitative compar- ison. The results are visually very similar. For 3D-GAN, the MMD between the generated voxel grids and the train- ing voxel grids is 347.55. For PrGAN, the MMD is 442.98, which is worse compared to 3D-GAN. This is not surprising as 3D-GAN is trained on 3D data, while PrGAN is trained on the image views only. Fig. 5 presents a qualitative com- parison. In general PrGAN has trouble generating intrior structures because the training images are binary, carries no shading information, and are taken from a limited set of viewing angles. Nonetheless, it learns to generate exterior structures reasonably well.\n\nVarying the number of views per model. In the default setting, our training data consists of 8 views per object. Here we study the ability of our method in the more chal- lenging case where the training data contains fewer number of views per object. To do so, we generate a new training set that contains only 1 randomly chosen view (among the 8) per object and use it to train PrGAN. We then repeat the experiments for 2 randomly chosen views per object, and also 4. The results are shown in Fig. 6. The 3D shapes that PrGAN learns becomes increasingly better as the number of views increases. Even in the single view per object case, our method is able to induce reasonable shapes. h\n\nVisualizations across categories. Our method is able to generate 3D shapes for a wide range of categories. Fig. 9 show a gallery of results, including airplanes, car, chairs, vases, motorbikes. For each category we show 64 ran- domly sampled training images, 64 generated images from PrGAN, and renderings of 128 generated 3D shapes (pro-\n\nwe\n\nwe\n\n&\n\n&",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "33",
+                "34",
+                "11"
+            ]
+        },
+        {
+            "text": "5. Limitations and Future Work\n\nFailure cases. Comprared to 3D-GANs, the proposed PrGAN models cannot discover structures that are hidden due to occlusions from all views. For example, it fails to dis- cover that some chairs have concave interiors and the gener- ator simply ﬁlls these since it does not change the silhouette from any view as we can see at Figure 11. However, this is a natural drawback of view-based approaches since some 3D ambiquities cannot be resolved (e.g. necker cubes) without relying on other cues. Despite this, one advantage over 3D- GAN is that our model does not require consistently aligned 3D shapes since it reasons over viewpoints.\n\nHigher-resolution models. Another drawback of our ap- proach is that we currently generate low-resolution (323) shapes. This is an inherent limitation of voxel-based rep- resentations since the size of the voxel grid scales cubi- cally with the resolution. Recent results in learning gen- erative models of images using residual architectures [13]\n\nInput\n\nGenerated images\n\nGenerated shapes\n\nKee Ew eK WRK KR RH Se RAW Rewer KRY OM WK Kw RK KK we? See SH Se WCW BB KAKAKK CRW WS ew\n\nSSBASDADAASLPABLLSSLLS\n\n6/= &\n\nMS De iSRLeeGekShebe sk SREESE GES DARE MRR RSS eee wWESRELYEMERRPAR ME SEARARRE BEBE MRESMESH SAREE & iy Se bee Ps Geo byes k ew StLSeePs here bst te ieek\n\na¢+-~—s ¢ Fr @— e & - ol\n\n=-+¢@e@@he -e@e@ae*+-«\n\nSESICHTSSUeGitreguscegriveyw SSreueewStr ti ibweerer er gery BisseSeeTisge i Sr seseveresy SEEYist\\Seetrceesisxreser LYE LLbPSStSeeerseeser BeESeweset awisgr+ige-es\n\nhor at ott gro gh gh gh Bh gh ot 3 ot ph oh Ho BAB Ph ath oh gh ors ort gH shot Ho HB HB or io BAB on Bevin BHD BS ph BH BH FB BSB HB A ABBA B gh oe SF 7 9 wd gh i BH A BAB HB eS 2 gh gh gh gh 5h Dh BB BA i BSB Bo A A 2G RBH DS OO SBAABAMBABB MH\n\nSPM we meas typi reste rsawwer-e ft t YH AP HP Hwee sert eens (Bast wee Shas erowewy seri sort irt Br ee ee ewes ski stitscse Seetir-avnesetworset ettrt- Seer PF wep em estyyrssy=s\n\nFigure 9. Results for 3D shape induction using PrGANs. From top to bottom we show results for airplane, car, chair, vase, motorbike, and a ’mixed’ category obtained by combining training images from airplane, car, and motorbike. At each row, we show on the left 64 randomly sampled images from the input data to the algorithm, on the right 128 sampled 3D shapes from PrGAN, and in the middle 64 sampled images after the projection module is applied to the generated 3D shapes. The model is able to induce a rich 3D shape distribution for each category. The mixed-category produces reasonable 3D shapes across all three combined categories. Zoom in to see details.",
+            "section": "conclusion",
+            "section_idx": 0,
+            "citations": [
+                "13"
+            ]
+        },
+        {
+            "text": "6\n\n2016\n\n1\n\n0\n\n2 c e D 8 1 ] V C . s c [ 1 v 2 7 8 5 0 . 2 1 6 1 :\n\nv\n\ni\n\nX\n\nr\n\na\n\n3D Shape Induction from 2D Views of Multiple Objects\n\nMatheus Gadelha, Subhransu Maji and Rui Wang University of Massachusetts - Amherst\n\n{mgadelha, smaji, ruiwang}@cs.umass.edu\n\nAbstract\n\nIn this paper we investigate the problem of inducing a distribution over three-dimensional structures given two- dimensional views of multiple objects taken from unknown viewpoints. Our approach called “projective generative adversarial networks” (PrGANs) trains a deep generative model of 3D shapes whose projections match the distribu- tions of the input 2D views. The addition of a projection module allows us to infer the underlying 3D shape distri- bution without using any 3D, viewpoint information, or an- notation during the learning phase. We show that our ap- proach produces 3D shapes of comparable quality to GANs trained on 3D data for a number of shape categories in- cluding chairs, airplanes, and cars. Experiments also show that the disentangled representation of 2D shapes into ge- ometry and viewpoint leads to a good generative model of 2D shapes. The key advantage is that our model allows us to predict 3D, viewpoint, and generate novel views from an input image in a completely unsupervised manner.\n\nFigure 1. Given a collection of 2D views of multiple objects, our algorithm infers a generative model of the underlying 3D shapes.\n\n1. Introduction\n\nWe live in a three-dimensional (3D) world, but all we see are its projections on to two dimensions (2D). Inferring the 3D shapes of objects from their 2D views is one of the cen- tral challenges of computer vision. For example, looking at a catalogue of different chair views in Figure 1, one can mentally infer their 3D shapes by simultaneously reasoning about the shared variability in the underlying geometry and viewpoint across instances. In this paper, we investigate the problem of learning a generative model of 3D shapes given a collection of images of an unknown set of objects taken from an unknown set of views.\n\nAlthough there are several cues for inferring the 3D shape from a single image, in this work we assume that shapes are rendered as binary images bounded by silhou- ettes. Even in this simpliﬁed setting the problem remains challenging since shading cues are no longer available. Moreover, which instance was used to generate each im- age, the viewpoint from which the image was taken, or even\n\nthe number of underlying instances are not provided. This makes it difﬁcult to apply exisiting approaches of estimat- ing geometry based on structure from motion [12, 4], or computing visual hulls [18].\n\nThe key idea of our approach is to learn a 3D shape gen- erator whose projections match the distribution of the pro- vided images. We use the framework of Generative Ad- versarial Networks (GANs) [10] and augment the gener- ator with a projection module. The generator produces a 3D shape, the projection module renders the shape from a randomly-chosen viewpoint, and the adversarial network discriminates real images from generated ones. The projec- tion module is a differentiable renderer that approximates the true rendering pipeline and allows us to map 3D shapes to 2D images, as well as back-propagate the gradients of 2D images to 3D shapes. Once trained, the model can be used to infer 3D shape distributions from a collection of images (Figure 1 shows some samples drawn from the generator), and to infer depth data from a single image, without using any 3D or viewpoint information during learning. We call our approach Projective GANs (PrGANs).\n\n1\n\nThere are several challenges that need to be addressed for learning a generative model of 3D shapes from views. First is the choice of how the 3D shape is represented. Linear shape basis (or morphable models [4, 5]) are effective for categories like faces that have a ﬁxed topology, but less so for categories with varying number of parts, e.g., airplanes and chairs. Other bases such as spherical harmonics are not well suited for modeling objects with holes and ﬁne-details. Mesh-based representations are commonly used with ren- dering pipelines (e.g., OpenGL [31]) and can also be ad- justed to match image statistics using a differentiable ren- derer (e.g., OpenDR [20]), but the variability of the mesh topology makes it difﬁcult to generate them in a consistent manner across instances.\n\nWe make the following assumptions to tackle this prob- lem. First, shapes are modeled using a voxel representation that indicates the occupancy of a volume in ﬁxed-resolution 3D grid. This allows us to model topology in a consis- tent manner across instances. Second, the effects of light- ing and material properties are ignored and a 3D shape is rendered from a given viewpoint as a binary image indi- cating whether a pixel is occupied or not. This allows us to design a volumetric feed-forward network that faithfully reproduces the true rendering pipeline. The layers in the feed-forward network are differentiable, allowing the abil- ity to adjust the 3D volume based on projections.\n\nOur main contributions are as follows: (i) we propose PrGANs, a framework to learn probabilistic distributions over 3D shapes from a collection of 2D views of objects. We demonstrate its effectiveness on learning complex shape categories such as chairs, airplanes, and cars sampled from online shape repositories [6, 34]. The results are reason- able, even when views from multiple categories are com- bined; (ii) On the task of generating 3D shapes, PrGANs perform well in comparison to GANs trained directly on 3D data [33]; (iii) The learned 3D representation can be used for unsupervised estimation of 3D shape and view- point given a novel 2D shape, and for interpolation between two different shapes.",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "12, 4",
+                "18",
+                "10",
+                "4, 5",
+                "31",
+                "20",
+                "6, 34",
+                "33"
+            ]
+        },
+        {
+            "text": "2. Related work\n\nEstimating 3D shape from image collections. The difﬁ- culty of estimating 3D shape can vary widely based on how the images are generated. Visual-hull techniques [18] can be used to infer the shape of a particular object given its views from known viewpoints by taking the intersection of the projected silhouettes. When the viewpoint is ﬁxed and the lighting is known, photometric stereo [32] can provide accurate geometry estimates for rigid and diffuse surfaces. Structure from motion (SfM) [12] can be used to recover the shape of rigid objects from their views taken from un- known viewpoints by jointly reasoning about point corre- spondences and camera projections. Non-rigid SfM can be\n\nused to recover shapes from image collections by assuming a parametric family of deformations across 3D shapes. An early example of this approach is by Blanz and Vetter [4] for estimating 3D shapes of faces from image collections. However, 3D data with consistent global correspondences is required in order to learn a morphable model. Recently, non-rigid SfM has been applied to categories such as cars and airplanes by manually annotating a ﬁxed set of key- points across instances in order to bootstrap the learning process [15]. Our work augments non-rigid SfM using a learned 3D shape generator, which allows us to generalize the technique to categories with diverse structures without requiring correspondence annotations. Our work is also re- lated to recent work of Kulkarni et al. [16] for estimating a disentangled representation of images into shape, view- point, and lighting variables (dubbed “inverse graphics net- works”). However, the shape representation is not explicit, and the approach requires the ability to generate training images while varying one factor at a time.\n\nInferring 3D shape from a single image. Optimization- based approaches put priors on geometry, material, and light and estimate all of them by minimizing the recon- struction error when rendered [17, 3, 2]. Recognition- based methods have been used to estimate geometry of out- door scenes [14, 26], indoor environments [9, 27], and ob- jects [1, 25]. More recently, convolutional networks have been trained to generate views of 3D objects given their at- tributes and camera parameters [8], to generate 3D shape given a 2D view of the object [29], and to generate novel views of an object [36]. Most of these recognition-based methods are trained in a fully-supervised manner and re- quire 3D data, or views of the same object from multiple views, during training.\n\nGenerative models for images and shapes. Our work builds on the success of GANs for generating images across a wide range of domains [10]. Recently, Jiajun et al. in [33] learned a generative model of 3D shapes by using a variant of GAN equipped with 3D convolutions. However, the model was trained using aligned 3D shape data. Our work aims to solve a more difﬁcult question of learning a 3D-GAN from 2D images. Two recent works are in this di- rection. Rezende et al. in [24] show results for 3D shape completion for simple shapes when views are provided, but require the viewpoints to be known and the generative mod- els are trained on 3D data. Yan et al. in [35] learn a map- ping from an image to 3D using multiple projections of the 3D shape from known viewpoints (similar to a visual-hull technique). These approaches share some commonalities to ours as the require a way to map 3D shape to 2D images.\n\n2zER™I 128x8x8x8 64x 16x 16x16 256x4x4x4 5x5x5 kernels 3D shape representation projected image 32x32 projection module discriminator viewpoint (0,¢) {real, fake}\n\nFigure 2. The PrGAN architecture for generating 2D images of shapes. A 3D voxel representation (323) and viewpoint are independently\n\ngenerated from the input z (201-d vector). The projection module renders the voxel shape from a given viewpoint (θ,φ) to create an image. The discriminator consists of 2D convolutional and pooling layers and aims to classify if the input image is generated or real.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "18",
+                "32",
+                "12",
+                "4",
+                "15",
+                "16",
+                "17, 3, 2",
+                "14, 26",
+                "9, 27",
+                "1, 25",
+                "8",
+                "29",
+                "36",
+                "10",
+                "33",
+                "24",
+                "35"
+            ]
+        },
+        {
+            "text": "ww\n\n&\n\nhh hh\n\nhh\n\nFigure 7. Shape interpolation by linearly interpolating the encod- ings of the starting shape and ending shape.\n\nduced by randomly sampling the 200-d input vector of the generator). One remarkable property is that the generator produces 3D shapes in a consistent horizontal and vertical axes, even though the training data is only consistently ori- ented along the vertical axis. Our hypothesis for this is that the generator ﬁnds it more efﬁcient to generate shapes in a consistent manner by sharing parts across models. Fig. 10 shows selected examples from Fig. 9 that demonstrates the quality and diversity of the generated shapes.\n\nThe last row in Fig. 9 shows an example of a ’mixed’ category, where the training images combine the three cat- egories of airplane, car, and motorbike. The same PrGAN network is used to learn the shape distributions. Results show that PrGAN learns to represent all three categories well, without any additional supervision.\n\nShape interpolation. Once the generator is trained, any encoding z supposedly generates a plausible 3D shape, hence z represents a 3D shape manifold. Similar to previ- ous work, we can interpolate between 3D shapes by linearly interpolating their z codes. Fig. 7 shows the interpolation results for two airplane models and two chair models.\n\nUnsupervised shape and viewpoint prediction. Our method is also able to handle unsupervised prediction of shapes in 2D images. Once trained, the 3D shape gener- ator is capable of creating shapes from a set of encodings z ∈ R201. One application is to predict the encoding of the underlying 3D object given a single view image of the object. We do so by using the PrGAN’s generator to pro- duce a large number of encoding-image pairs, then use the data to train a neural network (called encoding network). In other words, we create a training set that consists of images synthesized by the PrGAN and the encodings that generated them. The encoding network is fully connected, with 2 hid- den layers, each with 512 neurons. The input of the network is an image and the output is an encoding. The last dimen- sion of z describes the view, and the ﬁrst 200 dimensions describe the code of the shape, which allows us to further reconstruct the 3D shape as a 323 voxel grid. With the en- coding network, we can present to it a single view image, and it outputs the shape code along with the viewing angle. Experimental results are shown in in Figure 8. This whole\n\nFigure 8. Shape infered by a single view image using the encoding network. At each row, the four images are different views of the same chair. The inferred shapes are different, but are nonetheless plausible given the single view.\n\nprocess constitutes a completely unsupervised approach to creating a model that infers a 3D shape from a single image.",
+            "section": "other",
+            "section_idx": 2,
+            "citations": []
+        },
+        {
+            "text": "www KKRRKXYW ZESBABLASLALEHB\n\ne+\n\nisd\n\ntv\n\noP So\n\nfH\n\not\n\not\n\nSD\n\nZB\n\nFigure 10. A variety of 3D shapes generated by PrGAN trained on 2D views of (from the top row to the bottom row) airplanes, cars, vases, and bikes. These examples are chosen from the gallery in Fig. 9 and demonstrate the quality and diversity of the generated shapes.\n\nand multi-scale reasoning [7], may help scale the resolution of generative models to the next few octaves.\n\nUsing multiple cues for shape reasoning. Our approach currently only relies on binary silhouettes for estimating the shape. This contributes to the lack of geometric de- tails, which can be improved by incorporating shading cues. One strategy is to train a more powerful differentiable func- tion approximator, e.g., a convolutional network, to repli- cate the sophisticated rendering pipelines developed by the computer graphics community. Once trained, the resulting neural renderer could be a plug-in replacement for the pro- jection module in the PrGAN framework. This would allow the ability to use collections of realistically-shaded images for infering probabilistic models of 3D shapes and other properties. Recent work on sceen-space shading using con- vnets are promising [22].\n\n4 Ae\n\nFigure 11. Our method is unable to capture the concave interior structures in this chair shape. The pink shapes show the original shape used to generate the projected training data, shown by the three binary images on the top (in high resolution). The blue voxel representation is the inferred shape by our model. Notice the lack of internal structure.\n\nLearning from real images. Our approach can be ex- tended to learning 3D shapes from real images by applying an exisiting approach for segmentation such as [19]. How- ever, the assumption that the viewpoints are uniformly dis- tributed over the viewing sphere may not hold. In this situ- ation, one can either learn a distribution over viewpoints by mapping a few dimensions of the input code z to a distri- bution over viewpoints (θ,φ) using a multi-layer network. More generally, one can also learn a distribution over a full set of camera parameters. An alternative is learn a condi- tional generator where the viewpoint is provided as input to the algorithm. This may be obtained using a generic view- point estimator such as [30, 28]. We will explore these di- rections in future work.\n\nConclusion. In summary, we have proposed a framework for infering 3D shape distributions from 2D shape collec- tions by agumenting a convnet-based 3D shape generator with a projection module. This compliments exisiting ap- proches for non-rigid SfM since these models can be trained without prior knowledge about the shape family, and can generalize to categories with variable structure. We showed that our models can infer 3D shapes for a wide range of cat- egories, and can be used to infer shape and viewpoint from a single image in a completely unsupervised manner. We believe that the idea of using a differentiable render to infer distributions over unobserved scene properties from images can be applied to other problems.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "7",
+                "22",
+                "19",
+                "30, 28"
+            ]
+        },
+        {
+            "text": "References\n\n[1] M. Andriluka, S. Roth, and B. Schiele. Monocular 3d pose estimation and tracking by detection. In Computer Vision and Pattern Recognition (CVPR), 2010 IEEE Conference on, pages 623–630. IEEE, 2010. 2\n\n[2] J. T. Barron and J. Malik. Shape, illumination, and re- ﬂectance from shading. TPAMI, 2015. 2\n\n[3] H. Barrow and J. Tenenbaum. Recovering intrinsic scene characteristics. Comput. Vis. Syst., A Hanson & E. Riseman (Eds.), pages 3–26, 1978. 2\n\n[4] V. Blanz and T. Vetter. A morphable model for the synthesis of 3d faces. In Proceedings of the 26th annual conference on Computer graphics and interactive techniques, pages 187– 194. ACM Press/Addison-Wesley Publishing Co., 1999. 1, 2\n\n[5] C. Bregler, A. Hertzmann, and H. Biermann. Recovering non-rigid 3d shape from image streams. In Computer Vision and Pattern Recognition, 2000. Proceedings. IEEE Confer- ence on, volume 2, pages 690–696. IEEE, 2000. 2\n\n[6] A. X. Chang, T. Funkhouser, L. Guibas, P. Hanrahan, Q. Huang, Z. Li, S. Savarese, M. Savva, S. Song, H. Su, et al. Shapenet: An information-rich 3d model repository. arXiv preprint arXiv:1512.03012, 2015. 2, 4\n\n[7] E. L. Denton, S. Chintala, R. Fergus, et al. Deep genera- tive image models using a laplacian pyramid of adversarial networks. In Advances in neural information processing sys- tems, pages 1486–1494, 2015. 8\n\n[8] A. Dosovitskiy, J. Tobias Springenberg, and T. Brox. Learn- ing to generate chairs with convolutional neural networks. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 1538–1546, 2015. 2\n\n[9] D. Eigen and R. Fergus. Predicting depth, surface normals and semantic labels with a common multi-scale convolu- tional architecture. In Proceedings of the IEEE International Conference on Computer Vision, pages 2650–2658, 2015. 2\n\n[10] I. Goodfellow, J. Pouget-Abadie, M. Mirza, B. Xu, D. Warde-Farley, S. Ozair, A. Courville, and Y. Bengio. Gen- erative adversarial nets. In Advances in Neural Information Processing Systems, pages 2672–2680, 2014. 1, 2, 3, 4\n\n[11] A. Gretton, K. M. Borgwardt, M. Rasch, B. Sch¨olkopf, and A. J. Smola. A kernel method for the two-sample-problem. In Advances in neural information processing systems, pages 513–520, 2006. 5\n\n[12] R. Hartley and A. Zisserman. Multiple view geometry in computer vision. Cambridge university press, 2003. 1, 2\n\n[13] K. He, X. Zhang, S. Ren, and J. Sun. Deep residual learn- ing for image recognition. arXiv preprint arXiv:1512.03385, 2015. 6\n\n[14] D. Hoiem, A. A. Efros, and M. Hebert. Geometric context from a single image. In Tenth IEEE International Conference on Computer Vision (ICCV’05) Volume 1, volume 1, pages 654–661. IEEE, 2005. 2\n\n[15] A. Kar, S. Tulsiani, J. Carreira, and J. Malik. Category- speciﬁc object reconstruction from a single image. In 2015 IEEE Conference on Computer Vision and Pattern Recogni- tion (CVPR), pages 1966–1974. IEEE, 2015. 2\n\n[16] T. D. Kulkarni, W. F. Whitney, P. Kohli, and J. Tenenbaum. Deep convolutional inverse graphics network. In Advances in Neural Information Processing Systems, pages 2539–2547, 2015. 2\n\n[17] E. H. Land and J. J. McCann. Lightness and retinex theory. JOSA, 61(1):1–11, 1971. 2\n\n[18] A. Laurentini. The visual hull concept for silhouette-based image understanding. IEEE Transactions on pattern analysis and machine intelligence, 16(2):150–162, 1994. 1, 2\n\n[19] J. Long, E. Shelhamer, and T. Darrell. Fully convolutional networks for semantic segmentation. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recogni- tion, pages 3431–3440, 2015. 8\n\n[20] M. M. Loper and M. J. Black. Opendr: An approximate dif- ferentiable renderer. In European Conference on Computer Vision, pages 154–169. Springer, 2014. 2\n\n[21] A. L. Maas, A. Y. Hannun, and A. Y. Ng. Rectiﬁer nonlin- earities improve neural network acoustic models. In Interna- tional Conference on Machine Learning (ICML), 2013. 4\n\n[22] O. Nalbach, E. Arabadzhiyska, D. Mehta, H.-P. Seidel, and T. Ritschel. Deep shading: Convolutional neural networks for screen-space shading. arXiv preprint arXiv:1603.06078, 2016. 8\n\n[23] A. Radford, L. Metz, and S. Chintala. Unsupervised repre- sentation learning with deep convolutional generative adver- sarial networks. arXiv preprint arXiv:1511.06434, 2015. 3, 4\n\n[24] D. J. Rezende, S. Eslami, S. Mohamed, P. Battaglia, M. Jaderberg, and N. Heess. Unsupervised learning of 3d structure from images. In Neural Information Processing Systems (NIPS), 2016. 2\n\n[25] S. Savarese and L. Fei-Fei. 3d generic object categorization, localization and pose estimation. In 2007 IEEE 11th Inter- national Conference on Computer Vision, pages 1–8. IEEE, 2007. 2\n\n[26] A. Saxena, S. H. Chung, and A. Ng. Learning depth from single monocular images. In Neural Information Processing Systems (NIPS), volume 18, page 1161. MIT, 2005. 2\n\n[27] A. G. Schwing and R. Urtasun. Efﬁcient exact inference for 3d indoor scene understanding. In European Conference on Computer Vision, pages 299–313. Springer, 2012. 2\n\n[28] H. Su, C. R. Qi, Y. Li, and L. J. Guibas. Render for cnn: Viewpoint estimation in images using cnns trained with ren- dered 3d model views. In Proceedings of the IEEE Inter- national Conference on Computer Vision, pages 2686–2694, 2015. 8\n\n[29] M. Tatarchenko, A. Dosovitskiy, and T. Brox. Multi-view 3d models from single images with a convolutional network. In European Conference on Computer Vision, pages 322–337. Springer International Publishing, 2016. 2\n\n[30] S. Tulsiani, J. Carreira, and J. Malik. Pose induction for novel object categories. In Proceedings of the IEEE Interna- tional Conference on Computer Vision, pages 64–72, 2015. 8\n\n[31] M. Woo, J. Neider, T. Davis, and D. Shreiner. OpenGL pro- gramming guide: the ofﬁcial guide to learning OpenGL, ver- sion 1.2. Addison-Wesley Longman Publishing Co., Inc., 1999. 2\n\n[32] R. J. Woodham. Photometric method for determining sur- face orientation from multiple images. Optical engineering, 19(1):191139–191139, 1980. 2",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32"
+            ]
+        },
+        {
+            "text": "[33] J. Wu, C. Zhang, T. Xue, W. T. Freeman, and J. B. Tenen- baum. Learning a probabilistic latent space of object shapes via 3d generative-adversarial modeling. In Neural Informa- tion Processing Systems (NIPS), 2016. 2, 3, 4, 5\n\n[34] Z. Wu, S. Song, A. Khosla, F. Yu, L. Zhang, X. Tang, and J. Xiao. 3d shapenets: A deep representation for volumetric shapes. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 1912–1920, 2015. 2, 4, 5\n\n[35] E. Y. Y. G. H. L. Xinchen Yan, Jimei Yang. Learning vol- umetric 3d object reconstruction from single-view with pro- jective transformations. In Neural Information Processing Systems (NIPS), 2016. 2\n\n[36] T. Zhou, S. Tulsiani, W. Sun, J. Malik, and A. A. Efros. View synthesis by appearance ﬂow. arXiv preprint arXiv:1605.03557, 2016. 2",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "33",
+                "34",
+                "35",
+                "36"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\50809b48-04b8-49e3-b3e5-4ffb9ec4f64a.jpg",
+            "description": "This figure illustrates a neural network architecture for generating and evaluating 3D shape representations. The architecture begins with a latent vector \\( z \\in \\mathbb{R}^{201} \\), which is processed through several 3D convolutional layers. Each layer reduces the spatial dimensions while increasing the feature depth: from 256x4x4x4 to 128x8x8x8, and then to 64x16x16x16, using 5x5x5 kernels. This process results in a final 3D shape representation of size 32x32x32, as depicted by a voxelized chair model.\n\nThe 3D shape is then passed through a projection module that converts it into a 2D projected image of size 32x32. This image is evaluated by a discriminator, which classifies it as either \"real\" or \"fake.\" The discriminator is likely part of a Generative Adversarial Network (GAN) setup, where the projection module and discriminator work together to refine the 3D shape generation process. The viewpoint parameters \\((\\theta, \\phi)\\) suggest that the model can generate different projections based on the viewing angle, adding flexibility to the shape representation.\n\nThis figure is crucial for understanding the methodology and core components of the model used in the research, particularly the transition from latent space to 3D shape and then to 2D image, along with the adversarial evaluation process.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\4959c6d6-06f6-4a97-bf16-47735253860e.jpg",
+            "description": "This figure showcases a grid of images that appear to illustrate a 3D reconstruction process. Each pair consists of a silhouette of a chair (in black and white) followed by a corresponding blue voxel-based 3D model. This suggests the conversion or reconstruction of 2D images into 3D structures, likely using a neural network or machine learning algorithm. The voxel representations indicate a focus on volumetric modeling and spatial accuracy. The figure is important as it visually demonstrates the effectiveness of the method or algorithm being proposed in the research, highlighting its capability to interpret and recreate complex shapes from simplified input data.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\7b7ea666-a926-4d93-8d0f-77e68546c0c9.jpg",
+            "description": "This figure illustrates a process related to 3D model generation or reconstruction. The top part shows a collection of 2D images of chairs, suggesting a dataset or input images used in the research. These images likely represent different styles or perspectives of chairs. An arrow points from these images to a set of 3D voxel-based representations of chairs at the bottom, indicating a transformation or reconstruction process. The figure likely demonstrates the capability of an algorithm or model to convert 2D images into 3D shapes, showcasing the results of this transformation. This visualization is important for understanding the methodology and results of the research, highlighting the ability to generate 3D models from 2D inputs.",
+            "importance": 8
+        },
+        {
+            "path": "output\\images\\3c597f6f-06c3-41d4-961b-b185467679c6.jpg",
+            "description": "The figure appears to be a series of 3D models or reconstructions arranged in a grid format. Each model seems to represent a different variation or instance of an object, possibly illustrating the output of a generative model or an analysis of shape variations. The consistent style and coloring suggest a focus on the geometric or structural aspects of the objects, potentially related to a study in computer graphics, machine learning, or computational geometry. This figure likely serves to visually demonstrate the capability or results of a method applied to 3D data, making it an important part of understanding the methodology or results presented in the research.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\1adce08f-74da-4d67-96e6-9a58ff9c9469.jpg",
+            "description": "The figure appears to illustrate a process related to 3D modeling or reconstruction. It shows three silhouette images of a chair from different angles, which may represent the input data used in a computer vision or graphics algorithm. Below these, there are three rendered images of a chair, possibly indicating different stages of model refinement or reconstruction. The final component on the right is a voxelized representation of the chair, suggesting the use of volumetric data for 3D reconstruction. This figure likely demonstrates how 2D silhouettes can be used to create a detailed 3D model, which is an important aspect of the research methodology.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\110f40e7-4067-42a5-88bc-dca2bf97ed71.jpg",
+            "description": "The figure appears to illustrate a method for capturing or analyzing a 3D object, specifically a chair, using multiple camera perspectives. On the left, a 3D model of a chair is shown with cameras positioned around it, suggesting a setup for capturing different views. On the right, there are silhouette images of the chair from various angles, likely representing the output from the cameras or a computational process. This could be part of a methodology for reconstructing 3D shapes from 2D silhouettes, a common technique in computer vision and graphics. The figure is important as it visually conveys the approach or process used in the research, showing both the setup and the resulting data representations.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\5431535c-60fd-4212-9c2c-76f23c7213fb.jpg",
+            "description": "I'm unable to analyze or provide a description for this image as it appears to be a visual of multiple similar objects arranged in a grid. For an accurate assessment, I would need more context or accompanying information regarding its relevance to the research paper.\n\nIf you can provide additional context or details about the figure, I can help you better assess its importance and provide a more detailed description.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\badbf65a-71f8-40fc-b4ad-86f3d5306647.jpg",
+            "description": "- **Architecture Diagrams and Components**: If the figure includes architectural diagrams, describe the main components and their interactions.\n- **Graphs, Charts, and Data Visualizations**: Discuss the type of data presented, trends, and any notable patterns.\n- **Mathematical Formulas or Concepts**: Identify any mathematical expressions or theoretical concepts illustrated.\n- **Algorithm Flowcharts or Processes**: Outline the process flow, decision points, and outcomes.\n- **Results or Findings**: Summarize any key results or conclusions that the figure highlights.\n\nBased on the visual content you described (e.g., different 3D shapes or models), the figure might represent a dataset or model outputs in a study related to 3D modeling, computer vision, or machine learning. The importance would depend on how it integrates into the overall research context.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\72fb00dd-8799-4d2c-8e80-c992385e59bf.jpg",
+            "description": "The image shows a repeated green object arranged in multiple rows on a purple background. Without context, it is unclear whether this represents data, a model, or another concept related to the research.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\6f3815d2-989b-48c2-a2fb-cfaf937e8181.jpg",
+            "description": "Here's a framework to describe a figure like this:\n\n1. **Architecture Diagrams and Components**: \n   - Examine if the figure shows any structural or design elements. It could represent different stages or views of a model or system.\n\n2. **Graphs, Charts, and Data Visualizations**: \n   - Identify if the figure includes any statistical data, trends, or comparisons.\n\n3. **Mathematical Formulas or Concepts Illustrated**: \n   - Check if there are any mathematical representations or theoretical concepts visualized.\n\n4. **Algorithm Flowcharts or Processes**: \n   - Determine if the figure outlines a process or workflow, showing steps or stages of an algorithm.\n\n5. **Results or Findings Being Presented**: \n   - Analyze if the figure shows outcomes, such as experimental results, simulations, or validations.\n\nFor this specific figure:\n\n- **3D Models**: The figure appears to show 3D visualizations, likely of reconstructed models or shapes. It might be illustrating different stages of reconstruction or variations in model outputs.\n- **Progression**: The rows might indicate different methods, iterations, or conditions applied to the models.\n\nConsider the context of the paper to refine this description, focusing on what these visualizations convey about the research's findings or methodologies.",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Statistical modeling",
+            "Super-Resolution",
+            "Bayesian Inference"
+        ],
+        "methodology": [
+            "3D Modeling",
+            "Neural Network Training",
+            "Image Processing",
+            "Feature detection",
+            "NeRF-DRBF"
+        ],
+        "domain": [
+            "Autonomous Robotics"
+        ],
+        "strengths": [
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Data Enhancement",
+            "Camera pose estimation",
+            "Geometric Calculus"
+        ],
+        "limitations": [
+            "Training challenges",
+            "3D Challenges",
+            "Implicit Fields",
+            "Inconsistency in evaluation metrics",
+            "Need for increased resolution"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1612.05872v1_chunk_0",
+            "section": "methodology",
+            "citations": [
+                "10",
+                "0,1",
+                "23",
+                "33",
+                "0,1",
+                "21",
+                "23"
+            ]
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "10",
+                "34",
+                "6",
+                "23",
+                "33",
+                "33"
+            ]
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_2",
+            "section": "results",
+            "citations": [
+                "33",
+                "34",
+                "11"
+            ]
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_3",
+            "section": "conclusion",
+            "citations": [
+                "13"
+            ]
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_4",
+            "section": "other",
+            "citations": [
+                "12, 4",
+                "18",
+                "10",
+                "4, 5",
+                "31",
+                "20",
+                "6, 34",
+                "33"
+            ]
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_5",
+            "section": "other",
+            "citations": [
+                "18",
+                "32",
+                "12",
+                "4",
+                "15",
+                "16",
+                "17, 3, 2",
+                "14, 26",
+                "9, 27",
+                "1, 25",
+                "8",
+                "29",
+                "36",
+                "10",
+                "33",
+                "24",
+                "35"
+            ]
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_6",
+            "section": "other",
+            "citations": []
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_7",
+            "section": "other",
+            "citations": [
+                "7",
+                "22",
+                "19",
+                "30, 28"
+            ]
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_8",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32"
+            ]
+        },
+        {
+            "chunk_id": "1612.05872v1_chunk_9",
+            "section": "other",
+            "citations": [
+                "33",
+                "34",
+                "35",
+                "36"
+            ]
+        }
+    ]
+}

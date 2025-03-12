@@ -13,7 +13,8 @@
         "published_year": 2020,
         "references": [
             "1606.00373v2",
-            "1704.02956v1"
+            "1704.02956v1",
+            "1812.04072v2"
         ]
     },
     "detailed_references": {
@@ -571,127 +572,87 @@
     ],
     "figures": [
         {
-            "path": "output\\images\\9d0f9d14-eccc-4438-8980-280a92dcf8a1.jpg",
-            "description": "This figure presents a comprehensive overview of a multi-step process for 3D reconstruction or scene understanding. It includes several rows, each showcasing different examples, and columns representing various stages or components of the process:\n\n1. **Image**: The first column shows the original input images used for the analysis.\n   \n2. **Annotation**: The second column illustrates annotations on the images, likely indicating segmentation or keypoint identification.\n\n3. **Depth GT (Ground Truth)**: The third column presents depth maps, providing depth information for each pixel in the image.\n\n4. **Normal GT**: The fourth column displays normal maps, which indicate surface normals and are used for understanding surface orientations.\n\n5. **Planar Inst GT**: This column shows planar instance ground truth, likely indicating planar segments within the scene.\n\n6. **w/ Texture**: The penultimate column displays reconstructed or processed images with texture mapping.\n\n7. **w/o Texture**: The final column shows the same reconstructions without texture, focusing on the geometry alone.\n\nThis figure is important as it visually communicates the methodology and results of a 3D reconstruction or scene understanding process, demonstrating how different data representations are used and transformed through the pipeline. It is crucial for understanding the steps involved and the quality of the reconstruction achieved by the method.",
+            "path": "output\\images\\0b1dd9f7-5855-4dab-82fd-b52025bfb6e2.jpg",
+            "description": "This figure presents a comprehensive visualization of a multi-step process for analyzing images in a research context, likely involving computer vision or 3D modeling. The figure is organized into multiple rows and columns, each labeled with a specific aspect of the analysis:\n\n- **Image**: The original images used as input for the analysis.\n- **Annotation**: Images with overlaid annotations, indicating regions of interest or segmentation.\n- **Depth GT (Ground Truth)**: Visualizations representing the depth information extracted from each image.\n- **Normal GT**: Displays the surface normals, typically visualized with color gradients to show orientation.\n- **Planar Inst GT**: Segmented instances of planar surfaces within the images.\n- **w/ Texture**: Renderings of the images with texture mapping applied, showing detailed surface features.\n- **w/o Texture**: Renderings without texture, highlighting the shape and structure of objects.\n\nThe figure effectively illustrates the workflow and outputs of a process that likely involves 3D reconstruction or scene understanding, demonstrating different stages of image analysis and the resulting transformations. This figure is important for understanding the methodology, as it visually conveys the progression from raw data to complex interpretations and final outputs.",
             "importance": 9
         },
         {
-            "path": "output\\images\\af5e84d9-c88c-4033-a6ca-43c51463275e.jpg",
-            "description": "This figure presents a comprehensive analysis of image processing outputs across multiple dimensions. Each row corresponds to a different image and showcases various stages of processing and analysis:\n\n1. **Image**: The original input images.\n2. **Depth**: Grayscale images representing estimated depth information, illustrating how far objects are from the camera.\n3. **Normal**: Color-coded visualizations showing surface normals, providing insight into the orientation of surfaces in the images.\n4. **Occlusion**: Edge-detection-like outputs highlighting occluded areas, possibly indicating boundaries or contours.\n5. **Fold**: Further edge analysis, likely showing more refined or specific edge features within the images.\n6. **Planar Inst**: Segmented images with distinct color regions, indicating planar instances or segmented parts of the scene.\n\nThis figure is important as it visualizes the methodology or key results of a computational imaging process, likely central to the research's objectives in understanding or interpreting visual data.",
+            "path": "output\\images\\fd3031ec-2459-4945-a086-5711fdb604e9.jpg",
+            "description": "This figure presents a series of visualizations for different image processing tasks, likely from a computer vision research paper. Each row represents a single input image and its corresponding outputs across various tasks. \n\n1. **Columns**:\n   - **Image**: The original input image.\n   - **Depth**: A grayscale visualization indicating the perceived depth information of the scene.\n   - **Normal**: A color-coded representation showing surface normals, which indicate the orientation of surfaces in the 3D space.\n   - **Occlusion**: Black-and-white images highlighting edges or boundaries where occlusion occurs.\n   - **Fold**: Another form of edge detection, possibly focusing on geometrical folds or boundaries in the scene.\n   - **Planar Inst**: Segmentation masks where different colors are used to identify planar segments or instances within the scene.\n\n2. **Purpose**:\n   - This figure illustrates the capability of a model or algorithm to perform multiple tasks on a single input image, showcasing its versatility and effectiveness in understanding and processing visual information.\n   - The visualization highlights how different aspects of the same scene can be interpreted and represented, which is crucial for understanding the method's comprehensive performance.\n\nThe figure is important as it provides a clear visual summary of the model's outputs across multiple tasks, demonstrating its ability to handle complex image analysis problems.",
             "importance": 9
         },
         {
-            "path": "output\\images\\fe646a41-800c-49e5-95df-c25edcd622c2.jpg",
-            "description": "This figure presents a sequence of visualizations related to the alignment of 3D shapes using sensor data. \n\n1. **RGB Image**: The first panel shows a standard RGB image of a kitchen scene, with a highlighted area indicating the object of interest. \n\n2. **Before Alignment (Top View)**: The second panel illustrates a top view of point clouds representing different data sets. The green points indicate the sensor ground truth, the blue points show the human-annotated shape, and the red points depict the shape after applying a rotation to the normal.\n\n3. **Aligned Views**: The final two panels demonstrate the results of the alignment process from two perspectives. The alignment aims to match the human-annotated shape with the sensor ground truth, as shown by the overlapping colors (green, red, and blue). \n\nThe figure is important as it visually explains the methodology used to align sensor data with human annotations, which is likely a key component of the research.",
+            "path": "output\\images\\e495c4f5-de37-4307-82a4-ff0c954f39c8.jpg",
+            "description": "This figure illustrates the process of aligning 3D shapes using sensor data and human annotations. It consists of several components:\n\n- **RGB Image**: Displays a real-world scene with a cabinet, indicating the area of interest with a blue outline. This serves as the starting point for the 3D alignment process.\n  \n- **Before Alignment (Top View)**: Shows a top-down view of the 3D data before alignment. It includes:\n  - **Green**: Sensor ground truth data representing the actual 3D shape captured by sensors.\n  - **Red**: Human-annotated shape, which might be manually marked or approximated.\n  - **Blue**: Shape after rotating the normal, indicating an intermediate step in the alignment process.\n\n- **Aligned View 1 and Aligned View 2**: Present two perspectives of the 3D data after the alignment process. The alignment aims to match the sensor data and the human annotations, showing a more cohesive and accurate representation of the cabinet's 3D structure.\n\nThe figure is crucial for understanding the methodology used in aligning 3D shapes from different sources, illustrating both the problem and the solution. It highlights the effectiveness of the alignment process by showing the progression from unaligned to aligned states.",
             "importance": 8
         },
         {
-            "path": "output\\images\\ad4027cc-7ed1-40c2-8b9a-b80738212144.jpg",
-            "description": "The figure consists of four subfigures (a, b, c, and d), each representing different aspects of the research analysis:\n\n(a) **Histogram**: This chart displays the distribution of the ratio of focal length to image width across a set of images. The x-axis represents the ratio, while the y-axis shows the percentage of images. The histogram indicates that most images have a focal length to image width ratio close to 1, with a rapid decline as the ratio increases.\n\n(b) **Surface Normal Visualization**: This 3D plot illustrates the relative density of surface normals on a sphere. The color gradient, ranging from blue to red, indicates the relative density of surface normals, with red areas representing higher density. This visualization helps in understanding the orientation distribution of surface normals in the analyzed data.\n\n(c) **Bar Charts for Boundary and Curvature**: The top chart shows the percentage of regions categorized by boundary type: All-Occlusion, All-Fold, and Mixed. The bottom chart displays the percentage of regions by curvature type: All-Planar, All-Curve, and Mixed. These charts reveal that Mixed types are predominant in both boundary and curvature categories, indicating a complexity in the surface characteristics.\n\n(d) **Histogram of Instances in a Region**: This chart depicts the distribution of the number of instances in a region, categorized by surface type: Continuous surface, Smooth surface, and Plane. The x-axis shows the number of instances, while the y-axis represents the percentage of regions. The data suggest that regions with fewer instances are more common, particularly for the Continuous surface type.\n\nOverall, this figure provides important insights into the distribution and characteristics of image and surface data, supporting the methodology or findings presented in the research.",
+            "path": "output\\images\\ce03b4f7-f618-4d80-915a-8c940c0003e6.jpg",
+            "description": "The figure consists of four sub-figures labeled (a) to (d), each presenting different aspects of the research data or methodology:\n\n(a) **Histogram**: This graph shows the distribution of the ratio of focal length to image width across a set of images. The x-axis represents the ratio, while the y-axis shows the percentage of images. The peak around a ratio of 1 suggests that this is a common configuration in the dataset.\n\n(b) **3D Surface Plot**: This plot illustrates the distribution of surface normals using a color-coded sphere. The axes (X, Y, Z) define the orientation, and the color bar indicates relative density. It highlights the prevalent orientations of surfaces within the dataset.\n\n(c) **Bar Charts**: These two charts display the percentage of regions based on \"Boundary\" and \"Curvature\" characteristics. The top chart divides regions into \"All-Occlusion,\" \"All-Fold,\" and \"Mixed\" categories, with percentages indicating their prevalence. The bottom chart similarly categorizes regions into \"All-Planar,\" \"All-Curve,\" and \"Mixed.\"\n\n(d) **Histogram**: This graph depicts the distribution of the number of instances in a region, categorized by surface type: \"Continuous surface,\" \"Smooth surface,\" and \"Plane.\" The x-axis shows the number of instances, and the y-axis shows the percentage of regions.\n\nOverall, this figure provides a comprehensive overview of the dataset characteristics and is important for understanding the methodology and the context of the research findings.",
             "importance": 8
         },
         {
-            "path": "output\\images\\f68be00c-5123-44c3-b4d7-8114c47e65ed.jpg",
-            "description": "This figure consists of two parts, labeled (a) and (b), illustrating processes related to image segmentation and depth correction.\n\n(a) The left part shows a user interface for segmenting a scene. It includes components for manipulating image regions, such as:\n   - A real-world image with regions outlined in various colors.\n   - Legends indicating different types of occlusions (sharp and smooth), folds, and normal vectors.\n   - Arrows and highlights depict specific regions of interest, showing how depth and surface features are identified and processed.\n\n(b) The right part illustrates \"The Depth Scaling Procedure\" through a conceptual diagram:\n   - Two 3D diagrams show a scenario before and after applying the depth scaling procedure.\n   - The left diagram represents an incorrect depth order, while the right shows a corrected depth order after scaling.\n   - The process of surface-wise depth scaling is indicated by an arrow between the two diagrams, emphasizing the transformation and correction of depth perception.\n\nThis figure is important as it visualizes the methodology and transformation involved in depth processing, which is crucial for understanding the technical approach and results of the research.",
+            "path": "output\\images\\f39d2a34-e4e8-42e8-9343-22692ee2f8bd.jpg",
+            "description": "The figure consists of two parts, labeled (a) and (b), illustrating a method for correcting depth perception in images.\n\n(a) The left side shows an image of a plate with various food items, annotated with a graphical overlay. The overlay includes:\n   - Arrows indicating normal vectors, which are essential for understanding surface orientations.\n   - Colored lines representing different types of occlusions: red for sharp occlusion and green for smooth occlusion, as well as folds.\n   - A cyan outline indicating the region of interest. \n   - These annotations are likely part of an interface for segmenting or analyzing the image structure to correct depth perception.\n\n(b) The right side presents a conceptual diagram titled \"The Depth Scaling Procedure.\" \n   - It visually explains the transformation process from an incorrect to a correct depth order.\n   - Two 3D representations are shown: the left one depicts the initial incorrect depth order with overlapping shapes, while the right one shows the corrected depth order after applying surface-wise depth scaling.\n   - The camera icons suggest this process is relevant to photographic or image capture contexts, aiming to adjust and improve the perceived depth relationships.\n\nThis figure is important as it visualizes the methodology used for depth correction, illustrating both the practical application and theoretical underpinning of the procedure.",
             "importance": 8
         },
         {
-            "path": "output\\images\\ffb11e56-6d2a-45f0-8045-45ef2a4a319a.jpg",
-            "description": "This figure appears to present a series of image processing results. It likely involves:\n\n- **Architecture Diagrams and Components**: Not applicable here as no architecture diagram is visible.\n  \n- **Graphs, Charts, and Data Visualizations**: The figure includes different visualizations of image attributes, such as Depth, Normal, Occlusion, Fold, and Planar Instance. Each represents a specific computational output relating to a scene's geometry or object segmentation.\n  \n- **Mathematical Formulas or Concepts Illustrated**: The figure does not seem to include explicit mathematical formulas but indirectly illustrates concepts like depth estimation, surface normal estimation, and occlusion detection through visual outputs.\n  \n- **Algorithm Flowcharts or Processes**: No flowcharts are present, but the sequence of images suggests a processing pipeline or series of transformations applied to the input images.\n  \n- **Results or Findings Being Presented**: The results demonstrate the capability of a model or algorithm to extract and visualize various scene attributes from input images, which could be critical for applications in computer vision or autonomous systems.\n\nThis figure is likely important for understanding the methodology and effectiveness of the proposed system in the research paper.",
+            "path": "output\\images\\c1bfa4c8-1fd1-4ddb-9d2e-2fa7bf1ccc5a.jpg",
+            "description": "This figure demonstrates a comparison between an RGB image and its corresponding surface normals, which are essential for understanding the 3D geometry of the scene. The figure consists of three panels:\n\n1. **RGB Image**: The left panel shows the original RGB image, likely used as input for a model tasked with predicting surface normals.\n   \n2. **Predicted Normals**: The middle panel displays the surface normals predicted by the model. The normals are visualized using color coding, where different colors represent different orientations in 3D space. This visualization is typically used to assess how accurately the model can infer geometric structures from the RGB image.\n\n3. **Ground-truth Normals by Humans**: The right panel shows the ground-truth surface normals, as determined by human annotators or a reliable reference. This serves as a benchmark to evaluate the accuracy of the predicted normals.\n\nThis figure is important because it visually communicates the effectiveness of the model in capturing and predicting the 3D structure of the scene from 2D images, which is a key component in computer vision tasks.",
             "importance": 7
         },
         {
-            "path": "output\\images\\66edc191-3723-4bc5-8729-5ded41f02c18.jpg",
-            "description": "This figure illustrates the comparison between predicted surface normals and ground-truth normals annotated by humans for an RGB image. The figure is divided into three sections:\n\n1. **RGB Image**: Displays the original input image, showing a scene with two individuals and an audience, possibly in a public event setting. This serves as the input for normal prediction.\n\n2. **Predicted Normals**: Shows the result of an algorithm or model's prediction of surface normals from the RGB image. The normals are visualized in a color-coded format, likely using a color map to represent different orientations.\n\n3. **Ground-truth Normals by Humans**: Displays the human-annotated ground-truth normals, also in a color-coded format. This provides a reference to evaluate the accuracy of the predicted normals.\n\nThis figure is important as it visually demonstrates the effectiveness of a surface normal prediction algorithm by directly comparing its output to human-labeled data, which is essential for understanding the model's performance.",
-            "importance": 7
-        },
-        {
-            "path": "output\\images\\940ca34c-86b5-4130-9104-66aa56b817c1.jpg",
-            "description": "I'm unable to analyze the content of this image as it appears to be a photo. However, I can provide general guidelines on how to analyze a technical figure if it includes elements like architecture diagrams, graphs, flowcharts, etc.\n\nIf this image were to be part of a research paper, one might consider the following:\n\n1. **Architecture Diagrams and Components**: Look for labeled parts, connections, and the overall structure.\n2. **Graphs, Charts, and Data Visualizations**: Identify axes, legends, and data trends.\n3. **Mathematical Formulas or Concepts Illustrated**: Note any equations or mathematical representations.\n4. **Algorithm Flowcharts or Processes**: Examine step-by-step processes and decision nodes.\n5. **Results or Findings**: Identify key results or conclusions drawn from the figure.\n\nTo rate the importance, consider how central the figure is to the paper’s thesis, methodology, or findings.\n\nIf you have a description or more context, feel free to share it!",
+            "path": "output\\images\\ec24c4df-5d93-45a7-9b51-4468efd5b7f1.jpg",
+            "description": "I'm unable to analyze or provide a description of the specific content of this image.",
             "importance": 5
         },
         {
-            "path": "output\\images\\6f66a8ce-5788-4eff-b7d4-925a7e46ec09.jpg",
-            "description": "The figure appears to be an image with annotations, possibly from a computer vision or object detection research paper. Here’s a general breakdown:\n\n- **Architecture Diagrams and Components:** The figure might involve an annotated image showing detected objects or keypoints, suggesting a focus on object recognition or detection algorithms.\n  \n- **Graphs, Charts, and Data Visualizations:** There may not be traditional graphs or charts, but the annotations could represent data points or detection results relevant to the research.\n\n- **Mathematical Formulas or Concepts Illustrated:** The annotations might illustrate concepts such as bounding boxes, keypoint detection, or feature extraction.\n\n- **Algorithm Flowcharts or Processes:** If the figure is part of a process, it could depict a stage in an algorithm, such as preprocessing, feature detection, or result visualization.\n\n- **Results or Findings Being Presented:** The figure might present the outcome of an algorithm, such as successful object detection or pose estimation.\n\nTo accurately assess the figure's importance and provide a detailed description, insights from the corresponding sections of the research paper discussing methodologies, results, or discussions would be necessary.",
+            "path": "output\\images\\48413555-dbcb-4acf-abc2-a05e2dfc5cd1.jpg",
+            "description": "I'm unable to determine the importance or provide a detailed description of the image content. However, I can help analyze figures that include visible text, graphs, or diagrams if you describe them or provide further context. Let me know if there's more information you can share!",
             "importance": 5
         },
         {
-            "path": "output\\images\\72248850-5c77-4b15-904c-8078728ed548.jpg",
-            "description": "I'm unable to analyze or describe the content of the image you provided. However, if you describe the figure or provide details from the research paper, I can help you interpret or analyze the information.",
+            "path": "output\\images\\68c3373c-bca9-40e4-bbcf-583c2edf03cd.jpg",
+            "description": "I'm unable to view or analyze images directly. However, you can describe the figure, and I can help analyze it based on your description!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\6e08535f-5e26-4902-928f-42b61514a8d8.jpg",
+            "description": "I'm unable to analyze the content or importance of this figure directly. However, I can help with general guidance on how to assess figures in research papers. Look for the following elements:\n\n1. **Architecture Diagrams and Components**: Check if the figure includes any layout or structure showing components of a system or model.\n2. **Graphs, Charts, and Data Visualizations**: Identify any graphical representations of data, such as bar charts, line graphs, or scatter plots.\n3. **Mathematical Formulas or Concepts**: Look for any equations or mathematical expressions that are explained visually.\n4. **Algorithm Flowcharts or Processes**: Notice if there are any flowcharts or diagrams explaining the steps of an algorithm.\n5. **Results or Findings**: Determine if the figure presents experimental results or key findings.\n\nEvaluate its importance based on how central it is to understanding the paper's main contributions or results.",
             "importance": 5
         }
     ],
     "metadata": {
         "key_themes": [
-            "Synthetic dataset generation",
-            "deleted entries",
-            "FID evaluation",
-            "Classifier Training",
-            "Surface Normal",
-            "Data-driven view consistency",
-            "Crowdsourcing",
-            "3D evaluation metric",
-            "3D Reconstruction",
-            "contour detection"
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Assessment metrics",
+            "Uncertainty",
+            "Attention-based techniques"
         ],
         "methodology": [
-            "Surface Normal Optimization",
-            "ground truth in gaming",
-            "Matrix factorization",
-            "Generative Deep Learning",
-            "Sparse Representation",
-            "Feature Fusion",
-            "Occupancy Prediction Network",
-            "Intrinsic Image Decomposition",
-            "Hourglass architecture",
-            "3D projection",
-            "ResNet-based architectures",
-            "Thresholding",
-            "Neural rendering",
-            "Mask R-CNN",
-            "Orientation Estimation",
-            "3D annotation",
-            "Average Error",
-            "Machine learning",
-            "Structure-from-Motion",
-            "3D Shape Estimation",
-            "Camera superpixel processing"
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Feature detection",
+            "NeRF-DRBF"
         ],
         "domain": [
-            "3D Computer Vision",
-            "ImageNet",
-            "Autonomous technology"
+            "Autonomous Robotics"
         ],
         "strengths": [
-            "Real-time multi-network fine-tuning performance",
-            "Data-efficient learning",
-            "Enhanced sample quality",
-            "Deep Learning Toolbox",
-            "Gaussian Surface Normal Estimation",
-            "Robust error metric",
-            "3D annotation",
-            "Hourglass superiority on OASIS, ScanNet-OASIS fusion",
-            "Mixed-method evaluation",
-            "Mesh monitoring preview window",
-            "Update",
-            "3D Shape Reconstruction"
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Data Enhancement",
+            "Superiority",
+            "Fairness Evaluation"
         ],
         "limitations": [
-            "Wild scene appearance generalization difficulties",
-            "Subpar AI performance",
-            "Crowdsourced annotation requirements",
-            "time per image",
-            "Measurement error",
-            "Limited image supervision",
-            "Focal length variation",
-            "Restricted to controlled environments",
-            "Model optimization",
-            "Ambiguity in 3D reconstruction",
-            "Perceptual quality assessment",
-            "Limited dataset requirements",
-            "Sparse object detection",
-            "Survival difficulty",
-            "SfM algorithm failure modes"
+            "Training challenges",
+            "3D Challenges",
+            "Uncertainty Analysis",
+            "source code accessibility",
+            "Enclosed Environment Modeling"
         ]
     },
     "content_chunks": [

@@ -791,137 +791,89 @@
     ],
     "figures": [
         {
-            "path": "output\\images\\99ef6191-e838-4996-8bfc-fc46e1b39aa0.jpg",
-            "description": "This figure presents a graph illustrating the relationship between the number of proposals sampled and the average reconstruction error. It contains three lines representing different methods of proposal selection: \"Random\" (blue), \"Top-Ranked\" (green), and \"Best Available (Lower Bound)\" (red). The x-axis denotes the number of proposals sampled, ranging from 0 to 20, while the y-axis shows the average error, ranging from 5 to 8. The graph demonstrates how the average error decreases as more proposals are sampled, with the \"Best Available\" method achieving the lowest errors, followed by \"Top-Ranked\" and \"Random.\" This visualization is important for understanding the effectiveness of different proposal selection strategies in reducing reconstruction error, likely a key aspect of the research methodology or results.",
-            "importance": 8
-        },
-        {
-            "path": "output\\images\\c41f34a6-5deb-4979-9f94-a496ca8fd34d.jpg",
-            "description": "This figure displays annotated images of four categories: Birds, Boats, Aeroplanes, and Cars. Each image includes keypoint annotations marked with different colored dots, indicating specific parts or features of the objects. The consistent use of colors suggests a standardized labeling system across different categories. This visualization likely serves to illustrate a dataset used for training or evaluation in a computer vision task, such as object detection or keypoint estimation. The diversity of objects and annotated points provides insight into the level of detail and complexity the model is expected to handle, highlighting the methodology or dataset used in the research.",
+            "path": "output\\images\\59495e63-d622-4ce3-b948-13f504bc6b8c.jpg",
+            "description": "This figure presents a set of annotated images categorized into four groups: Birds, Boats, Aeroplanes, and Cars. Each image displays objects highlighted in green with keypoints marked by colored dots, likely indicating specific features or parts relevant to the object class. The annotations appear to be part of a method for object detection or classification, showing how the system identifies and labels important features on various objects within each category. This visualization is important for understanding how the research approaches the task of identifying and labeling different parts of objects across multiple categories, which may be key to the methodology or results of the study.",
             "importance": 7
         },
         {
-            "path": "output\\images\\ba716827-e951-47e2-adaf-febd36555413.jpg",
-            "description": "The figure appears to be a visualization related to computer vision or machine learning, potentially focusing on object detection or pose estimation of a motorcycle. \n\n- **Architecture Diagrams and Components**: The figure does not contain traditional architecture diagrams, but it shows an overlay of points and lines on a motorcycle, suggesting key points or features being tracked or analyzed.\n\n- **Graphs, Charts, and Data Visualizations**: The image on the left uses colored points and lines to map specific locations and connections on a motorcycle, likely indicating a method for understanding the geometry or structure of the object. The colors might differentiate various components or key points.\n\n- **Mathematical Formulas or Concepts**: The concepts illustrated seem to be related to spatial and geometric analysis, focusing on the positioning and relationships between points.\n\n- **Algorithm Flowcharts or Processes**: The right side of the figure shows a simplified side view diagram of the motorcycle, highlighting the front and back wheels, which might represent an abstracted model used in the analysis process.\n\n- **Results or Findings Being Presented**: The figure seems to demonstrate the application of a pose estimation or feature detection method. It showcases how the algorithm or model identifies and connects various points on a motorcycle, indicating its effectiveness in capturing the spatial configuration.\n\nThe importance rating reflects its potential role in demonstrating the methodology or application of a specific technique relevant to the research.",
+            "path": "output\\images\\8e8ebcb5-7951-480a-b8a0-1135f54d76af.jpg",
+            "description": "- **Architecture Diagrams and Components**: This figure doesn't seem to include architecture diagrams or specific components.\n  \n- **Graphs, Charts, and Data Visualizations**: The central part of the figure is a radar chart (or spider chart) with red segments, likely representing data distributions or comparative metrics among different categories.\n  \n- **Mathematical Formulas or Concepts Illustrated**: There are no visible mathematical formulas or explicit concepts illustrated in this figure.\n  \n- **Algorithm Flowcharts or Processes**: The figure does not contain algorithm flowcharts or processes.\n  \n- **Results or Findings Being Presented**: The combination of the radar chart and surrounding images of cars suggests a comparison or classification of vehicle data. The radar chart might visualize characteristics or features related to the images, such as performance metrics, attributes, or classification results.\n\nThis figure likely plays an important role in visualizing key results or methodologies related to vehicle analysis or classification, contributing to the understanding of the research's application or findings.",
             "importance": 7
         },
         {
-            "path": "output\\images\\cecf243e-5646-4e86-b1b2-4283b1024147.jpg",
-            "description": "This figure likely illustrates a system or methodology for detecting and analyzing a vehicle, possibly a motorcycle, in an urban environment. \n\n- **Architecture Diagrams and Components**: The figure on the left shows an image of a motorcycle with superimposed colored lines and nodes, possibly indicating key points or features detected by a computer vision system. The colored markers could represent various parts of the motorcycle, such as wheels, handlebars, or structural components, identified by an algorithm.\n  \n- **Graphs, Charts, and Data Visualizations**: The right side may represent a simplified schematic or side view of the key points identified in the left image, showing the spatial relationships and connections between these points. This might be used to understand the structure or pose of the motorcycle.\n\n- **Algorithm Flowcharts or Processes**: The connections between the points could indicate the processing or analysis steps used, such as edge detection or feature extraction techniques applied to identify and differentiate components.\n\n- **Results or Findings**: The figure likely presents the outcome of a computer vision task, such as object detection or pose estimation, demonstrating the ability of the algorithm to accurately map and interpret the structure of a motorcycle.\n\nThis figure is important as it visualizes a key step in the methodology or demonstrates the effectiveness of the system being described in the research.",
+            "path": "output\\images\\e306b884-c1d5-4104-b09c-e937cba6e744.jpg",
+            "description": "The figure consists of two parts. On the left, there is an image of a motorcycle on a street with various colored markers and lines overlaid. These markers likely represent key points or features identified through a computer vision technique, such as object detection or pose estimation. The lines connecting these points suggest a structural analysis or mapping of the object’s geometry.\n\nOn the right, a simplified side view diagram of the motorcycle is presented, showing a schematic representation of the key points and lines as a 2D projection. The diagram highlights the positions of the front and back wheels, indicating an analysis of the vehicle's structural layout.\n\nThe figure appears to illustrate a method for detecting and mapping the structure of a motorcycle in an image, which could be part of research on automated vehicle recognition or pose estimation systems. This visualization is important for understanding the methodology used for feature extraction and structural interpretation in the study.",
             "importance": 7
         },
         {
-            "path": "output\\images\\db6b7599-480f-4005-9943-396239feca21.jpg",
-            "description": "This figure presents a comparative analysis of per-class ranking performance across different categories. It includes three types of markers indicating different ranking strategies: Random (cross symbol), Top-Ranked (circle symbol), and Best Available (square symbol), which serves as a lower bound. The x-axis lists various object categories, such as \"aeroplane,\" \"bicycle,\" \"bird,\" etc., while the y-axis represents the ranking performance score. Each category shows three data points, representing the performance of each ranking method. The visualization highlights how different ranking strategies perform across various classes, providing insight into the effectiveness and limitations of each method in the context of the research.",
+            "path": "output\\images\\fdefb36a-39fd-4e7b-97f5-6b0da5c139e3.jpg",
+            "description": "The figure consists of two parts. On the left, there is an image of a scooter on a street, overlaid with a complex network of colored points and lines. These annotations likely represent keypoints and connections used for analyzing the structure or pose of the scooter, possibly for an object detection or recognition task. The colors may indicate different types of points or relationships.\n\nOn the right, there is a simplified diagram labeled \"Side view,\" illustrating a geometrical model of the scooter with labeled points for the front and back wheels. The red lines denote the connections between these points, which might represent the structural relationships or constraints used in a computational model.\n\nThis figure is important for understanding the methodology used in the research, specifically in how the object (scooter) is represented and analyzed geometrically. It likely provides insight into the keypoint detection or modeling process employed in the study.",
             "importance": 7
         },
         {
-            "path": "output\\images\\a4af29da-dd61-46b2-a9a3-caf8d98a13a4.jpg",
-            "description": "This figure presents a line graph illustrating the relationship between clustering threshold (in degrees) and reconstruction error. The x-axis represents the clustering threshold ranging from 12 to 30 degrees, while the y-axis shows the reconstruction error values ranging from 6 to 8. The graph includes four lines, each representing different categories: \"All,\" \"Animals,\" \"Vehicles,\" and \"Furniture.\" \n\n- The \"All\" category is depicted in blue and shows a relatively stable reconstruction error as the clustering threshold increases.\n- The \"Animals\" category, shown in green, exhibits a slight increase in reconstruction error with higher clustering thresholds.\n- The \"Vehicles\" category, represented by a red line, has the lowest and most stable reconstruction error across the thresholds.\n- The \"Furniture\" category, in light blue, demonstrates the highest reconstruction error and a slight upward trend.\n\nThis figure is important as it visualizes the impact of different clustering thresholds on the reconstruction error for various categories, which is likely relevant to the methodology or results of the study.",
+            "path": "output\\images\\b976fb08-ed10-46d2-af5d-b7a231a97f39.jpg",
+            "description": "This figure illustrates a system for classifying aircraft images based on different viewing angles. At the center, an airplane model is shown with three distinct colored cones emanating from it, representing the different perspectives: front/back, top/belly, and side. Each perspective is associated with a grouping of aircraft images corresponding to that view, indicating a categorization process. Boxes labeled \"Front & Back,\" \"Top & Belly,\" and \"Side\" suggest a sorting or storage mechanism for images based on these angles. This visualization likely supports a methodology for image classification or recognition in the context of aircraft, highlighting the importance of perspective in visual data analysis.",
             "importance": 7
         },
         {
-            "path": "output\\images\\16b220de-c7ae-4432-824e-bd648674d04c.jpg",
-            "description": "This figure is a scatter plot comparing the roll values of various objects before and after a refinement process. The x-axis represents different categories of objects, such as aeroplane, bicycle, boat, bus, car, etc. The y-axis measures the roll values. Red crosses (\"Roll before refinement\") and green pluses (\"Roll after refinement\") indicate the roll values before and after refinement, respectively. This visualization shows the impact of the refinement on the roll values, illustrating improvements or changes for each object category. The figure is important for understanding the effectiveness of the refinement process in the research.",
+            "path": "output\\images\\1a8851db-2999-4aaf-8892-2459d6cfc3f4.jpg",
+            "description": "This figure illustrates the \"Per-Class Ranking Performance\" for various object categories such as aeroplane, bicycle, bird, etc. The chart uses a scatter plot to compare different ranking strategies: Random, Top-Ranked, and Best Available (Lower Bound). Each class has three corresponding symbols representing these strategies. The y-axis represents a performance metric, likely a ranking score or error rate, while the x-axis lists different object categories. The legend clarifies the symbols for each ranking method. This visualization is important for understanding how different ranking approaches perform across various classes, indicating the effectiveness and reliability of the proposed method.",
             "importance": 7
         },
         {
-            "path": "output\\images\\741e6f39-71df-4b29-87c4-374473c59b9c.jpg",
-            "description": "This figure is a scatter plot comparing the elevation values of various objects before and after a refinement process. Each object type, such as \"aeroplane,\" \"bicycle,\" \"boat,\" etc., is plotted along the x-axis. The y-axis represents the elevation values. Red crosses indicate the elevation before refinement, while green plus symbols indicate the elevation after refinement. This visualization highlights the impact of the refinement process on the elevation values for different objects, showing a comparative analysis of improvement or changes. It likely plays an important role in demonstrating the efficacy of a refinement technique within the research.",
+            "path": "output\\images\\7eeb7da8-5351-4875-ae35-f50757de3a40.jpg",
+            "description": "This figure presents a line graph comparing the reconstruction error associated with different sampling strategies as a function of the number of proposals sampled. The x-axis represents the \"Number of Proposals Sampled,\" ranging from 0 to 20, while the y-axis shows the \"Average Error,\" ranging from 5 to 8. Three lines represent different sampling strategies: \n\n- **Random** (blue line): Shows a relatively high and stable error rate as the number of proposals increases. \n- **Top-Ranked** (green line): Demonstrates a decreasing trend in error as more proposals are sampled, indicating improved performance.\n- **Best Available (Lower Bound)** (red line): Indicates the lowest achievable error, decreasing sharply initially and then leveling off, representing the optimal performance.\n\nThe figure is likely important for understanding the effectiveness of different sampling strategies in minimizing reconstruction error, a key aspect of the research methodology or results.",
             "importance": 7
         },
         {
-            "path": "output\\images\\4212e413-1165-4d31-9e4d-28a7f27232bf.jpg",
-            "description": "This figure presents a comparative analysis of azimuth values before and after refinement across various object categories. The x-axis lists different object categories such as \"aeroplane,\" \"bicycle,\" \"boat,\" etc., while the y-axis likely represents error or deviation in azimuth estimation. Red crosses denote the azimuth values before refinement, and green pluses indicate the values after refinement. The visual comparison for each object category suggests how the refinement process has potentially improved the azimuth estimation, as indicated by the closeness of the green markers to a baseline or lower error level compared to the red markers. This figure is important for illustrating the effectiveness of the refinement process in the research study.",
+            "path": "output\\images\\16c35636-16ba-45a1-ac7e-f400a2b0a60a.jpg",
+            "description": "This figure presents a line graph illustrating the relationship between clustering threshold (in degrees) and reconstruction error. The x-axis represents the clustering threshold ranging from 12 to 30 degrees, while the y-axis shows the reconstruction error from 6 to 8. There are four lines in the graph, each representing different categories: \"All,\" \"Animals,\" \"Vehicles,\" and \"Furniture.\" \n\n- The \"All\" category shows a generally stable trend with a slight increase in error as the threshold increases.\n- \"Animals\" have a similar trend but with higher error values compared to \"Vehicles\" and \"Furniture.\"\n- The \"Vehicles\" line is the lowest, indicating the least reconstruction error across thresholds.\n- \"Furniture\" displays a slight increase in error with increasing thresholds, similar to \"Animals.\"\n\nThis visualization is important as it provides insight into how different categories are affected by changes in clustering thresholds, highlighting the variability in reconstruction error across these groups.",
             "importance": 7
         },
         {
-            "path": "output\\images\\77566b0e-34a9-4466-86b4-56f2517582fd.jpg",
-            "description": "I'm unable to analyze specific research figures or images directly. However, I can help you interpret or analyze general types of content if you describe them textually. Let me know how else I can assist!",
-            "importance": 5
+            "path": "output\\images\\da434c6a-e6a8-44d5-add3-6c47a7f14e11.jpg",
+            "description": "This figure presents a comparative analysis of \"Roll before refinement\" versus \"Roll after refinement\" for various object categories, including aeroplane, bicycle, boat, bus, car, chair, motorbike, sofa, train, and TV monitor. The graph uses a scatter plot with red 'x' markers representing roll measurements before refinement and green '+' markers indicating roll measurements after refinement, plotted along the vertical axis. The horizontal axis lists the different object categories. This visualization likely demonstrates the effectiveness of a refinement process in reducing roll errors across these categories, highlighting improvements made by the proposed method or system. The figure is important for understanding the impact of the refinement step in the research methodology or system performance.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\9ead9ee5-dd0f-4d08-b661-fe579cba4861.jpg",
+            "description": "This figure is a scatter plot comparing the elevation of various objects before and after a refinement process. The x-axis represents different object categories, such as \"aeroplane,\" \"bicycle,\" \"boat,\" etc. The y-axis indicates the elevation values. Red crosses mark the elevation measurements before refinement, while green plus signs show the elevation after refinement. This visualization highlights the changes in elevation for each object category, suggesting improvements or adjustments made by the refinement process. The figure is important for understanding the impact of the refinement on elevation accuracy across different categories, which is likely a significant aspect of the research methodology or results.",
+            "importance": 7
         }
     ],
     "metadata": {
         "key_themes": [
-            "Synthetic dataset generation",
-            "Cross-category generalization",
-            "Matrix factorization",
-            "Classifier Training",
-            "Geometric inference",
-            "Data-driven view consistency",
-            "Distance Metrics",
-            "3D Reconstruction",
-            "measurement uncertainty",
-            "contour detection"
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Statistical modeling",
+            "Assessment metrics",
+            "Sparse covariance matrix factorization"
         ],
         "methodology": [
-            "Truncation technique",
-            "Iterative guided morphable model fitting",
-            "Distance Metrics",
-            "Ranking performance",
-            "Hierarchical Structure Parsing",
-            "Sampling techniques",
-            "Fungi",
-            "binary classification",
-            "Clustering algorithm",
-            "Categorical Cross Entropy Loss",
-            "3D projection",
-            "overlay video",
-            "Principal Component Analysis (PCA)",
-            "Neural rendering",
-            "Mean curvature variation",
-            "Mask R-CNN",
-            "Calibration",
-            "Orientation Estimation",
-            "3D annotation",
-            "Reconstruction error",
-            "Structure-from-Motion",
-            "Attention Mechanisms",
-            "Gradient-based optimization",
-            "Machine learning",
-            "3D Shape Estimation",
-            "Average Error",
-            "Camera superpixel processing"
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Estimation",
+            "Feature detection"
         ],
         "domain": [
-            "LSUN dataset",
-            "3D Computer Vision",
-            "Intelligent Systems"
+            "Autonomous Robotics",
+            "Celebrity dataset",
+            "Interactive Entertainment"
         ],
         "strengths": [
-            "Data-efficient learning",
-            "Deep Learning Toolbox",
-            "Benchmarking",
-            "Robust error metric",
-            "Generalization across diverse object classes",
-            "3D annotation",
-            "Low precision data representation",
-            "Unified Appearance Modeling",
-            "Mask and keypoint-based input",
-            "3D Shape Reconstruction",
-            "Spatial coherence"
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Enhanced Detection Techniques",
+            "Data Enhancement",
+            "Superiority"
         ],
         "limitations": [
-            "Class heterogeneity",
-            "Ambiguity in 3D reconstruction",
-            "Limited dining table options",
-            "Color constancy challenges",
-            "restricted input",
-            "Error sensitivity",
-            "Crowdsourced annotation requirements",
-            "Sparse object detection",
-            "Synthetic data dependency",
-            "articulatory difficulty",
-            "Noise susceptibility",
-            "Complexity in 3D modeling",
-            "Sparse ground truth",
-            "Measurement error",
-            "Subcategorization.",
-            "Over-processing",
-            "Rigid assumption",
-            "Limited dataset requirements",
-            "Train class effects",
-            "isolated structures"
+            "Training challenges",
+            "3D Challenges",
+            "Perceptual Color Balance",
+            "Ground-truth ambiguity",
+            "Sensory Integration"
         ]
     },
     "content_chunks": [

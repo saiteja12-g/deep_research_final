@@ -1,0 +1,524 @@
+{
+    "basic_info": {
+        "title": "DeepVoxels: Learning Persistent 3D Feature Embeddings",
+        "authors": [
+            "Vincent Sitzmann",
+            "Justus Thies",
+            "Felix Heide",
+            "Matthias Nießner",
+            "Gordon Wetzstein",
+            "Michael Zollhöfer"
+        ],
+        "paper_id": "1812.01024v2",
+        "published_year": 2018,
+        "references": [
+            "1706.07036v1",
+            "1607.00662v2"
+        ]
+    },
+    "raw_chunks": [
+        {
+            "text": "3.2. Architecture Overview\n\nOur network architecture is summarized in Fig. 2. On a high level, it can be seen as an encoder-decoder based architecture with the persistent 3D DeepVoxels representa- tion as its latent space. During training, we feed a source view Si to the encoder and try to predict the target view Ti. We ﬁrst extract a set of 2D feature maps from the source view using a 2D feature extraction network. To learn a view-independent 3D feature representation, we explicitly lift image features to 3D based on a differentiable lifting layer. The lifted 3D feature volume is fused with our per- sistent DeepVoxels scene representation using a gated re- current network architecture. Speciﬁcally, the persistent 3D feature volume is the hidden state of a gated recurrent unit (GRU) [4]. After feature fusion, the volume is processed by a 3D fully convolutional network. The volume is then mapped to the camera coordinate systems of the two target views via a differentiable reprojection layer, resulting in the canonical view volume. A dedicated, structured occlusion network operates on the canonical view volume to reason about voxel visibility and ﬂattens the view volume to a 2D view feature map (see Fig. 3). Finally, a learned 2D render- ing network forms the two ﬁnal output images. Our network is trained end-to-end, without the need of supervision in the 3D domain, by a 2D re-rendering loss that enforces that the predictions match the target views. In the following, we\n\nprovide more details.\n\nCamera Model We follow a perspective pinhole camera model that is fully specified by its extrinsic E = [Rit] € R°*¢ and intrinsic K € R?*? camera matrices [15]. Here, R € R®*? is the global camera rotation and t € R? its translation. Assume we are given a position x € R® in\n\n3D coordinates, then the mapping from world space to the canonical camera volume is given as:\n\nu u = v d = K(Rx + t) . (1)\n\nHere, u and v specify the position of the voxel center on the screen and d is its depth from the camera. Given a pixel and its depth, we can invert this mapping to compute the corresponding 3D point x = RT(K−1u − t).\n\nFeature Extraction We extract 2D feature maps from the source view based on a fully convolutional feature extrac- tion network. The image is ﬁrst downsampled by a series of stride-2 convolutions until a resolution of 64×64 is reached. A 2D U-Net architecture [48] then extracts a 64×64 feature map that is the input to the subsequent volume lifting.\n\nLifting 2D Features to 3D Observations The lifting layer lifts 2D features into a temporary 3D volume, rep- resenting a single 3D observation, which is then integrated into the persistent DeepVoxels representation. We position the 3D feature volume in world space such that its center roughly aligns with the scene’s center of gravity, which can be obtained cheaply from the keypoint point cloud obtained from sparse bundle adjustment. The spatial extent is set such that the complete scene is inside the volume. We try to bound the scene as tightly as possible to not lose spatial resolution. Lifting is implemented by a gathering operation. For each voxel, the world space position of its center is pro- jected to the source view’s image space following Eq. 1. We extract a feature vector from the feature map using bilinear sampling and store the result in the code vector associated",
+            "section": "introduction",
+            "section_idx": 0,
+            "citations": [
+                "4",
+                "15",
+                "48"
+            ]
+        },
+        {
+            "text": "3. Method\n\nThe core of our approach is a novel 3D-structured scene representation called DeepVoxels. DeepVoxels is a viewpoint-invariant, persistent and uniform 3D voxel grid of features. The underlying 3D grid enforces spatial struc- ture on the learned per-voxel code vectors. The ﬁnal output image is formed based on a 2D network that receives the perspective re-sampled version of this 3D volume, i.e., the canonical view volume of the target view, as input. The 3D part of our approach takes care of spatial reasoning, while the 2D part enables ﬁne-scale feature synthesis. In the following, we ﬁrst introduce the training corpus and then present our end-to-end approach for ﬁnding the scene- speciﬁc DeepVoxels representation from a set of multi-view images without explicit 3D supervision.\n\n3.1. Training Corpus\n\nOur scene-speciﬁc training corpus C = {Si,T 0 i ,T 1 i }M i=1 of M samples is based on a source view Si (image and cam- era pose) and two target views T 0 i ,T 1 i , which are randomly selected from a set of N registered multi-view images; see Fig. 1 for an example. We assume that the intrinsic and ex- trinsic camera parameters are available. These can for ex- ample be obtained using sparse bundle adjustment [55]. For each pair of target views T 0 i ,T 1 i we then randomly select a single source view Si from the top-5 nearest neighbors in terms of view direction angle to target view T 0 i . This sampling heuristic makes it highly likely that points in the source view are visible in the target view T 0 i . While not essential to training, this ensures meaningful gradient ﬂow for every optimization step, while encouraging multi-view consistency to the random target view T 1 i . We sample the training corpus C dynamically during training.\n\nRecurrent Fusion 2D Feature Extraction Source View R, t Hole Filling Training 2x Target Projection Layer Testing\n\nFigure 2: Overview of all model components. At the heart of our encoder-decoder based architecture is a novel viewpoint-invariant and persistent 3D volumetric scene representation called DeepVoxels that enforces spatial structure on the learned per-voxel code vectors.",
+            "section": "methodology",
+            "section_idx": 0,
+            "citations": [
+                "55"
+            ]
+        },
+        {
+            "text": "5. Limitations\n\nAlthough we have demonstrated high-quality view syn- thesis results for a variety of challenging scenes, the pro- posed approach still has limitations that can be tackled in the future. By construction, the employed 3D volume is memory inefﬁcient, thus we have to trade local resolution for spatial extent. The proposed model can be trained with a voxel resolution of 643 with 8 feature channels, ﬁlling a GPU with 12GB of memory. Future work on sparse neural networks may replace the dense representation at the core. Please note, compelling results can already be achieved with quite small volume resolutions. Synthesiz- ing images from viewpoints that are signiﬁcantly different from the training set, i.e., generalization, is challenging for all learning-based approaches. While this is also true for DeepVoxels and detail is lost when viewing scenes from poses far away from training poses, DeepVoxels generally deteriorates gracefully and the 3D structure of the scene is preserved. Please refer to the supplemental material for fail- ure cases as well as examples of pose extrapolation.\n\n6. Conclusion\n\nWe have proposed a novel 3D-structured scene represen- tation, called DeepVoxels, that encodes the view-dependent appearance of a 3D scene using only 2D supervision. Our approach is a ﬁrst step towards 3D-structured neural scene representations and the goal of overcoming the fundamental limitations of existing 2D generative models by introducing native 3D operations into the network.\n\nAcknowledgements: We thank Robert Konrad, Nitish Padmanaban, and Ludwig Schubert for fruitful discussions, and Robert Konrad for the video voiceover. Vincent Sitzmann was supported by a Stanford Graduate Fel- lowship. Michael Zollh¨ofer and Vincent Sitzmann were supported by the Max Planck Center for Visual Computing and Communication (MPC- VCC). Gordon Wetzstein was supported by a National Science Foundation CAREER award (IIS 1553333), by a Sloan Fellowship, and by an Okawa Research Grant. Matthias Nießner and Justus Thies were supported by a Google Research Grant, the ERC Starting Grant Scan2CAD (804724), a TUM-IAS Rudolf M¨oßbauer Fellowship (Focus Group Visual Comput- ing), and a Google Faculty Award.",
+            "section": "methodology",
+            "section_idx": 1,
+            "citations": []
+        },
+        {
+            "text": "4. Analysis\n\nIn this section, we demonstrate that DeepVoxels is a rich and semantically meaningful 3D scene representation that allows high-quality re-rendering from novel views. First, we present qualitative and quantitative results on synthetic renderings of high-quality 3D scans of real-world objects, and compare the performance to strong machine-learning baselines with increasing reliance on geometrically struc- tured latent spaces. Next, we demonstrate that DeepVoxels can also be used to generate novel views on a variety of real captures, even if these scenes may violate the Lambertian assumption. Finally, we demonstrate quantitative and qual- itative beneﬁts of explicitly reasoning about voxel visibility via the occlusion module, as well as improved model inter- pretability. Please see the supplement for further studies on the sensitivity to the number of training images, the size of the voxel volume, as well as noisy camera poses.\n\nDataset and Metrics We evaluate model performance on synthetic data obtained from rendering 4 high-quality 3D scans (see Fig. 4). We center each scan at the origin and scale it to lie within the unit cube. For the training set, we render the object from 479 poses uniformly dis- tributed on the northern hemisphere. For the test set, we render 1000 views on an Archimedean spiral on the north- ern hemisphere. All images are rendered in a resolution of 1024 × 1024 and then resized using area averaging to 512×512 to minimize aliasing. We evaluate reconstruction error in terms of PSNR and SSIM [59].\n\nImplementation All models are implemented in PyTorch [40]. Unless specified otherwise, we use a cube volume with 32° voxels. We average the /; loss over all pixels in the image. The ¢; and adversarial loss are weighted 200 : 1. Models are trained until convergence using ADAM with a\n\nlearning rate of 4 · 10−4. One model is trained per scene. The proposed architecture has 170 million parameters. At test time, rendering a single frame takes 71ms.\n\nBaselines We compare to three strong baselines with in- creasing reliance on geometry-aware latent spaces. The ﬁrst baseline is a Pix2Pix architecture [20] that receives as in- put the per-pixel view direction, i.e., the normalized, world- space vector from camera origin to each pixel, and is trained to translate these images into the corresponding color im- age. This baseline is representative of recent achievements in 2D image-to-image translation. The second baseline is a deep autoencoder that receives as input one of the top-5 nearest neighbors of the target view, and the pose of both the target and the input view are concatenated in the deep latent space, as proposed by Tatarchenko et al. [54]. The inputs of this model at training time are thus identical to those of our model. The third baseline learns an interpretable, rotation- equivariant latent space via the method proposed in [60, 6] and used previously in [45], by being fed one of the top-5 nearest neighbor views and then rotating the latent embed- ding with the rotation matrix that transforms the input to the output pose. At test time, the previous two baselines re- ceive the top-1 nearest neighbor to supply the model with the most relevant information. We approximately match the number of parameters of each network, with all baselines having equally or slightly more parameters than our model. We train all baselines to convergence with the same loss function. For the exact baseline architectures and number\n\nof parameters, please see the supplement.\n\nObject-speciﬁc Novel View Synthesis We train our net- work and all baselines on synthetic renders of four high- quality 3D scans. Table 1 compares PSNR and SSIM of the proposed architecture and the baselines. The best- performing baseline is Pix2Pix [20]. This is surprising, since no geometrical constraints are enforced, as opposed to the approach by Worrall et al. [60]. The proposed archi- tecture with strongly structured latent space outperforms all baselines by a wide margin of an average 7dB. Fig. 4 shows a qualitative comparison as well as further novel views sam- pled from the proposed model. The proposed model dis- plays robust 3D reasoning that does not break down even in challenging cases. Notably, other models have a tendency to “snap” onto views seen in the training set, while the pro- posed model smoothly follows the test trajectory. Please see the supplemental video for a demonstration of this be- havior. We hypothesize that this improved generalization to unseen views is due to the explicit multi-view constraints enforced by the proposed latent space. The baseline models are not explicitly enforcing projective and epipolar geom- etry, which may allow them to parameterize latent spaces that are not properly representing the low-dimensional man-",
+            "section": "results",
+            "section_idx": 0,
+            "citations": [
+                "59",
+                "40",
+                "20",
+                "54",
+                "60, 6",
+                "45",
+                "20",
+                "60"
+            ]
+        },
+        {
+            "text": "Tr\n\nFigure 5: The occlusion module is critical to model performance. It boosts performance from 23.26dB to 28.42dB (cube), and from 30.02dB to 32.35dB (pedestal). Left: ground truth view and depth map. Center: view generated with the occlusion module and learned depth map (64 × 64 pixels). Note that the object back- ground is unconstrained in the depth map and may differ from ground truth. Right: without the occlusion module, the occluded, blue side of the cube (see Fig. 4) “shines through”, and severe arti- facts appear (see inset). In addition to decreasing parameter count and boosting performance, the occlusion module generates depth maps fully unsupervised, demonstrating 3D reasoning.\n\ncrease in the number of network parameters. At training time, this further allows the network to combine features from several depths equally to regress on pixel colors in the target view. At inference time, this results in severe ar- tifacts and occluded parts of the object “shining through” (see Fig. 5). Our occlusion network forces learning to use a softmax-weighted sum of voxels along each ray, which penalizes combining voxels from several depths. As a re- sult, novel views generated by the network with the occlu- sion module perform much more favorably at test time, as demonstrated in Fig. 5, than networks without the occlusion module. The depth map generated by the occlusion model further demonstrates that the proposed model indeed learns the 3D structure of the scene. We note that the depth map is learned in a fully unsupervised manner and arises out of the pure necessity of picking the most relevant voxel. Please see the supplement for more examples of learned depth maps.\n\nNovel View Synthesis for Real Captures We train our network on real captures obtained with a DSLR camera. Camera poses, intrinsic camera parameters and keypoint point clouds are obtained via sparse bundle adjustment. The voxel grid origin is set to the respective point cloud’s center of gravity. Voxel grid resolution is set to 64. Each voxel stores 8 feature channels. Test trajectories are obtained by linearly interpolating two randomly chosen training poses. Scenes depict a drinking fountain, two busts, a globe, and a bag of coffee. See Fig. 6 for example model outputs. The drinking fountain and the globe have noticeable speculari- ties, which are handled gracefully. While the coffee bag is\n\net a\n\nFigure 6: Novel views of real captures. Please refer to the video for full sequences with nearest neighbor comparisons.\n\ngenerally represented faithfully, inconsistencies appear on its highly specular surface. Generally, results are of high quality, and only details that are signiﬁcantly smaller than a single voxel, such as the tiles in the sink of the fountain, show artifacts. Please refer to the supplemental video for detailed results as well as a nearest-neighbor baseline.",
+            "section": "results",
+            "section_idx": 1,
+            "citations": []
+        },
+        {
+            "text": "9\n\n2019\n\n1\n\n0\n\n2 r p A 1 1 ] V C . s c [ 2 v 4 2 0 1 0 . 2 1 8 1 : v\n\narXiv\n\ni\n\nX\n\nr\n\na\n\nDeepVoxels: Learning Persistent 3D Feature Embeddings\n\nVincent Sitzmann1, Justus Thies2, Felix Heide3,\n\nMatthias Nießner2, Gordon Wetzstein1, Michael Zollh¨ofer1\n\n1Stanford University, 2Technical University of Munich, 3Princeton University\n\nvsitzmann.github.io/deepvoxels/\n\nAbstract\n\nIn this work, we address the lack of 3D understanding of generative neural networks by introducing a persistent 3D feature embedding for view synthesis. To this end, we propose DeepVoxels, a learned representation that encodes the view-dependent appearance of a 3D scene without hav- ing to explicitly model its geometry. At its core, our ap- proach is based on a Cartesian 3D grid of persistent em- bedded features that learn to make use of the underlying 3D scene structure. Our approach combines insights from 3D geometric computer vision with recent advances in learning image-to-image mappings based on adversarial loss func- tions. DeepVoxels is supervised, without requiring a 3D re- construction of the scene, using a 2D re-rendering loss and enforces perspective and multi-view geometry in a princi- pled manner. We apply our persistent 3D scene represen- tation to the problem of novel view synthesis demonstrating high-quality results for a variety of challenging scenes.\n\nTraining\n\nGlobal\n\nOptimization\n\nDeepVoxels\n\n-a-- Rendering\n\nNovel Views\n\n4 Obs\n\n4 Obs\n\nObs\n\nFigure 1: During training, we learn a persistent DeepVoxels rep- resentation that encodes the view-dependent appearance of a 3D scene from a dataset of posed multi-view images (top). At test time, DeepVoxels enable novel view synthesis (bottom).\n\n1. Introduction\n\nRecent years have seen signiﬁcant progress in apply- ing generative machine learning methods to the creation of synthetic imagery. Many deep neural networks, for ex- ample based on (variational) autoencoders, are able to in- paint, reﬁne, or even generate complete images from scratch [19, 30]. A very prominent direction is generative adver- sarial networks [13] which achieve impressive results for image generation, even at high resolutions [26] or condi- tional generative tasks [20]. These developments allow us to perform highly-realistic image synthesis in a variety of settings; e.g., purely generative, conditional, etc.\n\nHowever, while each generated image is of high qual- ity, a major challenge is to generate a series of coherent views of the same scene. Such consistent view generation would require the network to have a latent space represen- tation that fundamentally understands the 3D layout of the scene; e.g., how would the same chair look from a differ- ent viewpoint? Unfortunately, this is challenging to learn\n\nfor existing generative neural network architectures that are based on a series of 2D convolution kernels. Here, spatial layout and transformations of a real, 3D environment would require a tedious learning process which maps 3D opera- tions into 2D convolution kernels [22]. In addition, the gen- erator network in these approaches is commonly based on a U-Net architecture with skip connections [47]. Although skip connections enable efﬁcient propagation of low-level features, the learned 2D-to-2D mappings typically struggle to generalize to large 3D transformations, due to the fact that the skip connections bypass higher-level reasoning.\n\nTo tackle similar challenges in the context of learning- based 3D reconstruction and semantic scene understand- ing, the ﬁeld of 3D deep learning has seen large and rapid progress over the last few years. Existing approaches are able to predict surface geometry with high accuracy. Many of these techniques are based on explicit 3D representa- tions in the form of occupancy grids [35, 43], signed dis- tance ﬁelds [46], point clouds [42, 32], or meshes [21]. While these approaches handle the geometric reconstruc- tion task well, they are not directly applicable to the syn- thesis of realistic imagery, since it is unclear how to rep-\n\nresent color information at a sufﬁciently high resolution. There also exists a large body of work on learning low- dimensional embeddings of images that can be decoded to novel views [54, 61, 7, 9, 60, 45]. Some of these techniques make use of the object’s 3D rotation by explicitly rotating the latent space feature vector [60, 45]. While such 3D tech- niques are promising, they have thus far not been successful in achieving sufﬁciently high ﬁdelity for the task of photo- realistic image synthesis.\n\nIn our work, we aim at overcoming the fundamental limitations of existing 2D generative models by introduc- ing native 3D operations in the neural network architecture. Rather than learning intuitive concepts from 3D vision, such as perspective, we explicitly encode these operations in the network architecture and perform reasoning directly in 3D space. The goal of the DeepVoxels approach is to condense posed input images of a scene into a persistent latent rep- resentation without explicitly having to model its geometry (see Fig. 1). This representation can then be applied to the task of novel view synthesis to generate unseen perspec- tives of a 3D scene without requiring access to the initial set of input images. Our approach is a hybrid 2D/3D one in that it learns to represent a scene in a Cartesian 3D grid of persistent feature embeddings that is projected to the tar- get view’s canonical view volume and processed by a 2D rendering network. This persistent feature volume, which exists in 3D world-space, in combination with a structured, differentiable image formation model, enforces perspective and multi-view geometry in a principled and interpretable manner during training. The proposed approach learns to exploit the underlying 3D scene structure, without requiring supervision in the 3D domain. We demonstrate novel view synthesis with high quality for a variety of scenes based on this new representation. In summary, our approach makes",
+            "section": "other",
+            "section_idx": 0,
+            "citations": [
+                "19, 30",
+                "13",
+                "26",
+                "20",
+                "22",
+                "47",
+                "35, 43",
+                "46",
+                "42, 32",
+                "21",
+                "54, 61, 7, 9, 60, 45",
+                "60, 45"
+            ]
+        },
+        {
+            "text": "the following technical contributions:\n\n• A novel persistent 3D feature representation for image synthesis that makes use of the underlying 3D scene information.\n\n• Explicit occlusion reasoning based on learned soft vis- ibility that leads to higher-quality results and better generalization to novel viewpoints.\n\n• Differentiable image formation to enforce perspective and multi-view geometry in a principled and inter- pretable manner during training.\n\n• Training without requiring 3D supervision.\n\nScope In this paper, we present ﬁrst steps towards 3D- structured neural scene representations. To this end, we limit the scope of our investigation to allow an in-depth discussion of the challenges fundamental to this approach. We assume Lambertian scenes, without specular highlights\n\nor other view-dependent effects. While the proposed ap- proach can deal with light specularities, these are not mod- eled explicitly. Classical approaches will achieve impres- sive results on the presented scenes. However, these ap- proaches rely on the explicit reconstruction of geometry. Neural scene representations will be essential to develop generative models that can generalize across scenes to solve reconstruction problems where only few observations are available. We thus compare to such baselines exclusively.\n\n2. Related Work\n\nOur approach lies at the intersection of multiple active research areas, namely generative neural networks, 3D deep learning, deep learning-based view synthesis, and model- as well as image-based rendering.\n\nNeural Image Synthesis Deep models for 2D image and video synthesis have recently shown very promising results. Some of these approaches are based on (variational) auto- encoders (VAEs) [19, 30] or autoregressive models (AMs), such as PixelCNN [38]. The most promising results so far are based on conditional generative adversarial networks (cGANs) [13, 44, 36, 20]. In most cases, the generator net- work has an encoder-decoder architecture [19], often with skip connections (U-Net) [47], which enable efﬁcient prop- agation of low-level features from the encoder to the de- coder. Approaches that convert synthetic images into photo- realistic imagery have been proposed for the special case of human bodies [64, 2] and faces [28]. In theory, similar ar- chitectures could be used to regress the real-world image corresponding to a given viewpoint, i.e., image-based ren- dering could be learned from scratch. Unfortunately, these 2D-to-2D translation approaches struggle to generalize to transformations in 3D space, such as rotation and perspec- tive projection, since the underlying 3D scene structure can- not be exploited. We compare to this baseline in Sec. 4 and show that DeepVoxels drastically outperforms it.\n\n3D Deep Learning Recently, deep learning has been suc- cessfully applied to many 3D geometric reasoning tasks. Current approaches are able to predict an accurate 3D rep- resentation of an object from just a single or multiple views. Many of these techniques make use of classical 3D repre- sentations, e.g., occupancy grids [35, 43], signed distance ﬁelds [46], 3D point clouds [42, 32], or meshes [21]. While these approaches handle the geometric reconstruction task well, they are not directly applicable to view synthesis, since it is unclear how to represent color information at a sufﬁciently high resolution. View consistency can be ex- plicitly handled using differentiable ray casting [57]. Ren- derNet [37] learns to render in different styles from 3D voxel grid input. Kulkarni et al. [31] learn a disentangled\n\nrepresentation of images with respect to various scene prop- erties, such as rotation and illumination. Spatial Trans- former Networks [22] can learn spatial transformations of feature maps in the network. Even weakly-supervised [62] and unsupervised [23] learning of 3D transformations has been proposed. Our work is also related to CNNs for 3D reconstruction [25, 5] and monocular depth estimation [8]. A “multi-view stereo machine” [25] can learn 3D recon- struction based on 3D or 2.5D supervision. MapNet [18] performs SLAM based on a scene-speciﬁc 2D feature grid representation. In contrast to these approaches, which are focused on geometric reasoning, our goal is to learn an embedding for novel view synthesis. To synthesize multi- view consistent images, we optimize for a persistent, scene- speciﬁc 3D embedding over all available 2D observations and enable the network to perform explicit occlusion rea- soning. We do not require any 3D ground truth but mini- mize a 2D photometric reprojection loss exclusively.\n\nDeep Learning for View Synthesis Recently, a class of deep neural networks has been proposed that directly aim to solve the problem of novel view synthesis. Some techniques predict lookup tables into a set of reference views [39, 63] or predict weights to blend multi-view im- ages into novel views [11]. A layered scene representa- tion [56] can be learned based on a re-rendering loss. A large corpus of work focuses on embedding 2D views of scenes into a learned low-dimensional latent space that is then decoded into a novel view [54, 61, 7, 9, 60, 45, 6]. Some of these approaches rely on embedding views into a latent space that does not enforce any geometrical con- straints [54, 7, 9], others enforce geometric constraints in varying degrees [60, 45, 6, 10], such as learning rotation- equivariant features by explicitly rotating the latent space feature vectors. We focus on optimizing a scene-speciﬁc embedding over a training corpus of 2D observations and explicitly account for concepts from 3D vision such as per- spective projection and occlusion to constrain the latent space. We demonstrate advantages over weakly structured embeddings in generating high-quality novel views.\n\nModel-Based Rendering Classic reconstruction ap- proaches such as structure-from-motion exploit multi-view geometry [15, 53] to build a dense 3D point cloud of the imaged scene [49, 50, 52, 1, 12]. A triangular surface representation can be obtained using for example the Poisson Surface [27] reconstruction technique. However, the reconstructed geometry is often imperfect, coarse, contains holes, and the resulting renderings thus suffer from visible artifacts and are not fully realistic. In contrast, our goal is to learn a representation that efﬁciently encodes the view-dependent appearance of a 3D scene without having to explicitly reconstruct a geometric model.\n\nImage-Based Rendering Traditional image-based ren- dering techniques blend warped versions of the input im- ages to generate new views [51]. This idea was ﬁrst pro- posed as a computationally efﬁcient alternative to classical rendering [33, 14, 3]. Multiple-view geometry can be used to obtain the geometry for warping [17]. In other cases, no 3D reconstruction is necessary [11, 41]. Some approaches rely on light ﬁelds [24]. Recently, deep-learning has been used to aid image-based rendering via learning a small sub- task, i.e., the computation of the blending weights [16, 11]. While this can achieve photorealism, it depends on a dense set of high-resolution photographs to be available at render- ing time and requires an error prone reconstruction step to obtain the geometric proxy. Our approach has orthogonal goals: (1) we want to learn an embedding for view syn- thesis and (2) we want to tackle the problem in a holistic fashion by learning raw pixel output. Thus, our approach is more related to embedding techniques that try to learn a latent space that can be decoded into novel views.",
+            "section": "other",
+            "section_idx": 1,
+            "citations": [
+                "19, 30",
+                "38",
+                "13, 44, 36, 20",
+                "19",
+                "47",
+                "64, 2",
+                "28",
+                "35, 43",
+                "46",
+                "42, 32",
+                "21",
+                "57",
+                "37",
+                "31",
+                "22",
+                "62",
+                "23",
+                "25, 5",
+                "8",
+                "25",
+                "18",
+                "39, 63",
+                "11",
+                "56",
+                "54, 61, 7, 9, 60, 45, 6",
+                "54, 7, 9",
+                "60, 45, 6, 10",
+                "15, 53",
+                "49, 50, 52, 1, 12",
+                "27",
+                "51",
+                "33, 14, 3",
+                "17",
+                "11, 41",
+                "24",
+                "16, 11"
+            ]
+        },
+        {
+            "text": "Occlusion-aware feature projection\n\nFeature Grid Canonical view grid Visibility Reasoning & anti-aliased depth values | Voxel depths TA Perspective TEEGEE NA] tapi la TEL 0.04-++0.03+ 0.014 0.9 +-0.02-++0.0 seq fr 7) product | [> — 0.5/0.5) > [0.6/0.4) 3.6 Camera with y=] ne ea “A image plane Boundary probability\n\nFigure 3: Illustration of the occlusion-aware projection operation. The feature volume (represented by feature grid) is ﬁrst resampled into the canonical view volume via a projection transformation and trilinear interpolation. The occlusion network then predicts per-pixel softmax weights along each depth ray. The canonical view volume is then collapsed along the depth dimension via a softmax-weighted sum of voxels to yield the ﬁnal, occlusion-aware feature map. The per-voxel visibility weights can be used to compute a depth map.\n\nwith the voxel. Note, our approach is based only on a set of registered multi-view images and we do not have access to the scene geometry or depth maps, rather our approach learns automatically to resolve the depth ambiguity based on a gated recurrent network in 3D.\n\nIntegrating Lifted Features into DeepVoxels Lifted ob- servations are integrated into the DeepVoxels representation via an integration network that is based on gated recurrent units (GRUs) [4]. In contrast to the standard application of GRUs, the integration network operates on the same vol- ume across the full training procedure, i.e., the hidden state is persistent across all training steps and never reset, lead- ing to a geometrically consistent representation of the whole training corpus. We use a uniform volumetric grid of size w ×h×d voxels, where each voxel has f feature channels, i.e., the stored code vector has size f. We employ one gated recurrent unit for each voxel, such that at each time step, all the features in a voxel have to be updated jointly. The goal of the gated recurrent units is to incrementally fuse the lifted features and the hidden state during training, such that the best persistent 3D volumetric feature representation is dis- covered. The gated recurrent units implement the mapping\n\nZt = σ(WzXt + UzHt−1 + Bz) , (2)\n\nRt = σ(WrXt + UrHt−1 + Br) , (3)\n\nSt = ReLU(WsXt + Us(Rt ◦ Ht−1) + Bs) ,\n\nHt = (1 − Zt) ◦ Ht−1 + Zt ◦ St . (5)\n\nHere, Xt is the lifted 3D feature volume of the current timestep t, the W• and U• are trainable 3D convolution weights, and the B• are trainable tensors of biases. We fol- low Cho et al. [4] and employ a sigmoid activation σ to compute the response of the tensor of update gates Zt and reset gates Rt. Based on the previous hidden state Ht−1, the per-voxel reset values Rt, and the lifted 3D feature vol- ume Xt, the tensor of new feature proposals St for the cur- rent time step t is computed. Us and Ws are single 3D convolutional layers. The new hidden state Ht, the Deep- Voxels representation for the current time step, is computed\n\nas a per-voxel linear combination of the old state Ht−1 and the new DeepVoxel proposal St. The GRU performs one update step per lifted observation. Afterwards, we apply a 3D inpainting U-Net that learns to ﬁll holes in this feature representation. At test time, only the optimally learned per- sistent 3D volumetric features, the DeepVoxels, are used to form the image corresponding to a novel target view. The 2D feature extraction, lifting layer and GRU gates are dis- carded and are not required for inference, see Fig. 2.\n\nProjection Layer The projection layer implements the inverse of the lifting layer, i.e., it maps the 3D code vec- tors to the canonical coordinate system of the target view, see Fig. 3 (left). Projection is also implemented based on a gathering operation. For each voxel of the canonical view volume, its corresponding position in the persistent world space voxel grid is computed. An interpolated code vector is then extracted via a trilinear interpolation and stored in the feature channels of the canonical view volume.\n\nOcclusion Module Occlusion reasoning is essential for correct image formation and generalization to novel view- points. To this end, we propose a dedicated occlusion net- work that computes soft visibility for each voxel. Each pixel in the target view is represented by one column of voxels in the canonical view volume, see Fig. 3 (left). First, this column is concatenated with a feature column encoding the distance of each voxel to the camera, similar as in [34]. This allows the occlusion network to reason about voxel or- der. The feature vector of each voxel in this canonical view volume is then compressed to a low-dimensional feature vector of dimension 4 by a single 3D convolutional layer. This compressed volume is input to a 3D U-Net for occlu- sion reasoning. For each ray, represented by a single-pixel column, this network predicts a scalar per-voxel visibility weight based on a softmax activation, see Fig. 3 (middle). The canonical view volume is then ﬂattened along the depth dimension with a weighted average, using the predicted vis- ibility values. The softmax weights can further be used to\n\ncompute a depth map, which provides insight into the oc- clusion reasoning of the network, see Fig. 3 (right).\n\nRendering and Loss The rendering network is a mirrored version of the feature extraction network with higher capac- ity. A 2D U-Net architecture takes as input the flattened canonical view volume from the occlusion network and pro- vides reasoning across the full image, before a number of transposed convolutions directly regress the pixel values of the novel view. We train our persistent Deep Voxels repre- sentation based on a combined ¢;-loss and adversarial cross entropy loss [13]. We found that an adversarial loss accel- erates the generation of high-frequency detail earlier on in training. Our adversarial discriminator is a fully convolu- tional patch-based discriminator [58]. We solve the result- ing minimax optimization problem using ADAM [29].",
+            "section": "other",
+            "section_idx": 2,
+            "citations": [
+                "4",
+                "4",
+                "34",
+                "13",
+                "58",
+                "29"
+            ]
+        },
+        {
+            "text": "Ground Truth\n\nWorrall et al.\n\nPix2Pix\n\nOurs\n\nOurs - Test Views\n\n‘Ee\n\nRd\n\nVvVCW eS\n\nFigure 4: Left: Comparison of the best three performing models to ground truth. From Left to right: Ground truth, Worrall et al. [60], Isola et al. [20] (Pix2Pix), and ours. Our outputs are closest to the ground truth, performing well even in challenging cases such as the strongly foreshortened letters on the cube or the high-frequency detail of the vase. Right: Other samples of novel views generated by our model.\n\nVase Pedestal Chair Cube Mean PSNR / SSIM PSNR / SSIM PSNR / SSIM PSNR / SSIM PSNR / SSIM Nearest Neighbor 23.26 / 0.92 21.49 / 0.87 20.69 / 0.94 18.32 / 0.83 20.94 / 0.89 Tatarchenko et al. [54] 22.28 / 0.91 23.25 / 0.89 20.22 / 0.95 19.12 / 0.84 21.22 / 0.90 Worrall et al. [60] 23.41 / 0.92 22.70 / 0.89 19.52 / 0.94 19.23 / 0.85 21.22 / 0.90 Pix2Pix (Isola et al.) [20] 26.36 / 0.95 25.41 / 0.91 23.04 / 0.96 19.69 / 0.86 23.63 / 0.92 Ours 27.99 / 0.96 32.35 / 0.97 33.45 / 0.99 28.42 / 0.97 30.55 / 0.97\n\nTable 1: Quantitative comparison to four baselines. Our approach obtains the best results in terms of PSNR and SSIM on all objects.\n\nifold of rotations. Although the resolution of the proposed voxel grid is 16 times smaller than the image resolution, our model succeeds in capturing ﬁne detail much smaller than the size of a single voxel, such as the letters on the sides of the cube or the detail on the vase. This may be due to the use of trilinear interpolation in the lifting and projec- tion steps, which allow for a ﬁne-grained representation to be learned. Please see the video for full sequences, and the supplemental material for two additional synthetic scenes.\n\nVoxel Embedding vs. Rotation-Equivariant Embedding As reﬂected in Tab. 1, we outperform [60] by a wide margin both qualitatively and quantitatively. The proposed model is constrained through multi-view geometry, while [60] has more degrees of freedom. Lacking occlusion reasoning, depth maps are not made explicit. The model may thus parameterize latent spaces that do not respect multi-view geometry. This increases the risk of overﬁtting, which we observe empirically, as the baseline snaps to nearest neigh- bors seen during training. While the proposed voxel embed-\n\nding is memory hungry, it is very parameter efﬁcient. The use of 3D convolutions means that the parameter count is independent of the voxel grid size. Giving up spatial struc- ture means Worrell et al. [60] abandon convolutions and use fully connected layers. However, to achieve the same latent space size of 323 ×64 features would necessitate more than 4.4 · 1012 parameters between just the fully connected lay- ers before and after the feature transformation layer, which is infeasible. In contrast, the proposed 3D inpainting net- work only has 1.7·107 parameters, ﬁve orders of magnitude less. To address memory inefﬁciency, the dense grid may be replaced by a sparse alternative in the future.\n\nOcclusion Reasoning and Interpretability An essential part of the rendering pipeline is the depth test. Similarly, the rendering network ought to be able to reason about oc- clusions when regressing the output view. A naive approach might ﬂatten the depth dimension of the canonical camera volume and subsequently reduce the number of features us- ing a series of 2D convolutions. This leads to a drastic in-\n\nGround Truth '\n\nWith Occlusion Net.\n\nNo Occlusion Net.",
+            "section": "other",
+            "section_idx": 3,
+            "citations": [
+                "60",
+                "20",
+                "54",
+                "60",
+                "20",
+                "60",
+                "60",
+                "60"
+            ]
+        },
+        {
+            "text": "References\n\n[1] S. Agarwal, N. Snavely, I. Simon, S. M. Seitz, and R. Szeliski. Building rome in a day. In Proc. CVPR, pages 72–79, 2009.\n\n[2] C. Chan, S. Ginosar, T. Zhou, and A. A. Efros. Everybody Dance Now. ArXiv e-prints, 2018.\n\n[3] S. E. Chen and L. Williams. View interpolation for image synthesis. In Proc. ACM SIGGRAPH, pages 279–288, 1993.\n\n[4] K. Cho, B. van Merrienboer, C¸. G¨ulc¸ehre, F. Bougares, H. Schwenk, and Y. Bengio. Learning phrase representations using RNN encoder-decoder for statistical machine transla- tion. CoRR, abs/1406.1078, 2014.\n\n[5] C. B. Choy, D. Xu, J. Gwak, K. Chen, and S. Savarese. 3d- r2n2: A uniﬁed approach for single and multi-view 3d object reconstruction. In Proc. ECCV, pages 628–644, 2016.\n\n[6] T. S. Cohen and M. Welling. Transformation proper- ties of learned visual representations. arXiv preprint arXiv:1412.7659, 2014.\n\n[7] A. Dosovitskiy, J. T. Springenberg, M. Tatarchenko, and T. Brox. Learning to generate chairs, tables and cars with convolutional networks. IEEE Trans. PAMI, 39(4):692–705, 2017.\n\n[8] D. Eigen, C. Puhrsch, and R. Fergus. Depth map prediction from a single image using a multi-scale deep network. In Proc. NIPS, pages 2366–2374, 2014.\n\n[9] S. A. Eslami, D. J. Rezende, F. Besse, F. Viola, A. S. Mor- cos, M. Garnelo, A. Ruderman, A. A. Rusu, I. Danihelka, K. Gregor, et al. Neural scene representation and rendering. Science, 360(6394):1204–1210, 2018.\n\n[10] L. Falorsi, P. de Haan, T. R. Davidson, N. De Cao, M. Weiler, P. Forr´e, and T. S. Cohen. Explorations in homeomorphic variational auto-encoding. ICML Workshops, 2018.\n\n[11] J. Flynn, I. Neulander, J. Philbin, and N. Snavely. Deep- stereo: Learning to predict new views from the world’s im- agery. In Proc. CVPR, pages 5515–5524, 2016.\n\n[12] Y. Furukawa and J. Ponce. Accurate, dense, and robust multiview stereopsis. IEEE Trans. PAMI, 32(8):1362–1376, 2010.\n\n[13] I. J. Goodfellow, J. Pouget-Abadie, M. Mirza, B. Xu, D. Warde-Farley, S. Ozair, A. Courville, and Y. Bengio. Gen- erative adversarial nets. In Proc. NIPS, 2014.\n\n[14] N. Greene. Environment mapping and other applications of world projections. IEEE CG&A, 6(11):21–29, 1986.\n\n[15] R. Hartley and A. Zisserman. Multiple View Geometry in Computer Vision. Cambridge University Press, 2nd edition, 2003.\n\n[16] P. Hedman, J. Philip, T. Price, J.-M. Frahm, G. Drettakis, and G. Brostow. Deep blending for free-viewpoint image-based rendering. ACM Trans. Graph. (SIGGRAPH Asia), 37(6), 2018.\n\n[17] P. Hedman, T. Ritschel, G. Drettakis, and G. Brostow. Scal- able inside-out image-based rendering. ACM Trans. Graph. (SIGGRAPH Asia), 35(6):231, 2016.\n\n[18] J. F. Henriques and A. Vedaldi. Mapnet: An allocentric spatial memory for mapping environments. In Proc. CVPR, pages 8476–8484, 2018.\n\n[19] G. E. Hinton and R. Salakhutdinov. Reducing the dimension- ality of data with neural networks. Science, 313(5786):504– 507, July 2006.\n\n[20] P. Isola, J.-Y. Zhu, T. Zhou, and A. A. Efros. Image-to-image translation with conditional adversarial networks. In Proc. CVPR, pages 5967–5976, 2017.\n\n[21] D. Jack, J. K. Pontes, S. Sridharan, C. Fookes, S. Shirazi, F. Maire, and A. Eriksson. Learning free-form deformations for 3d object reconstruction. CoRR, abs/1803.10932, 2018.\n\n[22] M. Jaderberg, K. Simonyan, A. Zisserman, and k. kavukcuoglu. Spatial transformer networks. In Proc. NIPS, pages 2017–2025. 2015.\n\n[23] D. Jimenez Rezende, S. M. A. Eslami, S. Mohamed, P. Battaglia, M. Jaderberg, and N. Heess. Unsupervised learning of 3d structure from images. In Proc. NIPS, pages 4996–5004. 2016.\n\n[24] N. K. Kalantari, T.-C. Wang, and R. Ramamoorthi. Learning-based view synthesis for light ﬁeld cameras. ACM Trans. Graph. (SIGGRAPH Asia), 35(6):193, 2016.\n\n[25] A. Kar, C. H¨ane, and J. Malik. Learning a multi-view stereo machine. In Proc. NIPS, pages 365–376, 2017.\n\n[26] T. Karras, T. Aila, S. Laine, and J. Lehtinen. Progressive growing of GANs for improved quality, stability, and varia- tion. In Proc. ICLR, 2018.\n\n[27] M. Kazhdan, M. Bolitho, and H. Hoppe. Poisson surface reconstruction. In Proc. SGP, pages 61–70, 2006.\n\n[28] H. Kim, P. Garrido, A. Tewari, W. Xu, J. Thies, N. Nießner, P. P´erez, C. Richardt, M. Zollh¨ofer, and C. Theobalt. Deep Video Portraits. ACM Trans. Graph. (SIGGRAPH), 2018.\n\n[29] D. P. Kingma and J. Ba. Adam: A method for stochastic optimization. arXiv preprint arXiv:1412.6980, 2014.\n\n[30] D. P. Kingma and M. Welling. Auto-encoding variational bayes. CoRR, abs/1312.6114, 2013.\n\n[31] T. D. Kulkarni, W. F. Whitney, P. Kohli, and J. Tenenbaum. Deep convolutional inverse graphics network. In Proc. NIPS, pages 2539–2547. 2015.\n\n[32] C.-H. Lin, C. Kong, and S. Lucey. Learning efﬁcient point cloud generation for dense 3d object reconstruction. In AAAI, 2018.\n\n[33] A. Lippman. Movie-maps: An application of the optical videodisc to computer graphics. In ACM SIGGRAPH, vol- ume 14, pages 32–42, 1980.\n\n[34] R. Liu, J. Lehman, P. Molino, F. P. Such, E. Frank, A. Sergeev, and J. Yosinski. An intriguing failing of convo- lutional neural networks and the coordconv solution. arXiv preprint arXiv:1807.03247, 2018.\n\n[35] D. Maturana and S. Scherer. Voxnet: A 3d convolutional neural network for real-time object recognition. In Proc. IROS, page 922 928, September 2015.\n\n[36] M. Mirza and S. Osindero. Conditional generative adversar- ial nets. arXiv:1411.1784, 2014.\n\n[37] T. H. Nguyen-Phuoc, C. Li, S. Balaban, and Y. Yang. Ren- dernet: A deep convolutional network for differentiable ren- dering from 3d shapes. In Proc. NIPS 2018, pages 7902– 7912. 2018.\n\n[38] A. v. d. Oord, N. Kalchbrenner, O. Vinyals, L. Espeholt, A. Graves, and K. Kavukcuoglu. Conditional image gen- eration with pixelcnn decoders. In Proc. NIPS, pages 4797– 4805, 2016.\n\n[39] E. Park, J. Yang, E. Yumer, D. Ceylan, and A. C. Berg. Transformation-grounded image generation network for novel 3d view synthesis. CoRR, abs/1703.02921, 2017.\n\n[40] A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. De- Vito, Z. Lin, A. Desmaison, L. Antiga, and A. Lerer. Auto- matic differentiation in pytorch. In NIPS-W, 2017.",
+            "section": "other",
+            "section_idx": 4,
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40"
+            ]
+        },
+        {
+            "text": "[41] E. Penner and L. Zhang. Soft 3d reconstruction for view syn- thesis. ACM Trans. Graph. (SIGGRAPH Asia), 36(6):235, 2017.\n\n[42] C. R. Qi, H. Su, K. Mo, and L. J. Guibas. Pointnet: Deep learning on point sets for 3d classiﬁcation and segmentation. Proc. CVPR, 2017.\n\n[43] C. R. Qi, H. Su, M. Nießner, A. Dai, M. Yan, and L. Guibas. Volumetric and multi-view cnns for object classiﬁcation on 3d data. In Proc. CVPR, 2016.\n\n[44] A. Radford, L. Metz, and S. Chintala. Unsupervised repre- sentation learning with deep convolutional generative adver- sarial networks. In Proc. ICLR, 2016.\n\n[45] H. Rhodin, M. Salzmann, and P. Fua. Unsupervised geometry-aware representation for 3d human pose estima- tion. Proc. ECCV, 2018.\n\n[46] G. Riegler, A. O. Ulusoy, and A. Geiger. Octnet: Learning deep 3d representations at high resolutions. In Proc. CVPR, 2017.\n\n[47] O. Ronneberger, P. Fischer, and T. Brox. U-Net: Convolu- tional networks for biomedical image segmentation. In Proc. MICCAI, pages 234–241, 2015.\n\n[48] O. Ronneberger, P.Fischer, and T. Brox. U-net: Convolu- tional networks for biomedical image segmentation. In Proc. MICCAI, pages 234–241, 2015.\n\n[49] J. L. Sch¨onberger and J.-M. Frahm. Structure-from-motion revisited. In Proc. CVPR, 2016.\n\n[50] J. L. Sch¨onberger, E. Zheng, M. Pollefeys, and J.-M. Frahm. Pixelwise view selection for unstructured multi-view stereo. In Proc. ECCV, 2016.\n\n[51] H. Shum and S. B. Kang. Review of image-based rendering techniques. In Proc. VCIP, pages 2–14, 2000.\n\n[52] N. Snavely, S. M. Seitz, and R. Szeliski. Photo tourism: ex- ploring photo collections in 3d. In ACM Trans. Graph. (SIG- GRAPH), volume 25, pages 835–846, 2006.\n\n[53] R. Szeliski. Computer vision: algorithms and applications. Springer Science & Business Media, 2010.\n\n[54] M. Tatarchenko, A. Dosovitskiy, and T. Brox. Single-view to multi-view: Reconstructing unseen views with a convolu- tional network. CoRR abs/1511.06702, 1(2):2, 2015.\n\n[55] B. Triggs, P. F. McLauchlan, R. I. Hartley, and A. W. Fitzgib- bon. Bundle adjustment - a modern synthesis. In Proc. ICCV Workshops, pages 298–372, 2000.\n\n[56] S. Tulsiani, R. Tucker, and N. Snavely. Layer-structured 3d scene inference via view synthesis. In Proc. ECCV, 2018.\n\n[57] S. Tulsiani, T. Zhou, A. A. Efros, and J. Malik. Multi-view supervision for single-view reconstruction via differentiable ray consistency. In Proc. CVPR, 2017.\n\n[58] T.-C. Wang, M.-Y. Liu, J.-Y. Zhu, A. Tao, J. Kautz, and B. Catanzaro. High-resolution image synthesis and semantic manipulation with conditional GANs. In Proc. CVPR, 2018.\n\n[59] Z. Wang, A. C. Bovik, H. R. Sheikh, and E. P. Simoncelli. Image quality assessment: from error visibility to structural similarity. IEEE Trans. Im. Proc., 13(4):600–612, 2004.\n\n[60] D. E. Worrall, S. J. Garbin, D. Turmukhambetov, and G. J. Brostow. Interpretable transformations with encoder- decoder networks. In Proc. ICCV, volume 4, 2017.\n\n[61] X. Yan, J. Yang, E. Yumer, Y. Guo, and H. Lee. Perspective transformer nets: Learning single-view 3d object reconstruc- tion without 3d supervision. In Proc. NIPS, pages 1696– 1704, 2016.\n\n[62] J. Yang, S. E. Reed, M.-H. Yang, and H. Lee. Weakly- supervised disentangling with recurrent transformations for 3d view synthesis. In Proc. NIPS, pages 1099–1107, 2015.\n\n[63] T. Zhou, S. Tulsiani, W. Sun, J. Malik, and A. A. Efros. View synthesis by appearance ﬂow. In Proc. ECCV, pages 286– 301. Springer, 2016.\n\n[64] H. Zhu, H. Su, P. Wang, X. Cao, and R. Yang. View ex- trapolation of human body from a single image. CoRR, abs/1804.04213, 2018.",
+            "section": "other",
+            "section_idx": 5,
+            "citations": [
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64"
+            ]
+        }
+    ],
+    "figures": [
+        {
+            "path": "output\\images\\20f728ff-d1a6-4d76-ae1d-4922928ae997.jpg",
+            "description": "The figure illustrates a complex architecture for a machine learning model focused on 3D reconstruction and rendering. The process is divided into training and testing phases:\n\n- **2D Feature Extraction:** The process begins with a source image fed into a 2D U-Net, producing 2D feature maps.\n\n- **Lifting Layer (2D to 3D):** These feature maps are lifted into a 3D feature volume, which is crucial for understanding the spatial structure of the object.\n\n- **Recurrent Fusion:** A module called Deep Voxels, enhanced by a GRU (Gated Recurrent Unit), processes the 3D feature volume. It incorporates a hole-filling mechanism using a 3D U-Net to complete missing data.\n\n- **Training Phase:**\n  - **Adversarial Loss and Discriminator:** The model uses adversarial loss for training, with a discriminator comparing rendered outputs against ground truth images to refine the model's accuracy.\n  - **Loss Functions:** Both adversarial and L1 losses are employed to guide the training, ensuring the model learns to produce realistic outputs.\n\n- **Occlusion Network:** During testing, this network manages occlusions to enhance the visibility and accuracy of the rendered views.\n\n- **Rendering and Output:** The refined 3D data is projected back to 2D using a projection layer, followed by rendering through another 2D U-Net to produce the final output images.\n\nThis figure is critical to understanding the methodology and innovation of the research, showcasing the integration of 2D and 3D processing, the use of recurrent networks, and the application of adversarial learning for improved 3D reconstruction.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\dcd30379-ed2f-428a-8139-65b3a2f16109.jpg",
+            "description": "This figure illustrates a process involving multiple key components in a computer vision or graphics pipeline. \n\n- **Architecture Diagrams and Components**: The figure starts with a \"Feature Grid\" which represents a spatial grid overlaid on an image. A camera with an image plane is shown performing a \"Perspective transform\" to convert this grid into a \"Canonical view grid.\" This transformation adjusts the perspective to align with the camera's viewpoint.\n\n- **Visibility Reasoning**: Following the transformation, an \"Occlusion Network\" evaluates the visibility of different grid regions. The network outputs probabilities that sum to 1, indicating the likelihood of each region being visible from the camera's perspective.\n\n- **Occlusion-aware Feature Projection**: The results from the visibility reasoning are used in conjunction with \"Voxel depths\" in the next section. This step involves calculating a \"Dot product\" between the visibility probabilities and the voxel depths, resulting in \"anti-aliased depth values.\"\n\n- **Data Visualization**: Probabilities and depth values are visually represented, showcasing the process of determining visibility and depth in a structured manner.\n\nThis figure is crucial for understanding the methodology and innovation in handling perspective transformation, visibility, and depth estimation within the research. It highlights the algorithmic flow and mathematical reasoning behind the occlusion-aware feature projection, making it essential to the paper's core contributions.",
+            "importance": 9
+        },
+        {
+            "path": "output\\images\\13a04d30-ae8d-4959-b5bc-db94f3d30830.jpg",
+            "description": "The figure appears to illustrate a part of a research methodology involving image processing or computer vision. It shows a central object (a vase) surrounded by a cloud of blue dots, likely representing different camera positions or viewpoints in a 3D space. The section labeled \"Images & poses\" suggests this is related to capturing various perspectives or orientations of the object, possibly for training a machine learning model. \n\nThe dotted line labeled \"Training\" indicates a separation between different phases of the process, such as training and testing. This implies that the figure is part of a larger workflow or pipeline, likely related to constructing a dataset or evaluating a model's performance in recognizing or reconstructing 3D objects.\n\nThis figure is important as it visually contextualizes how images and poses are used, possibly indicating the setup for data acquisition or model training, which is crucial for understanding the research methodology.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\22218a66-e1d2-4af6-9fe9-d969e816fa89.jpg",
+            "description": "The figure appears to illustrate the concept or architecture of a \"No Occlusion Network,\" possibly highlighting how data is structured or processed without occlusion interference. The cube with alphabetical sequences may represent data handling or feature extraction within the network.\n\nThis is a generalized analysis, and the precise importance and description depend on the figure's context within the research paper.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\a44441f7-8a35-4869-b568-aa8e041ffcc8.jpg",
+            "description": "[your detailed description]",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\2c9895e4-dd24-4949-8d9b-7c79c7dc17d5.jpg",
+            "description": "- **Architecture Diagrams and Components**: If the figure shows a 3D block structure, it might represent layers or components of a system, such as a neural network or cryptographic model.\n- **Graphs, Charts, and Data Visualizations**: Look for any patterns, labels, or color coding that might indicate different datasets or results.\n- **Mathematical Formulas or Concepts**: Check for any symbols or equations that might be embedded within the figure.\n- **Algorithm Flowcharts or Processes**: Consider whether the figure shows any process flows or decision trees.\n- **Results or Findings**: If the figure highlights specific areas, it might be emphasizing key results or areas of interest within a dataset or model.\n\nTo determine the importance, consider how the figure contributes to the understanding of the core ideas or results presented in the research.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\20ff3018-739c-4613-a8dd-2ae3099754c7.jpg",
+            "description": "The figure appears to show a three-dimensional cube with text on its surfaces. The top face of the cube has larger, distinct characters (\"CVPR\"), possibly indicating a title or label. The other visible sides are filled with smaller, repeated text patterns. The zoomed-in section highlights the detailed texture and arrangement of these characters. This could represent a data structure, information encoding, or a conceptual model visualization. Without additional context from the paper, the specific purpose and importance of this figure are unclear.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\94b3141b-6fbe-4707-a58b-4b37326d8969.jpg",
+            "description": "I'm unable to analyze or interpret the contents of images from research papers. You might want to refer to the paper's text or caption for insights into the figure's significance.",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\e7cb0a2a-8eac-401f-b274-75bd095e79d0.jpg",
+            "description": "I'm unable to analyze or interpret this image as a technical figure from a research paper. It appears to be an image of a decorative vase with two magnified sections showing its intricate design. If you have a different image related to a research paper, please share it, and I'll be happy to help!",
+            "importance": 5
+        },
+        {
+            "path": "output\\images\\123dd031-834d-4514-a1f3-cc025b88f67b.jpg",
+            "description": "I'm sorry, I can't determine the content or importance of this figure based on the image provided.",
+            "importance": 5
+        }
+    ],
+    "metadata": {
+        "key_themes": [
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Super-Resolution",
+            "Sparse covariance matrix factorization",
+            "Material transformation"
+        ],
+        "methodology": [
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Estimation",
+            "Feature detection"
+        ],
+        "domain": [
+            "Autonomous Robotics",
+            "Reflectance Imaging"
+        ],
+        "strengths": [
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Enhanced Detection Techniques",
+            "Data Enhancement",
+            "Superiority"
+        ],
+        "limitations": [
+            "Training challenges",
+            "3D Challenges",
+            "Perceptual Color Balance",
+            "Sacrifice diversity for fidelity",
+            "Instance-aware segmentation limitations"
+        ]
+    },
+    "content_chunks": [
+        {
+            "chunk_id": "1812.01024v2_chunk_0",
+            "section": "introduction",
+            "citations": [
+                "4",
+                "15",
+                "48"
+            ]
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_1",
+            "section": "methodology",
+            "citations": [
+                "55"
+            ]
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_2",
+            "section": "methodology",
+            "citations": []
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_3",
+            "section": "results",
+            "citations": [
+                "59",
+                "40",
+                "20",
+                "54",
+                "60, 6",
+                "45",
+                "20",
+                "60"
+            ]
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_4",
+            "section": "results",
+            "citations": []
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_5",
+            "section": "other",
+            "citations": [
+                "19, 30",
+                "13",
+                "26",
+                "20",
+                "22",
+                "47",
+                "35, 43",
+                "46",
+                "42, 32",
+                "21",
+                "54, 61, 7, 9, 60, 45",
+                "60, 45"
+            ]
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_6",
+            "section": "other",
+            "citations": [
+                "19, 30",
+                "38",
+                "13, 44, 36, 20",
+                "19",
+                "47",
+                "64, 2",
+                "28",
+                "35, 43",
+                "46",
+                "42, 32",
+                "21",
+                "57",
+                "37",
+                "31",
+                "22",
+                "62",
+                "23",
+                "25, 5",
+                "8",
+                "25",
+                "18",
+                "39, 63",
+                "11",
+                "56",
+                "54, 61, 7, 9, 60, 45, 6",
+                "54, 7, 9",
+                "60, 45, 6, 10",
+                "15, 53",
+                "49, 50, 52, 1, 12",
+                "27",
+                "51",
+                "33, 14, 3",
+                "17",
+                "11, 41",
+                "24",
+                "16, 11"
+            ]
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_7",
+            "section": "other",
+            "citations": [
+                "4",
+                "4",
+                "34",
+                "13",
+                "58",
+                "29"
+            ]
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_8",
+            "section": "other",
+            "citations": [
+                "60",
+                "20",
+                "54",
+                "60",
+                "20",
+                "60",
+                "60",
+                "60"
+            ]
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_9",
+            "section": "other",
+            "citations": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40"
+            ]
+        },
+        {
+            "chunk_id": "1812.01024v2_chunk_10",
+            "section": "other",
+            "citations": [
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64"
+            ]
+        }
+    ]
+}

@@ -161,124 +161,87 @@
     ],
     "figures": [
         {
-            "path": "output\\images\\eb5f34cc-73aa-4a54-9861-d96826620876.jpg",
-            "description": "This figure illustrates a convolutional neural network (CNN) architecture. It starts with an input image of size 224x224 pixels. The architecture consists of several layers:\n\n- **Convolutional Layers**: \n  - The first layer performs an 11x11 convolution with ReLU activation followed by 2x2 pooling, reducing spatial dimensions while increasing the number of feature maps to 64.\n  - The second layer uses a 5x5 convolution, also with ReLU and 2x2 pooling, increasing feature maps to 256.\n  - Two subsequent 3x3 convolutional layers with ReLU activation, maintaining 256 feature maps, followed by another 2x2 pooling layer.\n\n- **Fully Connected Layers**:\n  - There are three fully connected (fc) layers. The first has 4096 neurons, the second reduces to 128, and the third further reduces to 16, using ReLU activations.\n\n- **Output Layer**:\n  - The final layer uses a logistic function, suggesting a binary classification task.\n\nThis diagram likely represents a key component of the research, showcasing the novel or specific neural network design used to achieve significant results in the study.",
-            "importance": 9
+            "path": "output\\images\\0dd2ed74-d753-4d82-8e03-b5f6baee6fe0.jpg",
+            "description": "The figure appears to depict a convolutional neural network (CNN) architecture, which is commonly used in image processing tasks. Here’s a breakdown of the components:\n\n- **Input**: The input image size is 224x224 pixels.\n- **Layers**:\n  - **Convolutional Layers**: \n    - The first layer applies an 11x11 convolution followed by a ReLU activation function and 2x2 pooling, outputting 64 feature maps.\n    - This is followed by a 5x5 convolution, ReLU activation, and 2x2 pooling, producing 256 feature maps.\n    - Two subsequent 3x3 convolutional layers each followed by ReLU, maintaining 256 feature maps.\n    - Another 3x3 convolution with ReLU and 2x2 pooling, maintaining 256 feature maps.\n- **Fully Connected (fc) Layers**:\n  - The architecture then transitions to fully connected layers with outputs of size 4096, 128, and 16, each followed by a ReLU activation.\n  - The final layer uses a logistic activation, suggesting a classification or binary output.\n  \nThis diagram is important for understanding the architecture used in the research, showing how the input image is processed through various convolutional and fully connected layers to produce the final output. It likely represents a core component of the methodology in the study.",
+            "importance": 8
         },
         {
-            "path": "output\\images\\9975a82e-fd73-404b-81bd-f57d8d38aeb8.jpg",
-            "description": "This figure presents a mathematical formulation, likely related to energy minimization or optimization problems common in fields such as computer vision or machine learning. It consists of two main components:\n\n1. **Energy Function**: \n   - The equation \\( E(y, x) \\) represents an energy function that is the sum of unary and pairwise terms.\n   - The first sum, \\( \\sum_{p \\in \\mathcal{N}} U(y_p, x) \\), indicates a unary potential over a set \\( \\mathcal{N} \\), representing individual data points or nodes. This term measures the cost of assigning a label \\( y_p \\) to a data point \\( p \\) given the observations \\( x \\).\n   - The second sum, \\( \\sum_{(p, q) \\in \\mathcal{S}} V(y_p, y_q, x) \\), describes a pairwise potential over a set of pairs \\( \\mathcal{S} \\), which introduces dependencies between pairs of data points \\( p \\) and \\( q \\). This term typically enforces smoothness or consistency between connected nodes.\n\n2. **Specific Formulation**:\n   - The unary term \\( \\sum_{p \\in \\mathcal{N}} (y_p - z_p)^2 \\) is a squared error function, suggesting it measures the deviation of \\( y_p \\) from a target value \\( z_p \\).\n   - The pairwise term \\( \\sum_{(p, q) \\in \\mathcal{S}} \\frac{1}{2} R_{pq} (y_p - y_q)^2 \\) represents a quadratic penalty for differences between connected nodes, weighted by \\( R_{pq} \\), which may denote a relationship strength or distance measure.\n\nThis figure is critical to understanding the mathematical foundations of the research, outlining the core objective function that the proposed method seeks to optimize.",
-            "importance": 9
-        },
-        {
-            "path": "output\\images\\c09df03a-9897-4227-a776-b1eeb1257fc7.jpg",
-            "description": "The figure consists of two line graphs, each illustrating the relationship between the number of superpixels per image and different performance metrics. \n\n- **Left Graph:** This graph shows the root mean square (RMS) errors on the y-axis against the number of superpixels per image on the x-axis. As the number of superpixels increases, the RMS error decreases, indicating improved accuracy or performance with more superpixels.\n\n- **Right Graph:** This graph depicts the training time in seconds on the y-axis against the number of superpixels per image on the x-axis. It shows an increasing trend, where the training time rises as the number of superpixels increases, suggesting higher computational costs with more superpixels.\n\nThese visualizations are important for understanding the trade-off between accuracy and computational efficiency in the context of the research, likely related to image processing or machine learning.",
+            "path": "output\\images\\18ab0d90-6a19-4eb1-90cd-e9b63e1b53e1.jpg",
+            "description": "This figure presents two line graphs that analyze the performance of a system with respect to the number of superpixels per image. \n\n- The left graph illustrates the relationship between the number of superpixels and the root mean square (RMS) errors. It shows a decreasing trend, indicating that as the number of superpixels increases, the RMS error declines, suggesting improved accuracy or performance.\n  \n- The right graph shows the correlation between the number of superpixels and training time in seconds. It exhibits an increasing trend, demonstrating that higher numbers of superpixels lead to longer training times.\n\nTogether, these graphs highlight a trade-off between accuracy and computational cost, which is essential for understanding the efficiency and effectiveness of the method or system being studied in the research.",
             "importance": 7
         },
         {
-            "path": "output\\images\\e5dec792-851c-495d-b37e-1ff9bdfb7f09.jpg",
-            "description": "The figure appears to depict a segment of a convolutional neural network (CNN) architecture used for image processing tasks. It shows an input image of size 224x224, likely indicating the dimensions of the input layer for the CNN model. The text next to the image suggests the use of convolutional layers characterized by a kernel size of 11x11, activation through ReLU (Rectified Linear Unit), and pooling with a stride of 2x2. This implies a typical CNN architecture setup where the image is processed through a series of convolutional and pooling operations to extract features. The figure is important as it illustrates part of the methodology or architecture used in the research, likely contributing to the understanding of how the model processes images.",
+            "path": "output\\images\\9a890b14-23b9-4281-aeb4-e87ca6e204ee.jpg",
+            "description": "The figure appears to be a component of a convolutional neural network (CNN) architecture. It shows an input image with dimensions 224x224 pixels, which is a common size for image processing tasks in CNNs. The figure likely illustrates an initial layer of the network, possibly involving convolutional operations with an 11x11 kernel size, followed by a ReLU activation function and a 2x2 pooling layer. This setup is typical in early layers of CNNs to extract features from the image. The figure likely plays a significant role in explaining the methodology or architecture used in the research.",
             "importance": 7
         },
         {
-            "path": "output\\images\\5b5de901-1334-4503-b4ce-a6a2d6d4935e.jpg",
-            "description": "- **Architecture Diagrams and Components**: Look for any outlined structures or labeled components that might indicate system architecture or frameworks.\n- **Graphs, Charts, and Data Visualizations**: Identify any data points, trends, or comparisons being made. Are there axes, labels, or legends?\n- **Mathematical Formulas or Concepts**: Check for any equations or theoretical models that might be illustrated.\n- **Algorithm Flowcharts or Processes**: Look for step-by-step processes or decision trees.\n- **Results or Findings**: Consider if the figure presents new data, supports a hypothesis, or demonstrates an application.\n\nFor more precise analysis, cross-reference with the text in the paper to understand what this figure is meant to convey.",
+            "path": "output\\images\\57466b5c-e6d6-41fc-b95a-feff9b224a81.jpg",
+            "description": "This figure presents a mathematical formulation that appears to describe an energy function \\( E(y, \\mathbf{x}) \\). The function is composed of two main components:\n\n1. **Unary Term**: \\( \\sum_{p \\in \\mathcal{N}} U(y_p, \\mathbf{x}) \\) - This term sums over a set of nodes \\( \\mathcal{N} \\) and involves a unary potential function \\( U(y_p, \\mathbf{x}) \\), which is likely related to individual elements \\( y_p \\) and their relationship with a given data vector \\( \\mathbf{x} \\).\n\n2. **Pairwise Term**: \\( \\sum_{(p,q) \\in \\mathcal{S}} V(y_p, y_q, \\mathbf{x}) \\) - This term sums over a set of edges \\( \\mathcal{S} \\) and involves a pairwise potential function \\( V(y_p, y_q, \\mathbf{x}) \\), capturing interactions between pairs of elements \\( y_p \\) and \\( y_q \\).\n\nThe second line provides a specific form of these terms:\n- The unary term is expressed as \\( \\sum_{p \\in \\mathcal{N}} (y_p - z_p)^2 \\), suggesting a squared difference, likely indicating a fitting or regularization term where \\( z_p \\) represents some observed or target values.\n- The pairwise term is expressed as \\( \\sum_{(p,q) \\in \\mathcal{S}} \\frac{1}{2} R_{pq}(y_p - y_q)^2 \\), indicating a squared difference weighted by \\( R_{pq} \\), which could represent a relationship strength or constraint between elements.\n\nThis figure is important as it outlines a core mathematical model used in the research, potentially underlying a key algorithm or optimization problem addressed in the study.",
+            "importance": 7
+        },
+        {
+            "path": "output\\images\\92a75010-24c0-4ac0-996a-e1fa8579ca05.jpg",
+            "description": "I'm unable to analyze or describe the content of this figure, as it is important to consider the surrounding context and accompanying details within the research paper. However, I can help guide you on how to analyze it yourself:\n\n1. **Architecture Diagrams and Components**: Look for any labeled sections or blocks that indicate different parts of a system or model.\n2. **Graphs, Charts, and Data Visualizations**: Identify any plotted data, trends, or comparisons between different datasets.\n3. **Mathematical Formulas or Concepts Illustrated**: Check for any equations or mathematical notations that are being used to explain a concept or result.\n4. **Algorithm Flowcharts or Processes**: Look for any sequential steps or decision points that outline an algorithm or process.\n5. **Results or Findings Being Presented**: Determine if the figure is showcasing experimental results, comparisons, or validations of the research claims.\n\nTo rate the importance, consider how central the figure is to understanding the main contributions or conclusions of the paper.",
             "importance": 5
         },
         {
-            "path": "output\\images\\5e163c9b-05f4-4eae-973a-f15f3dad81f3.jpg",
-            "description": "I'm unable to analyze the specific content of the image you're referring to. However, I can guide you on how to analyze it based on common elements in technical figures.\n\n### General Guidance for Analysis:\n\n1. **Architecture Diagrams and Components**: Look for any labeled blocks or layers that might represent parts of a system or model architecture. Note connections or data flows.\n\n2. **Graphs, Charts, and Data Visualizations**: Identify axes, data points, trends, and any statistical information presented.\n\n3. **Mathematical Formulas or Concepts**: Check for equations or symbolic representations that might explain theoretical aspects or calculations.\n\n4. **Algorithm Flowcharts or Processes**: Follow the sequence of operations, decision points, and overall process flow.\n\n5. **Results or Findings**: Look for any highlighted data, annotations, or comparisons that showcase the outcomes or conclusions of the research.\n\n### Hypothetical Example Analysis:\n\nIf the figure shows a segmented image analysis:\n\n- **Architecture/Components**: It may include bounding boxes or highlighted regions indicating areas of interest or segmentation results.\n- **Data Visualization**: Could show before-and-after images or side-by-side comparisons to illustrate improvements.\n- **Algorithm Process**: Might include arrows or flowcharts depicting steps in the analysis pipeline.\n- **Findings**: Could highlight specific regions or features detected in the image as a result of the applied method.\n\n### Rating Importance:\n\n- **Critical (10)**: If the figure depicts a novel method or key finding that is central to the paper's thesis.\n- **Important (7-9)**: If it shows significant results or methodological steps crucial for understanding the research.\n- **Supplementary (4-6)**: If it provides additional context or examples that support the main text.\n- **Minor (1-3)**: If it is mainly decorative or provides very peripheral information.\n\nI hope this framework helps you analyze the figure effectively!",
+            "path": "output\\images\\4071c7c7-585a-4231-b4d8-2ce49b46cc01.jpg",
+            "description": "I'm unable to view or analyze the content of images directly. However, I can help you interpret it if you provide a description or more context about the figure. Let me know how else I can assist!",
             "importance": 5
         },
         {
-            "path": "output\\images\\d6feb37b-6c83-46ac-8af1-6bc24913234e.jpg",
-            "description": "I'm unable to analyze the content of the figure as it seems to be an image of a building exterior with plants, rather than a technical diagram or chart from a research paper. If you have another image or need help with a specific research topic, feel free to provide more details!",
+            "path": "output\\images\\1cc4b7ef-f090-4db4-b5aa-8e85cfaded86.jpg",
+            "description": "I'm unable to analyze the content or context of images like landscapes or nature scenes, as they don't contain technical diagrams or research-related visuals. If you have another image or need assistance with a different topic, feel free to ask!",
             "importance": 5
         },
         {
-            "path": "output\\images\\90988ad3-2d9f-4926-994c-b81851a31a2d.jpg",
-            "description": "I'm unable to analyze the image as it appears to be a photograph of a classroom, not a technical figure from a research paper. If you have another image or need further assistance, please let me know!",
+            "path": "output\\images\\14f4e431-a024-45b5-8998-98741003b5c6.jpg",
+            "description": "I'm unable to analyze the content of the image you provided. If you have a description or can share more details about the figure, I'd be happy to help analyze it.",
             "importance": 5
         },
         {
-            "path": "output\\images\\cfd962a4-582e-4432-a7b3-de4189e68f13.jpg",
-            "description": "I'm unable to analyze that image as it doesn't appear to be a technical figure from a research paper. It seems to be a photograph of an outdoor scene with trees and a building. If you have another image or need further assistance, feel free to share!",
+            "path": "output\\images\\b15f509e-26bc-4390-8a49-486015a45b0b.jpg",
+            "description": "I'm unable to analyze or determine the contents of the image as it appears to be a classroom setting rather than a technical figure from a research paper. If you have a specific technical figure or diagram you need help with, please describe it or share a different image.",
             "importance": 5
         },
         {
-            "path": "output\\images\\97a39837-6862-4f60-b5cb-a16d8b630176.jpg",
-            "description": "I'm unable to analyze or provide details about the content of images, including technical figures from research papers. If you describe the figure, I can help interpret or provide insights based on your description.",
+            "path": "output\\images\\87408f65-9942-4ad6-8dba-38903282fc31.jpg",
+            "description": "I'm unable to analyze or provide descriptions for specific figures from research papers without the image content being accessible. However, if you describe the elements within the figure, I can assist you in determining its importance and provide a detailed description based on your input.",
             "importance": 5
         }
     ],
     "metadata": {
         "key_themes": [
-            "Conditional Random Fields (CRFs)",
-            "Pairwise comparisons",
-            "Synthetic dataset generation",
-            "Unary and pairwise learning",
-            "Mean Value",
-            "Performance comparison",
-            "Multivariable calculus",
-            "Smoothness priors",
-            "Matrix factorization",
-            "Classifier Training",
-            "Geometric inference",
-            "3D Reconstruction",
-            "Super-resolution techniques",
-            "Probabilistic neural rendering",
-            "Convolutional Neural Networks (CNNs)"
+            "Spatial Meshing",
+            "Neural Network Optimization",
+            "Super-Resolution",
+            "Bayesian Inference",
+            "Uncertainty"
         ],
         "methodology": [
-            "Gradient matrix",
-            "Feature Fusion",
-            "fine-tuning",
-            "Surface Normal Optimization",
-            "Linear regression",
-            "Expectation-Maximization (EM)",
-            "Conditional Random Field (CRF)",
-            "Generative Deep Learning",
-            "Machine learning",
-            "VGG-16 Initialization & Fine-Tuning with MatConvNet/VLFeat",
-            "Gradient-based optimization",
-            "diffusion term",
-            "3D Shape Estimation",
-            "Multivariate Gaussian modeling",
-            "SVR",
-            "Camera superpixel processing",
-            "Probabilistic Graphical Models"
+            "Neural Network Training",
+            "3D Modeling",
+            "Image Processing",
+            "Estimation",
+            "Evaluation Framework"
         ],
         "domain": [
-            "3D Computer Vision",
-            "Autonomous technology"
+            "Autonomous Robotics"
         ],
         "strengths": [
-            "Real-time multi-network fine-tuning performance",
-            "Cooperative Training Framework",
-            "Data-efficient learning",
-            "Efficiently outperforms existing methods",
-            "Local feature learning",
-            "Deep Learning Toolbox",
-            "Geometric invariance",
-            "Benchmarking",
-            "Analytical optimization.",
-            "Multi-prediction capability",
-            "Prior-based regularization",
-            "Competitive benchmarking",
-            "Closed-form MAP solutions",
-            "3D Shape Reconstruction"
+            "3D Reconstruction",
+            "DeepVision Framework",
+            "Enhanced Detection Techniques",
+            "Superiority",
+            "Efficient Optimization"
         ],
         "limitations": [
-            "time per image",
-            "Resolution limitations",
-            "quadratic energy terms",
-            "Parameter optimization",
-            "Model optimization",
-            "Computational complexity",
-            "Ambiguity in 3D reconstruction",
-            "Limited dataset requirements",
-            "Imperfect mask prediction",
-            "Image distortion"
+            "Training challenges",
+            "3D Challenges",
+            "Complexity",
+            "Perceptual Color Balance",
+            "Sacrifice diversity for fidelity"
         ]
     },
     "content_chunks": [
