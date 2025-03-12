@@ -427,7 +427,8 @@ class PaperGenerator:
             6. Ensure the section flows logically and builds a complete narrative
             7. Include relevant technical details and methodology discussions
             8. Address the relevant strengths and limitations of the approaches discussed
-            9. write in latex format.
+            9. write in latex format and you are only writing a section now the whole latex document. Make sure to not write whole 
+                latex paper including import as they are handled already
             
             You have the following reference material to incorporate:
             
