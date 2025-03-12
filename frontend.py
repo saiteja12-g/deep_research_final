@@ -310,13 +310,14 @@
 # st.markdown("Scientific Paper Analysis System | Built with Streamlit")
 
 import platform
+import sys
 __import__('pysqlite3')
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
 import os
 import json
-import sys
+
 from dotenv import load_dotenv
 
 openai_api_key = st.secrets.get("openai", {}).get("api_key", os.environ.get("OPENAI_API_KEY"))
