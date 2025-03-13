@@ -164,7 +164,17 @@ The application includes Docker support for easy deployment:
 - **Memory Issues**: Reduce batch sizes in the extraction and processing pipelines for lower memory usage
 - **Neo4j Connection**: Ensure the Neo4j container is running before running knowledge base operations
 
+## Flowcharts
+### Model Architecture
+![alt text](files\image-1.png)
 
+### Agent Workflow
+![alt text](files\image.png)
+
+### Video Demo
+[![Research Paper Assistant Demo](https://img.youtube.com/vi/CLq7E8Y3Pk4/0.jpg)](https://youtu.be/CLq7E8Y3Pk4)
+
+Click the image above to watch the demo video of the Research Paper Assistant in action.
 ## Acknowledgements
 
 - [ArXiv API](https://arxiv.org/help/api/index) for paper access
