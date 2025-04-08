@@ -169,10 +169,10 @@ The application includes Docker support for easy deployment:
 
 ## Flowcharts
 ### Model Architecture
-![Model Architecture](files\image-1.png)
+![Model Architecture](files/image-1.png)
 
 ### Agent Workflow
-![Agent Workflow](files\image.png)
+![Agent Workflow](files/image.png)
 
 Click the image above to watch the demo video of the Research Paper Assistant in action.
 ## Acknowledgements
